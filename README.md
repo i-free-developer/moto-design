@@ -1,0 +1,31 @@
+### Moto site
+
+
+https://www.frontend.fyi/recipes/components-and-css/css-only-text-marquee
+
+https://motion-primitives.com/docs/transition-panel
+
+https://ibelick.com/lab
+
+https://ibelick.com/lab/button-shooting-star-border
+
+react-dnd
+
+https://www.gatsbyjs.com/docs/tutorial/getting-started/part-0/
+
+https://www.contentful.com
+
+https://app.netlify.com
+
+https://blueprintjs.com/docs/
+
+
+https://cloud.tencent.com/developer/ask/sof/106977461 stackcards animation
+
+https://hsuchihting.github.io/TailwindCSS/20210913/854832424
+
+
+drawer https://codepen.io/MusaFitriyadi/pen/xWMpXb
+
+
+the stacked cards I neew https://codepen.io/adebiyal/pen/YMMjdY

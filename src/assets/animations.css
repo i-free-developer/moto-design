@@ -1,0 +1,59 @@
+@keyframes drawer-slide-in {
+	from {transform: translateX(-20rem);}
+	to {transform: translateX(4rem)}
+}
+
+@keyframes drawer-slide-out {
+	from {transform: translateX(4rem);}
+	to {transform: translateX(-20rem)}
+}
+
+@keyframes section-slide-in {
+	from {transform: translateX(0);}
+	to {transform: translateX(12rem)}
+}
+
+@keyframes section-slide-out {
+	from {transform: translateX(12rem);}
+	to {transform: translateX(0)}
+}
+
+
+
+@keyframes progress-bar {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.drawer-in {
+	animation: drawer-slide-in 1s ease-in-out;
+	animation-fill-mode: forwards;
+	left: 1rem;
+}
+
+.drawer-out {
+	animation: drawer-slide-out 1s ease-in-out ;
+	animation-fill-mode: forwards;
+/*	animation-direction: reverse;*/
+	left: -20rem;
+}
+
+.section-drawer-in {
+	animation: section-slide-in 1.5s ease-in-out;
+	animation-fill-mode: forwards;
+}
+
+.section-drawer-out {
+	animation: section-slide-out 1.5s ease-in-out;
+/*	animation-fill-mode: forwards;*/
+}
+
+.hover-border {
+	border: 2px solid;
+	animation: progress-bar 1s ease;
+/*	animation-fill-mode: forwards;*/
+}

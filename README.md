@@ -27,5 +27,7 @@ https://hsuchihting.github.io/TailwindCSS/20210913/854832424
 
 drawer https://codepen.io/MusaFitriyadi/pen/xWMpXb
 
+footer animation https://www.goabstract.com/
 
-the stacked cards I neew https://codepen.io/adebiyal/pen/YMMjdY
+
+the stacked cards I need https://codepen.io/adebiyal/pen/YMMjdY

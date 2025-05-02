@@ -74,7 +74,7 @@ function TimeLineItem({number, title}) {
 function Perks() {
 	return (
 		<div className="mx-auto flex max-w-screen flex-nowrap my-[4rem]">
-			{perkItems.map((item, index) => <PerkItem {...item} index={index} />)}
+			{perkItems.map((item, index) => <PerkItem {...item} index={index} key={item.number}/>)}
 		</div>
 	)
 }

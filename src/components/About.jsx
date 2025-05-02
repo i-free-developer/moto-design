@@ -14,7 +14,7 @@ export default function About() {
 		<section id="about" className="mx-auto my-[2rem]">
 			<div className="grid grid-cols-4 items-center gap-6">
 			<OurTeam />
-			{teamMembers.map(item => <TeamMember {...item}/>)}
+			{teamMembers.map((item, index) => <TeamMember {...item} key={index} />)}
 			</div>
 			
 		</section>

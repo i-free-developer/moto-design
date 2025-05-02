@@ -34,15 +34,15 @@ function Drawer({showDrawer}) {
 	return(
 		<div className={`px-10 py-10 w-md absolute top-[4rem] z-100 mx-auto backdrop-blur-sm bg-gray-100/40 rounded-xl ${showDrawer ? 'drawer-in' : 'drawer-out'}`}>
 			<div className="flex flex-col items-start gap-8 text-3xl font-bold">
-				{drawerLinks.map(item => <DrawerLink {...item} />)}
+				{drawerLinks.map((item, index) => <DrawerLink {...item} key={index}/>)}
 			</div>
 
 			<div className="mt-[16rem]">
 				<div className="flex gap-8 mx-auto">
-					{socialIcons.map(item => <SocialIcon {...item} />)}
+					{socialIcons.map((item, index) => <SocialIcon {...item} key={index}/>)}
 				</div>
 				<hr className="border border-2 mt-[2rem] mb-6"></hr>
-				<p className="">Hello@motodesign .cn</p>
+				<p className="">Hello@motodesign.cn</p>
 			</div>
 		</div>
 	)

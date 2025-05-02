@@ -22,7 +22,7 @@ export default function Portfolio() {
 			</div>
 
 			<div className="grid grid-cols-5 gap-4">
-				{portfolioItems.map(item => <PortfolioCard {...item}/>)}
+				{portfolioItems.map((item, index) => <PortfolioCard {...item} key={index}/>)}
 			</div>
 		</section>
 	)

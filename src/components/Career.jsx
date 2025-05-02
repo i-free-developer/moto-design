@@ -24,7 +24,7 @@ const perkItems = [
 
 export default function Career() {
 	return (
-		<section className="mx-auto px-20 my-[2rem] flex flex-col gap-8 max-w-screen">
+		<section className="mx-auto px-[2rem] my-[2rem] flex flex-col gap-8 max-w-screen">
 			<h1 className="font-bold text-4xl uppercase mt-[8rem]">[Career]</h1>
 			<div className="flex items-center justify-between">
 				<h2 className="font-bold text-6xl uppercase">How we hire</h2>

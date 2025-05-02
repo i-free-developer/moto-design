@@ -14,7 +14,7 @@ export default function Portfolio() {
 	const [isMobile, setIsMobile] = useState(false)
 
 	return (
-		<section id="portfolio" className="mx-auto  px-20 my-[2rem]">
+		<section id="portfolio" className="mx-auto px-[2rem] my-[2rem]">
 			<PortfolioHeader />
 			<div className="flex gap-2 my-8">
 				<span onClick={() => setIsMobile(true)} className={`p-2 ${isMobile ? 'bg-black text-white' : ''}`}>A</span>
@@ -42,16 +42,23 @@ function PortfolioHeader() {
 
 function PortfolioCard({title, description, colums, image, url}) {
 	const [isHovered, setIsHovered] = useState(true)
+	const spanClasses = {
+	  2: 'col-span-2 relative h-[36rem]',
+	  3: 'col-span-3 relative h-[36rem]',
+	  5: 'col-span-5 relative h-[36rem]',
+	}
 
 	return (
-		<div className={`col-span-${colums} relative`}>
+		<div className={spanClasses[colums]}>
 			<span className={`
-				absolute left-[50%] bottom-0 w-full h-2/5 rounded-[40%] blur-[3rem] bg-sky-800 opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
+				z-5 absolute left-[50%] bottom-0 w-full h-2/5 rounded-[40%] blur-[3rem] bg-sky-800 opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
 				${isHovered ? '-translate-x-[50%] -translate-y-[10%] opacity-80' : '-translate-x-[50%] translate-y-[20%] '}
 			`}></span>
-			<a href={url} className="w-full h-[36rem] rounded-3xl">	
-				<img src={image} className="w-full h-[36rem] object-cover object-center rounded-3xl" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}></img>
-				<div className="absolute left-6 right-6 bottom-6 px-6 bg-white rounded-2xl flex justify-between items-center p-4" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+			<a href={url} className="max-w-full h-full block cursor-pointer rounded-3xl">
+				<div className="w-full h-full overflow-hidden rounded-[inherit]">	
+					<img src={image} className={`w-full h-full object-cover object-center rounded-[inherit] ${isHovered ? 'scale-104' : ''}`} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}></img>
+				</div>
+				<div className="z-10 absolute left-6 right-6 bottom-6 px-6 py-4 bg-white rounded-2xl flex justify-between items-center" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 					<div className="max-w-3/4">
 						<header className="font-bold mb-2 text-2xl">{title}</header>
 						<p className="text-xl">{description}</p>

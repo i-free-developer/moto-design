@@ -1,6 +1,6 @@
 export default function Loading() {
 	return (
-		<section className="mx-auto  px-20 h-screen">
+		<section className="mx-auto px-[2rem] h-screen">
 			<div className="h-11/12 grid content-center">	
 				<div className="grid grid-cols-3 gap-20 items-center justify-between text-xl">
 					<div className="uppercase justify-self-start">

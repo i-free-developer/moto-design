@@ -25,8 +25,8 @@ function App() {
         <Loading /> : 
         (<>
           <Navbar showDrawer={displayDrawer} handleClickDrawer={handleClickDrawer} />
-          <Career/>
           <Landing showDrawer={displayDrawer}/>
+          <Career/>
           <About/>
           <Portfolio/>
         </>

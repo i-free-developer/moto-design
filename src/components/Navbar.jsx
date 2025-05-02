@@ -36,9 +36,9 @@ export default function Navbar({showDrawer, handleClickDrawer}) {
 	const [langExpanded, setLangExpanded] = useState(false)
 	
 	return (
-		<section className="relative">
+		<section className="relative z-200">
 			<nav className="fixed w-screen">
-				<div className="px-20 flex justify-between items-center">	
+				<div className="px-[4rem] my-[2rem] flex justify-between items-center">	
 					<div onClick={handleClickDrawer} className="size-[1.2rem]">{showDrawer ? <CloseIcon/> : <ThreeBars/>}</div>
 					<div className="font-bold text-lg">MOTO</div>
 					<div>
@@ -60,12 +60,12 @@ export default function Navbar({showDrawer, handleClickDrawer}) {
 function Drawer({showDrawer}) {
 	// console.log('showDrawer', showDrawer)
 	return(
-		<div className={`fixed px-10 py-10 w-md absolute top-[6rem] z-100 mx-auto backdrop-blur-sm bg-gray-100/40 rounded-xl ${showDrawer ? 'drawer-in' : 'drawer-out'}`}>
-			<div className="flex flex-col items-start gap-8 text-3xl font-bold">
+		<div className={`fixed p-[4rem] w-md absolute top-[8rem] z-100 mx-auto backdrop-blur-sm bg-gray-100/40 rounded-xl ${showDrawer ? 'drawer-in' : 'drawer-out'}`}>
+			<div className="flex flex-col items-start gap-8 text-3xl font-bold mt-[2rem]">
 				{drawerLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>
 
-			<div className="mt-[18rem]">
+			<div className="mt-[16rem]">
 				<div className="flex gap-8 mx-auto">
 					{socialIcons.map((item, index) => <SocialIcon {...item} key={index}/>)}
 				</div>

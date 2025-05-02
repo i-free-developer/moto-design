@@ -20,15 +20,15 @@ function App() {
   console.log('isLoading', isLoading)
 
   return (
-    <main className="mx-auto px-24">
+    <main className="mx-auto">
       {isLoading ? 
         <Loading /> : 
         (<>
           <Navbar showDrawer={displayDrawer} handleClickDrawer={handleClickDrawer} />
-          <Career />
-          <Landing showDrawer={displayDrawer} />
-          <About />
-          <Portfolio />
+          <Career/>
+          <Landing showDrawer={displayDrawer}/>
+          <About/>
+          <Portfolio/>
         </>
         )
       }

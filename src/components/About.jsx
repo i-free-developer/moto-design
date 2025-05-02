@@ -11,7 +11,7 @@ const teamMembers = [
 
 export default function About() {
 	return (
-		<section id="about" className="mx-auto my-[2rem]">
+		<section id="about" className="mx-auto px-20 my-[2rem]">
 			<div className="grid grid-cols-4 items-center gap-6">
 			<OurTeam />
 			{teamMembers.map((item, index) => <TeamMember {...item} key={index} />)}

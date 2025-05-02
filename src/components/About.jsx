@@ -26,7 +26,7 @@ function TeamMember({name, avatar, description}) {
 		<article className="group border border-2 rounded-md perspective-distant h-[30rem] w-full bg-transparent">
 		  <div className="relative h-full w-full text-center pb-6 transition-transform duration-1300 transform-3d group-hover:rotate-y-180">
 		    
-		    <div className="absolute inset-0 flex h-full w-full flex-col justify-between backface-hidden">
+		    <div className="rounded-[inherit] absolute inset-0 flex h-full w-full flex-col justify-between backface-hidden">
 			    <img src={avatar} className="block w-full h-[24rem] object-cover object-center"></img>
 				<div className="flex items-center justify-between p-6">
 					<header className="text-lg font-bold">{name}</header>
@@ -34,8 +34,8 @@ function TeamMember({name, avatar, description}) {
 				</div>
 		    </div>
 
-		    <div className="absolute inset-0 h-full w-full flex flex-col gap-12 text-center rotate-y-180 backface-hidden">
-		     	<header className="text-5xl font-bold mt-12">{name}</header>
+		    <div className="rounded-[inherit] absolute inset-0 h-full w-full flex flex-col p-[2rem] gap-[3rem] text-center rotate-y-180 backface-hidden">
+		     	<header className="text-5xl font-bold">{name}</header>
 				<p className="text-xl">{description}</p>
 		    </div>
 		  </div>

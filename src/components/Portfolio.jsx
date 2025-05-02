@@ -16,7 +16,7 @@ export default function Portfolio() {
 	return (
 		<section id="portfolio" className="mx-auto px-[2rem] my-[2rem]">
 			<PortfolioHeader />
-			<div className="flex gap-2 my-8">
+			<div className="flex gap-2 my-[2rem]">
 				<span onClick={() => setIsMobile(true)} className={`p-2 ${isMobile ? 'bg-black text-white' : ''}`}>A</span>
 				<span onClick={() => setIsMobile(false)} className={`p-2 ${!isMobile ? 'bg-black text-white' : ''}`}>B</span>
 			</div>
@@ -30,11 +30,11 @@ export default function Portfolio() {
 
 function PortfolioHeader() {
 	return (
-		<article className="flex justify-between">
+		<article className="flex justify-between my-[4rem]">
 			<header className="text-4xl w-1/5">We don't do cookie-cutter solutions</header>
 			<div className="flex flex-col justify-between w-1/5 gap-[3rem] text-right">
-				<p>Backing the best Web 3.0 founders & products</p>
-				<p>Our user-centered design encourages productivity and boosts revenue</p>
+				<p className="text-base">Backing the best Web 3.0 founders & products</p>
+				<p className="text-base">Our user-centered design encourages productivity and boosts revenue</p>
 			</div>
 		</article>
 	)

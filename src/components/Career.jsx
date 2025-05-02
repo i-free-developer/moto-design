@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import arrowLeft from '../assets/icons/arrow-left.svg'
 import doubleArrowRight from '../assets/icons/double-arrow-right.svg'
 
@@ -22,7 +24,7 @@ const perkItems = [
 
 export default function Career() {
 	return (
-		<section className="mx-auto my-[2rem] flex flex-col gap-8">
+		<section className="mx-auto my-[2rem] flex flex-col gap-8 max-w-screen">
 			<h1 className="font-bold text-4xl uppercase pt-[2rem]">[Career]</h1>
 			<div className="flex items-center justify-between">
 				<h2 className="font-bold text-6xl uppercase">How we hire</h2>
@@ -49,10 +51,7 @@ export default function Career() {
 				<p className="text-center text-xl">We’re not everywhere — but we think like we are.</p>
 			</div>
 			
-			<div className="mx-auto flex ">
-				{perkItems.map((item, index) => <PerkItem {...item} index={index} key={item.number} />)}
-				
-			</div>
+			<Perks/>
 		</section>
 	)
 }
@@ -72,10 +71,18 @@ function TimeLineItem({number, title}) {
 	)
 }
 
+function Perks() {
+	return (
+		<div className="mx-auto flex max-w-screen flex-nowrap my-[4rem]">
+			{perkItems.map((item, index) => <PerkItem {...item} index={index} />)}
+		</div>
+	)
+}
+
 function PerkItem({number, title, subtitle, content, index}) {
 	return (
-		<div className={`p-[1rem] border border-2 shrink-0 -translate-x-${index * 90}`}>
-			<div className="flex items-center justify-between gap-[2rem] mb-[16rem]">
+		<div className={`perk-card p-[1rem] bg-white border border-2 shrink-0 ${index === 0 ? '' : '-ml-[18rem]'}`}>
+			<div className="flex items-center justify-between gap-[2rem] mb-[18rem]">
 				<div className="flex flex-col">
 					<span className="font-bold">{number}</span>
 					<span className="font-bold">Q</span>

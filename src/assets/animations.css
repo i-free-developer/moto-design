@@ -71,3 +71,7 @@
 	animation: slide-right 1.1s ease-in-out;
 	animation-fill-mode: forwards;
 }
+
+.perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
+	transform: translateX(18rem);
+}

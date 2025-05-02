@@ -30,7 +30,7 @@ export default function Landing({showDrawer}) {
 }
 
 function Drawer({showDrawer}) {
-	console.log('showDrawer', showDrawer)
+	// console.log('showDrawer', showDrawer)
 	return(
 		<div className={`px-10 py-10 w-md absolute top-[4rem] z-100 mx-auto backdrop-blur-sm bg-gray-100/40 rounded-xl ${showDrawer ? 'drawer-in' : 'drawer-out'}`}>
 			<div className="flex flex-col items-start gap-8 text-3xl font-bold">
@@ -54,7 +54,7 @@ function DrawerLink({url, title}) {
 	return (
 		<div className="flex flex-col" 
 			onMouseEnter={() => setIsHovered(true)}
-      		onMouseLeave={() => setIsHovered(false)}>
+      onMouseLeave={() => setIsHovered(false)}>
 			<a href={url}>{title}</a>
 			<hr className={`mt-2 ${isHovered ? 'hover-border' : 'border border-2 border-transparent'}`}></hr>
 		</div>

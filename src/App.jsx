@@ -10,7 +10,7 @@ import Portfolio from './components/Portfolio'
 import Navbar from './components/Navbar'
 
 function App() {
-  const [loadingPercentage, setLoadingPercentage] = useState(90)
+  const [loadingPercentage, setLoadingPercentage] = useState(100)
   const isLoading = loadingPercentage < 100
   const [displayDrawer, setDisplayDrawer] = useState(false)
 

@@ -38,6 +38,15 @@
 	}
 }
 
+@keyframes infinite-scroll {
+	from {
+    left: 0%;
+  }
+  to {
+    left: -100%
+  }
+}
+
 .drawer-in {
 	animation: drawer-slide-in 1s ease-in-out;
 	animation-fill-mode: forwards;
@@ -74,4 +83,8 @@
 
 .perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
 	transform: translateX(18rem);
+}
+
+.scroll-header {
+	animation: infinite-scroll 20s linear infinite backwards;
 }

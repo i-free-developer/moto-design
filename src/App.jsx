@@ -31,6 +31,7 @@ function App() {
           <RolePage/>
           <About/>
           <Portfolio/>
+          <Contact/>
         </>
         )
       }

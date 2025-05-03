@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import arrowLeft from '../assets/icons/arrow-left.svg'
+import arrowRight from '../assets/icons/arrow-right.svg'
 import doubleArrowRight from '../assets/icons/double-arrow-right.svg'
 
 const timelineItems = [
@@ -22,9 +23,17 @@ const perkItems = [
 	{number: '08', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
 ]
 
+const openningRoles = [
+	{team: 'MOTO  >  Design Department  >  WEB', title: 'Senior UI Designer / Full-time', tags: ['Full-time', 'On-site (ShenZhen)']},
+	{team: 'MOTO  >  Design Department  >  WEB', title: 'Senior UI Designer / Full-time', tags: ['Full-time', 'On-site (ShenZhen)']},
+	{team: 'MOTO  >  Design Department  >  WEB', title: 'Senior UI Designer / Full-time', tags: ['Full-time', 'On-site (ShenZhen)']},
+	{team: 'MOTO  >  Design Department  >  WEB', title: 'Senior UI Designer / Full-time', tags: ['Full-time', 'On-site (ShenZhen)']},
+	{team: 'MOTO  >  Design Department  >  WEB', title: 'Senior UI Designer / Full-time', tags: ['Full-time', 'On-site (ShenZhen)']},
+]
+
 export default function Career() {
 	return (
-		<section className="mx-auto px-[2rem] my-[2rem] flex flex-col gap-8 max-w-screen">
+		<section id="career" className="mx-auto px-[3rem] my-[2rem] flex flex-col gap-8 max-w-screen">
 			<h1 className="font-bold text-4xl uppercase mt-[8rem]">[Career]</h1>
 			<div className="flex items-center justify-between">
 				<h2 className="font-bold text-6xl uppercase">How we hire</h2>
@@ -52,6 +61,8 @@ export default function Career() {
 			</div>
 			
 			<Perks/>
+			<Roles/>
+			<HowToApply/>
 		</section>
 	)
 }
@@ -96,3 +107,55 @@ function PerkItem({number, title, subtitle, content, index}) {
 		</div>
 	)
 }
+
+function Roles() {
+	return (
+		<div className="grid grid-cols-2">
+			<div className="pr-[3rem] w-4/5">
+				<h3 className="uppercase">join our team</h3>
+				<p className="font-bold text-6xl uppercase mt-[2rem] mb-[4rem]">find your perfect role</p>
+				<p className="">Explore our open roles and find the one that fits not just your resume, but your rhythm.</p>
+				<p className="text-2xl mt-[6rem] font-bold"><span className="text-3xl mr-2">13</span>Positions</p>
+			</div>
+			<div className="flex flex-col gap-8">
+				{openningRoles.map((item, index) => <RoleCard {...item} index={index} key={index}/>)}
+			</div>
+		</div>
+	)
+}
+
+function RoleCard({team, title, tags, index}) {
+	return (
+		<article className="relative flex flex-col gap-4 px-[1rem]">
+			{index === 0 &&  <hr className="border border-2 border-slate-200 mb-[1rem]"></hr> }
+			<header className="font-bold text-lg">{team}</header>
+			<p className="text-4xl font-light">{title}</p>
+			<div className="flex flex-row items-center gap-2 mt-[1rem]">
+				{tags.map((tag, index) => <span className="text-gray-600">{tag}</span>)}
+			</div>
+			<hr className="border border-2 border-slate-200 mt-[2rem]"></hr>
+			
+			<div className="absolute right-[1rem] bottom-[2rem] flex items-center justify-between gap-[1rem] bg-slate-900 rounded-full px-6 py-2">
+				<span className="text-white">Apply</span>
+				<div className="bg-slate-100 flex items-center justify-center rounded-full -mr-4">
+					<img src={arrowRight} alt="Arrow Right" className="w-8"></img>
+				</div>
+			</div>
+		</article>
+	)
+}
+
+function HowToApply() {
+	return (
+		<div className="">
+			<h2 className="uppercase font-bold text-6xl mt-[4rem]">how to apply</h2>
+			<p className="mt-[3rem] text-xl">Send your CV and portfolio to <span className="font-bold">(Hello@motodesign.cn)</span>, with the subject "<span className="font-bold">Position + Name</span>".</p>
+			<p className="text-xl">We’re not just hiring doers—we’re looking for partners in creation.</p>
+			<p className="text-xl my-[3rem]">*File Types: ( pdf, ppt, pptx, txt )</p>
+		</div>
+	)
+}
+
+
+
+

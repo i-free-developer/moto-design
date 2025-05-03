@@ -14,7 +14,7 @@ export default function Portfolio() {
 	const [isMobile, setIsMobile] = useState(false)
 
 	return (
-		<section id="portfolio" className="mx-auto px-[2rem] my-[2rem]">
+		<section id="portfolio" className="mx-auto px-[2rem] my-[3rem]">
 			<PortfolioHeader />
 			<div className="flex gap-2 my-[2rem]">
 				<span onClick={() => setIsMobile(true)} className={`p-2 ${isMobile ? 'bg-black text-white' : ''}`}>A</span>

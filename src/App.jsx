@@ -7,6 +7,7 @@ import Contact from './components/Contact'
 import Landing from './components/Landing'
 import Loading from './components/Loading'
 import Portfolio from './components/Portfolio'
+import RolePage from './components/RolePage'
 import Navbar from './components/Navbar'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Navbar showDrawer={displayDrawer} handleClickDrawer={handleClickDrawer} />
           <Landing showDrawer={displayDrawer}/>
           <Career/>
+          <RolePage/>
           <About/>
           <Portfolio/>
         </>

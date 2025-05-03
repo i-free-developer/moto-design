@@ -1,39 +1,15 @@
 import { useState } from 'react'
+import RolePage from './RolePage'
 
 import arrowLeft from '../assets/icons/arrow-left.svg'
 import arrowRight from '../assets/icons/arrow-right.svg'
 import doubleArrowRight from '../assets/icons/double-arrow-right.svg'
 
-const timelineItems = [
-	{number: '01', title: 'Portfolio review'},
-	{number: '02', title: 'Interviews'},
-	{number: '03', title: 'Background investigation'},
-	{number: '04', title: 'Round 2 interview'},
-	{number: '05', title: 'Offer'},
-]
-
-const perkItems = [
-	{number: '01', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '02', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '03', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '04', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '05', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '06', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '07', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '08', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-]
-
-const openningRoles = [
-	{team: 'MOTO  >  Design Department  >  WEB', title: 'Senior UI Designer / Full-time', tags: ['Full-time', 'On-site (ShenZhen)']},
-	{team: 'MOTO  >  Design Department  >  WEB', title: 'Senior UI Designer / Full-time', tags: ['Full-time', 'On-site (ShenZhen)']},
-	{team: 'MOTO  >  Design Department  >  WEB', title: 'Senior UI Designer / Full-time', tags: ['Full-time', 'On-site (ShenZhen)']},
-	{team: 'MOTO  >  Design Department  >  WEB', title: 'Senior UI Designer / Full-time', tags: ['Full-time', 'On-site (ShenZhen)']},
-	{team: 'MOTO  >  Design Department  >  WEB', title: 'Senior UI Designer / Full-time', tags: ['Full-time', 'On-site (ShenZhen)']},
-]
+import {timelineItems, perkItems, openningRoles} from '../data/career-data'
 
 export default function Career() {
 	return (
-		<section id="career" className="mx-auto px-[3rem] my-[2rem] flex flex-col gap-8 max-w-screen">
+		<section id="career" className="mx-auto px-[3rem] my-[3rem] flex flex-col gap-8 max-w-screen">
 			<h1 className="font-bold text-4xl uppercase mt-[8rem]">[Career]</h1>
 			<div className="flex items-center justify-between">
 				<h2 className="font-bold text-6xl uppercase">How we hire</h2>
@@ -145,7 +121,7 @@ function RoleCard({team, title, tags, index}) {
 	)
 }
 
-function HowToApply() {
+export function HowToApply() {
 	return (
 		<div className="">
 			<h2 className="uppercase font-bold text-6xl mt-[4rem]">how to apply</h2>

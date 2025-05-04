@@ -13,7 +13,7 @@ export default function RolePage() {
 				<h1 className="mt-[3rem] text-5xl font-bold w-3/5">{title}</h1>
 				<div className="flex flex-row items-center justify-between mt-[4rem]">
 					<div>
-						{tags.map((tag, index) => <span className="text-gray-600">{tag}</span>)}
+						{tags.map((tag, index) => <span className="text-gray-600" key={index}>{tag}</span>)}
 					</div>
 					<div className="flex items-center justify-between gap-[1rem] bg-slate-900 rounded-full px-6 py-2">
 						<span className="text-white">Apply</span>

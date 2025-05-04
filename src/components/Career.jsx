@@ -107,7 +107,7 @@ function RoleCard({team, title, tags, index}) {
 			<header className="font-bold text-lg">{team}</header>
 			<p className="text-4xl font-light">{title}</p>
 			<div className="flex flex-row items-center gap-2 mt-[1rem]">
-				{tags.map((tag, index) => <span className="text-gray-600">{tag}</span>)}
+				{tags.map((tag, index) => <span className="text-gray-600" key={index}>{tag}</span>)}
 			</div>
 			<hr className="border border-2 border-slate-200 mt-[2rem]"></hr>
 			

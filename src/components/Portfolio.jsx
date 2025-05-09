@@ -64,7 +64,9 @@ function DesktopCard({title, description, colums, image, url}) {
 
 	return (
 		<div className={spanClasses[colums]}>
-			<span className={`
+			<span
+        style={{pointerEvents: 'none'}}
+        className={`
 				z-5 absolute left-[50%] bottom-0 w-full h-2/5 rounded-[40%] blur-[3rem] bg-sky-800 opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
 				${isHovered ? '-translate-x-[50%] -translate-y-[10%] opacity-80' : '-translate-x-[50%] translate-y-[20%] '}
 			`}></span>

@@ -18,7 +18,7 @@ export default function Footer() {
           <div>
             <p className="text-3xl">Info</p>
             <div className="flex flex-col gap-4 my-[4rem]">
-              {SiteLinks.map((item, index) => <a href={item.url} className="text-xl">{item.title}</a>)}
+              {SiteLinks.map((item, index) => <a href={item.url} className="text-xl" key={index}>{item.title}</a>)}
             </div>
           </div>
           <div className="text-right">

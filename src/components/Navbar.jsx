@@ -1,10 +1,7 @@
 import { useState } from 'react'
 import { useCallback } from 'react';
 import '../assets/animations.css';
-import x from '../assets/icons/x.svg'
-import linkedIn from '../assets/icons/linked-in.svg'
-import instagram from '../assets/icons/instagram.svg'
-import { SocialIconItems, SiteLinks, SocialIcon} from './SocialIcon'
+import { SocialIconItems, SiteLinks, SocialIcon, ArrowUpIcon, ArrowDownIcon, ThreeBarsIcon, CloseIcon } from './SocialIcon'
 
 
 function useScrollTo() {
@@ -26,12 +23,12 @@ export default function Navbar({showDrawer, handleClickDrawer}) {
 		<section className="relative z-200">
 			<nav className="fixed w-screen">
 				<div className="px-[4rem] my-[2rem] flex justify-between items-center">
-					<div onClick={handleClickDrawer} className="size-[1.2rem]">{showDrawer ? <CloseIcon/> : <ThreeBars/>}</div>
+					<div onClick={handleClickDrawer} className="size-[1.2rem]">{showDrawer ? <CloseIcon/> : <ThreeBarsIcon/>}</div>
 					<div className="font-bold text-lg">MOTO</div>
 					<div>
 						<div className="flex items-center justify-center rounded px-4 py-4 relative" onClick={() => {setLangExpanded(!langExpanded)}}>
 							<span className="font-bold">En</span>
-							<span className="absolute left-[70%] top-[30%]">{langExpanded ? <ArrowDown/> : <ArrowUp />}</span>
+							<span className="absolute left-[70%] top-[30%]">{langExpanded ? <ArrowDownIcon/> : <ArrowUpIcon />}</span>
 							<div className={`absolute top-[60%] left-0 flex items-center justify-center rounded px-4 py-4 ${langExpanded ? '' : 'hidden'}`}>
 								<span className="font-bold">Cn</span>
 							</div>
@@ -72,38 +69,5 @@ function SiteLinkItem({url, title}) {
 			<a href={url}>{title}</a>
 			<hr className={`mt-2 ${isHovered ? 'hover-border' : 'border border-2 border-transparent'}`}></hr>
 		</div>
-	)
-}
-
-function ArrowUp() {
-	return (
-		<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-		  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m16 14-4-4-4 4"/>
-		</svg>
-	)
-}
-
-function ArrowDown() {
-	return (
-		<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-		  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m8 10 4 4 4-4"/>
-		</svg>
-
-	)
-}
-
-function ThreeBars() {
-	return (
-		<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-		  <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M5 7h14M5 12h14M5 17h14"/>
-		</svg>
-	)
-}
-
-function CloseIcon() {
-	return (
-		<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-		  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6"/>
-		</svg>
 	)
 }

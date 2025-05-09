@@ -4,6 +4,7 @@ import './App.css'
 import About from './components/About'
 import Career from './components/Career'
 import Contact from './components/Contact'
+import Footer from './components/Footer'
 import Landing from './components/Landing'
 import Loading from './components/Loading'
 import Portfolio from './components/Portfolio'
@@ -22,8 +23,8 @@ function App() {
 
   return (
     <main className="mx-auto">
-      {isLoading ? 
-        <Loading /> : 
+      {isLoading ?
+        <Loading /> :
         (<>
           <Navbar showDrawer={displayDrawer} handleClickDrawer={handleClickDrawer} />
           <Landing showDrawer={displayDrawer}/>
@@ -32,6 +33,7 @@ function App() {
           <About/>
           <Portfolio/>
           <Contact/>
+          <Footer/>
         </>
         )
       }

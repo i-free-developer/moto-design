@@ -4,6 +4,8 @@ import '../assets/animations.css';
 import x from '../assets/icons/x.svg'
 import linkedIn from '../assets/icons/linked-in.svg'
 import instagram from '../assets/icons/instagram.svg'
+import { SocialIconItems, SiteLinks, SocialIcon} from './SocialIcon'
+
 
 function useScrollTo() {
   return useCallback((id) => {
@@ -17,28 +19,13 @@ function useScrollTo() {
   }, []);
 }
 
-const socialIcons = [
-	{name: 'X', icon: x, url: ''},
-	{name: 'In', icon: linkedIn, url: ''},
-	{name: 'Be', icon: instagram, url: ''},
-	{name: 'Ins', icon: instagram, url: ''},
-	{name: 'XHS', icon: instagram, url: ''},
-]
-
-const drawerLinks = [
-	{title: 'About', url: '#about'},
-	{title: 'Portfolio', url: '#portfolio'},
-	{title: 'Career', url: '#career'},
-	{title: 'Contact Us', url: '#contact-us'},
-]
-
 export default function Navbar({showDrawer, handleClickDrawer}) {
 	const [langExpanded, setLangExpanded] = useState(false)
-	
+
 	return (
 		<section className="relative z-200">
 			<nav className="fixed w-screen">
-				<div className="px-[4rem] my-[2rem] flex justify-between items-center">	
+				<div className="px-[4rem] my-[2rem] flex justify-between items-center">
 					<div onClick={handleClickDrawer} className="size-[1.2rem]">{showDrawer ? <CloseIcon/> : <ThreeBars/>}</div>
 					<div className="font-bold text-lg">MOTO</div>
 					<div>
@@ -62,12 +49,12 @@ function Drawer({showDrawer}) {
 	return(
 		<div className={`fixed p-[4rem] w-md absolute top-[8rem] z-100 mx-auto backdrop-blur-sm bg-gray-100/40 rounded-xl ${showDrawer ? 'drawer-in' : 'drawer-out'}`}>
 			<div className="flex flex-col items-start gap-8 text-3xl font-bold mt-[2rem]">
-				{drawerLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
+        {SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>
 
 			<div className="mt-[16rem]">
 				<div className="flex gap-8 mx-auto">
-					{socialIcons.map((item, index) => <SocialIcon {...item} key={index}/>)}
+          {SocialIconItems.map((item, index) => <SocialIcon {...item} key={index}/>)}
 				</div>
 				<hr className="border border-2 mt-[2rem] mb-6"></hr>
 				<p className="">Hello@motodesign.cn</p>
@@ -79,20 +66,12 @@ function Drawer({showDrawer}) {
 function SiteLinkItem({url, title}) {
 	const [isHovered, setIsHovered] = useState(false);
   	const scrollTo = useScrollTo();
-	
+
 	return (
 		<div className="flex flex-col" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => scrollTo(url)}>
 			<a href={url}>{title}</a>
 			<hr className={`mt-2 ${isHovered ? 'hover-border' : 'border border-2 border-transparent'}`}></hr>
 		</div>
-	)
-}
-
-function SocialIcon({url, icon, name}) {
-	return(
-		<a href={url} className="font-bold">
-			<img src={icon} alt={name} className="size-6"></img>
-		</a>
 	)
 }
 

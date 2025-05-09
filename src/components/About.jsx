@@ -16,18 +16,18 @@ export default function About() {
 			<OurTeam />
 			{teamMembers.map((item, index) => <TeamMember {...item} key={index} />)}
 			</div>
-			
+
 		</section>
 	)
 }
 
 function TeamMember({name, avatar, description}) {
 	return (
-		<article className="group border border-2 rounded-md perspective-distant h-[30rem] w-full bg-transparent">
+		<article className="group border border-2 rounded-[1rem] perspective-distant h-[30rem] w-full bg-transparent">
 		  <div className="relative h-full w-full text-center pb-6 transition-transform duration-1300 transform-3d group-hover:rotate-y-180">
-		    
+
 		    <div className="rounded-[inherit] absolute inset-0 flex h-full w-full flex-col justify-between backface-hidden">
-			    <img src={avatar} className="block w-full h-[24rem] object-cover object-center"></img>
+          <img src={avatar} className="block w-full h-[24rem] object-cover object-center rounded-t-[1rem]"></img>
 				<div className="flex items-center justify-between p-6">
 					<header className="text-lg font-bold">{name}</header>
 					<p className="text-right text-sm">{description}</p>

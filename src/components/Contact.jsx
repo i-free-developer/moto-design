@@ -24,7 +24,7 @@ export default function Contact() {
 }
 
 function ContactBody() {
-	const [currentStep, setCurrentStep] = useState(0)
+	const [currentStep, setCurrentStep] = useState(4)
 
 	function goBack() {
 		setCurrentStep(currentStep - 1)
@@ -48,13 +48,13 @@ function ContactBody() {
 		<div className="absolute top-[8rem] left-[3rem] right-[3rem] min-h-[85vh] border border-2 flex flex-col items-center justify-between backdrop-blur-sm bg-gray-100/40 rounded-xl">
 			{currentStep >= 4 ? <SumbittedGroup/> : <FormGroup currentStep={currentStep} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/> }
 			{/* <div className="absolute inset-0"> */}
-				<div className="flex items-center justify-center px-[3rem] pb-[4rem] mt-[8rem]">
+				<div className="flex items-center justify-center w-full px-[6rem] pb-[4rem] mt-[8rem]">
 					
-					<div className="w-1/5">
+					<div className="w-1/4">
 						<p>Thank you for your attention! Whether it's product consultation, cooperation invitations, or valuable suggestions, we will listen attentively.</p>
 					</div>
 					<ButtonGroups currentStep={currentStep} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>				
-					<div className="w-1/5">
+					<div className="w-1/4 text-right">
 						<p>Email Address</p>
 						<p>Hello@motodesign@.cn</p>
 					</div>
@@ -70,7 +70,7 @@ function ButtonGroups({currentStep, goBack, goNext, goSubmit, getInTouch}) {
 	let btnGroups;
 	if (currentStep === 0) {
 		btnGroups = (<StepButton btnAction={goNext} btnText="Next"/>)
-	} else if (currentStep <= 2) {
+	} else if (currentStep === 1 || currentStep === 2) {
 		btnGroups = (<><StepButton btnAction={goBack} btnText="Back"/><StepButton btnAction={goNext} btnText="Next"/></>)
 	} else if (currentStep === 3) {
 		btnGroups = (<StepButton btnAction={goSubmit} btnText="Submit"/>)
@@ -119,7 +119,22 @@ function SumbittedGroup() {
 					<span className="bg-slate-900 size-12 rounded-full"></span>
 					<span className="bg-slate-900 size-12 rounded-full"></span>
 				</div>
+				<div className="mx-auto uppercase font-bold">
+					<CircleText/>
+				</div>
 			</div>
 		</>
+	)
+}
+
+function CircleText() {
+	return (
+		<svg  viewBox="0 0 400 200" width="600" height="300">
+			<path id="circlePath" d="M0,200 A200,200 0 0,0 400,200" fill="#ccc" stroke="#ccc" strokeWidth="2"/>
+
+			<text>
+				<textPath href="#circlePath">Submitted already</textPath>
+			</text>
+		</svg>
 	)
 }

@@ -1,4 +1,4 @@
-const timelineItems = [
+const TimelineItems = [
 	{number: '01', title: 'Portfolio review'},
 	{number: '02', title: 'Interviews'},
 	{number: '03', title: 'Background investigation'},
@@ -6,7 +6,7 @@ const timelineItems = [
 	{number: '05', title: 'Offer'},
 ]
 
-const perkItems = [
+const PerkItemsData = [
 	{number: '01', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
 	{number: '02', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
 	{number: '03', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
@@ -17,7 +17,7 @@ const perkItems = [
 	{number: '08', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
 ]
 
-const openningRoles = [
+const OpenningRoles = [
 	{
 		team: 'MOTO  >  Design Department  >  WEB', 
 		title: 'Global SEO & Content Operation Full-time / On-site (ShenZhen）',
@@ -92,4 +92,13 @@ const openningRoles = [
 	},
 ]
 
-export {timelineItems, perkItems, openningRoles}
+const ServicesItems = ['Web Design / UI & UX', '3D & Concept Animation', 'Brand Identity & Social Media Visual']
+
+const CopyRight = '© 2025 Moto Design LLC. All rights reserved.'
+
+const CompanyEmail = 'Hello@motodesign@.cn'
+
+const CompanyDomain = 'motodesign.cn'
+
+export {TimelineItems, PerkItemsData, OpenningRoles, ServicesItems, CopyRight, CompanyEmail, CompanyDomain}
+

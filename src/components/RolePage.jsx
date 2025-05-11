@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import arrowRight from '../assets/icons/arrow-right.svg'
-import {timelineItems, perkItems, openningRoles} from '../data/career-data'
+import {OpenningRoles} from '../data/site-data'
 import {HowToApply} from './Career'
 
 
 export default function RolePage() {
-	const {title, roleTag, responsibilities, requirements, tags} = {...openningRoles[0]}
+	const {title, roleTag, responsibilities, requirements, tags} = {...OpenningRoles[0]}
 	return (
 		<section id="" className="mx-auto px-[3rem] my-[3rem]">
 			<div className="relative mt-[8rem]">

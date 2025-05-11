@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { CopyRight, CompanyEmail } from '../data/site-data'
 
 const placeHolders = ['Name', 'Roles*', 'Enter your email*', 'A brief introduction about your project', ]
 
@@ -20,7 +21,7 @@ export default function Contact() {
 			</div>
 			<ContactBody/>
       <div className="mx-auto">
-        <p className="text-center text-2xl py-[1rem]"> © 2025 Moto Design LLC. All rights reserved.</p>
+        <p className="text-center text-2xl py-[1rem]">{CopyRight}</p>
       </div>
 		</section>
 	)
@@ -57,7 +58,7 @@ function ContactBody() {
 					<ButtonGroups currentStep={currentStep} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
           <div className="w-full md:w-1/4 text-right">
               <p>Email Address</p>
-              <p>Hello@motodesign@.cn</p>
+              <p>{CompanyEmail}</p>
             </div>
           </div>
 		</div>

@@ -1,4 +1,5 @@
 import { SocialIconItems, SiteLinks, SocialIcon } from './SocialIcon'
+import { CopyRight, CompanyEmail } from '../data/site-data'
 
 export default function Footer() {
   return (
@@ -22,8 +23,8 @@ export default function Footer() {
             </div>
           </div>
           <div className="text-right">
-            <p className="font-medium text-xl text-[#f7f7f7]">Hello@motodesign.cn</p>
-            <p className="text-base text-[#f7f7f7]">© 2025 Moto Design LLC. A ll rights reserved.</p>
+            <p className="font-medium text-xl text-[#f7f7f7]">{CompanyEmail}</p>
+            <p className="text-base text-[#f7f7f7]">{CopyRight}</p>
           </div>
         </div>
       </div>

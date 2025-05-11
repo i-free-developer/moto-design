@@ -5,7 +5,7 @@ import arrowLeft from '../assets/icons/arrow-left.svg'
 import arrowRight from '../assets/icons/arrow-right.svg'
 import doubleArrowRight from '../assets/icons/double-arrow-right.svg'
 
-import {timelineItems, perkItems, openningRoles} from '../data/career-data'
+import {TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail} from '../data/site-data'
 
 export default function Career() {
 	return (
@@ -27,7 +27,7 @@ export default function Career() {
 			</div>
 
 			<div className="flex items-center min-w-full my-[6rem]">
-				{timelineItems.map(item => <TimeLineItem {...item} key={item.number} />)}
+				{TimelineItems.map(item => <TimeLineElement {...item} key={item.number} />)}
 			</div>
 
 			<div className="mx-auto px-[4rem]">
@@ -36,14 +36,14 @@ export default function Career() {
 				<p className="text-center text-xl">We’re not everywhere — but we think like we are.</p>
 			</div>
 			
-			<Perks/>
-			<Roles/>
+			<PerksContainer/>
+			<RolesContainer/>
 			<HowToApply/>
 		</section>
 	)
 }
 
-function TimeLineItem({number, title}) {
+function TimeLineElement({number, title}) {
 	return (
 		<div className="flex flex-col relative gap-8 grow">
 			<div className="">
@@ -58,15 +58,15 @@ function TimeLineItem({number, title}) {
 	)
 }
 
-function Perks() {
+function PerksContainer() {
 	return (
 		<div className="mx-auto flex max-w-screen flex-nowrap my-[4rem]">
-			{perkItems.map((item, index) => <PerkItem {...item} index={index} key={item.number}/>)}
+			{PerkItemsData.map((item, index) => <PerkCard {...item} index={index} key={item.number}/>)}
 		</div>
 	)
 }
 
-function PerkItem({number, title, subtitle, content, index}) {
+function PerkCard({number, title, subtitle, content, index}) {
 	return (
 		<div className={`perk-card p-[1rem] bg-white border border-2 shrink-0 ${index === 0 ? '' : '-ml-[18rem]'}`}>
 			<div className="flex items-center justify-between gap-[2rem] mb-[18rem]">
@@ -84,7 +84,7 @@ function PerkItem({number, title, subtitle, content, index}) {
 	)
 }
 
-function Roles() {
+function RolesContainer() {
 	return (
 		<div className="grid grid-cols-2">
 			<div className="pr-[3rem] w-4/5">
@@ -94,7 +94,7 @@ function Roles() {
 				<p className="text-2xl mt-[6rem] font-bold"><span className="text-3xl mr-2">13</span>Positions</p>
 			</div>
 			<div className="flex flex-col gap-8">
-				{openningRoles.map((item, index) => <RoleCard {...item} index={index} key={index}/>)}
+				{OpenningRoles.map((item, index) => <RoleCard {...item} index={index} key={index}/>)}
 			</div>
 		</div>
 	)
@@ -125,7 +125,7 @@ export function HowToApply() {
 	return (
 		<div className="">
 			<h2 className="uppercase font-bold text-6xl mt-[4rem]">how to apply</h2>
-			<p className="mt-[3rem] text-xl">Send your CV and portfolio to <span className="font-bold">(Hello@motodesign.cn)</span>, with the subject "<span className="font-bold">Position + Name</span>".</p>
+			<p className="mt-[3rem] text-xl">Send your CV and portfolio to <span className="font-bold">({CompanyEmail})</span>, with the subject "<span className="font-bold">Position + Name</span>".</p>
 			<p className="text-xl">We’re not just hiring doers—we’re looking for partners in creation.</p>
 			<p className="text-xl my-[3rem]">*File Types: ( pdf, ppt, pptx, txt )</p>
 		</div>

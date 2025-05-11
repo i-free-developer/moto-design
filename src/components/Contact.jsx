@@ -128,12 +128,18 @@ function SumbittedGroup() {
 
 function CircleText() {
 	return (
-		<svg  viewBox="0 0 400 200" width="600" height="300">
-			<path id="circlePath" d="M0,200 A200,200 0 0,0 400,200" fill="#ccc" stroke="#ccc" strokeWidth="2"/>
-
-			<text>
+    // w440 h260
+		<svg  viewBox="0 0 600 400" width="600" height="300">
+			<path id="circlePath" d="M100,200 A200,200 0 0,0 200,200" fill="#ccc" stroke="#ccc" strokeWidth="2"/>
+      {/* <path id="circlePath" d="M100,0 a200 200 0 1 1 0 1" stroke="blue" strokeWidth="5" /> */}
+      <text>
 				<textPath href="#circlePath">Submitted already</textPath>
 			</text>
 		</svg>
 	)
 }
+
+// `M0,${radius} A${radius},${radius} 0 0,0 ${diameter},${radius}`;
+// `M0,${diameter},${radius} A${radius},${radius} 0 0 1 0,${radius}`;
+
+{/* <path d="M300,300 a200,200 0 0,0 -200,200 z" fill="yellow" stroke="blue" stroke-width="5" /> */}

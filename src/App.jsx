@@ -10,7 +10,7 @@ import Loading from './components/Loading'
 import Portfolio from './components/Portfolio'
 import RolePage from './components/RolePage'
 import Navbar from './components/Navbar'
-import FollowCursorDot from './components/FollowCursorDot';
+import CursorDot from './components/CursorDot';
 
 function App() {
   const [loadingPercentage, setLoadingPercentage] = useState(100)
@@ -35,7 +35,7 @@ function App() {
           <Portfolio/>
           <Contact/>
           <Footer/>
-          <FollowCursorDot/>
+          <CursorDot/>
         </>
         )
       }

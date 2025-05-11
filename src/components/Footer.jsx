@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="flex flex-col justify-between min-h-full">
           <header className="text-[5rem] font-bold">MOTO</header>
           <div>
-            <p className="text-2xl mt-[6rem] font-medium">Follow our journey on social</p>
+            <p className="text-2xl font-bold mt-[6rem] font-medium">Follow our journey on social</p>
             <div className="flex gap-[2rem] mx-auto w-full mt-[2rem]">
               {SocialIconItems.map((item, index) => <SocialIcon {...item} key={index} />)}
             </div>
@@ -17,14 +17,14 @@ export default function Footer() {
 
         <div className="flex flex-col justify-between items-end min-h-full">
           <div>
-            <p className="text-3xl">Info</p>
+            <p className="text-[1.75rem]">Info</p>
             <div className="flex flex-col gap-4 my-[4rem]">
               {SiteLinks.map((item, index) => <a href={item.url} className="text-xl" key={index}>{item.title}</a>)}
             </div>
           </div>
-          <div className="text-right">
-            <p className="font-medium text-xl text-[#f7f7f7]">{CompanyEmail}</p>
-            <p className="text-base text-[#f7f7f7]">{CopyRight}</p>
+          <div className="text-right font-medium">
+            <p className="text-2xl text-[#ffffff]">{CompanyEmail}</p>
+            <p className="text-xl text-[#f7f7f7]">{CopyRight}</p>
           </div>
         </div>
       </div>

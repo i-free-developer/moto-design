@@ -22,11 +22,11 @@ export default function Portfolio() {
 	const [isMobile, setIsMobile] = useState(false)
 
 	return (
-		<section id="portfolio" className="mx-auto px-[3rem] my-[3rem]">
+		<section id="portfolio" className="mx-auto px-[4rem] mt-[15rem]">
 			<PortfolioHeader />
-			<div className="flex gap-2 my-[2rem]">
-				<span onClick={() => setIsMobile(true)} className={`p-2 ${isMobile ? 'bg-black text-white' : ''}`}>A</span>
-				<span onClick={() => setIsMobile(false)} className={`p-2 ${!isMobile ? 'bg-black text-white' : ''}`}>B</span>
+			<div className="flex items-center gap-[0.5rem] mt-[2rem] mb-[6rem] text-[1.75rem]">
+				<span onClick={() => setIsMobile(true)} className={`p-2 ${isMobile ? '' : ''}`}><MobileIcon/></span>
+				<span onClick={() => setIsMobile(false)} className={`p-2 ${!isMobile ? '' : ''}`}><DesktopIcon/></span>
 			</div>
 
       {isMobile ? <MobilePortfolios/> : <DesktopPortfolios/>}
@@ -37,10 +37,10 @@ export default function Portfolio() {
 function PortfolioHeader() {
 	return (
 		<article className="flex justify-between my-[4rem]">
-			<header className="text-4xl w-1/5">We don't do cookie-cutter solutions</header>
-			<div className="flex flex-col justify-between w-1/5 gap-[3rem] text-right">
-				<p className="text-base">Backing the best Web 3.0 founders & products</p>
-				<p className="text-base">Our user-centered design encourages productivity and boosts revenue</p>
+			<header className="text-[5rem] w-[46rem]">We don't do cookie-cutter solutions</header>
+			<div className="flex flex-col justify-between items-end gap-[3rem] text-right">
+				<p className="text-2xl text-black/64 w-[18rem]">Backing the best Web 3.0 founders & products</p>
+				<p className="text-[2rem] text-black/64 w-[26rem]">Our user-centered design encourages productivity and boosts revenue</p>
 			</div>
 		</article>
 	)
@@ -48,7 +48,7 @@ function PortfolioHeader() {
 
 function DesktopPortfolios() {
   return (
-    <div className="grid grid-cols-5 gap-4">
+    <div className="grid grid-cols-5 gap-[1.5rem]">
       {DesktopPortfolioItems.map((item, index) => <DesktopCard {...item} key={index}/>)}
     </div>
   )
@@ -126,4 +126,22 @@ function StickyCard() {
       </div>
     </div>
   )
+}
+
+function MobileIcon() {
+	return (
+		<svg width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect x="1" y="1" width="20" height="26" rx="1" stroke="black" strokeWidth="2"/>
+			<rect x="7" y="4" width="8" height="2" rx="1" fill="#161619"/>
+		</svg>
+	)
+}
+
+function DesktopIcon() {
+	return (
+		<svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect width="28" height="20" rx="2" fill="black"/>
+			<rect x="8" y="22" width="12" height="2" rx="1" fill="#161619"/>
+		</svg>
+	)
 }

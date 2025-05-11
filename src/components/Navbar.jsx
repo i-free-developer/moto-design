@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useCallback } from 'react';
 import '../assets/animations.css';
 import { SocialIconItems, SiteLinks, SocialIcon, ArrowUpIcon, ArrowDownIcon, ThreeBarsIcon, CloseIcon } from './SocialIcon'
+import { CompanyEmail } from '../data/site-data'
 
 
 function useScrollTo() {
@@ -20,7 +21,7 @@ export default function Navbar({showDrawer, handleClickDrawer}) {
 	const [langExpanded, setLangExpanded] = useState(false)
 
 	return (
-		<section className="relative z-200">
+		<section className="relative z-200 text-black">
 			<nav className="fixed w-screen">
 				<div className="px-[4rem] my-[2rem] flex justify-between items-center">
 					<div onClick={handleClickDrawer} className="size-[1.2rem]">{showDrawer ? <CloseIcon/> : <ThreeBarsIcon/>}</div>
@@ -44,8 +45,8 @@ export default function Navbar({showDrawer, handleClickDrawer}) {
 function Drawer({showDrawer}) {
 	// console.log('showDrawer', showDrawer)
 	return(
-		<div className={`fixed p-[4rem] w-md absolute top-[8rem] z-100 mx-auto backdrop-blur-sm bg-gray-100/40 rounded-xl ${showDrawer ? 'drawer-in' : 'drawer-out'}`}>
-			<div className="flex flex-col items-start gap-8 text-3xl font-bold mt-[2rem]">
+		<div className={`fixed p-[4rem] w-md absolute top-[8rem] z-100 mx-auto bg-[#EAEAEA]/40 backdrop-blur-md rounded-3xl ${showDrawer ? 'drawer-in' : 'drawer-out'}`}>
+			<div className="flex flex-col items-start gap-8 text-5xl font-bold mt-[2rem]">
         {SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>
 
@@ -54,7 +55,7 @@ function Drawer({showDrawer}) {
           {SocialIconItems.map((item, index) => <SocialIcon {...item} key={index}/>)}
 				</div>
 				<hr className="border border-2 mt-[2rem] mb-6"></hr>
-				<p className="">Hello@motodesign.cn</p>
+				<p className="font-[0.5rem] text-[#161619]">{CompanyEmail}</p>
 			</div>
 		</div>
 	)
@@ -62,7 +63,7 @@ function Drawer({showDrawer}) {
 
 function SiteLinkItem({url, title}) {
 	const [isHovered, setIsHovered] = useState(false);
-  	const scrollTo = useScrollTo();
+  const scrollTo = useScrollTo();
 
 	return (
 		<div className="flex flex-col" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => scrollTo(url)}>

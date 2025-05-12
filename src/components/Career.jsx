@@ -19,10 +19,7 @@ export default function Career() {
 				</div>
 			</div>
 			<div className="flex items-center my-[6rem]">
-				<div className="flex items-center gap-4">
-					<img src={arrowLeft} alt="Arrow Left" className="size-12"></img>
-					<img src={doubleArrowRight} alt="Arrow Right" className="size-12"></img>
-				</div>
+				<ArrowGroup/>
 				<p className="ml-[57rem] w-[38rem] text-[2rem] leading-10">After the <span className="font-bold">portfolio</span> meets our requirement, on average <span className="font-bold">1~3 week</span> interview process with <span className="font-bold">2 inteviews</span>.</p>
 			</div>
 
@@ -161,6 +158,20 @@ function ArrowIcon() {
 			<rect x="1" y="6" width="10" height="2" fill="#161619"/>
 		</svg>
 
+	)
+}
+
+
+function ArrowGroup() {
+	return (
+		<svg width="81" height="81" viewBox="0 0 81 81" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+			<rect x="14.1348" y="54.6313" width="20" height="4" transform="rotate(-135 14.1348 54.6313)" fill="#161619"/>
+			<rect x="16.9629" y="29.1755" width="20" height="4" transform="rotate(135 16.9629 29.1755)" fill="#161619"/>
+			<rect width="20" height="4" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 56 54.6313)" fill="#161619"/>
+			<rect width="20" height="4" transform="matrix(0.707107 0.707107 0.707107 -0.707107 53.1719 29.1755)" fill="#161619"/>
+			<rect width="20" height="4" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 66.8281 54.6316)" fill="#161619"/>
+			<rect width="20" height="4" transform="matrix(0.707107 0.707107 0.707107 -0.707107 64 29.1758)" fill="#161619"/>
+		</svg>
 	)
 }
 

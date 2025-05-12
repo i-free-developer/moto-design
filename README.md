@@ -36,3 +36,7 @@ the stacked cards I need https://codepen.io/adebiyal/pen/YMMjdY
 infinite scroll
 https://codesandbox.io/p/sandbox/infinite-horizontal-auto-scroll-y82f8?file=%2Fsrc%2Fstyles.css%3A31%2C49-31%2C58
 https://codepen.io/girish/pen/dgWqBr
+
+
+
+letter-space tracking-[-2%]

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useCallback } from 'react';
 import '../assets/animations.css';
-import { SocialIconItems, SiteLinks, SocialIcon} from './SocialIcon'
 import { CompanyEmail } from '../data/site-data'
+import { SocialIconItems, SiteLinks, SocialIconLinkItem } from './SocialIconsCollection'
 
 
 function useScrollTo() {
@@ -20,33 +20,30 @@ function useScrollTo() {
 export default function Navbar({showDrawer, handleClickDrawer}) {
 	return (
 		<section className="relative z-200 text-black">
-			<nav className="fixed w-screen">
-				<div className="px-[3.5rem] my-[2.5rem] flex justify-between items-center">
+			<nav className="fixed w-screen px-[3.5rem]">
+				<div className="my-[2.5rem] flex justify-between items-center">
 					<div onClick={handleClickDrawer} className="size-[1.2rem]">{showDrawer ? <CloseIcon/> : <BarsIcon/>}</div>
 					<LogoIcon/>
 					<LangButtons/>
 				</div>
 			</nav>
-			{<Drawer showDrawer={showDrawer}/>}
+			{<DrawerCard showDrawer={showDrawer}/>}
 		</section>
 	)
 }
 
-function Drawer({showDrawer}) {
+function DrawerCard({showDrawer}) {
 	// console.log('showDrawer', showDrawer)
 	return(
-		<div className={`fixed p-[4rem] w-md absolute top-[8rem] z-100 mx-auto bg-[#EAEAEA]/40 backdrop-blur-md rounded-3xl ${showDrawer ? 'drawer-in' : 'drawer-out'}`}>
-			<div className="flex flex-col items-start gap-8 text-5xl font-bold mt-[2rem]">
+		<div className={`fixed p-[4rem] w-[35rem] absolute top-[6rem] left-[3.5rem] z-100 mx-auto bg-[#EAEAEA]/40 backdrop-blur-md rounded-3xl ${showDrawer ? 'drawer-in' : 'drawer-out'}`}>
+			<div className="flex flex-col items-start gap-[2.5rem] mt-[4rem]">
         {SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>
-
-			<div className="mt-[16rem]">
-				<div className="flex gap-8 mx-auto">
-          {SocialIconItems.map((item, index) => <SocialIcon {...item} key={index}/>)}
-				</div>
-				<hr className="border border-2 mt-[2rem] mb-6"></hr>
-				<p className="font-[0.5rem] text-[#161619]">{CompanyEmail}</p>
+			<div className="mt-[12rem] flex items-end gap-[2rem]">
+        {SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
 			</div>
+			<hr className="border border-2 mt-[4rem] mb-[1.6rem] w-full"></hr>
+			<p className="font-[0.5rem] text-[#161619]/48">{CompanyEmail}</p>
 		</div>
 	)
 }
@@ -57,8 +54,8 @@ function SiteLinkItem({url, title}) {
 
 	return (
 		<div className="flex flex-col" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => scrollTo(url)}>
-			<a href={url}>{title}</a>
-			<hr className={`mt-2 ${isHovered ? 'hover-border' : 'border border-2 border-transparent'}`}></hr>
+			<a href={url} className="text-5xl font-semibold">{title}</a>
+			<hr className={`mt-[6px] ${isHovered ? 'hover-border' : 'border border-2 border-transparent'}`}></hr>
 		</div>
 	)
 }
@@ -70,7 +67,7 @@ function LangButtons() {
 		<div className="relative" onClick={() => {setLangExpanded(!langExpanded)}}>
 			<div className="flex items-end justify-between">
 				<span className="text-xl font-bold mr-[6px]">En</span>
-				<span className="mb-[6px]">{langExpanded ? <SmallArrowIcon/> : <SmallArrowIcon />}</span>
+				<span className="mb-[6px]">{langExpanded ? <LangArrowIcon/> : <LangArrowIcon />}</span>
 			</div>
 			<div className={`absolute top-[2rem] flex items-center justify-center ${langExpanded ? '' : 'hidden'}`}>
 				<span className="text-xl font-bold">Cn</span>
@@ -108,7 +105,7 @@ function CloseIcon() {
 	)
 }
 
-function SmallArrowIcon() {
+function LangArrowIcon() {
 	return (
 		<svg width="6" height="5" viewBox="0 0 6 5" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3 5L5.59808 0.5H0.401924L3 5Z" fill="currentColor"/></svg>
 	)

@@ -1,20 +1,20 @@
 @keyframes drawer-slide-in {
 	from {transform: translateX(-20rem);}
-	to {transform: translateX(3.6rem)}
+	to {transform: translateX(3.5rem)}
 }
 
 @keyframes drawer-slide-out {
-	from {transform: translateX(3.6rem);}
+	from {transform: translateX(3.5rem);}
 	to {transform: translateX(-20rem)}
 }
 
 @keyframes section-slide-in {
 	from {transform: translateX(0);}
-	to {transform: translateX(12rem)}
+	to {transform: translateX(18rem)}
 }
 
 @keyframes section-slide-out {
-	from {transform: translateX(12rem);}
+	from {transform: translateX(18rem);}
 	to {transform: translateX(0)}
 }
 

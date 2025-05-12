@@ -13,7 +13,7 @@ import Navbar from './components/Navbar'
 import CursorDot from './components/CursorDot';
 
 function App() {
-  const [loadingPercentage, setLoadingPercentage] = useState(100)
+  const [loadingPercentage, setLoadingPercentage] = useState(90)
   const isLoading = loadingPercentage < 100
   const [displayDrawer, setDisplayDrawer] = useState(false)
 

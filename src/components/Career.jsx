@@ -88,11 +88,11 @@ function PerkCard({number, title, subtitle, content, index}) {
 function RolesContainer() {
 	return (
 		<div className="grid grid-cols-2">
-			<div className="pr-[3rem] w-4/5">
-				<h3 className="uppercase">join our team</h3>
-				<p className="font-bold text-6xl uppercase mt-[2rem] mb-[4rem]">find your perfect role</p>
-				<p className="">Explore our open roles and find the one that fits not just your resume, but your rhythm.</p>
-				<p className="text-2xl mt-[6rem] font-bold"><span className="text-3xl mr-2">13</span>Positions</p>
+			<div className="pr-[3rem] w-[40.5rem] tracking-[-2%]">
+				<h3 className="uppercase font-bold text-2xl leading-[2rem]">join our team</h3>
+				<p className="uppercase font-bold text-[5.5rem] leading-[6.5rem] mt-[0.5rem]">find your perfect role</p>
+				<p className="text-[1.5rem] leading-[2rem] mt-[4rem] font-normal">Explore our open roles and find the one that fits not just your resume, but your rhythm.</p>
+				<p className="text-[2.5rem] mt-[14.5rem] font-bold"><span className="mr-2">13</span>Positions</p>
 			</div>
 			<div className="flex flex-col gap-8">
 				{OpenningRoles.map((item, index) => <RoleCard {...item} index={index} key={index}/>)}
@@ -103,32 +103,42 @@ function RolesContainer() {
 
 function RoleCard({team, title, tags, index}) {
 	return (
-		<article className="relative flex flex-col gap-4 px-[1rem]">
-			{index === 0 &&  <hr className="border border-2 border-slate-200 mb-[1rem]"></hr> }
-			<header className="font-bold text-lg">{team}</header>
-			<p className="text-4xl font-light">{title}</p>
-			<div className="flex flex-row items-center gap-2 mt-[1rem]">
-				{tags.map((tag, index) => <span className="text-gray-600" key={index}>{tag}</span>)}
-			</div>
-			<hr className="border border-2 border-slate-200 mt-[2rem]"></hr>
-			
-			<div className="absolute right-[1rem] bottom-[2rem] flex items-center justify-between gap-[1rem] bg-slate-900 rounded-full px-6 py-2">
-				<span className="text-white">Apply</span>
-				<div className="bg-slate-100 flex items-center justify-center rounded-full -mr-4">
-					<img src={arrowRight} alt="Arrow Right" className="w-8"></img>
+		<article className="flex justify-between relative w-[55rem] tracking-[-2%]">
+			<div>
+				{index === 0 &&  <hr className="border border-2 border-black/20 mb-[3rem] w-[55rem]"></hr> }
+				<header className="font-bold text-xl">{team}</header>
+				<p className="text-[2rem] font-normal mt-[1.5rem]">{title}</p>
+				<div className="flex flex-row items-center gap-2 mt-[3rem]">
+					{tags.map((tag, index) => <span className="text-xl font-medium text-black opacity-40" key={index}>{tag}</span>)}
 				</div>
+				<hr className="border border-2 border-black/20 my-[3rem] w-[55rem]"></hr>
 			</div>
+			<ApplyButon/>
 		</article>
+	)
+}
+
+function ApplyButon() {
+	const [isHovered, setIsHovered] = useState(false);
+	const ArrowElement = (<div className="bg-white size-[2.5rem] flex items-center justify-center rounded-full"><ArrowIcon/></div>)
+	const DotElement = (<div className="size-[2.5rem] flex items-center justify-center"><span className="size-[0.5rem] bg-white rounded-full"></span></div>)
+
+	return (
+		<div className="absolute bottom-[6rem] right-0 flex items-center justify-evenly gap-[1rem] bg-slate-900 rounded-full w-[9.75rem] h-[3rem]"
+			onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+			<span className="text-white font-medium text-2xl ml-[0.5rem]">Apply</span>
+			{isHovered ? ArrowElement : DotElement}
+		</div>
 	)
 }
 
 export function HowToApply() {
 	return (
-		<div className="">
-			<h2 className="uppercase font-bold text-6xl mt-[4rem]">how to apply</h2>
-			<p className="mt-[3rem] text-xl">Send your CV and portfolio to <span className="font-bold">({CompanyEmail})</span>, with the subject "<span className="font-bold">Position + Name</span>".</p>
-			<p className="text-xl">We’re not just hiring doers—we’re looking for partners in creation.</p>
-			<p className="text-xl my-[3rem]">*File Types: ( pdf, ppt, pptx, txt )</p>
+		<div className="tracking-[-2%] mt-[4rem] mb-[3rem]">
+			<h2 className="uppercase font-bold text-[5.5rem]">how to apply</h2>
+			<p className="mt-[3rem] text-[2rem]">Send your CV and portfolio to <span className="font-bold">({CompanyEmail})</span>, with the subject "<span className="font-bold">Position + Name</span>".</p>
+			<p className="text-[2rem]">We’re not just hiring doers—we’re looking for partners in creation.</p>
+			<p className="text-[2rem] my-[3rem]">*File Types: ( pdf, ppt, pptx, txt )</p>
 		</div>
 	)
 }
@@ -143,5 +153,15 @@ function QIcon() {
 	)
 }
 
+function ArrowIcon() {
+	return (
+		<svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+			<rect x="7.91699" y="1.17041" width="8.01079" height="2" transform="rotate(45 7.91699 1.17041)" fill="#161619"/>
+			<rect x="6.49219" y="11.0957" width="8.04497" height="2" transform="rotate(-45 6.49219 11.0957)" fill="#161619"/>
+			<rect x="1" y="6" width="10" height="2" fill="#161619"/>
+		</svg>
+
+	)
+}
 
 

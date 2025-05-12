@@ -23,8 +23,8 @@ export default function Footer() {
             </div>
           </div>
           <div className="text-right font-medium">
-            <p className="text-2xl text-[#ffffff]">{CompanyEmail}</p>
-            <p className="text-xl text-[#f7f7f7]">{CopyRight}</p>
+            <p className="text-2xl text-[#ffffff]/40">{CompanyEmail}</p>
+            <p className="text-xl text-[#f7f7f7]/40">{CopyRight}</p>
           </div>
         </div>
       </div>

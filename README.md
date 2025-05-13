@@ -1,5 +1,13 @@
 ### Moto site
 
+#### to do
+	- route
+	- fonts npm install @fontsource/plus-jakarta-sans
+	- form subimit
+
+
+
+###### resources
 
 https://www.frontend.fyi/recipes/components-and-css/css-only-text-marquee
 

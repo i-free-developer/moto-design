@@ -1,10 +1,4 @@
 import { useState } from 'react'
-import RolePage from './RolePage'
-
-import arrowLeft from '../assets/icons/arrow-left.svg'
-import arrowRight from '../assets/icons/arrow-right.svg'
-import doubleArrowRight from '../assets/icons/double-arrow-right.svg'
-
 import {TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail} from '../data/site-data'
 
 export default function Career() {
@@ -32,7 +26,7 @@ export default function Career() {
 				<p className="text-[2.5rem] font-normal">We believe great design is borderless, and so are the minds behind it.</p>
 				<p className="text-[2.5rem] font-normal">We’re not everywhere — but we think like we are.</p>
 			</div>
-			
+
 			<PerksContainer/>
 			<RolesContainer/>
 			<HowToApply/>

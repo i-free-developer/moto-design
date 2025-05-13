@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import arrowRight from '../assets/icons/arrow-right.svg'
 import {OpenningRoles} from '../data/site-data'
 import {HowToApply} from './Career'
 

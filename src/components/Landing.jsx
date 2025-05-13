@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {ServicesItems, CompanyDomain} from '../data/site-data'
 
 export default function Landing({showDrawer}) {

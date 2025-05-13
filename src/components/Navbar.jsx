@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { useCallback } from 'react';
+import { useState, useCallback } from 'react'
 import '../assets/animations.css';
 import { CompanyEmail } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem } from './SocialIconsCollection'
@@ -62,7 +61,7 @@ function SiteLinkItem({url, title}) {
 
 function LangButtons() {
 	const [langExpanded, setLangExpanded] = useState(false)
-	
+
 	return (
 		<div className="relative" onClick={() => {setLangExpanded(!langExpanded)}}>
 			<div className="flex items-end justify-between">

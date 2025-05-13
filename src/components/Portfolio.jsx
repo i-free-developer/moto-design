@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import arrowRight from '../assets/icons/arrow-right.svg'
-
 
 const DesktopPortfolioItems = [
 	{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 3, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
@@ -79,8 +77,8 @@ function DesktopCard({title, description, colums, image, url}) {
 						<header className="font-bold mb-2 text-2xl">{title}</header>
 						<p className="text-xl">{description}</p>
 					</div>
-					<div className="size-16 bg-slate-200 flex items-center justify-center rounded-full">
-						<img src={arrowRight} alt="Arrow Right" className={`w-10 ${isHovered ? 'rotate-0' : '-rotate-45'} transition-rotate transition-transform duration-400`}></img>
+					<div className="size-[72px] bg-black/16 flex items-center justify-center rounded-full">
+						<div className={`w-10 ${isHovered ? '-rotate-45' : '-rotate-0'} flex items-center justify-center transition-rotate transition-transform duration-400`}><ArrowRight/></div>
 					</div>
 				</div>
 			</a>
@@ -144,4 +142,14 @@ function DesktopIcon() {
 			<rect x="8" y="22" width="12" height="2" rx="1" fill="#161619"/>
 		</svg>
 	)
+}
+
+function ArrowRight() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="11.1113" y="1.33594" width="12" height="2" transform="rotate(45 11.1113 1.33594)" fill="#161619" />
+      <rect x="9.69727" y="16.8921" width="12" height="2" transform="rotate(-45 9.69727 16.8921)" fill="#161619" />
+      <rect x="1" y="8.77539" width="16" height="2" fill="#161619" />
+    </svg>
+  )
 }

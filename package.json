@@ -1,5 +1,5 @@
 {
-  "name": "moto",
+  "name": "Moto Design",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,9 +9,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build", // Builds the app
-    "deploy": "gh-pages -d build", // Deploys the `build` folder
-    "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "start": "react-scripts start"
   },
   "dependencies": {
     "@fontsource/plus-jakarta-sans": "^5.2.5",

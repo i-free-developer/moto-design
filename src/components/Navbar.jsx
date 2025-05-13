@@ -38,7 +38,7 @@ function DrawerCard({showDrawer}) {
 			<div className="flex flex-col items-start gap-[2.5rem] mt-[4rem]">
         {SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>
-			<div className="mt-[12rem] flex items-end gap-[2rem]">
+			<div className="mt-[10rem] flex items-end gap-[2rem]">
         {SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
 			</div>
 			<hr className="border border-2 mt-[4rem] mb-[1.6rem] w-full"></hr>

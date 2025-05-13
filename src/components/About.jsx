@@ -9,7 +9,6 @@ const teamMembers = [
 	{name: 'Eilven', avatar: 'https://images.unsplash.com/photo-1744023238070-062811b3a702?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D', title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
 ]
 
-
 export default function About() {
 	return (
 		<section id="about" className="mx-auto px-[3rem] my-[3rem]">
@@ -24,10 +23,10 @@ export default function About() {
 
 function TeamMemberCard({name, avatar, description, title, role}) {
 	return (
-		<article className="group border border-4 rounded-[1.5rem] perspective-distant h-[33rem] bg-transparent">
+		<article className="group border border-4 rounded-[1.4rem] perspective-distant h-[33rem] bg-transparent">
 		  <div className="relative h-full w-full transition-transform duration-1300 transform-3d group-hover:rotate-y-180">
 
-		    <div className="rounded-[inherit] absolute inset-0 flex h-full w-full flex-col justify-between backface-hidden">
+		    <div className="rounded-[1.2rem] absolute inset-0 flex h-full w-full flex-col justify-between backface-hidden">
           		<img src={avatar} className="block w-[26-rem] h-[26rem] object-cover object-center rounded-t-[1.2rem]"></img>
 				<div className="grid content-center px-[1.5rem] h-[5.5rem] grow">
 					<div className="flex items-center justify-between font-normal">
@@ -37,7 +36,7 @@ function TeamMemberCard({name, avatar, description, title, role}) {
 				</div>
 		    </div>
 
-		    <div className="rounded-[1.2rem] absolute inset-0 h-full w-full bg-black text-white p-[2.5rem] rotate-y-180 backface-hidden">
+		    <div className="rounded-[1.2rem] absolute inset-0 max-h-full min-h-full w-full bg-black text-white p-[2.5rem] rotate-y-180 backface-hidden">
 		     	<header className="text-[4rem] font-bold tracking-[-2%]">{name}</header>
 		     	<p className="uppercase text-[1.5rem] font-normal mt-[1.5rem]">{title}</p>
 				<p className="text-base font-normal mt-[4rem]">{description}</p>

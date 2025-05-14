@@ -1,13 +1,17 @@
 ### Moto site
 
 #### to do
-	- route
-	- fonts npm install @fontsource/plus-jakarta-sans
-	- form subimit
-
+	[x] fonts npm install @fontsource/plus-jakarta-sans
+	[] react route
+	[] form subimit
+	[] single page app?
 
 
 ###### resources
+
+backend-db https://orm.drizzle.team/docs/get-started-sqlite
+
+deploy https://dev.to/tobidelly/step-by-step-guide-to-deploy-react-website-to-github-pages-using-github-actions-34i3
 
 https://www.frontend.fyi/recipes/components-and-css/css-only-text-marquee
 

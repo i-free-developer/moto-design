@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://i-free-developer.github.io/moto-design",
+  "homepage": ".",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -19,6 +19,7 @@ const PerkItemsData = [
 
 const OpenningRoles = [
 	{
+		id: '1',
 		team: 'MOTO  >  Design Department  >  WEB', 
 		title: 'Global SEO & Content Operation Full-time / On-site (ShenZhen）',
 		tags: ['Full-time', 'On-site (ShenZhen)'],
@@ -37,6 +38,7 @@ const OpenningRoles = [
 		]
 	},
 	{
+		id: '2',
 		team: 'MOTO  >  Design Department  >  WEB', 
 		title: 'Senior UI Designer / Full-time',
 		tags: ['Full-time', 'On-site (ShenZhen)'],
@@ -55,6 +57,7 @@ const OpenningRoles = [
 		]
 	},
 	{
+		id: '3',
 		team: 'MOTO  >  Design Department  >  WEB', 
 		title: 'Global SEO & Content Operation Full-time / On-site (ShenZhen）',
 		tags: ['Full-time', 'On-site (ShenZhen)'],
@@ -73,6 +76,7 @@ const OpenningRoles = [
 		]
 	},
 	{
+		id: '4',
 		team: 'MOTO  >  Design Department  >  WEB', 
 		title: 'Senior UI Designer / Full-time',
 		tags: ['Full-time', 'On-site (ShenZhen)'],

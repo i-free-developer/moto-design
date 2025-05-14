@@ -1,46 +1,37 @@
 import { useState } from 'react'
 import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import Home from './components/Home';
+import CursorDot from './components/CursorDot';
 import About from './components/About'
+import Portfolio from './components/Portfolio'
 import Career from './components/Career'
 import Contact from './components/Contact'
-import Footer from './components/Footer'
-import Landing from './components/Landing'
-import Loading from './components/Loading'
-import Portfolio from './components/Portfolio'
 import RolePage from './components/RolePage'
-import Navbar from './components/Navbar'
-import CursorDot from './components/CursorDot';
 
-function App() {
-  const [loadingPercentage, setLoadingPercentage] = useState(100)
-  const isLoading = loadingPercentage < 100
+export default function App() {
   const [displayDrawer, setDisplayDrawer] = useState(false)
 
   function handleClickDrawer() {
     setDisplayDrawer(!displayDrawer)
   }
-  console.log('isLoading', isLoading)
 
   return (
-    <main className="mx-auto">
-      {isLoading ?
-        <Loading /> :
-        (<>
-          <Navbar showDrawer={displayDrawer} handleClickDrawer={handleClickDrawer} />
-          <Landing showDrawer={displayDrawer}/>
-          <Career/>
-          <RolePage/>
-          <About/>
-          <Portfolio/>
-          <Contact/>
-          <Footer/>
-          <CursorDot/>
-        </>
-        )
-      }
-    </main>
+    <BrowserRouter className="mx-auto">
+      <Navbar showDrawer={displayDrawer} handleClickDrawer={handleClickDrawer} />
+      <Routes>
+          <Route path="/" element={<Home showDrawer={displayDrawer}/>} />
+          <Route path="/career" element={<Career/>} />
+          <Route path="/role/:id" element={<RolePage/>} />
+          <Route path="/contact" element={<Contact/>} />
+          <Route path="/about" element={<About/>} />
+          <Route path="/portfolio" element={<Portfolio/>} />
+      </Routes>
+      <CursorDot/>
+      <Footer/>
+    </BrowserRouter>
   )
 }
-
-export default App

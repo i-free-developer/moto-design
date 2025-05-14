@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import { Link } from "react-router-dom"
 import '../assets/animations.css';
 import { CompanyEmail } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem } from './SocialIconsCollection'
@@ -18,11 +19,11 @@ function useScrollTo() {
 
 export default function Navbar({showDrawer, handleClickDrawer}) {
 	return (
-		<section className="relative z-200 text-black">
-			<nav className="fixed w-screen px-[3.5rem]">
-				<div className="my-[2.5rem] flex justify-between items-center">
+		<section id="navbar" className="relative z-200 text-black fixed w-screen px-[3.5rem] my-[3rem]">
+			<nav className="">
+				<div className="flex justify-between items-center">
 					<div onClick={handleClickDrawer} className="size-[1.2rem]">{showDrawer ? <CloseIcon/> : <BarsIcon/>}</div>
-					<LogoIcon/>
+					<Link to="/"><LogoIcon/></Link>
 					<LangButtons/>
 				</div>
 			</nav>
@@ -47,13 +48,14 @@ function DrawerCard({showDrawer}) {
 	)
 }
 
-function SiteLinkItem({url, title}) {
+function SiteLinkItem({url, title, linkTo}) {
 	const [isHovered, setIsHovered] = useState(false);
   const scrollTo = useScrollTo();
 
 	return (
 		<div className="flex flex-col" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => scrollTo(url)}>
-			<a href={url} className="text-5xl font-semibold">{title}</a>
+			{/* <a href={url} className="text-5xl font-semibold">{title}</a> */}
+			<Link to={linkTo} className="text-5xl font-semibold">{title}</Link>
 			<hr className={`mt-[6px] ${isHovered ? 'hover-border' : 'border border-2 border-transparent'}`}></hr>
 		</div>
 	)

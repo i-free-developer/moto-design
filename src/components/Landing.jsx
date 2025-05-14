@@ -1,9 +1,10 @@
 import {ServicesItems, CompanyDomain} from '../data/site-data'
+import { useEffect } from 'react'
 
 export default function Landing({showDrawer}) {
 	return (
-		<section className="h-[100vh] mx-auto relative text-black">
-			<div className={`w-4/6 h-[90vh] min-h-[50rem] translate-y-4/12 ml-[8rem] ${showDrawer ? 'section-drawer-in' : 'section-drawer-out'}`}>
+		<section id="landing" className="max-h-[100vh] mx-auto relative text-black">
+			<div className={`w-4/6 h-[90vh] min-h-[50rem] translate-y-1/4 ml-[8rem] ${ showDrawer ? 'section-drawer-in' : 'section-drawer-out'}`}>
 				<h1 className="uppercase text-9xl font-bold">Pixels are the atomic units of design.</h1>
 			</div>
 			<VerticalElement/>
@@ -14,7 +15,7 @@ export default function Landing({showDrawer}) {
 
 function ServiceOfferings() {
 	return (
-		<div className="h-full">
+		<div className="h-full pb-[2rem]">
 			<hr className="border border-2 border-slate-200 w-full"></hr>
 			<div className="mx-auto w-full flex items-center justify-between mt-[1.5rem] px-[3rem] text-xl">
 				<div className="flex items-center justify-around gap-4">

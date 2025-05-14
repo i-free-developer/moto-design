@@ -20,7 +20,7 @@ export default function Portfolio() {
 	const [isMobile, setIsMobile] = useState(false)
 
 	return (
-		<section id="portfolio" className="mx-auto px-[4rem] mt-[15rem]">
+		<section id="portfolio" className="mx-auto px-[4rem] mt-[15rem] mb-[3rem]">
 			<PortfolioHeader />
 			<div className="flex items-center gap-[0.5rem] mt-[2rem] mb-[6rem] text-[1.75rem]">
 				<span onClick={() => setIsMobile(true)} className={`p-2 ${isMobile ? '' : ''}`}><MobileIcon/></span>

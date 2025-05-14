@@ -2,7 +2,7 @@
 
 #### to do
 	[x] fonts npm install @fontsource/plus-jakarta-sans
-	[] react route
+	[x] react route npm install react-router-dom
 	[] form subimit
 	[] single page app?
 

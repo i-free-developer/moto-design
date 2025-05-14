@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import {TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail} from '../data/site-data'
+import { Link } from "react-router-dom"
 
 export default function Career() {
 	return (
@@ -92,7 +93,7 @@ function RolesContainer() {
 	)
 }
 
-function RoleCard({team, title, tags, index}) {
+function RoleCard({team, title, tags, index, id}) {
 	return (
 		<article className="flex justify-between relative w-[55rem] tracking-[-2%]">
 			<div>
@@ -104,22 +105,24 @@ function RoleCard({team, title, tags, index}) {
 				</div>
 				<hr className="border border-2 border-black/20 my-[3rem] w-[55rem]"></hr>
 			</div>
-			<ApplyButon/>
+			<ApplyButon id={id} key={index}/>
 		</article>
 	)
 }
 
-function ApplyButon() {
+function ApplyButon({id}) {
 	const [isHovered, setIsHovered] = useState(false);
 	const ArrowElement = (<div className="bg-white size-[2.5rem] flex items-center justify-center rounded-full"><ArrowIcon/></div>)
 	const DotElement = (<div className="size-[2.5rem] flex items-center justify-center"><span className="size-[0.5rem] bg-white rounded-full"></span></div>)
 
 	return (
-		<div className="absolute bottom-[6rem] right-0 flex items-center justify-evenly gap-[1rem] bg-slate-900 rounded-full w-[9.75rem] h-[3rem]"
+		<Link to={`/role/${id}`} className="absolute bottom-[6rem] right-0 flex items-center justify-evenly gap-[1rem] bg-slate-900 rounded-full w-[9.75rem] h-[3rem]"
 			onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<span className="text-white font-medium text-2xl ml-[0.5rem]">Apply</span>
 			{isHovered ? ArrowElement : DotElement}
-		</div>
+		</Link>
+
+		// <Link to={`/role/${id}`} className="text-xl" key={index}>{item.title}</Link>
 	)
 }
 

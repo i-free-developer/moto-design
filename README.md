@@ -2,7 +2,7 @@
 
 #### to do
 	[x] fonts npm install @fontsource/plus-jakarta-sans
-	[x] react route npm install react-router-dom
+	[x] react route npm install react-router-dom 
 	[] form subimit
 	[] single page app?
 
@@ -10,6 +10,8 @@
 ###### resources
 
 backend-db https://orm.drizzle.team/docs/get-started-sqlite
+
+routes https://www.geeksforgeeks.org/reactjs-types-of-routers/
 
 deploy https://dev.to/tobidelly/step-by-step-guide-to-deploy-react-website-to-github-pages-using-github-actions-34i3
 

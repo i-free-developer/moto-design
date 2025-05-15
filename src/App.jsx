@@ -48,12 +48,12 @@ export default function App() {
         <ScrollToTop/>
         <Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
         <Routes>
-            <Route path="/" element={<Home drawerStatus={drawerStatus} closeDrawer={closeDrawer}/>} />
-            <Route path="/career" element={<Career closeDrawer={closeDrawer}/>} />
-            <Route path="/role/:id" element={<RolePage closeDrawer={closeDrawer}/>} />
-            <Route path="/contact" element={<Contact closeDrawer={closeDrawer}/>} />
-            <Route path="/about" element={<About closeDrawer={closeDrawer}/>} />
-            <Route path="/portfolio" element={<Portfolio closeDrawer={closeDrawer}/>} />
+            <Route exact path="/" element={<Home drawerStatus={drawerStatus} closeDrawer={closeDrawer}/>} />
+            <Route exact path="/career" element={<Career closeDrawer={closeDrawer}/>} />
+            <Route exact path="/role/:id" element={<RolePage closeDrawer={closeDrawer}/>} />
+            <Route exact path="/contact" element={<Contact closeDrawer={closeDrawer}/>} />
+            <Route exact path="/about" element={<About closeDrawer={closeDrawer}/>} />
+            <Route exact path="/portfolio" element={<Portfolio closeDrawer={closeDrawer}/>} />
         </Routes>
         <CursorDot/>
         <Footer/>

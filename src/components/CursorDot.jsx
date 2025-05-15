@@ -17,38 +17,15 @@ export default function CursorDot() {
 
   return (
     <div className="fixed left-0 top-0 w-100vw h-1vh cursor-none pointer-events-none z-200">
+      <div style={{transform: `translate(${position.x}px, ${position.y}px)`}}
+      className="absolute -translate-1/2 border rounded-[50%] size-[2rem] ease-out transition-transform duration-500 delay-80 ease-in-out"></div>
+      
       <div style={{
-        left: position.x,
-        top: position.y,
-      }} className="absolute -translate-1/2 border rounded-[50%] size-[2rem] ease-out transition-transform duration-1000 delay-300 transition-discrete ease-[cubic-bezier(0.23,1,0.32,1)]"></div>
-      <div style={{
-        left: position.x,
-        top: position.y,
+        transform: `translate(${position.x}px, ${position.y}px)`,
         backgroundColor: '#000',
         boxShadow: '0 0 6px rgba(0,0,0,0.3)',
-      }} className="absolute -translate-1/2 size-[0.8rem] rounded-[50%] ease-out transition-transform duration-600">
+      }} className="absolute -translate-1/2 size-[0.8rem] rounded-[50%] ease-out transition-transform duration-500 ease-in-out">
       </div>
     </div> 
   )
 }
-
-const throttle = (func, limit) => {
-  let lastFunc;
-  let lastRan;
-  return function() {
-    const context = this;
-    const args = arguments;
-    if (!lastRan) {
-      func.apply(context, args);
-      lastRan = Date.now();
-    } else {
-      clearTimeout(lastFunc);
-      lastFunc = setTimeout(() => {
-        if ((Date.now() - lastRan) >= limit) {
-          func.apply(context, args);
-          lastRan = Date.now();
-        }
-      }, limit - (Date.now() - lastRan));
-    }
-  };
-};

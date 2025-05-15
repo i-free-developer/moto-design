@@ -38,8 +38,8 @@ function DrawerCard({drawerStatus}) {
 	const drawerClassName = drawerClasses[drawerStatus]
 
 	return(
-		<div className={`fixed p-[4rem] w-[35rem] absolute top-[6rem] left-[-40rem] z-100 mx-auto bg-[#EAEAEA]/40 backdrop-blur-md rounded-3xl ${drawerClassName}`}>
-			<div className="flex flex-col items-start gap-[2.5rem] mt-[4rem]">
+		<div className={`p-[4rem] w-[35rem] absolute border border-2 top-[6rem] left-[-40rem] z-100 mx-auto bg-[#EAEAEA]/40 backdrop-blur-md rounded-3xl ${drawerClassName}`}>
+			<div className="flex flex-col items-start gap-[2.5rem] mt-[2rem]">
         {SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>
 			<div className="mt-[10rem] flex items-end gap-[2rem]">

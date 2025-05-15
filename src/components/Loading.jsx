@@ -2,8 +2,8 @@ import { useState } from 'react'
 
 export default function Loading({loadingPercentage}) {
 	return (
-		<section id="loading" className="mx-auto px-[3.5rem] h-screen">
-			<div className="h-10/12 grid content-center">	
+		<section id="loading" className="mx-auto px-[3.5rem] h-dvh relative">
+			<div className="h-full grid content-center">	
 				<div className="grid grid-cols-3 gap-20 items-center justify-between text-xl">
 					<div className="uppercase justify-self-start font-medium text-xl w-[12.5rem] text-black/64">
 						<p>Hop on,start</p>
@@ -20,7 +20,7 @@ export default function Loading({loadingPercentage}) {
 				</div>
 			</div>
 
-			<div className="mx-auto text-center text-base font-medium">
+			<div className="absolute bottom-[6rem] left-0 min-w-full mx-auto text-center text-base font-medium">
 				<div className="mx-auto flex items-center justify-center"><StarIcon/></div>
 				<p className="text-black/64 mt-[1.5rem]">Visual apocalypse</p>
 				<p className="font-bold">Always trust our aesthetic</p>

@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -11,27 +11,68 @@ import Portfolio from './components/Portfolio'
 import Career from './components/Career'
 import Contact from './components/Contact'
 import RolePage from './components/RolePage'
+import Loading from './components/Loading'
 
 export default function App() {
-  const [displayDrawer, setDisplayDrawer] = useState(false)
+  const [drawerStatus, setDrawerStatus] = useState('initial')
+  const [loadingPercentage, setLoadingPercentage] = useState(0);
+  
+  useEffect(() => {
+      const intervalCount = randomInt(40, 60)    
+      const intervalElement = setInterval(() => {
+          setLoadingPercentage((prev) => prev + 1);
+        }, intervalCount);  
+
+      return () => clearInterval(intervalElement);
+    }, []);
 
   function handleClickDrawer() {
-    setDisplayDrawer(!displayDrawer)
+    let newStatus; 
+    if (drawerStatus == 'initial' || drawerStatus == 'closed') {
+      newStatus = 'opened'
+    } else if (drawerStatus == 'opened') {
+      newStatus = 'closed'
+    }
+    setDrawerStatus(newStatus)
   }
 
-  return (
-    <BrowserRouter className="mx-auto">
-      <Navbar showDrawer={displayDrawer} handleClickDrawer={handleClickDrawer} />
-      <Routes>
-          <Route path="/" element={<Home showDrawer={displayDrawer}/>} />
-          <Route path="/career" element={<Career/>} />
-          <Route path="/role/:id" element={<RolePage/>} />
-          <Route path="/contact" element={<Contact/>} />
-          <Route path="/about" element={<About/>} />
-          <Route path="/portfolio" element={<Portfolio/>} />
-      </Routes>
-      <CursorDot/>
-      <Footer/>
-    </BrowserRouter>
-  )
+  if (loadingPercentage <= 100) { 
+    return (
+      <div>
+        <Loading loadingPercentage={loadingPercentage}/>
+        <CursorDot/>
+      </div>
+      )
+  } else {
+    return ( 
+      <BrowserRouter className="mx-auto">
+        <ScrollToTop/>
+        <Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} />
+        <Routes>
+            <Route path="/" element={<Home drawerStatus={drawerStatus}/>} />
+            <Route path="/career" element={<Career/>} />
+            <Route path="/role/:id" element={<RolePage/>} />
+            <Route path="/contact" element={<Contact/>} />
+            <Route path="/about" element={<About/>} />
+            <Route path="/portfolio" element={<Portfolio/>} />
+        </Routes>
+        <CursorDot/>
+        <Footer/>
+      </BrowserRouter>
+    )
+  }
+}
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { CopyRight, CompanyEmail } from '../data/site-data'
 
 const placeHolders = ['Name', 'Roles*', 'Enter your email*', 'A brief introduction about your project', ]
@@ -9,6 +9,29 @@ const buttonContents = {
 	2: ['Back', 'Next'],
 	3: ['Submit'],
 }
+
+const useFakeApi = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const callApi = useCallback(async (mockData, shouldFail = false) => {
+    setLoading(true);
+    setError(null);
+    
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      if (shouldFail) throw new Error('Mock API failure');
+      return mockData;
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  return { callApi, loading, error };
+};
 
 export default function Contact({closeDrawer}) {
 	return (
@@ -32,7 +55,9 @@ function PixelsHeader() {
 }
 
 function ContactBody() {
+	const { callApi, loading, error } = useFakeApi();
 	const [currentStep, setCurrentStep] = useState(0)
+	const [finalData, setFinalData] = useState({})
 
 	function goBack() {
 		setCurrentStep(currentStep - 1)
@@ -42,8 +67,15 @@ function ContactBody() {
 		setCurrentStep(currentStep + 1)
 	}
 
-	function goSubmit() {
-		setCurrentStep(currentStep + 1)
+	const goSubmit = async () => {
+	    console.log('Submitted name:', finalData);
+	    try {
+	    	const result = await callApi({ data: 'success' });
+	      	console.log(result);
+			setCurrentStep(currentStep + 1)
+	    } catch (err) {
+	      	console.error(err);
+	    }
 	}
 
 	function getInTouch() {
@@ -52,25 +84,24 @@ function ContactBody() {
 
 	return (
 		<div className="absolute top-[9.8rem] left-[4rem] right-[4rem] flex flex-col items-center justify-between backdrop-blur-sm bg-gray-100/40 rounded-3xl">
-			{currentStep >= 4 ? <SumbittedGroup/> : <FormGroup currentStep={currentStep} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/> }
+			<FormGroup currentStep={currentStep} goSubmit={goSubmit} finalData={finalData} setFinalData={setFinalData}/>
 			<div className="flex items-center justify-center w-full mt-[10rem] p-[3.5rem]">
           		<ThankyouCard/>
-				<ButtonGroups currentStep={currentStep} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
+				<ButtonGroups currentStep={currentStep} loading={loading} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
           		<EmailCard/>
         	</div>
 		</div>
 	)
 }
 
-function ButtonGroups({currentStep, goBack, goNext, goSubmit, getInTouch}) {
-
+function ButtonGroups({currentStep, goBack, goNext, goSubmit, getInTouch, loading}) {
 	let btnGroups;
 	if (currentStep === 0) {
 		btnGroups = (<ButtonWithDot btnAction={goNext} btnText="Next"/>)
 	} else if (currentStep === 1 || currentStep === 2) {
 		btnGroups = (<><ButtonWithDot btnAction={goBack} btnText="Back"/><ButtonWithDot btnAction={goNext} btnText="Next"/></>)
 	} else if (currentStep === 3) {
-		btnGroups = (<ButtonNoDot btnAction={goSubmit} btnText="Submit"/>)
+		btnGroups = (<ButtonNoDot btnAction={goSubmit} btnText={loading ? 'Submitting...' : 'Submit'}/>)
 	} else {
 		btnGroups = (<ButtonNoDot btnAction={getInTouch} btnText="Get in Touch Again"/>)
 	}
@@ -94,22 +125,47 @@ function ButtonNoDot({btnAction, btnText}) {
 	)
 }
 
-function FormGroup({currentStep}) {
+function FormGroup({currentStep, finalData, setFinalData}) {
 	const holderText = placeHolders[currentStep]
-	return (
-		<>
-			<div className="flex flex-col mt-[14.5rem] font-medium text-center">
-				<header className="text-[2rem]">Please leave your information</header>
-				<p className="text-base text-black/64 mt-[0.5rem]">we will response as soon as possible!</p>
-			</div>
-			<form className="mx-auto w-[50rem] mt-[7rem]">
-				<input autofocuse="true" type="text" className="h-[10.5rem] appearance-none border border-black border-4 rounded-full px-[6rem] text-black/64 text-5xl font-medium focus:outline-none focus:border-black block w-full placeholder-black/64" placeholder={holderText} required={true}></input>
-				<div className="mx-auto flex mt-[1.5rem] gap-[8px] items-center justify-center">
-					{ placeHolders.map((item, index) => <span className={`border border-4 w-[2rem] ${ currentStep === index ? 'border-black' : 'border-gray-200'}`} key={index}></span>) }
+	const [formData, setFormData] = useState({
+	    0: '',
+	    1: '',
+	    2: '',
+	    3: ''
+	 });
+
+	const handleFormInput = (e) => {
+	    setFormData({
+	      ...formData,
+	      [currentStep]: e.target.value
+	    });
+	    setFinalData(formData)
+	};
+
+	const handleSubmit = (e) => {
+		setFinalData(formData)
+	    console.log('Submitted name:', formData);
+	    e.preventDefault(); // Prevent page reload
+	};
+
+	if (currentStep >= 4) { 
+		return (<SumbittedGroup/>) 
+	} else {
+		return (
+			<>
+				<div className="flex flex-col mt-[14.5rem] font-medium text-center">
+					<header className="text-[2rem]">Please leave your information</header>
+					<p className="text-base text-black/64 mt-[0.5rem]">we will response as soon as possible!</p>
 				</div>
-			</form>
-		</>
-	)
+				<form className="mx-auto w-[50rem] mt-[7rem]" onSubmit={handleSubmit}>
+					<input autofocuse="true" type="text" name={currentStep} value={formData[currentStep]} onChange={handleFormInput} className="h-[10.5rem] appearance-none border border-black border-4 rounded-full px-[6rem] text-black/64 text-5xl font-medium focus:outline-none focus:border-black block w-full placeholder-black/64" placeholder={holderText} required={true}></input>
+					<div className="mx-auto flex mt-[1.5rem] gap-[8px] items-center justify-center">
+						{ placeHolders.map((item, index) => <span className={`border border-4 w-[2rem] ${ currentStep === index ? 'border-black' : 'border-black/20'}`} key={index}></span>) }
+					</div>
+				</form>
+			</>
+		)
+	}
 }
 
 function SumbittedGroup() {

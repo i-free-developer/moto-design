@@ -18,7 +18,7 @@ export default function Career({closeDrawer}) {
 				<p className="ml-[57rem] w-[38rem] text-[2rem] leading-10">After the <span className="font-bold">portfolio</span> meets our requirement, on average <span className="font-bold">1~3 week</span> interview process with <span className="font-bold">2 inteviews</span>.</p>
 			</div>
 
-			<div className="flex items-center min-w-full my-[6rem]">
+			<div className="flex items-center flex-nowrap min-w-full my-[6rem]">
 				{TimelineItems.map(item => <TimeLineElement {...item} key={item.number} />)}
 			</div>
 
@@ -53,7 +53,7 @@ function TimeLineElement({number, title}) {
 
 function PerksContainer() {
 	return (
-		<div className="mx-auto flex max-w-screen flex-nowrap my-[4rem] -ml-[4rem]">
+		<div className="mx-auto flex flex-nowrap my-[4rem] -ml-[2rem]">
 			{PerkItemsData.map((item, index) => <PerkCard {...item} index={index} key={item.number}/>)}
 		</div>
 	)
@@ -61,8 +61,8 @@ function PerksContainer() {
 
 function PerkCard({number, title, subtitle, content, index}) {
 	return (
-		<div className={`perk-card p-[1rem] bg-white border border-2 shrink-0 ${index === 0 ? '' : '-ml-[18rem]'}`}>
-			<div className="flex items-center justify-between mb-[18rem]">
+		<div className={`perk-card size-[35rem] p-[1rem] flex flex-col justify-between bg-[#f7f7f7] border border-2 border-[#000000] shrink-0 ${index === 0 ? '' : '-ml-[23rem]'}`}>
+			<div className="flex items-center justify-between">
 				<div className="flex flex-col">
 					<span className="font-normal text-2xl">{number}</span>
 					<span className="font-bold"><QIcon/></span>

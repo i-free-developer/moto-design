@@ -102,7 +102,7 @@
 }
 
 .perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
-	transform: translateX(18rem);
+	transform: translateX(23rem);
 }
 
 .scroll-header {

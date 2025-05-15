@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 export default function Footer() {
   return (
-    <footer className="mx-auto w-full bg-black py-[8rem] px-[8rem] text-white">
+    <footer className="mx-auto w-full bg-black py-[8rem] px-[8rem] text-white z-200">
       <div className="flex justify-between min-h-full">
         <div className="flex flex-col justify-between min-h-full">
           <Link to="/"><LogoIconFooter/></Link>

@@ -19,7 +19,7 @@ function useScrollTo() {
 
 export default function Navbar({drawerStatus, handleClickDrawer}) {
 	return (
-		<section id="navbar" className="relative z-200 text-black fixed w-screen px-[3.5rem] my-[2rem]">
+		<section id="navbar" className="fixed relative z-200 text-black w-screen px-[3.5rem] my-[2rem]">
 			<nav className="">
 				<div className="flex justify-between items-center">
 					<div onClick={handleClickDrawer} className="size-[1.2rem]">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>

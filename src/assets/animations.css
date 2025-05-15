@@ -87,6 +87,7 @@
 .horizontal-bar-out {
 	animation: slide-vertical-out 1.5s ease-in-out;
 	animation-fill-mode: forwards;
+	display: none;
 }
 
 .hover-border {

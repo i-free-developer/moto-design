@@ -16,12 +16,12 @@ const MobilePortfolioItems = [
   { title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 5, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
 ]
 
-export default function Portfolio() {
+export default function Portfolio({closeDrawer}) {
 	const [isMobile, setIsMobile] = useState(false)
 
 	return (
-		<section id="portfolio" className="mx-auto px-[4rem] mt-[15rem] mb-[3rem]">
-			<PortfolioHeader />
+		<section id="portfolio" className="mx-auto px-[4rem] mt-[15rem] mb-[3rem]" onClick={closeDrawer}>
+			<PortfolioHeader/>
 			<div className="flex items-center gap-[0.5rem] mt-[2rem] mb-[6rem] text-[1.75rem]">
 				<span onClick={() => setIsMobile(true)} className={`p-2 ${isMobile ? '' : ''}`}><MobileIcon/></span>
 				<span onClick={() => setIsMobile(false)} className={`p-2 ${!isMobile ? '' : ''}`}><DesktopIcon/></span>

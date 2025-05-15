@@ -28,13 +28,12 @@ export default function App() {
 
   function handleClickDrawer() {
     let newStatus; 
-    if (drawerStatus == 'initial' || drawerStatus == 'closed') {
-      newStatus = 'opened'
-    } else if (drawerStatus == 'opened') {
-      newStatus = 'closed'
-    }
+    if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' } 
+    if (drawerStatus === 'opened') { newStatus = 'closed' }
     setDrawerStatus(newStatus)
   }
+
+  function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
 
   if (loadingPercentage <= 100) { 
     return (
@@ -47,14 +46,14 @@ export default function App() {
     return ( 
       <BrowserRouter className="mx-auto">
         <ScrollToTop/>
-        <Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} />
+        <Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
         <Routes>
-            <Route path="/" element={<Home drawerStatus={drawerStatus}/>} />
-            <Route path="/career" element={<Career/>} />
-            <Route path="/role/:id" element={<RolePage/>} />
-            <Route path="/contact" element={<Contact/>} />
-            <Route path="/about" element={<About/>} />
-            <Route path="/portfolio" element={<Portfolio/>} />
+            <Route path="/" element={<Home drawerStatus={drawerStatus} closeDrawer={closeDrawer}/>} />
+            <Route path="/career" element={<Career closeDrawer={closeDrawer}/>} />
+            <Route path="/role/:id" element={<RolePage closeDrawer={closeDrawer}/>} />
+            <Route path="/contact" element={<Contact closeDrawer={closeDrawer}/>} />
+            <Route path="/about" element={<About closeDrawer={closeDrawer}/>} />
+            <Route path="/portfolio" element={<Portfolio closeDrawer={closeDrawer}/>} />
         </Routes>
         <CursorDot/>
         <Footer/>

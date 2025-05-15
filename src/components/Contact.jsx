@@ -10,18 +10,24 @@ const buttonContents = {
 	3: ['Submit'],
 }
 
-export default function Contact() {
+export default function Contact({closeDrawer}) {
 	return (
-		<section id="contact-us" className="mx-auto px-[3rem] my-[3rem] min-h-[80rem] relative flex flex-col justify-between">
-			<div className="overflow-hidden relative h-[13.75rem]">
-				<div className="flex absolute scroll-header gap-[6rem]">
-					<header className="text-[13.75rem] uppercase font-bold px-[3rem] text-nowrap">Pixels are the atomic units of design.</header>
-					<header className="text-[13.75rem] uppercase font-bold px-[3rem] text-nowrap">Pixels are the atomic units of design.</header>
-				</div>
-			</div>
+		<section id="contact-us" className="mx-auto px-[3rem] my-[3rem] min-h-[80rem] relative flex flex-col justify-between" onClick={closeDrawer}>
+			<PixelsHeader/>
 			<ContactBody/>
-      <CopyRightCard/>
+      		<CopyRightCard/>
 		</section>
+	)
+}
+
+function PixelsHeader() {
+	return (
+		<div className="overflow-hidden relative h-[13.75rem]">
+			<div className="flex absolute scroll-header gap-[6rem]">
+				<header className="text-[13.75rem] uppercase font-bold px-[3rem] text-nowrap">Pixels are the atomic units of design.</header>
+				<header className="text-[13.75rem] uppercase font-bold px-[3rem] text-nowrap">Pixels are the atomic units of design.</header>
+			</div>
+		</div>
 	)
 }
 
@@ -44,16 +50,14 @@ function ContactBody() {
 		setCurrentStep(0)
 	}
 
-	console.log('currentStep ->', currentStep)
-
 	return (
 		<div className="absolute top-[9.8rem] left-[4rem] right-[4rem] flex flex-col items-center justify-between backdrop-blur-sm bg-gray-100/40 rounded-3xl">
 			{currentStep >= 4 ? <SumbittedGroup/> : <FormGroup currentStep={currentStep} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/> }
-				<div className="flex items-center justify-center w-full mt-[10rem] p-[3.5rem]">
-          <ThankyouCard/>
-					<ButtonGroups currentStep={currentStep} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
-          <EmailCard/>
-        </div>
+			<div className="flex items-center justify-center w-full mt-[10rem] p-[3.5rem]">
+          		<ThankyouCard/>
+				<ButtonGroups currentStep={currentStep} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
+          		<EmailCard/>
+        	</div>
 		</div>
 	)
 }

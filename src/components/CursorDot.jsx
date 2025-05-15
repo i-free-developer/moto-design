@@ -16,7 +16,7 @@ export default function CursorDot() {
   }, []);
 
   return (
-    <div className="fixed left-0 top-0 w-100vw h-1vh cursor-none pointer-events-none">
+    <div className="fixed left-0 top-0 w-100vw h-1vh cursor-none pointer-events-none z-200">
       <div style={{
         left: position.x,
         top: position.y,

@@ -2,9 +2,9 @@ import { useState } from 'react'
 import {TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail} from '../data/site-data'
 import { Link } from "react-router-dom"
 
-export default function Career() {
+export default function Career({closeDrawer}) {
 	return (
-		<section id="career" className="mx-auto px-[4rem] mt-[15rem] flex flex-col gap-8 max-w-screen">
+		<section id="career" className="mx-auto px-[4rem] mt-[15rem] flex flex-col gap-8 max-w-screen" onClick={closeDrawer}>
 			<h1 className="font-extrabold text-[5rem] uppercase">[Career]</h1>
 			<div className="flex items-center justify-between">
 				<h2 className="font-extrabold text-9xl uppercase">How we hire</h2>

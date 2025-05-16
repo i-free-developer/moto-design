@@ -1,6 +1,4 @@
 import { ServicesItems, CompanyDomain } from '../data/site-data'
-import { useEffect } from 'react'
-
 const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'section-drawer-out'}
 const serviceClasses = {initial: '', opened: 'horizontal-bar-out', closed: 'horizontal-bar-in'}
 

@@ -1,11 +1,13 @@
-import {OpenningRoles} from '../data/site-data'
-import {HowToApply} from './Career'
+import { useParams } from "react-router-dom";
+import { OpenningRoles } from '../data/site-data'
+import { HowToApply } from './Career'
 
+export default function RolePage({closeDrawer}) {
+	let { id } = useParams();
 
-export default function RolePage() {
-	const {title, roleTag, responsibilities, requirements, tags} = {...OpenningRoles[0]}
+	const {title, roleTag, responsibilities, requirements, tags} = OpenningRoles.find(e => e.id == id)
 	return (
-		<section id="" className="mx-auto px-[6rem]">
+		<section id="role-page" className="mx-auto px-[6rem]" onClick={closeDrawer}>
 			<div className="relative mt-[13.5rem] mb-[6rem]">
 				<span className="rounded-full text-xl font-medium bg-black/10 px-6 py-3">{roleTag}</span>
 				<h1 className="mt-[2.5rem] text-5xl font-semibold w-[73rem] tracking-[-2%]">{title}</h1>

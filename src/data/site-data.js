@@ -19,6 +19,7 @@ const PerkItemsData = [
 
 const OpenningRoles = [
 	{
+		id: '1',
 		team: 'MOTO  >  Design Department  >  WEB', 
 		title: 'Global SEO & Content Operation Full-time / On-site (ShenZhen）',
 		tags: ['Full-time', 'On-site (ShenZhen)'],
@@ -37,6 +38,7 @@ const OpenningRoles = [
 		]
 	},
 	{
+		id: '2',
 		team: 'MOTO  >  Design Department  >  WEB', 
 		title: 'Senior UI Designer / Full-time',
 		tags: ['Full-time', 'On-site (ShenZhen)'],
@@ -55,6 +57,7 @@ const OpenningRoles = [
 		]
 	},
 	{
+		id: '3',
 		team: 'MOTO  >  Design Department  >  WEB', 
 		title: 'Global SEO & Content Operation Full-time / On-site (ShenZhen）',
 		tags: ['Full-time', 'On-site (ShenZhen)'],
@@ -73,6 +76,7 @@ const OpenningRoles = [
 		]
 	},
 	{
+		id: '4',
 		team: 'MOTO  >  Design Department  >  WEB', 
 		title: 'Senior UI Designer / Full-time',
 		tags: ['Full-time', 'On-site (ShenZhen)'],
@@ -92,6 +96,33 @@ const OpenningRoles = [
 	},
 ]
 
+const TeamMembers = [
+	{name: 'Eilven', avatar: 'https://images.unsplash.com/photo-1744023238070-062811b3a702?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D', title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
+	{name: 'Eilven', avatar: 'https://images.unsplash.com/photo-1744023238070-062811b3a702?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D', title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
+	{name: 'Eilven', avatar: 'https://images.unsplash.com/photo-1744023238070-062811b3a702?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D', title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
+	{name: 'Eilven', avatar: 'https://images.unsplash.com/photo-1744023238070-062811b3a702?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D', title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
+	{name: 'Eilven', avatar: 'https://images.unsplash.com/photo-1744023238070-062811b3a702?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D', title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
+	{name: 'Eilven', avatar: 'https://images.unsplash.com/photo-1744023238070-062811b3a702?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D', title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
+	{name: 'Eilven', avatar: 'https://images.unsplash.com/photo-1744023238070-062811b3a702?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D', title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
+	{name: 'Eilven', avatar: 'https://images.unsplash.com/photo-1744023238070-062811b3a702?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D', title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
+]
+
+const DesktopPortfolioItems = [
+	{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 3, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
+	{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 2, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
+	{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 2, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
+	{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 3, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
+	{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 5, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
+]
+
+const MobilePortfolioItems = [
+	{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 3, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+	{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 2, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+	{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 2, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+	{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 3, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+	{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 5, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+]
+
 const ServicesItems = ['Web Design / UI & UX', '3D & Concept Animation', 'Brand Identity & Social Media Visual']
 
 const CopyRight = '© 2025 Moto Design LLC. All rights reserved.'
@@ -100,5 +131,5 @@ const CompanyEmail = 'Hello@motodesign@.cn'
 
 const CompanyDomain = 'motodesign.cn'
 
-export {TimelineItems, PerkItemsData, OpenningRoles, ServicesItems, CopyRight, CompanyEmail, CompanyDomain}
+export {TimelineItems, PerkItemsData, OpenningRoles, TeamMembers, DesktopPortfolioItems, MobilePortfolioItems, ServicesItems, CopyRight, CompanyEmail, CompanyDomain}
 

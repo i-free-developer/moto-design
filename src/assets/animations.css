@@ -47,6 +47,16 @@
   }
 }
 
+@keyframes slide-vertical-out {
+	from {transform: translateY(0);}
+	to {transform: translateY(8rem);}
+}
+
+@keyframes slide-vertical-in {
+	from {transform: translateY(6rem);}
+	to {transform: translateY(0);}
+}
+
 .drawer-in {
 	animation: drawer-slide-in 1s ease-in-out;
 	animation-fill-mode: forwards;
@@ -70,6 +80,16 @@
 /*	animation-fill-mode: forwards;*/
 }
 
+.horizontal-bar-in {
+	animation: slide-vertical-in 1.5s ease-in-out;
+}
+
+.horizontal-bar-out {
+	animation: slide-vertical-out 1.5s ease-in-out;
+	animation-fill-mode: forwards;
+	display: none;
+}
+
 .hover-border {
 	border: 2px solid;
 	animation: progress-bar 1s ease;
@@ -82,7 +102,7 @@
 }
 
 .perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
-	transform: translateX(18rem);
+	transform: translateX(23rem);
 }
 
 .scroll-header {

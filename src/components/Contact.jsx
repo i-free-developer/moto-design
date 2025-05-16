@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { CopyRight, CompanyEmail } from '../data/site-data'
 
 const placeHolders = ['Name', 'Roles*', 'Enter your email*', 'A brief introduction about your project', ]
@@ -10,63 +10,120 @@ const buttonContents = {
 	3: ['Submit'],
 }
 
-export default function Contact() {
+const useFakeApi = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const callApi = useCallback(async (mockData, shouldFail = false) => {
+    setLoading(true);
+    setError(null);
+    
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      if (shouldFail) throw new Error('Mock API failure');
+      return mockData;
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  return { callApi, loading, error };
+};
+
+export default function Contact({closeDrawer}) {
 	return (
-		<section id="contact-us" className="mx-auto px-[3rem] my-[3rem] min-h-[80rem] relative flex flex-col justify-between">
-			<div className="overflow-hidden relative h-[13.75rem]">
-				<div className="flex absolute scroll-header gap-[6rem]">
-					<header className="text-[13.75rem] uppercase font-bold px-[3rem] text-nowrap">Pixels are the atomic units of design.</header>
-					<header className="text-[13.75rem] uppercase font-bold px-[3rem] text-nowrap">Pixels are the atomic units of design.</header>
-				</div>
-			</div>
+		<section id="contact-us" className="mx-auto px-[3rem] my-[3rem] min-h-[80rem] relative flex flex-col justify-between" onClick={closeDrawer}>
+			<PixelsHeader/>
 			<ContactBody/>
-      <CopyRightCard/>
+      		<CopyRightCard/>
 		</section>
 	)
 }
 
-function ContactBody() {
-	const [currentStep, setCurrentStep] = useState(0)
-
-	function goBack() {
-		setCurrentStep(currentStep - 1)
-	}
-
-	function goNext() {
-		setCurrentStep(currentStep + 1)
-	}
-
-	function goSubmit() {
-		setCurrentStep(currentStep + 1)
-	}
-
-	function getInTouch() {
-		setCurrentStep(0)
-	}
-
-	console.log('currentStep ->', currentStep)
-
+function PixelsHeader() {
 	return (
-		<div className="absolute top-[9.8rem] left-[4rem] right-[4rem] flex flex-col items-center justify-between backdrop-blur-sm bg-gray-100/40 rounded-3xl">
-			{currentStep >= 4 ? <SumbittedGroup/> : <FormGroup currentStep={currentStep} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/> }
-				<div className="flex items-center justify-center w-full mt-[10rem] p-[3.5rem]">
-          <ThankyouCard/>
-					<ButtonGroups currentStep={currentStep} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
-          <EmailCard/>
-        </div>
+		<div className="overflow-hidden relative h-[13.75rem]">
+			<div className="flex absolute scroll-header gap-[6rem]">
+				<header className="text-[13.75rem] uppercase font-bold px-[3rem] text-nowrap">Pixels are the atomic units of design.</header>
+				<header className="text-[13.75rem] uppercase font-bold px-[3rem] text-nowrap">Pixels are the atomic units of design.</header>
+			</div>
 		</div>
 	)
 }
 
-function ButtonGroups({currentStep, goBack, goNext, goSubmit, getInTouch}) {
+function ContactBody() {
+	const initData = {0: '', 1: '', 2: '', 3: ''}
+	const { callApi, loading, error } = useFakeApi();
+	const [currentStep, setCurrentStep] = useState(0)
+	const [finalData, setFinalData] = useState(initData)
 
+	function goBack() { setCurrentStep(currentStep - 1) }
+	function goNext() { setCurrentStep(currentStep + 1) }
+	function getInTouch() { setCurrentStep(0) }
+
+	const goSubmit = async () => {
+	    console.log('Submitted name:', finalData);
+	    try {
+	    	const result = await callApi({ data: finalData });
+	      	console.log(result);
+			setCurrentStep(currentStep + 1)
+			setFinalData(initData)
+	    } catch (err) {
+	      	console.error(err);
+	    }
+	}
+
+	return (
+		<div className="absolute top-[9.8rem] left-[4rem] right-[4rem] flex flex-col items-center justify-between backdrop-blur-sm bg-gray-100/40 rounded-3xl">
+			<FormGroup currentStep={currentStep} goSubmit={goSubmit} finalData={finalData} setFinalData={setFinalData}/>
+			<div className="flex items-center justify-center w-full mt-[10rem] p-[3.5rem]">
+          		<ThankyouCard/>
+				<ButtonGroups currentStep={currentStep} loading={loading} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
+          		<EmailCard/>
+        	</div>
+		</div>
+	)
+}
+
+function FormGroup({currentStep, finalData, setFinalData, goSubmit}) {
+	const holderText = placeHolders[currentStep]
+	const handleFormInput = (e) => { setFinalData({...finalData, [currentStep]: e.target.value }) }
+	const handleSubmit = (e) => {
+		goSubmit()
+	    e.preventDefault(); // Prevent page reload
+	};
+
+	if (currentStep >= 4) { 
+		return (<SumbittedGroup/>) 
+	} else {
+		return (
+			<>
+				<div className="flex flex-col mt-[14.5rem] font-medium text-center">
+					<header className="text-[2rem]">Please leave your information</header>
+					<p className="text-base text-black/64 mt-[0.5rem]">we will response as soon as possible!</p>
+				</div>
+				<form className="mx-auto w-[50rem] mt-[7rem]" onSubmit={handleSubmit}>
+					<input autofocuse="true" type="text" name={`${currentStep}`} value={finalData[currentStep]} onChange={handleFormInput} className="h-[10.5rem] appearance-none border border-black border-4 rounded-full px-[6rem] text-black/64 text-5xl font-medium focus:outline-none focus:border-black block w-full placeholder-black/64" placeholder={holderText} required={true}></input>
+					<div className="mx-auto flex mt-[1.5rem] gap-[8px] items-center justify-center">
+						{ placeHolders.map((item, index) => <span className={`border border-4 w-[2rem] ${ currentStep === index ? 'border-black' : 'border-black/20'}`} key={index}></span>) }
+					</div>
+				</form>
+			</>
+		)
+	}
+}
+
+function ButtonGroups({currentStep, goBack, goNext, goSubmit, getInTouch, loading}) {
 	let btnGroups;
 	if (currentStep === 0) {
 		btnGroups = (<ButtonWithDot btnAction={goNext} btnText="Next"/>)
 	} else if (currentStep === 1 || currentStep === 2) {
 		btnGroups = (<><ButtonWithDot btnAction={goBack} btnText="Back"/><ButtonWithDot btnAction={goNext} btnText="Next"/></>)
 	} else if (currentStep === 3) {
-		btnGroups = (<ButtonNoDot btnAction={goSubmit} btnText="Submit"/>)
+		btnGroups = (<ButtonNoDot btnAction={goSubmit} btnText={loading ? 'Submitting...' : 'Submit'}/>)
 	} else {
 		btnGroups = (<ButtonNoDot btnAction={getInTouch} btnText="Get in Touch Again"/>)
 	}
@@ -87,24 +144,6 @@ function ButtonWithDot({btnAction, btnText}) {
 function ButtonNoDot({btnAction, btnText}) {
 	return (
 		<span className="min-w-[15rem] bg-black rounded-full h-[4.5rem] px-[2rem] flex items-center justify-center" onClick={btnAction}><span className="text-[#f7f7f7] text-[2rem] font-medium">{btnText}</span></span>
-	)
-}
-
-function FormGroup({currentStep}) {
-	const holderText = placeHolders[currentStep]
-	return (
-		<>
-			<div className="flex flex-col mt-[14.5rem] font-medium text-center">
-				<header className="text-[2rem]">Please leave your information</header>
-				<p className="text-base text-black/64 mt-[0.5rem]">we will response as soon as possible!</p>
-			</div>
-			<form className="mx-auto w-[50rem] mt-[7rem]">
-				<input autofocuse="true" type="text" className="h-[10.5rem] appearance-none border border-black border-4 rounded-full px-[6rem] text-black/64 text-5xl font-medium focus:outline-none focus:border-black block w-full placeholder-black/64" placeholder={holderText} required={true}></input>
-				<div className="mx-auto flex mt-[1.5rem] gap-[8px] items-center justify-center">
-					{ placeHolders.map((item, index) => <span className={`border border-4 w-[2rem] ${ currentStep === index ? 'border-black' : 'border-gray-200'}`} key={index}></span>) }
-				</div>
-			</form>
-		</>
 	)
 }
 

@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import { Link } from "react-router-dom"
 import '../assets/animations.css';
 import { CompanyEmail } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem } from './SocialIconsCollection'
@@ -16,25 +17,28 @@ function useScrollTo() {
   }, []);
 }
 
-export default function Navbar({showDrawer, handleClickDrawer}) {
+export default function Navbar({drawerStatus, handleClickDrawer}) {
 	return (
-		<section className="relative z-200 text-black">
-			<nav className="fixed w-screen px-[3.5rem]">
-				<div className="my-[2.5rem] flex justify-between items-center">
-					<div onClick={handleClickDrawer} className="size-[1.2rem]">{showDrawer ? <CloseIcon/> : <BarsIcon/>}</div>
-					<LogoIcon/>
+		<section id="navbar" className="fixed relative z-200 text-black w-screen px-[3.5rem] my-[2rem]">
+			<nav className="">
+				<div className="flex justify-between items-center">
+					<div onClick={handleClickDrawer} className="size-[1.2rem]">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
+					<Link to="/"><LogoIcon/></Link>
 					<LangButtons/>
 				</div>
 			</nav>
-			{<DrawerCard showDrawer={showDrawer}/>}
+			{<DrawerCard drawerStatus={drawerStatus}/>}
 		</section>
 	)
 }
 
-function DrawerCard({showDrawer}) {
-	// console.log('showDrawer', showDrawer)
+const drawerClasses = {initial: '', opened: 'drawer-in', closed: 'drawer-out'}
+
+function DrawerCard({drawerStatus}) {
+	const drawerClassName = drawerClasses[drawerStatus]
+
 	return(
-		<div className={`fixed p-[4rem] w-[35rem] absolute top-[6rem] left-[3.5rem] z-100 mx-auto bg-[#EAEAEA]/40 backdrop-blur-md rounded-3xl ${showDrawer ? 'drawer-in' : 'drawer-out'}`}>
+		<div className={`p-[4rem] w-[35rem] absolute top-[6rem] left-[-40rem] z-100 mx-auto bg-[#EAEAEA]/40 backdrop-blur-md rounded-3xl ${drawerClassName}`}>
 			<div className="flex flex-col items-start gap-[2.5rem] mt-[4rem]">
         {SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>
@@ -47,13 +51,14 @@ function DrawerCard({showDrawer}) {
 	)
 }
 
-function SiteLinkItem({url, title}) {
+function SiteLinkItem({url, title, linkTo}) {
 	const [isHovered, setIsHovered] = useState(false);
   const scrollTo = useScrollTo();
 
 	return (
 		<div className="flex flex-col" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => scrollTo(url)}>
-			<a href={url} className="text-5xl font-semibold">{title}</a>
+			{/* <a href={url} className="text-5xl font-semibold">{title}</a> */}
+			<Link to={linkTo} className="text-5xl font-semibold">{title}</Link>
 			<hr className={`mt-[6px] ${isHovered ? 'hover-border' : 'border border-2 border-transparent'}`}></hr>
 		</div>
 	)

@@ -1,12 +1,13 @@
 import { SocialIconItems, SiteLinks, SocialIconLinkItem } from './SocialIconsCollection'
 import { CopyRight, CompanyEmail } from '../data/site-data'
+import { Link } from "react-router-dom"
 
 export default function Footer() {
   return (
-    <footer className="mx-auto w-full bg-black py-[8rem] px-[8rem] text-white">
+    <footer className="mx-auto w-full bg-black py-[8rem] px-[8rem] text-white z-200">
       <div className="flex justify-between min-h-full">
         <div className="flex flex-col justify-between min-h-full">
-          <LogoIconFooter/>
+          <Link to="/"><LogoIconFooter/></Link>
           <div>
             <p className="text-2xl font-bold mt-[6rem] font-medium">Follow our journey on social</p>
             <div className="flex items-center gap-[2rem] mx-auto w-full mt-[2rem]">
@@ -19,7 +20,8 @@ export default function Footer() {
           <div>
             <p className="text-[1.75rem]">Info</p>
             <div className="flex flex-col gap-4 my-[4rem]">
-              {SiteLinks.map((item, index) => <a href={item.url} className="text-xl" key={index}>{item.title}</a>)}
+              {/* {SiteLinks.map((item, index) => <a href={item.url} className="text-xl" key={index}>{item.title}</a>)} */}
+              {SiteLinks.map((item, index) => <Link to={item.linkTo} className="text-xl" key={index}>{item.title}</Link>)}
             </div>
           </div>
           <div className="text-right font-medium">

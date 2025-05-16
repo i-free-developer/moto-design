@@ -8,10 +8,10 @@ const SocialIconItems = [
 ]
 
 const SiteLinks = [
-	{title: 'About', url: '#about'},
-	{title: 'Portfolio', url: '#portfolio'},
-	{title: 'Career', url: '#career'},
-	{title: 'Contact Us', url: '#contact-us'},
+	{linkTo: '/about', title: 'About', url: '#about'},
+	{linkTo: '/portfolio', title: 'Portfolio', url: '#portfolio'},
+	{linkTo: '/career', title: 'Career', url: '#career'},
+	{linkTo: '/contact', title: 'Contact Us', url: '#contact-us'},
 ]
 
 function SocialIconLinkItem({url, iconWhite, iconBlack, name, size=6, color='black'}) {
@@ -159,5 +159,6 @@ function XiaoHongShuIconBlack() {
     </svg>
   )
 }
+
 export { SocialIconItems, SiteLinks, SocialIconLinkItem}
 

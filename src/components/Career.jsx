@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import {TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail} from '../data/site-data'
+import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../data/site-data'
+import { Link } from "react-router-dom"
 
-export default function Career() {
+export default function Career({closeDrawer}) {
 	return (
-		<section id="career" className="mx-auto px-[4rem] mt-[15rem] flex flex-col gap-8 max-w-screen">
+		<section id="career" className="mx-auto px-[4rem] mt-[15rem] flex flex-col gap-8 max-w-screen" onClick={closeDrawer}>
 			<h1 className="font-extrabold text-[5rem] uppercase">[Career]</h1>
 			<div className="flex items-center justify-between">
 				<h2 className="font-extrabold text-9xl uppercase">How we hire</h2>
@@ -17,7 +18,7 @@ export default function Career() {
 				<p className="ml-[57rem] w-[38rem] text-[2rem] leading-10">After the <span className="font-bold">portfolio</span> meets our requirement, on average <span className="font-bold">1~3 week</span> interview process with <span className="font-bold">2 inteviews</span>.</p>
 			</div>
 
-			<div className="flex items-center min-w-full my-[6rem]">
+			<div className="flex items-center flex-nowrap min-w-full my-[6rem]">
 				{TimelineItems.map(item => <TimeLineElement {...item} key={item.number} />)}
 			</div>
 
@@ -52,7 +53,7 @@ function TimeLineElement({number, title}) {
 
 function PerksContainer() {
 	return (
-		<div className="mx-auto flex max-w-screen flex-nowrap my-[4rem] -ml-[4rem]">
+		<div className="mx-auto flex flex-nowrap my-[4rem] -ml-[2rem]">
 			{PerkItemsData.map((item, index) => <PerkCard {...item} index={index} key={item.number}/>)}
 		</div>
 	)
@@ -60,8 +61,8 @@ function PerksContainer() {
 
 function PerkCard({number, title, subtitle, content, index}) {
 	return (
-		<div className={`perk-card p-[1rem] bg-white border border-2 shrink-0 ${index === 0 ? '' : '-ml-[18rem]'}`}>
-			<div className="flex items-center justify-between mb-[18rem]">
+		<div className={`perk-card size-[35rem] p-[1rem] flex flex-col justify-between bg-[#f7f7f7] border border-2 border-[#000000] shrink-0 ${index === 0 ? '' : '-ml-[23rem]'}`}>
+			<div className="flex items-center justify-between">
 				<div className="flex flex-col">
 					<span className="font-normal text-2xl">{number}</span>
 					<span className="font-bold"><QIcon/></span>
@@ -92,7 +93,7 @@ function RolesContainer() {
 	)
 }
 
-function RoleCard({team, title, tags, index}) {
+function RoleCard({team, title, tags, index, id}) {
 	return (
 		<article className="flex justify-between relative w-[55rem] tracking-[-2%]">
 			<div>
@@ -104,22 +105,22 @@ function RoleCard({team, title, tags, index}) {
 				</div>
 				<hr className="border border-2 border-black/20 my-[3rem] w-[55rem]"></hr>
 			</div>
-			<ApplyButon/>
+			<ApplyButon id={id}/>
 		</article>
 	)
 }
 
-function ApplyButon() {
+function ApplyButon({id}) {
 	const [isHovered, setIsHovered] = useState(false);
 	const ArrowElement = (<div className="bg-white size-[2.5rem] flex items-center justify-center rounded-full"><ArrowIcon/></div>)
 	const DotElement = (<div className="size-[2.5rem] flex items-center justify-center"><span className="size-[0.5rem] bg-white rounded-full"></span></div>)
 
 	return (
-		<div className="absolute bottom-[6rem] right-0 flex items-center justify-evenly gap-[1rem] bg-slate-900 rounded-full w-[9.75rem] h-[3rem]"
+		<Link to={`/role/${id}`} className="absolute bottom-[6rem] right-0 flex items-center justify-evenly gap-[1rem] bg-slate-900 rounded-full w-[9.75rem] h-[3rem]"
 			onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<span className="text-white font-medium text-2xl ml-[0.5rem]">Apply</span>
 			{isHovered ? ArrowElement : DotElement}
-		</div>
+		</Link>
 	)
 }
 

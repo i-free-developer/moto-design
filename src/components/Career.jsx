@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail} from '../data/site-data'
+import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../data/site-data'
 import { Link } from "react-router-dom"
 
 export default function Career({closeDrawer}) {

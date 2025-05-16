@@ -1,4 +1,4 @@
-import {ServicesItems, CompanyDomain} from '../data/site-data'
+import { ServicesItems, CompanyDomain } from '../data/site-data'
 import { useEffect } from 'react'
 
 const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'section-drawer-out'}

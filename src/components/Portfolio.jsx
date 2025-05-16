@@ -1,20 +1,5 @@
 import { useState } from 'react'
-
-const DesktopPortfolioItems = [
-	{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 3, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
-	{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 2, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
-	{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 2, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
-	{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 3, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
-	{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 5, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
-]
-
-const MobilePortfolioItems = [
-  { title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 3, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 2, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 2, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 3, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 5, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-]
+import { DesktopPortfolioItems, MobilePortfolioItems } from '../data/site-data'
 
 export default function Portfolio({closeDrawer}) {
 	const [isMobile, setIsMobile] = useState(false)
@@ -92,13 +77,13 @@ function MobilePortfolios() {
       <div className="max-w-full overflow-hidden flex justify-center">
         <div>
           <div className="flex gap-[2rem] mb-[2rem]">
-            {DesktopPortfolioItems.map((item, index) => <MobileCard {...item} index={index} key={index}/>)}
+            {MobilePortfolioItems.map((item, index) => <MobileCard {...item} index={index} key={index}/>)}
           </div>
           <div className="flex gap-[2rem] my-[2rem]">
-            {DesktopPortfolioItems.map((item, index) => <MobileCard {...item} index={index} key={index} />)}
+            {MobilePortfolioItems.map((item, index) => <MobileCard {...item} index={index} key={index} />)}
           </div>
           <div className="flex gap-[2rem] mt-[2rem]">
-            {DesktopPortfolioItems.map((item, index) => <MobileCard {...item} index={index} key={index} />)}
+            {MobilePortfolioItems.map((item, index) => <MobileCard {...item} index={index} key={index} />)}
           </div>
         </div>
       </div>

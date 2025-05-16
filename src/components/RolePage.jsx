@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import {OpenningRoles} from '../data/site-data'
-import {HowToApply} from './Career'
+import { OpenningRoles } from '../data/site-data'
+import { HowToApply } from './Career'
 
 export default function RolePage({closeDrawer}) {
 	let { id } = useParams();

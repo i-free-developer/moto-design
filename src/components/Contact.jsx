@@ -3,12 +3,12 @@ import { CopyRight, CompanyEmail } from '../data/site-data'
 
 const placeHolders = ['Name', 'Roles*', 'Enter your email*', 'A brief introduction about your project', ]
 
-const buttonContents = {
-	0: ['Next'],
-	1: ['Back', 'Next'],
-	2: ['Back', 'Next'],
-	3: ['Submit'],
-}
+// const buttonContents = {
+// 	0: ['Next'],
+// 	1: ['Back', 'Next'],
+// 	2: ['Back', 'Next'],
+// 	3: ['Submit'],
+// }
 
 const useFakeApi = () => {
   const [loading, setLoading] = useState(false);
@@ -56,7 +56,7 @@ function PixelsHeader() {
 
 function ContactBody() {
 	const initData = {0: '', 1: '', 2: '', 3: ''}
-	const { callApi, loading, error } = useFakeApi();
+	const { callApi, loading } = useFakeApi();
 	const [currentStep, setCurrentStep] = useState(0)
 	const [finalData, setFinalData] = useState(initData)
 
@@ -68,9 +68,9 @@ function ContactBody() {
 	    console.log('Submitted name:', finalData);
 	    try {
 	    	const result = await callApi({ data: finalData });
-	      	console.log(result);
-			setCurrentStep(currentStep + 1)
-			setFinalData(initData)
+	      console.log(result);
+				setCurrentStep(currentStep + 1)
+				setFinalData(initData)
 	    } catch (err) {
 	      	console.error(err);
 	    }
@@ -80,10 +80,10 @@ function ContactBody() {
 		<div className="absolute top-[9.8rem] left-[4rem] right-[4rem] flex flex-col items-center justify-between backdrop-blur-sm bg-gray-100/40 rounded-3xl">
 			<FormGroup currentStep={currentStep} goSubmit={goSubmit} finalData={finalData} setFinalData={setFinalData}/>
 			<div className="flex items-center justify-center w-full mt-[10rem] p-[3.5rem]">
-          		<ThankyouCard/>
+      	<ThankyouCard/>
 				<ButtonGroups currentStep={currentStep} loading={loading} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
-          		<EmailCard/>
-        	</div>
+        <EmailCard/>
+      </div>
 		</div>
 	)
 }
@@ -153,7 +153,7 @@ function SumbittedGroup() {
 			<div className="flex flex-col mt-[14.5rem] font-medium text-center">
 				<header className="text-[2rem]">Successfully Submitted</header>
 				<p className="text-base text-black/64 mt-[0.5rem]">We will provide you with feedback as soon as possible. Thank you for your patience!</p>
-				<div className="mx-auto mt-[2rem]">
+				<div className="mx-auto mt-[4rem]">
 					<SubmittedAlready/>
 				</div>
 			</div>

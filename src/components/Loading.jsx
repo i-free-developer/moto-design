@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 export default function Loading({loadingPercentage}) {
 	return (
 		<section id="loading" className="mx-auto px-[3.5rem] h-dvh relative">

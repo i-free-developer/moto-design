@@ -14,7 +14,7 @@ const SiteLinks = [
 	{linkTo: '/contact', title: 'Contact Us', url: '#contact-us'},
 ]
 
-function SocialIconLinkItem({url, iconWhite, iconBlack, name, size=6, color='black'}) {
+function SocialIconLinkItem({url, iconWhite, iconBlack, color='black'}) {
 	return(
     <a href={url} className="h-[2rem] flex items-center">{color === 'black' ? iconBlack : iconWhite}</a>
 	)

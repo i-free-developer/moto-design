@@ -22,7 +22,7 @@ export default function Navbar({drawerStatus, handleClickDrawer}) {
 		<section id="navbar" className="fixed relative z-200 text-black w-screen px-[3.5rem] my-[2rem]">
 			<nav className="">
 				<div className="flex justify-between items-center">
-					<div onClick={handleClickDrawer} className="size-[1.2rem]">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
+					<div onClick={handleClickDrawer} className="size-[1.2rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
 					<Link to="/"><LogoIcon/></Link>
 					<LangButtons/>
 				</div>

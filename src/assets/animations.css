@@ -49,11 +49,11 @@
 
 @keyframes slide-vertical-out {
 	from {transform: translateY(0);}
-	to {transform: translateY(8rem);}
+	to {transform: translateY(10rem);}
 }
 
 @keyframes slide-vertical-in {
-	from {transform: translateY(6rem);}
+	from {transform: translateY(10rem);}
 	to {transform: translateY(0);}
 }
 
@@ -87,7 +87,6 @@
 .horizontal-bar-out {
 	animation: slide-vertical-out 1.5s ease-in-out;
 	animation-fill-mode: forwards;
-	display: none;
 }
 
 .hover-border {

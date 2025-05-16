@@ -55,31 +55,25 @@ function PixelsHeader() {
 }
 
 function ContactBody() {
+	const initData = {0: '', 1: '', 2: '', 3: ''}
 	const { callApi, loading, error } = useFakeApi();
 	const [currentStep, setCurrentStep] = useState(0)
-	const [finalData, setFinalData] = useState({})
+	const [finalData, setFinalData] = useState(initData)
 
-	function goBack() {
-		setCurrentStep(currentStep - 1)
-	}
-
-	function goNext() {
-		setCurrentStep(currentStep + 1)
-	}
+	function goBack() { setCurrentStep(currentStep - 1) }
+	function goNext() { setCurrentStep(currentStep + 1) }
+	function getInTouch() { setCurrentStep(0) }
 
 	const goSubmit = async () => {
 	    console.log('Submitted name:', finalData);
 	    try {
-	    	const result = await callApi({ data: 'success' });
+	    	const result = await callApi({ data: finalData });
 	      	console.log(result);
 			setCurrentStep(currentStep + 1)
+			setFinalData(initData)
 	    } catch (err) {
 	      	console.error(err);
 	    }
-	}
-
-	function getInTouch() {
-		setCurrentStep(0)
 	}
 
 	return (
@@ -92,6 +86,34 @@ function ContactBody() {
         	</div>
 		</div>
 	)
+}
+
+function FormGroup({currentStep, finalData, setFinalData, goSubmit}) {
+	const holderText = placeHolders[currentStep]
+	const handleFormInput = (e) => { setFinalData({...finalData, [currentStep]: e.target.value }) }
+	const handleSubmit = (e) => {
+		goSubmit()
+	    e.preventDefault(); // Prevent page reload
+	};
+
+	if (currentStep >= 4) { 
+		return (<SumbittedGroup/>) 
+	} else {
+		return (
+			<>
+				<div className="flex flex-col mt-[14.5rem] font-medium text-center">
+					<header className="text-[2rem]">Please leave your information</header>
+					<p className="text-base text-black/64 mt-[0.5rem]">we will response as soon as possible!</p>
+				</div>
+				<form className="mx-auto w-[50rem] mt-[7rem]" onSubmit={handleSubmit}>
+					<input autofocuse="true" type="text" name={`${currentStep}`} value={finalData[currentStep]} onChange={handleFormInput} className="h-[10.5rem] appearance-none border border-black border-4 rounded-full px-[6rem] text-black/64 text-5xl font-medium focus:outline-none focus:border-black block w-full placeholder-black/64" placeholder={holderText} required={true}></input>
+					<div className="mx-auto flex mt-[1.5rem] gap-[8px] items-center justify-center">
+						{ placeHolders.map((item, index) => <span className={`border border-4 w-[2rem] ${ currentStep === index ? 'border-black' : 'border-black/20'}`} key={index}></span>) }
+					</div>
+				</form>
+			</>
+		)
+	}
 }
 
 function ButtonGroups({currentStep, goBack, goNext, goSubmit, getInTouch, loading}) {
@@ -123,49 +145,6 @@ function ButtonNoDot({btnAction, btnText}) {
 	return (
 		<span className="min-w-[15rem] bg-black rounded-full h-[4.5rem] px-[2rem] flex items-center justify-center" onClick={btnAction}><span className="text-[#f7f7f7] text-[2rem] font-medium">{btnText}</span></span>
 	)
-}
-
-function FormGroup({currentStep, finalData, setFinalData}) {
-	const holderText = placeHolders[currentStep]
-	const [formData, setFormData] = useState({
-	    0: '',
-	    1: '',
-	    2: '',
-	    3: ''
-	 });
-
-	const handleFormInput = (e) => {
-	    setFormData({
-	      ...formData,
-	      [currentStep]: e.target.value
-	    });
-	    setFinalData(formData)
-	};
-
-	const handleSubmit = (e) => {
-		setFinalData(formData)
-	    console.log('Submitted name:', formData);
-	    e.preventDefault(); // Prevent page reload
-	};
-
-	if (currentStep >= 4) { 
-		return (<SumbittedGroup/>) 
-	} else {
-		return (
-			<>
-				<div className="flex flex-col mt-[14.5rem] font-medium text-center">
-					<header className="text-[2rem]">Please leave your information</header>
-					<p className="text-base text-black/64 mt-[0.5rem]">we will response as soon as possible!</p>
-				</div>
-				<form className="mx-auto w-[50rem] mt-[7rem]" onSubmit={handleSubmit}>
-					<input autofocuse="true" type="text" name={currentStep} value={formData[currentStep]} onChange={handleFormInput} className="h-[10.5rem] appearance-none border border-black border-4 rounded-full px-[6rem] text-black/64 text-5xl font-medium focus:outline-none focus:border-black block w-full placeholder-black/64" placeholder={holderText} required={true}></input>
-					<div className="mx-auto flex mt-[1.5rem] gap-[8px] items-center justify-center">
-						{ placeHolders.map((item, index) => <span className={`border border-4 w-[2rem] ${ currentStep === index ? 'border-black' : 'border-black/20'}`} key={index}></span>) }
-					</div>
-				</form>
-			</>
-		)
-	}
 }
 
 function SumbittedGroup() {

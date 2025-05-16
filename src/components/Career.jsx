@@ -105,7 +105,7 @@ function RoleCard({team, title, tags, index, id}) {
 				</div>
 				<hr className="border border-2 border-black/20 my-[3rem] w-[55rem]"></hr>
 			</div>
-			<ApplyButon id={id} key={index}/>
+			<ApplyButon id={id}/>
 		</article>
 	)
 }
@@ -121,8 +121,6 @@ function ApplyButon({id}) {
 			<span className="text-white font-medium text-2xl ml-[0.5rem]">Apply</span>
 			{isHovered ? ArrowElement : DotElement}
 		</Link>
-
-		// <Link to={`/role/${id}`} className="text-xl" key={index}>{item.title}</Link>
 	)
 }
 

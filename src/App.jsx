@@ -40,9 +40,9 @@ export default function App() {
           <Route exact path="/" element={<Home loadingPercentage={loadingPercentage} drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>} />
           <Route exact path="/about" element={<About drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>} />
           <Route exact path="/portfolio" element={<Portfolio drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>} />
-          <Route exact path="/career" element={<Career closeDrawer={closeDrawer}/>} />
-          <Route exact path="/contact" element={<Contact closeDrawer={closeDrawer}/>} />
-          <Route exact path="/role/:id" element={<RolePage closeDrawer={closeDrawer}/>} />
+          <Route exact path="/career" element={<Career drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>} />
+          <Route exact path="/contact" element={<Contact drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>} />
+          <Route exact path="/role/:id" element={<RolePage drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>} />
       </Routes>
       <CursorDot/>
     </BrowserRouter>

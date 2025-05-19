@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react'
 import { CopyRight, CompanyEmail } from '../data/site-data'
+import Navbar from './Navbar'
 
 const placeHolders = ['Name', 'Roles*', 'Enter your email*', 'A brief introduction about your project', ]
 
@@ -33,13 +34,17 @@ const useFakeApi = () => {
   return { callApi, loading, error };
 };
 
-export default function Contact({closeDrawer}) {
+export default function Contact({drawerStatus, closeDrawer, handleClickDrawer}) {
+	
 	return (
-		<section id="contact-us" className="mx-auto px-[3rem] my-[3rem] min-h-[80rem] relative flex flex-col justify-between" onClick={closeDrawer}>
-			<PixelsHeader/>
-			<ContactBody/>
-      		<CopyRightCard/>
-		</section>
+		<main className="mx-auto">
+      <Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
+			<section id="contact-us" className="mx-auto px-[3rem] my-[3rem] min-h-[80rem] relative flex flex-col justify-between" onClick={closeDrawer}>
+				<PixelsHeader/>
+				<ContactBody/>
+	      		<CopyRightCard/>
+			</section>
+		</main>
 	)
 }
 

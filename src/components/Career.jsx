@@ -1,37 +1,43 @@
 import { useState } from 'react'
 import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../data/site-data'
 import { Link } from "react-router-dom"
+import Navbar from './Navbar'
+import Footer from './Footer'
 
-export default function Career({closeDrawer}) {
+export default function Career({drawerStatus, closeDrawer, handleClickDrawer}) {
 	return (
-		<section id="career" className="mx-auto px-[4rem] mt-[15rem] flex flex-col gap-8 max-w-screen" onClick={closeDrawer}>
-			<h1 className="font-extrabold text-[5rem] uppercase">[Career]</h1>
-			<div className="flex items-center justify-between">
-				<h2 className="font-extrabold text-9xl uppercase">How we hire</h2>
-				<div className="px-8 py-4 border rounded-full flex gap-4 items-center justify-between">
-					<span className="font-medium text-2xl">Positions</span>
-					<span className="size-2 rounded-[50%] bg-slate-900"></span>
+		<main className="mx-auto">
+      		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
+			<section id="career" className="mx-auto px-[4rem] pt-[4rem] flex flex-col gap-8 max-w-screen" onClick={closeDrawer}>
+				<h1 className="font-extrabold text-[5rem] uppercase">[Career]</h1>
+				<div className="flex items-center justify-between">
+					<h2 className="font-extrabold text-9xl uppercase">How we hire</h2>
+					<div className="px-8 py-4 border rounded-full flex gap-4 items-center justify-between">
+						<span className="font-medium text-2xl">Positions</span>
+						<span className="size-2 rounded-[50%] bg-slate-900"></span>
+					</div>
 				</div>
-			</div>
-			<div className="flex items-center my-[6rem]">
-				<ArrowGroup/>
-				<p className="ml-[57rem] w-[38rem] text-[2rem] leading-10">After the <span className="font-bold">portfolio</span> meets our requirement, on average <span className="font-bold">1~3 week</span> interview process with <span className="font-bold">2 inteviews</span>.</p>
-			</div>
+				<div className="flex items-center my-[6rem]">
+					<ArrowGroup/>
+					<p className="ml-[57rem] w-[38rem] text-[2rem] leading-10">After the <span className="font-bold">portfolio</span> meets our requirement, on average <span className="font-bold">1~3 week</span> interview process with <span className="font-bold">2 inteviews</span>.</p>
+				</div>
 
-			<div className="flex items-center flex-nowrap min-w-full my-[6rem]">
-				{TimelineItems.map(item => <TimeLineElement {...item} key={item.number} />)}
-			</div>
+				<div className="flex items-center flex-nowrap min-w-full my-[6rem]">
+					{TimelineItems.map(item => <TimeLineElement {...item} key={item.number} />)}
+				</div>
 
-			<div className="mx-auto px-[4rem] text-center ">
-				<h2 className="font-bold text-[5.5rem] uppercase my-[2.5rem]">Life at moto</h2>
-				<p className="text-[2.5rem] font-normal">We believe great design is borderless, and so are the minds behind it.</p>
-				<p className="text-[2.5rem] font-normal">We’re not everywhere — but we think like we are.</p>
-			</div>
+				<div className="mx-auto px-[4rem] text-center ">
+					<h2 className="font-bold text-[5.5rem] uppercase my-[2.5rem]">Life at moto</h2>
+					<p className="text-[2.5rem] font-normal">We believe great design is borderless, and so are the minds behind it.</p>
+					<p className="text-[2.5rem] font-normal">We’re not everywhere — but we think like we are.</p>
+				</div>
 
-			<PerksContainer/>
-			<RolesContainer/>
-			<HowToApply/>
-		</section>
+				<PerksContainer/>
+				<RolesContainer/>
+				<HowToApply/>
+			</section>
+			<Footer/>
+		</main>
 	)
 }
 

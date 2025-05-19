@@ -1,14 +1,29 @@
+import Loading from './Loading'
+import Navbar from './Navbar'
 import { ServicesItems, CompanyDomain } from '../data/site-data'
 const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'section-drawer-out'}
 const serviceClasses = {initial: '', opened: 'horizontal-bar-out', closed: 'horizontal-bar-in'}
 
-export default function Home({drawerStatus, closeDrawer}) {
+export default function Home({drawerStatus, closeDrawer, loadingPercentage, handleClickDrawer}) {
 	const headerClassName = headerClasses[drawerStatus]
 	const serviceClassName = serviceClasses[drawerStatus]
+	if (loadingPercentage <= 100) {
+		return <Loading loadingPercentage={loadingPercentage}/>
+	} else {
+		return (
+			<main className="mx-auto h-screen">
+      			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
+				<HomeSection headerClassName={headerClassName} serviceClassName={serviceClassName} closeDrawer={closeDrawer}/>
+			</main>
+		)
+	}
+}
+
+function HomeSection({headerClassName, serviceClassName, closeDrawer}) {
 	return (
-		<section id="landing" className="mx-auto h-screen text-black relative" onClick={closeDrawer}>
-			<div className="min-h-[calc(100vh-14rem)] relative flex flex-col justify-center">
-				<div className={`w-4/6 ml-[8rem] ${headerClassName}`}>
+		<section id="landing" className="mx-auto text-black relative" onClick={closeDrawer}>
+			<div className="h-[calc(100vh-9rem)] relative">
+				<div className={`w-4/6 ml-[8rem] translate-y-1/2 ${headerClassName}`}>
 					<h1 className="uppercase text-9xl font-bold">Pixels are the atomic units of design.</h1>
 				</div>
 				<VerticalElement headerClassName={headerClassName}/>
@@ -20,7 +35,7 @@ export default function Home({drawerStatus, closeDrawer}) {
 
 function ServiceOfferings({serviceClassName}) {
 	return (
-		<div className={`absolute left-0 bottom-[10rem] w-full ${serviceClassName}`}>
+		<div className={`absolute left-0 bottom-0 w-full ${serviceClassName}`}>
 			<hr className="border border-2 border-black/40 w-full"></hr>
 			<div className="mx-auto w-full flex items-center justify-between mt-[1.5rem] px-[3rem] text-xl">
 				<div className="flex items-center justify-around gap-4">

@@ -3,7 +3,6 @@ import './App.css'
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from './components/Navbar'
-import Footer from './components/Footer'
 import Home from './components/Home';
 import CursorDot from './components/CursorDot';
 import About from './components/About'
@@ -11,7 +10,6 @@ import Portfolio from './components/Portfolio'
 import Career from './components/Career'
 import Contact from './components/Contact'
 import RolePage from './components/RolePage'
-import Loading from './components/Loading'
 
 export default function App() {
   const [drawerStatus, setDrawerStatus] = useState('initial')
@@ -35,31 +33,20 @@ export default function App() {
 
   function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
 
-  if (loadingPercentage <= 100) { 
-    return (
-      <div>
-        <Loading loadingPercentage={loadingPercentage}/>
-        <CursorDot/>
-      </div>
-      )
-  } else {
-    return ( 
-      <BrowserRouter className="mx-auto">
-        <ScrollToTop/>
-        <Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-        <Routes>
-            <Route exact path="/" element={<Home drawerStatus={drawerStatus} closeDrawer={closeDrawer}/>} />
-            <Route exact path="/career" element={<Career closeDrawer={closeDrawer}/>} />
-            <Route exact path="/role/:id" element={<RolePage closeDrawer={closeDrawer}/>} />
-            <Route exact path="/contact" element={<Contact closeDrawer={closeDrawer}/>} />
-            <Route exact path="/about" element={<About closeDrawer={closeDrawer}/>} />
-            <Route exact path="/portfolio" element={<Portfolio closeDrawer={closeDrawer}/>} />
-        </Routes>
-        <CursorDot/>
-        <Footer/>
-      </BrowserRouter>
-    )
-  }
+  return ( 
+    <BrowserRouter className="mx-auto">
+      <ScrollToTop/>
+      <Routes>
+          <Route exact path="/" element={<Home loadingPercentage={loadingPercentage} drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>} />
+          <Route exact path="/career" element={<Career closeDrawer={closeDrawer}/>} />
+          <Route exact path="/role/:id" element={<RolePage closeDrawer={closeDrawer}/>} />
+          <Route exact path="/contact" element={<Contact closeDrawer={closeDrawer}/>} />
+          <Route exact path="/about" element={<About closeDrawer={closeDrawer}/>} />
+          <Route exact path="/portfolio" element={<Portfolio closeDrawer={closeDrawer}/>} />
+      </Routes>
+      <CursorDot/>
+    </BrowserRouter>
+  )
 }
 
 function ScrollToTop() {

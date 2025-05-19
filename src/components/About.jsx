@@ -9,7 +9,7 @@ export default function About({drawerStatus, closeDrawer, handleClickDrawer}) {
 	return (
 		<main className="mx-auto">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="about" className="mx-auto px-[3rem] my-[3rem]" onClick={closeDrawer}>
+			<section id="about" className="mx-auto px-[3rem] pt-[3rem]" onClick={closeDrawer}>
 				<AboutHeader/>
 				<AboutBrand/>
 				<AboutStatus/>
@@ -18,8 +18,8 @@ export default function About({drawerStatus, closeDrawer, handleClickDrawer}) {
 					<OurTeam />
 					{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
 				</div>
-				<AboutInfoCard/>
-				<AboutFooter/>
+				<SiteInfoCard/>
+				<SiteFooter/>
 			</section>
 		</main>
 	)
@@ -123,7 +123,7 @@ function SlideIcons() {
 }
 
 
-function AboutInfoCard() {
+function SiteInfoCard() {
 	return (
 		<div style={{
 			backgroundImage: `url(${backgroundImage})`,
@@ -156,7 +156,7 @@ function AboutInfoCard() {
 	)
 }
 
-function AboutFooter() {
+function SiteFooter() {
 	return (
 		<div className="flex items-center justify-between px-[3rem] mt-[2rem] mb-[4rem]">
 			<Link to="/"><LogoIcon/></Link>
@@ -241,3 +241,7 @@ function LogoIconSmallWhite() {
 		</svg>
 	)
 }
+
+export { SiteInfoCard,  SiteFooter }
+
+

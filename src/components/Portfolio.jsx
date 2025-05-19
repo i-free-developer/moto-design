@@ -1,19 +1,26 @@
 import { useState } from 'react'
 import { DesktopPortfolioItems, MobilePortfolioItems } from '../data/site-data'
+import Navbar from './Navbar'
+import { SiteInfoCard,  SiteFooter } from './About'
 
-export default function Portfolio({closeDrawer}) {
+export default function Portfolio({drawerStatus, closeDrawer, handleClickDrawer}) {
 	const [isMobile, setIsMobile] = useState(false)
 
 	return (
-		<section id="portfolio" className="mx-auto px-[4rem] mt-[15rem] mb-[3rem]" onClick={closeDrawer}>
-			<PortfolioHeader/>
-			<div className="flex items-center gap-[0.5rem] mt-[2rem] mb-[6rem] text-[1.75rem]">
-				<span onClick={() => setIsMobile(true)} className={`p-2 ${isMobile ? '' : ''}`}><MobileIcon/></span>
-				<span onClick={() => setIsMobile(false)} className={`p-2 ${!isMobile ? '' : ''}`}><DesktopIcon/></span>
-			</div>
+		<main className="mx-auto">
+      <Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
+			<section id="portfolio" className="mx-auto px-[4rem] mt-[15rem] mb-[3rem]" onClick={closeDrawer}>
+				<PortfolioHeader/>
+				<div className="flex items-center gap-[0.5rem] mt-[2rem] mb-[6rem] text-[1.75rem]">
+					<span onClick={() => setIsMobile(true)} className={`p-2 ${isMobile ? '' : ''}`}><MobileIcon/></span>
+					<span onClick={() => setIsMobile(false)} className={`p-2 ${!isMobile ? '' : ''}`}><DesktopIcon/></span>
+				</div>
 
-      {isMobile ? <MobilePortfolios/> : <DesktopPortfolios/>}
-		</section>
+	      {isMobile ? <MobilePortfolios/> : <DesktopPortfolios/>}
+	      <SiteInfoCard/>
+				<SiteFooter/>
+			</section>
+		</main>
 	)
 }
 

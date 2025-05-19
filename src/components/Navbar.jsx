@@ -114,3 +114,5 @@ function LangArrowIcon() {
 		<svg width="6" height="5" viewBox="0 0 6 5" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3 5L5.59808 0.5H0.401924L3 5Z" fill="currentColor"/></svg>
 	)
 }
+
+export { LogoIcon }

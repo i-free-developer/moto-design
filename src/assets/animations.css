@@ -47,6 +47,15 @@
   }
 }
 
+@keyframes horizontal-scroll {
+	from {
+    left: 0%;
+  }
+  to {
+    left: -100%
+  }
+}
+
 @keyframes slide-vertical-out {
 	from {transform: translateY(0);}
 	to {transform: translateY(10rem);}
@@ -106,4 +115,8 @@
 
 .scroll-header {
 	animation: infinite-scroll 20s linear infinite backwards;
+}
+
+.scroll-icons {
+	animation: horizontal-scroll 20s linear infinite backwards;
 }

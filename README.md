@@ -54,3 +54,11 @@ https://codepen.io/girish/pen/dgWqBr
 
 
 letter-space tracking-[-2%]
+
+line-height leading-[20px]
+<p class="leading-none">Tight (1) - Good for headings</p>
+<p class="leading-tight">Tight (1.25)</p>
+<p class="leading-snug">Snug (1.375)</p>
+<p class="leading-normal">Normal (1.5) - Default</p>
+<p class="leading-relaxed">Relaxed (1.625)</p>
+<p class="leading-loose">Loose (2) - Good for long text</p>

@@ -17,9 +17,9 @@ export default function Portfolio() {
 	return (
 		<main className="mx-auto">
       <Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="portfolio" className="mx-auto px-[4rem] mt-[15rem] mb-[3rem]" onClick={closeDrawer}>
+			<section id="portfolio" className="mx-auto px-[4rem] mt-[8rem] mb-[3rem]" onClick={closeDrawer}>
 				<PortfolioHeader/>
-				<div className="flex items-center gap-[0.5rem] mt-[2rem] mb-[6rem] text-[1.75rem]">
+				<div className="flex items-center gap-[0.5rem] mt-[1rem] mb-[4rem] text-[1.75rem]">
 					<span onClick={() => setIsMobile(true)} className={`p-2 ${isMobile ? '' : ''}`}><MobileIcon/></span>
 					<span onClick={() => setIsMobile(false)} className={`p-2 ${!isMobile ? '' : ''}`}><DesktopIcon/></span>
 				</div>
@@ -35,10 +35,13 @@ export default function Portfolio() {
 function PortfolioHeader() {
 	return (
 		<article className="flex justify-between my-[4rem]">
-			<header className="text-[5rem] w-[46rem]">We don't do cookie-cutter solutions</header>
-			<div className="flex flex-col justify-between items-end gap-[3rem] text-right">
-				<p className="text-2xl text-black/64 w-[18rem]">Backing the best Web 3.0 founders & products</p>
-				<p className="text-[2rem] text-black/64 w-[26rem]">Our user-centered design encourages productivity and boosts revenue</p>
+			<div className="text-[5rem] font-normal tracking-[-2%] leading-[96px]">
+				<header className="">We don't do cookie-</header>
+				<header className="">cutter solutions</header>
+			</div>
+			<div className="flex flex-col justify-between items-end gap-[3rem] text-right tracking-[-2%] font-normal text-right">
+				<p className="text-2xl text-black/64 w-[18rem] leading-[24px]">Backing the best Web 3.0 founders & products</p>
+				<p className="text-[2rem] text-black/64 w-[26rem] leading-[32px]">Our user-centered design encourages productivity and boosts revenue</p>
 			</div>
 		</article>
 	)
@@ -72,16 +75,23 @@ function DesktopCard({title, description, colums, image, url}) {
 				<div className="w-full h-full overflow-hidden rounded-[inherit]">
 					<img src={image} className={`w-full h-full object-cover object-center rounded-[inherit] ${isHovered ? 'scale-104' : ''}`} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}></img>
 				</div>
-				<div className="z-10 absolute left-6 right-6 bottom-6 px-6 py-4 bg-white rounded-2xl flex justify-between items-center" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-					<div className="max-w-3/4">
-						<header className="font-bold mb-2 text-2xl">{title}</header>
-						<p className="text-xl">{description}</p>
-					</div>
-					<div className="size-[72px] bg-black/16 flex items-center justify-center rounded-full">
-						<div className={`w-10 ${isHovered ? '-rotate-45' : '-rotate-0'} flex items-center justify-center transition-rotate transition-transform duration-400`}><ArrowRight/></div>
-					</div>
-				</div>
+				<DesktopBottomCard title={title} description={description}/>
 			</a>
+		</div>
+	)
+}
+
+function DesktopBottomCard({title, description}) {
+	const [isHovered, setIsHovered] = useState(true)
+	return (
+		<div className="z-10 absolute left-6 right-6 bottom-6 px-6 py-4 bg-white rounded-2xl flex justify-between items-center" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+			<div className="max-w-3/4">
+				<header className="font-bold mb-2 text-2xl">{title}</header>
+				<p className="text-xl">{description}</p>
+			</div>
+			<div className="size-[72px] bg-black/16 flex items-center justify-center rounded-full">
+				<div className={`w-10 ${isHovered ? '-rotate-45' : '-rotate-0'} flex items-center justify-center transition-rotate transition-transform duration-400`}><ArrowRight/></div>
+			</div>
 		</div>
 	)
 }

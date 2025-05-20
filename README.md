@@ -53,7 +53,7 @@ https://codepen.io/girish/pen/dgWqBr
 
 
 
-letter-space tracking-[-2%]
+letter-space tracking-[-2%] leading-[20px]
 
 line-height leading-[20px]
 <p class="leading-none">Tight (1) - Good for headings</p>

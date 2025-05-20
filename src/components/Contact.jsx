@@ -163,7 +163,7 @@ function ButtonGroups({currentStep, goBack, goNext, goSubmit, getInTouch, loadin
 
 function ButtonWithDot({btnAction, btnText}) {
 	return (
-		<span className="min-w-[15rem] bg-black rounded-full h-[4.5rem] px-[2rem] flex items-center justify-between" onClick={btnAction}><span className="text-[#f7f7f7] text-[2rem] font-medium">{btnText}</span><span className="size-[0.5rem] bg-white rounded-full ml-[5rem]"></span></span>
+		<span className="min-w-[15rem] bg-black rounded-full h-[4.5rem] px-[2rem] flex items-center justify-between" onClick={btnAction}><span className="text-[#f7f7f7] text-[2rem] font-medium">{btnText}</span><span className="size-[0.5rem] bg-white rounded-full ml-[5rem] z-300"></span></span>
 	)
 }
 

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from "react-router-dom"
 import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../data/site-data'
 import Navbar from './Navbar'
-import Footer from './Footer'
+import { SiteInfoCard,  SiteFooter } from './About'
 
 export default function Career() {
 	const [drawerStatus, setDrawerStatus] = useState('initial')
@@ -44,8 +44,9 @@ export default function Career() {
 				<PerksContainer/>
 				<RolesContainer/>
 				<HowToApply/>
+				<SiteInfoCard/>
+				<SiteFooter/>
 			</section>
-			<Footer/>
 		</main>
 	)
 }

@@ -12,7 +12,6 @@ import Contact from './components/Contact'
 import RolePage from './components/RolePage'
 
 export default function App() {
-  const [drawerStatus, setDrawerStatus] = useState('initial')
   const [loadingPercentage, setLoadingPercentage] = useState(0);
   
   useEffect(() => {
@@ -24,27 +23,18 @@ export default function App() {
       return () => clearInterval(intervalElement);
     }, []);
 
-  function handleClickDrawer() {
-    let newStatus; 
-    if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' } 
-    if (drawerStatus === 'opened') { newStatus = 'closed' }
-    setDrawerStatus(newStatus)
-  }
-
-  function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
-
   return ( 
     <BrowserRouter className="mx-auto">
       <ScrollToTop/>
-      <Routes>
-          <Route exact path="/" element={<Home loadingPercentage={loadingPercentage} drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>} />
-          <Route exact path="/about" element={<About drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>} />
-          <Route exact path="/portfolio" element={<Portfolio drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>} />
-          <Route exact path="/career" element={<Career drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>} />
-          <Route exact path="/contact" element={<Contact drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>} />
-          <Route exact path="/role/:id" element={<RolePage drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>} />
-      </Routes>
       <CursorDot/>
+      <Routes>
+          <Route exact path="/" element={<Home loadingPercentage={loadingPercentage}/>} />
+          <Route exact path="/about" element={<About/>} />
+          <Route exact path="/portfolio" element={<Portfolio/>} />
+          <Route exact path="/career" element={<Career/>} />
+          <Route exact path="/contact" element={<Contact/>} />
+          <Route exact path="/role/:id" element={<RolePage/>} />
+      </Routes>
     </BrowserRouter>
   )
 }

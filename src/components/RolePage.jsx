@@ -1,10 +1,20 @@
+import { useState } from 'react'
 import { useParams } from "react-router-dom";
 import { OpenningRoles } from '../data/site-data'
 import { HowToApply } from './Career'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
-export default function RolePage({drawerStatus, closeDrawer, handleClickDrawer}) {
+export default function RolePage() {
+	const [drawerStatus, setDrawerStatus] = useState('initial')
+	function handleClickDrawer() {
+		let newStatus; 
+		if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' } 
+		if (drawerStatus === 'opened') { newStatus = 'closed' }
+		setDrawerStatus(newStatus)
+	}
+  	function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
+
 	let { id } = useParams();
 
 	const {title, roleTag, responsibilities, requirements, tags} = OpenningRoles.find(e => e.id == id)

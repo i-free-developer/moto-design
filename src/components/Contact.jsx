@@ -34,7 +34,15 @@ const useFakeApi = () => {
   return { callApi, loading, error };
 };
 
-export default function Contact({drawerStatus, closeDrawer, handleClickDrawer}) {
+export default function Contact() {
+	const [drawerStatus, setDrawerStatus] = useState('initial')
+	function handleClickDrawer() {
+		let newStatus; 
+		if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' } 
+		if (drawerStatus === 'opened') { newStatus = 'closed' }
+		setDrawerStatus(newStatus)
+	}
+  	function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
 
 	return (
 		<main className="mx-auto">

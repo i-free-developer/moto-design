@@ -20,12 +20,10 @@ function useScrollTo() {
 export default function Navbar({drawerStatus, handleClickDrawer}) {
 	return (
 		<section id="navbar" className="fixed relative z-200 text-black w-screen px-[3.5rem] my-[2rem]">
-			<nav className="">
-				<div className="flex justify-between items-center">
-					<div onClick={handleClickDrawer} className="size-[1.2rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
-					<Link to="/"><LogoIcon/></Link>
-					<LangButtons/>
-				</div>
+			<nav className="flex justify-between items-center">
+				<div onClick={handleClickDrawer} className="size-[1.2rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
+				<Link to="/"><LogoIcon/></Link>
+				<LangButtons/>
 			</nav>
 			{<DrawerCard drawerStatus={drawerStatus}/>}
 		</section>
@@ -38,7 +36,7 @@ function DrawerCard({drawerStatus}) {
 	const drawerClassName = drawerClasses[drawerStatus]
 
 	return(
-		<div className={`p-[4rem] w-[35rem] absolute top-[6rem] left-[-40rem] z-100 mx-auto bg-[#EAEAEA]/40 backdrop-blur-md rounded-3xl ${drawerClassName}`}>
+		<div className={`p-[4rem] w-[35rem] absolute top-[5rem] left-[-40rem] z-100 mx-auto bg-[#EAEAEA]/40 backdrop-blur-md rounded-3xl ${drawerClassName}`}>
 			<div className="flex flex-col items-start gap-[2.5rem] mt-[4rem]">
         {SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>
@@ -115,4 +113,4 @@ function LangArrowIcon() {
 	)
 }
 
-export { LogoIcon }
+export { LogoIcon, Navbar }

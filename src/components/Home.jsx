@@ -1,12 +1,24 @@
+import { useState } from 'react'
 import Loading from './Loading'
 import Navbar from './Navbar'
 import { ServicesItems, CompanyDomain } from '../data/site-data'
 const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'section-drawer-out'}
 const serviceClasses = {initial: '', opened: 'horizontal-bar-out', closed: 'horizontal-bar-in'}
 
-export default function Home({drawerStatus, closeDrawer, loadingPercentage, handleClickDrawer}) {
+export default function Home({loadingPercentage}) {
+	const [drawerStatus, setDrawerStatus] = useState('initial')
+	function handleClickDrawer() {
+		let newStatus; 
+		if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' } 
+		if (drawerStatus === 'opened') { newStatus = 'closed' }
+		setDrawerStatus(newStatus)
+	}
+
+  	function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
+
 	const headerClassName = headerClasses[drawerStatus]
 	const serviceClassName = serviceClasses[drawerStatus]
+
 	if (loadingPercentage <= 100) {
 		return <Loading loadingPercentage={loadingPercentage}/>
 	} else {

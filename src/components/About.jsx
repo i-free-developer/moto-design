@@ -1,11 +1,21 @@
-import Navbar from './Navbar'
+import { useState } from 'react'
+import { Link } from "react-router-dom"
+import { Navbar, LogoIcon } from './Navbar'
 import { TeamMembers, CopyRight, CompanyEmail } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem, ByBitIcon, AwsIcon, VenturesIcon, GateIcon, GateIconBlack} from './SocialIconsCollection'
-import { LogoIcon } from './Navbar'
 import backgroundImage from '../assets/dashed-bg.png'
-import { Link } from "react-router-dom"
 
-export default function About({drawerStatus, closeDrawer, handleClickDrawer}) {
+export default function About() {
+	const [drawerStatus, setDrawerStatus] = useState('initial')
+	function handleClickDrawer() {
+		let newStatus; 
+		if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' } 
+		if (drawerStatus === 'opened') { newStatus = 'closed' }
+		setDrawerStatus(newStatus)
+	}
+
+  	function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
+
 	return (
 		<main className="mx-auto">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>

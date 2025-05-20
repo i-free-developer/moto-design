@@ -1,10 +1,19 @@
 import { useState } from 'react'
-import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../data/site-data'
 import { Link } from "react-router-dom"
+import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../data/site-data'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
-export default function Career({drawerStatus, closeDrawer, handleClickDrawer}) {
+export default function Career() {
+	const [drawerStatus, setDrawerStatus] = useState('initial')
+	function handleClickDrawer() {
+		let newStatus; 
+		if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' } 
+		if (drawerStatus === 'opened') { newStatus = 'closed' }
+		setDrawerStatus(newStatus)
+	}
+  	function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
+
 	return (
 		<main className="mx-auto">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>

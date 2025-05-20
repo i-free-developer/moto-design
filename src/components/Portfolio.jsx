@@ -3,8 +3,16 @@ import { DesktopPortfolioItems, MobilePortfolioItems } from '../data/site-data'
 import Navbar from './Navbar'
 import { SiteInfoCard,  SiteFooter } from './About'
 
-export default function Portfolio({drawerStatus, closeDrawer, handleClickDrawer}) {
+export default function Portfolio() {
 	const [isMobile, setIsMobile] = useState(false)
+	const [drawerStatus, setDrawerStatus] = useState('initial')
+	function handleClickDrawer() {
+		let newStatus; 
+		if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' } 
+		if (drawerStatus === 'opened') { newStatus = 'closed' }
+		setDrawerStatus(newStatus)
+	}
+  	function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
 
 	return (
 		<main className="mx-auto">

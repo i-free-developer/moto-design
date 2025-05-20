@@ -1,11 +1,11 @@
 @keyframes drawer-slide-in {
-	from {transform: translateX(-20rem);}
-	to {transform: translateX(3.5rem)}
+	from {transform: translateX(-39rem);}
+	to {transform: translateX(0rem)}
 }
 
 @keyframes drawer-slide-out {
-	from {transform: translateX(3.5rem);}
-	to {transform: translateX(-20rem)}
+	from {transform: translateX(0rem);}
+	to {transform: translateX(-39rem)}
 }
 
 @keyframes section-slide-in {
@@ -63,34 +63,34 @@
 }
 
 .drawer-in {
-	animation: drawer-slide-in 1s ease-in-out;
+	animation: drawer-slide-in 1.8s linear;
 	animation-fill-mode: forwards;
-	left: 1rem;
+/*	left: 1rem;*/
 }
 
 .drawer-out {
-	animation: drawer-slide-out 1s ease-in-out ;
+	animation: drawer-slide-out 1.8s linear;
 	animation-fill-mode: forwards;
 /*	animation-direction: reverse;*/
-	left: -20rem;
+/*	left: -20rem;*/
 }
 
 .section-drawer-in {
-	animation: section-slide-in 1.5s ease-in-out;
+	animation: section-slide-in 1.8s linear;
 	animation-fill-mode: forwards;
 }
 
 .section-drawer-out {
-	animation: section-slide-out 1.5s ease-in-out;
-/*	animation-fill-mode: forwards;*/
+	animation: section-slide-out 1.8s linear;
+	animation-fill-mode: forwards;
 }
 
 .horizontal-bar-in {
-	animation: slide-vertical-in 1.5s ease-in-out;
+	animation: slide-vertical-in 1.8s linear;
 }
 
 .horizontal-bar-out {
-	animation: slide-vertical-out 1.5s ease-in-out;
+	animation: slide-vertical-out 1.8s linear;
 	animation-fill-mode: forwards;
 }
 

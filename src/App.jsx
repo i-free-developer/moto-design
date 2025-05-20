@@ -34,6 +34,7 @@ export default function App() {
           <Route exact path="/career" element={<Career/>} />
           <Route exact path="/contact" element={<Contact/>} />
           <Route exact path="/role/:id" element={<RolePage/>} />
+          <Route path="*" element={<Home loadingPercentage={loadingPercentage}/>} />
       </Routes>
     </BrowserRouter>
   )

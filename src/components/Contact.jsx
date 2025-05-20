@@ -35,14 +35,14 @@ const useFakeApi = () => {
 };
 
 export default function Contact({drawerStatus, closeDrawer, handleClickDrawer}) {
-	
+
 	return (
 		<main className="mx-auto">
       <Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="contact-us" className="mx-auto px-[3rem] my-[3rem] min-h-[80rem] relative flex flex-col justify-between" onClick={closeDrawer}>
+			<section id="contact-us" className="mx-auto px-[3rem] relative" onClick={closeDrawer}>
 				<PixelsHeader/>
 				<ContactBody/>
-	      		<CopyRightCard/>
+	      <CopyRightCard/>
 			</section>
 		</main>
 	)
@@ -50,10 +50,13 @@ export default function Contact({drawerStatus, closeDrawer, handleClickDrawer}) 
 
 function PixelsHeader() {
 	return (
-		<div className="overflow-hidden relative h-[13.75rem]">
-			<div className="flex absolute scroll-header gap-[6rem]">
-				<header className="text-[13.75rem] uppercase font-bold px-[3rem] text-nowrap">Pixels are the atomic units of design.</header>
-				<header className="text-[13.75rem] uppercase font-bold px-[3rem] text-nowrap">Pixels are the atomic units of design.</header>
+		<div className="mt-0 overflow-hidden flex flex-col items-center justify-center will-change-transform">
+			<div className="whitespace-nowrap flex">
+				<div className="flex gap-[4rem] scroll-header">
+					<span className="inline-block text-[13.75rem] uppercase font-bold text-nowrap">Pixels are the atomic units of design.</span>
+					<span className="inline-block text-[13.75rem] uppercase font-bold text-nowrap">Pixels are the atomic units of design.</span>
+					<span className="inline-block text-[13.75rem] uppercase font-bold text-nowrap">Pixels are the atomic units of design.</span>
+				</div>
 			</div>
 		</div>
 	)
@@ -68,6 +71,7 @@ function ContactBody() {
 	function goBack() { setCurrentStep(currentStep - 1) }
 	function goNext() { setCurrentStep(currentStep + 1) }
 	function getInTouch() { setCurrentStep(0) }
+	function goToStep(e) { console.log(e.target.dataset.step); setCurrentStep(parseInt(e.target.dataset.step))}
 
 	const goSubmit = async () => {
 	    console.log('Submitted name:', finalData);
@@ -82,8 +86,8 @@ function ContactBody() {
 	}
 
 	return (
-		<div className="absolute top-[9.8rem] left-[4rem] right-[4rem] flex flex-col items-center justify-between backdrop-blur-sm bg-gray-100/40 rounded-3xl">
-			<FormGroup currentStep={currentStep} goSubmit={goSubmit} finalData={finalData} setFinalData={setFinalData}/>
+		<div className="px-[4rem] flex flex-col items-center justify-between backdrop-blur-sm bg-gray-100/40 rounded-3xl">
+			<FormGroup currentStep={currentStep} goSubmit={goSubmit} finalData={finalData} setFinalData={setFinalData} goToStep={goToStep}/>
 			<div className="flex items-center justify-center w-full mt-[10rem] p-[3.5rem]">
       	<ThankyouCard/>
 				<ButtonGroups currentStep={currentStep} loading={loading} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
@@ -93,7 +97,7 @@ function ContactBody() {
 	)
 }
 
-function FormGroup({currentStep, finalData, setFinalData, goSubmit}) {
+function FormGroup({currentStep, finalData, setFinalData, goSubmit, goToStep}) {
 	const holderText = placeHolders[currentStep]
 	const handleFormInput = (e) => { setFinalData({...finalData, [currentStep]: e.target.value }) }
 	const handleSubmit = (e) => {
@@ -112,13 +116,22 @@ function FormGroup({currentStep, finalData, setFinalData, goSubmit}) {
 				</div>
 				<form className="mx-auto w-[50rem] mt-[7rem]" onSubmit={handleSubmit}>
 					<input autofocuse="true" type="text" name={`${currentStep}`} value={finalData[currentStep]} onChange={handleFormInput} className="h-[10.5rem] appearance-none border border-black border-4 rounded-full px-[6rem] text-black/64 text-5xl font-medium focus:outline-none focus:border-black block w-full placeholder-black/64" placeholder={holderText} required={true}></input>
-					<div className="mx-auto flex mt-[1.5rem] gap-[8px] items-center justify-center">
-						{ placeHolders.map((item, index) => <span className={`border border-4 w-[2rem] ${ currentStep === index ? 'border-black' : 'border-black/20'}`} key={index}></span>) }
-					</div>
+					<BarGroup currentStep={currentStep} goToStep={goToStep}/>
 				</form>
 			</>
 		)
 	}
+}
+
+function BarGroup({currentStep, goToStep}) {
+	return (
+		<div className="mx-auto flex gap-[8px] items-center justify-center">
+			<span className="py-[1.5rem] flex items-center justify-center" data-step="0" onClick={goToStep}><span className={`border border-4 w-[2rem] ${ currentStep === 0 ? 'border-black' : 'border-black/20'}`} data-step="0" onClick={goToStep}></span></span>
+			<span className="py-[1.5rem] flex items-center justify-center" data-step="1" onClick={goToStep}><span className={`border border-4 w-[2rem] ${ currentStep === 1 ? 'border-black' : 'border-black/20'}`} data-step="1" onClick={goToStep}></span></span>
+			<span className="py-[1.5rem] flex items-center justify-center" data-step="2" onClick={goToStep}><span className={`border border-4 w-[2rem] ${ currentStep === 2 ? 'border-black' : 'border-black/20'}`} data-step="2" onClick={goToStep}></span></span>
+			<span className="py-[1.5rem] flex items-center justify-center" data-step="3" onClick={goToStep}><span className={`border border-4 w-[2rem] ${ currentStep === 3 ? 'border-black' : 'border-black/20'}`} data-step="3" onClick={goToStep}></span></span>
+		</div>
+	)
 }
 
 function ButtonGroups({currentStep, goBack, goNext, goSubmit, getInTouch, loading}) {
@@ -168,8 +181,9 @@ function SumbittedGroup() {
 
 function ThankyouCard() {
 	return (
-		<div className="w-full md:w-1/4 text-wrap relative">
-			<p className="text-wrap text-base font-medium">Thank you for your attention! Whether it's product consultation, cooperation invitations, or valuable suggestions, we will listen attentively.</p>
+		<div className="w-full md:w-1/5 text-wrap relative">
+			<p className="text-wrap text-base font-medium">Thank you for your attention!</p>
+			<p className="text-wrap text-base font-medium">Whether it's product consultation, cooperation invitations, or valuable suggestions, we will listen attentively.</p>
     	<div className="absolute left-0 -top-[4rem]">{<StarIcon/>}</div>
 		</div>
 	)
@@ -185,11 +199,7 @@ function EmailCard() {
 }
 
 function CopyRightCard() {
-	return (
-		<div className="mx-auto">
-      <p className="text-center text-2xl py-[1rem]">{CopyRight}</p>
-    </div>
-	)
+	return (<p className="my-[1rem] text-center text-black/50 text-xs font-medium">{CopyRight}</p>)
 }
 
 function SubmittedIcon() {

@@ -39,12 +39,8 @@
 }
 
 @keyframes infinite-scroll {
-	from {
-    left: 0%;
-  }
-  to {
-    left: -100%
-  }
+/*  0% { transform: translateX(0%); }*/
+  100% { transform: translateX(-100%); }
 }
 
 @keyframes horizontal-scroll {
@@ -114,7 +110,12 @@
 }
 
 .scroll-header {
-	animation: infinite-scroll 20s linear infinite backwards;
+	animation: infinite-scroll 25s infinite linear;
+}
+
+.scroll-header-2 {
+	animation: infinite-scroll 20s linear infinite;
+	animation-delay: 10s;
 }
 
 .scroll-icons {

@@ -51,6 +51,7 @@ infinite scroll
 https://codesandbox.io/p/sandbox/infinite-horizontal-auto-scroll-y82f8?file=%2Fsrc%2Fstyles.css%3A31%2C49-31%2C58
 https://codepen.io/girish/pen/dgWqBr
 
+scp -r dist/* deploy@moto.shanghaipadel.com:staging/dist
 
 
 letter-space tracking-[-2%] leading-[20px]

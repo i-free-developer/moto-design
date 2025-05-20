@@ -34,7 +34,7 @@ export default function Home({loadingPercentage}) {
 function HomeSection({headerClassName, serviceClassName, closeDrawer}) {
 	return (
 		<section id="landing" className="mx-auto text-black relative" onClick={closeDrawer}>
-			<div className="h-[calc(100vh-9rem)] relative">
+			<div className="h-[calc(100vh-10rem)] relative">
 				<div className={`w-4/6 ml-[8rem] translate-y-1/2 ${headerClassName}`}>
 					<h1 className="uppercase text-9xl font-bold">Pixels are the atomic units of design.</h1>
 				</div>
@@ -64,8 +64,8 @@ function ServiceOfferings({serviceClassName}) {
 
 function VerticalElement({headerClassName}) {
 	return (
-		<div className="absolute right-[3rem] top-0 h-full flex flex-col items-center justify-center">	
-			<div className={`flex gap-4 items-center text-black/64 ${headerClassName}`} style={{writingMode: 'vertical-lr'}}>
+		<div className="absolute right-[3rem] top-0 h-full ">	
+			<div className={`translate-y-[100%] flex gap-4 items-center text-base font-medium leading-[16px] text-black/64 ${headerClassName}`} style={{writingMode: 'vertical-lr'}}>
 				<span className="rotate-180">{CompanyDomain}</span>
 				<span className="border border-2 border-black/64 h-[8rem]"></span>
 			</div>

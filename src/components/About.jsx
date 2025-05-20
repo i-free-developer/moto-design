@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from "react-router-dom"
 import { Navbar, LogoIcon } from './Navbar'
-import { TeamMembers, CopyRight, CompanyEmail } from '../data/site-data'
+import { TeamMembers, CopyRight, CompanyEmail, CompanyDomain } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem, ByBitIcon, AwsIcon, VenturesIcon, GateIcon, GateIconBlack} from './SocialIconsCollection'
 import backgroundImage from '../assets/dashed-bg.png'
 
@@ -19,7 +19,8 @@ export default function About() {
 	return (
 		<main className="mx-auto">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="about" className="mx-auto px-[3rem] pt-[3rem]" onClick={closeDrawer}>
+			<section id="about" className="mx-auto px-[3rem] pt-[3rem] relative" onClick={closeDrawer}>
+				<VerticalItem/>
 				<AboutHeader/>
 				<AboutBrand/>
 				<AboutStatus/>
@@ -47,6 +48,17 @@ function AboutHeader() {
 				<p className="font-medium text-[4rem]/[5.5rem] tracking-[10%]">the future.</p>
 				<span className="w-[41px] h-[160px] flex items-center absolute left-[10%] -top-[4rem]"><LeftQuote /></span>
 				<span className="w-[41px] h-[160px] flex items-center absolute right-[25%] bottom-0"><RightQuote/></span>
+			</div>
+		</div>
+	)
+}
+
+function VerticalItem() {
+	return (
+		<div className="absolute left-[3rem] top-[31rem] flex flex-col items-center justify-center">	
+			<div className="flex gap-4 items-center text-base font-medium leading-[16px] text-black/64" style={{writingMode: 'vertical-lr'}}>
+				<span className="rotate-180">{CompanyDomain}</span>
+				<span className="border border-2 border-black/64 h-[8rem]"></span>
 			</div>
 		</div>
 	)

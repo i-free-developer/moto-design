@@ -58,12 +58,11 @@ export default function Contact() {
 
 function PixelsHeader() {
 	return (
-		<div className="mt-0 overflow-hidden flex flex-col items-center justify-center will-change-transform">
-			<div className="whitespace-nowrap flex">
-				<div className="flex gap-[4rem] scroll-header">
-					<span className="inline-block text-[13.75rem] uppercase font-bold text-nowrap">Pixels are the atomic units of design.</span>
-					<span className="inline-block text-[13.75rem] uppercase font-bold text-nowrap">Pixels are the atomic units of design.</span>
-					<span className="inline-block text-[13.75rem] uppercase font-bold text-nowrap">Pixels are the atomic units of design.</span>
+		<div className="overflow-hidden relative mx-auto w-full h-[14rem] flex will-change-transform">
+			<div className="absolute top-0 left-0 w-full h-full m-auto flex items-center justify-start whitespace-nowrap">
+				<div className="scroll-header flex gap-[1rem]">
+					<span className="inline-block text-[13.75rem] leading-[220px] uppercase font-bold text-nowrap">Pixels are the atomic units of design.</span>
+					<span className="inline-block text-[13.75rem] leading-[220px] uppercase font-bold text-nowrap">Pixels are the atomic units of design.</span>
 				</div>
 			</div>
 		</div>
@@ -94,7 +93,7 @@ function ContactBody() {
 	}
 
 	return (
-		<div className="px-[4rem] flex flex-col items-center justify-between backdrop-blur-sm bg-gray-100/40 rounded-3xl">
+		<div className="px-[4rem] flex flex-col items-center justify-between backdrop-blur-sm bg-gray-100/40 rounded-3xl mt-[1rem]">
 			<FormGroup currentStep={currentStep} goSubmit={goSubmit} finalData={finalData} setFinalData={setFinalData} goToStep={goToStep}/>
 			<div className="flex items-center justify-center w-full mt-[10rem] p-[3.5rem]">
       	<ThankyouCard/>

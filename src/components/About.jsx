@@ -119,14 +119,19 @@ function StatusCard({title, content}) {
 
 function EcosystemCard() {
 	return (
-		<div className="text-center">
-			<header className="uppercase text-[4rem] font-bold leading-[64px] tracking-[-2%]">ecosystem resource</header>
-			<p className="w-[83%] text-[1.75rem] leading-[36px] tracking-[-2%] mt-[2.5rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries,providing them with visual design, creative, and industry consulting services.</p>
-			<div className="overflow-hidden relative h-[6rem] mt-[10rem]">
-				<div className="flex items-center absolute scroll-icons gap-[8rem]">
-					<SlideIcons/>
-					<SlideIcons/>
-					<SlideIcons/>
+		<div className="text-center mx-auto">
+			<div className="mx-auto">
+				<header className="uppercase text-[4rem] font-bold leading-[64px] tracking-[-2%]">ecosystem resource</header>
+				<p className="px-[10rem] text-[1.75rem] leading-[36px] tracking-[-2%] mt-[2.5rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries,providing them with visual design, creative, and industry consulting services.</p>	
+			</div>
+			<div className="overflow-hidden relative m-auto w-full h-[6rem] flex will-change-transform mt-[10rem]">
+				<div className="absolute top-0 left-0 w-full h-full m-auto flex items-center justify-start whitespace-nowrap">
+					<div className="flex items-center scroll-icons gap-[8rem]">
+						<SlideIcons/>
+						<SlideIcons/>
+						<SlideIcons/>
+						<SlideIcons/>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -58,6 +58,11 @@
 	to {transform: translateY(0);}
 }
 
+@keyframes scroll-appear {
+	from {opacity: 0; scale: 0.8; translateY: 200%;}
+	to {opacity: 1; scale: 1; translateY: 0;}
+}
+
 .drawer-in {
 	animation: drawer-slide-in 1.8s linear;
 	animation-fill-mode: forwards;
@@ -116,4 +121,13 @@
 
 .scroll-icons {
 	animation: horizontal-scroll 10s linear infinite;
+}
+
+.scroll-fade-in {
+	transition: opacity 0.5s ease-in-out;
+	animation: scroll-appear 2s linear;
+	animation-timeline: view();
+	animation-range: entry 0% cover 50%;
+/*	animation-timeline: scroll(y);*/
+	animation-fill-mode: both;
 }

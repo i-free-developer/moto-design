@@ -18,29 +18,9 @@ export default function Career() {
 		<main className="mx-auto">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
 			<section id="career" className="mx-auto px-[4rem] pt-[4rem] flex flex-col gap-8 max-w-screen" onClick={closeDrawer}>
-				<h1 className="font-extrabold text-[5rem] uppercase">[Career]</h1>
-				<div className="flex items-center justify-between">
-					<h2 className="font-extrabold text-9xl uppercase">How we hire</h2>
-					<div className="px-8 py-4 border rounded-full flex gap-4 items-center justify-between">
-						<span className="font-medium text-2xl">Positions</span>
-						<span className="size-2 rounded-[50%] bg-slate-900"></span>
-					</div>
-				</div>
-				<div className="flex items-center my-[6rem]">
-					<ArrowGroup/>
-					<p className="ml-[57rem] w-[38rem] text-[2rem] leading-10">After the <span className="font-bold">portfolio</span> meets our requirement, on average <span className="font-bold">1~3 week</span> interview process with <span className="font-bold">2 inteviews</span>.</p>
-				</div>
-
-				<div className="flex items-center flex-nowrap min-w-full my-[6rem]">
-					{TimelineItems.map(item => <TimeLineElement {...item} key={item.number} />)}
-				</div>
-
-				<div className="mx-auto px-[4rem] text-center ">
-					<h2 className="font-bold text-[5.5rem] uppercase my-[2.5rem]">Life at moto</h2>
-					<p className="text-[2.5rem] font-normal">We believe great design is borderless, and so are the minds behind it.</p>
-					<p className="text-[2.5rem] font-normal">We’re not everywhere — but we think like we are.</p>
-				</div>
-
+				<CareerHeader/>
+				<TimeLineCard/>
+				<MotoLifeCard/>
 				<PerksContainer/>
 				<RolesContainer/>
 				<HowToApply/>
@@ -48,6 +28,43 @@ export default function Career() {
 				<SiteFooter/>
 			</section>
 		</main>
+	)
+}
+
+function CareerHeader() {
+	return (
+		<>
+			<h1 className="font-extrabold text-[5rem] uppercase">[Career]</h1>
+			<div className="flex items-center justify-between">
+				<h2 className="font-extrabold text-9xl uppercase">How we hire</h2>
+				<div className="px-8 py-4 border rounded-full flex gap-4 items-center justify-between">
+					<span className="font-medium text-2xl">Positions</span>
+					<span className="size-2 rounded-[50%] bg-slate-900"></span>
+				</div>
+			</div>
+			<div className="flex items-center my-[6rem]">
+				<ArrowGroup/>
+				<p className="ml-[57rem] w-[38rem] text-[2rem] leading-10">After the <span className="font-bold">portfolio</span> meets our requirement, on average <span className="font-bold">1~3 week</span> interview process with <span className="font-bold">2 inteviews</span>.</p>
+			</div>
+		</>
+	)
+}
+
+function TimeLineCard() {
+	return (
+		<div className="flex items-center flex-nowrap min-w-full my-[6rem]">
+			{TimelineItems.map(item => <TimeLineElement {...item} key={item.number} />)}
+		</div>
+	)
+}
+
+function MotoLifeCard() {
+	return (
+		<div className="mx-auto px-[4rem] text-center ">
+			<h2 className="font-bold text-[5.5rem] uppercase my-[2.5rem] scroll-fade-in">Life at moto</h2>
+			<p className="text-[2.5rem] font-normal scroll-fade-in">We believe great design is borderless, and so are the minds behind it.</p>
+			<p className="text-[2.5rem] font-normal scroll-fade-in">We’re not everywhere — but we think like we are.</p>
+		</div>
 	)
 }
 
@@ -97,10 +114,10 @@ function RolesContainer() {
 	return (
 		<div className="grid grid-cols-2">
 			<div className="pr-[3rem] w-[40.5rem] tracking-[-2%]">
-				<h3 className="uppercase font-bold text-2xl leading-[2rem]">join our team</h3>
-				<p className="uppercase font-bold text-[5.5rem] leading-[6.5rem] mt-[0.5rem]">find your perfect role</p>
-				<p className="text-[1.5rem] leading-[2rem] mt-[4rem] font-normal">Explore our open roles and find the one that fits not just your resume, but your rhythm.</p>
-				<p className="text-[2.5rem] mt-[14.5rem] font-bold"><span className="mr-2">13</span>Positions</p>
+				<h3 className="uppercase font-bold text-2xl leading-[2rem] scroll-fade-in">join our team</h3>
+				<p className="uppercase font-bold text-[5.5rem] leading-[6.5rem] mt-[0.5rem] scroll-fade-in">find your perfect role</p>
+				<p className="text-[1.5rem] leading-[2rem] mt-[4rem] font-normal scroll-fade-in">Explore our open roles and find the one that fits not just your resume, but your rhythm.</p>
+				<p className="text-[2.5rem] mt-[14.5rem] font-bold scroll-fade-in"><span className="mr-2">13</span>Positions</p>
 			</div>
 			<div className="flex flex-col gap-8">
 				{OpenningRoles.map((item, index) => <RoleCard {...item} index={index} key={index}/>)}
@@ -111,17 +128,17 @@ function RolesContainer() {
 
 function RoleCard({team, title, tags, index, id}) {
 	return (
-		<article className="flex justify-between relative w-[55rem] tracking-[-2%]">
-			<div>
-				{index === 0 &&  <hr className="border border-2 border-black/20 mb-[3rem] w-[55rem]"></hr> }
-				<header className="font-bold text-xl">{team}</header>
+		<article className="relative w-[55rem] tracking-[-2%]">
+			{index === 0 &&  <hr className="border border-2 border-black/20 mb-[3rem] w-[55rem]"></hr> }
+			<header className="font-bold text-xl scroll-fade-in">{team}</header>
+			<div className="scroll-fade-in">
 				<p className="text-[2rem] font-normal mt-[1.5rem]">{title}</p>
 				<div className="flex flex-row items-center gap-2 mt-[3rem]">
 					{tags.map((tag, index) => <span className="text-xl font-medium text-black opacity-40" key={index}>{tag}</span>)}
 				</div>
 				<hr className="border border-2 border-black/20 my-[3rem] w-[55rem]"></hr>
+				<ApplyButon id={id}/>
 			</div>
-			<ApplyButon id={id}/>
 		</article>
 	)
 }

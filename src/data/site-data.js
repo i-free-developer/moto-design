@@ -1,9 +1,9 @@
 const TimelineItems = [
-	{number: '01', title: 'Portfolio review'},
-	{number: '02', title: 'Interviews'},
-	{number: '03', title: 'Background investigation'},
-	{number: '04', title: 'Round 2 interview'},
-	{number: '05', title: 'Offer'},
+	{id: 1, number: '01', title: 'Portfolio review'},
+	{id: 2, number: '02', title: 'Interviews'},
+	{id: 3, number: '03', title: 'Background investigation'},
+	{id: 4, number: '04', title: 'Round 2 interview'},
+	{id: 5, number: '05', title: 'Offer'},
 ]
 
 const PerkItemsData = [

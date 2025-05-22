@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function CursorDot() {
+export default function CursorsDot() {
   const [position, setPosition] = useState({ x: -100, y: -100 });
 
   useEffect(() => {

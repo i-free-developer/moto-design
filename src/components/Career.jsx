@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
+import { throttle } from 'lodash';
 import { Link } from "react-router-dom"
 import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../data/site-data'
 import Navbar from './Navbar'
@@ -51,9 +52,18 @@ function CareerHeader() {
 }
 
 function TimeLineCard() {
+	const [timelineIndex, setTimelineIndex] = useState(0)
+	
+	const debouncedWheel = useCallback(throttle((e) => {wheelScroll(e)}, 300, { leading: false, trailing: true }), [])
+
+	function wheelScroll(e) {
+  		if (e.deltaY < 0) { setTimelineIndex(x => { return x - 1 > 0 ? x - 1 : 0 }) } 
+  		if (e.deltaY > 0) { setTimelineIndex(x => { return x + 1 > 6 ? 5 : x + 1 }) }
+	}
+
 	return (
-		<div className="flex items-center flex-nowrap min-w-full my-[6rem]">
-			{TimelineItems.map(item => <TimeLineElement {...item} key={item.number} />)}
+		<div className="flex items-center flex-nowrap min-w-full px-[1rem] py-[6rem] overflow-x-auto" onWheel={debouncedWheel}>
+			{TimelineItems.map(item => <TimeLineElement {...item} key={item.number} timelineIndex={timelineIndex}/>)}
 		</div>
 	)
 }
@@ -68,17 +78,16 @@ function MotoLifeCard() {
 	)
 }
 
-function TimeLineElement({number, title}) {
-	const [isHovered, setIsHovered] = useState(false);
+function TimeLineElement({id, number, title, timelineIndex}) {
 	return (
-		<div className="flex flex-col relative gap-8 grow opacity-40 hover:opacity-100" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-			<div className="flex items-center min-w-full box-content">
-				<span className={`box-content size-[1rem] border border-2 rounded-[50%] ${isHovered ? 'bg-white border-6' : ''}`}></span>
-				<span className="grow border border-2 border-black"></span>
-			</div>
-			<div className="flex items-end gap-2 font-semibold">
-				<span className="text-5xl">{number}</span>
-				<span className="text-2xl">{title}</span>
+		<div className="flex flex-col relative grow">
+			<span className={`w-full border border-2 relative ${ timelineIndex == id ? 'border-black' : 'border-gray'}`}>
+				<span className={`absolute left-[-0.5rem] -translate-y-[50%] size-[1rem] rounded-[50%] ${timelineIndex == id ? 'bg-white border-black border-4 scale-150' : 'border-gray bg-gray border-2'}`}></span>
+			</span>
+			
+			<div className={`flex items-end gap-2 font-semibold tracking-[-2%] mt-8 ${ timelineIndex == id ? '' : 'opacity-40'}`}>
+				<span className="text-5xl leading-[48px]">{number}</span>
+				<span className="text-2xl leading-[24px]">{title}</span>
 			</div>
 		</div>
 	)
@@ -128,10 +137,10 @@ function RolesContainer() {
 
 function RoleCard({team, title, tags, index, id}) {
 	return (
-		<article className="relative w-[55rem] tracking-[-2%]">
+		<article className="relative w-[55rem] tracking-[-2%] scroll-fade-in">
 			{index === 0 &&  <hr className="border border-2 border-black/20 mb-[3rem] w-[55rem]"></hr> }
-			<header className="font-bold text-xl scroll-fade-in">{team}</header>
-			<div className="scroll-fade-in">
+			<header className="font-bold text-xl">{team}</header>
+			<div className="">
 				<p className="text-[2rem] font-normal mt-[1.5rem]">{title}</p>
 				<div className="flex flex-row items-center gap-2 mt-[3rem]">
 					{tags.map((tag, index) => <span className="text-xl font-medium text-black opacity-40" key={index}>{tag}</span>)}

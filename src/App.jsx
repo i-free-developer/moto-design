@@ -10,12 +10,13 @@ import Portfolio from './components/Portfolio'
 import Career from './components/Career'
 import Contact from './components/Contact'
 import RolePage from './components/RolePage'
+import { ScrollToTop, RandomInt } from './components/FunctionCollection'
 
 export default function App() {
   const [loadingPercentage, setLoadingPercentage] = useState(0);
   
   useEffect(() => {
-      const intervalCount = randomInt(40, 60)    
+      const intervalCount = RandomInt(40, 60)    
       const intervalElement = setInterval(() => {
           setLoadingPercentage((prev) => prev + 1);
         }, intervalCount);  
@@ -38,18 +39,4 @@ export default function App() {
       </Routes>
     </BrowserRouter>
   )
-}
-
-function ScrollToTop() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
-  }, [pathname]);
-
-  return null;
-}
-
-function randomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
 }

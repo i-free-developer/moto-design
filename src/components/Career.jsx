@@ -1,9 +1,9 @@
 import { useState, useCallback } from 'react'
-import { throttle } from 'lodash';
 import { Link } from "react-router-dom"
 import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../data/site-data'
 import Navbar from './Navbar'
 import { SiteInfoCard,  SiteFooter } from './About'
+import { useThrottle } from './FunctionCollection'
 
 export default function Career() {
 	const [drawerStatus, setDrawerStatus] = useState('initial')
@@ -54,15 +54,15 @@ function CareerHeader() {
 function TimeLineCard() {
 	const [timelineIndex, setTimelineIndex] = useState(0)
 	
-	const debouncedWheel = useCallback(throttle((e) => {wheelScroll(e)}, 300, { leading: false, trailing: true }), [])
-
+	// const debouncedWheel = useCallback(debounce((e) => {wheelScroll(e)}, 300, { leading: false, trailing: true }), [])
+	const throttledWheel = useThrottle( (e) => {wheelScroll(e)}, 500 )
 	function wheelScroll(e) {
   		if (e.deltaY < 0) { setTimelineIndex(x => { return x - 1 > 0 ? x - 1 : 0 }) } 
   		if (e.deltaY > 0) { setTimelineIndex(x => { return x + 1 > 6 ? 5 : x + 1 }) }
 	}
 
 	return (
-		<div className="flex items-center flex-nowrap min-w-full px-[1rem] py-[6rem] overflow-x-auto" onWheel={debouncedWheel}>
+		<div className="flex items-center flex-nowrap min-w-full px-[1rem] py-[6rem] overflow-x-auto" onWheel={throttledWheel}>
 			{TimelineItems.map(item => <TimeLineElement {...item} key={item.number} timelineIndex={timelineIndex}/>)}
 		</div>
 	)
@@ -211,5 +211,3 @@ function ArrowGroup() {
 		</svg>
 	)
 }
-
-

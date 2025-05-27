@@ -9,7 +9,7 @@
 
 ###### resources
 
-
+######circle rotate https://codepen.io/movii/pen/qXpmpJ/
 
 
 ##### infinite scroll

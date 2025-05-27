@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Link } from "react-router-dom"
+import '../assets/site-styles.css';
 import { Navbar, LogoIcon } from './Navbar'
-import { TeamMembers, CopyRight, CompanyEmail, CompanyDomain } from '../data/site-data'
+import { TeamMembers, CopyRight, CompanyEmail, CompanyDomain, StatusContents } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem, ByBitIcon, AwsIcon, VenturesIcon, GateIcon, GateIconBlack} from './SocialIconsCollection'
 import backgroundImage from '../assets/dashed-bg.png'
 
@@ -19,7 +20,7 @@ export default function About() {
 	return (
 		<main className="mx-auto">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="about" className="mx-auto px-[3rem] pt-[3rem] relative" onClick={closeDrawer}>
+			<section id="about" className="mx-auto px-[3rem] pt-[3rem]" onClick={closeDrawer}>
 				<VerticalItem/>
 				<AboutHeader/>
 				<AboutBrand/>
@@ -39,15 +40,19 @@ export default function About() {
 function AboutHeader() {
 	return (
 		<div className="mx-auto mt-[8rem] mb-[12rem] w-[75rem]">
-			<div className="mx-auto relative w-full uppercase font-medium text-center">
-				<p className="text-[4rem]/[5.5rem] tracking-[10%]">Every frame of code</p>
+			<div className="mx-auto w-full uppercase font-medium text-center">
+				<p className="text-[4rem]/[5.5rem] tracking-[10%] relative">
+					<span className="w-[41px] h-[160px] flex items-center absolute left-[12%] -top-[4rem]"><LeftQuote /></span>
+					Every frame of code
+				</p>
 				<p className="font-medium text-[4rem]/[5.5rem] tracking-[10%]">is an elegant murder of</p>
 				<p className="font-medium text-[4rem]/[5.5rem] tracking-[10%]">the old paradigm, every pixel</p>
 				<p className="font-medium text-[4rem]/[5.5rem] tracking-[10%]">a philosophical</p>
 				<p className="font-medium text-[4rem]/[5.5rem] tracking-[10%]">statement projected into</p>
-				<p className="font-medium text-[4rem]/[5.5rem] tracking-[10%]">the future.</p>
-				<span className="w-[41px] h-[160px] flex items-center absolute left-[10%] -top-[4rem]"><LeftQuote /></span>
-				<span className="w-[41px] h-[160px] flex items-center absolute right-[25%] bottom-0"><RightQuote/></span>
+				<p className="font-medium text-[4rem]/[5.5rem] tracking-[10%] relative">
+					the future.
+					<span className="w-[41px] h-[160px] flex items-center absolute right-[25%] bottom-[-25%]"><RightQuote/></span>
+				</p>
 			</div>
 		</div>
 	)
@@ -77,31 +82,51 @@ function AboutBrand() {
 	)
 }
 
-const StatusContents = [
-	{title: '150+', content: 'We have successfully  completed a total of 150'},
-	{title: '12',   content: 'Team members all over the world'},
-	{title: '8+',   content: 'With over 8 years of experience in web3 industry'},
-	{title: '25k',  content: 'We have over 25k followers on global social media'},
-]
-
 function AboutStatus() {
 	return (
-		<div className="mx-auto mt-[10rem] mb-[12rem] flex">
+		<div className="mx-auto mt-[10rem] mb-[12rem] flex justify-between">
 			<div className="w-1/2">
 				<div className="tracking-[-2%]">
 					<p className="uppercase text-[4rem] font-bold leading-[4rem]">we strive to innovate</p>
 					<p className="text-[21px] font-bold leading-[24px] my-[2rem]">Some Number About Us</p>	
 				</div>
-				<div className="w-full flex flex-wrap gap-[2rem] justify-between my-[4rem]">
+				<div className="w-9/10 flex flex-wrap gap-[1rem] justify-between my-[4rem]">
 					{StatusContents.map((item, index) => <StatusCard {...item} key={index}/>)}
 				</div>
 			</div>
-			<div className="w-1/2 relative">
-				<div className="border border-2 rounded-[50%] absolute top-0 right-0 size-[44rem]"></div>
-				<div className="border border-2 rounded-[50%] absolute top-0 right-0 size-[34rem]"></div>
-				<div className="border border-2 rounded-[50%] absolute top-0 right-0 size-[24rem]"></div>
-				<div className="border border-2 rounded-[50%] absolute top-0 right-0 size-[19rem]"></div>
-				<div className="border border-2 rounded-[50%] absolute top-0 right-0 size-[14rem]"></div>
+			<AboutCirclesCard/>
+		</div>
+	)
+}
+
+function AboutCirclesCard() {
+	return (
+		<div className="m-auto relative w-[696px] h-[696px] about-circle">
+			<div className="about-circle-div w-full h-full about-graph top-0 right-0" data-circle="true">
+				<p className="circle-point-1 circle-point-2 circle-point-3 circle-point-4 top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="true"></p>
+			</div>
+
+			<div className="about-circle-div about-graph w-[84%] h-[84%] top-[2.45%] right-[2.45%]" data-circle="true">
+				<p className="circle-point-1 circle-point-2 circle-point-3 circle-point-4 top-[85.3553%] right-[85.3553%]" data-label="Comprehensive expansion" data-point="true"></p>
+			</div>
+			
+			<div className="about-circle-div about-graph w-[67.5%] h-[67.5%] top-[4.95%] right-[4.95%]" data-circle="true">
+				<p className="circle-point-1 circle-point-2 top-[93.3013%] right-[25%]" data-label="A/B Testing" data-point="false"></p>
+				<p className="circle-point-1 circle-point-2 top-[54.3578%] right-[99.8097%]" data-label="Experiments" data-point="false"></p>
+				<p className="circle-point-1 circle-point-2 top-[25%] right-[93.3013%]" data-label="Optimization" data-point="false"></p>
+			</div>
+			<div className="about-circle-div about-graph w-[50%] h-[50%] top-[7.4%] right-[7.4%]" data-circle="true">
+				<p className="circle-point-1 circle-point-2 circle-point-3 circle-point-4 top-[85.3553%] right-[85.3553%]" data-label="Concept draft output" data-point="true"></p>
+				<p className="circle-point-1 circle-point-2 top-[88.3022%] right-[17.8606%]" data-label="Final draft output" data-point="false"></p>
+				<p className="circle-point-1 circle-point-2 top-[99.8097%] right-[45.6422%]" data-label="Visual Design" data-point="false"></p>
+				<p className="circle-point-1 circle-point-2 top-[54.3578%] right-[99.8097%]" data-label="User Experience" data-point="false"></p>
+				<p className="circle-point-1 circle-point-2 top-[32.899%]  right-[96.9846%]" data-label="Innovations" data-point="false"></p>
+			</div>
+			<div className="about-circle-div about-graph w-[30.9%] h-[30.9%] top-[10.2%] right-[10.2%]" data-circle="true">
+				<p className="circle-point-1 circle-point-2 circle-point-3 circle-point-4 top-[14.6447%] right-[14.6447%]" data-label="Align requirements" data-point="true"></p>
+				<p className="circle-point-1 circle-point-2 top-[82.1394%] right-[11.6978%]" data-label="Data Science" data-point="false"></p>
+				<p className="circle-point-1 circle-point-2 top-[95.3154%] right-[71.1309%]" data-label="UX Research" data-point="false"></p>
+				<p className="circle-point-1 circle-point-2 top-[50%] right-[100%]" data-label="UX Strategy" data-point="false"></p>
 			</div>
 		</div>
 	)
@@ -109,7 +134,7 @@ function AboutStatus() {
 
 function StatusCard({title, content}) {
 	return (
-		<article className="w-[40%]">
+		<article className="w-[33%] my-[1.5rem]">
 			<header className="text-8xl font-semibold leading-[96px] tracking-[-8%]">{title}</header>
 			<hr className="w-full border border-2 border-black/20 mt-[2rem] mb-[1.5rem]"></hr>
 			<p className="text-base font-normal leading-[20px] tracking-[-2%]">{content}</p>
@@ -127,10 +152,10 @@ function EcosystemCard() {
 			<div className="overflow-hidden relative m-auto w-full h-[6rem] flex will-change-transform mt-[10rem]">
 				<div className="absolute top-0 left-0 w-full h-full m-auto flex items-center justify-start whitespace-nowrap">
 					<div className="flex items-center scroll-icons gap-[8rem]">
-						<SlideIcons/>
-						<SlideIcons/>
-						<SlideIcons/>
-						<SlideIcons/>
+						<TestimonialSlideIcons/>
+						<TestimonialSlideIcons/>
+						<TestimonialSlideIcons/>
+						<TestimonialSlideIcons/>
 					</div>
 				</div>
 			</div>
@@ -138,7 +163,7 @@ function EcosystemCard() {
 	)
 }
 
-function SlideIcons() {
+function TestimonialSlideIcons() {
 	return (
 		<div className="flex items-center gap-[8rem] h-[6rem]">
 			<span className="flex items-center justify-center h-[3rem]"><GateIconBlack/></span>

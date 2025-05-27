@@ -123,6 +123,13 @@ const MobilePortfolioItems = [
 	{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 5, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
 ]
 
+const StatusContents = [
+	{title: '150+', content: 'We have successfully  completed a total of 150'},
+	{title: '12',   content: 'Team members all over the world'},
+	{title: '8+',   content: 'With over 8 years of experience in web3 industry'},
+	{title: '25k',  content: 'We have over 25k followers on global social media'},
+]
+
 const ServicesItems = ['Web Design / UI & UX', '3D & Concept Animation', 'Brand Identity & Social Media Visual']
 
 const CopyRight = '© 2025 Moto Design LLC. All rights reserved.'
@@ -131,5 +138,5 @@ const CompanyEmail = 'Hello@motodesign@.cn'
 
 const CompanyDomain = 'motodesign.cn'
 
-export {TimelineItems, PerkItemsData, OpenningRoles, TeamMembers, DesktopPortfolioItems, MobilePortfolioItems, ServicesItems, CopyRight, CompanyEmail, CompanyDomain}
+export {TimelineItems, PerkItemsData, OpenningRoles, TeamMembers, DesktopPortfolioItems, MobilePortfolioItems, StatusContents, ServicesItems, CopyRight, CompanyEmail, CompanyDomain}
 

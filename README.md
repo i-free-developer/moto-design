@@ -8,6 +8,7 @@
 
 
 ###### resources
+https://www.hyperui.dev/components/application/steps
 
 ######circle rotate https://codepen.io/movii/pen/qXpmpJ/
 

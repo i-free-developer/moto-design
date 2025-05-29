@@ -101,33 +101,34 @@ function AboutStatus() {
 
 function AboutCirclesCard() {
 	return (
-		<div className="m-auto relative w-[696px] h-[696px] about-circle">
-			<div className="about-circle-div w-full h-full about-graph top-0 right-0" data-circle="true">
-				<p className="circle-point-1 circle-point-2 circle-point-3 circle-point-4 opacity-100 visible top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="true"></p>
+		<div className="m-auto relative w-[696px] h-[696px] hover:cursor-pointer">
+			<div className="about-circle-div w-full h-full top-0 right-0" data-circle="true">
+				<p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="true"></p>
 			</div>
 
-			<div className="about-circle-div about-graph w-[84%] h-[84%] top-[2.45%] right-[2.45%]" data-circle="true">
-				<p className="circle-point-1 circle-point-2 circle-point-3 circle-point-4 opacity-100 visible top-[100%] right-[50%]" data-label="Comprehensive expansion" data-point="true"></p>
+			<div className="about-circle-div w-[84%] h-[84%] top-[2.45%] right-[2.45%]" data-circle="true">
+				{/* <p className="circle-point circle-data-point top-[100%] right-[50%]" data-label="Comprehensive expansion" data-point="true"></p> */}
+				<p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Comprehensive expansion" data-point="true"></p>
 			</div>
 			
-			<div className="about-circle-div about-graph w-[67.5%] h-[67.5%] top-[4.95%] right-[4.95%]" data-circle="true">
-				<p className="circle-point-1 circle-point-2 circle-point-3 circle-point-4 opacity-100 visible top-[85.3553%] right-[85.3553%]" data-label="Concept draft output" data-point="true"></p>
-				<p className="circle-point-1 circle-point-2 top-[93.3013%] right-[25%]" data-label="A/B Testing" data-point="false"></p>
-				<p className="circle-point-1 circle-point-2 top-[54.3578%] right-[99.8097%]" data-label="Experiments" data-point="false"></p>
-				<p className="circle-point-1 circle-point-2 top-[25%] right-[93.3013%]" data-label="Optimization" data-point="false"></p>
+			<div className="about-circle-div w-[67.5%] h-[67.5%] top-[4.95%] right-[4.95%]" data-circle="true">
+				<p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Concept draft output" data-point="true"></p>
+				<p className="circle-point top-[93.3013%] right-[25%]" data-label="A/B Testing" data-point="false"></p>
+				<p className="circle-point top-[54.3578%] right-[99.8097%]" data-label="Experiments" data-point="false"></p>
+				<p className="circle-point top-[25%] right-[93.3013%]" data-label="Optimization" data-point="false"></p>
 			</div>
-			<div className="about-circle-div about-graph w-[50%] h-[50%] top-[7.4%] right-[7.4%]" data-circle="true">
-				<p className="circle-point-1 circle-point-2 circle-point-3 circle-point-4 opacity-100 visible top-[85.3553%] right-[85.3553%]" data-label="Interaction scheme" data-point="true"></p>
-				<p className="circle-point-1 circle-point-2 top-[88.3022%] right-[17.8606%]" data-label="Final draft output" data-point="false"></p>
-				<p className="circle-point-1 circle-point-2 top-[99.8097%] right-[45.6422%]" data-label="Visual Design" data-point="false"></p>
-				<p className="circle-point-1 circle-point-2 top-[54.3578%] right-[99.8097%]" data-label="User Experience" data-point="false"></p>
-				<p className="circle-point-1 circle-point-2 top-[32.899%]  right-[96.9846%]" data-label="Innovations" data-point="false"></p>
+			<div className="about-circle-div w-[50%] h-[50%] top-[7.4%] right-[7.4%]" data-circle="true">
+				<p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Interaction scheme" data-point="true"></p>
+				<p className="circle-point top-[88.3022%] right-[17.8606%]" data-label="Final draft output" data-point="false"></p>
+				<p className="circle-point top-[99.8097%] right-[45.6422%]" data-label="Visual Design" data-point="false"></p>
+				<p className="circle-point top-[54.3578%] right-[99.8097%]" data-label="User Experience" data-point="false"></p>
+				<p className="circle-point top-[32.899%]  right-[96.9846%]" data-label="Innovations" data-point="false"></p>
 			</div>
-			<div className="about-circle-div about-graph w-[30.9%] h-[30.9%] top-[10.2%] right-[10.2%]" data-circle="true">
-				<p className="circle-point-1 circle-point-2 circle-point-3 circle-point-4 opacity-100 visible top-[14.6447%] right-[14.6447%]" data-label="Align requirements" data-point="true"></p>
-				<p className="circle-point-1 circle-point-2 top-[82.1394%] right-[11.6978%]" data-label="Data Science" data-point="false"></p>
-				<p className="circle-point-1 circle-point-2 top-[95.3154%] right-[71.1309%]" data-label="UX Research" data-point="false"></p>
-				<p className="circle-point-1 circle-point-2 top-[50%] right-[100%]" data-label="UX Strategy" data-point="false"></p>
+			<div className="about-circle-div w-[30.9%] h-[30.9%] top-[10.2%] right-[10.2%]" data-circle="true">
+				<p className="circle-point circle-data-point top-[14.6447%] right-[14.6447%]" data-label="Align requirements" data-point="true"></p>
+				<p className="circle-point top-[82.1394%] right-[11.6978%]" data-label="Data Science" data-point="false"></p>
+				<p className="circle-point top-[95.3154%] right-[71.1309%]" data-label="UX Research" data-point="false"></p>
+				<p className="circle-point top-[50%] right-[100%]" data-label="UX Strategy" data-point="false"></p>
 			</div>
 		</div>
 	)

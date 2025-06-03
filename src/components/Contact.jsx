@@ -93,7 +93,7 @@ function ContactBody() {
 	}
 
 	return (
-		<div className="mx-[3rem] mt-[-6rem] px-[4rem] flex flex-col items-center justify-between backdrop-blur-sm bg-gray-100/40 rounded-3xl">
+		<div className="mx-[3rem] mt-[-7rem] px-[4rem] flex flex-col items-center justify-between backdrop-blur-sm bg-gray-100/40 rounded-3xl">
 			<FormGroup currentStep={currentStep} goSubmit={goSubmit} finalData={finalData} setFinalData={setFinalData} goToStep={goToStep}/>
 			<div className="flex items-center justify-center w-full mt-[10rem] p-[3.5rem]">
       	<ThankyouCard/>

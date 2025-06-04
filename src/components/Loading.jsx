@@ -13,7 +13,7 @@ export default function Loading({loadingPercentage}) {
 
 function LeftCard() {
 	return (
-		<div className="uppercase md:justify-self-start mx-auto md:mx-0 text-center md:text-left font-medium text-xl w-[12.5rem] text-black/64">
+		<div className="uppercase md:justify-self-start mx-auto md:mx-0 text-center md:text-left font-medium text-xl text-black/64">
 			<p>Hop on,start</p>
 			<p>a jourey with us!</p>
 		</div>
@@ -38,7 +38,7 @@ function BottomCard() {
 		<div className="translate-y-[20%] md:translate-y-[-180%] mx-auto text-center text-base font-medium">
 			<div className="mx-auto flex items-center justify-center"><StarIcon/></div>
 			<p className="text-black/64 mt-[1.5rem]">Visual apocalypse</p>
-			<p className="font-bold">Always trust our aesthetic</p>
+			<p >Always trust our aesthetic</p>
 		</div>
 	)
 }

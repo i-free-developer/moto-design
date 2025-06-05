@@ -16,7 +16,7 @@ const SiteLinks = [
 
 function SocialIconLinkItem({url, iconWhite, iconBlack, color='black'}) {
 	return(
-    <a href={url} className="h-[2rem] flex items-center">{color === 'black' ? iconBlack : iconWhite}</a>
+    <a href={url} className="will-change-transform h-[2rem] flex items-center cursor-pointer active:scale-120 hover:scale-120">{color === 'black' ? iconBlack : iconWhite}</a>
 	)
 }
 

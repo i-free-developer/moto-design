@@ -18,6 +18,18 @@
 	to {transform: translateX(0)}
 }
 
+@media (max-width: 750px) {
+	@keyframes section-slide-in {
+		from {transform: translateX(0);}
+		to {transform: translateX(9rem)}
+	}
+
+	@keyframes section-slide-out {
+		from {transform: translateX(9rem);}
+		to {transform: translateX(0)}
+	}
+}
+
 @keyframes progress-bar {
   from {
     width: 0;
@@ -95,6 +107,20 @@
 	animation-fill-mode: forwards;
 }
 
+.vertical-element-in {
+	animation: section-slide-in 1.3s linear;
+	animation-fill-mode: forwards;
+}
+
+.vertical-element-out {
+	animation: section-slide-out 1.3s linear;
+	animation-fill-mode: forwards;
+}
+
+@media (max-width: 750px) {
+	.horizontal-bar-in, .horizontal-bar-out, .vertical-element-in, .vertical-element-out { animation: none;}
+}
+
 .hover-border {
 	border: 1px solid;
 	animation: progress-bar 1s ease;
@@ -118,6 +144,10 @@
 	animation: horizontal-scroll 12s linear infinite;
 }
 
+.scroll-icons:hover {
+	animation-play-state: paused;
+}
+
 .scroll-fade-in {
 	transition: opacity 2s linear;
 	animation: scroll-appear 2s linear forwards;
@@ -127,4 +157,14 @@
 /*	animation-range: entry 0% cover 50%;*/
 	/*animation-timeline: scroll(self);*/
 	/*animation-fill-mode: both;*/
+}
+
+main::-webkit-scrollbar {
+  display: none;
+}
+
+/* 为 IE、Edge 和 Firefox 隐藏滚动条 */
+main {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

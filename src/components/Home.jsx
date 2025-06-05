@@ -4,6 +4,7 @@ import Loading from './Loading'
 import Navbar from './Navbar'
 import { ServicesItems, CompanyDomain } from '../data/site-data'
 const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'section-drawer-out'}
+const verticalClasses = {initial: '', opened: 'vertical-element-in', closed: 'vertical-element-out'}
 const serviceClasses = {initial: '', opened: 'horizontal-bar-out', closed: 'horizontal-bar-in'}
 
 export default function Home({loadingPercentage}) {
@@ -19,6 +20,7 @@ export default function Home({loadingPercentage}) {
 
 	const headerClassName = headerClasses[drawerStatus]
 	const serviceClassName = serviceClasses[drawerStatus]
+	const verticalClassName = verticalClasses[drawerStatus]
 
 	if (loadingPercentage <= 100) {
 		return <Loading loadingPercentage={loadingPercentage}/>
@@ -26,20 +28,20 @@ export default function Home({loadingPercentage}) {
 		return (
 			<main className="mx-auto max-w-[750px] lg:max-w-[1920px] max-h-screen overflow-hidden">
       			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-				<HomeSection headerClassName={headerClassName} serviceClassName={serviceClassName} closeDrawer={closeDrawer}/>
+				<HomeSection headerClassName={headerClassName} serviceClassName={serviceClassName} verticalClassName={verticalClassName} closeDrawer={closeDrawer}/>
 			</main>
 		)
 	}
 }
 
-function HomeSection({headerClassName, serviceClassName, closeDrawer}) {
+function HomeSection({headerClassName, serviceClassName, closeDrawer, verticalClassName}) {
 	return (
 		<section id="landing" className="mx-auto px-[1.5rem] lg:px-[3.5rem] text-black" onClick={closeDrawer}>
 			<div className="relative">
-				<div className={`w-[40rem] lg:w-4/6 lg:ml-[4rem] translate-y-[6rem] lg:translate-y-1/2 ${headerClassName}`}>
+				<div className={`w-[40rem] lg:w-4/6 lg:ml-[4rem] translate-y-[4rem] lg:translate-y-1/2 ${headerClassName}`}>
 					<h1 className="uppercase text-[5.5rem] lg:text-9xl leading-[114px] lg:leading-[128px] font-extrabold">Pixels are the atomic units of design.</h1>
 				</div>
-				<VerticalElement headerClassName={headerClassName}/>
+				<VerticalElement verticalClassName={verticalClassName}/>
 			</div>
 			<ServiceOfferings serviceClassName={serviceClassName}/>
 		</section>
@@ -48,7 +50,7 @@ function HomeSection({headerClassName, serviceClassName, closeDrawer}) {
 
 function ServiceOfferings({serviceClassName}) {
 	return (
-		<div className={`mt-[50%] lg:mt-[22%] ${serviceClassName}`}>
+		<div className={`mt-[60%] lg:mt-[22%] ${serviceClassName}`}>
 			<hr className="border border-2 border-black/40"></hr>
 			<div className="mx-auto w-full flex lg:items-center justify-between mt-[1.5rem] text-xl">
 				<div className="flex flex-col lg:flex-row lg:items-center lg:justify-around gap-4">
@@ -62,10 +64,10 @@ function ServiceOfferings({serviceClassName}) {
 	)
 }
 
-function VerticalElement({headerClassName}) {
+function VerticalElement({verticalClassName}) {
 	return (
-		<div className="absolute right-[1rem] lg:right-[-1rem] top-0 h-full ">	
-			<div className={`translate-y-[100%] flex gap-4 items-center text-base font-medium leading-[16px] text-black/64 ${headerClassName}`} style={{writingMode: 'vertical-lr'}}>
+		<div className="absolute right-[1rem] top-[50%] lg:top-0 h-full ">	
+			<div className={`translate-y-[100%] flex gap-4 items-center text-base font-medium leading-[16px] text-black/64 ${verticalClassName}`} style={{writingMode: 'vertical-lr'}}>
 				<span className="rotate-180">{CompanyDomain}</span>
 				<span className="border border-2 border-black/64 h-[8rem]"></span>
 			</div>

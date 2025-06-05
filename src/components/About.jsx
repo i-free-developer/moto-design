@@ -18,15 +18,14 @@ export default function About() {
   	function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
 
 	return (
-		<main className="mx-auto overflow-hidden">
+		<main className="mx-auto max-w-[750px] lg:max-w-[1920px] overflow-x-hidden">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="about" className="mx-auto px-[2rem] lg:px-[3rem] pt-[3rem]" onClick={closeDrawer}>
-				<VerticalItem/>
+			<section id="about" className="mx-auto px-[1.5rem] lg:px-[3rem] pt-[3rem]" onClick={closeDrawer}>
 				<AboutHeader/>
 				<AboutBrand/>
-				<AboutStatus/>
+				<AboutStatusContainer/>
 				<EcosystemCard/>
-				<div className="mt-[10rem] grid grid-cols-4 items-center gap-6">
+				<div className="mt-[10rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-6">
 					<OurTeam />
 					{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
 				</div>
@@ -39,28 +38,29 @@ export default function About() {
 
 function AboutHeader() {
 	return (
-		<div className="mx-auto mt-[8rem] mb-[12rem] w-[75rem]">
-			<div className="mx-auto w-full uppercase font-medium text-center">
-				<p className="text-[4rem]/[5.5rem] tracking-[10%] relative">
+		<div className="mx-auto mt-[9rem] mb-[12rem] w-full lg:w-[75rem] relative">
+			<div className="mx-auto w-full uppercase font-medium text-center text-[2rem] leading-[54px] lg:text-[4rem]/[5.5rem] tracking-[10%] font-medium">
+				<p className="relative">
 					<span className="w-[41px] h-[160px] flex items-center absolute left-[12%] -top-[4rem]"><LeftQuote /></span>
 					Every frame of code
 				</p>
-				<p className="font-medium text-[4rem]/[5.5rem] tracking-[10%]">is an elegant murder of</p>
-				<p className="font-medium text-[4rem]/[5.5rem] tracking-[10%]">the old paradigm, every pixel</p>
-				<p className="font-medium text-[4rem]/[5.5rem] tracking-[10%]">a philosophical</p>
-				<p className="font-medium text-[4rem]/[5.5rem] tracking-[10%]">statement projected into</p>
-				<p className="font-medium text-[4rem]/[5.5rem] tracking-[10%] relative">
+				<p className="">is an elegant murder of</p>
+				<p className="text-wrap wrap-normal">the old paradigm, every pixel</p>
+				<p className="">a philosophical</p>
+				<p className="">statement projected into</p>
+				<p className="relative">
 					the future.
-					<span className="w-[41px] h-[160px] flex items-center absolute right-[25%] bottom-[-25%]"><RightQuote/></span>
+					<span className="w-[41px] h-[160px] flex items-center absolute right-[25%] bottom-[-125%] lg:bottom-[-25%]"><RightQuote/></span>
 				</p>
 			</div>
+			<VerticalItem/>
 		</div>
 	)
 }
 
 function VerticalItem() {
 	return (
-		<div className="absolute left-[3rem] top-[31rem] flex flex-col items-center justify-center">	
+		<div className="absolute left-[-25%] top-[50%] flex flex-col items-center justify-center">	
 			<div className="flex gap-4 items-center text-base font-medium leading-[16px] text-black/64" style={{writingMode: 'vertical-lr'}}>
 				<span className="rotate-180">{CompanyDomain}</span>
 				<span className="border border-2 border-black/64 h-[8rem]"></span>
@@ -71,9 +71,9 @@ function VerticalItem() {
 
 function AboutBrand() {
 	return (
-		<div className="border border-4 rounded-2xl px-[4rem] py-[3rem] flex justify-between">
-			<p className="uppercase text-[2rem] font-bold">About brand:</p>
-			<div className="w-1/2 flex flex-col justify-between gap-[2rem] text-xl font-medium">
+		<div className="border border-2 lg:border-4 rounded-2xl p-[2rem] lg:px-[4rem] lg:py-[3rem] flex justify-between">
+			<p className="uppercase text-2xl lg:text-[2rem] font-bold w-1/4 gap-[1rem] lg:w-1/3">About brand:</p>
+			<div className="w-3/4 grow-1 lg:grow-0 lg:w-1/2 flex flex-col justify-between gap-[2rem] text-xl font-medium">
 				<p className="">We're a visual design team with 8 years in the Web3 field.</p>
 				<p className="">Our members include front-end experts from top design schools and major tech firms, alongside VC specialists with deep insight into Tokenomics and DApp logic.</p>
 				<p className="">Design is never about forced abstraction or flashy techniques. We operate at the crossroads of web3 and code-based art，hope to deliver visual solutions that perfectly bridge your product and market needs.</p>
@@ -82,26 +82,48 @@ function AboutBrand() {
 	)
 }
 
-function AboutStatus() {
+function AboutStatusContainer() {
+	const [goDirection, setgoDirection] = useState('left')
+
 	return (
-		<div className="mx-auto mt-[10rem] mb-[12rem] flex justify-between">
-			<div className="w-1/2">
+		<div className="mx-auto my-[5rem] lg:my-[12rem] flex justify-between relative">
+			<div className="min-w-full lg:max-w-1/2 lg:min-w-1/2">
 				<div className="tracking-[-2%]">
-					<p className="uppercase text-[4rem] font-bold leading-[4rem]">we strive to innovate</p>
-					<p className="text-[21px] font-bold leading-[24px] my-[2rem]">Some Number About Us</p>	
+					<p className="uppercase text-5xl lg:text-[4rem] font-bold leading-[4rem]">we strive to innovate</p>
+					<p className="text-base lg:text-[21px] font-normal lg:font-bold leading-[24px] my-[1rem] lg:my-[2rem]">Some Number About Us</p>	
 				</div>
 				<div className="w-9/10 flex flex-wrap gap-[1rem] justify-between my-[4rem]">
 					{StatusContents.map((item, index) => <StatusCard {...item} key={index}/>)}
 				</div>
 			</div>
+			{ goDirection == 'left' && <span className="absolute lg:hidden top-[40%] right-[-3%] z-200" onClick={() => {setgoDirection('right')}}><GoToRight/></span>}
+			{ goDirection == 'right' && <span className="absolute lg:hidden top-[40%] left-[-3%] z-200" onClick={() => {setgoDirection('left')}}><GoToLeft/></span>}			
 			<AboutCirclesCard/>
 		</div>
 	)
 }
 
+function GoToRight() {
+	return (
+		<svg width="40" height="168" viewBox="0 0 40 168" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path opacity="0.12" d="M40 168C16.416 153.566 0 121.386 0 84.0008C0 46.6156 16.4158 14.4337 40 0V168Z" fill="black"/>
+			<path d="M22.9713 84.6863L14.486 76.201L17.3145 73.3726L28.6282 84.6863L17.3145 96L14.486 93.1716L22.9713 84.6863Z" fill="#161619"/>
+		</svg>
+	)
+}
+
+function GoToLeft() {
+	return (
+		<svg width="40" height="168" viewBox="0 0 40 168" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path opacity="0.12" d="M2.38419e-06 168C23.584 153.566 40 121.386 40 84.0008C40 46.6156 23.5842 14.4337 2.38419e-06 0V168Z" fill="black"/>
+			<path d="M17.0287 84.6863L25.514 76.201L22.6855 73.3726L11.3718 84.6863L22.6855 96L25.514 93.1716L17.0287 84.6863Z" fill="#161619"/>
+		</svg>
+	)
+}
+
 function AboutCirclesCard() {
 	return (
-		<div className="m-auto relative w-[696px] h-[696px] hover:cursor-pointer">
+		<div className="translate-y-[100%] lg:translate-y-0 m-auto relative min-w-[696px] min-h-[696px] hover:cursor-pointer">
 			<div className="about-circle-div w-full h-full top-0 right-0" data-circle="true">
 				<p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="true"></p>
 			</div>
@@ -136,9 +158,9 @@ function AboutCirclesCard() {
 
 function StatusCard({title, content}) {
 	return (
-		<article className="w-[33%] my-[1.5rem]">
-			<header className="text-8xl font-semibold leading-[96px] tracking-[-8%]">{title}</header>
-			<hr className="w-full border border-2 border-black/20 mt-[2rem] mb-[1.5rem]"></hr>
+		<article className="w-[33%] my-[1rem] lg:my-[1.5rem]">
+			<header className="text-[5rem] lg:text-8xl font-semibold leading-[80px] lg:leading-[96px] tracking-[-8%]">{title}</header>
+			<hr className="w-full border border-1 lg:border-2 border-black/20 my-[1rem] lg:mt-[2rem] lg:mb-[1.5rem]"></hr>
 			<p className="text-base font-normal leading-[20px] tracking-[-2%]">{content}</p>
 		</article>
 	)
@@ -148,10 +170,10 @@ function EcosystemCard() {
 	return (
 		<div className="text-center mx-auto">
 			<div className="mx-auto">
-				<header className="uppercase text-[4rem] font-bold leading-[64px] tracking-[-2%]">ecosystem resource</header>
-				<p className="px-[10rem] text-[1.75rem] leading-[36px] tracking-[-2%] mt-[2.5rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries,providing them with visual design, creative, and industry consulting services.</p>	
+				<header className="uppercase text-5xl lg:text-[4rem] font-bold leading-[48px] lg:leading-[64px] tracking-[-2%]">ecosystem resource</header>
+				<p className="lg:px-[10rem] text-base lg:text-[1.75rem] leading-[20px] lg:leading-[36px] tracking-[-2%] mt-[1rem] lg:mt-[2.5rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries,providing them with visual design, creative, and industry consulting services.</p>	
 			</div>
-			<div className="overflow-hidden relative m-auto w-full h-[6rem] flex will-change-transform mt-[10rem]">
+			<div className="overflow-hidden relative m-auto w-full h-[6rem] flex will-change-transform mt-[5rem] lg:mt-[10rem]">
 				<div className="absolute top-0 left-0 w-full h-full m-auto flex items-center justify-start whitespace-nowrap">
 					<div className="flex items-center scroll-icons gap-[8rem]">
 						<TestimonialSlideIcons/>
@@ -168,10 +190,10 @@ function EcosystemCard() {
 function TestimonialSlideIcons() {
 	return (
 		<div className="flex items-center gap-[8rem] h-[6rem]">
-			<span className="flex items-center justify-center h-[3rem]"><GateIconBlack/></span>
-			<span className="flex items-center justify-center h-[3rem]"><ByBitIcon/></span>
-			<span className="flex items-center justify-center h-[3rem]"><VenturesIcon/></span>
-			<span className="flex items-center justify-center h-[3rem]"><AwsIcon/></span>
+			<span className="flex items-center justify-center h-[3rem] cursor-pointer"><GateIconBlack/></span>
+			<span className="flex items-center justify-center h-[3rem] cursor-pointer"><ByBitIcon/></span>
+			<span className="flex items-center justify-center h-[3rem] cursor-pointer"><VenturesIcon/></span>
+			<span className="flex items-center justify-center h-[3rem] cursor-pointer"><AwsIcon/></span>
 		</div>
 	)
 }
@@ -184,26 +206,34 @@ function SiteInfoCard() {
 			backgroundSize: 'cover',
 			backgroundPosition: 'bottom',
 			// width: '100vw',
-		}} className="bg-bottom px-[3rem] pb-[8rem] pt-[36rem] flex justify-between">
+		}} className="bg-bottom pt-[6rem] mt-[6rem] lg:mt-0 lg:pt-[12rem] px-[1.5rem] lg:px-[6rem] grid grid-cols-2">
 			<div className="w-2/5">
-				<header className="text-[104px] leading-[104px] font-semibold">Let'screate something extraordinary together.</header>
+				<header className="text-[56px] leading-[64px] lg:text-[104px] lg:leading-[104px] font-medium">Let'screate something extraordinary together.</header>
 			</div>
-			<div className="w-2/5">
-				<p className="text-[40px] leading-[24px] font-bold">Infomations</p>
-				<div className="flex items-center gap-[3rem] mt-[4rem]">
-					{ SiteLinks.map((item, index) => <Link to={item.linkTo} key={index} className="text-2xl font-semibold">{item.title}</Link>)}
+			<div className="mx-auto w-full flex items-start">
+				<div className="mx-auto flex-col items-center justify-center">
+					<p className="text-[32px] leading-[32px] lg:text-[40px] lg:leading-[24px] font-bold text-right lg:text-left">Infomations</p>
+					<div className="flex flex-col lg:flex-row items-end lg:items-center gap-[1rem] lg:gap-[3rem] mt-[2rem] lg:mt-[4rem]">
+						{ SiteLinks.map((item, index) => <Link to={item.linkTo} key={index} className="text-2xl font-semibold leading-[24px]">{item.title}</Link>)}
+					</div>
 				</div>
-				<div className="mt-[10rem] flex gap-[2rem]">
-					<div className="flex">
-						<EllipsIcon/><span className="size-[112px] flex items-center justify-center bg-black rounded-[50%]"><LogoIconSmallWhite/></span>
-					</div>
-					<div className="">
-						<header className="text-[28px] leading-[28px] font-bold">Moto Design</header>
-						<p className="text-base font-medium">Web Design、Other Design</p>
-						<div className="mt-[2rem] flex items-end gap-[2rem]">
-			        		{SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
-						</div>
-					</div>
+			</div>
+			<LogoLinksCard/>
+		</div>
+	)
+}
+
+function LogoLinksCard() {
+	return (
+		<div className="mt-[4rem] flex gap-[2rem] lg:translate-x-[120%] lg:translate-y-[-155%]">
+			<div className="flex">
+				<EllipsIcon/><span className="size-[112px] flex items-center justify-center bg-black rounded-[50%]"><LogoIconSmallWhite/></span>
+			</div>
+			<div className="">
+				<header className="text-[28px] leading-[28px] font-bold">Moto Design</header>
+				<p className="text-base font-medium mt-[0.5rem]">Web Design、Other Design</p>
+				<div className="mt-[2rem] flex items-end gap-[2rem]">
+	        		{SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
 				</div>
 			</div>
 		</div>
@@ -212,11 +242,11 @@ function SiteInfoCard() {
 
 function SiteFooter() {
 	return (
-		<div className="flex items-center justify-between px-[3rem] mt-[2rem] mb-[4rem]">
+		<div className="mx-auto flex items-center justify-between px-[1.5rem] lg:px-[6rem] my-[3rem]">
 			<Link to="/"><LogoIcon/></Link>
-			<div className="w-1/2 flex items-center justify-between text-xl font-medium leading-[20px]">
+			<div className="w-2/3 lg:w-1/2 flex flex-col lg:flex-row items-end lg:items-center lg:justify-between text-xs leading-[16px] lg:text-xl font-medium lg:leading-[20px]">
 				<p className="">{CompanyEmail}</p>
-				<p className="">{CopyRight}</p>
+				<p className="lg:mr-[8rem]">{CopyRight}</p>
 			</div>
 		</div>
 	)
@@ -251,10 +281,13 @@ function TeamMemberCard({name, avatar, description, title, role}) {
 
 function OurTeam() {
 	return (
-		<div className="col-span-2 flex flex-col gap-8 w-4/5">
-			<p className="text-[10.5rem] font-bold uppercase">our</p>
+		<div className="col-span-3 lg:col-span-2 flex flex-col gap-8 w-4/5">
+			<div className="sm:flex sm:gap-[0.5rem]">
+				<span className="text-5xl leading-[48px] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase tracking-[-2%]">our</span>
+				<span className="lg:hidden text-5xl leading-[48px] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase text-right tracking-[-2%]">team</span>
+			</div>
 			<p className="text-base">As a dynamic design company, we endow products with artistic power, attract global enterprises, and redefine the future of products.</p>
-			<p className="text-[10.5rem] font-bold uppercase text-right">team</p>
+			<p className="sm:hidden lg:block text-5xl leading-[48px] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase text-right tracking-[-2%]">team</p>
 		</div>
 	)
 }

@@ -19,9 +19,9 @@ function useScrollTo() {
 
 export default function Navbar({drawerStatus, handleClickDrawer}) {
 	return (
-		<section id="navbar" className="fixed relative z-200 text-black w-screen px-[3.5rem] my-[2rem]">
+		<section id="navbar" className="fixed relative z-200 text-black mx-auto px-[1.5rem] lg:px-[3.5rem] my-[1.5rem] lg:my-[2rem]">
 			<nav className="flex justify-between items-center">
-				<div onClick={handleClickDrawer} className="size-[1.2rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
+				<div onClick={handleClickDrawer} className="cursor-pointer size-[1.2rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
 				<Link to="/"><LogoIcon/></Link>
 				<LangButtons/>
 			</nav>
@@ -40,12 +40,20 @@ function DrawerCard({drawerStatus}) {
 			<div className="flex flex-col items-start gap-[2.5rem] mt-[4rem]">
         {SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>
+			<SocialGroupCard/>
+		</div>
+	)
+}
+
+function SocialGroupCard() {
+	return (
+		<>
 			<div className="mt-[10rem] flex items-end gap-[2rem]">
         {SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
 			</div>
 			<hr className="border border-2 mt-[4rem] mb-[1.6rem] w-full"></hr>
-			<p className="font-[0.5rem] text-[#161619]/48">{CompanyEmail}</p>
-		</div>
+			<p className="text-xs font-medium text-[#161619]/48">{CompanyEmail}</p>
+		</>
 	)
 }
 
@@ -55,9 +63,8 @@ function SiteLinkItem({url, title, linkTo}) {
 
 	return (
 		<div className="flex flex-col" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => scrollTo(url)}>
-			{/* <a href={url} className="text-5xl font-semibold">{title}</a> */}
 			<Link to={linkTo} className="text-5xl font-semibold">{title}</Link>
-			<hr className={`mt-[6px] ${isHovered ? 'hover-border' : 'border border-2 border-transparent'}`}></hr>
+			<hr className={`mt-[6px] ${isHovered ? 'hover-border' : 'border border-transparent'}`}></hr>
 		</div>
 	)
 }
@@ -66,7 +73,7 @@ function LangButtons() {
 	const [langExpanded, setLangExpanded] = useState(false)
 
 	return (
-		<div className="relative" onClick={() => {setLangExpanded(!langExpanded)}}>
+		<div className="relative cursor-pointer" onClick={() => {setLangExpanded(!langExpanded)}}>
 			<div className="flex items-end justify-between">
 				<span className="text-xl font-bold mr-[6px]">En</span>
 				<span className="mb-[6px]">{langExpanded ? <LangArrowIcon/> : <LangArrowIcon />}</span>

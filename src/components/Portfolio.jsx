@@ -15,9 +15,9 @@ export default function Portfolio() {
   	function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
 
 	return (
-		<main className="mx-auto">
+		<main className="mx-auto overflow-hidden">
       <Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="portfolio" className="mx-auto px-[4rem] mt-[8rem] mb-[3rem]" onClick={closeDrawer}>
+			<section id="portfolio" className="mx-auto px-[2rem] lg:px-[4rem] mt-[8rem] mb-[3rem]" onClick={closeDrawer}>
 				<PortfolioHeader/>
 				<div className="flex items-center gap-[0.5rem] mt-[1rem] mb-[4rem] text-[1.75rem]">
 					<span onClick={() => setIsMobile(true)} className={`p-2 ${isMobile ? '' : ''}`}><MobileIcon/></span>

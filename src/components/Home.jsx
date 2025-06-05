@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from "react-router-dom"
 import Loading from './Loading'
 import Navbar from './Navbar'
 import { ServicesItems, CompanyDomain } from '../data/site-data'
@@ -23,7 +24,7 @@ export default function Home({loadingPercentage}) {
 		return <Loading loadingPercentage={loadingPercentage}/>
 	} else {
 		return (
-			<main className="mx-auto h-screen">
+			<main className="mx-auto max-w-[750px] lg:max-w-[1920px] max-h-screen overflow-hidden">
       			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
 				<HomeSection headerClassName={headerClassName} serviceClassName={serviceClassName} closeDrawer={closeDrawer}/>
 			</main>
@@ -33,10 +34,10 @@ export default function Home({loadingPercentage}) {
 
 function HomeSection({headerClassName, serviceClassName, closeDrawer}) {
 	return (
-		<section id="landing" className="mx-auto text-black relative" onClick={closeDrawer}>
-			<div className="h-[calc(100vh-10rem)] relative">
-				<div className={`w-4/6 ml-[8rem] translate-y-1/2 ${headerClassName}`}>
-					<h1 className="uppercase text-9xl font-bold">Pixels are the atomic units of design.</h1>
+		<section id="landing" className="mx-auto px-[1.5rem] lg:px-[3.5rem] text-black" onClick={closeDrawer}>
+			<div className="relative">
+				<div className={`w-[40rem] lg:w-4/6 lg:ml-[4rem] translate-y-[6rem] lg:translate-y-1/2 ${headerClassName}`}>
+					<h1 className="uppercase text-[5.5rem] lg:text-9xl leading-[114px] lg:leading-[128px] font-extrabold">Pixels are the atomic units of design.</h1>
 				</div>
 				<VerticalElement headerClassName={headerClassName}/>
 			</div>
@@ -47,16 +48,15 @@ function HomeSection({headerClassName, serviceClassName, closeDrawer}) {
 
 function ServiceOfferings({serviceClassName}) {
 	return (
-		<div className={`absolute left-0 bottom-0 w-full ${serviceClassName}`}>
-			<hr className="border border-2 border-black/40 w-full"></hr>
-			<div className="mx-auto w-full flex items-center justify-between mt-[1.5rem] px-[3rem] text-xl">
-				<div className="flex items-center justify-around gap-4">
-					<span className="font-bold uppercase">Service Offerings:</span>
-					{ServicesItems.map((item, index) => <span className="opacity-64" key={index}>{item}</span>)}
+		<div className={`mt-[50%] lg:mt-[22%] ${serviceClassName}`}>
+			<hr className="border border-2 border-black/40"></hr>
+			<div className="mx-auto w-full flex lg:items-center justify-between mt-[1.5rem] text-xl">
+				<div className="flex flex-col lg:flex-row lg:items-center lg:justify-around gap-4">
+					<span className="font-bold uppercase text-[1.75rem] justify-self-start">Service Offerings:</span>
+					{ServicesItems.map((item, index) => <span className="opacity-64 text-xl font-medium justify-self-start" key={index}>{item}</span>)}
 				</div>
-				<div>
-					<button className="bg-black px-6 py-3 flex items-center gap-4 text-[#f7f7f7] rounded-full">See What We’ve  Made<span className="size-[6px] bg-white rounded-full"></span></button>
-				</div>
+				<Link to="/portfolio"><button className="cursor-pointer bg-black px-6 py-3 flex items-center gap-4 text-[#f7f7f7] font-medium rounded-full">See What We’ve  Made<span className="size-[6px] bg-white rounded-full"></span></button></Link>
+				
 			</div>
 		</div>
 	)
@@ -64,7 +64,7 @@ function ServiceOfferings({serviceClassName}) {
 
 function VerticalElement({headerClassName}) {
 	return (
-		<div className="absolute right-[3rem] top-0 h-full ">	
+		<div className="absolute right-[1rem] lg:right-[-1rem] top-0 h-full ">	
 			<div className={`translate-y-[100%] flex gap-4 items-center text-base font-medium leading-[16px] text-black/64 ${headerClassName}`} style={{writingMode: 'vertical-lr'}}>
 				<span className="rotate-180">{CompanyDomain}</span>
 				<span className="border border-2 border-black/64 h-[8rem]"></span>

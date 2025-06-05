@@ -18,9 +18,9 @@ export default function About() {
   	function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
 
 	return (
-		<main className="mx-auto">
+		<main className="mx-auto overflow-hidden">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="about" className="mx-auto px-[3rem] pt-[3rem]" onClick={closeDrawer}>
+			<section id="about" className="mx-auto px-[2rem] lg:px-[3rem] pt-[3rem]" onClick={closeDrawer}>
 				<VerticalItem/>
 				<AboutHeader/>
 				<AboutBrand/>

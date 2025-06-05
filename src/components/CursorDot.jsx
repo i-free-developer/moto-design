@@ -24,7 +24,7 @@ export default function CursorsDot() {
         transform: `translate(${position.x}px, ${position.y}px)`,
         backgroundColor: '#000',
         boxShadow: '0 0 6px rgba(0,0,0,0.3)',
-      }} className="absolute -translate-1/2 size-[0.8rem] rounded-[50%] ease-out transition-transform duration-200 ease-in-out">
+      }} className="absolute -translate-1/2 size-[0.4rem] rounded-[50%] ease-out transition-transform duration-200 ease-in-out">
       </div>
     </div> 
   )

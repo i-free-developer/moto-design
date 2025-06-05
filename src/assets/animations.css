@@ -64,39 +64,39 @@
 }
 
 .drawer-in {
-	animation: drawer-slide-in 1.8s linear;
+	animation: drawer-slide-in 1.3s linear;
 	animation-fill-mode: forwards;
 /*	left: 1rem;*/
 }
 
 .drawer-out {
-	animation: drawer-slide-out 1.8s linear;
+	animation: drawer-slide-out 1.3s linear;
 	animation-fill-mode: forwards;
 /*	animation-direction: reverse;*/
 /*	left: -20rem;*/
 }
 
 .section-drawer-in {
-	animation: section-slide-in 1.8s linear;
+	animation: section-slide-in 1.3s linear;
 	animation-fill-mode: forwards;
 }
 
 .section-drawer-out {
-	animation: section-slide-out 1.8s linear;
+	animation: section-slide-out 1.3s linear;
 	animation-fill-mode: forwards;
 }
 
 .horizontal-bar-in {
-	animation: slide-vertical-in 1.8s linear;
+	animation: slide-vertical-in 1.3s linear;
 }
 
 .horizontal-bar-out {
-	animation: slide-vertical-out 1.8s linear;
+	animation: slide-vertical-out 1.3s linear;
 	animation-fill-mode: forwards;
 }
 
 .hover-border {
-	border: 2px solid;
+	border: 1px solid;
 	animation: progress-bar 1s ease;
 /*	animation-fill-mode: forwards;*/
 }
@@ -111,11 +111,11 @@
 }
 
 .scroll-header {
-	animation: infinite-scroll 10s infinite linear;
+	animation: infinite-scroll 13s infinite linear;
 }
 
 .scroll-icons {
-	animation: horizontal-scroll 10s linear infinite;
+	animation: horizontal-scroll 12s linear infinite;
 }
 
 .scroll-fade-in {

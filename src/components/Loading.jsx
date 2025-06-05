@@ -1,7 +1,7 @@
 export default function Loading({loadingPercentage}) {
 	return (
 		<section id="loading" className="mx-auto max-w-screen h-dvh">
-			<div className="md:px-[3.5rem] h-4/5 md:h-full pt-[10rem] md:pt-0 md:m-auto md:flex md:flex-row items-center justify-between text-xl">
+			<div className="lg:px-[3.5rem] h-4/5 lg:h-full pt-[10rem] lg:pt-0 lg:m-auto lg:flex lg:flex-row items-center justify-between text-xl">
 				<LeftCard/>
 				<LogoCard/>
 				<LoadingCard loadingPercentage={loadingPercentage}/>
@@ -13,7 +13,7 @@ export default function Loading({loadingPercentage}) {
 
 function LeftCard() {
 	return (
-		<div className="uppercase md:justify-self-start mx-auto md:mx-0 text-center md:text-left font-medium text-xl text-black/64">
+		<div className="uppercase lg:justify-self-start mx-auto lg:mx-0 text-center lg:text-left font-medium text-xl text-black/64">
 			<p>Hop on,start</p>
 			<p>a jourey with us!</p>
 		</div>
@@ -21,12 +21,12 @@ function LeftCard() {
 }
 
 function LogoCard() {
-	return (<div className="mx-auto mt-[6rem] md:translate-x-[-15%] md:mt-0 w-8/12 md:w-[425px]"><LogoIconBig/></div>)
+	return (<div className="mx-auto mt-[6rem] lg:translate-x-[-15%] lg:mt-0 w-8/12 lg:w-[425px]"><LogoIconBig/></div>)
 }
 
 function LoadingCard({loadingPercentage}) {
 	return (
-		<div className="mt-[2rem] mx-auto md:mx-0 justify-center md:mt-0 flex gap-4 md:gap-0 md:flex-col uppercase md:justify-self-end md:text-right font-medium text-xl text-black/64">
+		<div className="mt-[2rem] mx-auto lg:mx-0 justify-center lg:mt-0 flex gap-4 lg:gap-0 lg:flex-col uppercase lg:justify-self-end lg:text-right font-medium text-xl text-black/64">
 			<p>loading</p>
 			<p>{loadingPercentage}%</p>
 		</div>
@@ -35,7 +35,7 @@ function LoadingCard({loadingPercentage}) {
 
 function BottomCard() {
 	return (
-		<div className="translate-y-[20%] md:translate-y-[-180%] mx-auto text-center text-base font-medium">
+		<div className="translate-y-[20%] lg:translate-y-[-180%] mx-auto text-center text-base font-medium">
 			<div className="mx-auto flex items-center justify-center"><StarIcon/></div>
 			<p className="text-black/64 mt-[1.5rem]">Visual apocalypse</p>
 			<p >Always trust our aesthetic</p>

@@ -45,7 +45,7 @@ export default function Contact() {
   	function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
 
 	return (
-		<main className="mx-auto">
+		<main className="mx-auto max-w-[750px] lg:max-w-[1920px] max-h-screen overflow-hidden">
       <Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
 			<section id="contact-us" className="mx-auto" onClick={closeDrawer}>
 				<PixelsHeader/>
@@ -93,9 +93,9 @@ function ContactBody() {
 	}
 
 	return (
-		<div className="mx-[3rem] mt-[-7rem] px-[4rem] flex flex-col items-center justify-between backdrop-blur-sm bg-gray-100/40 rounded-3xl">
+		<div className="mx-[3.5rem] mt-[-7rem] mb-[4rem] p-[4rem] flex flex-col items-center justify-between backdrop-blur-sm bg-gray-100/40 rounded-3xl">
 			<FormGroup currentStep={currentStep} goSubmit={goSubmit} finalData={finalData} setFinalData={setFinalData} goToStep={goToStep}/>
-			<div className="flex items-center justify-center w-full mt-[10rem] p-[3.5rem]">
+			<div className="flex items-center justify-center w-full">
       	<ThankyouCard/>
 				<ButtonGroups currentStep={currentStep} loading={loading} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
         <EmailCard/>
@@ -117,7 +117,7 @@ function FormGroup({currentStep, finalData, setFinalData, goSubmit, goToStep}) {
 	} else {
 		return (
 			<>
-				<div className="flex flex-col mt-[14.5rem] font-medium text-center">
+				<div className="flex flex-col mt-[8rem] font-medium text-center">
 					<header className="text-[2rem]">Please leave your information</header>
 					<p className="text-base text-black/64 mt-[0.5rem]">we will response as soon as possible!</p>
 				</div>
@@ -188,7 +188,7 @@ function SumbittedGroup() {
 
 function ThankyouCard() {
 	return (
-		<div className="w-full md:w-1/5 text-wrap relative">
+		<div className="w-full lg:w-1/5 text-wrap relative">
 			<p className="text-wrap text-base font-medium">Thank you for your attention!</p>
 			<p className="text-wrap text-base font-medium">Whether it's product consultation, cooperation invitations, or valuable suggestions, we will listen attentively.</p>
     	<div className="absolute left-0 -top-[4rem]">{<StarIcon/>}</div>
@@ -198,7 +198,7 @@ function ThankyouCard() {
 
 function EmailCard() {
 	return (
-		<div className="w-full md:w-1/4 text-right font-medium">
+		<div className="w-full lg:w-1/4 text-right font-medium">
       <p className="text-base">Email Address</p>
       <p className="text-[1.75rem]">{CompanyEmail}</p>
     </div>

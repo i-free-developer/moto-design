@@ -233,5 +233,14 @@ function LogoIconWhite() {
   )
 }
 
-export { SocialIconItems, SiteLinks, SocialIconLinkItem, ByBitIcon, AwsIcon, VenturesIcon, GateIcon, GateIconBlack, LogoIconWhite}
+function StarIcon() {
+	return (
+		<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M1 6H4C5.65685 6 7 7.34315 7 9V12" stroke="black" strokeLinecap="round" strokeLinejoin="round"/>
+			<path d="M13 7H10C8.34315 7 7 5.65685 7 4V1" stroke="black" strokeLinecap="round" strokeLinejoin="round"/>
+		</svg>
+	)
+}
+
+export { SocialIconItems, SiteLinks, SocialIconLinkItem, ByBitIcon, AwsIcon, VenturesIcon, GateIcon, GateIconBlack, LogoIconWhite, StarIcon}
 

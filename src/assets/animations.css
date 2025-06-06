@@ -71,7 +71,7 @@
 }
 
 @keyframes scroll-to-appear {
-	from {opacity: 0; scale: 0.8; translateY: 300%;}
+	from {opacity: 0; scale: 0.9; translateY: 500%;}
 	to {opacity: 1; scale: 1; translateY: 0;}
 }
 
@@ -119,6 +119,10 @@
 
 @media (max-width: 750px) {
 	.horizontal-bar-in, .horizontal-bar-out, .vertical-element-in, .vertical-element-out { animation: none;}
+
+	.perk-card:active ~ .perk-card, .perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
+		transform: translateX(0);
+	}
 }
 
 .hover-border {
@@ -133,7 +137,7 @@
 }
 
 .perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
-	transform: translateX(23rem);
+	transform: translateX(calc(23rem - 2px));
 }
 
 .scroll-header {

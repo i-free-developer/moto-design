@@ -242,11 +242,11 @@ function LogoLinksCard() {
 
 function SiteFooter() {
 	return (
-		<div className="mx-auto flex items-center justify-between px-[1.5rem] lg:px-[6rem] my-[3rem]">
+		<div className="w-full mx-auto flex items-center justify-between px-[1.5rem] lg:px-[6rem] my-[3rem]">
 			<Link to="/"><LogoIcon/></Link>
-			<div className="w-2/3 lg:w-1/2 flex flex-col lg:flex-row items-end lg:items-center lg:justify-between text-xs leading-[16px] lg:text-xl font-medium lg:leading-[20px]">
+			<div className="w-2/3 lg:w-1/2 flex flex-col lg:flex-row items-end lg:gap-[2rem] lg:items-center lg:justify-between text-xs leading-[16px] lg:text-xl font-medium lg:leading-[20px]">
 				<p className="">{CompanyEmail}</p>
-				<p className="lg:mr-[8rem]">{CopyRight}</p>
+				<p className="lg:mr-[6rem]">{CopyRight}</p>
 			</div>
 		</div>
 	)

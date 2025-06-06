@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react'
 import { Link } from "react-router-dom"
 import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../data/site-data'
 import Navbar from './Navbar'
+import { StarIcon } from './SocialIconsCollection'
 import { SiteInfoCard,  SiteFooter } from './About'
 import { useThrottle } from './FunctionCollection'
 
@@ -16,10 +17,11 @@ export default function Career() {
   	function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
 
 	return (
-		<main className="mx-auto overflow-hidden">
+		<main className="mx-auto max-w-[750px] lg:max-w-[1920px]">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
 			<section id="career" className="mx-auto px-[2rem] lg:px-[4rem] pt-[4rem] flex flex-col gap-8 max-w-screen" onClick={closeDrawer}>
 				<CareerHeader/>
+				<CareerContenr/>
 				<TimeLineCard/>
 				<MotoLifeCard/>
 				<PerksContainer/>
@@ -34,21 +36,25 @@ export default function Career() {
 
 function CareerHeader() {
 	return (
-		<>
-			<h1 className="font-extrabold text-[5rem] uppercase">[Career]</h1>
-			<div className="flex items-center justify-between">
-				<h2 className="font-extrabold text-9xl uppercase">How we hire</h2>
-				<div className="px-8 py-4 border rounded-full flex gap-4 items-center justify-between">
-					<span className="font-medium text-2xl">Positions</span>
-					<span className="size-2 rounded-[50%] bg-slate-900"></span>
-				</div>
+		<div className="relative px-[1rem]">
+			<h1 className="font-extrabold text-5xl lg:text-[5rem] uppercase">[Career]</h1>
+			<h2 className="font-extrabold text-[88px] lg:text-9xl uppercase">How we hire</h2>
+			<div className="absolute bottom-[-6rem] lg:bottom-0 right-0 px-8 py-4 border border-2 rounded-full flex gap-4 items-center justify-between">
+				<span className="font-medium text-2xl">Positions</span>
+				<span className="size-2 rounded-[50%] bg-slate-900"></span>
 			</div>
-			<div className="flex items-center my-[6rem]">
-				<ArrowGroup/>
-				<p className="ml-[57rem] w-[38rem] text-[2rem] leading-10">After the <span className="font-bold">portfolio</span> meets our requirement, on average <span className="font-bold">1~3 week</span> interview process with <span className="font-bold">2 inteviews</span>.</p>
-			</div>
-		</>
+			<span className="absolute top-0 right-[1rem] lg:scale-160"><StarIcon/></span> 
+		</div>
 	)
+}
+
+function CareerContenr() {
+	return (
+		<div className="flex flex-col lg:flex-row lg:items-center my-[2rem] lg:my-[4rem]">
+			<ArrowGroup/>
+			<p className="mt-[6rem] lg:mt-0 ml-0 lg:ml-[57rem] text-black/64 font-normal w-[38rem] text-2xl leading-[24px] lg:leading-[36px] lg:text-[2rem] tracking-[-2%]">After the <span className="font-bold text-black">portfolio</span> meets our requirement, on average <span className="font-bold text-black">1~3 week</span> interview process with <span className="font-bold text-black">2 inteviews</span>.</p>
+		</div>
+	)	
 }
 
 function TimeLineCard() {
@@ -62,7 +68,7 @@ function TimeLineCard() {
 	}
 
 	return (
-		<div className="flex items-center flex-nowrap min-w-full px-[1rem] py-[6rem] overflow-x-auto" onWheel={throttledWheel}>
+		<div className="flex items-center flex-nowrap min-w-content px-[1rem] py-[2rem] lg:py-[6rem] overflow-x-auto" onWheel={throttledWheel}>
 			{TimelineItems.map(item => <TimeLineElement {...item} key={item.number} timelineIndex={timelineIndex}/>)}
 		</div>
 	)
@@ -71,23 +77,23 @@ function TimeLineCard() {
 function MotoLifeCard() {
 	return (
 		<div className="mx-auto px-[4rem] text-center ">
-			<h2 className="font-bold text-[5.5rem] uppercase my-[2.5rem] scroll-fade-in">Life at moto</h2>
-			<p className="text-[2.5rem] font-normal scroll-fade-in">We believe great design is borderless, and so are the minds behind it.</p>
-			<p className="text-[2.5rem] font-normal scroll-fade-in">We’re not everywhere — but we think like we are.</p>
+			<h2 className="font-bold text-5xl lg:text-[5.5rem] uppercase my-[2.5rem] scroll-fade-in">Life at moto</h2>
+			<p className="text-base lg:text-[2.5rem] font-normal scroll-fade-in">We believe great design is borderless, and so are the minds behind it.</p>
+			<p className="text-base lg:text-[2.5rem] font-normal scroll-fade-in">We’re not everywhere — but we think like we are.</p>
 		</div>
 	)
 }
 
 function TimeLineElement({id, number, title, timelineIndex}) {
 	return (
-		<div className="flex flex-col relative grow">
+		<div className="flex flex-col relative grow min-w-content shrink-0">
 			<span className={`w-full border border-2 relative ${ timelineIndex == id ? 'border-black' : 'border-gray'}`}>
 				<span className={`absolute left-[-0.5rem] -translate-y-[50%] size-[1rem] rounded-[50%] ${timelineIndex == id ? 'bg-white border-black border-4 scale-150' : 'border-gray bg-gray border-2'}`}></span>
 			</span>
 			
-			<div className={`flex items-end gap-2 font-semibold tracking-[-2%] mt-8 ${ timelineIndex == id ? '' : 'opacity-40'}`}>
-				<span className="text-5xl leading-[48px]">{number}</span>
-				<span className="text-2xl leading-[24px]">{title}</span>
+			<div className={`min-w-[16rem] lg:min-w-content flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-2 font-semibold tracking-[-2%] mt-8 ${ timelineIndex == id ? '' : 'opacity-40'}`}>
+				<span className="text-[2rem] leading-[32px] lg:text-5xl lg:leading-[48px]">{number}</span>
+				<span className="text-xl lg:text-2xl leading-[24px]">{title}</span>
 			</div>
 		</div>
 	)
@@ -95,7 +101,7 @@ function TimeLineElement({id, number, title, timelineIndex}) {
 
 function PerksContainer() {
 	return (
-		<div className="mx-auto flex flex-nowrap my-[4rem] -ml-[2rem]">
+		<div className="mx-auto flex flex-nowrap my-[4rem] -ml-[2rem] min-w-content overflow-x-auto">
 			{PerkItemsData.map((item, index) => <PerkCard {...item} index={index} key={item.number}/>)}
 		</div>
 	)
@@ -103,17 +109,17 @@ function PerksContainer() {
 
 function PerkCard({number, title, subtitle, content, index}) {
 	return (
-		<div className={`perk-card size-[35rem] p-[1rem] flex flex-col justify-between bg-[#f7f7f7] border border-2 border-[#000000] shrink-0 ${index === 0 ? '' : '-ml-[23rem]'}`}>
+		<div className={`perk-card size-[400px] lg:size-[35rem] p-[1rem] flex flex-col justify-between bg-[#f7f7f7] border border-2 border-[#000000] shrink-0 ${index === 0 ? '' : 'sm:ml-[-17rem] lg:ml-[-23rem]'}`}>
 			<div className="flex items-center justify-between">
 				<div className="flex flex-col">
-					<span className="font-normal text-2xl">{number}</span>
-					<span className="font-bold"><QIcon/></span>
+					<span className="font-normal text-xl lg:text-2xl tracking-[-2%]">{number}</span>
+					<span className="font-bold scale-90 lg:scale-100"><QIcon/></span>
 				</div>
-				<span className="font-bold text-9xl">{title}</span>
+				<span className="font-bold text-[5rem] lg:text-9xl tracking-[-2%]">{title}</span>
 			</div>
 			<div>
-				<header className="font-semibold text-5xl mb-[1rem] tracking-[-2%]">{subtitle}</header>
-				<p className="w-[22rem] text-sm font-normal">{content}</p>
+				<header className="font-semibold text-[2rem] lg:text-5xl mb-[1rem] tracking-[-2%]">{subtitle}</header>
+				<p className="w-[22rem] text-xs lg:text-sm font-normal tracking-[-2%]">{content}</p>
 			</div>
 		</div>
 	)
@@ -121,12 +127,12 @@ function PerkCard({number, title, subtitle, content, index}) {
 
 function RolesContainer() {
 	return (
-		<div className="grid grid-cols-2">
-			<div className="pr-[3rem] w-[40.5rem] tracking-[-2%]">
-				<h3 className="uppercase font-bold text-2xl leading-[2rem] scroll-fade-in">join our team</h3>
-				<p className="uppercase font-bold text-[5.5rem] leading-[6.5rem] mt-[0.5rem] scroll-fade-in">find your perfect role</p>
-				<p className="text-[1.5rem] leading-[2rem] mt-[4rem] font-normal scroll-fade-in">Explore our open roles and find the one that fits not just your resume, but your rhythm.</p>
-				<p className="text-[2.5rem] mt-[14.5rem] font-bold scroll-fade-in"><span className="mr-2">13</span>Positions</p>
+		<div className="grid grid-cols-1 lg:grid-cols-2">
+			<div className="pr-[3rem] lg:w-[40.5rem] tracking-[-2%]">
+				<h3 className="uppercase font-bold text-xl leading-[20px] lg:text-2xl lg:leading-[2rem] scroll-fade-in">join our team</h3>
+				<p className="uppercase font-bold text-5xl lg:text-[5.5rem] lg:leading-[6.5rem] mt-[2rem] lg:mt-[0.5rem] scroll-fade-in">find your perfect role</p>
+				<p className="text-base lg:text-[1.5rem] lg:leading-[2rem] mt-[1rem] lg:mt-[4rem] font-normal scroll-fade-in">Explore our open roles and find the one that fits not just your resume, but your rhythm.</p>
+				<p className="text-[2rem] lg:text-[2.5rem] mt-[4rem] lg:mt-[14.5rem] font-bold scroll-fade-in"><span className="mr-2">13</span>Positions</p>
 			</div>
 			<div className="flex flex-col gap-8">
 				{OpenningRoles.map((item, index) => <RoleCard {...item} index={index} key={index}/>)}
@@ -137,15 +143,15 @@ function RolesContainer() {
 
 function RoleCard({team, title, tags, index, id}) {
 	return (
-		<article className="relative w-[55rem] tracking-[-2%] scroll-fade-in">
-			{index === 0 &&  <hr className="border border-2 border-black/20 mb-[3rem] w-[55rem]"></hr> }
-			<header className="font-bold text-xl">{team}</header>
+		<article className="relative lg:w-[55rem] tracking-[-2%] scroll-fade-in">
+			{index === 0 &&  <hr className="border border-2 border-black/20 mb-[3rem] lg:w-[55rem]"></hr> }
+			<header className="font-bold text-base lg:text-xl">{team}</header>
 			<div className="">
 				<p className="text-[2rem] font-normal mt-[1.5rem]">{title}</p>
 				<div className="flex flex-row items-center gap-2 mt-[3rem]">
-					{tags.map((tag, index) => <span className="text-xl font-medium text-black opacity-40" key={index}>{tag}</span>)}
+					{tags.map((tag, index) => <span className="text-base lg:text-xl font-medium text-black opacity-40" key={index}>{tag}</span>)}
 				</div>
-				<hr className="border border-2 border-black/20 my-[3rem] w-[55rem]"></hr>
+				<hr className="border border-2 border-black/20 my-[3rem] w-full lg:w-[55rem]"></hr>
 				<ApplyButon id={id}/>
 			</div>
 		</article>
@@ -168,11 +174,11 @@ function ApplyButon({id}) {
 
 export function HowToApply() {
 	return (
-		<div className="tracking-[-2%] mt-[4rem] mb-[3rem]">
-			<h2 className="uppercase font-bold text-[5.5rem]">how to apply</h2>
-			<p className="mt-[3rem] text-[2rem]">Send your CV and portfolio to <span className="font-bold">({CompanyEmail})</span>, with the subject "<span className="font-bold">Position + Name</span>".</p>
-			<p className="text-[2rem]">We’re not just hiring doers—we’re looking for partners in creation.</p>
-			<p className="text-[2rem] my-[3rem]">*File Types: ( pdf, ppt, pptx, txt )</p>
+		<div className="tracking-[-2%] my-[3rem]">
+			<h2 className="uppercase font-bold text-5xl lg:text-[5.5rem]">how to apply</h2>
+			<p className="mt-[3rem] text-xl lg:text-[2rem]">Send your CV and portfolio to <span className="font-bold">({CompanyEmail})</span>, with the subject "<span className="font-bold">Position + Name</span>".</p>
+			<p className="text-xl lg:text-[2rem]">We’re not just hiring doers—we’re looking for partners in creation.</p>
+			<p className="text-xl lg:text-[2rem] my-[3rem]">*File Types: ( pdf, ppt, pptx, txt )</p>
 		</div>
 	)
 }

@@ -70,8 +70,8 @@
 	to {transform: translateY(0);}
 }
 
-@keyframes scroll-appear {
-	from {opacity: 0; scale: 0.8; translateY: 250%;}
+@keyframes scroll-to-appear {
+	from {opacity: 0; scale: 0.8; translateY: 300%;}
 	to {opacity: 1; scale: 1; translateY: 0;}
 }
 
@@ -150,7 +150,7 @@
 
 .scroll-fade-in {
 	transition: opacity 2s linear;
-	animation: scroll-appear 2s linear forwards;
+	animation: scroll-to-appear 2s linear forwards;
 	animation-timeline: view(block);
 	animation-range: 0 40%;
 	/*animation-range: entry 50% entry 70%;*/
@@ -160,11 +160,10 @@
 }
 
 main::-webkit-scrollbar {
-  display: none;
+  display: none;             /* Chrome, Safari, Opera */
 }
 
-/* 为 IE、Edge 和 Firefox 隐藏滚动条 */
 main {
   -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  scrollbar-width: none;     /* Firefox */
 }

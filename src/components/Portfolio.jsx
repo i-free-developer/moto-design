@@ -15,13 +15,16 @@ export default function Portfolio() {
   	function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
 
 	return (
-		<main className="mx-auto overflow-hidden">
+		<main className="mx-auto max-w-[750px] lg:max-w-[1920px]">
       <Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
 			<section id="portfolio" className="mx-auto px-[2rem] lg:px-[4rem] mt-[8rem] mb-[3rem]" onClick={closeDrawer}>
 				<PortfolioHeader/>
-				<div className="flex items-center gap-[0.5rem] mt-[1rem] mb-[4rem] text-[1.75rem]">
-					<span onClick={() => setIsMobile(true)} className={`p-2 ${isMobile ? '' : ''}`}><MobileIcon/></span>
-					<span onClick={() => setIsMobile(false)} className={`p-2 ${!isMobile ? '' : ''}`}><DesktopIcon/></span>
+				<div className="my-[3rem] lg:my-[6rem] flex flex-row justify-between">
+					<div className="self-end flex items-center gap-[0.5rem] mt-[1rem] mb-[4rem] text-[1.75rem]">
+						<span onClick={() => setIsMobile(true)} className={`p-2 ${isMobile ? '' : ''}`}><MobileIcon/></span>
+						<span onClick={() => setIsMobile(false)} className={`p-2 ${!isMobile ? '' : ''}`}><DesktopIcon/></span>
+					</div>
+					<p className="self-start lg:mb-[3rem] text-[28px] leading-[28px] lg:text-[2rem] lg:leading-[32px] text-black/64 w-[55%] lg:w-[26rem] tracking-[-2%] font-normal text-right">Our user-centered design encourages productivity and boosts revenue</p>
 				</div>
 
 	      {isMobile ? <MobilePortfolios/> : <DesktopPortfolios/>}
@@ -34,22 +37,16 @@ export default function Portfolio() {
 
 function PortfolioHeader() {
 	return (
-		<article className="flex justify-between my-[4rem]">
-			<div className="text-[5rem] font-normal tracking-[-2%] leading-[96px]">
-				<header className="">We don't do cookie-</header>
-				<header className="">cutter solutions</header>
-			</div>
-			<div className="flex flex-col justify-between items-end gap-[3rem] text-right tracking-[-2%] font-normal text-right">
-				<p className="text-2xl text-black/64 w-[18rem] leading-[24px]">Backing the best Web 3.0 founders & products</p>
-				<p className="text-[2rem] text-black/64 w-[26rem] leading-[32px]">Our user-centered design encourages productivity and boosts revenue</p>
-			</div>
+		<article className="flex flex-col lg:flex-row justify-between my-[4rem] tracking-[-2%]">
+			<header className="text-[3.5rem] leading-[64px] lg:text-[5rem] lg:leading-[96px] w-[35rem] lg:w-[45%] font-normal">We don't do cookie-cutter solutions</header>
+			<p className="mt-[1rem] lg:mt-0 w-full lg:w-[20%] text-2xl text-black/64 leading-[24px] lg:text-right font-normal">Backing the best Web 3.0 founders & products</p>
 		</article>
 	)
 }
 
 function DesktopPortfolios() {
   return (
-    <div className="grid grid-cols-5 gap-[1.5rem]">
+    <div className="grid grid-cols-1 lg:grid-cols-5 gap-[1.5rem]">
       {DesktopPortfolioItems.map((item, index) => <DesktopCard {...item} key={index}/>)}
     </div>
   )
@@ -58,9 +55,9 @@ function DesktopPortfolios() {
 function DesktopCard({title, description, colums, image, url}) {
 	const [isHovered, setIsHovered] = useState(true)
 	const spanClasses = {
-	  2: 'col-span-2 relative h-[36rem]',
-	  3: 'col-span-3 relative h-[36rem]',
-	  5: 'col-span-5 relative h-[36rem]',
+	  2: 'lg:col-span-2 relative h-[36rem]',
+	  3: 'lg:col-span-3 relative h-[36rem]',
+	  5: 'lg:col-span-5 relative h-[36rem]',
 	}
 
 	return (
@@ -120,7 +117,7 @@ function MobilePortfolios() {
 
 function MobileCard({title, image, index}) {
   return (
-    <div className="w-[400px] h-[840px] rounded-[1rem]">
+    <div className="w-[252px] h-[532px] lg:w-[400px] lg:h-[840px] rounded-[28px] rounded-[1rem]">
       {(index === 2) ? null : <img src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit]" /> }
     </div>
   )
@@ -130,7 +127,7 @@ function StickyCard() {
   return (
     <div className="absolute top-0 left-0 bottom-0 right-0 w-full h-full flex flex-col">
       <div className="sticky top-0 bottom-0 flex items-center justify-center">
-        <img src="https://plus.unsplash.com/premium_photo-1722178429928-caa36778a04b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2fHx8ZW58MHx8fHx8" alt="" className="w-[400px] h-[840px] object-fit object-center rounded-[1rem]" />
+        <img className="w-[252px] h-[532px] lg:w-[400px] lg:h-[840px] object-fit object-center rounded-[1rem]" src="https://plus.unsplash.com/premium_photo-1722178429928-caa36778a04b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2fHx8ZW58MHx8fHx8" alt=""/>
       </div>
     </div>
   )

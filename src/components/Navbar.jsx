@@ -30,7 +30,7 @@ export default function Navbar({drawerStatus, handleClickDrawer}) {
 	)
 }
 
-const drawerClasses = {initial: '-translate-x-[39rem]', opened: 'drawer-in', closed: 'drawer-out'}
+const drawerClasses = {initial: '-translate-x-[40rem] hidden', opened: 'drawer-in', closed: 'drawer-out'}
 
 function DrawerCard({drawerStatus}) {
 	const drawerClassName = drawerClasses[drawerStatus]

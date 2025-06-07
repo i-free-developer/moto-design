@@ -25,7 +25,7 @@ export default function About() {
 				<AboutBrand/>
 				<AboutStatusContainer/>
 				<EcosystemCard/>
-				<div className="mt-[10rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-6">
+				<div className="mt-[4rem] lg:mt-[10rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-4 lg:gap-6">
 					<OurTeam />
 					{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
 				</div>

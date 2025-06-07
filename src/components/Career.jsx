@@ -19,7 +19,7 @@ export default function Career() {
 	return (
 		<main className="mx-auto max-w-[750px] lg:max-w-[1920px]">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="career" className="mx-auto px-[2rem] lg:px-[4rem] pt-[4rem] flex flex-col gap-8 max-w-screen" onClick={closeDrawer}>
+			<section id="career" className="mx-auto px-[2rem] lg:px-[4rem] pt-[4rem] flex flex-col gap-8 w-full" onClick={closeDrawer}>
 				<CareerHeader/>
 				<CareerContenr/>
 				<TimeLineCard/>

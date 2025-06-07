@@ -117,11 +117,15 @@
 	animation-fill-mode: forwards;
 }
 
+.perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
+	transform: translateX(calc(23rem - 2px));
+}
+
 @media (max-width: 750px) {
 	.horizontal-bar-in, .horizontal-bar-out, .vertical-element-in, .vertical-element-out { animation: none;}
 
 	.perk-card:active ~ .perk-card, .perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
-		transform: translateX(0);
+		transform: translateX(calc(17rem - 2px));
 	}
 }
 
@@ -134,10 +138,6 @@
 .logo-progress {
 	animation: slide-right 1.1s ease-in-out;
 	animation-fill-mode: forwards;
-}
-
-.perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
-	transform: translateX(calc(23rem - 2px));
 }
 
 .scroll-header {

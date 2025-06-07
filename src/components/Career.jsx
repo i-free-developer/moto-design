@@ -76,7 +76,7 @@ function TimeLineCard() {
 
 function MotoLifeCard() {
 	return (
-		<div className="mx-auto px-[4rem] text-center ">
+		<div className="mx-auto w-full lg:px-[4rem] text-center">
 			<h2 className="font-bold text-5xl lg:text-[5.5rem] uppercase my-[2.5rem] scroll-fade-in">Life at moto</h2>
 			<p className="text-base lg:text-[2.5rem] font-normal scroll-fade-in">We believe great design is borderless, and so are the minds behind it.</p>
 			<p className="text-base lg:text-[2.5rem] font-normal scroll-fade-in">We’re not everywhere — but we think like we are.</p>
@@ -109,7 +109,7 @@ function PerksContainer() {
 
 function PerkCard({number, title, subtitle, content, index}) {
 	return (
-		<div className={`perk-card size-[400px] lg:size-[35rem] p-[1rem] flex flex-col justify-between bg-[#f7f7f7] border border-2 border-[#000000] shrink-0 ${index === 0 ? '' : 'sm:ml-[-17rem] lg:ml-[-23rem]'}`}>
+		<div className={`perk-card size-[400px] lg:size-[35rem] p-[1rem] flex flex-col justify-between bg-[#f7f7f7] border border-2 border-[#000000] shrink-0 ${index === 0 ? '' : 'ml-[-17rem] lg:ml-[-23rem]'}`}>
 			<div className="flex items-center justify-between">
 				<div className="flex flex-col">
 					<span className="font-normal text-xl lg:text-2xl tracking-[-2%]">{number}</span>

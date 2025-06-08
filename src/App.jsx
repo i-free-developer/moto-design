@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Navbar from './components/Navbar'
 import Home from './components/Home';
 import CursorDot from './components/CursorDot';
 import About from './components/About'
@@ -14,17 +13,17 @@ import { ScrollToTop, RandomInt } from './components/FunctionCollection'
 
 export default function App() {
   const [loadingPercentage, setLoadingPercentage] = useState(0);
-  
+
   useEffect(() => {
-      const intervalCount = RandomInt(40, 60)    
+      const intervalCount = RandomInt(40, 60)
       const intervalElement = setInterval(() => {
           setLoadingPercentage((prev) => prev + 1);
-        }, intervalCount);  
+        }, intervalCount);
 
       return () => clearInterval(intervalElement);
     }, []);
 
-  return ( 
+  return (
     <BrowserRouter className="mx-auto">
       <ScrollToTop/>
       <CursorDot/>

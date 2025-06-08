@@ -2,8 +2,8 @@ import { StarIcon } from './SocialIconsCollection'
 
 export default function Loading({loadingPercentage}) {
 	return (
-		<section id="loading" className="mx-auto max-w-screen h-dvh">
-			<div className="lg:px-[3.5rem] h-4/5 lg:h-full pt-[10rem] lg:pt-0 lg:m-auto lg:flex lg:flex-row items-center justify-between text-xl">
+		<section id="loading" className="mx-auto max-w-[750px] lg:max-w-[1920px] h-dvh overflow-hidden">
+			<div className="lg:px-[3.5rem] h-4/5 lg:h-full pt-[10rem] lg:pt-0 lg:m-auto lg:flex lg:flex-row items-center justify-between">
 				<LeftCard/>
 				<LogoCard/>
 				<LoadingCard loadingPercentage={loadingPercentage}/>

@@ -1,16 +1,17 @@
-import { useState, useCallback } from 'react'
+import { useState } from 'react'
 import { Link } from "react-router-dom"
 import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../data/site-data'
 import Navbar from './Navbar'
 import { StarIcon } from './SocialIconsCollection'
 import { SiteInfoCard,  SiteFooter } from './About'
-import { useThrottle } from './FunctionCollection'
+import { UseThrottle } from './FunctionCollection'
 
 export default function Career() {
 	const [drawerStatus, setDrawerStatus] = useState('initial')
+
 	function handleClickDrawer() {
-		let newStatus; 
-		if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' } 
+		let newStatus;
+		if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' }
 		if (drawerStatus === 'opened') { newStatus = 'closed' }
 		setDrawerStatus(newStatus)
 	}
@@ -35,15 +36,17 @@ export default function Career() {
 }
 
 function CareerHeader() {
+	function scrollToRef() { document.querySelector('#positions').scrollIntoView({ behavior: 'smooth', block: 'start' }) }
+
 	return (
 		<div className="relative px-[1rem]">
 			<h1 className="font-extrabold text-5xl lg:text-[5rem] uppercase">[Career]</h1>
 			<h2 className="font-extrabold text-[88px] lg:text-9xl uppercase">How we hire</h2>
-			<div className="absolute bottom-[-6rem] lg:bottom-0 right-0 px-8 py-4 border border-2 rounded-full flex gap-4 items-center justify-between">
+			<div className="absolute bottom-[-6rem] lg:bottom-0 right-0 px-8 py-4 border border-2 rounded-full flex gap-4 items-center justify-between" onClick={scrollToRef}>
 				<span className="font-medium text-2xl">Positions</span>
 				<span className="size-2 rounded-[50%] bg-slate-900"></span>
 			</div>
-			<span className="absolute top-0 right-[1rem] lg:scale-160"><StarIcon/></span> 
+			<span className="absolute top-0 right-[1rem] lg:scale-160"><StarIcon/></span>
 		</div>
 	)
 }
@@ -54,16 +57,16 @@ function CareerContenr() {
 			<ArrowGroup/>
 			<p className="mt-[6rem] lg:mt-0 ml-0 lg:ml-[57rem] text-black/64 font-normal w-[38rem] text-2xl leading-[24px] lg:leading-[36px] lg:text-[2rem] tracking-[-2%]">After the <span className="font-bold text-black">portfolio</span> meets our requirement, on average <span className="font-bold text-black">1~3 week</span> interview process with <span className="font-bold text-black">2 inteviews</span>.</p>
 		</div>
-	)	
+	)
 }
 
 function TimeLineCard() {
 	const [timelineIndex, setTimelineIndex] = useState(0)
-	
+
 	// const debouncedWheel = useCallback(debounce((e) => {wheelScroll(e)}, 300, { leading: false, trailing: true }), [])
-	const throttledWheel = useThrottle( (e) => {wheelScroll(e)}, 500 )
+	const throttledWheel = UseThrottle( (e) => {wheelScroll(e)}, 500 )
 	function wheelScroll(e) {
-  		if (e.deltaY < 0) { setTimelineIndex(x => { return x - 1 > 0 ? x - 1 : 0 }) } 
+  		if (e.deltaY < 0) { setTimelineIndex(x => { return x - 1 > 0 ? x - 1 : 0 }) }
   		if (e.deltaY > 0) { setTimelineIndex(x => { return x + 1 > 6 ? 5 : x + 1 }) }
 	}
 
@@ -90,7 +93,7 @@ function TimeLineElement({id, number, title, timelineIndex}) {
 			<span className={`w-full border border-2 relative ${ timelineIndex == id ? 'border-black' : 'border-gray'}`}>
 				<span className={`absolute left-[-0.5rem] -translate-y-[50%] size-[1rem] rounded-[50%] ${timelineIndex == id ? 'bg-white border-black border-4 scale-150' : 'border-gray bg-gray border-2'}`}></span>
 			</span>
-			
+
 			<div className={`min-w-[16rem] lg:min-w-content flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-2 font-semibold tracking-[-2%] mt-8 ${ timelineIndex == id ? '' : 'opacity-40'}`}>
 				<span className="text-[2rem] leading-[32px] lg:text-5xl lg:leading-[48px]">{number}</span>
 				<span className="text-xl lg:text-2xl leading-[24px]">{title}</span>
@@ -134,7 +137,7 @@ function RolesContainer() {
 				<p className="text-base lg:text-[1.5rem] lg:leading-[2rem] mt-[1rem] lg:mt-[4rem] font-normal scroll-fade-in">Explore our open roles and find the one that fits not just your resume, but your rhythm.</p>
 				<p className="text-[2rem] lg:text-[2.5rem] mt-[4rem] lg:mt-[14.5rem] font-bold scroll-fade-in"><span className="mr-2">13</span>Positions</p>
 			</div>
-			<div className="flex flex-col gap-8">
+			<div id="positions" className="flex flex-col gap-8">
 				{OpenningRoles.map((item, index) => <RoleCard {...item} index={index} key={index}/>)}
 			</div>
 		</div>
@@ -174,11 +177,11 @@ function ApplyButon({id}) {
 
 export function HowToApply() {
 	return (
-		<div className="tracking-[-2%] my-[3rem]">
+		<div className="tracking-[-2%] my-[3rem] w-full mx-auto">
 			<h2 className="uppercase font-bold text-5xl lg:text-[5.5rem]">how to apply</h2>
 			<p className="mt-[3rem] text-xl lg:text-[2rem]">Send your CV and portfolio to <span className="font-bold">({CompanyEmail})</span>, with the subject "<span className="font-bold">Position + Name</span>".</p>
 			<p className="text-xl lg:text-[2rem]">We’re not just hiring doers—we’re looking for partners in creation.</p>
-			<p className="text-xl lg:text-[2rem] my-[3rem]">*File Types: ( pdf, ppt, pptx, txt )</p>
+			<p className="text-xl lg:text-[2rem] my-[2rem] lg:my-[3rem]">*File Types: ( pdf, ppt, pptx, txt )</p>
 		</div>
 	)
 }

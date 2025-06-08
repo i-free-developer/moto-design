@@ -282,12 +282,12 @@ function TeamMemberCard({name, avatar, description, title, role}) {
 function OurTeam() {
 	return (
 		<div className="col-span-3 lg:col-span-2 flex flex-col gap-8 w-4/5">
-			<div className="sm:flex sm:gap-[0.5rem]">
+			<div className="flex sm:gap-[0.5rem]">
 				<span className="text-5xl leading-[48px] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase tracking-[-2%]">our</span>
 				<span className="lg:hidden text-5xl leading-[48px] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase text-right tracking-[-2%]">team</span>
 			</div>
 			<p className="text-base">As a dynamic design company, we endow products with artistic power, attract global enterprises, and redefine the future of products.</p>
-			<p className="sm:hidden lg:block text-5xl leading-[48px] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase text-right tracking-[-2%]">team</p>
+			<p className="hidden lg:block text-5xl leading-[48px] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase text-right tracking-[-2%]">team</p>
 		</div>
 	)
 }

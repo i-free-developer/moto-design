@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useEffect, useCallback } from 'react'
 
-import { throttle, debounce } from 'lodash';
+import { throttle } from 'lodash';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -17,7 +17,7 @@ function RandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function useThrottle(callback, delay) {
+function UseThrottle(callback, delay) {
   const throttledFn = useCallback(
     throttle((...args) => callback(...args), delay),
     [delay] // will recreate if delay changes
@@ -25,4 +25,4 @@ function useThrottle(callback, delay) {
   return throttledFn;
 }
 
-export { ScrollToTop, RandomInt, useThrottle }
+export { ScrollToTop, RandomInt, UseThrottle }

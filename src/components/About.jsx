@@ -256,11 +256,11 @@ function SiteFooter() {
 
 function TeamMemberCard({name, avatar, description, title, role}) {
 	return (
-		<article className="group border border-3 lg:border-4 rounded-[1rem] lg:rounded-[1.4rem] perspective-distant h-[20.8rem] lg:h-[33rem] bg-transparent">
-		  <div className="relative h-full w-full transition-transform duration-1300 transform-3d group-hover:rotate-y-180">
+		<article className="group border border-3 lg:border-4 rounded-[1rem] lg:rounded-[1.4rem] perspective-distant w-[13.75rem] lg:w-[26rem] h-[20.8rem] lg:h-[33rem] bg-transparent">
+		  <div className="relative min-h-full min-w-full transition-transform duration-1300 transform-3d group-hover:rotate-y-180">
 
-		    <div className="rounded-[1.2rem] absolute inset-0 flex h-full w-full flex-col justify-between backface-hidden">
-          		<img src={avatar} className="block w-[13.75rem] h-[13.75rem] lg:w-[26-rem] lg:h-[26rem] object-cover object-center rounded-[0.8rem] lg:rounded-t-[1.2rem]"></img>
+		    <div className="rounded-[1.2rem] absolute inset-0 flex h-full min-w-full flex-col justify-between backface-hidden">
+          		<img src={avatar} className="block w-[13.75rem] h-[13.75rem] lg:w-[26rem] lg:h-[26rem] object-cover object-center rounded-[0.8rem] lg:rounded-t-[1.2rem]"></img>
 				<div className="grid content-center px-[1.5rem] h-[5.5rem] grow">
 					<div className="flex flex-col lg:flex-row lg:items-center justify-between font-normal">
 						<header className="text-[1.75rem] leading-[28px] lg:text-[2.5rem] tracking-[-2%]">{name}</header>
@@ -269,7 +269,7 @@ function TeamMemberCard({name, avatar, description, title, role}) {
 				</div>
 		    </div>
 
-		    <div className="rounded-[1.2rem] absolute inset-0 max-h-full min-h-full w-full bg-black text-white p-[2.5rem] rotate-y-180 backface-hidden">
+		    <div className="rounded-[1.2rem] absolute inset-0 max-h-full min-h-full max-w-full bg-black text-white p-[2.5rem] rotate-y-180 backface-hidden">
 		     	<header className="text-[4rem] font-bold tracking-[-2%]">{name}</header>
 		     	<p className="uppercase text-[1.5rem] font-normal mt-[1.5rem]">{title}</p>
 				<p className="text-base font-normal mt-[4rem]">{description}</p>

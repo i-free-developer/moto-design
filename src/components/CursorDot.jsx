@@ -2,12 +2,11 @@ import { useState, useEffect } from 'react';
 
 export default function CursorsDot() {
   const [position, setPosition] = useState({ x: -100, y: -100 });
+  const updateMousePosition = (e) => {
+    setPosition({ x: e.clientX, y: e.clientY });
+  }
 
   useEffect(() => {
-    const updateMousePosition = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-    };
-
     window.addEventListener('mousemove', updateMousePosition);
 
     return () => {
@@ -16,7 +15,7 @@ export default function CursorsDot() {
   }, []);
 
   return (
-    <div className="fixed left-0 top-0 w-100vw h-1vh cursor-none pointer-events-none z-200">
+    <div className="fixed left-0 top-0 w-100vw h-1vh cursor-none pointer-events-none z-200 will-change-transform">
       <div style={{transform: `translate(${position.x}px, ${position.y}px)`}}
       className="absolute -translate-1/2 border rounded-[50%] size-[2rem] ease-out transition-transform duration-400 ease-in-out"></div>
       

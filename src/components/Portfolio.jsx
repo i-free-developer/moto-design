@@ -20,7 +20,7 @@ export default function Portfolio() {
 			<section id="portfolio" className="mx-auto px-[2rem] lg:px-[4rem] mt-[8rem] mb-[3rem]" onClick={closeDrawer}>
 				<PortfolioHeader/>
 				<div className="my-[3rem] lg:my-[6rem] flex flex-row justify-between">
-					<div className="self-end flex items-center gap-[0.5rem] mt-[1rem] mb-[4rem] text-[1.75rem]">
+					<div className="cursor-pointer self-end flex items-center gap-[0.5rem] mt-[1rem] mb-[4rem] text-[1.75rem]">
 						<span onClick={() => setIsMobile(true)} className={`p-2 ${isMobile ? '' : ''}`}><MobileIcon/></span>
 						<span onClick={() => setIsMobile(false)} className={`p-2 ${!isMobile ? '' : ''}`}><DesktopIcon/></span>
 					</div>

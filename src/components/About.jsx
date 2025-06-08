@@ -38,20 +38,20 @@ export default function About() {
 
 function AboutHeader() {
 	return (
-		<div className="mx-auto mt-[9rem] mb-[12rem] w-full lg:w-[75rem] relative">
-			<div className="mx-auto w-full uppercase font-medium text-center text-[2rem] leading-[54px] lg:text-[4rem]/[5.5rem] tracking-[10%] font-medium">
-				<p className="relative">
-					<span className="w-[41px] h-[160px] flex items-center absolute left-[12%] -top-[4rem]"><LeftQuote /></span>
-					Every frame of code
-				</p>
+		<div className="mx-auto my-[4rem] lg:my-[6rem] w-full lg:w-[75rem] relative">
+			<div className="mx-auto w-full uppercase text-center text-[2rem] leading-[54px] lg:text-[4rem] lg:leading-[88px] tracking-[10%] font-medium">
+				<div className="m-auto">
+					<span className="size-[41px] flex items-center translate-x-[280%] lg:translate-x-[400%] translate-y-[50%] lg:translate-y-[100%]"><LeftQuote/></span>
+					<p className="">Every frame of code</p>
+				</div>
 				<p className="">is an elegant murder of</p>
 				<p className="text-wrap wrap-normal">the old paradigm, every pixel</p>
 				<p className="">a philosophical</p>
 				<p className="">statement projected into</p>
-				<p className="relative">
-					the future.
-					<span className="w-[41px] h-[160px] flex items-center absolute right-[25%] bottom-[-125%] lg:bottom-[-25%]"><RightQuote/></span>
-				</p>
+				<div className="mx-auto">
+					<p className="">the future.</p>
+					<span className="size-[41px] flex items-center translate-x-[1150%] lg:translate-x-[2050%] translate-y-[-75%] lg:translate-y-[-80%]"><RightQuote/></span>
+				</div>
 			</div>
 			<VerticalItem/>
 		</div>
@@ -60,10 +60,10 @@ function AboutHeader() {
 
 function VerticalItem() {
 	return (
-		<div className="absolute left-[-25%] top-[50%] flex flex-col items-center justify-center">	
-			<div className="flex gap-4 items-center text-base font-medium leading-[16px] text-black/64" style={{writingMode: 'vertical-lr'}}>
+		<div id="v-item" className="absolute lg:left-[-25%] top-[50%] flex flex-col items-center justify-center">	
+			<div className="flex gap-4 items-center text-xs lg:text-base font-medium leading-[16px] text-black/64" style={{writingMode: 'vertical-lr'}}>
 				<span className="rotate-180">{CompanyDomain}</span>
-				<span className="border border-2 border-black/64 h-[8rem]"></span>
+				<span className="border border-1 lg:border-2 border-black/64 h-[8rem]"></span>
 			</div>
 		</div>
 	)

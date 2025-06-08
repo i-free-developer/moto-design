@@ -98,7 +98,7 @@ function FormBody({currentStep, finalData, setFinalData, goSubmit, goToStep}) {
 	} else {
 		return (
 			<form className="mx-auto w-full lg:w-[50rem] mt-[8rem] lg:mt-[4rem] h-[14rem] lg:h-[16rem]" onSubmit={handleSubmit}>
-				<input autofocuse="true" type="text" name={`${currentStep}`} value={finalData[currentStep]} onChange={handleFormInput} className="w-full h-[8rem] lg:h-[10.5rem] appearance-none border border-black border-4 rounded-full px-[2rem] lg:px-[6rem] text-black/64 text-[2.5rem] lg:text-5xl font-medium focus:outline-none focus:border-black block placeholder-black/64" placeholder={holderText} required={true}></input>
+				<input autofocuse="true" type="text" name={`${currentStep}`} value={finalData[currentStep]} onChange={handleFormInput} className="mx-auto w-full h-[8rem] lg:h-[10.5rem] appearance-none border border-black border-4 rounded-full px-[2rem] lg:px-[6rem] text-black/64 text-[2.5rem] lg:text-5xl font-medium focus:outline-none focus:border-black block placeholder-black/64" placeholder={holderText} required={true}></input>
 				<BarGroup currentStep={currentStep} goToStep={goToStep}/>
 			</form>
 		)
@@ -116,7 +116,7 @@ function FormHeader({currentStep}) {
 	}
 
 	return (
-		<div className="flex flex-col mt-[6rem] lg:mt-[8rem] font-medium text-center">
+		<div className="mx-auto flex flex-col mt-[6rem] lg:mt-[8rem] font-medium text-center">
 			<header className="text-[2rem]">{textHeader}</header>
 			<p className="text-base text-black/64 mt-[0.5rem]">{textBody}</p>
 		</div>
@@ -125,7 +125,7 @@ function FormHeader({currentStep}) {
 
 function BarGroup({currentStep, goToStep}) {
 	return (
-		<div className="mx-auto flex gap-[8px] items-center justify-center">
+		<div className="w-full mx-auto flex gap-[8px] items-center justify-center cursor-pointer">
 			<span className="py-[1.5rem] flex items-center justify-center" data-step="0" onClick={goToStep}><span className={`border border-4 w-[2rem] ${ currentStep === 0 ? 'border-black' : 'border-black/20'}`} data-step="0" onClick={goToStep}></span></span>
 			<span className="py-[1.5rem] flex items-center justify-center" data-step="1" onClick={goToStep}><span className={`border border-4 w-[2rem] ${ currentStep === 1 ? 'border-black' : 'border-black/20'}`} data-step="1" onClick={goToStep}></span></span>
 			<span className="py-[1.5rem] flex items-center justify-center" data-step="2" onClick={goToStep}><span className={`border border-4 w-[2rem] ${ currentStep === 2 ? 'border-black' : 'border-black/20'}`} data-step="2" onClick={goToStep}></span></span>
@@ -147,7 +147,7 @@ function ButtonGroups({currentStep, goBack, goNext, goSubmit, getInTouch, loadin
 	}
 
 	return	(
-		<div className="mx-auto flex items-center justify-center grow gap-4">
+		<div className="mx-auto flex items-center justify-center grow gap-4 cursor-pointer">
 			{btnGroups}
 		</div>
 	)

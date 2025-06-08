@@ -42,7 +42,7 @@ function CareerHeader() {
 		<div className="relative px-[1rem]">
 			<h1 className="font-extrabold text-5xl lg:text-[5rem] uppercase">[Career]</h1>
 			<h2 className="font-extrabold text-[88px] lg:text-9xl uppercase">How we hire</h2>
-			<div className="absolute bottom-[-6rem] lg:bottom-0 right-0 px-8 py-4 border border-2 rounded-full flex gap-4 items-center justify-between" onClick={scrollToRef}>
+			<div className="absolute bottom-[-6rem] lg:bottom-0 right-0 px-8 py-4 border border-2 rounded-full flex gap-4 items-center justify-between cursor-pointer" onClick={scrollToRef}>
 				<span className="font-medium text-2xl">Positions</span>
 				<span className="size-2 rounded-[50%] bg-slate-900"></span>
 			</div>
@@ -163,14 +163,15 @@ function RoleCard({team, title, tags, index, id}) {
 
 function ApplyButon({id}) {
 	const [isHovered, setIsHovered] = useState(false);
-	const ArrowElement = (<div className="bg-white size-[2.5rem] flex items-center justify-center rounded-full"><ArrowIcon/></div>)
+	const ArrowElement = (<div className={`bg-white size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-600 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>)
 	const DotElement = (<div className="size-[2.5rem] flex items-center justify-center"><span className="size-[0.5rem] bg-white rounded-full"></span></div>)
 
 	return (
-		<Link to={`/role/${id}`} className="absolute bottom-[6rem] right-0 flex items-center justify-evenly gap-[1rem] bg-slate-900 rounded-full w-[9.75rem] h-[3rem]"
+		<Link to={`/role/${id}`} className="will-change-transform absolute bottom-[6rem] right-0 flex items-center justify-evenly gap-[1rem] bg-slate-900 rounded-full w-[9.75rem] h-[3rem]"
 			onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<span className="text-white font-medium text-2xl ml-[0.5rem]">Apply</span>
-			{isHovered ? ArrowElement : DotElement}
+			{/* {isHovered ? ArrowElement : DotElement} */}
+			{ArrowElement}
 		</Link>
 	)
 }

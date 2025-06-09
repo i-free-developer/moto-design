@@ -31,23 +31,13 @@
 }
 
 @keyframes progress-bar {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 @keyframes slide-right {
-	from {
-/*		left: 0;*/
-		transform: translateX(0);
-	}
-	to {
-/*		left: 20rem;*/
-		transform: translateX(105%);
-	}
+	from { transform: translateX(0);}
+	to { transform: translateX(105%);}
 }
 
 @keyframes infinite-scroll {
@@ -70,9 +60,9 @@
 	to {transform: translateY(0);}
 }
 
-@keyframes scroll-to-appear {
-	from {opacity: 0; scale: 0.9; translateY: 500%;}
-	to {opacity: 1; scale: 1; translateY: 0;}
+@keyframes scroll-fadeIn {
+	from { opacity: 0; scale: 0.9; translateY: 20vh; }
+	to { opacity: 1; scale: 1; translateY: 0; }
 }
 
 .drawer-in {
@@ -153,8 +143,8 @@
 }
 
 .scroll-fade-in {
-	transition: opacity 2s linear;
-	animation: scroll-to-appear 2s linear forwards;
+	transition: opacity 2s linear, transform 2s linear;
+	animation: scroll-fadeIn 2s linear forwards;
 	animation-timeline: view(block);
 	animation-range: 0 40%;
 	/*animation-range: entry 50% entry 70%;*/

@@ -5,7 +5,7 @@
 
 @keyframes pulse-shadow {
     0% { box-shadow: 0 0 0 0 rgba(0,0,0,.15)}
-    70% { box-shadow: 0 0 0 20px transparent }
+    70% { box-shadow: 0 0 0 12px transparent }
     71%,to { box-shadow: 0 0 0 0 transparent }
 }
 
@@ -21,7 +21,7 @@
   }
   to {
     transform-origin: right bottom;
-    transform: none
+    transform: none;
   }
 }
 
@@ -35,7 +35,7 @@
 
 @keyframes about-circle-pulse {
   0% { box-shadow: 0 0 0 0 rgba(0,0,0,.15); }
-  70% { box-shadow: 0 0 0 20px transparent;}
+  70% { box-shadow: 0 0 0 16px transparent;}
   71%,to { box-shadow: 0 0 0 0 transparent; }
 }
 
@@ -60,7 +60,7 @@
 }
 
 .circle-data-point[data-point="true"]:before {
-  animation: about-circle-pulse 2s ease infinite;
+  /*animation: about-circle-pulse 2s ease infinite;*/
 }
 
 .circle-data-point[data-point="true"]:after {
@@ -73,25 +73,66 @@
   /*visibility: visible;*/
   z-index: 10;
   transition: 0.5s ease-in-out;
-  transition-property: visibility,opacity;
+  transition-property: visibility, opacity;
+}
+
+.circle-point-visible {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  transform: translate(50%, -50%);
+  opacity: 0;
+  border-radius: 50%;
+  visibility: visible;
+}
+
+.circle-point-visible:before {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #000;
+  animation: about-circle-pulse 2s ease infinite;
+}
+
+.circle-point-visible:after {
+  content: attr(data-label);
+  position: absolute;
+  left: 150%;
+  top: 50%;
+  transform: translateY(-50%);
+  font: 400 16px;
+  font-family: "Plus Jakarta Sans";
+  letter-spacing: -2%;
+  color: rgb(124 124 124);
+  width: 10rem;
+  white-space: wrap;
+  transition: 0.5s ease-in-out;
 }
 
 .circle-point {
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: 28px;
+  height: 28px;
   transform: translate(50%, -50%);
   opacity: 0;
   /*visibility: hidden;*/
+  background: black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .circle-point:before {
   content: "";
   display: block;
-  width: 100%;
-  height: 100%;
+  /*transform: translate(50%, 50%);*/
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: #000;
+  background: white;
 }
 
 .circle-point:after {
@@ -104,8 +145,8 @@
   font-family: "Plus Jakarta Sans";
   letter-spacing: -2%;
   color: rgb(124 124 124);
-  /*width: 100%;*/
-  white-space: nowrap;
+  width: 10rem;
+  white-space: wrap;
   transition: 0.5s ease-in-out;
 }
 

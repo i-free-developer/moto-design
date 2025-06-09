@@ -24,6 +24,7 @@ export default function About() {
 				<AboutHeader/>
 				<AboutBrand/>
 				<AboutStatusContainer/>
+				<EcosystemHeader/>
 				<EcosystemCard/>
 				<div className="mt-[4rem] lg:mt-[10rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-4 lg:gap-6">
 					<OurTeam />
@@ -86,14 +87,14 @@ function AboutStatusContainer() {
 	const [goDirection, setgoDirection] = useState('left')
 
 	return (
-		<div className="mx-auto my-[5rem] lg:my-[12rem] flex justify-between relative">
+		<div className="mx-auto my-[4rem] lg:my-[12rem] flex justify-between relative">
 			<div className="min-w-full lg:max-w-1/2 lg:min-w-1/2">
 				<div className="tracking-[-2%]">
 					<p className="uppercase text-5xl lg:text-[4rem] font-bold leading-[4rem]">we strive to innovate</p>
 					<p className="text-base lg:text-[21px] font-normal lg:font-bold leading-[24px] my-[1rem] lg:my-[2rem]">Some Number About Us</p>	
 				</div>
 				<div className="w-9/10 flex flex-wrap gap-[1rem] justify-between my-[4rem]">
-					{StatusContents.map((item, index) => <StatusCard {...item} key={index}/>)}
+					{StatusContents.map((item, index) => <StatusItemCard {...item} key={index}/>)}
 				</div>
 			</div>
 			{ goDirection == 'left' && <span className="absolute lg:hidden top-[40%] right-[-3%] z-200" onClick={() => {setgoDirection('right')}}><GoToRight/></span>}
@@ -125,38 +126,40 @@ function AboutCirclesCard() {
 	return (
 		<div className="translate-y-[100%] lg:translate-y-0 m-auto relative min-w-[696px] min-h-[696px] hover:cursor-pointer">
 			<div className="about-circle-div w-full h-full top-0 right-0" data-circle="true">
-				<p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="true"></p>
+				{/* <p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="true"></p> */}
+				<p className="circle-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="false"></p>
 			</div>
 
 			<div className="about-circle-div w-[84%] h-[84%] top-[2.45%] right-[2.45%]" data-circle="true">
 				{/* <p className="circle-point circle-data-point top-[100%] right-[50%]" data-label="Comprehensive expansion" data-point="true"></p> */}
-				<p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Comprehensive expansion" data-point="true"></p>
+				{/* <p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Comprehensive expansion" data-point="true"></p> */}
+				<p className="circle-point top-[99.8097%] right-[45.6422%]" data-label="Comprehensive expansion" data-point="false"></p>
 			</div>
 			
 			<div className="about-circle-div w-[67.5%] h-[67.5%] top-[4.95%] right-[4.95%]" data-circle="true">
-				<p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Concept draft output" data-point="true"></p>
-				<p className="circle-point top-[93.3013%] right-[25%]" data-label="A/B Testing" data-point="false"></p>
-				<p className="circle-point top-[54.3578%] right-[99.8097%]" data-label="Experiments" data-point="false"></p>
-				<p className="circle-point top-[25%] right-[93.3013%]" data-label="Optimization" data-point="false"></p>
+				{/* <p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Concept draft output" data-point="true"></p> */}
+				{/* <p className="circle-point top-[93.3013%] right-[25%]" data-label="A/B Testing" data-point="false"></p> */}
+				<p className="circle-point top-[54.3578%] right-[99.8097%]" data-label="Concept draft output Final draft output" data-point="false"></p>
+				{/* <p className="circle-point top-[25%] right-[93.3013%]" data-label="Optimization" data-point="false"></p> */}
 			</div>
 			<div className="about-circle-div w-[50%] h-[50%] top-[7.4%] right-[7.4%]" data-circle="true">
-				<p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Interaction scheme" data-point="true"></p>
-				<p className="circle-point top-[88.3022%] right-[17.8606%]" data-label="Final draft output" data-point="false"></p>
-				<p className="circle-point top-[99.8097%] right-[45.6422%]" data-label="Visual Design" data-point="false"></p>
-				<p className="circle-point top-[54.3578%] right-[99.8097%]" data-label="User Experience" data-point="false"></p>
-				<p className="circle-point top-[32.899%]  right-[96.9846%]" data-label="Innovations" data-point="false"></p>
+				{/* <p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Interaction scheme" data-point="true"></p> */}
+				{/* <p className="circle-point top-[88.3022%] right-[17.8606%]" data-label="Final draft output" data-point="false"></p> */}
+				<p className="circle-point top-[99.8097%] right-[45.6422%]" data-label="Interaction scheme" data-point="false"></p>
+				{/* <p className="circle-point top-[54.3578%] right-[99.8097%]" data-label="User Experience" data-point="false"></p> */}
+				{/* <p className="circle-point top-[32.899%]  right-[96.9846%]" data-label="Innovations" data-point="false"></p> */}
 			</div>
 			<div className="about-circle-div w-[30.9%] h-[30.9%] top-[10.2%] right-[10.2%]" data-circle="true">
-				<p className="circle-point circle-data-point top-[14.6447%] right-[14.6447%]" data-label="Align requirements" data-point="true"></p>
-				<p className="circle-point top-[82.1394%] right-[11.6978%]" data-label="Data Science" data-point="false"></p>
-				<p className="circle-point top-[95.3154%] right-[71.1309%]" data-label="UX Research" data-point="false"></p>
-				<p className="circle-point top-[50%] right-[100%]" data-label="UX Strategy" data-point="false"></p>
+				<p className="circle-point-visible circle-data-point top-[14.6447%] right-[14.6447%]" data-label="Align requirements" data-point="true"></p>
+				{/* <p className="circle-point top-[82.1394%] right-[11.6978%]" data-label="Data Science" data-point="false"></p> */}
+				{/* <p className="circle-point top-[95.3154%] right-[71.1309%]" data-label="UX Research" data-point="false"></p> */}
+				<p className="circle-point top-[50%] right-[100%]" data-label="Industry and competitor analysis" data-point="false"></p>
 			</div>
 		</div>
 	)
 }
 
-function StatusCard({title, content}) {
+function StatusItemCard({title, content}) {
 	return (
 		<article className="w-[33%] my-[1rem] lg:my-[1.5rem]">
 			<header className="text-[5rem] lg:text-8xl font-semibold leading-[80px] lg:leading-[96px] tracking-[-8%]">{title}</header>
@@ -166,21 +169,24 @@ function StatusCard({title, content}) {
 	)
 }
 
+function EcosystemHeader() {
+	return (
+		<div className="mx-auto w-full text-center scroll-fade-in">
+			<h2 className="uppercase text-5xl lg:text-[4rem] font-bold leading-[48px] lg:leading-[64px] tracking-[-2%]">ecosystem resource</h2>
+			<p className="lg:px-[10rem] text-base lg:text-[1.75rem] leading-[20px] lg:leading-[36px] tracking-[-2%] mt-[1rem] lg:mt-[2.5rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries,providing them with visual design, creative, and industry consulting services.</p>	
+		</div>
+	)
+}
+
 function EcosystemCard() {
 	return (
-		<div className="text-center mx-auto">
-			<div className="mx-auto">
-				<header className="uppercase text-5xl lg:text-[4rem] font-bold leading-[48px] lg:leading-[64px] tracking-[-2%]">ecosystem resource</header>
-				<p className="lg:px-[10rem] text-base lg:text-[1.75rem] leading-[20px] lg:leading-[36px] tracking-[-2%] mt-[1rem] lg:mt-[2.5rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries,providing them with visual design, creative, and industry consulting services.</p>	
-			</div>
-			<div className="overflow-hidden relative m-auto w-full h-[6rem] flex will-change-transform mt-[5rem] lg:mt-[10rem]">
-				<div className="absolute top-0 left-0 w-full h-full m-auto flex items-center justify-start whitespace-nowrap">
-					<div className="flex items-center scroll-icons gap-[8rem]">
-						<TestimonialSlideIcons/>
-						<TestimonialSlideIcons/>
-						<TestimonialSlideIcons/>
-						<TestimonialSlideIcons/>
-					</div>
+		<div className="overflow-hidden relative m-auto w-full h-[6rem] flex will-change-transform mt-[5rem] lg:mt-[10rem]">
+			<div className="absolute top-0 left-0 w-full h-full m-auto flex items-center justify-start whitespace-nowrap">
+				<div className="flex items-center scroll-icons gap-[8rem]">
+					<TestimonialSlideIcons/>
+					<TestimonialSlideIcons/>
+					<TestimonialSlideIcons/>
+					<TestimonialSlideIcons/>
 				</div>
 			</div>
 		</div>

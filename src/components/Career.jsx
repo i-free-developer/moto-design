@@ -24,7 +24,7 @@ export default function Career() {
 				<CareerHeader/>
 				<CareerContenr/>
 				<TimeLineCard/>
-				<MotoLifeCard/>
+				<LifeAtMotoCard/>
 				<PerksContainer/>
 				<RolesContainer/>
 				<HowToApply/>
@@ -77,12 +77,12 @@ function TimeLineCard() {
 	)
 }
 
-function MotoLifeCard() {
+function LifeAtMotoCard() {
 	return (
-		<div className="mx-auto w-full lg:px-[4rem] text-center">
-			<h2 className="font-bold text-5xl lg:text-[5.5rem] uppercase my-[2.5rem] scroll-fade-in">Life at moto</h2>
-			<p className="text-base lg:text-[2.5rem] font-normal scroll-fade-in">We believe great design is borderless, and so are the minds behind it.</p>
-			<p className="text-base lg:text-[2.5rem] font-normal scroll-fade-in">We’re not everywhere — but we think like we are.</p>
+		<div className="mx-auto w-full lg:px-[4rem] text-center scroll-fade-in">
+			<h2 className="font-bold text-5xl lg:text-[5.5rem] uppercase my-[2.5rem]">Life at moto</h2>
+			<p className="text-base lg:text-[2.5rem] font-normal">We believe great design is borderless, and so are the minds behind it.</p>
+			<p className="text-base lg:text-[2.5rem] font-normal">We’re not everywhere — but we think like we are.</p>
 		</div>
 	)
 }
@@ -131,10 +131,10 @@ function PerkCard({number, title, subtitle, content, index}) {
 function RolesContainer() {
 	return (
 		<div className="grid grid-cols-1 lg:grid-cols-2">
-			<div className="pr-[3rem] lg:w-[40.5rem] tracking-[-2%]">
-				<h3 className="uppercase font-bold text-xl leading-[20px] lg:text-2xl lg:leading-[2rem] scroll-fade-in">join our team</h3>
-				<p className="uppercase font-bold text-5xl lg:text-[5.5rem] lg:leading-[6.5rem] mt-[2rem] lg:mt-[0.5rem] scroll-fade-in">find your perfect role</p>
-				<p className="text-base lg:text-[1.5rem] lg:leading-[2rem] mt-[1rem] lg:mt-[4rem] font-normal scroll-fade-in">Explore our open roles and find the one that fits not just your resume, but your rhythm.</p>
+			<div className="pr-[3rem] lg:w-[40.5rem] tracking-[-2%] scroll-fade-in">
+				<h3 className="uppercase font-bold text-xl leading-[20px] lg:text-2xl lg:leading-[2rem]">join our team</h3>
+				<p className="uppercase font-bold text-5xl lg:text-[5.5rem] lg:leading-[6.5rem] mt-[2rem] lg:mt-[0.5rem]">find your perfect role</p>
+				<p className="text-base lg:text-[1.5rem] lg:leading-[2rem] mt-[1rem] lg:mt-[4rem] font-normal">Explore our open roles and find the one that fits not just your resume, but your rhythm.</p>
 				<p className="text-[2rem] lg:text-[2.5rem] mt-[4rem] lg:mt-[14.5rem] font-bold scroll-fade-in"><span className="mr-2">13</span>Positions</p>
 			</div>
 			<div id="positions" className="flex flex-col gap-8">

@@ -1,11 +1,11 @@
 @keyframes drawer-slide-in {
-	from {transform: translateX(-40rem);}
+	from {transform: translateX(-36rem);}
 	to {transform: translateX(0rem);}
 }
 
 @keyframes drawer-slide-out {
 	from {transform: translateX(0rem);}
-	to {transform: translateX(-40rem); display: none;}
+	to {transform: translateX(-36rem); display: none;}
 }
 
 @keyframes section-slide-in {
@@ -65,50 +65,68 @@
 	to { opacity: 1; scale: 1; translateY: 0; }
 }
 
+@keyframes slide-down {
+	from { opacity: 0; translateY: -200%; }
+	to { opacity: 1; translateY: 0%; }
+}
+
+@keyframes slide-up {
+	from { opacity: 1; translateY: 0; }
+	to { opacity: 0; translateY: -200%; }
+}
+
 .drawer-in {
-	animation: drawer-slide-in 1.3s linear;
+	animation: drawer-slide-in 1s linear;
 	animation-fill-mode: forwards;
 /*	left: 1rem;*/
 }
 
 .drawer-out {
-	animation: drawer-slide-out 1.3s linear;
+	animation: drawer-slide-out 1s linear;
 	animation-fill-mode: forwards;
 /*	animation-direction: reverse;*/
 /*	left: -20rem;*/
 }
 
 .section-drawer-in {
-	animation: section-slide-in 1.3s linear;
+	animation: section-slide-in 1s linear;
 	animation-fill-mode: forwards;
 }
 
 .section-drawer-out {
-	animation: section-slide-out 1.3s linear;
+	animation: section-slide-out 1s linear;
 	animation-fill-mode: forwards;
 }
 
 .horizontal-bar-in {
-	animation: slide-vertical-in 1.3s linear;
+	animation: slide-vertical-in 1s linear;
 }
 
 .horizontal-bar-out {
-	animation: slide-vertical-out 1.3s linear;
+	animation: slide-vertical-out 1s linear;
 	animation-fill-mode: forwards;
 }
 
 .vertical-element-in {
-	animation: section-slide-in 1.3s linear;
+	animation: section-slide-in 1s linear;
 	animation-fill-mode: forwards;
 }
 
 .vertical-element-out {
-	animation: section-slide-out 1.3s linear;
+	animation: section-slide-out 1s linear;
 	animation-fill-mode: forwards;
 }
 
 .perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
 	transform: translateX(calc(23rem - 2px));
+}
+
+.lang-slide-in {
+	animation: slide-down 1s ease forwards;
+}
+
+.lang-slide-out {
+	animation: slide-up 1s ease forwards;
 }
 
 @media (max-width: 750px) {
@@ -120,8 +138,8 @@
 }
 
 .hover-border {
-	border: 1px solid;
-	animation: progress-bar 1s ease;
+	border: 0.8px solid;
+	animation: progress-bar 0.6s ease;
 /*	animation-fill-mode: forwards;*/
 }
 
@@ -131,7 +149,7 @@
 }
 
 .scroll-header {
-	animation: infinite-scroll 13s infinite linear;
+	animation: infinite-scroll 20s linear infinite;
 }
 
 .scroll-icons {

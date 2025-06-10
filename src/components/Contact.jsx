@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 import { CopyRight, CompanyEmail } from '../data/site-data'
 import Navbar from './Navbar'
-import { StarIcon } from './SocialIconsCollection'
+import { StarIcon, ArrowIcon } from './SocialIconsCollection'
 
 const placeHolders = ['Name', 'Roles*', 'Enter your email*', 'A brief introduction about your project', ]
 
@@ -24,11 +24,11 @@ export default function Contact() {
 
 	return (
 		<main className="mx-auto max-w-[750px] lg:max-w-[1920px] lg:max-h-screen overflow-hidden">
-      <Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
+      		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
 			<section id="contact-us" className="mx-auto relative" onClick={closeDrawer}>
 				<PixelsHeader/>
 				<ContactContainer/>
-	      <CopyRightCard/>
+	      		<CopyRightCard/>
 			</section>
 		</main>
 	)
@@ -62,9 +62,9 @@ function ContactContainer() {
 	    console.log('Submitted name:', finalData);
 	    try {
 	    	const result = await callApi({ data: finalData });
-	      console.log(result);
-				setCurrentStep(currentStep + 1)
-				setFinalData(initData)
+	      	console.log(result);
+			setCurrentStep(currentStep + 1)
+			setFinalData(initData)
 	    } catch (err) {
 	      	console.error(err);
 	    }
@@ -76,11 +76,11 @@ function ContactContainer() {
 			<FormBody currentStep={currentStep} goSubmit={goSubmit} finalData={finalData} setFinalData={setFinalData} goToStep={goToStep}/>
 			<div className="mt-[6rem] lg:mt-[2rem] flex items-center justify-center w-full">
 				<ButtonGroups currentStep={currentStep} loading={loading} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
-      </div>
-      <div className="mt-[8rem] lg:mt-[4rem] lg:mt-0 flex justify-between">
-      	<ThankYouCard/>
-      	<ContactEmailCard/>
-      </div>
+      		</div>
+			<div className="mt-[8rem] lg:mt-[4rem] lg:mt-0 flex justify-between">
+				<ThankYouCard/>
+				<ContactEmailCard/>
+			</div>
 		</div>
 	)
 }
@@ -154,20 +154,26 @@ function ButtonGroups({currentStep, goBack, goNext, goSubmit, getInTouch, loadin
 }
 
 function ButtonWithDot({btnAction, btnText}) {
+	const [isHovered, setIsHovered] = useState(false);
+	const ArrowElement = (<span className={`bg-white size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-500 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></span>)
 	return (
-		<span className="min-w-[13rem] lg:min-w-[15rem] bg-black rounded-full h-[4rem] lg:h-[4.5rem] px-[2rem] flex items-center justify-between" onClick={btnAction}><span className="text-[#f7f7f7] text-[1.75rem] lg:text-[2rem] font-medium">{btnText}</span><span className="size-[0.5rem] bg-white rounded-full ml-[5rem] z-300"></span></span>
+		<span className="bg-black rounded-full pl-[1rem] pr-[0.5rem] py-[0.3rem] flex items-center justify-evenly" onClick={btnAction} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+			<span className="text-[#f7f7f7] text-[1.75rem] lg:text-[2rem] font-medium mr-[1rem] lg:mr-[1.5rem]">{btnText}</span>
+			{/* <span className="size-[0.5rem] bg-white rounded-full ml-[5rem] z-300"></span> */}
+			{ArrowElement}
+		</span>
 	)
 }
 
 function ButtonNoDot({btnAction, btnText}) {
 	return (
-		<span className="min-w-[13rem] lg:min-w-[15rem] bg-black rounded-full h-[4rem] lg:h-[4.5rem] px-[2rem] flex items-center justify-center" onClick={btnAction}><span className="text-[#f7f7f7] text-[1.75rem] lg:text-[2rem] font-medium">{btnText}</span></span>
+		<span className="bg-black rounded-full px-[1.5rem] py-[0.3rem] flex items-center justify-evenly" onClick={btnAction}><span className="text-[#f7f7f7] text-[1.75rem] lg:text-[2rem] font-medium">{btnText}</span></span>
 	)
 }
 
 function SumbittedGroup() {
 	return (
-		<div className="mx-auto mt-[8rem] lg:mt-[4rem] h-[14rem] lg:h-[16rem] flex items-center justify-center scale-90">
+		<div className="mx-auto mt-[8rem] lg:mt-[4rem] h-[14rem] lg:h-[16rem] flex items-center justify-evenly scale-90">
 			<SubmittedAlreadyIcon/>
 		</div>
 	)

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from "react-router-dom"
 import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../data/site-data'
 import Navbar from './Navbar'
-import { StarIcon } from './SocialIconsCollection'
+import { StarIcon, ArrowIcon } from './SocialIconsCollection'
 import { SiteInfoCard,  SiteFooter } from './About'
 import { UseThrottle } from './FunctionCollection'
 
@@ -62,12 +62,13 @@ function CareerContenr() {
 
 function TimeLineCard() {
 	const [timelineIndex, setTimelineIndex] = useState(0)
+	const numbersLimit = TimelineItems.length
 
 	// const debouncedWheel = useCallback(debounce((e) => {wheelScroll(e)}, 300, { leading: false, trailing: true }), [])
 	const throttledWheel = UseThrottle( (e) => {wheelScroll(e)}, 500 )
 	function wheelScroll(e) {
   		if (e.deltaY < 0) { setTimelineIndex(x => { return x - 1 > 0 ? x - 1 : 0 }) }
-  		if (e.deltaY > 0) { setTimelineIndex(x => { return x + 1 > 6 ? 5 : x + 1 }) }
+  		if (e.deltaY > 0) { setTimelineIndex(x => { return x + 1 > numbersLimit ? (numbersLimit - 1) : (x + 1) }) }
 	}
 
 	return (
@@ -104,8 +105,10 @@ function TimeLineElement({id, number, title, timelineIndex}) {
 
 function PerksContainer() {
 	return (
-		<div className="mx-auto flex flex-nowrap my-[4rem] -ml-[2rem] min-w-content overflow-x-auto">
-			{PerkItemsData.map((item, index) => <PerkCard {...item} index={index} key={item.number}/>)}
+		<div className="mx-auto my-[4rem] lg:ml-[-4rem] overflow-x-hidden">
+			<div className="whitespace-nowrap flex flex-nowrap">
+				{PerkItemsData.map((item, index) => <PerkCard {...item} index={index} key={item.number}/>)}
+			</div>
 		</div>
 	)
 }
@@ -163,7 +166,7 @@ function RoleCard({team, title, tags, index, id}) {
 
 function ApplyButon({id}) {
 	const [isHovered, setIsHovered] = useState(false);
-	const ArrowElement = (<div className={`bg-white size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-600 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>)
+	const ArrowElement = (<div className={`bg-white size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-500 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>)
 	const DotElement = (<div className="size-[2.5rem] flex items-center justify-center"><span className="size-[0.5rem] bg-white rounded-full"></span></div>)
 
 	return (
@@ -196,18 +199,6 @@ function QIcon() {
 		</svg>
 	)
 }
-
-function ArrowIcon() {
-	return (
-		<svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-			<rect x="7.91699" y="1.17041" width="8.01079" height="2" transform="rotate(45 7.91699 1.17041)" fill="#161619"/>
-			<rect x="6.49219" y="11.0957" width="8.04497" height="2" transform="rotate(-45 6.49219 11.0957)" fill="#161619"/>
-			<rect x="1" y="6" width="10" height="2" fill="#161619"/>
-		</svg>
-
-	)
-}
-
 
 function ArrowGroup() {
 	return (

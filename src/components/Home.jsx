@@ -69,7 +69,7 @@ function VerticalElement({verticalClassName}) {
 		<div className="absolute right-[1rem] top-[50%] lg:top-0 h-full ">	
 			<div className={`translate-y-[100%] flex gap-4 items-center text-base font-medium leading-[16px] text-black/64 ${verticalClassName}`} style={{writingMode: 'vertical-lr'}}>
 				<span className="rotate-180">{CompanyDomain}</span>
-				<span className="border border-2 border-black/64 h-[8rem]"></span>
+				<span className="border border-[0.8px] border-black/64 h-[8rem] translate-x-[50%]"></span>
 			</div>
 		</div>
 	)

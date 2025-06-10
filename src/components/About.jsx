@@ -61,10 +61,10 @@ function AboutHeader() {
 
 function VerticalItem() {
 	return (
-		<div id="v-item" className="absolute lg:left-[-25%] top-[50%] flex flex-col items-center justify-center">	
+		<div id="v-item" className="absolute lg:left-[-24%] top-[50%] flex flex-col items-center justify-center">	
 			<div className="flex gap-4 items-center text-xs lg:text-base font-medium leading-[16px] text-black/64" style={{writingMode: 'vertical-lr'}}>
 				<span className="rotate-180">{CompanyDomain}</span>
-				<span className="border border-1 lg:border-2 border-black/64 h-[8rem]"></span>
+				<span className="border border-[0.8px] border-black/64 h-[8rem] translate-x-[50%]"></span>
 			</div>
 		</div>
 	)

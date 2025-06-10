@@ -51,7 +51,7 @@ function SocialGroupCard() {
 			<div className="mt-[10rem] flex items-end gap-[2rem]">
         {SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
 			</div>
-			<hr className="border border-2 mt-[4rem] mb-[1.6rem] w-full"></hr>
+			<hr className="border border-[0.8px] mt-[4rem] mb-[1.6rem] w-full"></hr>
 			<p className="text-xs font-medium text-[#161619]/48">{CompanyEmail}</p>
 		</>
 	)
@@ -64,7 +64,7 @@ function SiteLinkItem({url, title, linkTo}) {
 	return (
 		<div className="flex flex-col" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => scrollTo(url)}>
 			<Link to={linkTo} className="text-5xl font-semibold">{title}</Link>
-			<hr className={`mt-[6px] ${isHovered ? 'hover-border' : 'border border-transparent'}`}></hr>
+			<hr className={`mt-[6px] ${isHovered ? 'hover-border' : 'border border-[0.8px] border-transparent'}`}></hr>
 		</div>
 	)
 }
@@ -73,12 +73,12 @@ function LangButtons() {
 	const [langExpanded, setLangExpanded] = useState(false)
 
 	return (
-		<div className="relative cursor-pointer" onClick={() => {setLangExpanded(!langExpanded)}}>
-			<div className="flex items-end justify-between">
+		<div className="relative cursor-pointer">
+			<div className="flex items-end justify-between" onClick={() => {setLangExpanded(!langExpanded)}}>
 				<span className="text-xl font-bold mr-[6px]">En</span>
 				<span className="mb-[6px]">{langExpanded ? <LangArrowIcon/> : <LangArrowIcon />}</span>
 			</div>
-			<div className={`absolute top-[2rem] flex items-center justify-center ${langExpanded ? '' : 'hidden'}`}>
+			<div className={`absolute top-[2rem] flex items-center justify-center ${langExpanded ? 'lang-slide-in' : 'lang-slide-out'}`}>
 				<span className="text-xl font-bold">Cn</span>
 			</div>
 		</div>

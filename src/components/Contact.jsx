@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react'
 import { CopyRight, CompanyEmail } from '../data/site-data'
 import Navbar from './Navbar'
 import { StarIcon, ArrowIcon } from './SocialIconsCollection'
+import { handleClickDrawer, closeDrawer } from './FunctionCollection'
 
 const placeHolders = ['Name', 'Roles*', 'Enter your email*', 'A brief introduction about your project', ]
 
@@ -14,18 +15,11 @@ const placeHolders = ['Name', 'Roles*', 'Enter your email*', 'A brief introducti
 
 export default function Contact() {
 	const [drawerStatus, setDrawerStatus] = useState('initial')
-	function handleClickDrawer() {
-		let newStatus; 
-		if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' } 
-		if (drawerStatus === 'opened') { newStatus = 'closed' }
-		setDrawerStatus(newStatus)
-	}
-  	function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
 
 	return (
 		<main className="mx-auto max-w-[750px] lg:max-w-[1920px] lg:max-h-screen overflow-hidden">
-      		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="contact-us" className="mx-auto relative" onClick={closeDrawer}>
+			<Navbar drawerStatus={drawerStatus} handleClickDrawer={() => {handleClickDrawer(drawerStatus, setDrawerStatus)}}/>
+			<section id="contact-us" className="mx-auto relative" onClick={() => closeDrawer(drawerStatus, setDrawerStatus)}>
 				<PixelsHeader/>
 				<ContactContainer/>
 	      		<CopyRightCard/>
@@ -157,7 +151,7 @@ function ButtonWithDot({btnAction, btnText}) {
 	const [isHovered, setIsHovered] = useState(false);
 	const ArrowElement = (<span className={`bg-white size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-500 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></span>)
 	return (
-		<span className="bg-black rounded-full pl-[1rem] pr-[0.5rem] py-[0.3rem] flex items-center justify-evenly" onClick={btnAction} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+		<span className="bg-black rounded-full pl-[1rem] pr-[0.5rem] py-[0.3rem] flex items-center justify-evenly" onClick={btnAction} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<span className="text-[#f7f7f7] text-[1.75rem] lg:text-[2rem] font-medium mr-[1rem] lg:mr-[1.5rem]">{btnText}</span>
 			{/* <span className="size-[0.5rem] bg-white rounded-full ml-[5rem] z-300"></span> */}
 			{ArrowElement}
@@ -167,13 +161,13 @@ function ButtonWithDot({btnAction, btnText}) {
 
 function ButtonNoDot({btnAction, btnText}) {
 	return (
-		<span className="bg-black rounded-full px-[1.5rem] py-[0.3rem] flex items-center justify-evenly" onClick={btnAction}><span className="text-[#f7f7f7] text-[1.75rem] lg:text-[2rem] font-medium">{btnText}</span></span>
+		<span className="bg-black rounded-full px-[1.5rem] py-[0.3rem] flex items-center justify-center" onClick={btnAction}><span className="text-[#f7f7f7] text-[1.75rem] lg:text-[2rem] font-medium">{btnText}</span></span>
 	)
 }
 
 function SumbittedGroup() {
 	return (
-		<div className="mx-auto mt-[8rem] lg:mt-[4rem] h-[14rem] lg:h-[16rem] flex items-center justify-evenly scale-90">
+		<div className="mx-auto w-full mt-[8rem] lg:mt-[4rem] h-[14rem] lg:h-[16rem] flex items-center justify-center scale-90">
 			<SubmittedAlreadyIcon/>
 		</div>
 	)

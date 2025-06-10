@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 import { throttle } from 'lodash';
 
@@ -25,4 +25,54 @@ function UseThrottle(callback, delay) {
   return throttledFn;
 }
 
-export { ScrollToTop, RandomInt, UseThrottle }
+function useScrollDirection() {
+    const [scrollDirection, setScrollDirection] = useState(null);
+
+    useEffect(() => {
+        let lastScrollY = window.pageYOffset;
+        // function to run on scroll
+        const updateScrollDirection = () => {
+            const scrollY = window.pageYOffset;
+            const direction = scrollY > lastScrollY ? "down" : "up";
+            if (direction !== scrollDirection && (scrollY - lastScrollY > 15 || scrollY - lastScrollY < -15)) {
+              setScrollDirection(direction);
+            }
+            lastScrollY = scrollY > 0 ? scrollY : 0;
+        };
+        window.addEventListener("scroll", updateScrollDirection); // add event listener
+        return () => {
+            window.removeEventListener("scroll", updateScrollDirection); // clean up
+        }
+    }, [scrollDirection]); // run when scroll direction changes
+
+    return scrollDirection;
+};
+
+function useScrollTo() {
+  return useCallback((id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }, []);
+}
+
+function handleClickDrawer(drawerStatus, setDrawerStatus) {
+  // const [drawerStatus, setDrawerStatus] = useState('initial')
+  let newStatus; 
+  if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' } 
+  if (drawerStatus === 'opened') { newStatus = 'closed' }
+  setDrawerStatus(newStatus)
+  return drawerStatus
+}
+
+function closeDrawer(drawerStatus, setDrawerStatus) {
+  if (drawerStatus === 'opened') { setDrawerStatus('closed') }
+  return drawerStatus
+}
+
+
+export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, handleClickDrawer, closeDrawer }

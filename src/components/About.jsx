@@ -1,26 +1,19 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import '../assets/site-styles.css';
 import { Navbar, LogoIcon } from './Navbar'
 import { TeamMembers, CopyRight, CompanyEmail, CompanyDomain, StatusContents } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem, ByBitIcon, AwsIcon, VenturesIcon, GateIcon, GateIconBlack} from './SocialIconsCollection'
 import backgroundImage from '../assets/dashed-bg.png'
+import { handleClickDrawer, closeDrawer } from './FunctionCollection'
 
 export default function About() {
 	const [drawerStatus, setDrawerStatus] = useState('initial')
-	function handleClickDrawer() {
-		let newStatus; 
-		if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' } 
-		if (drawerStatus === 'opened') { newStatus = 'closed' }
-		setDrawerStatus(newStatus)
-	}
-
-  	function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
 
 	return (
-		<main className="mx-auto max-w-[750px] lg:max-w-[1920px] overflow-x-hidden">
-      		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="about" className="mx-auto px-[1.5rem] lg:px-[3rem] pt-[3rem]" onClick={closeDrawer}>
+		<main className="mx-auto max-w-[750px] lg:max-w-[1920px]">
+      		<Navbar drawerStatus={drawerStatus} handleClickDrawer={() => {handleClickDrawer(drawerStatus, setDrawerStatus)} }/>
+			<section id="about" className="mx-auto px-[1.5rem] lg:px-[3rem] pt-[3rem]" onClick={() => closeDrawer(drawerStatus, setDrawerStatus)}>
 				<AboutHeader/>
 				<AboutBrand/>
 				<AboutStatusContainer/>

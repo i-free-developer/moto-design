@@ -2,22 +2,16 @@ import { useState } from 'react'
 import { DesktopPortfolioItems, MobilePortfolioItems } from '../data/site-data'
 import Navbar from './Navbar'
 import { SiteInfoCard,  SiteFooter } from './About'
+import { handleClickDrawer, closeDrawer } from './FunctionCollection'
 
 export default function Portfolio() {
 	const [isMobile, setIsMobile] = useState(false)
 	const [drawerStatus, setDrawerStatus] = useState('initial')
-	function handleClickDrawer() {
-		let newStatus; 
-		if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' } 
-		if (drawerStatus === 'opened') { newStatus = 'closed' }
-		setDrawerStatus(newStatus)
-	}
-  	function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
-
+	
 	return (
 		<main className="mx-auto max-w-[750px] lg:max-w-[1920px]">
-      <Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="portfolio" className="mx-auto px-[2rem] lg:px-[4rem] mt-[8rem] mb-[3rem]" onClick={closeDrawer}>
+			<Navbar drawerStatus={drawerStatus} handleClickDrawer={() => {handleClickDrawer(drawerStatus, setDrawerStatus)} }/>
+			<section id="portfolio" className="mx-auto px-[1.5rem] lg:px-[3rem] mt-[8rem] mb-[3rem]" onClick={() => closeDrawer(drawerStatus, setDrawerStatus)}>
 				<PortfolioHeader/>
 				<div className="my-[3rem] lg:my-[6rem] flex flex-row justify-between">
 					<div className="cursor-pointer self-end flex items-center gap-[0.5rem] mt-[1rem] mb-[4rem] text-[1.75rem]">
@@ -70,7 +64,7 @@ function DesktopCard({title, description, colums, image, url}) {
 			`}></span>
 			<a href={url} className="max-w-full h-full block cursor-pointer rounded-3xl">
 				<div className="w-full h-full overflow-hidden rounded-[inherit]">
-					<img src={image} className={`w-full h-full object-cover object-center rounded-[inherit] ${isHovered ? 'scale-104' : ''}`} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}></img>
+					<img src={image} className={`w-full h-full object-cover object-center rounded-[inherit] ${isHovered ? 'scale-104' : ''}`} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}></img>
 				</div>
 				<DesktopBottomCard title={title} description={description}/>
 			</a>
@@ -81,7 +75,7 @@ function DesktopCard({title, description, colums, image, url}) {
 function DesktopBottomCard({title, description}) {
 	const [isHovered, setIsHovered] = useState(true)
 	return (
-		<div className="z-10 absolute left-6 right-6 bottom-6 px-6 py-4 bg-white rounded-2xl flex justify-between items-center" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+		<div className="z-10 absolute left-6 right-6 bottom-6 px-6 py-4 bg-white rounded-2xl flex justify-between items-center" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<div className="max-w-3/4">
 				<header className="font-bold mb-2 text-2xl">{title}</header>
 				<p className="text-xl">{description}</p>

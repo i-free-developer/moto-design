@@ -1,10 +1,10 @@
 @keyframes drawer-slide-in {
 	from {transform: translateX(-36rem);}
-	to {transform: translateX(0rem);}
+	to {transform: translateX(-3.5rem);}
 }
 
 @keyframes drawer-slide-out {
-	from {transform: translateX(0rem);}
+	from {transform: translateX(-3.5rem);}
 	to {transform: translateX(-36rem); display: none;}
 }
 
@@ -76,34 +76,34 @@
 }
 
 .drawer-in {
-	animation: drawer-slide-in 1s linear;
+	animation: drawer-slide-in 0.7s linear;
 	animation-fill-mode: forwards;
 /*	left: 1rem;*/
 }
 
 .drawer-out {
-	animation: drawer-slide-out 1s linear;
+	animation: drawer-slide-out 0.7s linear;
 	animation-fill-mode: forwards;
 /*	animation-direction: reverse;*/
 /*	left: -20rem;*/
 }
 
 .section-drawer-in {
-	animation: section-slide-in 1s linear;
+	animation: section-slide-in 0.8s linear;
 	animation-fill-mode: forwards;
 }
 
 .section-drawer-out {
-	animation: section-slide-out 1s linear;
+	animation: section-slide-out 0.8s linear;
 	animation-fill-mode: forwards;
 }
 
 .horizontal-bar-in {
-	animation: slide-vertical-in 1s linear;
+	animation: slide-vertical-in 0.8s linear;
 }
 
 .horizontal-bar-out {
-	animation: slide-vertical-out 1s linear;
+	animation: slide-vertical-out 0.8s linear;
 	animation-fill-mode: forwards;
 }
 
@@ -134,6 +134,29 @@
 
 	.perk-card:active ~ .perk-card, .perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
 		transform: translateX(calc(17rem - 2px));
+	}
+
+	@keyframes drawer-slide-in {
+		from {transform: translateX(-28rem);}
+		to {transform: translateX(-1.5rem);}
+	}
+
+	@keyframes drawer-slide-out {
+		from {transform: translateX(-1.5rem);}
+		to {transform: translateX(-28rem); display: none;}
+	}
+
+	.drawer-in {
+		animation: drawer-slide-in 0.7s linear;
+		animation-fill-mode: forwards;
+	/*	left: 1rem;*/
+	}
+
+	.drawer-out {
+		animation: drawer-slide-out 0.7s linear;
+		animation-fill-mode: forwards;
+	/*	animation-direction: reverse;*/
+	/*	left: -20rem;*/
 	}
 }
 

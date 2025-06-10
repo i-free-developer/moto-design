@@ -4,23 +4,15 @@ import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../da
 import Navbar from './Navbar'
 import { StarIcon, ArrowIcon } from './SocialIconsCollection'
 import { SiteInfoCard,  SiteFooter } from './About'
-import { UseThrottle } from './FunctionCollection'
+import { UseThrottle, handleClickDrawer, closeDrawer } from './FunctionCollection'
 
 export default function Career() {
 	const [drawerStatus, setDrawerStatus] = useState('initial')
 
-	function handleClickDrawer() {
-		let newStatus;
-		if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' }
-		if (drawerStatus === 'opened') { newStatus = 'closed' }
-		setDrawerStatus(newStatus)
-	}
-  	function closeDrawer() { if (drawerStatus === 'opened') { setDrawerStatus('closed') } }
-
 	return (
 		<main className="mx-auto max-w-[750px] lg:max-w-[1920px]">
-      		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="career" className="mx-auto px-[2rem] lg:px-[4rem] pt-[4rem] flex flex-col gap-8 w-full" onClick={closeDrawer}>
+			<Navbar drawerStatus={drawerStatus} handleClickDrawer={() => {handleClickDrawer(drawerStatus, setDrawerStatus)} }/>
+			<section id="career" className="mx-auto px-[2rem] lg:px-[4rem] pt-[4rem] flex flex-col gap-8 w-full" onClick={() => closeDrawer(drawerStatus, setDrawerStatus)}>
 				<CareerHeader/>
 				<CareerContenr/>
 				<TimeLineCard/>
@@ -72,7 +64,7 @@ function TimeLineCard() {
 	}
 
 	return (
-		<div className="flex items-center flex-nowrap min-w-content px-[1rem] py-[2rem] lg:py-[6rem] overflow-x-auto" onWheel={throttledWheel}>
+		<div className="flex items-center flex-nowrap px-[1rem] py-[2rem] lg:py-[6rem] overflow-x-auto" onWheel={throttledWheel}>
 			{TimelineItems.map(item => <TimeLineElement {...item} key={item.number} timelineIndex={timelineIndex}/>)}
 		</div>
 	)

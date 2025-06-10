@@ -60,6 +60,10 @@ text-9xl   /* 8rem (128px) */
 
 ##### general resources
 
+https://usehooks.com/uselockbodyscroll
+
+scroll hide sticky header https://www.codemzy.com/blog/react-sticky-header-disappear-scroll
+
 backend-db https://orm.drizzle.team/docs/get-started-sqlite
 
 routes https://www.geeksforgeeks.org/reactjs-types-of-routers/

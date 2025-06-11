@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react'
 import { CopyRight, CompanyEmail } from '../data/site-data'
 import Navbar from './Navbar'
 import { StarIcon, ArrowIcon } from './SocialIconsCollection'
-import { handleClickDrawer, closeDrawer } from './FunctionCollection'
+import { useDrawerHandler } from './FunctionCollection'
 
 const placeHolders = ['Name', 'Roles*', 'Enter your email*', 'A brief introduction about your project', ]
 
@@ -14,12 +14,12 @@ const placeHolders = ['Name', 'Roles*', 'Enter your email*', 'A brief introducti
 // }
 
 export default function Contact() {
-	const [drawerStatus, setDrawerStatus] = useState('initial')
+	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 
 	return (
 		<main className="mx-auto max-w-[750px] lg:max-w-[1920px] lg:max-h-screen overflow-hidden">
-			<Navbar drawerStatus={drawerStatus} handleClickDrawer={() => {handleClickDrawer(drawerStatus, setDrawerStatus)}}/>
-			<section id="contact-us" className="mx-auto relative" onClick={() => closeDrawer(drawerStatus, setDrawerStatus)}>
+			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
+			<section id="contact-us" className="mx-auto relative" onClick={closeDrawer}>
 				<PixelsHeader/>
 				<ContactContainer/>
 	      		<CopyRightCard/>
@@ -217,7 +217,7 @@ function SubmittedAlreadyIcon() {
 // `M0,${radius} A${radius},${radius} 0 0,0 ${diameter},${radius}`;
 // `M0,${diameter},${radius} A${radius},${radius} 0 0 1 0,${radius}`;
 
-{/* <path d="M300,300 a200,200 0 0,0 -200,200 z" fill="yellow" stroke="blue" stroke-width="5" /> */}
+{/* <path d="M300,300 a200,200 0 0,0 -200,200 z" fill="yellow" stroke="blue" strokeWidth="5" /> */}
 
 const useFakeApi = () => {
   const [loading, setLoading] = useState(false);

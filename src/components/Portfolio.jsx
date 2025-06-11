@@ -2,22 +2,19 @@ import { useState } from 'react'
 import { DesktopPortfolioItems, MobilePortfolioItems } from '../data/site-data'
 import Navbar from './Navbar'
 import { SiteInfoCard,  SiteFooter } from './About'
-import { handleClickDrawer, closeDrawer } from './FunctionCollection'
+import { useDrawerHandler } from './FunctionCollection'
 
 export default function Portfolio() {
 	const [isMobile, setIsMobile] = useState(false)
-	const [drawerStatus, setDrawerStatus] = useState('initial')
+	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 	
 	return (
 		<main className="mx-auto max-w-[750px] lg:max-w-[1920px]">
-			<Navbar drawerStatus={drawerStatus} handleClickDrawer={() => {handleClickDrawer(drawerStatus, setDrawerStatus)} }/>
-			<section id="portfolio" className="mx-auto px-[1.5rem] lg:px-[3rem] mt-[8rem] mb-[3rem]" onClick={() => closeDrawer(drawerStatus, setDrawerStatus)}>
+			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
+			<section id="portfolio" className="mx-auto px-[1.5rem] lg:px-[3rem] mt-[8rem] mb-[3rem]" onClick={closeDrawer}>
 				<PortfolioHeader/>
 				<div className="my-[3rem] lg:my-[6rem] flex flex-row justify-between">
-					<div className="cursor-pointer self-end flex items-center gap-[0.5rem] mt-[1rem] mb-[4rem] text-[1.75rem]">
-						<span onClick={() => setIsMobile(true)} className={`p-2 ${isMobile ? '' : ''}`}><MobileIcon/></span>
-						<span onClick={() => setIsMobile(false)} className={`p-2 ${!isMobile ? '' : ''}`}><DesktopIcon/></span>
-					</div>
+					<MobileDeskIcons isMobile={isMobile} setIsMobile={setIsMobile}/>
 					<p className="self-start lg:mb-[3rem] text-[28px] leading-[28px] lg:text-[2rem] lg:leading-[32px] text-black/64 w-[55%] lg:w-[26rem] tracking-[-2%] font-normal text-right">Our user-centered design encourages productivity and boosts revenue</p>
 				</div>
 
@@ -35,6 +32,15 @@ function PortfolioHeader() {
 			<header className="text-[3.5rem] leading-[64px] lg:text-[5rem] lg:leading-[96px] w-[35rem] lg:w-[45%] font-normal">We don't do cookie-cutter solutions</header>
 			<p className="mt-[1rem] lg:mt-0 w-full lg:w-[20%] text-2xl text-black/64 leading-[24px] lg:text-right font-normal">Backing the best Web 3.0 founders & products</p>
 		</article>
+	)
+}
+
+function MobileDeskIcons({isMobile, setIsMobile}) {
+	return (
+		<div className="cursor-pointer self-end flex items-center gap-[2rem] mt-[1rem] mb-[4rem]">
+			<span onClick={() => setIsMobile(true)} className="">{isMobile ? <MobileIconBlack/> : <MobileIconWhite/> }</span>
+			<span onClick={() => setIsMobile(false)} className="">{isMobile ? <DesktopIconWhite/> : <DesktopIconBlack/> }</span>
+		</div>
 	)
 }
 
@@ -127,18 +133,37 @@ function StickyCard() {
   )
 }
 
-function MobileIcon() {
+function MobileIconWhite() {
 	return (
-		<svg width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg className="icon-fade-in" width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect x="1" y="1" width="20" height="26" rx="1" stroke="black" strokeWidth="2"/>
 			<rect x="7" y="4" width="8" height="2" rx="1" fill="#161619"/>
 		</svg>
 	)
 }
 
-function DesktopIcon() {
+function MobileIconBlack() {
 	return (
-		<svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg className="icon-fade-in" width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect width="24" height="32" rx="2" fill="#161619"/>
+			<rect x="8" y="3" width="8" height="2" rx="1" fill="#F7F7F7"/>
+			<circle cx="12" cy="26" r="2" fill="#F7F7F7"/>
+		</svg>
+	)
+}
+
+function DesktopIconWhite() {
+	return (
+		<svg className="icon-fade-in" width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect x="1" y="1" width="26" height="18" rx="1" stroke="#161619" strokeWidth="2"/>
+			<rect x="8" y="22" width="12" height="2" rx="1" fill="#161619"/>
+		</svg>
+	)
+}
+
+function DesktopIconBlack() {
+	return (
+		<svg className="icon-fade-in" width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect width="28" height="20" rx="2" fill="black"/>
 			<rect x="8" y="22" width="12" height="2" rx="1" fill="#161619"/>
 		</svg>

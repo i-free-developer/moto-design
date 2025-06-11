@@ -10,7 +10,7 @@ export default function Navbar({drawerStatus, handleClickDrawer}) {
 	const scrollDirection = useScrollDirection();
 
 	return (
-		<section id="navbar" className={`sticky relative z-200 text-black mx-auto px-[1.5rem] lg:px-[3.5rem] py-[1.5rem] lg:py-[2rem] bg-[#EAEAEA]/30 backdrop-blur-sm rounded-md lg:rounded-xl ${ scrollDirection === "down" ? "top-[5rem] lg:top-[-6rem]" : "top-0"}`}>
+		<section id="navbar" className={`sticky relative z-200 text-black mx-auto px-[1.5rem] lg:px-[3.5rem] py-[1.5rem] lg:py-[2rem] bg-[#EAEAEA]/30 backdrop-blur-sm lg:backdrop-blur-md rounded-md lg:rounded-xl ${ scrollDirection === "down" ? "top-[5rem] lg:top-[-6rem]" : "top-0"}`}>
 			<nav className="flex justify-between items-center h-[2rem]">
 				<div onClick={handleClickDrawer} className="cursor-pointer size-[1.2rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
 				<Link to="/"><LogoIcon/></Link>

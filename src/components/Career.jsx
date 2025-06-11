@@ -4,15 +4,15 @@ import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../da
 import Navbar from './Navbar'
 import { StarIcon, ArrowIcon } from './SocialIconsCollection'
 import { SiteInfoCard,  SiteFooter } from './About'
-import { UseThrottle, handleClickDrawer, closeDrawer } from './FunctionCollection'
+import { UseThrottle, useDrawerHandler } from './FunctionCollection'
 
 export default function Career() {
-	const [drawerStatus, setDrawerStatus] = useState('initial')
+	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 
 	return (
 		<main className="mx-auto max-w-[750px] lg:max-w-[1920px]">
-			<Navbar drawerStatus={drawerStatus} handleClickDrawer={() => {handleClickDrawer(drawerStatus, setDrawerStatus)} }/>
-			<section id="career" className="mx-auto px-[2rem] lg:px-[4rem] pt-[4rem] flex flex-col gap-8 w-full" onClick={() => closeDrawer(drawerStatus, setDrawerStatus)}>
+			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
+			<section id="career" className="mx-auto px-[2rem] lg:px-[4rem] pt-[4rem] flex flex-col gap-8 w-full" onClick={closeDrawer}>
 				<CareerHeader/>
 				<CareerContenr/>
 				<TimeLineCard/>

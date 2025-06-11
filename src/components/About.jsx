@@ -5,15 +5,15 @@ import { Navbar, LogoIcon } from './Navbar'
 import { TeamMembers, CopyRight, CompanyEmail, CompanyDomain, StatusContents } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem, ByBitIcon, AwsIcon, VenturesIcon, GateIcon, GateIconBlack} from './SocialIconsCollection'
 import backgroundImage from '../assets/dashed-bg.png'
-import { handleClickDrawer, closeDrawer } from './FunctionCollection'
+import { useDrawerHandler } from './FunctionCollection'
 
 export default function About() {
-	const [drawerStatus, setDrawerStatus] = useState('initial')
+	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 
 	return (
 		<main className="mx-auto max-w-[750px] lg:max-w-[1920px]">
-      		<Navbar drawerStatus={drawerStatus} handleClickDrawer={() => {handleClickDrawer(drawerStatus, setDrawerStatus)} }/>
-			<section id="about" className="mx-auto px-[1.5rem] lg:px-[3rem] pt-[3rem]" onClick={() => closeDrawer(drawerStatus, setDrawerStatus)}>
+      		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
+			<section id="about" className="mx-auto px-[1.5rem] lg:px-[3rem] pt-[3rem]" onClick={closeDrawer}>
 				<AboutHeader/>
 				<AboutBrand/>
 				<AboutStatusContainer/>
@@ -182,6 +182,8 @@ function EcosystemCard() {
 					<TestimonialSlideIcons/>
 				</div>
 			</div>
+			<span className="absolute top-0 bottom-0 left-0 w-[1.5rem] lg:w-[3rem] backdrop-blur-xs"></span>
+			<span className="absolute top-0 bottom-0 right-0 w-[1.5rem] lg:w-[3rem] backdrop-blur-xs"></span>
 		</div>
 	)
 }

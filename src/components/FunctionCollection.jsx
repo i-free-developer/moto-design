@@ -60,19 +60,21 @@ function useScrollTo() {
   }, []);
 }
 
-function handleClickDrawer(drawerStatus, setDrawerStatus) {
-  // const [drawerStatus, setDrawerStatus] = useState('initial')
-  let newStatus; 
-  if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' } 
-  if (drawerStatus === 'opened') { newStatus = 'closed' }
-  setDrawerStatus(newStatus)
-  return drawerStatus
+function useDrawerHandler() {
+  const [drawerStatus, setDrawerStatus] = useState('initial')
+  const handleClickDrawer = () => {
+    let newStatus; 
+    if (drawerStatus === 'initial' || drawerStatus === 'closed') { newStatus = 'opened' } 
+    if (drawerStatus === 'opened') { newStatus = 'closed' }
+    setDrawerStatus(newStatus)
+  }
+
+  const closeDrawer = () => {
+    if (drawerStatus === 'opened') { setDrawerStatus('closed') }
+  }
+  
+  return {drawerStatus, handleClickDrawer, closeDrawer}
 }
 
-function closeDrawer(drawerStatus, setDrawerStatus) {
-  if (drawerStatus === 'opened') { setDrawerStatus('closed') }
-  return drawerStatus
-}
 
-
-export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, handleClickDrawer, closeDrawer }
+export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler }

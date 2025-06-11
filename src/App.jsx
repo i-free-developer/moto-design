@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from './components/Home';
+import { ScrollToTop, RandomInt } from './components/FunctionCollection'
 import CursorDot from './components/CursorDot';
+import Home from './components/Home';
 import About from './components/About'
 import Portfolio from './components/Portfolio'
 import Career from './components/Career'
 import Contact from './components/Contact'
 import RolePage from './components/RolePage'
-import { ScrollToTop, RandomInt } from './components/FunctionCollection'
 
 export default function App() {
   const [loadingPercentage, setLoadingPercentage] = useState(0);

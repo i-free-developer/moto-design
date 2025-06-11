@@ -4,17 +4,17 @@ import { OpenningRoles } from '../data/site-data'
 import { HowToApply } from './Career'
 import Navbar from './Navbar'
 import { SiteInfoCard,  SiteFooter } from './About'
-import { handleClickDrawer, closeDrawer } from './FunctionCollection'
+import { useDrawerHandler } from './FunctionCollection'
 
 export default function RolePage() {
-	const [drawerStatus, setDrawerStatus] = useState('initial')
+	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 	const { id } = useParams();
 	const {title, roleTag, tags, responsibilities, requirements} = OpenningRoles.find(e => e.id == id)
 
 	return (
 		<main className="mx-auto max-w-[750px] lg:max-w-[1920px]">
-			<Navbar drawerStatus={drawerStatus} handleClickDrawer={() => {handleClickDrawer(drawerStatus, setDrawerStatus)} }/>
-			<section id="role-page" className="mx-auto px-[1.5rem] lg:px-[3rem]" onClick={() => closeDrawer(drawerStatus, setDrawerStatus)}>
+			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
+			<section id="role-page" className="mx-auto px-[1.5rem] lg:px-[3rem]" onClick={closeDrawer}>
 				<RoleHeaderCard roleTag={roleTag} title={title} tags={tags}/>
 				<ContentSection title={'Responsibilities'} items={responsibilities}/>
 				<ContentSection title={'Requirements'} items={requirements}/>

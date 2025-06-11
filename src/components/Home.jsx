@@ -3,14 +3,14 @@ import { Link } from "react-router-dom"
 import Loading from './Loading'
 import Navbar from './Navbar'
 import { ServicesItems, CompanyDomain } from '../data/site-data'
-import { handleClickDrawer, closeDrawer } from './FunctionCollection'
+import { useDrawerHandler } from './FunctionCollection'
 
 const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'section-drawer-out'}
 const verticalClasses = {initial: '', opened: 'vertical-element-in', closed: 'vertical-element-out'}
 const serviceClasses = {initial: '', opened: 'horizontal-bar-out', closed: 'horizontal-bar-in'}
 
 export default function Home({loadingPercentage}) {
-	const [drawerStatus, setDrawerStatus] = useState('initial')
+	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 	const headerClassName = headerClasses[drawerStatus]
 	const serviceClassName = serviceClasses[drawerStatus]
 	const verticalClassName = verticalClasses[drawerStatus]
@@ -20,8 +20,8 @@ export default function Home({loadingPercentage}) {
 	} else {
 		return (
 			<main className="mx-auto max-w-[750px] lg:max-w-[1920px] max-h-screen overflow-hidden">
-				<Navbar drawerStatus={drawerStatus} handleClickDrawer={() => {handleClickDrawer(drawerStatus, setDrawerStatus)}}/>
-				<HomeSection headerClassName={headerClassName} serviceClassName={serviceClassName} verticalClassName={verticalClassName} onCloseDrawer={() => closeDrawer(drawerStatus, setDrawerStatus)}/>
+				<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
+				<HomeSection headerClassName={headerClassName} serviceClassName={serviceClassName} verticalClassName={verticalClassName} onCloseDrawer={closeDrawer}/>
 			</main>
 		)
 	}

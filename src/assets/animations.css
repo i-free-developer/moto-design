@@ -61,8 +61,8 @@
 }
 
 @keyframes scroll-fadeIn {
-	from { opacity: 0; scale: 0.9; translateY: 20vh; }
-	to { opacity: 1; scale: 1; translateY: 0; }
+	from { opacity: 0; scale: 0.9; translateY: 30vh;}
+	to { opacity: 1; scale: 1;translateY: 0;}
 }
 
 @keyframes slide-down {
@@ -77,6 +77,7 @@
 
 @keyframes opacity-fade-in {
 	from { opacity: 0; scale: 0.6; }
+	50% { opacity: 0.5, scale: 0.8; }
 	to { opacity: 1; scale: 1;}
 }
 
@@ -190,9 +191,9 @@
 
 .scroll-fade-in {
 	transition: opacity 2s linear, transform 2s linear;
-	animation: scroll-fadeIn 2s linear forwards;
+	animation: scroll-fadeIn 2s linear both;
 	animation-timeline: view(block);
-	animation-range: 0 40%;
+	animation-range: 0 30%;
 	/*animation-range: entry 50% entry 70%;*/
 /*	animation-range: entry 0% cover 50%;*/
 	/*animation-timeline: scroll(self);*/

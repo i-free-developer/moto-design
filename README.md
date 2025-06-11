@@ -59,6 +59,7 @@ text-9xl   /* 8rem (128px) */
 
 
 ##### general resources
+https://css-tricks.org.cn/almanac/properties/t/touch-action/
 
 https://usehooks.com/uselockbodyscroll
 

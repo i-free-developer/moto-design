@@ -11,7 +11,7 @@ export default function About() {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 
 	return (
-		<main className="mx-auto max-w-[750px] lg:max-w-[1920px]">
+		<main className="mx-auto max-w-[750px] lg:max-w-[1920px] overflow-x-hidden">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
 			<section id="about" className="mx-auto px-[1.5rem] lg:px-[3rem] pt-[3rem]" onClick={closeDrawer}>
 				<AboutHeader/>
@@ -32,20 +32,18 @@ export default function About() {
 
 function AboutHeader() {
 	return (
-		<div className="mx-auto my-[4rem] lg:my-[6rem] w-full lg:w-[75rem] relative">
-			<div className="mx-auto w-full uppercase text-center text-[2rem] leading-[54px] lg:text-[4rem] lg:leading-[88px] tracking-[10%] font-medium">
-				<div className="m-auto">
-					<span className="size-[41px] flex items-center translate-x-[280%] lg:translate-x-[400%] translate-y-[50%] lg:translate-y-[100%]"><LeftQuote/></span>
-					<p className="">Every frame of code</p>
-				</div>
+		<div className="mx-auto my-[4rem] lg:my-[6rem] min-w-full lg:w-[75rem] relative">
+			<div className="mx-auto w-content uppercase text-center text-[2rem] leading-[54px] lg:text-[4rem] lg:leading-[88px] tracking-[10%] font-medium">
+				<p className="relative">Every frame of code
+					<span className="absolute size-[41px] flex items-center top-[-0.7rem] left-[15%] lg:left-[25%]"><LeftQuote/></span>
+				</p>
 				<p className="">is an elegant murder of</p>
 				<p className="text-wrap wrap-normal">the old paradigm, every pixel</p>
 				<p className="">a philosophical</p>
 				<p className="">statement projected into</p>
-				<div className="mx-auto">
-					<p className="">the future.</p>
-					<span className="size-[41px] flex items-center translate-x-[1150%] lg:translate-x-[2050%] translate-y-[-75%] lg:translate-y-[-80%]"><RightQuote/></span>
-				</div>
+				<p className="">the future.
+					<span className="absolute size-[41px] flex items-center bottom-[-0.7rem] right-[25%] lg:right-[33%]"><RightQuote/></span>
+				</p>
 			</div>
 			<VerticalItem/>
 		</div>
@@ -54,7 +52,7 @@ function AboutHeader() {
 
 function VerticalItem() {
 	return (
-		<div id="v-item" className="absolute lg:left-[-24%] top-[50%] flex flex-col items-center justify-center">	
+		<div id="v-item" className="absolute left-0 bottom-0 flex flex-col items-center justify-center">	
 			<div className="flex gap-4 items-center text-xs lg:text-base font-medium leading-[16px] text-black/64" style={{writingMode: 'vertical-lr'}}>
 				<span className="rotate-180">{CompanyDomain}</span>
 				<span className="border border-[0.8px] border-black/64 h-[8rem] translate-x-[50%]"></span>
@@ -80,20 +78,28 @@ function AboutStatusContainer() {
 	const [goDirection, setgoDirection] = useState('left')
 
 	return (
-		<div className="mx-auto my-[4rem] lg:my-[12rem] flex justify-between relative">
-			<div className="min-w-full lg:max-w-1/2 lg:min-w-1/2">
-				<div className="tracking-[-2%]">
-					<p className="uppercase text-5xl lg:text-[4rem] font-bold leading-[4rem]">we strive to innovate</p>
-					<p className="text-base lg:text-[21px] font-normal lg:font-bold leading-[24px] my-[1rem] lg:my-[2rem]">Some Number About Us</p>	
-				</div>
-				<div className="w-9/10 flex flex-wrap gap-[1rem] justify-between my-[4rem]">
+		<div className="mx-auto w-full my-[4rem] lg:my-[12rem] flex flex-col lg:flex-row lg:items-center relative">
+			<div className="lg:w-[45%] tracking-[-2%]">
+				<p className="uppercase text-5xl lg:text-[4rem] font-bold leading-[4rem]">we strive to innovate</p>
+				<p className="text-base lg:text-[21px] font-normal lg:font-bold leading-[24px] my-[1rem] lg:my-[2rem]">Some Number About Us</p>	
+				<div className="grid grid-cols-2 gap-[3rem] my-[3rem]">
 					{StatusContents.map((item, index) => <StatusItemCard {...item} key={index}/>)}
 				</div>
 			</div>
-			{ goDirection == 'left' && <span className="absolute lg:hidden top-[40%] right-[-3%] z-200" onClick={() => {setgoDirection('right')}}><GoToRight/></span>}
-			{ goDirection == 'right' && <span className="absolute lg:hidden top-[40%] left-[-3%] z-200" onClick={() => {setgoDirection('left')}}><GoToLeft/></span>}			
+			{/* { goDirection == 'left' && <span className="absolute lg:hidden top-[40%] right-[-3%] z-200" onClick={() => {setgoDirection('right')}}><GoToRight/></span>} */}
+			{/* { goDirection == 'right' && <span className="absolute lg:hidden top-[40%] left-[-3%] z-200" onClick={() => {setgoDirection('left')}}><GoToLeft/></span>}			 */}
 			<AboutCirclesCard/>
 		</div>
+	)
+}
+
+function StatusItemCard({title, content}) {
+	return (
+		<article className="w-[80%] my-[1rem] lg:my-[1.5rem]">
+			<header className="text-[5rem] lg:text-8xl font-semibold leading-[80px] lg:leading-[96px] tracking-[-8%]">{title}</header>
+			<hr className="w-full border border-1 lg:border-2 border-black/20 my-[1rem] lg:mt-[2rem] lg:mb-[1.5rem]"></hr>
+			<p className="text-base font-normal leading-[20px] tracking-[-2%]">{content}</p>
+		</article>
 	)
 }
 
@@ -117,7 +123,7 @@ function GoToLeft() {
 
 function AboutCirclesCard() {
 	return (
-		<div className="translate-y-[100%] lg:translate-y-0 m-auto relative min-w-[696px] min-h-[696px] hover:cursor-pointer">
+		<div className="m-auto relative min-w-[696px] min-h-[696px] hover:cursor-pointer">
 			<div className="about-circle-div w-full h-full top-0 right-0" data-circle="true">
 				{/* <p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="true"></p> */}
 				<p className="circle-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="false"></p>
@@ -152,16 +158,6 @@ function AboutCirclesCard() {
 	)
 }
 
-function StatusItemCard({title, content}) {
-	return (
-		<article className="w-[33%] my-[1rem] lg:my-[1.5rem]">
-			<header className="text-[5rem] lg:text-8xl font-semibold leading-[80px] lg:leading-[96px] tracking-[-8%]">{title}</header>
-			<hr className="w-full border border-1 lg:border-2 border-black/20 my-[1rem] lg:mt-[2rem] lg:mb-[1.5rem]"></hr>
-			<p className="text-base font-normal leading-[20px] tracking-[-2%]">{content}</p>
-		</article>
-	)
-}
-
 function EcosystemHeader() {
 	return (
 		<div className="mx-auto w-full text-center scroll-fade-in">
@@ -182,8 +178,8 @@ function EcosystemCard() {
 					<TestimonialSlideIcons/>
 				</div>
 			</div>
-			<span className="absolute top-0 bottom-0 left-0 w-[1.5rem] lg:w-[3rem] backdrop-blur-xs"></span>
-			<span className="absolute top-0 bottom-0 right-0 w-[1.5rem] lg:w-[3rem] backdrop-blur-xs"></span>
+			<span className="absolute top-0 bottom-0 left-0  w-[3rem] lg:w-[5rem] bg-linear-to-r from-white to-white-10"></span>
+			<span className="absolute top-0 bottom-0 right-0 w-[3rem] lg:w-[5rem] bg-linear-to-l from-white to-white-10"></span>
 		</div>
 	)
 }

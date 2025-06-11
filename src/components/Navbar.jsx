@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import '../assets/animations.css';
 import { CompanyEmail } from '../data/site-data'
@@ -9,8 +9,35 @@ import { useScrollTo, useScrollDirection } from './FunctionCollection'
 export default function Navbar({drawerStatus, handleClickDrawer}) {
 	const scrollDirection = useScrollDirection();
 
+	useEffect(() => {
+	    const preventScroll = (e) => {
+	      e.preventDefault();
+	      e.stopPropagation();
+	      return false;
+	    }
+
+	    const preventKeyBoardScroll = (e) => {
+	      const keys = [32, 33, 34, 35, 37, 38, 39, 40];
+	      if (keys.includes(e.keyCode)) {
+	        e.preventDefault();
+	        return false;
+	      }
+	    }
+	    if (drawerStatus === 'opened') {
+	    	document.addEventListener("scroll", preventScroll, {passive: false}); // add event listener
+	    	document.addEventListener("wheel", preventScroll, {passive: false}); // add event listener
+	    	document.addEventListener('keydown', preventKeyBoardScroll, false);
+	    }
+	  
+	    return () => {
+	        document.removeEventListener("scroll", preventScroll); // clean up
+	        document.removeEventListener("wheel", preventScroll); // clean up
+	        document.removeEventListener("keydown", preventKeyBoardScroll); // clean up
+	    }
+  }, [drawerStatus])
+
 	return (
-		<section id="navbar" className={`sticky relative z-200 text-black mx-auto px-[1.5rem] lg:px-[3.5rem] py-[1.5rem] lg:py-[2rem] bg-[#EAEAEA]/30 backdrop-blur-sm lg:backdrop-blur-md rounded-md lg:rounded-xl ${ scrollDirection === "down" ? "top-[5rem] lg:top-[-6rem]" : "top-0"}`}>
+		<section id="navbar" className={`sticky relative z-200 text-black mx-auto px-[1.5rem] lg:px-[3.5rem] py-[1.5rem] lg:py-[2rem] bg-[#EAEAEA]/30 backdrop-blur-sm lg:backdrop-blur-md rounded-md lg:rounded-xl transition-[top] duration-500 ${ scrollDirection === "down" ? "top-[-5rem] lg:top-[-6rem]" : "top-0"}`}>
 			<nav className="flex justify-between items-center h-[2rem]">
 				<div onClick={handleClickDrawer} className="cursor-pointer size-[1.2rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
 				<Link to="/"><LogoIcon/></Link>
@@ -28,8 +55,8 @@ function DrawerCard({drawerStatus}) {
 
 	return(
 		<div className={`p-[4rem] w-[35rem] absolute top-[5rem] lg:top-[6rem] z-100 bg-[#EAEAEA]/40 backdrop-blur-md rounded-lg lg:rounded-3xl ${drawerClassName}`}>
-			<div className="flex flex-col items-start gap-[2.5rem] mt-[4rem]">
-        {SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
+			<div className="flex flex-col items-start gap-[1.5rem] lg:gap-[2.5rem] mt-[2rem]">
+       			 {SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>
 			<SocialGroupCard/>
 		</div>
@@ -39,10 +66,10 @@ function DrawerCard({drawerStatus}) {
 function SocialGroupCard() {
 	return (
 		<>
-			<div className="mt-[10rem] flex items-end gap-[2rem]">
-        {SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
+			<div className="mt-[10rem] lg:mt-[20rem] flex items-end gap-[2rem]">
+        		{SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
 			</div>
-			<hr className="border border-[0.8px] mt-[4rem] mb-[1.6rem] w-full"></hr>
+			<hr className="border border-[0.8px] mt-[1.5rem] mb-[1rem] w-full"></hr>
 			<p className="text-xs font-medium text-[#161619]/48">{CompanyEmail}</p>
 		</>
 	)

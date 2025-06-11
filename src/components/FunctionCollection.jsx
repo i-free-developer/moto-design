@@ -76,5 +76,4 @@ function useDrawerHandler() {
   return {drawerStatus, handleClickDrawer, closeDrawer}
 }
 
-
 export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler }

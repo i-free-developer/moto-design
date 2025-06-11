@@ -13,13 +13,13 @@ export default function About() {
 	return (
 		<main className="mx-auto max-w-[750px] lg:max-w-[1920px] overflow-x-hidden">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="about" className="mx-auto px-[1.5rem] lg:px-[3rem] pt-[3rem]" onClick={closeDrawer}>
+			<section id="about" className="mx-auto pt-[3rem]" onClick={closeDrawer}>
 				<AboutHeader/>
 				<AboutBrand/>
 				<AboutStatusContainer/>
 				<EcosystemHeader/>
 				<EcosystemCard/>
-				<div className="mt-[4rem] lg:mt-[10rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-4 lg:gap-6">
+				<div className="mx-[1.5rem] lg:mx-[3rem] mt-[4rem] lg:mt-[10rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-4 lg:gap-6">
 					<OurTeam />
 					{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
 				</div>
@@ -32,7 +32,7 @@ export default function About() {
 
 function AboutHeader() {
 	return (
-		<div className="mx-auto my-[4rem] lg:my-[6rem] min-w-full lg:w-[75rem] relative">
+		<div className="mx-auto mx-[1.5rem] lg:mx-[3rem] my-[4rem] lg:my-[6rem] min-w-full lg:w-[75rem] relative">
 			<div className="mx-auto w-content uppercase text-center text-[2rem] leading-[54px] lg:text-[4rem] lg:leading-[88px] tracking-[10%] font-medium">
 				<p className="relative">Every frame of code
 					<span className="absolute size-[41px] flex items-center top-[-0.7rem] left-[15%] lg:left-[25%]"><LeftQuote/></span>
@@ -52,7 +52,7 @@ function AboutHeader() {
 
 function VerticalItem() {
 	return (
-		<div id="v-item" className="absolute left-0 bottom-0 flex flex-col items-center justify-center">	
+		<div id="v-item" className="absolute left-[1.5rem] lg:left-0 bottom-0 flex flex-col items-center justify-center">	
 			<div className="flex gap-4 items-center text-xs lg:text-base font-medium leading-[16px] text-black/64" style={{writingMode: 'vertical-lr'}}>
 				<span className="rotate-180">{CompanyDomain}</span>
 				<span className="border border-[0.8px] border-black/64 h-[8rem] translate-x-[50%]"></span>
@@ -63,7 +63,7 @@ function VerticalItem() {
 
 function AboutBrand() {
 	return (
-		<div className="border border-2 lg:border-4 rounded-2xl p-[2rem] lg:px-[4rem] lg:py-[3rem] flex justify-between">
+		<div className="mx-[1.5rem] lg:mx-[3rem] border border-2 lg:border-4 rounded-2xl p-[2rem] lg:px-[4rem] lg:py-[3rem] flex justify-between">
 			<p className="uppercase text-2xl lg:text-[2rem] font-bold w-1/4 gap-[1rem] lg:w-1/3">About brand:</p>
 			<div className="w-3/4 grow-1 lg:grow-0 lg:w-1/2 flex flex-col justify-between gap-[2rem] text-xl font-medium">
 				<p className="">We're a visual design team with 8 years in the Web3 field.</p>
@@ -75,20 +75,22 @@ function AboutBrand() {
 }
 
 function AboutStatusContainer() {
-	const [goDirection, setgoDirection] = useState('left')
+	const [showSection, setShowSection] = useState('left')
 
 	return (
-		<div className="mx-auto w-full my-[4rem] lg:my-[12rem] flex flex-col lg:flex-row lg:items-center relative">
-			<div className="lg:w-[45%] tracking-[-2%]">
-				<p className="uppercase text-5xl lg:text-[4rem] font-bold leading-[4rem]">we strive to innovate</p>
-				<p className="text-base lg:text-[21px] font-normal lg:font-bold leading-[24px] my-[1rem] lg:my-[2rem]">Some Number About Us</p>	
-				<div className="grid grid-cols-2 gap-[3rem] my-[3rem]">
-					{StatusContents.map((item, index) => <StatusItemCard {...item} key={index}/>)}
+		<div className="mx-auto mx-[1.5rem] lg:mx-[3rem] w-full relative">
+			<div className="mx-auto overflow-x-hidden w-full my-[4rem] lg:my-[12rem] flex items-center justify-evenly">
+				<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} transition-translate duration-700 px-[1.5rem] lg:px-[3rem] mx-auto min-w-full max-w-full lg:min-w-[45%] lg:w-[45%] tracking-[-2%]`}>
+					<p className="uppercase text-5xl lg:text-[4rem] font-bold leading-[4rem]">we strive to innovate</p>
+					<p className="text-base lg:text-[21px] font-normal lg:font-bold leading-[24px] my-[1rem] lg:my-[2rem]">Some Number About Us</p>	
+					<div className="grid grid-cols-2 gap-[4rem] my-[3rem]">
+						{StatusContents.map((item, index) => <StatusItemCard {...item} key={index}/>)}
+					</div>
 				</div>
+				<AboutCirclesCard showSection={showSection}/>
 			</div>
-			{/* { goDirection == 'left' && <span className="absolute lg:hidden top-[40%] right-[-3%] z-200" onClick={() => {setgoDirection('right')}}><GoToRight/></span>} */}
-			{/* { goDirection == 'right' && <span className="absolute lg:hidden top-[40%] left-[-3%] z-200" onClick={() => {setgoDirection('left')}}><GoToLeft/></span>}			 */}
-			<AboutCirclesCard/>
+			{ showSection === 'left' && <span className="go-right absolute lg:hidden top-[40%] right-[0] z-200" onClick={() => {setShowSection('right')}}><GoToRight/></span>}
+			{ showSection === 'right' &&  <span className="go-left absolute lg:hidden top-[40%] left-[0] z-200" onClick={() => {setShowSection('left')}}><GoToLeft/></span>}			
 		</div>
 	)
 }
@@ -121,9 +123,9 @@ function GoToLeft() {
 	)
 }
 
-function AboutCirclesCard() {
+function AboutCirclesCard({showSection}) {
 	return (
-		<div className="m-auto relative min-w-[696px] min-h-[696px] hover:cursor-pointer">
+		<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} transition-translate duration-700 m-auto relative min-w-[696px] min-h-[696px] hover:cursor-pointer`}>
 			<div className="about-circle-div w-full h-full top-0 right-0" data-circle="true">
 				{/* <p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="true"></p> */}
 				<p className="circle-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="false"></p>
@@ -160,7 +162,7 @@ function AboutCirclesCard() {
 
 function EcosystemHeader() {
 	return (
-		<div className="mx-auto w-full text-center scroll-fade-in">
+		<div className="mx-auto px-[1.2rem] lg:px-[3rem] w-full text-center scroll-fade-in">
 			<h2 className="uppercase text-5xl lg:text-[4rem] font-bold leading-[48px] lg:leading-[64px] tracking-[-2%]">ecosystem resource</h2>
 			<p className="lg:px-[10rem] text-base lg:text-[1.75rem] leading-[20px] lg:leading-[36px] tracking-[-2%] mt-[1rem] lg:mt-[2.5rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries,providing them with visual design, creative, and industry consulting services.</p>	
 		</div>
@@ -169,17 +171,19 @@ function EcosystemHeader() {
 
 function EcosystemCard() {
 	return (
-		<div className="overflow-hidden relative m-auto w-full h-[6rem] flex will-change-transform mt-[5rem] lg:mt-[10rem]">
-			<div className="absolute top-0 left-0 w-full h-full m-auto flex items-center justify-start whitespace-nowrap">
-				<div className="flex items-center scroll-icons gap-[8rem]">
-					<TestimonialSlideIcons/>
-					<TestimonialSlideIcons/>
-					<TestimonialSlideIcons/>
-					<TestimonialSlideIcons/>
+		<div className="mx-[1.5rem] lg:mx-[3rem]">
+			<div className="overflow-hidden relative m-auto w-full h-[6rem] flex will-change-transform mt-[5rem] lg:mt-[10rem]">
+				<div className="absolute top-0 left-0 w-full h-full m-auto flex items-center justify-start whitespace-nowrap">
+					<div className="flex items-center scroll-icons gap-[8rem]">
+						<TestimonialSlideIcons/>
+						<TestimonialSlideIcons/>
+						<TestimonialSlideIcons/>
+						<TestimonialSlideIcons/>
+					</div>
 				</div>
+				<span className="absolute top-0 bottom-0 left-0  w-[2rem] lg:w-[4rem] bg-linear-to-r from-white to-white-10"></span>
+				<span className="absolute top-0 bottom-0 right-0 w-[2rem] lg:w-[4rem] bg-linear-to-l from-white to-white-10"></span>
 			</div>
-			<span className="absolute top-0 bottom-0 left-0  w-[3rem] lg:w-[5rem] bg-linear-to-r from-white to-white-10"></span>
-			<span className="absolute top-0 bottom-0 right-0 w-[3rem] lg:w-[5rem] bg-linear-to-l from-white to-white-10"></span>
 		</div>
 	)
 }
@@ -204,11 +208,11 @@ function SiteInfoCard() {
 			backgroundPosition: 'bottom',
 			// width: '100vw',
 		}} className="bg-bottom pt-[6rem] mt-[6rem] lg:mt-0 lg:pt-[12rem] px-[1.5rem] lg:px-[6rem] grid grid-cols-2">
-			<div className="w-2/5">
+			<div className="">
 				<header className="text-[56px] leading-[64px] lg:text-[104px] lg:leading-[104px] font-medium">Let'screate something extraordinary together.</header>
 			</div>
-			<div className="mx-auto w-full flex items-start">
-				<div className="mx-auto flex-col items-center justify-center">
+			<div className="mx-auto w-full flex items-start justify-end">
+				<div className="lg:mx-auto flex-col items-center justify-center">
 					<p className="text-[32px] leading-[32px] lg:text-[40px] lg:leading-[24px] font-bold text-right lg:text-left">Infomations</p>
 					<div className="flex flex-col lg:flex-row items-end lg:items-center gap-[1rem] lg:gap-[3rem] mt-[2rem] lg:mt-[4rem]">
 						{ SiteLinks.map((item, index) => <Link to={item.linkTo} key={index} className="text-2xl font-semibold leading-[24px]">{item.title}</Link>)}
@@ -222,7 +226,7 @@ function SiteInfoCard() {
 
 function LogoLinksCard() {
 	return (
-		<div className="mt-[4rem] flex gap-[2rem] lg:translate-x-[120%] lg:translate-y-[-155%]">
+		<div className="px-[1.5rem] lg:px-0 mt-[4rem] flex gap-[2rem] lg:translate-x-[120%] lg:translate-y-[-155%]">
 			<div className="flex">
 				<EllipsIcon/><span className="size-[112px] flex items-center justify-center bg-black rounded-[50%]"><LogoIconSmallWhite/></span>
 			</div>

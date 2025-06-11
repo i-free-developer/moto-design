@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 
 import { throttle } from 'lodash';
 
@@ -76,4 +76,42 @@ function useDrawerHandler() {
   return {drawerStatus, handleClickDrawer, closeDrawer}
 }
 
-export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler }
+function isElementInViewport(item) {
+  const rect = item.getBoundingClientRect()
+  return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+}
+
+import Odometer from 'odometer';
+import 'odometer/themes/odometer-theme-default.css';
+
+function OdometerItem ({ value, format = '(,ddd)', duration = 2500 }) {
+  const odometerRef = useRef(null);
+  const odometerInstance = useRef(null);
+
+  useEffect(() => {
+    if (odometerRef.current && !odometerInstance.current) {
+      odometerInstance.current = new Odometer({
+        el: odometerRef.current,
+        value: 0,
+        format,
+        theme: 'default',
+        duration
+      });
+    }
+
+    // 更新值
+    if (odometerInstance.current) { odometerInstance.current.update(value); }
+
+    // 清理函数
+    return () => {
+      if (odometerInstance.current) {
+        // odometerInstance.current.destroy();
+        odometerInstance.current = null;
+      }
+    };
+  }, [value]);
+
+  return (<span ref={odometerRef} className="odometer" />);
+}
+
+export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler, isElementInViewport, OdometerItem }

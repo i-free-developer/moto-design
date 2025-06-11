@@ -5,7 +5,7 @@ import { Navbar, LogoIcon } from './Navbar'
 import { TeamMembers, CopyRight, CompanyEmail, CompanyDomain, StatusContents } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem, ByBitIcon, AwsIcon, VenturesIcon, GateIcon, GateIconBlack} from './SocialIconsCollection'
 import backgroundImage from '../assets/dashed-bg.png'
-import { useDrawerHandler } from './FunctionCollection'
+import { useDrawerHandler, OdometerItem, isElementInViewport } from './FunctionCollection'
 
 export default function About() {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
@@ -75,8 +75,7 @@ function AboutBrand() {
 }
 
 function AboutStatusContainer() {
-	const [showSection, setShowSection] = useState('left')
-
+	const [showSection, setShowSection] = useState('left')	
 	return (
 		<div className="mx-auto mx-[1.5rem] lg:mx-[3rem] w-full relative">
 			<div className="mx-auto overflow-x-hidden w-full my-[4rem] lg:my-[12rem] flex items-center justify-evenly">
@@ -95,10 +94,10 @@ function AboutStatusContainer() {
 	)
 }
 
-function StatusItemCard({title, content}) {
+function StatusItemCard({title, suffix, content}) {
 	return (
 		<article className="w-[80%] my-[1rem] lg:my-[1.5rem]">
-			<header className="text-[5rem] lg:text-8xl font-semibold leading-[80px] lg:leading-[96px] tracking-[-8%]">{title}</header>
+			<header className="text-[5rem] lg:text-8xl font-semibold leading-[80px] lg:leading-[96px] tracking-[-8%]">{<OdometerItem value={title}/>} {suffix && <span>{suffix}</span>}</header>
 			<hr className="w-full border border-1 lg:border-2 border-black/20 my-[1rem] lg:mt-[2rem] lg:mb-[1.5rem]"></hr>
 			<p className="text-base font-normal leading-[20px] tracking-[-2%]">{content}</p>
 		</article>
@@ -134,19 +133,19 @@ function AboutCirclesCard({showSection}) {
 			<div className="about-circle-div w-[84%] h-[84%] top-[2.45%] right-[2.45%]" data-circle="true">
 				{/* <p className="circle-point circle-data-point top-[100%] right-[50%]" data-label="Comprehensive expansion" data-point="true"></p> */}
 				{/* <p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Comprehensive expansion" data-point="true"></p> */}
-				<p className="circle-point top-[99.8097%] right-[45.6422%]" data-label="Comprehensive expansion" data-point="false"></p>
+				<p className="circle-point top-[99.8097%] right-[45.6422%]" data-label="Creative" data-up="true" data-point="false"></p>
 			</div>
 			
 			<div className="about-circle-div w-[67.5%] h-[67.5%] top-[4.95%] right-[4.95%]" data-circle="true">
 				{/* <p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Concept draft output" data-point="true"></p> */}
 				{/* <p className="circle-point top-[93.3013%] right-[25%]" data-label="A/B Testing" data-point="false"></p> */}
-				<p className="circle-point top-[54.3578%] right-[99.8097%]" data-label="Concept draft output Final draft output" data-point="false"></p>
+				<p className="circle-point top-[54.3578%] right-[99.8097%]" data-label="Consulting & Resource" data-point="false"></p>
 				{/* <p className="circle-point top-[25%] right-[93.3013%]" data-label="Optimization" data-point="false"></p> */}
 			</div>
 			<div className="about-circle-div w-[50%] h-[50%] top-[7.4%] right-[7.4%]" data-circle="true">
 				{/* <p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Interaction scheme" data-point="true"></p> */}
 				{/* <p className="circle-point top-[88.3022%] right-[17.8606%]" data-label="Final draft output" data-point="false"></p> */}
-				<p className="circle-point top-[99.8097%] right-[45.6422%]" data-label="Interaction scheme" data-point="false"></p>
+				<p className="circle-point top-[99.8097%] right-[45.6422%]" data-label="Product" data-up="true" data-point="false"></p>
 				{/* <p className="circle-point top-[54.3578%] right-[99.8097%]" data-label="User Experience" data-point="false"></p> */}
 				{/* <p className="circle-point top-[32.899%]  right-[96.9846%]" data-label="Innovations" data-point="false"></p> */}
 			</div>
@@ -154,7 +153,7 @@ function AboutCirclesCard({showSection}) {
 				<p className="circle-point-visible circle-data-point top-[14.6447%] right-[14.6447%]" data-label="Align requirements" data-point="true"></p>
 				{/* <p className="circle-point top-[82.1394%] right-[11.6978%]" data-label="Data Science" data-point="false"></p> */}
 				{/* <p className="circle-point top-[95.3154%] right-[71.1309%]" data-label="UX Research" data-point="false"></p> */}
-				<p className="circle-point top-[50%] right-[100%]" data-label="Industry and competitor analysis" data-point="false"></p>
+				<p className="circle-point top-[50%] right-[100%]" data-label="Brand identity" data-point="false"></p>
 			</div>
 		</div>
 	)

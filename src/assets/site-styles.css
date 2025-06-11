@@ -150,6 +150,11 @@
   transition: 0.5s ease-in-out;
 }
 
+.circle-point[data-up="true"]:after {
+  top: -100%;
+  left: 0;
+}
+
 .about-circle-div:hover .circle-point:after{
   color: #161619;
   font-weight: 600;

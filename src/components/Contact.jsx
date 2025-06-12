@@ -30,11 +30,11 @@ export default function Contact() {
 
 function PixelsHeader() {
 	return (
-		<div className="mx-0 lg:mx-[2rem] my-auto overflow-hidden relative h-[8rem] lg:h-[13.75rem] flex will-change-transform">
+		<div className="mx-0 lg:mx-[2rem] my-auto overflow-hidden relative h-[5rem] lg:h-[13.75rem] flex will-change-transform">
 			<div className="absolute top-0 left-0 w-full h-full m-auto flex items-center justify-start whitespace-nowrap">
 				<div className="scroll-header flex gap-[1rem]">
-					<span className="inline-block text-9xl leading-[128px] lg:text-[13.75rem] lg:leading-[220px] uppercase font-bold text-nowrap">Pixels are the atomic units of design.</span>
-					<span className="inline-block text-9xl leading-[128px] lg:text-[13.75rem] lg:leading-[220px] uppercase font-bold text-nowrap">Pixels are the atomic units of design.</span>
+					<span className="inline-block text-[5rem] leading-[5rem] lg:text-[13.75rem] lg:leading-[220px] uppercase font-bold text-nowrap">Pixels are the atomic units of design.</span>
+					<span className="inline-block text-[5rem] leading-[5rem] lg:text-[13.75rem] lg:leading-[220px] uppercase font-bold text-nowrap">Pixels are the atomic units of design.</span>
 				</div>
 			</div>
 		</div>
@@ -65,13 +65,13 @@ function ContactContainer() {
 	}
 
 	return (
-		<div className="mx-[1.5rem] lg:mx-[3.5rem] mt-[-4rem] lg:mt-[-6.875rem] px-[1rem] lg:px-[2rem] pb-[2rem] pt-[2rem] lg:pt-[0.5rem] backdrop-blur-sm bg-gray-100/40 rounded-3xl">
+		<div className="mx-[1.5rem] lg:mx-[3.5rem] mt-[-2.5rem] lg:mt-[-6.875rem] px-[1rem] lg:px-[2rem] pb-[2rem] pt-[2rem] lg:pt-[0.5rem] backdrop-blur-sm bg-gray-100/40 rounded-xl lg:rounded-3xl">
 			<FormHeader currentStep={currentStep}/>
 			<FormBody currentStep={currentStep} goSubmit={goSubmit} finalData={finalData} setFinalData={setFinalData} goToStep={goToStep}/>
-			<div className="mt-[6rem] lg:mt-[2rem] flex items-center justify-center w-full">
+			<div className="mt-[2rem] lg:mt-[2rem] flex items-center justify-center w-full">
 				<ButtonGroups currentStep={currentStep} loading={loading} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
       		</div>
-			<div className="mt-[8rem] lg:mt-[4rem] lg:mt-0 flex justify-between">
+			<div className="mt-[6rem] lg:mt-[4rem] lg:mt-0 flex justify-between">
 				<ThankYouCard/>
 				<ContactEmailCard/>
 			</div>
@@ -91,8 +91,8 @@ function FormBody({currentStep, finalData, setFinalData, goSubmit, goToStep}) {
 		return (<SumbittedGroup/>) 
 	} else {
 		return (
-			<form className="mx-auto w-full lg:w-[50rem] mt-[8rem] lg:mt-[4rem] h-[14rem] lg:h-[16rem]" onSubmit={handleSubmit}>
-				<input autofocuse="true" type="text" name={`${currentStep}`} value={finalData[currentStep]} onChange={handleFormInput} className="mx-auto w-full h-[8rem] lg:h-[10.5rem] appearance-none border border-black border-4 rounded-full px-[2rem] lg:px-[6rem] text-black/64 text-[2.5rem] lg:text-5xl font-medium focus:outline-none focus:border-black block placeholder-black/64" placeholder={holderText} required={true}></input>
+			<form className="mx-auto w-full lg:w-[50rem] mt-[4rem] lg:mt-[4rem] h-[12rem] lg:h-[16rem]" onSubmit={handleSubmit}>
+				<input autofocuse="true" type="text" name={`${currentStep}`} value={finalData[currentStep]} onChange={handleFormInput} className="mx-auto w-full h-[4rem] lg:h-[10.5rem] appearance-none border border-black border-2 lg:border-4 rounded-full px-[1rem] lg:px-[6rem] text-black/64 text-xl lg:text-5xl font-medium focus:outline-none focus:border-black block placeholder-black/64" placeholder={holderText} required={true}></input>
 				<BarGroup currentStep={currentStep} goToStep={goToStep}/>
 			</form>
 		)
@@ -110,9 +110,9 @@ function FormHeader({currentStep}) {
 	}
 
 	return (
-		<div className="mx-auto flex flex-col mt-[6rem] lg:mt-[8rem] font-medium text-center">
-			<header className="text-[2rem]">{textHeader}</header>
-			<p className="text-base text-black/64 mt-[0.5rem]">{textBody}</p>
+		<div className="mx-auto flex flex-col mt-[4rem] lg:mt-[8rem] font-medium text-center">
+			<header className="text-bsae lg:text-[2rem]">{textHeader}</header>
+			<p className="text-sm lg:text-base text-black/64 mt-[0.5rem]">{textBody}</p>
 		</div>
 	)
 }
@@ -149,10 +149,10 @@ function ButtonGroups({currentStep, goBack, goNext, goSubmit, getInTouch, loadin
 
 function ButtonWithDot({btnAction, btnText}) {
 	const [isHovered, setIsHovered] = useState(false);
-	const ArrowElement = (<span className={`bg-white size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-500 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></span>)
+	const ArrowElement = (<span className={`bg-white size-[1.5rem] lg:size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-500 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></span>)
 	return (
 		<span className="bg-black rounded-full pl-[1rem] pr-[0.5rem] py-[0.3rem] flex items-center justify-evenly" onClick={btnAction} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-			<span className="text-[#f7f7f7] text-[1.75rem] lg:text-[2rem] font-medium mr-[1rem] lg:mr-[1.5rem]">{btnText}</span>
+			<span className="text-[#f7f7f7] text-base lg:text-[2rem] font-medium mr-[1rem] lg:mr-[1.5rem]">{btnText}</span>
 			{/* <span className="size-[0.5rem] bg-white rounded-full ml-[5rem] z-300"></span> */}
 			{ArrowElement}
 		</span>
@@ -161,13 +161,13 @@ function ButtonWithDot({btnAction, btnText}) {
 
 function ButtonNoDot({btnAction, btnText}) {
 	return (
-		<span className="bg-black rounded-full px-[1.5rem] py-[0.3rem] flex items-center justify-center" onClick={btnAction}><span className="text-[#f7f7f7] text-[1.75rem] lg:text-[2rem] font-medium">{btnText}</span></span>
+		<span className="bg-black rounded-full px-[1.5rem] py-[0.3rem] flex items-center justify-center" onClick={btnAction}><span className="text-[#f7f7f7] text-base lg:text-[2rem] font-medium">{btnText}</span></span>
 	)
 }
 
 function SumbittedGroup() {
 	return (
-		<div className="mx-auto w-full mt-[8rem] lg:mt-[4rem] h-[14rem] lg:h-[16rem] flex items-center justify-center scale-90">
+		<div className="mx-auto w-full mt-[8rem] lg:mt-[4rem] h-[12rem] lg:h-[16rem] flex items-center justify-center scale-90">
 			<SubmittedAlreadyIcon/>
 		</div>
 	)
@@ -185,16 +185,16 @@ function ThankYouCard() {
 
 function ContactEmailCard() {
 	return (
-		<div className="w-1/2 lg:w-1/4 text-right font-medium flex flex-col justify-between gap-4">
-      <p className="text-base">Email Address</p>
-      <p className="text-xl lg:text-[1.75rem]">{CompanyEmail}</p>
+		<div className="w-1/2 lg:w-1/4 my-auto text-right font-medium">
+      <p className="text-xs lg:text-base">Email Address</p>
+      <p className="text-sm lg:text-[1.75rem]">{CompanyEmail}</p>
     </div>
 	)
 }
 
 function CopyRightCard() {
 	return (
-		<div className="my-[1rem] w-full mx-auto">
+		<div className="w-full h-[2rem] flex flex-col items-center justify-center">
 			<p className="text-center text-black/50 text-xs font-medium">{CopyRight}</p>
 		</div>
 	)

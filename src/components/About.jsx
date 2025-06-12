@@ -11,7 +11,7 @@ export default function About() {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 
 	return (
-		<main className="mx-auto max-w-[750px] lg:max-w-[1920px]">
+		<main className="mx-auto w-screen max-w-[750px] lg:max-w-[1920px]">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
 			<section id="about" className="mx-auto px-[1.5rem] lg:px-[3rem] pt-[3rem] overflow-x-hidden" onClick={closeDrawer}>
 				<AboutHeader/>

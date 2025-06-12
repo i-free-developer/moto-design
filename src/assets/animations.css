@@ -21,7 +21,7 @@
 @media (max-width: 750px) {
 	@keyframes section-slide-in {
 		from {transform: translateX(0);}
-		to {transform: translateX(9rem)}
+		to {transform: translateX(4rem)}
 	}
 
 	@keyframes section-slide-out {
@@ -144,11 +144,11 @@
 
 	@keyframes drawer-slide-in {
 		from {transform: translateX(-28rem);}
-		to {transform: translateX(-1.5rem);}
+		to {transform: translateX(0rem);}
 	}
 
 	@keyframes drawer-slide-out {
-		from {transform: translateX(-1.5rem);}
+		from {transform: translateX(0rem);}
 		to {transform: translateX(-28rem); display: none;}
 	}
 

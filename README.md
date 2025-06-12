@@ -63,6 +63,8 @@ https://css-tricks.org.cn/almanac/properties/t/touch-action/
 
 https://usehooks.com/uselockbodyscroll
 
+https://www.cnblogs.com/warm-stranger/p/12378486.html
+
 scroll hide sticky header https://www.codemzy.com/blog/react-sticky-header-disappear-scroll
 
 backend-db https://orm.drizzle.team/docs/get-started-sqlite
@@ -94,6 +96,8 @@ https://cloud.tencent.com/developer/ask/sof/106977461 stackcards animation
 
 https://hsuchihting.github.io/TailwindCSS/20210913/854832424
 
+scroll around a circle path https://codepen.io/krutie/pen/zmPzvj/
+trading card https://codepen.io/krutie/pen/dyLWOgX
 
 drawer https://codepen.io/MusaFitriyadi/pen/xWMpXb
 

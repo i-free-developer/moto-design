@@ -6,7 +6,7 @@ import { SocialIconItems, SiteLinks, SocialIconLinkItem } from './SocialIconsCol
 import { useScrollTo, useScrollDirection } from './FunctionCollection'
 
 
-export default function Navbar({drawerStatus, handleClickDrawer}) {
+export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer}) {
 	const scrollDirection = useScrollDirection();
 
 	useEffect(() => {
@@ -37,10 +37,10 @@ export default function Navbar({drawerStatus, handleClickDrawer}) {
   }, [drawerStatus])
 
 	return (
-		<section id="navbar" className={`sticky relative z-200 text-black mx-auto px-[1.5rem] lg:px-[3.5rem] py-[1.5rem] lg:py-[2rem] bg-[#EAEAEA]/30 backdrop-blur-sm lg:backdrop-blur-md rounded-md lg:rounded-xl transition-[top] duration-500 ${ scrollDirection === "down" ? "top-[-5rem] lg:top-[-6rem]" : "top-0"}`}>
-			<nav className="flex justify-between items-center h-[2rem]">
-				<div onClick={handleClickDrawer} className="cursor-pointer size-[1.2rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
-				<Link to="/"><LogoIcon/></Link>
+		<section id="navbar" className={`sticky relative z-200 text-black mx-auto px-[1.5rem] lg:px-[3.5rem] py-[0.8rem] lg:py-[2rem] bg-[#EAEAEA]/30 backdrop-blur-sm lg:backdrop-blur-md rounded-md lg:rounded-xl transition-[top] duration-500 ${ scrollDirection === "down" ? "top-[-5rem] lg:top-[-6rem]" : "top-0"}`}>
+			<nav className="flex justify-between items-center h-[2rem]" onClick={closeDrawer}>
+				<div onClick={handleClickDrawer} className="cursor-pointer size-[1.2rem] flex items-center justify-center scale-75 lg:scale-100">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
+				<Link to="/" className="scale-50 lg:scale-100"><LogoIcon/></Link>
 				<LangButtons/>
 			</nav>
 			{<DrawerCard drawerStatus={drawerStatus}/>}
@@ -54,7 +54,7 @@ function DrawerCard({drawerStatus}) {
 	const drawerClassName = drawerClasses[drawerStatus]
 
 	return(
-		<div className={`p-[4rem] w-[35rem] absolute top-[5rem] lg:top-[6rem] z-100 bg-[#EAEAEA]/40 backdrop-blur-md rounded-lg lg:rounded-3xl ${drawerClassName}`}>
+		<div className={`p-[2rem] lg:p-[4rem] lg:w-[35rem] absolute top-[3.6rem] lg:top-[6rem] z-100 bg-[#EAEAEA]/40 backdrop-blur-md rounded-lg lg:rounded-3xl ${drawerClassName}`}>
 			<div className="flex flex-col items-start gap-[1.5rem] lg:gap-[2.5rem] mt-[2rem]">
        			 {SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>
@@ -66,10 +66,10 @@ function DrawerCard({drawerStatus}) {
 function SocialGroupCard() {
 	return (
 		<>
-			<div className="mt-[10rem] lg:mt-[20rem] flex items-end gap-[2rem]">
+			<div className="mt-[5rem] lg:mt-[20rem] flex items-end gap-[1.5rem] lg:gap-[2rem]">
         		{SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
 			</div>
-			<hr className="border border-[0.8px] mt-[1.5rem] mb-[1rem] w-full"></hr>
+			<hr className="border border-[0.8px] my-[1rem] lg:mt-[1.5rem] w-full"></hr>
 			<p className="text-xs font-medium text-[#161619]/48">{CompanyEmail}</p>
 		</>
 	)
@@ -81,7 +81,7 @@ function SiteLinkItem({url, title, linkTo}) {
 
 	return (
 		<div className="flex flex-col" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => scrollTo(url)}>
-			<Link to={linkTo} className="text-5xl font-semibold">{title}</Link>
+			<Link to={linkTo} className="text-2xl lg:text-5xl font-semibold">{title}</Link>
 			<hr className={`mt-[6px] ${isHovered ? 'hover-border' : 'border border-[0.8px] border-transparent'}`}></hr>
 		</div>
 	)
@@ -101,11 +101,11 @@ function LangButtons() {
 	return (
 		<div className="relative cursor-pointer">
 			<div className="flex items-end justify-between" onClick={handleLang}>
-				<span className="text-xl font-bold mr-[6px]">En</span>
+				<span className="text-sm lg:text-xl font-bold mr-[6px]">En</span>
 				<span className="mb-[6px]">{langStatus ? <LangArrowIcon/> : <LangArrowIcon />}</span>
 			</div>
 			<div className={`absolute top-[2rem] flex items-center justify-center ${langClassName}`}>
-				<span className="text-xl font-bold">Cn</span>
+				<span className="text-sm lg:text-xl font-bold">Cn</span>
 			</div>
 		</div>
 	)

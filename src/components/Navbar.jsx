@@ -37,10 +37,10 @@ export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer}) {
   }, [drawerStatus])
 
 	return (
-		<section id="navbar" className={`sticky relative z-200 text-black mx-auto px-[1.5rem] lg:px-[3.5rem] py-[0.8rem] lg:py-[2rem] bg-[#EAEAEA]/30 backdrop-blur-sm lg:backdrop-blur-md rounded-md lg:rounded-xl transition-[top] duration-500 ${ scrollDirection === "down" ? "top-[-5rem] lg:top-[-6rem]" : "top-0"}`}>
-			<nav className="flex justify-between items-center h-[2rem]" onClick={closeDrawer}>
-				<div onClick={handleClickDrawer} className="cursor-pointer size-[1.2rem] flex items-center justify-center scale-75 lg:scale-100">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
-				<Link to="/" className="scale-50 lg:scale-100"><LogoIcon/></Link>
+		<section id="navbar" className={`sticky relative z-200 text-black mx-auto px-[0.32rem] lg:px-[3.5rem] py-[0.12rem] lg:py-[3rem] bg-[#EAEAEA]/30 backdrop-blur-sm lg:backdrop-blur-md lg:rounded-md lg:rounded-xl transition-[top] duration-500 ${ scrollDirection === "down" ? "top-[-5rem] lg:top-[-6rem]" : "top-0"}`}>
+			<nav className="flex justify-between items-center h-[0.34rem] lg:h-[2rem]" onClick={closeDrawer}>
+				<div onClick={handleClickDrawer} className="cursor-pointer size-[0.25rem] lg:size-[1.25rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
+				<Link to="/" className="h-[0.34rem] lg:h-[2rem]"><LogoIcon/></Link>
 				<LangButtons/>
 			</nav>
 			{<DrawerCard drawerStatus={drawerStatus}/>}
@@ -54,9 +54,9 @@ function DrawerCard({drawerStatus}) {
 	const drawerClassName = drawerClasses[drawerStatus]
 
 	return(
-		<div className={`p-[2rem] lg:p-[4rem] lg:w-[35rem] absolute top-[3.6rem] lg:top-[6rem] z-100 bg-[#EAEAEA]/40 backdrop-blur-md rounded-lg lg:rounded-3xl ${drawerClassName}`}>
-			<div className="flex flex-col items-start gap-[1.5rem] lg:gap-[2.5rem] mt-[2rem]">
-       			 {SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
+		<div className={`pl-[0.72rem] lg:pl-[4rem] pt-[0.96rem] pb-[0.72rem] lg:py-[4rem] w-[5.6rem] lg:w-[35rem] absolute top-[0.8rem] lg:top-[8rem] z-100 bg-[#EAEAEA]/40 backdrop-blur-md rounded-[0.24rem] lg:rounded-2xl ${drawerClassName}`}>
+			<div className="flex flex-col items-start gap-[0.8rem] lg:gap-[2.5rem]">
+       			{SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>
 			<SocialGroupCard/>
 		</div>
@@ -66,23 +66,23 @@ function DrawerCard({drawerStatus}) {
 function SocialGroupCard() {
 	return (
 		<>
-			<div className="mt-[5rem] lg:mt-[20rem] flex items-end gap-[1.5rem] lg:gap-[2rem]">
+			<div className="mt-[2.56rem] lg:mt-[20rem] flex items-end gap-[0.38rem] lg:gap-[2rem]">
         		{SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
 			</div>
-			<hr className="border border-[0.8px] my-[1rem] lg:mt-[1.5rem] w-full"></hr>
-			<p className="text-xs font-medium text-[#161619]/48">{CompanyEmail}</p>
+			<hr className="border border-[0.8px] mt-[0.64rem] lg:mt-[1.5rem] w-[3.32rem] lg:w-[27rem]"></hr>
+			<p className="text-[0.12rem] lg:text-xs font-medium text-[#161619]/48 mt-[0.24rem] lg:mt-[1.5rem]">{CompanyEmail}</p>
 		</>
 	)
 }
 
 function SiteLinkItem({url, title, linkTo}) {
 	const [isHovered, setIsHovered] = useState(false);
-  const scrollTo = useScrollTo();
+	const scrollTo = useScrollTo();
 
 	return (
 		<div className="flex flex-col" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => scrollTo(url)}>
-			<Link to={linkTo} className="text-2xl lg:text-5xl font-semibold">{title}</Link>
-			<hr className={`mt-[6px] ${isHovered ? 'hover-border' : 'border border-[0.8px] border-transparent'}`}></hr>
+			<Link to={linkTo} className="text-[0.4rem] lg:text-5xl font-semibold">{title}</Link>
+			<hr className={`mt-[0.12rem] lg:mt-[6px] ${isHovered ? 'hover-border' : 'border border-[1px] border-transparent'}`}></hr>
 		</div>
 	)
 }
@@ -101,11 +101,11 @@ function LangButtons() {
 	return (
 		<div className="relative cursor-pointer">
 			<div className="flex items-end justify-between" onClick={handleLang}>
-				<span className="text-sm lg:text-xl font-bold mr-[6px]">En</span>
+				<span className="text-[0.3rem] lg:text-xl font-bold mr-[6px]">En</span>
 				<span className="mb-[6px]">{langStatus ? <LangArrowIcon/> : <LangArrowIcon />}</span>
 			</div>
-			<div className={`absolute top-[2rem] flex items-center justify-center ${langClassName}`}>
-				<span className="text-sm lg:text-xl font-bold">Cn</span>
+			<div className={`absolute top-[0.45rem] lg:top-[2rem] flex items-center justify-center ${langClassName}`}>
+				<span className="text-[0.3rem] lg:text-xl font-bold">Cn</span>
 			</div>
 		</div>
 	)

@@ -1,10 +1,10 @@
 @keyframes drawer-slide-in {
 	from {transform: translateX(-36rem);}
-	to {transform: translateX(-3.5rem);}
+	to {transform: translateX(0rem);}
 }
 
 @keyframes drawer-slide-out {
-	from {transform: translateX(-3.5rem);}
+	from {transform: translateX(0rem);}
 	to {transform: translateX(-36rem); display: none;}
 }
 
@@ -21,11 +21,11 @@
 @media (max-width: 750px) {
 	@keyframes section-slide-in {
 		from {transform: translateX(0);}
-		to {transform: translateX(4rem)}
+		to {transform: translateX(1.42rem)}
 	}
 
 	@keyframes section-slide-out {
-		from {transform: translateX(9rem);}
+		from {transform: translateX(1.42rem);}
 		to {transform: translateX(0)}
 	}
 }
@@ -143,13 +143,13 @@
 	}
 
 	@keyframes drawer-slide-in {
-		from {transform: translateX(-28rem);}
+		from {transform: translateX(-6rem);}
 		to {transform: translateX(0rem);}
 	}
 
 	@keyframes drawer-slide-out {
 		from {transform: translateX(0rem);}
-		to {transform: translateX(-28rem); display: none;}
+		to {transform: translateX(-6rem); }
 	}
 
 	.drawer-in {
@@ -167,7 +167,7 @@
 }
 
 .hover-border {
-	border: 0.8px solid;
+	border: 1px solid;
 	animation: progress-bar 0.6s ease;
 /*	animation-fill-mode: forwards;*/
 }

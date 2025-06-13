@@ -59,6 +59,8 @@ text-9xl   /* 8rem (128px) */
 
 
 ##### general resources
+https://baiyun.me/improve-the-user-experience-for-react-apps
+
 https://css-tricks.org.cn/almanac/properties/t/touch-action/
 
 https://usehooks.com/uselockbodyscroll

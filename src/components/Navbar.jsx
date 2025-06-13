@@ -37,6 +37,7 @@ export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer}) {
   }, [drawerStatus])
 
 	return (
+		// h-5.2rem
 		<section id="navbar" className={`sticky relative z-200 text-black mx-auto px-[0.32rem] lg:px-[3.5rem] py-[0.12rem] lg:py-[1.6rem] bg-white/50 lg:rounded-md lg:rounded-xl transition-[top] duration-500 ${ scrollDirection === "down" ? "top-[-5rem] lg:top-[-6rem]" : "top-0"}`}>
 			<nav className="flex justify-between items-center h-[0.34rem] lg:h-[2rem]" onClick={closeDrawer}>
 				<div onClick={handleClickDrawer} className="cursor-pointer size-[0.25rem] lg:size-[1.25rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>

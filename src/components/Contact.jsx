@@ -17,9 +17,9 @@ export default function Contact() {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 
 	return (
-		<main className="mx-auto max-w-[750px] lg:max-w-[1920px] lg:max-h-screen overflow-hidden">
+		<main className="mx-auto lg:min-h-screen lg:max-h-screen overflow-hidden">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="contact-us" className="mx-auto relative" onClick={closeDrawer}>
+			<section id="contact-us" className="mx-auto relative max-w-[750px] lg:max-w-full" onClick={closeDrawer}>
 				<PixelsHeader/>
 				<ContactContainer/>
 	      		<CopyRightCard/>
@@ -30,7 +30,7 @@ export default function Contact() {
 
 function PixelsHeader() {
 	return (
-		<div className="mx-0 lg:mx-[2rem] my-auto overflow-hidden relative h-[5rem] lg:h-[13.75rem] flex will-change-transform">
+		<div className="mx-[1rem] my-auto overflow-hidden relative h-[5rem] lg:h-[13.75rem] flex will-change-transform">
 			<div className="absolute top-0 left-0 w-full h-full m-auto flex items-center justify-start whitespace-nowrap">
 				<div className="scroll-header flex gap-[1rem]">
 					<span className="inline-block text-[5rem] leading-[5rem] lg:text-[13.75rem] lg:leading-[220px] uppercase font-bold text-nowrap">Pixels are the atomic units of design.</span>
@@ -65,13 +65,15 @@ function ContactContainer() {
 	}
 
 	return (
-		<div className="mx-[1.5rem] lg:mx-[3.5rem] mt-[-2.5rem] lg:mt-[-6.875rem] px-[1rem] lg:px-[2rem] pb-[2rem] pt-[2rem] lg:pt-[0.5rem] backdrop-blur-sm bg-gray-100/40 rounded-xl lg:rounded-3xl">
-			<FormHeader currentStep={currentStep}/>
-			<FormBody currentStep={currentStep} goSubmit={goSubmit} finalData={finalData} setFinalData={setFinalData} goToStep={goToStep}/>
-			<div className="mt-[2rem] lg:mt-[2rem] flex items-center justify-center w-full">
-				<ButtonGroups currentStep={currentStep} loading={loading} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
+		<div className="relative mx-[1.5rem] lg:mx-[3.5rem] mt-[-2.5rem] lg:mt-[-6.875rem] px-[1rem] lg:px-[2rem] h-[calc(100vh-16rem)] backdrop-blur-sm bg-gray-100/40 rounded-xl lg:rounded-3xl">
+			<div className="lg:w-1/2 mx-auto flex flex-col justify-between items-center h-[calc(100vh-18rem)]">
+				<FormHeader currentStep={currentStep}/>
+				<FormBody currentStep={currentStep} goSubmit={goSubmit} finalData={finalData} setFinalData={setFinalData} goToStep={goToStep}/>
+				<div className="mt-[2rem] lg:mt-[2rem] flex items-center justify-center w-full">
+					<ButtonGroups currentStep={currentStep} loading={loading} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
+				</div>
       		</div>
-			<div className="mt-[6rem] lg:mt-[4rem] lg:mt-0 flex justify-between">
+			<div className="absolute bottom-0 left-0 w-full p-[2rem] flex justify-between z-[-100]">
 				<ThankYouCard/>
 				<ContactEmailCard/>
 			</div>
@@ -110,7 +112,7 @@ function FormHeader({currentStep}) {
 	}
 
 	return (
-		<div className="mx-auto flex flex-col mt-[4rem] lg:mt-[8rem] font-medium text-center">
+		<div className="mx-auto flex flex-col mt-[4rem] lg:mt-[12rem] font-medium text-center">
 			<header className="text-bsae lg:text-[2rem]">{textHeader}</header>
 			<p className="text-sm lg:text-base text-black/64 mt-[0.5rem]">{textBody}</p>
 		</div>
@@ -151,7 +153,7 @@ function ButtonWithDot({btnAction, btnText}) {
 	const [isHovered, setIsHovered] = useState(false);
 	const ArrowElement = (<span className={`bg-white size-[1.5rem] lg:size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-500 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></span>)
 	return (
-		<span className="bg-black rounded-full pl-[1rem] pr-[0.5rem] py-[0.3rem] flex items-center justify-evenly" onClick={btnAction} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+		<span className="bg-black rounded-full pl-[1.5rem] pr-[0.5rem] py-[0.25rem] flex items-center justify-between" onClick={btnAction} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<span className="text-[#f7f7f7] text-base lg:text-[2rem] font-medium mr-[1rem] lg:mr-[1.5rem]">{btnText}</span>
 			{/* <span className="size-[0.5rem] bg-white rounded-full ml-[5rem] z-300"></span> */}
 			{ArrowElement}
@@ -160,9 +162,7 @@ function ButtonWithDot({btnAction, btnText}) {
 }
 
 function ButtonNoDot({btnAction, btnText}) {
-	return (
-		<span className="bg-black rounded-full px-[1.5rem] py-[0.3rem] flex items-center justify-center" onClick={btnAction}><span className="text-[#f7f7f7] text-base lg:text-[2rem] font-medium">{btnText}</span></span>
-	)
+	return (<span className="bg-black rounded-full px-[1.5rem] py-[0.25rem] flex items-center justify-center" onClick={btnAction}><span className="text-[#f7f7f7] text-base lg:text-[2rem] font-medium">{btnText}</span></span>)
 }
 
 function SumbittedGroup() {
@@ -178,7 +178,7 @@ function ThankYouCard() {
 		<div className="w-1/2 lg:w-1/5 text-wrap relative">
 			<p className="text-wrap text-xs lg:text-base font-medium">Thank you for your attention!</p>
 			<p className="text-wrap text-xs lg:text-base font-medium">Whether it's product consultation, cooperation invitations, or valuable suggestions, we will listen attentively.</p>
-    	<div className="absolute left-0 top-[-2rem] lg:top-[-4rem]">{<StarIcon/>}</div>
+    		<div className="absolute left-0 top-[-2rem] lg:top-[-4rem]">{<StarIcon/>}</div>
 		</div>
 	)
 }
@@ -186,15 +186,15 @@ function ThankYouCard() {
 function ContactEmailCard() {
 	return (
 		<div className="w-1/2 lg:w-1/4 my-auto text-right font-medium">
-      <p className="text-xs lg:text-base">Email Address</p>
-      <p className="text-sm lg:text-[1.75rem]">{CompanyEmail}</p>
-    </div>
+      		<p className="text-xs lg:text-base">Email Address</p>
+      		<p className="text-sm lg:text-[1.75rem]">{CompanyEmail}</p>
+    	</div>
 	)
 }
 
 function CopyRightCard() {
 	return (
-		<div className="w-full h-[2rem] flex flex-col items-center justify-center">
+		<div className="w-full h-[4rem] flex items-center justify-center">
 			<p className="text-center text-black/50 text-xs font-medium">{CopyRight}</p>
 		</div>
 	)

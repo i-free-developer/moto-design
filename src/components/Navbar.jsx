@@ -37,10 +37,10 @@ export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer}) {
   }, [drawerStatus])
 
 	return (
-		<section id="navbar" className={`sticky relative z-200 text-black mx-auto px-[0.32rem] lg:px-[3.5rem] py-[0.12rem] lg:py-[3rem] bg-[#EAEAEA]/30 backdrop-blur-sm lg:backdrop-blur-md lg:rounded-md lg:rounded-xl transition-[top] duration-500 ${ scrollDirection === "down" ? "top-[-5rem] lg:top-[-6rem]" : "top-0"}`}>
+		<section id="navbar" className={`sticky relative z-200 text-black mx-auto px-[0.32rem] lg:px-[3.5rem] py-[0.12rem] lg:py-[1.6rem] bg-white/50 lg:rounded-md lg:rounded-xl transition-[top] duration-500 ${ scrollDirection === "down" ? "top-[-5rem] lg:top-[-6rem]" : "top-0"}`}>
 			<nav className="flex justify-between items-center h-[0.34rem] lg:h-[2rem]" onClick={closeDrawer}>
 				<div onClick={handleClickDrawer} className="cursor-pointer size-[0.25rem] lg:size-[1.25rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
-				<Link to="/" className="h-[0.34rem] lg:h-[2rem]"><LogoIcon/></Link>
+				<Link to="/" className="max-h-[0.34rem] lg:h-[2rem] object-fit flex items-center justify-center"><LogoIcon/></Link>
 				<LangButtons/>
 			</nav>
 			{<DrawerCard drawerStatus={drawerStatus}/>}
@@ -54,24 +54,24 @@ function DrawerCard({drawerStatus}) {
 	const drawerClassName = drawerClasses[drawerStatus]
 
 	return(
-		<div className={`pl-[0.72rem] lg:pl-[4rem] pt-[0.96rem] pb-[0.72rem] lg:py-[4rem] w-[5.6rem] lg:w-[35rem] absolute top-[0.8rem] lg:top-[8rem] z-100 bg-[#EAEAEA]/40 backdrop-blur-md rounded-[0.24rem] lg:rounded-2xl ${drawerClassName}`}>
+		<div className={`pl-[0.72rem] lg:pl-[4rem] pt-[0.96rem] lg:pt-[8rem] pb-[0.72rem] lg:pb-[4rem] w-[5.6rem] lg:w-[35rem] h-[59rem] flex flex-col justify-between absolute top-[0.8rem] lg:top-[5.2rem] z-100 frosted-glass rounded-[0.24rem] lg:rounded-2xl ${drawerClassName}`}>
 			<div className="flex flex-col items-start gap-[0.8rem] lg:gap-[2.5rem]">
        			{SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>
-			<SocialGroupCard/>
+			<SocialIconsContainer/>
 		</div>
 	)
 }
 
-function SocialGroupCard() {
+function SocialIconsContainer() {
 	return (
-		<>
-			<div className="mt-[2.56rem] lg:mt-[20rem] flex items-end gap-[0.38rem] lg:gap-[2rem]">
+		<div>
+			<div className="flex items-end gap-[0.38rem] lg:gap-[2rem]">
         		{SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
 			</div>
 			<hr className="border border-[0.8px] mt-[0.64rem] lg:mt-[1.5rem] w-[3.32rem] lg:w-[27rem]"></hr>
 			<p className="text-[0.12rem] lg:text-xs font-medium text-[#161619]/48 mt-[0.24rem] lg:mt-[1.5rem]">{CompanyEmail}</p>
-		</>
+		</div>
 	)
 }
 

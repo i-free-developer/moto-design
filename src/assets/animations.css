@@ -10,11 +10,11 @@
 
 @keyframes section-slide-in {
 	from {transform: translateX(0);}
-	to {transform: translateX(20rem)}
+	to {transform: translateX(21rem)}
 }
 
 @keyframes section-slide-out {
-	from {transform: translateX(20rem);}
+	from {transform: translateX(21rem);}
 	to {transform: translateX(0)}
 }
 

@@ -4,7 +4,7 @@ import Loading from './Loading'
 import Navbar from './Navbar'
 import HeaderSvg from './HeaderSvg'
 import { ServicesItems, CompanyDomain } from '../data/site-data'
-import { useDrawerHandler } from './FunctionCollection'
+import { useDrawerHandler, useScreenRatio } from './FunctionCollection'
 import { ArrowIcon } from './SocialIconsCollection'
 
 const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'section-drawer-out'}
@@ -16,6 +16,7 @@ export default function Home({loadingPercentage}) {
 	const headerClassName = headerClasses[drawerStatus]
 	const serviceClassName = serviceClasses[drawerStatus]
 	const verticalClassName = verticalClasses[drawerStatus]
+	const {bigScreenRatio} = useScreenRatio()
 
 	if (loadingPercentage <= 100) {
 		return <Loading loadingPercentage={loadingPercentage}/>
@@ -23,19 +24,19 @@ export default function Home({loadingPercentage}) {
 		return (
 			<main className="lg:min-h-screen lg:max-h-screen overflow-hidden relative">
 				<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>
-				<HomeSection headerClassName={headerClassName} serviceClassName={serviceClassName} verticalClassName={verticalClassName} onCloseDrawer={closeDrawer}/>
+				<HomeSection headerClassName={headerClassName} serviceClassName={serviceClassName} verticalClassName={verticalClassName} onCloseDrawer={closeDrawer} bigScreenRatio={bigScreenRatio}/>
 				<ServiceOfferings/>
 			</main>
 		)
 	}
 }
 
-function HomeSection({headerClassName, serviceClassName, onCloseDrawer, verticalClassName}) {
+function HomeSection({headerClassName, serviceClassName, onCloseDrawer, verticalClassName, bigScreenRatio}) {
 	return (
 		<section id="landing" className="max-w-[750px] lg:min-w-screen lg:max-w-screen p-x-[0.32rem] text-black" onClick={onCloseDrawer}>
 			<div className="h-[calc(100vh-13.6rem)] place-i-tems-center place-content-center">
-				<div className="flex items-center justify-between mx-[7rem]">
-					<div className={`${headerClassName}`}><HeaderSvg/></div>
+				<div className="flex items-center justify-between ml-[7rem] mr-[5.5rem]">
+					<div className={`${headerClassName} scale-${bigScreenRatio}`}><HeaderSvg/></div>
 					<VerticalElement/> 
 				</div>
 			</div>
@@ -48,7 +49,7 @@ function ServiceOfferings() {
 	return (
 		<div className={`absolute bottom-0 left-0 right-0`}>
 			<hr className="border border-[0.01rem] lg:border-[1.2px] border-black/40"></hr>
-			<div className="w-full flex lg:items-center justify-between lg:pb-[4rem] lg:pl-[7rem] lg:pr-[3.5rem] mt-[0.64rem] lg:mt-[1.5rem]">
+			<div className="w-full flex lg:items-center justify-between lg:pb-[4rem] lg:pl-[7rem] lg:pr-[4.5rem] mt-[0.64rem] lg:mt-[1.5rem]">
 				<div className="flex flex-col lg:flex-row lg:items-center lg:justify-around gap-[0.16rem]">
 					<span className="font-bold uppercase text-[0.28rem] leading-[0.28rem] lg:text-xl lg:leading-xl">Service Offerings:</span>
 					<div className="flex flex-col lg:flex-row lg:items-center lg:justify-around lg:gap-[3rem] lg:ml-[4rem]">

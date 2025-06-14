@@ -81,6 +81,47 @@ function isElementInViewport(item) {
   return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth)
 }
 
+function useScreenRatio() {
+  const designedSmallWidth = 750; // 设计稿宽度
+  const designedBigWidth = 1920; // 设计稿宽度
+  const [smallScreenRatio, setSmallScreenRatio] = useState(100)
+  const [bigScreenRatio, setBigScreenRatio] = useState(100)
+  const [isMobileDevice, setIsMobileDevice] = useState(false)
+
+  useEffect(() => {
+    const baseSize = 100; // 基准值 (1rem = 100px)
+  
+    function setRem() {
+      let windowWidth = document.documentElement.clientWidth;
+      
+      if (windowWidth <= 750) {
+        const smallScreenRatio = windowWidth / designedSmallWidth;
+        document.documentElement.style.fontSize = baseSize * smallScreenRatio + 'px';
+        setSmallScreenRatio(Math.round(smallScreenRatio * 100))
+        setIsMobileDevice(true)
+      } else {
+        document.documentElement.style.fontSize = '16px';
+      }
+
+      if (windowWidth >= 1920) {
+        const bigScreenRatio = windowWidth / designedBigWidth;
+        setBigScreenRatio(Math.round(bigScreenRatio * 100))
+      }
+      // console.log('onload setRem', baseSize, windowWidth, designWidth)
+    }
+
+    window.addEventListener('load', () => { requestAnimationFrame(setRem) })
+    window.addEventListener('resize', () => { requestAnimationFrame(setRem) })
+
+    return () => {
+      window.removeEventListener('load', setRem);
+      window.removeEventListener('resize', setRem);
+    };
+  }, [document.documentElement.clientWidth]);
+
+  return {isMobileDevice, smallScreenRatio, bigScreenRatio}
+}
+
 import Odometer from 'odometer';
 import 'odometer/themes/odometer-theme-default.css';
 
@@ -114,4 +155,4 @@ function OdometerItem ({ value, format = '(,ddd)', duration = 2500 }) {
   return (<span ref={odometerRef} className="odometer" />);
 }
 
-export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler, isElementInViewport, OdometerItem }
+export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler, isElementInViewport, OdometerItem, useScreenRatio }

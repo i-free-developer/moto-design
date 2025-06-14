@@ -21,31 +21,7 @@ export default function App() {
         }, intervalCount);
 
       return () => clearInterval(intervalElement);
-    }, []);
-
-  useEffect(() => {
-    const baseSize = 100; // 基准值 (1rem = 100px)
-    const designWidth = 750; // 设计稿宽度
-  
-    function setRem() {
-      let windowWidth = document.documentElement.clientWidth;
-      if (windowWidth <= 750) {
-        const screenRatio = windowWidth / designWidth;
-        document.documentElement.style.fontSize = baseSize * screenRatio + 'px';
-      } else {
-        document.documentElement.style.fontSize = '16px';
-      }
-      console.log('onload setRem', baseSize, windowWidth, designWidth)
-    }
-
-    window.addEventListener('load', () => { requestAnimationFrame(setRem) })
-    window.addEventListener('resize', () => { requestAnimationFrame(setRem) })
-
-    return () => {
-      window.removeEventListener('load', setRem);
-      window.removeEventListener('resize', setRem);
-    };
-  }, []);
+    }, [])
 
   return (
     <BrowserRouter className="mx-auto">

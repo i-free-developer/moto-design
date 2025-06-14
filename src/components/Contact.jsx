@@ -73,10 +73,8 @@ function ContactContainer() {
 					<ButtonGroups currentStep={currentStep} loading={loading} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
 				</div>
       		</div>
-			<div className="absolute bottom-0 left-0 w-full p-[2rem] flex justify-between z-[-100]">
-				<ThankYouCard/>
-				<ContactEmailCard/>
-			</div>
+      		<div className="absolute bottom-[2rem] left-[2rem]  w-1/4"><ThankYouCard/></div>
+			<div className="absolute bottom-[2rem] right-[2rem] w-1/4 flex items-center justify-end"><ContactEmailCard/></div>
 		</div>
 	)
 }
@@ -93,7 +91,7 @@ function FormBody({currentStep, finalData, setFinalData, goSubmit, goToStep}) {
 		return (<SumbittedGroup/>) 
 	} else {
 		return (
-			<form className="mx-auto w-full lg:w-[50rem] mt-[4rem] lg:mt-[4rem] h-[12rem] lg:h-[16rem]" onSubmit={handleSubmit}>
+			<form className="mx-auto w-full lg:w-[50rem] lg:max-w-[1/2] mt-[4rem] lg:mt-[4rem] h-[12rem] lg:h-[16rem]" onSubmit={handleSubmit}>
 				<input autofocuse="true" type="text" name={`${currentStep}`} value={finalData[currentStep]} onChange={handleFormInput} className="mx-auto w-full h-[4rem] lg:h-[10.5rem] appearance-none border border-black border-2 lg:border-4 rounded-full px-[1rem] lg:px-[6rem] text-black/64 text-xl lg:text-5xl font-medium focus:outline-none focus:border-black block placeholder-black/64" placeholder={holderText} required={true}></input>
 				<BarGroup currentStep={currentStep} goToStep={goToStep}/>
 			</form>
@@ -175,7 +173,7 @@ function SumbittedGroup() {
 
 function ThankYouCard() {
 	return (
-		<div className="w-1/2 lg:w-1/5 text-wrap relative">
+		<div className="w-1/2 lg:w-3/5 text-wrap relative">
 			<p className="text-wrap text-xs lg:text-base font-medium">Thank you for your attention!</p>
 			<p className="text-wrap text-xs lg:text-base font-medium">Whether it's product consultation, cooperation invitations, or valuable suggestions, we will listen attentively.</p>
     		<div className="absolute left-0 top-[-2rem] lg:top-[-4rem]">{<StarIcon/>}</div>
@@ -185,7 +183,7 @@ function ThankYouCard() {
 
 function ContactEmailCard() {
 	return (
-		<div className="w-1/2 lg:w-1/4 my-auto text-right font-medium">
+		<div className="w-1/2 lg:w-full my-auto text-right font-medium">
       		<p className="text-xs lg:text-base">Email Address</p>
       		<p className="text-sm lg:text-[1.75rem]">{CompanyEmail}</p>
     	</div>

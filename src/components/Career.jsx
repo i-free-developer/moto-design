@@ -10,9 +10,9 @@ export default function Career() {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 
 	return (
-		<main className="mx-auto max-w-[750px] lg:max-w-[1920px]">
-			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="career" className="mx-auto px-[2rem] lg:px-[4rem] pt-[4rem] flex flex-col gap-8 w-full" onClick={closeDrawer}>
+		<main className="mx-auto">
+			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} frostedGlass={true}/>
+			<section id="career" className="w-screen max-w-[750px] lg:min-w-screen lg:max-w-screen p-x-[0.32rem] mx-auto px-[1.5rem] lg:px-[3rem] pt-[3rem]" onClick={closeDrawer}>
 				<CareerHeader/>
 				<CareerContenr/>
 				<TimeLineCard/>

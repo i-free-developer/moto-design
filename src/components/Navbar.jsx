@@ -6,7 +6,7 @@ import { SocialIconItems, SiteLinks, SocialIconLinkItem } from './SocialIconsCol
 import { useScrollTo, useScrollDirection } from './FunctionCollection'
 
 
-export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer}) {
+export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer, frostedGlass = false}) {
 	const scrollDirection = useScrollDirection();
 
 	useEffect(() => {
@@ -37,8 +37,8 @@ export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer}) {
   }, [drawerStatus])
 
 	return (
-		// h-5.2rem
-		<section id="navbar" className={`sticky relative z-200 text-black mx-auto px-[0.32rem] lg:px-[3.5rem] py-[0.12rem] lg:py-[1.6rem] lg:rounded-md lg:rounded-xl transition-[top] duration-500 ${ scrollDirection === "down" ? "top-[-5rem] lg:top-[-6rem]" : "top-0"}`}>
+		// h-5.2rem px-3.5rem
+		<section id="navbar" className={`sticky relative z-100 text-black mx-auto px-[0.32rem] lg:px-[3.5rem] py-[0.12rem] lg:py-[1.6rem] lg:rounded-md lg:rounded-xl transition-[top] duration-400 ${ scrollDirection === "down" ? "top-[-5rem] lg:top-[-6rem]" : "top-0"} ${frostedGlass ? 'frosted-glass' : ''}`}>
 			<nav className="flex justify-between items-center h-[0.34rem] lg:h-[2rem]" onClick={closeDrawer}>
 				<div onClick={handleClickDrawer} className="cursor-pointer size-[0.25rem] lg:size-[1.25rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
 				<Link to="/" className="max-h-[0.34rem] lg:h-[2rem] object-fit flex items-center justify-center"><LogoIcon/></Link>
@@ -55,7 +55,8 @@ function DrawerCard({drawerStatus}) {
 	const drawerClassName = drawerClasses[drawerStatus]
 
 	return(
-		<div className={`pl-[0.72rem] lg:pl-[4rem] pt-[0.96rem] lg:pt-[8rem] pb-[0.72rem] lg:pb-[4rem] w-[5.6rem] lg:w-[35rem] h-[59rem] flex flex-col justify-between absolute top-[0.8rem] lg:top-[5.2rem] z-100 frosted-glass rounded-[0.24rem] lg:rounded-2xl ${drawerClassName}`}>
+		<div style={{backgroundColor: 'rgba(241, 241, 241, 0.64)', backdropFilter: 'blur(4px)'}} 
+			className={`pl-[0.72rem] lg:pl-[4rem] pt-[0.96rem] lg:pt-[8rem] pb-[0.72rem] lg:pb-[4rem] w-[5.6rem] lg:w-[35rem] h-[59rem] flex flex-col justify-between absolute top-[0.8rem] lg:top-[5.15rem] frosted-glass rounded-[0.24rem] lg:rounded-2xl ${drawerClassName}`}>
 			<div className="flex flex-col items-start gap-[0.8rem] lg:gap-[2.5rem]">
        			{SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>

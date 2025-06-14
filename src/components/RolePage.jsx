@@ -12,9 +12,9 @@ export default function RolePage() {
 	const {title, roleTag, tags, responsibilities, requirements} = OpenningRoles.find(e => e.id == id)
 
 	return (
-		<main className="mx-auto max-w-[750px] lg:max-w-[1920px]">
+		<main className="mx-auto">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="role-page" className="mx-auto px-[1.5rem] lg:px-[3rem]" onClick={closeDrawer}>
+			<section id="role-page" className="w-screen max-w-[750px] lg:min-w-screen lg:max-w-screen p-x-[0.32rem] mx-auto px-[1.5rem] lg:px-[3rem] pt-[3rem]" onClick={closeDrawer}>
 				<RoleHeaderCard roleTag={roleTag} title={title} tags={tags}/>
 				<ContentSection title={'Responsibilities'} items={responsibilities}/>
 				<ContentSection title={'Requirements'} items={requirements}/>

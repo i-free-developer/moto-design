@@ -21,11 +21,11 @@
 @media (max-width: 750px) {
 	@keyframes section-slide-in {
 		from {transform: translateX(0);}
-		to {transform: translateX(1.42rem)}
+		to {transform: translateX(1.39rem)}
 	}
 
 	@keyframes section-slide-out {
-		from {transform: translateX(1.42rem);}
+		from {transform: translateX(1.39rem);}
 		to {transform: translateX(0)}
 	}
 }

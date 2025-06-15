@@ -58,7 +58,7 @@ function DrawerCard({drawerStatus}) {
 	return(
 		<div style={{backgroundColor: 'rgba(241, 241, 241, 0.64)', backdropFilter: 'blur(4px)'}} 
 			className={`pl-[0.72rem] lg:pl-[4rem] pt-[0.96rem] lg:pt-[8rem] pb-[0.72rem] lg:pb-[4rem] w-[5.6rem] lg:w-[35rem] h-[9.5rem] lg:h-[59rem] flex flex-col justify-between absolute top-[0.8rem] lg:top-[5.15rem] frosted-glass rounded-[0.24rem] lg:rounded-2xl ${drawerClassName}`}>
-			<div className="flex flex-col items-start gap-[0.8rem] lg:gap-[2.5rem]">
+			<div className="flex flex-col items-start gap-[0.4rem] lg:gap-[2.5rem]">
        			{SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>
 			<SocialIconsContainer/>
@@ -72,7 +72,7 @@ function SocialIconsContainer() {
 			<div className="flex items-end gap-[0.38rem] lg:gap-[2rem]">
         		{SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
 			</div>
-			<hr className="border border-[0.8px] mt-[0.64rem] lg:mt-[1.5rem] w-[3.32rem] lg:w-[27rem]"></hr>
+			<hr className="border border-[0.8px] mt-[0.32rem] lg:mt-[1.5rem] w-[3.32rem] lg:w-[27rem]"></hr>
 			<p className="text-[0.12rem] lg:text-xs font-medium text-[#161619]/48 mt-[0.24rem] lg:mt-[1.5rem]">{CompanyEmail}</p>
 		</div>
 	)

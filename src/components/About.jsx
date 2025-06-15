@@ -13,13 +13,13 @@ export default function About() {
 	return (
 		<main className="mx-auto">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} frostedGlass={true} key="about"/>
-			<section id="about" className="w-screen max-w-[750px] lg:min-w-screen lg:max-w-screen p-x-[0.32rem] mx-auto px-[1.5rem] lg:px-[3rem] pt-[3rem] overflow-x-hidden" onClick={closeDrawer}>
+			<section id="about" className="w-screen max-w-screen lg:min-w-screen lg:max-w-screen mx-auto px-[0.32rem] lg:px-[3rem] pt-[0.48rem] lg:pt-[3rem] overflow-x-hidden" onClick={closeDrawer}>
 				<AboutHeader/>
 				<AboutBrand/>
 				<AboutStatusContainer/>
 				<EcosystemHeader/>
 				<EcosystemCard/>
-				<div className="mt-[4rem] lg:mt-[10rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-4 lg:gap-6">
+				<div className="my-[1.2rem] lg:mt-[10rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-[0.16rem] lg:gap-6">
 					<OurTeam />
 					{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
 				</div>
@@ -32,17 +32,17 @@ export default function About() {
 
 function AboutHeader() {
 	return (
-		<div className="mx-auto my-[4rem] lg:my-[6rem] min-w-full lg:w-[75rem] relative">
-			<div className="mx-auto w-content uppercase text-center text-[2rem] leading-[54px] lg:text-[4rem] lg:leading-[88px] tracking-[10%] font-medium">
+		<div className="mx-auto my-[0.64rem] lg:my-[6rem] min-w-full lg:w-[75rem] relative">
+			<div className="mx-auto w-content uppercase text-center text-[0.32rem] leading-[0.54rem] lg:text-[4rem] lg:leading-[88px] tracking-[10%] font-medium">
 				<p className="relative">Every frame of code
-					<span className="absolute size-[41px] flex items-center top-[-0.7rem] left-[15%] lg:left-[25%]"><LeftQuote/></span>
+					<span className="absolute size-[41px] flex items-center top-[-0.2rem] lg:top-[-0.7rem] left-[15%] lg:left-[25%]"><LeftQuote/></span>
 				</p>
 				<p className="">is an elegant murder of</p>
 				<p className="text-wrap wrap-normal">the old paradigm, every pixel</p>
 				<p className="">a philosophical</p>
 				<p className="">statement projected into</p>
 				<p className="">the future.
-					<span className="absolute size-[41px] flex items-center bottom-[-0.7rem] right-[25%] lg:right-[33%]"><RightQuote/></span>
+					<span className="absolute size-[41px] flex items-center bottom-[-0.2rem] lg:bottom-[-0.7rem] right-[25%] lg:right-[33%]"><RightQuote/></span>
 				</p>
 			</div>
 			<VerticalItem/>
@@ -52,10 +52,10 @@ function AboutHeader() {
 
 function VerticalItem() {
 	return (
-		<div id="v-item" className="absolute left-[1.5rem] lg:left-0 bottom-0 flex flex-col items-center justify-center">	
-			<div className="flex gap-4 items-center text-xs lg:text-base font-medium leading-[16px] text-black/64" style={{writingMode: 'vertical-lr'}}>
+		<div id="v-item" className="absolute left-[0.32rem] lg:left-0 bottom-[-0.48rem] lg:bottom-0 flex flex-col items-center justify-center">	
+			<div className="flex gap-[0.08rem] lg:gap-4 items-center text-[0.12rem] lg:text-base font-medium leading-[16px] text-black/64" style={{writingMode: 'vertical-lr'}}>
 				<span className="rotate-180">{CompanyDomain}</span>
-				<span className="border border-[0.8px] border-black/64 h-[8rem] translate-x-[50%]"></span>
+				<span className="border border-[0.8px] border-black/64 h-[1.2rem] lg:h-[8rem] translate-x-[50%]"></span>
 			</div>
 		</div>
 	)
@@ -63,9 +63,9 @@ function VerticalItem() {
 
 function AboutBrand() {
 	return (
-		<div className="border border-2 lg:border-4 rounded-2xl p-[2rem] lg:px-[4rem] lg:py-[3rem] flex justify-between">
-			<p className="uppercase text-2xl lg:text-[2rem] font-bold w-1/4 gap-[1rem] lg:w-1/3">About brand:</p>
-			<div className="w-3/4 grow-1 lg:grow-0 lg:w-1/2 flex flex-col justify-between gap-[2rem] text-xl font-medium">
+		<div className="border border-[0.02rem] lg:border-4 rounded-[0.16rem] lg:rounded-2xl p-[0.32rem] lg:px-[4rem] lg:py-[3rem] my-[0.64rem] flex justify-between">
+			<p className="uppercase text-[0.24rem] lg:text-[2rem] font-bold w-1/4 gap-[0.16rem] lg:gap-[1rem] lg:w-1/3">About brand:</p>
+			<div className="w-3/4 grow-1 lg:grow-0 lg:w-1/2 flex flex-col justify-between gap-[0.32rem] lg:gap-[2rem] text-[0.2rem] lg:text-xl font-medium">
 				<p className="">We're a visual design team with 8 years in the Web3 field.</p>
 				<p className="">Our members include front-end experts from top design schools and major tech firms, alongside VC specialists with deep insight into Tokenomics and DApp logic.</p>
 				<p className="">Design is never about forced abstraction or flashy techniques. We operate at the crossroads of web3 and code-based art，hope to deliver visual solutions that perfectly bridge your product and market needs.</p>
@@ -78,11 +78,11 @@ function AboutStatusContainer() {
 	const [showSection, setShowSection] = useState('left')	
 	return (
 		<div className="mx-auto w-full relative">
-			<div className="mx-auto overflow-x-hidden w-full my-[4rem] lg:my-[12rem] flex items-center justify-between">
+			<div className="mx-auto overflow-x-hidden w-full my-[0.64rem] lg:my-[12rem] flex items-center justify-between">
 				<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} transition-translate duration-700 mx-auto min-w-full max-w-full lg:ml-0 lg:min-w-[45%] lg:w-[45%] tracking-[-2%]`}>
-					<p className="uppercase text-5xl lg:text-[4rem] font-bold leading-[4rem]">we strive to innovate</p>
-					<p className="text-base lg:text-[21px] font-normal lg:font-bold leading-[24px] my-[1rem] lg:my-[2rem]">Some Number About Us</p>	
-					<div className="w-full grid grid-cols-2 gap-[4rem] my-[3rem]">
+					<p className="uppercase text-[0.48rem] lg:text-[4rem] font-bold leading-[0.48rem] lg:leading-[4rem]">we strive to innovate</p>
+					<p className="text-[0.16rem] lg:text-[21px] font-normal lg:font-bold leading-[24px] my-[0.16rem] lg:my-[2rem]">Some Number About Us</p>	
+					<div className="w-full grid grid-cols-2 gap-[0.64rem] lg:gap-[4rem] my-[0.48rem] lg:my-[3rem]">
 						{StatusContents.map((item, index) => <StatusItemCard {...item} key={index}/>)}
 					</div>
 				</div>
@@ -96,10 +96,10 @@ function AboutStatusContainer() {
 
 function StatusItemCard({title, suffix, content}) {
 	return (
-		<article className="w-[80%] my-[1rem] lg:my-[1.5rem]">
-			<header className="text-[5rem] lg:text-8xl font-semibold leading-[80px] lg:leading-[96px] tracking-[-8%]">{<OdometerItem value={title}/>} {suffix && <span>{suffix}</span>}</header>
-			<hr className="w-full border border-1 lg:border-2 border-black/20 my-[1rem] lg:mt-[2rem] lg:mb-[1.5rem]"></hr>
-			<p className="text-base font-normal leading-[20px] tracking-[-2%]">{content}</p>
+		<article className="w-[80%] my-[0.16rem] lg:my-[1.5rem]">
+			<header className="text-[0.8rem] lg:text-8xl font-semibold leading-[0.8rem] lg:leading-[96px] tracking-[-8%]">{<OdometerItem value={title}/>} {suffix && <span>{suffix}</span>}</header>
+			<hr className="w-full border border-[0.01rem] lg:border-2 border-black/20 my-[0.16rem] lg:mt-[2rem] lg:mb-[1.5rem]"></hr>
+			<p className="text-[0.16rem] lg:text-base font-normal leading-[0.20rem] lg:leading-[20px] tracking-[-2%]">{content}</p>
 		</article>
 	)
 }
@@ -161,37 +161,37 @@ function AboutCirclesCard({showSection}) {
 
 function EcosystemHeader() {
 	return (
-		<div className="mx-auto w-full text-center scroll-fade-in">
-			<h2 className="uppercase text-5xl lg:text-[4rem] font-bold leading-[48px] lg:leading-[64px] tracking-[-2%]">ecosystem resource</h2>
-			<p className="lg:px-[10rem] text-base lg:text-[1.75rem] leading-[20px] lg:leading-[36px] tracking-[-2%] mt-[1rem] lg:mt-[2.5rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries,providing them with visual design, creative, and industry consulting services.</p>	
+		<div className="mx-auto w-full lg:text-center scroll-fade-in">
+			<h2 className="uppercase text-[0.48rem] lg:text-[4rem] font-bold leading-[0.48rem] lg:leading-[64px] tracking-[-2%]">ecosystem resource</h2>
+			<p className="lg:px-[10rem] text-[0.16rem] lg:text-[1.75rem] leading-[0.2rem] lg:leading-[36px] tracking-[-2%] mt-[0.16rem] lg:mt-[2.5rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries,providing them with visual design, creative, and industry consulting services.</p>	
 		</div>
 	)
 }
 
 function EcosystemCard() {
 	return (
-		<div className="overflow-hidden relative m-auto w-full h-[6rem] flex will-change-transform mt-[5rem] lg:mt-[10rem]">
+		<div className="overflow-hidden relative m-auto w-full h-[0.6rem] lg:h-[6rem] flex will-change-transform mt-[0.8rem] lg:mt-[10rem]">
 			<div className="absolute top-0 left-0 w-full h-full m-auto flex items-center justify-start whitespace-nowrap">
-				<div className="flex items-center scroll-icons gap-[8rem]">
+				<div className="flex items-center scroll-icons gap-[0.32rem] lg:gap-[8rem]">
 					<TestimonialSlideIcons/>
 					<TestimonialSlideIcons/>
 					<TestimonialSlideIcons/>
 					<TestimonialSlideIcons/>
 				</div>
 			</div>
-			<span className="absolute top-0 bottom-0 left-0  w-[1.5rem] lg:w-[3rem] bg-linear-to-r from-white to-white-10"></span>
-			<span className="absolute top-0 bottom-0 right-0 w-[1.5rem] lg:w-[3rem] bg-linear-to-l from-white to-white-10"></span>
+			<span className="absolute top-0 bottom-0 left-0  w-[0.24rem] lg:w-[3rem] bg-linear-to-r from-white to-white-10"></span>
+			<span className="absolute top-0 bottom-0 right-0 w-[0.24rem] lg:w-[3rem] bg-linear-to-l from-white to-white-10"></span>
 		</div>
 	)
 }
 
 function TestimonialSlideIcons() {
 	return (
-		<div className="flex items-center gap-[8rem] h-[6rem]">
-			<span className="flex items-center justify-center h-[3rem] cursor-pointer"><GateIconBlack/></span>
-			<span className="flex items-center justify-center h-[3rem] cursor-pointer"><ByBitIcon/></span>
-			<span className="flex items-center justify-center h-[3rem] cursor-pointer"><VenturesIcon/></span>
-			<span className="flex items-center justify-center h-[3rem] cursor-pointer"><AwsIcon/></span>
+		<div className="flex items-center gap-[0.32rem] lg:gap-[8rem] h-[0.6rem] lg:h-[6rem]">
+			<span className="flex items-center justify-center h-[0.48rem] lg:h-[3rem] cursor-pointer"><GateIconBlack/></span>
+			<span className="flex items-center justify-center h-[0.48rem] lg:h-[3rem] cursor-pointer"><ByBitIcon/></span>
+			<span className="flex items-center justify-center h-[0.48rem] lg:h-[3rem] cursor-pointer"><VenturesIcon/></span>
+			<span className="flex items-center justify-center h-[0.48rem] lg:h-[3rem] cursor-pointer"><AwsIcon/></span>
 		</div>
 	)
 }
@@ -204,15 +204,15 @@ function SiteInfoCard() {
 			backgroundSize: 'cover',
 			backgroundPosition: 'bottom',
 			// width: '100vw',
-		}} className="bg-bottom pt-[6rem] mt-[6rem] lg:mt-0 lg:pt-[12rem] px-[1.5rem] lg:px-[6rem] grid grid-cols-2">
+		}} className="bg-bottom pt-[0.96rem] mt-[1rem] lg:mt-0 lg:pt-[12rem] px-[0.32rem] lg:px-[6rem] grid grid-cols-2">
 			<div className="">
-				<header className="text-[56px] leading-[64px] lg:text-[104px] lg:leading-[104px] font-medium">Let'screate something extraordinary together.</header>
+				<header className="text-[0.56rem] leading-[0.64rem] lg:text-[104px] lg:leading-[104px] font-medium">Let'screate something extraordinary together.</header>
 			</div>
 			<div className="mx-auto w-full flex items-start justify-end">
 				<div className="lg:mx-auto flex-col items-center justify-center">
-					<p className="text-[32px] leading-[32px] lg:text-[40px] lg:leading-[24px] font-bold text-right lg:text-left">Infomations</p>
-					<div className="flex flex-col lg:flex-row items-end lg:items-center gap-[1rem] lg:gap-[3rem] mt-[2rem] lg:mt-[4rem]">
-						{ SiteLinks.map((item, index) => <Link to={item.linkTo} key={index} className="text-2xl font-semibold leading-[24px]">{item.title}</Link>)}
+					<p className="text-[0.32rem] leading-[0.32rem] lg:text-[40px] lg:leading-[24px] font-bold text-right lg:text-left">Infomations</p>
+					<div className="flex flex-col lg:flex-row items-end lg:items-center gap-[0.16rem] lg:gap-[3rem] mt-[0.32rem] lg:mt-[4rem]">
+						{ SiteLinks.map((item, index) => <Link to={item.linkTo} key={index} className="font-semibold text-[0.2rem] leading-[0.2rem] lg:text-2xl lg:leading-[24px]">{item.title}</Link>)}
 					</div>
 				</div>
 			</div>
@@ -223,14 +223,14 @@ function SiteInfoCard() {
 
 function LogoLinksCard() {
 	return (
-		<div className="px-[1.5rem] lg:px-0 mt-[4rem] flex gap-[2rem] lg:translate-x-[120%] lg:translate-y-[-155%]">
+		<div className="px-[0.24rem] lg:px-0 mt-[0.64rem] lg:mt-[4rem] flex gap-[2rem] lg:translate-x-[120%] lg:translate-y-[-155%]">
 			<div className="flex">
-				<EllipsIcon/><span className="size-[112px] flex items-center justify-center bg-black rounded-[50%]"><LogoIconSmallWhite/></span>
+				<EllipsIcon/><span className="size-[1.12rem] lg:size-[112px] flex items-center justify-center bg-black rounded-[50%]"><LogoIconSmallWhite/></span>
 			</div>
 			<div className="">
-				<header className="text-[28px] leading-[28px] font-bold">Moto Design</header>
-				<p className="text-base font-medium mt-[0.5rem]">Web Design、Other Design</p>
-				<div className="mt-[2rem] flex items-end gap-[2rem]">
+				<header className="text-[0.28rem] leading-[0.28rem] lg:text-[28px] lg:leading-[28px] font-bold">Moto Design</header>
+				<p className="text-[0.16rem] lg:text-base font-medium mt-[0.08rem] lg:mt-[0.5rem]">Web Design、Other Design</p>
+				<div className="mt-[0.32rem] lg:mt-[2rem] flex items-end gap-[0.16rem] lg:gap-[2rem]">
 	        		{SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
 				</div>
 			</div>
@@ -240,9 +240,9 @@ function LogoLinksCard() {
 
 function SiteFooter() {
 	return (
-		<div className="w-full mx-auto flex items-center justify-between px-[1.5rem] lg:px-[6rem] my-[3rem]">
+		<div className="w-full mx-auto flex items-center justify-between px-[0.32rem] lg:px-[6rem] my-[0.48rem] lg:my-[3rem]">
 			<Link to="/"><LogoIcon/></Link>
-			<div className="w-2/3 lg:w-1/2 flex flex-col lg:flex-row items-end lg:gap-[2rem] lg:items-center lg:justify-between text-xs leading-[16px] lg:text-xl font-medium lg:leading-[20px]">
+			<div className="w-2/3 lg:w-1/2 flex flex-col lg:flex-row items-end lg:gap-[2rem] lg:items-center lg:justify-between text-[0.12rem] leading-[0.16rem] lg:text-xl font-medium lg:leading-[20px]">
 				<p className="">{CompanyEmail}</p>
 				<p className="lg:mr-[6rem]">{CopyRight}</p>
 			</div>
@@ -254,23 +254,23 @@ function SiteFooter() {
 
 function TeamMemberCard({name, avatar, description, title, role}) {
 	return (
-		<article className="group border border-3 lg:border-4 rounded-[1rem] lg:rounded-[1.4rem] perspective-distant w-[13.75rem] lg:w-[26rem] h-[20.8rem] lg:h-[33rem] bg-transparent">
+		<article className="group border border-[0.03rem] lg:border-4 rounded-[0.16rem] lg:rounded-[1.4rem] perspective-distant w-[2.2rem] lg:w-[26rem] h-[3.3rem] lg:h-[33rem] bg-transparent">
 		  <div className="relative min-h-full min-w-full transition-transform duration-1300 transform-3d group-hover:rotate-y-180">
 
-		    <div className="rounded-[1.2rem] absolute inset-0 flex h-full min-w-full flex-col justify-between backface-hidden">
-          		<img src={avatar} className="block w-[13.75rem] h-[13.75rem] lg:w-[26rem] lg:h-[26rem] object-cover object-center rounded-[0.8rem] lg:rounded-t-[1.2rem]"></img>
-				<div className="grid content-center px-[1.5rem] h-[5.5rem] grow">
+		    <div className="rounded-[0.16rem] lg:rounded-[1.2rem] absolute inset-0 flex h-full min-w-full flex-col justify-between backface-hidden">
+          		<img src={avatar} className="block h-[2.2rem] w-[2.2rem] lg:h-[26rem] lg:w-[26rem] object-cover object-center rounded-[0.16rem] lg:rounded-t-[1.2rem]"></img>
+				<div className="grid content-center px-[0.24rem] lg:px-[1.5rem] h-[1.1rem] lg:h-[5.5rem] grow">
 					<div className="flex flex-col lg:flex-row lg:items-center justify-between font-normal">
-						<header className="text-[1.75rem] leading-[28px] lg:text-[2.5rem] tracking-[-2%]">{name}</header>
-						<p className="mt-[0.5rem] lg:mt-0 lg:text-right text-xs">{role}</p>
+						<header className="text-[0.28rem] leading-[0.28rem] lg:text-[2.5rem] lg:leading-[2.5rem] tracking-[-2%]">{name}</header>
+						<p className="mt-[0.08rem] lg:mt-0 text-[0.12rem] lg:text-right lg:text-xs">{role}</p>
 					</div>
 				</div>
 		    </div>
 
-		    <div className="rounded-[1.2rem] absolute inset-0 max-h-full min-h-full max-w-full bg-black text-white p-[2.5rem] rotate-y-180 backface-hidden">
-		     	<header className="text-[4rem] font-bold tracking-[-2%]">{name}</header>
-		     	<p className="uppercase text-[1.5rem] font-normal mt-[1.5rem]">{title}</p>
-				<p className="text-base font-normal mt-[4rem]">{description}</p>
+		    <div className="rounded-[0.16rem] lg:rounded-[1.2rem] absolute inset-0 max-h-full min-h-full max-w-full bg-black text-white p-[0.4rem] lg:p-[2.5rem] rotate-y-180 backface-hidden">
+		     	<header className="text-[0.28rem] lg:text-[4rem] font-bold tracking-[-2%]">{name}</header>
+		     	<p className="uppercase text-[0.24rem] lg:text-[1.5rem] font-normal mt-[0.24rem] lg:mt-[1.5rem]">{title}</p>
+				<p className="text-[0.16rem] lg:text-base font-normal mt-[0.32rem] lg:mt-[4rem]">{description}</p>
 		    </div>
 		  </div>
 		</article>
@@ -279,12 +279,12 @@ function TeamMemberCard({name, avatar, description, title, role}) {
 
 function OurTeam() {
 	return (
-		<div className="col-span-3 lg:col-span-2 flex flex-col gap-8 w-4/5">
-			<div className="flex sm:gap-[0.5rem]">
-				<span className="text-5xl leading-[48px] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase tracking-[-2%]">our</span>
-				<span className="lg:hidden text-5xl leading-[48px] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase text-right tracking-[-2%]">team</span>
+		<div className="mb-[0.32rem] lg:mb-0 col-span-3 lg:col-span-2 flex flex-col lg:gap-8 w-4/5">
+			<div className="flex sm:gap-[0.08rem] mb-[0.16rem] lg:mb-0">
+				<span className="text-[0.48rem] leading-[0.48rem] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase tracking-[-2%]">our</span>
+				<span className="lg:hidden text-[0.48rem] leading-[0.48rem] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase text-right tracking-[-2%]">team</span>
 			</div>
-			<p className="text-base">As a dynamic design company, we endow products with artistic power, attract global enterprises, and redefine the future of products.</p>
+			<p className="text-[0.16rem] lg:text-base">As a dynamic design company, we endow products with artistic power, attract global enterprises, and redefine the future of products.</p>
 			<p className="hidden lg:block text-5xl leading-[48px] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase text-right tracking-[-2%]">team</p>
 		</div>
 	)

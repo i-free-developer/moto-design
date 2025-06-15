@@ -16,13 +16,13 @@ const SiteLinks = [
 
 function SocialIconLinkItem({url, iconWhite, iconBlack, color='black'}) {
 	return(
-    <a href={url} className="will-change-transform h-[0.18rem] lg:h-[2rem] flex items-center cursor-pointer transition duration-150 active:scale-120 hover:scale-120">{color === 'black' ? iconBlack : iconWhite}</a>
+    <a href={url} className="will-change-transform w-[0.2rem] h-[0.2rem] lg:w-[2rem] lg:h-[2rem] flex items-center cursor-pointer transition duration-150 active:scale-120 hover:scale-120">{color === 'black' ? iconBlack : iconWhite}</a>
 	)
 }
 
 function XIconBlack(){
   return (
-    <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+    <svg width="19" height="18" viewBox="0 0 19 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
       <rect width="19" height="18" fill="url(#pattern0_577_84)"/>
       <defs>
         <pattern id="pattern0_577_84" patternContentUnits="objectBoundingBox" width="1" height="1">

@@ -57,7 +57,7 @@ function DrawerCard({drawerStatus}) {
 
 	return(
 		<div style={{backgroundColor: 'rgba(241, 241, 241, 0.64)', backdropFilter: 'blur(4px)'}} 
-			className={`pl-[0.72rem] lg:pl-[4rem] pt-[0.96rem] lg:pt-[8rem] pb-[0.72rem] lg:pb-[4rem] w-[5.6rem] lg:w-[35rem] h-[9.5rem] lg:h-[59rem] flex flex-col justify-between absolute top-[0.8rem] lg:top-[5.15rem] frosted-glass rounded-[0.24rem] lg:rounded-2xl ${drawerClassName}`}>
+			className={`pl-[0.72rem] lg:pl-[4rem] pt-[0.96rem] lg:pt-[8rem] pb-[0.72rem] lg:pb-[4rem] w-[5.6rem] lg:w-[35rem] h-[9.5rem] lg:h-[59rem] flex flex-col justify-between absolute top-[0.6rem] lg:top-[5.15rem] frosted-glass rounded-[0.24rem] lg:rounded-2xl ${drawerClassName}`}>
 			<div className="flex flex-col items-start gap-[0.4rem] lg:gap-[2.5rem]">
        			{SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>

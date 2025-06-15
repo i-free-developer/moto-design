@@ -5,7 +5,7 @@ import { Navbar, LogoIcon } from './Navbar'
 import { TeamMembers, CopyRight, CompanyEmail, CompanyDomain, StatusContents } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem, ByBitIcon, AwsIcon, VenturesIcon, GateIcon, GateIconBlack} from './SocialIconsCollection'
 import backgroundImage from '../assets/dashed-bg.png'
-import { useDrawerHandler, OdometerItem, isElementInViewport } from './FunctionCollection'
+import { useDrawerHandler, OdometerItem } from './FunctionCollection'
 
 export default function About() {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()

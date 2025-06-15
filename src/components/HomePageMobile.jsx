@@ -1,38 +1,35 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import Navbar from './Navbar'
 import { HeaderSvgMobile } from './HeaderSvg'
 import { ServicesItems, CompanyDomain } from '../data/site-data'
-import { useDrawerHandler, useScreenRatio } from './FunctionCollection'
+import { useDrawerHandler } from './FunctionCollection'
 import { ArrowIcon } from './SocialIconsCollection'
 
 const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'section-drawer-out'}
 const verticalClasses = {initial: '', opened: 'vertical-element-in', closed: 'vertical-element-out'}
 const serviceClasses = {initial: '', opened: 'horizontal-bar-out', closed: 'horizontal-bar-in'}
 
-export default function HomePageMobile() {
+export default function HomePageMobile({smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 	const headerClassName = headerClasses[drawerStatus]
 	const serviceClassName = serviceClasses[drawerStatus]
 	const verticalClassName = verticalClasses[drawerStatus]
 
 	return (
-		<main id="home" className="min-h-screen lg:min-h-screen lg:max-h-screen overflow-hidden relative">
+		<main id="home" className="min-h-screen max-h-screen min-w-screen max-w-screen overflow-hidden relative">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>
-			<HomeSectionMobile headerClassName={headerClassName} serviceClassName={serviceClassName} verticalClassName={verticalClassName} onCloseDrawer={closeDrawer} />
+			<HomeSectionMobile headerClassName={headerClassName} onCloseDrawer={closeDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} />
 			<ServiceOfferingsMobile/>
 		</main>
 	)
 }
 
-function HomeSectionMobile({headerClassName, serviceClassName, onCloseDrawer, verticalClassName}) {
-	const {smallScreenRatioDecimal} = useScreenRatio()
-	// console.log('smallScreenRatioDecimal', smallScreenRatioDecimal)
-
+function HomeSectionMobile({headerClassName, onCloseDrawer, smallScreenRatioDecimal}) {
 	return (
-		<section id="landing" className="border w-screen px-[0.32rem] text-black flex justify-between flex-row-reverse" onClick={onCloseDrawer}>
-			<div className="border"><VerticalElement/></div>
-			<div className={`${headerClassName} pt-[3.2rem] border border-red-900`}><span><HeaderSvgMobile scaleRatio={smallScreenRatioDecimal}/></span></div>
+		<section id="landing" className="px-[0.32rem] h-[calc(100vh-4.2rem)] text-black flex justify-between flex-row--reverse relative" onClick={onCloseDrawer}>
+			<span className={`${headerClassName} my-auto`}><HeaderSvgMobile scaleRatio={smallScreenRatioDecimal}/></span>
+			<span className="absolute right-[0.48rem] top-[calc(50vh-1rem)]"><VerticalElement/></span>
 		</section>
 	)
 }
@@ -40,7 +37,7 @@ function HomeSectionMobile({headerClassName, serviceClassName, onCloseDrawer, ve
 function ServiceOfferingsMobile() {
 	const [isHovered, setIsHovered] = useState(false);
 	return (
-		<div className={`absolute bottom-[2rem] left-0 right-0`}>
+		<div className={`mobile absolute bottom-[1.4rem] left-0 right-0`}>
 			<hr className="border border-[0.01rem] border-black/40"></hr>
 			<div className="w-full flex items-center justify-between my-[0.36rem] px-[0.32rem]">
 				<span className="font-bold uppercase text-[0.28rem] leading-[0.28rem]">Service Offerings:</span>
@@ -60,10 +57,10 @@ function ServiceOfferingsMobile() {
 
 function VerticalElement() {
 	return (
-		<div className="flex justify-center self-start">	
-			<div className={`flex gap-[0.16rem] lg:gap-4 items-center text-[0.12rem] lg:text-base font-medium leading-[0.12rem] lg:leading-[1rem] text-black/64`} style={{writingMode: 'vertical-lr'}}>
+		<div className="flex justify-center items-center">	
+			<div className={`flex gap-[0.16rem] items-center text-[0.12rem] font-medium leading-[0.12rem] text-black/64`} style={{writingMode: 'vertical-lr'}}>
 				<span className="rotate-180">{CompanyDomain}</span>
-				<span className="border border-[0.8px] border-black/64 h-[1.28rem] lg:h-[8rem] translate-x-[50%]"></span>
+				<span className="border border-[0.8px] border-black/64 h-[1.28rem] translate-x-[50%]"></span>
 			</div>
 		</div>
 	)

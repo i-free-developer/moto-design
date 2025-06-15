@@ -86,10 +86,10 @@ function useScreenRatio() {
   const designedBigWidth = 1920; // 设计稿宽度
   const baseSize = 100; // 基准值 (1rem = 100px)
   const [isMobileDevice, setIsMobileDevice] = useState(false)
-  const [smallScreenRatioInt, setSmallScreenRatioInt] = useState(100)
-  const [smallScreenRatioDecimal, setSmallScreenRatioDecimal] = useState(1.0)
   const [bigScreenRatioInt, setBigScreenRatioInt] = useState(1)
   const [bigScreenRatioDecimal, setBigScreenRatioDecimal] = useState(1.0)
+  const [smallScreenRatioInt, setSmallScreenRatioInt] = useState(100)
+  const [smallScreenRatioDecimal, setSmallScreenRatioDecimal] = useState(1.0)
 
   function resizeScreen() {
     let windowWidth = document.documentElement.clientWidth;
@@ -106,11 +106,13 @@ function useScreenRatio() {
 
   function setScreenRatios() {
     let windowWidth = document.documentElement.clientWidth;
-
-    let smallScreenRatio = windowWidth / designedSmallWidth;
-    let smallScreenRatioDecimalRaw = parseFloat((windowWidth / designedSmallWidth).toFixed(2))
-    setSmallScreenRatioInt(Math.round(smallScreenRatio * 100))
-    setSmallScreenRatioDecimal(smallScreenRatioDecimalRaw)
+    if (windowWidth <= 750) {
+      let smallScreenRatio = windowWidth / designedSmallWidth;
+      let smallScreenRatioDecimalRaw = parseFloat((windowWidth / designedSmallWidth).toFixed(2))
+      // console.log('resizeSmallScreen', smallScreenRatio, smallScreenRatioDecimalRaw, Math.round(smallScreenRatio * 100))
+      setSmallScreenRatioInt(Math.round(smallScreenRatio * 100))
+      setSmallScreenRatioDecimal(smallScreenRatioDecimalRaw)
+    }
 
     let bigScreenRatio = windowWidth / designedBigWidth;
     let bigScreenRatioDecimalRaw = parseFloat((windowWidth / designedBigWidth).toFixed(2))
@@ -127,7 +129,35 @@ function useScreenRatio() {
       window.removeEventListener('resize', resizeScreen);
     };
   }, []);
-  return {isMobileDevice, smallScreenRatioInt, smallScreenRatioDecimal, bigScreenRatioInt, bigScreenRatioDecimal}
+  return {isMobileDevice, bigScreenRatioInt, bigScreenRatioDecimal, smallScreenRatioInt, smallScreenRatioDecimal}
+}
+
+function useSmallScreenRatio() {
+  const designedSmallWidth = 750; // 设计稿宽度
+  const baseSize = 100; // 基准值 (1rem = 100px)
+  const [smallScreenRatioInt, setSmallScreenRatioInt] = useState(100)
+  const [smallScreenRatioDecimal, setSmallScreenRatioDecimal] = useState(1.0)
+  
+  function resizeSmallScreen() {
+    let windowWidth = document.documentElement.clientWidth;
+
+    let smallScreenRatio = windowWidth / designedSmallWidth;
+    let smallScreenRatioDecimalRaw = parseFloat((windowWidth / designedSmallWidth).toFixed(2))
+    console.log('resizeSmallScreen', smallScreenRatio, smallScreenRatioDecimalRaw, Math.round(smallScreenRatio * 100))
+    setSmallScreenRatioInt(Math.round(smallScreenRatio * 100))
+    setSmallScreenRatioDecimal(smallScreenRatioDecimalRaw)
+  }
+
+  useEffect(() => {
+    window.addEventListener('load', () => { requestAnimationFrame(resizeSmallScreen) })
+    window.addEventListener('resize', () => { requestAnimationFrame(resizeSmallScreen) })
+
+    return () => {
+      window.removeEventListener('load', resizeSmallScreen);
+      window.removeEventListener('resize', resizeSmallScreen);
+    }
+  }, [])
+  return {smallScreenRatioInt, smallScreenRatioDecimal}
 }
 
 import Odometer from 'odometer';
@@ -163,4 +193,4 @@ function OdometerItem ({ value, format = '(,ddd)', duration = 2500 }) {
   return (<span ref={odometerRef} className="odometer" />);
 }
 
-export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler, isElementInViewport, OdometerItem, useScreenRatio }
+export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler, isElementInViewport, OdometerItem, useScreenRatio, useSmallScreenRatio }

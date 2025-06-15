@@ -84,42 +84,50 @@ function isElementInViewport(item) {
 function useScreenRatio() {
   const designedSmallWidth = 750; // 设计稿宽度
   const designedBigWidth = 1920; // 设计稿宽度
-  const [smallScreenRatio, setSmallScreenRatio] = useState(100)
-  const [bigScreenRatio, setBigScreenRatio] = useState(100)
+  const baseSize = 100; // 基准值 (1rem = 100px)
   const [isMobileDevice, setIsMobileDevice] = useState(false)
+  const [smallScreenRatioInt, setSmallScreenRatioInt] = useState(100)
+  const [smallScreenRatioDecimal, setSmallScreenRatioDecimal] = useState(1.0)
+  const [bigScreenRatioInt, setBigScreenRatioInt] = useState(1)
+  const [bigScreenRatioDecimal, setBigScreenRatioDecimal] = useState(1.0)
+
+  function resizeScreen() {
+    let windowWidth = document.documentElement.clientWidth;
+    let smallScreenRatioRaw = windowWidth / designedSmallWidth;
+
+    if (windowWidth <= 750) {
+      document.documentElement.style.fontSize = baseSize * smallScreenRatioRaw + 'px';
+      setIsMobileDevice(true)
+    } else {
+      document.documentElement.style.fontSize = '16px';
+    }
+    setScreenRatios()
+  }
+
+  function setScreenRatios() {
+    let windowWidth = document.documentElement.clientWidth;
+
+    let smallScreenRatio = windowWidth / designedSmallWidth;
+    let smallScreenRatioDecimalRaw = parseFloat((windowWidth / designedSmallWidth).toFixed(2))
+    setSmallScreenRatioInt(Math.round(smallScreenRatio * 100))
+    setSmallScreenRatioDecimal(smallScreenRatioDecimalRaw)
+
+    let bigScreenRatio = windowWidth / designedBigWidth;
+    let bigScreenRatioDecimalRaw = parseFloat((windowWidth / designedBigWidth).toFixed(2))
+    setBigScreenRatioInt(Math.round(bigScreenRatio * 100))
+    setBigScreenRatioDecimal(bigScreenRatioDecimalRaw)
+  }
 
   useEffect(() => {
-    const baseSize = 100; // 基准值 (1rem = 100px)
-  
-    function setRem() {
-      let windowWidth = document.documentElement.clientWidth;
-      
-      if (windowWidth <= 750) {
-        const smallScreenRatio = windowWidth / designedSmallWidth;
-        document.documentElement.style.fontSize = baseSize * smallScreenRatio + 'px';
-        setSmallScreenRatio(Math.round(smallScreenRatio * 100))
-        setIsMobileDevice(true)
-      } else {
-        document.documentElement.style.fontSize = '16px';
-      }
-
-      if (windowWidth >= 1920) {
-        const bigScreenRatio = windowWidth / designedBigWidth;
-        setBigScreenRatio(Math.round(bigScreenRatio * 100))
-      }
-      // console.log('onload setRem', baseSize, windowWidth, designWidth)
-    }
-
-    window.addEventListener('load', () => { requestAnimationFrame(setRem) })
-    window.addEventListener('resize', () => { requestAnimationFrame(setRem) })
+    window.addEventListener('load', () => { requestAnimationFrame(resizeScreen) })
+    window.addEventListener('resize', () => { requestAnimationFrame(resizeScreen) })
 
     return () => {
-      window.removeEventListener('load', setRem);
-      window.removeEventListener('resize', setRem);
+      window.removeEventListener('load', resizeScreen);
+      window.removeEventListener('resize', resizeScreen);
     };
-  }, [document.documentElement.clientWidth]);
-
-  return {isMobileDevice, smallScreenRatio, bigScreenRatio}
+  }, []);
+  return {isMobileDevice, smallScreenRatioInt, smallScreenRatioDecimal, bigScreenRatioInt, bigScreenRatioDecimal}
 }
 
 import Odometer from 'odometer';

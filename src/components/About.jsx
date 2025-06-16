@@ -205,7 +205,7 @@ function SiteInfoCard({isMobileDevice}) {
 			backgroundSize: 'cover',
 			backgroundPosition: 'bottom',
 			// width: '100vw',
-		}} className="bg-bottom pt-[0.96rem] mt-[1rem] lg:mt-0 lg:pt-[12rem] lg:px-[6rem]">
+		}} className="bg-bottom py-[0.48rem] mt-[1rem] lg:mt-0 lg:py-[12rem] lg:px-[6rem]">
 			{ isMobileDevice ? <InfoCardMobile/> : <InfoCardDesktop/> }
 		</div>
 	)

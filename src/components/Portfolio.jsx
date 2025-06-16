@@ -2,25 +2,26 @@ import { useState } from 'react'
 import { DesktopPortfolioItems, MobilePortfolioItems } from '../data/site-data'
 import Navbar from './Navbar'
 import { SiteInfoCard,  SiteFooter } from './About'
-import { useDrawerHandler } from './FunctionCollection'
+import { useDrawerHandler, useScreenRatio } from './FunctionCollection'
 
 export default function Portfolio() {
 	const [isMobile, setIsMobile] = useState(false)
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
+	const {isMobileDevice, smallScreenRatioDecimal} = useScreenRatio()
 	
 	return (
-		<main className="mx-auto max-w-[750px] lg:max-w-[1920px]">
+		<main className="mx-auto">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="portfolio" className="mx-auto px-[1.5rem] lg:px-[3rem] mt-[8rem] mb-[3rem]" onClick={closeDrawer}>
+			<section id="portfolio" className="w-screen max-w-screen lg:min-w-screen lg:max-w-screen mx-auto px-[0.32rem] lg:px-[3rem] pt-[0.48rem] lg:pt-[3rem] lg:mt-[8rem] lg:mb-[3rem] overflow-x-hidden" onClick={closeDrawer}>
 				<PortfolioHeader/>
-				<div className="my-[3rem] lg:my-[6rem] flex flex-row justify-between">
+				<div className="my-[0.48rem] lg:my-[6rem] flex flex-row justify-between">
 					<MobileDeskIcons isMobile={isMobile} setIsMobile={setIsMobile}/>
-					<p className="self-start lg:mb-[3rem] text-[28px] leading-[28px] lg:text-[2rem] lg:leading-[32px] text-black/64 w-[55%] lg:w-[26rem] tracking-[-2%] font-normal text-right">Our user-centered design encourages productivity and boosts revenue</p>
+					<p className="self-start lg:mb-[3rem] text-[0.28rem] leading-[0.28rem] lg:text-[2rem] lg:leading-[32px] text-black/64 w-[55%] lg:w-[26rem] tracking-[-2%] font-normal text-right">Our user-centered design encourages productivity and boosts revenue</p>
 				</div>
 
 	      {isMobile ? <MobilePortfolios/> : <DesktopPortfolios/>}
-	      <SiteInfoCard/>
-				<SiteFooter/>
+	      <SiteInfoCard isMobileDevice={isMobileDevice}/>
+				<SiteFooter isMobileDevice={isMobileDevice}/>
 			</section>
 		</main>
 	)
@@ -28,16 +29,16 @@ export default function Portfolio() {
 
 function PortfolioHeader() {
 	return (
-		<article className="flex flex-col lg:flex-row justify-between my-[4rem] tracking-[-2%]">
-			<header className="text-[3.5rem] leading-[64px] lg:text-[5rem] lg:leading-[96px] w-[35rem] lg:w-[45%] font-normal">We don't do cookie-cutter solutions</header>
-			<p className="mt-[1rem] lg:mt-0 w-full lg:w-[20%] text-2xl text-black/64 leading-[24px] lg:text-right font-normal">Backing the best Web 3.0 founders & products</p>
+		<article className="flex flex-col lg:flex-row justify-between my-[1rem] lg:my-[4rem] tracking-[-2%]">
+			<header className="text-[0.56rem] leading-[0.64rem] lg:text-[5rem] lg:leading-[96px] lg:w-[45%] font-normal">We don't do cookie-cutter solutions</header>
+			<p className="mt-[0.16rem] lg:mt-[1rem] lg:mt-0 w-full lg:w-[20%] text-black/64 text-[0.24rem] leading-[0.24rem] lg:text-2xl lg:leading-[24px] lg:text-right font-normal">Backing the best Web 3.0 founders & products</p>
 		</article>
 	)
 }
 
 function MobileDeskIcons({isMobile, setIsMobile}) {
 	return (
-		<div className="cursor-pointer self-end flex items-center gap-[2rem] mt-[1rem] mb-[4rem]">
+		<div className="cursor-pointer self-end flex items-center gap-[0.64rem] lg:gap-[2rem] lg:mt-[1rem] lg:mb-[4rem]">
 			<span onClick={() => setIsMobile(true)} className="">{isMobile ? <MobileIconBlack/> : <MobileIconWhite/> }</span>
 			<span onClick={() => setIsMobile(false)} className="">{isMobile ? <DesktopIconWhite/> : <DesktopIconBlack/> }</span>
 		</div>
@@ -46,7 +47,7 @@ function MobileDeskIcons({isMobile, setIsMobile}) {
 
 function DesktopPortfolios() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 gap-[1.5rem]">
+    <div className="grid grid-cols-1 lg:grid-cols-5 gap-[0.24rem] lg:gap-[1.5rem]">
       {DesktopPortfolioItems.map((item, index) => <DesktopCard {...item} key={index}/>)}
     </div>
   )
@@ -55,9 +56,9 @@ function DesktopPortfolios() {
 function DesktopCard({title, description, colums, image, url}) {
 	const [isHovered, setIsHovered] = useState(true)
 	const spanClasses = {
-	  2: 'lg:col-span-2 relative h-[36rem]',
-	  3: 'lg:col-span-3 relative h-[36rem]',
-	  5: 'lg:col-span-5 relative h-[36rem]',
+	  2: 'lg:col-span-2 relative h-[4.8rem] lg:h-[36rem]',
+	  3: 'lg:col-span-3 relative h-[4.8rem] lg:h-[36rem]',
+	  5: 'lg:col-span-5 relative h-[4.8rem] lg:h-[36rem]',
 	}
 
 	return (
@@ -68,7 +69,7 @@ function DesktopCard({title, description, colums, image, url}) {
 				z-5 absolute left-[50%] bottom-0 w-full h-2/5 rounded-[40%] blur-[3rem] bg-sky-800 opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
 				${isHovered ? '-translate-x-[50%] -translate-y-[10%] opacity-80' : '-translate-x-[50%] translate-y-[20%] '}
 			`}></span>
-			<a href={url} className="max-w-full h-full block cursor-pointer rounded-3xl">
+			<a href={url} className="max-w-full h-full block cursor-pointer rounded-[0.28rem] lg:rounded-3xl">
 				<div className="w-full h-full overflow-hidden rounded-[inherit]">
 					<img src={image} className={`w-full h-full object-cover object-center rounded-[inherit] ${isHovered ? 'scale-104' : ''}`} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}></img>
 				</div>
@@ -81,13 +82,13 @@ function DesktopCard({title, description, colums, image, url}) {
 function DesktopBottomCard({title, description}) {
 	const [isHovered, setIsHovered] = useState(true)
 	return (
-		<div className="z-10 absolute left-6 right-6 bottom-6 px-6 py-4 bg-white rounded-2xl flex justify-between items-center" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+		<div className="z-10 absolute left-[0.12rem] lg:left-6 right-[0.12rem] lg:right-6 bottom-[0.12rem] lg:bottom-6 px-[0.24rem] lg:px-6 py-[0.24rem] lg:py-4 bg-white rounded-[0.24rem] lg:rounded-2xl flex justify-between items-center" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<div className="max-w-3/4">
-				<header className="font-bold mb-2 text-2xl">{title}</header>
-				<p className="text-xl">{description}</p>
+				<header className="font-bold mb-[0.16rem] lg:mb-2 text-[0.24rem] lg:text-2xl">{title}</header>
+				<p className="text-[0.16rem] lg:text-xl">{description}</p>
 			</div>
-			<div className="size-[72px] bg-black/16 flex items-center justify-center rounded-full">
-				<div className={`w-10 ${isHovered ? '-rotate-45' : '-rotate-0'} flex items-center justify-center transition-rotate transition-transform duration-400`}><ArrowRight/></div>
+			<div className="size-[0.72rem] lg:size-[72px] bg-black/16 flex items-center justify-center rounded-full">
+				<div className={`w-[0.8rem] lg:w-10 ${isHovered ? '-rotate-45' : '-rotate-0'} flex items-center justify-center transition-rotate transition-transform duration-400`}><ArrowRight/></div>
 			</div>
 		</div>
 	)
@@ -98,13 +99,13 @@ function MobilePortfolios() {
     <div className="w-full relative">
       <div className="max-w-full overflow-hidden flex justify-center">
         <div>
-          <div className="flex gap-[2rem] mb-[2rem]">
+          <div className="flex gap-[0.32rem] lg:gap-[2rem] mb-[0.32rem] lg:mb-[2rem]">
             {MobilePortfolioItems.map((item, index) => <MobileCard {...item} index={index} key={index}/>)}
           </div>
-          <div className="flex gap-[2rem] my-[2rem]">
+          <div className="flex gap-[0.32rem] lg:gap-[2rem] my-[0.32rem] lg:my-[2rem]">
             {MobilePortfolioItems.map((item, index) => <MobileCard {...item} index={index} key={index} />)}
           </div>
-          <div className="flex gap-[2rem] mt-[2rem]">
+          <div className="flex gap-[0.32rem] lg:gap-[2rem] mt-[0.32rem] lg:mt-[2rem]">
             {MobilePortfolioItems.map((item, index) => <MobileCard {...item} index={index} key={index} />)}
           </div>
         </div>
@@ -117,7 +118,7 @@ function MobilePortfolios() {
 
 function MobileCard({title, image, index}) {
   return (
-    <div className="w-[252px] h-[532px] lg:w-[400px] lg:h-[840px] rounded-[28px] rounded-[1rem]">
+    <div className="w-[2.52rem] h-[5.32rem] lg:w-[400px] lg:h-[840px] rounded-[0.28rem] lg:rounded-[1rem]">
       {(index === 2) ? null : <img src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit]" /> }
     </div>
   )
@@ -127,7 +128,7 @@ function StickyCard() {
   return (
     <div className="absolute top-0 left-0 bottom-0 right-0 w-full h-full flex flex-col">
       <div className="sticky top-0 bottom-0 flex items-center justify-center">
-        <img className="w-[252px] h-[532px] lg:w-[400px] lg:h-[840px] object-fit object-center rounded-[1rem]" src="https://plus.unsplash.com/premium_photo-1722178429928-caa36778a04b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2fHx8ZW58MHx8fHx8" alt=""/>
+        <img className="w-[2.52rem] h-[5.32rem] lg:w-[400px] lg:h-[840px] object-fit object-center rounded-[0.28rem] lg:rounded-[1rem]" src="https://plus.unsplash.com/premium_photo-1722178429928-caa36778a04b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2fHx8ZW58MHx8fHx8" alt=""/>
       </div>
     </div>
   )

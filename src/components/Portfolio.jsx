@@ -12,7 +12,7 @@ export default function Portfolio() {
 	return (
 		<main className="mx-auto">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="portfolio" className="w-screen max-w-screen lg:min-w-screen lg:max-w-screen mx-auto px-[0.32rem] lg:px-[3rem] pt-[0.48rem] lg:pt-[3rem] lg:mt-[8rem] lg:mb-[3rem] overflow-x-hidden" onClick={closeDrawer}>
+			<section id="portfolio" className="w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] mx-auto px-[0.32rem] lg:px-[3rem] pt-[0.48rem] lg:pt-[3rem] lg:mt-[8rem] lg:mb-[3rem]" onClick={closeDrawer}>
 				<PortfolioHeader/>
 				<div className="my-[0.48rem] lg:my-[6rem] flex flex-row justify-between">
 					<MobileDeskIcons isMobile={isMobile} setIsMobile={setIsMobile}/>

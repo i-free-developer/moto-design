@@ -173,11 +173,11 @@ function ApplyButon({id}) {
 
 export function HowToApply() {
 	return (
-		<div className="tracking-[-2%] my-[3rem] w-full mx-auto">
-			<h2 className="uppercase font-bold text-5xl lg:text-[5.5rem]">how to apply</h2>
-			<p className="mt-[3rem] text-xl lg:text-[2rem]">Send your CV and portfolio to <span className="font-bold">({CompanyEmail})</span>, with the subject "<span className="font-bold">Position + Name</span>".</p>
-			<p className="text-xl lg:text-[2rem]">We’re not just hiring doers—we’re looking for partners in creation.</p>
-			<p className="text-xl lg:text-[2rem] my-[2rem] lg:my-[3rem]">*File Types: ( pdf, ppt, pptx, txt )</p>
+		<div className="tracking-[-2%] my-[1.6rem] lg:my-[3rem] w-full mx-auto">
+			<h2 className="uppercase font-bold text-[0.48rem] lg:text-[5.5rem] lg:leading-[104px]">how to apply</h2>
+			<p className="mt-[0.48rem] lg:mt-[3rem] text-[0.2rem] leading-[0.2rem] lg:text-[2rem] lg:leading-[48px]">Send your CV and portfolio to <span className="font-bold">({CompanyEmail})</span>, with the subject "<span className="font-bold">Position + Name</span>".</p>
+			<p className="text-[0.2rem] leading-[0.2rem] lg:text-[2rem] lg:leading-[48px]">We’re not just hiring doers—we’re looking for partners in creation.</p>
+			<p className="text-[0.2rem] leading-[0.2rem] lg:text-[2rem] lg:leading-[48px] my-[0.32rem] lg:my-[3rem]">*File Types: ( pdf, ppt, pptx, txt )</p>
 		</div>
 	)
 }

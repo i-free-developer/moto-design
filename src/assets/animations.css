@@ -124,7 +124,7 @@
 }
 
 .perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
-	transform: translateX(calc(23rem - 2px));
+	transform: translateX(calc(23.5rem - 2px));
 }
 
 .lang-slide-in {
@@ -139,7 +139,7 @@
 	.horizontal-bar-in, .horizontal-bar-out, .vertical-element-in, .vertical-element-out { animation: none;}
 
 	.perk-card:active ~ .perk-card, .perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
-		transform: translateX(calc(17rem - 2px));
+		transform: translateX(calc(1.28rem - 2px));
 	}
 
 	@keyframes drawer-slide-in {

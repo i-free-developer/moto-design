@@ -14,18 +14,22 @@ export default function About() {
 	return (
 		<main className="mx-auto">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} frostedGlass={true} key="about"/>
-			<section id="about" className="w-screen max-w-screen lg:min-w-screen lg:max-w-screen mx-auto px-[0.32rem] lg:px-[3rem] pt-[0.48rem] lg:pt-[3rem] overflow-x-hidden" onClick={closeDrawer}>
-				<AboutHeader/>
-				<AboutBrand/>
-				<AboutStatusContainer/>
-				<EcosystemHeader/>
+			<section id="about" className="w-screen max-w-screen lg:min-w-screen lg:max-w-screen mx-auto pt-[0.48rem] lg:pt-[3rem] overflow-x-hidden" onClick={closeDrawer}>
+				<div className="px-[0.32rem] lg:px-[3rem]">
+					<AboutHeader/>
+					<AboutBrand/>
+					<AboutStatusContainer/>
+					<EcosystemHeader/>
+				</div>
 				<EcosystemCard/>
-				<div className="my-[1.2rem] lg:mt-[10rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-[0.16rem] lg:gap-6">
+				<div className="px-[0.32rem] lg:px-[3rem] my-[1.2rem] lg:my-[22rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-[0.16rem] lg:gap-6">
 					<OurTeam />
 					{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
 				</div>
-				<SiteInfoCard isMobileDevice={isMobileDevice}/>
-				<SiteFooter isMobileDevice={isMobileDevice}/>
+				<div className="px-[0.32rem] lg:px-[3rem]">
+					<SiteInfoCard isMobileDevice={isMobileDevice}/>
+					<SiteFooter isMobileDevice={isMobileDevice}/>
+				</div>
 			</section>
 		</main>
 	)
@@ -33,7 +37,7 @@ export default function About() {
 
 function AboutHeader() {
 	return (
-		<div className="mx-auto my-[0.64rem] lg:my-[6rem] min-w-full lg:w-[75rem] relative">
+		<div className="mx-auto my-[0.64rem] lg:mt-[10rem] min-w-full lg:w-[75rem] relative">
 			<div className="mx-auto w-content uppercase text-center text-[0.32rem] leading-[0.54rem] lg:text-[4rem] lg:leading-[88px] tracking-[10%] font-medium">
 				<p className="relative">Every frame of code
 					<span className="absolute size-[41px] flex items-center top-[-0.2rem] lg:top-[-0.7rem] left-[15%] lg:left-[25%]"><LeftQuote/></span>
@@ -64,7 +68,7 @@ function VerticalItem() {
 
 function AboutBrand() {
 	return (
-		<div className="border border-[0.02rem] lg:border-4 rounded-[0.16rem] lg:rounded-2xl p-[0.32rem] lg:px-[4rem] lg:py-[3rem] my-[0.64rem] flex justify-between">
+		<div className="border border-[0.02rem] lg:border-4 rounded-[0.16rem] lg:rounded-2xl p-[0.32rem] lg:px-[4rem] lg:py-[3rem] my-[0.64rem] lg:my-[22rem] flex justify-between">
 			<p className="uppercase text-[0.24rem] lg:text-[2rem] font-bold w-1/4 gap-[0.16rem] lg:gap-[1rem] lg:w-1/3">About brand:</p>
 			<div className="w-3/4 grow-1 lg:grow-0 lg:w-1/2 flex flex-col justify-between gap-[0.32rem] lg:gap-[2rem] text-[0.2rem] lg:text-xl font-medium">
 				<p className="">We're a visual design team with 8 years in the Web3 field.</p>
@@ -79,7 +83,7 @@ function AboutStatusContainer() {
 	const [showSection, setShowSection] = useState('left')	
 	return (
 		<div className="mx-auto w-full relative">
-			<div className="mx-auto overflow-x-hidden w-full my-[0.64rem] lg:my-[12rem] flex items-center justify-between">
+			<div className="mx-auto overflow-x-hidden w-full my-[0.64rem] lg:my-[22rem] flex items-center justify-between">
 				<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} transition-translate duration-700 mx-auto min-w-full max-w-full lg:ml-0 lg:min-w-[45%] lg:w-[45%] tracking-[-2%]`}>
 					<p className="uppercase text-[0.48rem] lg:text-[4rem] font-bold leading-[0.48rem] lg:leading-[4rem]">we strive to innovate</p>
 					<p className="text-[0.16rem] lg:text-[21px] font-normal lg:font-bold leading-[24px] my-[0.16rem] lg:my-[2rem]">Some Number About Us</p>	

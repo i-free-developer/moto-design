@@ -205,8 +205,8 @@
 }
 
 .frosted-glass {
-  background: rgba(241, 241, 241, 0.64) !important;
-	backdrop-filter: blur(4px) !important;
+  background: rgba(241, 241, 241, 0.8) !important;
+	backdrop-filter: blur(40px) !important;
 	-webkit-backdrop-filter: blur(4px) !important;
 	/*box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );*/
 	/*border-radius: 10px;*/

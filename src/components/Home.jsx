@@ -13,12 +13,11 @@ const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'sectio
 const verticalClasses = {initial: '', opened: 'vertical-element-in', closed: 'vertical-element-out'}
 const serviceClasses = {initial: '', opened: 'horizontal-bar-out', closed: 'horizontal-bar-in'}
 
-export default function Home({loadingPercentage}) {
+export default function Home({loadingPercentage, isMobileDevice, smallScreenRatioDecimal}) {
 	// const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 	// const headerClassName = headerClasses[drawerStatus]
 	// const serviceClassName = serviceClasses[drawerStatus]
 	// const verticalClassName = verticalClasses[drawerStatus]
-	const {isMobileDevice, smallScreenRatioDecimal} = useScreenRatio()
 
 	if (loadingPercentage <= 100) {
 		return <Loading loadingPercentage={loadingPercentage}/>

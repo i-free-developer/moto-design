@@ -182,7 +182,7 @@
 }
 
 .scroll-icons {
-	animation: horizontal-scroll 12s linear infinite;
+	animation: horizontal-scroll 20s linear infinite;
 }
 
 .scroll-icons:hover {

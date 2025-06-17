@@ -60,6 +60,7 @@ text-9xl   /* 8rem (128px) */
 
 ##### general resources
 https://www.awsmd.com/
+https://consensys.io/
 https://baiyun.me/improve-the-user-experience-for-react-apps
 
 https://css-tricks.org.cn/almanac/properties/t/touch-action/

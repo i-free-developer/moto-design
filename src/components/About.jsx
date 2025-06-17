@@ -14,19 +14,21 @@ export default function About() {
 	return (
 		<main className="mx-auto">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} frostedGlass={true} key="about"/>
-			<section id="about" className="w-screen max-w-screen lg:min-w-screen lg:max-w-screen mx-auto pt-[0.48rem] lg:pt-[3rem] overflow-x-hidden" onClick={closeDrawer}>
-				<div className="px-[0.32rem] lg:px-[3rem]">
-					<AboutHeader/>
+			<section id="about" className="mx-auto pt-[0.48rem] lg:pt-[3rem]" onClick={closeDrawer}>
+				<div className="px-[0.32rem] lg:px-[3rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
+					<AboutHeader smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 					<AboutBrand/>
 					<AboutStatusContainer/>
 					<EcosystemHeader/>
 				</div>
+				
 				<EcosystemCard/>
-				<div className="px-[0.32rem] lg:px-[3rem] my-[1.2rem] lg:my-[22rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-[0.16rem] lg:gap-6">
-					<OurTeamCard />
-					{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
-				</div>
-				<div className="px-[0.32rem] lg:px-[3rem]">
+
+				<div className="px-[0.32rem] lg:px-[3rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
+					<div className="my-[1.2rem] lg:my-[22rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-[0.16rem] lg:gap-6">
+						<OurTeamCard />
+						{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
+					</div>
 					<SiteInfoCard isMobileDevice={isMobileDevice}/>
 					<SiteFooter isMobileDevice={isMobileDevice}/>
 				</div>
@@ -35,19 +37,19 @@ export default function About() {
 	)
 }
 
-function AboutHeader() {
+function AboutHeader({smallScreenRatioDecimal}) {
 	return (
 		<div className="mx-auto my-[0.64rem] lg:mt-[13rem] min-w-full relative">
 			<div className="mx-auto w-content uppercase text-center text-[0.32rem] leading-[0.54rem] lg:text-[4rem] lg:leading-[88px] tracking-[10%] font-medium">
 				<p className="relative">Every frame of code
-					<span className="absolute size-[41px] flex items-center top-[-0.2rem] lg:top-[-0.7rem] left-[15%] lg:left-[25%]"><LeftQuote/></span>
+					<span className="absolute size-[41px] flex items-center top-[-0.2rem] lg:top-[-0.7rem] left-[0.9rem] lg:left-[25%]"><LeftQuote scaleRatio={smallScreenRatioDecimal}/></span>
 				</p>
 				<p className="">is an elegant murder of</p>
 				<p className="text-wrap wrap-normal">the old paradigm, every pixel</p>
 				<p className="">a philosophical</p>
 				<p className="">statement projected into</p>
 				<p className="">the future.
-					<span className="absolute size-[41px] flex items-center bottom-[-0.2rem] lg:bottom-[-0.7rem] right-[25%] lg:right-[33%]"><RightQuote/></span>
+					<span className="absolute size-[41px] flex items-center bottom-[-0.2rem] lg:bottom-[-0.7rem] right-[1.6rem] lg:right-[33%]"><RightQuote scaleRatio={smallScreenRatioDecimal}/></span>
 				</p>
 			</div>
 			<VerticalItem/>
@@ -170,7 +172,7 @@ function AboutCirclesCard({showSection}) {
 
 function EcosystemHeader() {
 	return (
-		<div className="mx-auto w-full lg:text-center scroll-fade-in">
+		<div className="mx-auto w-full lg:text-center">
 			<h2 className="uppercase text-[0.48rem] lg:text-[4rem] font-bold leading-[0.48rem] lg:leading-[64px] tracking-[-2%]">ecosystem resource</h2>
 			<p className="lg:px-[10rem] text-[0.16rem] lg:text-[1.75rem] leading-[0.2rem] lg:leading-[36px] tracking-[-2%] mt-[0.16rem] lg:mt-[2.5rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries,providing them with visual design, creative, and industry consulting services.</p>	
 		</div>
@@ -179,9 +181,11 @@ function EcosystemHeader() {
 
 function EcosystemCard() {
 	return (
-		<div className="overflow-hidden relative m-auto w-full h-[0.6rem] lg:h-[6rem] flex will-change-transform mt-[0.8rem] lg:mt-[10rem]">
+		<div className="overflow-hidden relative m-auto w-full h-[1.28rem] lg:h-[6rem] flex will-change-transform mt-[0.8rem] lg:mt-[10rem]">
 			<div className="absolute top-0 left-0 w-full h-full m-auto flex items-center justify-start whitespace-nowrap">
 				<div className="flex items-center scroll-icons gap-[0.32rem] lg:gap-[8rem]">
+					<TestimonialSlideIcons/>
+					<TestimonialSlideIcons/>
 					<TestimonialSlideIcons/>
 					<TestimonialSlideIcons/>
 					<TestimonialSlideIcons/>
@@ -197,10 +201,10 @@ function EcosystemCard() {
 function TestimonialSlideIcons() {
 	return (
 		<div className="flex items-center gap-[0.32rem] lg:gap-[8rem] h-[0.6rem] lg:h-[6rem]">
-			<span className="flex items-center justify-center h-[0.48rem] lg:h-[3rem] cursor-pointer"><GateIconBlack/></span>
-			<span className="flex items-center justify-center h-[0.48rem] lg:h-[3rem] cursor-pointer"><ByBitIcon/></span>
-			<span className="flex items-center justify-center h-[0.48rem] lg:h-[3rem] cursor-pointer"><VenturesIcon/></span>
-			<span className="flex items-center justify-center h-[0.48rem] lg:h-[3rem] cursor-pointer"><AwsIcon/></span>
+			<span className="flex items-center justify-center h-[0.32rem] lg:h-[3rem] cursor-pointer"><GateIconBlack/></span>
+			<span className="flex items-center justify-center h-[0.32rem] lg:h-[3rem] cursor-pointer"><ByBitIcon/></span>
+			<span className="flex items-center justify-center h-[0.32rem] lg:h-[3rem] cursor-pointer"><VenturesIcon/></span>
+			<span className="flex items-center justify-center h-[0.32rem] lg:h-[3rem] cursor-pointer"><AwsIcon/></span>
 		</div>
 	)
 }
@@ -213,7 +217,7 @@ function SiteInfoCard({isMobileDevice}) {
 			backgroundSize: 'cover',
 			backgroundPosition: 'bottom',
 			// width: '100vw',
-		}} className="bg-bottom py-[0.48rem] mt-[1rem] lg:mt-0 lg:py-[12rem] lg:px-[6rem]">
+		}} className="bg-bottom py-[0.48rem] mt-[1rem] lg:mt-0 lg:py-[12rem]">
 			{ isMobileDevice ? <InfoCardMobile/> : <InfoCardDesktop/> }
 		</div>
 	)
@@ -275,7 +279,7 @@ function LogoLinksCard() {
 
 function SiteFooter({isMobileDevice}) {
 	return (
-		<div className="w-full mx-auto flex items-center justify-between lg:px-[6rem] my-[0.48rem] lg:my-[3rem]">
+		<div className="w-full mx-auto flex items-center justify-between my-[0.48rem] lg:my-[3rem]">
 			<Link to="/">{ isMobileDevice ? <LogoIconMobile/> : <LogoIconDesktop/> }</Link>
 			<div className="w-2/3 lg:w-1/2 flex flex-col lg:flex-row items-end lg:gap-[2rem] lg:items-center lg:justify-between text-[0.12rem] leading-[0.16rem] lg:text-xl font-medium lg:leading-[20px]">
 				<p className="">{CompanyEmail}</p>
@@ -289,7 +293,7 @@ function TeamMemberCard({name, avatar, description, title, role}) {
 	const [isHovered, setIsHovered] = useState(false)
 	return (
 		<article className="border border-inset border-[0.03rem] lg:border-4 rounded-[0.16rem] lg:rounded-[1.4rem] w-[2.2rem] lg:w-[26rem] h-[3.3rem] lg:h-[33rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-			<div className={`top-0 relative transition-all duration-250 rounded-[0.16rem] lg:rounded-[1.2rem] flex max-h-full min-h-full min-w-full max-w-full flex-col justify-between ${isHovered ? 'top-[-100%]' : ''}`}>
+			<div className={`top-0 relative transition-all duration-500 rounded-[0.16rem] lg:rounded-[1.2rem] flex max-h-full min-h-full min-w-full max-w-full flex-col justify-between ${isHovered ? 'top-[-100%]' : ''}`}>
 				<img src={avatar} className="block h-[2.2rem] w-[2.2rem] lg:h-[26rem] lg:w-[26rem] object-cover object-center rounded-[0.16rem] lg:rounded-t-[1.2rem]"></img>
 				<div className="grid content-center px-[0.24rem] lg:px-[1.5rem] h-[1.1rem] lg:h-[5.5rem] grow">
 					<div className="flex flex-col lg:flex-row lg:items-center justify-between font-normal">
@@ -299,7 +303,7 @@ function TeamMemberCard({name, avatar, description, title, role}) {
 				</div>
 			</div>
 
-		    <div className={`relative transition-all duration-250 rounded-[0.16rem] lg:rounded-[1.2rem] max-h-full min-h-full min-w-full max-w-full bg-black text-white p-[0.4rem] lg:p-[2.5rem] ${isHovered ? 'top-[-100%] z-100' : 'top-[6px] '}`}>
+		    <div className={`relative transition-all duration-500 rounded-[0.16rem] lg:rounded-[1.2rem] max-h-full min-h-full min-w-full max-w-full bg-black text-white p-[0.4rem] lg:p-[2.5rem] ${isHovered ? 'top-[-100%] z-100' : 'top-[6px] '}`}>
 		     	<header className="text-[0.28rem] lg:text-[4rem] font-bold tracking-[-2%]">{name}</header>
 		     	<p className="uppercase text-[0.24rem] lg:text-[1.5rem] font-normal mt-[0.24rem] lg:mt-[1.5rem]">{title}</p>
 				<p className="text-[0.16rem] lg:text-base font-normal mt-[0.32rem] lg:mt-[4rem]">{description}</p>
@@ -322,17 +326,17 @@ function OurTeamCard() {
 	)
 }
 
-function LeftQuote() {
+function LeftQuote({scaleRatio}) {
 	return (
-		<svg width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'bottom right', }} width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path d="M14.4238 22.408V14.344C14.4238 10.632 15.2238 7.56 16.8238 5.128C18.4878 2.696 20.8878 1.09599 24.0238 0.327997V3.68799C22.1038 4.2 20.7278 5.16 19.8958 6.568C19.0638 7.912 18.5838 9.672 18.4558 11.848H22.1038V22.408H14.4238ZM0.0237505 22.408V14.344C0.0237505 10.632 0.82375 7.56 2.42375 5.128C4.08775 2.696 6.48775 1.09599 9.62375 0.327997V3.68799C7.70375 4.2 6.32775 5.16 5.49575 6.568C4.66375 7.912 4.18375 9.672 4.05575 11.848H7.70375V22.408H0.0237505Z" fill="black"/>
 		</svg>
 	)
 }
 
-function RightQuote() {
+function RightQuote({scaleRatio}) {
 	return (
-		<svg width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'top left', }} width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path d="M10.5763 0.591999L10.5763 8.656C10.5763 12.368 9.77625 15.44 8.17625 17.872C6.51225 20.304 4.11225 21.904 0.976253 22.672L0.976253 19.312C2.89625 18.8 4.27225 17.84 5.10425 16.432C5.93625 15.088 6.41625 13.328 6.54425 11.152L2.89625 11.152L2.89626 0.591998L10.5763 0.591999ZM24.9763 0.592L24.9763 8.656C24.9763 12.368 24.1763 15.44 22.5763 17.872C20.9123 20.304 18.5123 21.904 15.3763 22.672L15.3763 19.312C17.2963 18.8 18.6723 17.84 19.5043 16.432C20.3363 15.088 20.8163 13.328 20.9443 11.152L17.2963 11.152L17.2963 0.592L24.9763 0.592Z" fill="black"/>
 		</svg>
 	)

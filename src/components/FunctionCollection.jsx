@@ -95,10 +95,11 @@ function useScreenRatio() {
     let windowWidth = document.documentElement.clientWidth;
     let smallScreenRatioRaw = windowWidth / designedSmallWidth;
 
-    if (windowWidth <= 750) {
+    if (windowWidth <= designedSmallWidth) {
       document.documentElement.style.fontSize = baseSize * smallScreenRatioRaw + 'px';
       setIsMobileDevice(true)
     } else {
+      setIsMobileDevice(false)
       document.documentElement.style.fontSize = '16px';
     }
     setScreenRatios()
@@ -106,7 +107,7 @@ function useScreenRatio() {
 
   function setScreenRatios() {
     let windowWidth = document.documentElement.clientWidth;
-    if (windowWidth <= 750) {
+    if (windowWidth <= designedSmallWidth) {
       let smallScreenRatio = windowWidth / designedSmallWidth;
       let smallScreenRatioDecimalRaw = parseFloat((windowWidth / designedSmallWidth).toFixed(2))
       // console.log('resizeSmallScreen', smallScreenRatio, smallScreenRatioDecimalRaw, Math.round(smallScreenRatio * 100))
@@ -114,10 +115,12 @@ function useScreenRatio() {
       setSmallScreenRatioDecimal(smallScreenRatioDecimalRaw)
     }
 
-    let bigScreenRatio = windowWidth / designedBigWidth;
-    let bigScreenRatioDecimalRaw = parseFloat((windowWidth / designedBigWidth).toFixed(2))
-    setBigScreenRatioInt(Math.round(bigScreenRatio * 100))
-    setBigScreenRatioDecimal(bigScreenRatioDecimalRaw)
+    if (windowWidth >= designedBigWidth) {
+      let bigScreenRatio = windowWidth / designedBigWidth;
+      let bigScreenRatioDecimalRaw = parseFloat((windowWidth / designedBigWidth).toFixed(2))
+      setBigScreenRatioInt(Math.round(bigScreenRatio * 100))
+      setBigScreenRatioDecimal(bigScreenRatioDecimalRaw)
+    }
   }
 
   useEffect(() => {

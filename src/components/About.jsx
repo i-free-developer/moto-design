@@ -23,7 +23,7 @@ export default function About() {
 				</div>
 				<EcosystemCard/>
 				<div className="px-[0.32rem] lg:px-[3rem] my-[1.2rem] lg:my-[22rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-[0.16rem] lg:gap-6">
-					<OurTeam />
+					<OurTeamCard />
 					{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
 				</div>
 				<div className="px-[0.32rem] lg:px-[3rem]">
@@ -37,7 +37,7 @@ export default function About() {
 
 function AboutHeader() {
 	return (
-		<div className="mx-auto my-[0.64rem] lg:mt-[10rem] min-w-full lg:w-[75rem] relative">
+		<div className="mx-auto my-[0.64rem] lg:mt-[13rem] min-w-full relative">
 			<div className="mx-auto w-content uppercase text-center text-[0.32rem] leading-[0.54rem] lg:text-[4rem] lg:leading-[88px] tracking-[10%] font-medium">
 				<p className="relative">Every frame of code
 					<span className="absolute size-[41px] flex items-center top-[-0.2rem] lg:top-[-0.7rem] left-[15%] lg:left-[25%]"><LeftQuote/></span>
@@ -86,9 +86,9 @@ function AboutStatusContainer() {
 			<div className="mx-auto overflow-x-hidden w-full my-[0.64rem] lg:my-[22rem] flex items-center justify-between">
 				<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} transition-translate duration-700 mx-auto min-w-full max-w-full lg:ml-0 lg:min-w-[45%] lg:w-[45%] tracking-[-2%]`}>
 					<p className="uppercase text-[0.48rem] lg:text-[4rem] font-bold leading-[0.48rem] lg:leading-[4rem]">we strive to innovate</p>
-					<p className="text-[0.16rem] lg:text-[21px] font-normal lg:font-bold leading-[24px] my-[0.16rem] lg:my-[2rem]">Some Number About Us</p>	
+					<p className="text-[0.16rem] lg:text-[21px] font-normal leading-[24px] my-[0.16rem] lg:my-[2rem]">Some Number About Us</p>	
 					<div className="w-full grid grid-cols-2 gap-[0.64rem] lg:gap-[4rem] my-[0.48rem] lg:my-[3rem]">
-						{StatusContents.map((item, index) => <StatusItemCard {...item} key={index}/>)}
+						{StatusContents.map((item, index) => <StatusItemCard {...item} i={index} key={index}/>)}
 					</div>
 				</div>
 				<AboutCirclesCard showSection={showSection}/>
@@ -99,11 +99,11 @@ function AboutStatusContainer() {
 	)
 }
 
-function StatusItemCard({title, suffix, content}) {
+function StatusItemCard({title, suffix, content, i}) {
 	return (
 		<article className="w-[80%] my-[0.16rem] lg:my-[1.5rem]">
-			<header className="text-[0.8rem] lg:text-8xl font-semibold leading-[0.8rem] lg:leading-[96px] tracking-[-8%]">{<OdometerItem value={title}/>} {suffix && <span>{suffix}</span>}</header>
-			<hr className="w-full border border-[0.01rem] lg:border-2 border-black/20 my-[0.16rem] lg:mt-[2rem] lg:mb-[1.5rem]"></hr>
+			<header className="text-[0.8rem] lg:text-8xl font-semibold leading-[0.8rem] lg:leading-[96px] tracking-[-8%]">{<OdometerItem value={title}/>} {suffix && <span className={`inline-block ${i == 3 ? 'lg:translate-y-[8%]' : '' }`}>{suffix}</span>}</header>
+			<hr className="w-full border border-[0.01rem] lg:border-1 border-black/20 my-[0.16rem] lg:mt-[2rem] lg:mb-[1.5rem]"></hr>
 			<p className="text-[0.16rem] lg:text-base font-normal leading-[0.20rem] lg:leading-[20px] tracking-[-2%]">{content}</p>
 		</article>
 	)
@@ -132,33 +132,37 @@ function AboutCirclesCard({showSection}) {
 		<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} scale-85 lg:scale-100 transition-translate duration-700 m-auto relative min-w-[696px] min-h-[696px] hover:cursor-pointer`}>
 			<div className="about-circle-div w-full h-full top-0 right-0" data-circle="true">
 				{/* <p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="true"></p> */}
-				<p className="circle-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="false"></p>
+				{/* <p className="circle-point-visible circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="true"></p> */}
 			</div>
 
 			<div className="about-circle-div w-[84%] h-[84%] top-[2.45%] right-[2.45%]" data-circle="true">
-				{/* <p className="circle-point circle-data-point top-[100%] right-[50%]" data-label="Comprehensive expansion" data-point="true"></p> */}
-				{/* <p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Comprehensive expansion" data-point="true"></p> */}
-				<p className="circle-point top-[99.8097%] right-[45.6422%]" data-label="Creative" data-up="true" data-point="false"></p>
+				<p className="circle-point-visible circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Creative" data-up="true" data-point="true"></p>
+				<p className="circle-point top-[32.899%]  right-[96.9846%]" data-label="Animation" data-point="false"></p>
+				<p className="circle-point top-[54.3578%] right-[99.8097%]" data-label="Illustrator" data-point="false"></p>
+				<p className="circle-point top-[92.8097%] right-[23.6422%]" data-label="NFT" data-point="true"></p>
+				<p className="circle-point top-[79.3022%] right-[8.8606%]" data-label="3D" data-point="true"></p>
 			</div>
 			
 			<div className="about-circle-div w-[67.5%] h-[67.5%] top-[4.95%] right-[4.95%]" data-circle="true">
-				{/* <p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Concept draft output" data-point="true"></p> */}
-				{/* <p className="circle-point top-[93.3013%] right-[25%]" data-label="A/B Testing" data-point="false"></p> */}
-				<p className="circle-point top-[54.3578%] right-[99.8097%]" data-label="Consulting & Resource" data-point="false"></p>
-				{/* <p className="circle-point top-[25%] right-[93.3013%]" data-label="Optimization" data-point="false"></p> */}
+				<p className="circle-point-visible circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Consulting & Resource" data-up="true" data-point="true"></p>
+				<p className="circle-point top-[32.899%]  right-[96.9846%]" data-label="Strategic Review" data-point="false"></p>
+				<p className="circle-point top-[54.3578%] right-[99.8097%]" data-label="Vertical Media" data-point="false"></p>
+				<p className="circle-point top-[92.8097%] right-[23.6422%]" data-label="VC" data-point="true"></p>
+				<p className="circle-point top-[79.3022%] right-[8.8606%]" data-label="Legal" data-point="true"></p>
 			</div>
 			<div className="about-circle-div w-[50%] h-[50%] top-[7.4%] right-[7.4%]" data-circle="true">
-				{/* <p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Interaction scheme" data-point="true"></p> */}
-				{/* <p className="circle-point top-[88.3022%] right-[17.8606%]" data-label="Final draft output" data-point="false"></p> */}
-				<p className="circle-point top-[99.8097%] right-[45.6422%]" data-label="Product" data-up="true" data-point="false"></p>
-				{/* <p className="circle-point top-[54.3578%] right-[99.8097%]" data-label="User Experience" data-point="false"></p> */}
-				{/* <p className="circle-point top-[32.899%]  right-[96.9846%]" data-label="Innovations" data-point="false"></p> */}
+				<p className="circle-point-visible circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Product" data-up="true" data-point="true"></p>
+				<p className="circle-point top-[32.899%]  right-[96.9846%]" data-label="Web" data-point="false"></p>
+				<p className="circle-point top-[54.3578%] right-[99.8097%]" data-label="App" data-point="false"></p>
+				<p className="circle-point top-[92.8097%] right-[23.6422%]" data-label="UX research" data-point="true"></p>
+				<p className="circle-point top-[79.3022%] right-[8.8606%]" data-label="UI design" data-point="true"></p>
+				<p className="circle-point top-[99.3022%] right-[57.8606%]" data-label="Tech" data-point="true"></p>
 			</div>
 			<div className="about-circle-div w-[30.9%] h-[30.9%] top-[10.2%] right-[10.2%]" data-circle="true">
-				<p className="circle-point-visible circle-data-point top-[14.6447%] right-[14.6447%]" data-label="Align requirements" data-point="true"></p>
-				{/* <p className="circle-point top-[82.1394%] right-[11.6978%]" data-label="Data Science" data-point="false"></p> */}
-				{/* <p className="circle-point top-[95.3154%] right-[71.1309%]" data-label="UX Research" data-point="false"></p> */}
-				<p className="circle-point top-[50%] right-[100%]" data-label="Brand identity" data-point="false"></p>
+				<p className="circle-point-visible circle-data-point top-[14.6447%] right-[14.6447%]" data-label="Brand Identity" data-point="true"></p>
+				<p className="circle-point top-[82.1394%] right-[11.6978%]" data-label="Visual identity system(VI)" data-point="false"></p>
+				<p className="circle-point top-[95.3154%] right-[71.1309%]" data-label="Font" data-point="false"></p>
+				<p className="circle-point top-[50%] right-[100%]" data-label="Story" data-point="false"></p>
 			</div>
 		</div>
 	)
@@ -240,7 +244,7 @@ function InfoCardDesktop() {
 }
 
 function SiteHeader() {
-	return (<header className="text-[0.56rem] leading-[0.64rem] lg:text-[104px] lg:leading-[104px] font-medium">Let'screate something extraordinary together.</header>)
+	return (<header className="text-[0.56rem] leading-[0.64rem] lg:text-[104px] lg:leading-[104px] font-medium text-wrap w-[3.69rem] lg:w-[685px]">Let'screate something extraordinary together.</header>)
 }
 
 function InfoSection() {
@@ -248,7 +252,7 @@ function InfoSection() {
 		<div className="lg:mx-auto flex-col items-center justify-center">
 			<p className="text-[0.32rem] leading-[0.32rem] lg:text-[40px] lg:leading-[24px] font-bold text-right lg:text-left">Infomations</p>
 			<div className="flex flex-col lg:flex-row items-end lg:items-center gap-[0.16rem] lg:gap-[3rem] mt-[0.32rem] lg:mt-[4rem]">
-				{ SiteLinks.map((item, index) => <Link to={item.linkTo} key={index} className="font-semibold text-[0.2rem] leading-[0.2rem] lg:text-2xl lg:leading-[24px]">{item.title}</Link>)}
+				{ SiteLinks.map((item, index) => <Link to={item.linkTo} key={index} className="font-semibold text-[0.2rem] leading-[0.2rem] lg:text-2xl lg:leading-[24px]"><span className="text-nowrap">{item.title}</span></Link>)}
 			</div>
 		</div>
 	)
@@ -262,7 +266,7 @@ function LogoLinksCard() {
 				<header className="text-[0.28rem] leading-[0.28rem] lg:text-[28px] lg:leading-[28px] font-bold">Moto Design</header>
 				<p className="text-[0.16rem] lg:text-base font-medium mt-[0.08rem] lg:mt-[0.5rem]">Always trust our aesthetic</p>
 				<div className="mt-[0.32rem] lg:mt-[2rem] flex items-end gap-[0.16rem] lg:gap-[2rem] overflow-visible">
-	        		{SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
+	        		{SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={item.name} />)}
 				</div>
 			</div>
 		</div>
@@ -282,39 +286,38 @@ function SiteFooter({isMobileDevice}) {
 }
 
 function TeamMemberCard({name, avatar, description, title, role}) {
+	const [isHovered, setIsHovered] = useState(false)
 	return (
-		<article className="group border border-[0.03rem] lg:border-4 rounded-[0.16rem] lg:rounded-[1.4rem] perspective-distant w-[2.2rem] lg:w-[26rem] h-[3.3rem] lg:h-[33rem] bg-transparent">
-		  <div className="relative min-h-full min-w-full transition-transform duration-1300 transform-3d group-hover:rotate-y-180">
-
-		    <div className="rounded-[0.16rem] lg:rounded-[1.2rem] absolute inset-0 flex h-full min-w-full flex-col justify-between backface-hidden">
-          		<img src={avatar} className="block h-[2.2rem] w-[2.2rem] lg:h-[26rem] lg:w-[26rem] object-cover object-center rounded-[0.16rem] lg:rounded-t-[1.2rem]"></img>
+		<article className="border border-inset border-[0.03rem] lg:border-4 rounded-[0.16rem] lg:rounded-[1.4rem] w-[2.2rem] lg:w-[26rem] h-[3.3rem] lg:h-[33rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+			<div className={`top-0 relative transition-all duration-250 rounded-[0.16rem] lg:rounded-[1.2rem] flex max-h-full min-h-full min-w-full max-w-full flex-col justify-between ${isHovered ? 'top-[-100%]' : ''}`}>
+				<img src={avatar} className="block h-[2.2rem] w-[2.2rem] lg:h-[26rem] lg:w-[26rem] object-cover object-center rounded-[0.16rem] lg:rounded-t-[1.2rem]"></img>
 				<div className="grid content-center px-[0.24rem] lg:px-[1.5rem] h-[1.1rem] lg:h-[5.5rem] grow">
 					<div className="flex flex-col lg:flex-row lg:items-center justify-between font-normal">
 						<header className="text-[0.28rem] leading-[0.28rem] lg:text-[2.5rem] lg:leading-[2.5rem] tracking-[-2%]">{name}</header>
 						<p className="mt-[0.08rem] lg:mt-0 text-[0.12rem] lg:text-right lg:text-xs">{role}</p>
 					</div>
 				</div>
-		    </div>
+			</div>
 
-		    <div className="rounded-[0.16rem] lg:rounded-[1.2rem] absolute inset-0 max-h-full min-h-full max-w-full bg-black text-white p-[0.4rem] lg:p-[2.5rem] rotate-y-180 backface-hidden">
+		    <div className={`relative transition-all duration-250 rounded-[0.16rem] lg:rounded-[1.2rem] max-h-full min-h-full min-w-full max-w-full bg-black text-white p-[0.4rem] lg:p-[2.5rem] ${isHovered ? 'top-[-100%] z-100' : 'top-[6px] '}`}>
 		     	<header className="text-[0.28rem] lg:text-[4rem] font-bold tracking-[-2%]">{name}</header>
 		     	<p className="uppercase text-[0.24rem] lg:text-[1.5rem] font-normal mt-[0.24rem] lg:mt-[1.5rem]">{title}</p>
 				<p className="text-[0.16rem] lg:text-base font-normal mt-[0.32rem] lg:mt-[4rem]">{description}</p>
 		    </div>
-		  </div>
 		</article>
 	)
 }
 
-function OurTeam() {
+function OurTeamCard() {
 	return (
-		<div className="mb-[0.32rem] lg:mb-0 col-span-3 lg:col-span-2 flex flex-col lg:gap-8 w-4/5">
-			<div className="flex sm:gap-[0.08rem] mb-[0.16rem] lg:mb-0">
+		<div className="mb-[0.32rem] lg:mb-0 col-span-3 lg:col-span-2 flex flex-col w-4/5">
+			<div className="flex sm:gap-[0.08rem] mb-[0.16rem] lg:mb-8">
 				<span className="text-[0.48rem] leading-[0.48rem] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase tracking-[-2%]">our</span>
 				<span className="lg:hidden text-[0.48rem] leading-[0.48rem] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase text-right tracking-[-2%]">team</span>
 			</div>
-			<p className="text-[0.16rem] lg:text-base">As a dynamic design company, we endow products with artistic power, attract global enterprises, and redefine the future of products.</p>
-			<p className="hidden lg:block text-5xl leading-[48px] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase text-right tracking-[-2%]">team</p>
+			<p className="text-[0.16rem] lg:text-base">As a dynamic design company, we endow products with artistic power,</p>
+			<p className="text-[0.16rem] lg:text-base">attract global enterprises, and redefine the future of products.</p>
+			<p className="hidden lg:block lg:mt-4 text-5xl leading-[48px] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase text-right tracking-[-2%]">team</p>
 		</div>
 	)
 }

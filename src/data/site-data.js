@@ -127,7 +127,7 @@ const MobilePortfolioItems = [
 ]
 
 const StatusContents = [
-	{title: '150', suffix: '+', content: 'We have successfully  completed a total of 150'},
+	{title: '150', suffix: '+', content: 'We have successfully  completed a total of 150 tasks'},
 	{title: '12',  suffix: '',  content: 'Team members all over the world'},
 	{title: '8',   suffix: '',  content: 'With over 8 years of experience in web3 industry'},
 	{title: '25',  suffix: 'k', content: 'We have over 25k followers on global social media'},

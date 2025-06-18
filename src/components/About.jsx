@@ -216,15 +216,17 @@ function EcosystemContainer() {
 				<TestimonialSlideIcons/>
 				<TestimonialSlideIcons/>
 			</div>
-		    <span className="absolute top-0 bottom-0 left-0  w-[0.24rem] lg:w-[3rem] bg-linear-to-r from-white to-white-10"></span>
-		    <span className="absolute top-0 bottom-0 right-0 w-[0.24rem] lg:w-[3rem] bg-linear-to-l from-white to-white-10"></span>
+
+		    <span className="linear-gradient-cover absolute inset-0 left-0 bottom-0"></span>
+		    {/* <span className="absolute top-0 bottom-0 left-0  w-[0.24rem] lg:w-[3rem] bg-linear-to-r from-white to-white-10"></span> */}
+		    {/* <span className="absolute top-0 bottom-0 right-0 w-[0.24rem] lg:w-[3rem] bg-linear-to-l from-white to-white-10"></span> */}
 		</div>
 	)
 }
 
 function TestimonialSlideIcons() {
 	return (
-		<div className="flex items-center gap-[0.32rem] lg:gap-[8rem] h-[0.6rem] lg:h-[6rem]">
+		<div className="flex items-center gap-[0.32rem] lg:gap-[8rem]">
 			<span className="flex items-center justify-center h-[0.32rem] lg:h-[3rem] cursor-pointer"><GateIconBlack/></span>
 			<span className="flex items-center justify-center h-[0.32rem] lg:h-[3rem] cursor-pointer"><ByBitIcon/></span>
 			<span className="flex items-center justify-center h-[0.32rem] lg:h-[3rem] cursor-pointer"><VenturesIcon/></span>

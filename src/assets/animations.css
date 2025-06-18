@@ -52,7 +52,7 @@
 
 @keyframes icons-horizontal-scrolling {
   0% { transform: translateX(0);}
-  100% { transform: translateX(-100%);}
+  100% { transform: translateX(-50%);}
 }
 
 @keyframes slide-vertical-out {
@@ -252,4 +252,8 @@ a > svg {
 	display: block;
   width: 100%;
   height: auto;
+}
+
+.linear-gradient-cover {
+	background: linear-gradient(90deg, white, transparent 10%, transparent 90%, white);
 }

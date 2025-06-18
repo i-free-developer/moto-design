@@ -96,8 +96,8 @@ function useScreenRatio() {
     let smallScreenRatioRaw = windowWidth / designedSmallWidth;
 
     if (windowWidth <= designedSmallWidth) {
-      document.documentElement.style.fontSize = baseSize * smallScreenRatioRaw + 'px';
       setIsMobileDevice(true)
+      document.documentElement.style.fontSize = baseSize * smallScreenRatioRaw + 'px';
     } else {
       setIsMobileDevice(false)
       document.documentElement.style.fontSize = '16px';

@@ -22,7 +22,7 @@ export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 				</div>				
 				<EcosystemContainer smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<div className="px-[0.32rem] lg:px-[3rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
-					<div className="my-[1.2rem] lg:my-[12rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-[0.16rem] lg:gap-6">
+					<div className="my-[1.2rem] lg:my-[8rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-[0.16rem] lg:gap-6">
 						<OurTeamCard />
 						{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
 					</div>
@@ -178,7 +178,7 @@ function EcosystemHeader() {
 
 function EcosystemContainer({smallScreenRatioDecimal}) {
 	return (
-		<div className="m-auto w-full flex overflow-hidden gap--[0.32rem] lg:gap--[8rem] py-[0.8rem] lg:py-[10rem] mt-[0.8rem] lg:mt-[10rem] relative">
+		<div className="m-auto w-full flex overflow-hidden gap--[0.32rem] lg:gap--[8rem] py-[0.8rem] lg:py-[10rem] mt-[0.8rem] lg:mt-[4rem] relative">
 			<div className="flex items-center gap--[0.32rem] lg:gap--[8rem] basis-full grow-0 shrink-0 icons-scroll">
 				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>

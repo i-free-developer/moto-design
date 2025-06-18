@@ -13,16 +13,14 @@ export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 	return (
 		<main className="mx-auto">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} frostedGlass={true} key="about"/>
-			<section id="about" className="mx-auto pt-[0.48rem] lg:pt-[3rem]" onClick={closeDrawer}>
+			<section id="about" className="mx-auto lg:pt-[3rem]" onClick={closeDrawer}>
 				<div className="px-[0.32rem] lg:px-[3rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
 					<AboutHeader smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 					<AboutBrand/>
-					<AboutStatusContainer/>
+					<AboutStatusContainer smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 					<EcosystemHeader/>
-				</div>
-				
-				{/* <EcosystemCard/> */}
-				<EcosystemContainer/>
+				</div>				
+				<EcosystemContainer smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<div className="px-[0.32rem] lg:px-[3rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
 					<div className="my-[1.2rem] lg:my-[12rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-[0.16rem] lg:gap-6">
 						<OurTeamCard />
@@ -38,7 +36,7 @@ export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 
 function AboutHeader({smallScreenRatioDecimal}) {
 	return (
-		<div className="mx-auto my-[0.64rem] lg:mt-[13rem] min-w-full relative">
+		<div className="mx-auto my-[1.28rem] lg:mt-[13rem] min-w-full relative">
 			<div className="mx-auto w-content uppercase text-center text-[0.32rem] leading-[0.54rem] lg:text-[4rem] lg:leading-[88px] tracking-[10%] font-medium">
 				<p className="relative">Every frame of code
 					<span className="absolute size-[41px] flex items-center top-[-0.2rem] lg:top-[-0.7rem] left-[0.9rem] lg:left-[25%]"><LeftQuote scaleRatio={smallScreenRatioDecimal}/></span>
@@ -69,7 +67,7 @@ function VerticalItem() {
 
 function AboutBrand() {
 	return (
-		<div className="border border-[0.02rem] lg:border-4 rounded-[0.16rem] lg:rounded-2xl p-[0.32rem] lg:px-[4rem] lg:py-[3rem] my-[0.64rem] lg:my-[22rem] flex justify-between">
+		<div className="border border-[0.02rem] lg:border-4 rounded-[0.16rem] lg:rounded-2xl p-[0.32rem] lg:px-[4rem] lg:py-[3rem] lg:my-[22rem] flex justify-between">
 			<p className="uppercase text-[0.24rem] lg:text-[2rem] font-bold w-1/4 gap-[0.16rem] lg:gap-[1rem] lg:w-1/3">About brand:</p>
 			<div className="w-3/4 grow-1 lg:grow-0 lg:w-1/2 flex flex-col justify-between gap-[0.32rem] lg:gap-[2rem] text-[0.2rem] lg:text-xl font-medium">
 				<p className="">We're a visual design team with 8 years in the Web3 field.</p>
@@ -80,48 +78,48 @@ function AboutBrand() {
 	)
 }
 
-function AboutStatusContainer() {
+function AboutStatusContainer({smallScreenRatioDecimal}) {
 	const [showSection, setShowSection] = useState('left')	
 	return (
-		<div className="mx-auto w-full relative">
-			<div className="mx-auto overflow-x-hidden w-full my-[0.64rem] lg:my-[22rem] flex items-center justify-between">
+		<div className="mx-auto w-full relative my-[1.68rem] lg:my-0">
+			<div className="mx-auto overflow-x-hidden w-full lg:my-[22rem] flex items-center justify-between">
 				<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} transition-translate duration-700 mx-auto min-w-full max-w-full lg:ml-0 lg:min-w-[45%] lg:w-[45%] tracking-[-2%]`}>
 					<p className="uppercase text-[0.48rem] lg:text-[4rem] font-bold leading-[0.48rem] lg:leading-[4rem]">we strive to innovate</p>
-					<p className="text-[0.16rem] lg:text-[21px] font-normal leading-[24px] my-[0.16rem] lg:my-[2rem]">Some Number About Us</p>	
-					<div className="w-full grid grid-cols-2 gap-[0.64rem] lg:gap-[4rem] my-[0.48rem] lg:my-[3rem]">
+					<p className="text-[0.16rem] lg:text-[21px] font-normal leading-[24px] mt-[0.2rem] lg:my-[2rem]">Some Number About Us</p>	
+					<div className="w-full grid grid-cols-2 gap-[0.48rem] lg:gap-[4rem] mt-[0.96rem] lg:my-[3rem]">
 						{StatusContents.map((item, index) => <StatusItemCard {...item} i={index} key={index}/>)}
 					</div>
 				</div>
 				<AboutCirclesCard showSection={showSection}/>
 			</div>
-			{ showSection === 'left' && <span className="go-right absolute lg:hidden top-[40%] right-[0] z-200" onClick={() => {setShowSection('right')}}><GoToRight/></span>}
-			{ showSection === 'right' &&  <span className="go-left absolute lg:hidden top-[40%] left-[0] z-200" onClick={() => {setShowSection('left')}}><GoToLeft/></span>}			
+			{ showSection === 'left' && <span className="flex items-center justify-center go-right absolute lg:hidden top-[45%] right-0 z-200" onClick={() => {setShowSection('right')}}><GoToRight scaleRatio={smallScreenRatioDecimal}/></span>}
+			{ showSection === 'right' &&  <span className="flex items-center justify-center go-left absolute lg:hidden top-[45%] left-0 z-200" onClick={() => {setShowSection('left')}}><GoToLeft scaleRatio={smallScreenRatioDecimal}/></span>}			
 		</div>
 	)
 }
 
 function StatusItemCard({title, suffix, content, i}) {
 	return (
-		<article className="w-[80%] my-[0.16rem] lg:my-[1.5rem]">
-			<header className="text-[0.8rem] lg:text-8xl font-semibold leading-[0.8rem] lg:leading-[96px] tracking-[-8%]">{<OdometerItem value={title}/>} {suffix && <span className={`inline-block ${i == 3 ? 'lg:translate-y-[8%]' : '' }`}>{suffix}</span>}</header>
+		<article className="w-[85%] lg:w-4/5 my-[0.16rem] lg:my-[1.5rem]">
+			<header className="text-[0.8rem] lg:text-8xl font-semibold leading-[0.8rem] lg:leading-[96px] tracking-[-8%]">{<OdometerItem value={title}/>} {suffix && <span className={`inline-block ${i == 3 ? 'translate-y-[8%]' : '' }`}>{suffix}</span>}</header>
 			<hr className="w-full border border-[0.01rem] lg:border-1 border-black/20 my-[0.16rem] lg:mt-[2rem] lg:mb-[1.5rem]"></hr>
 			<p className="text-[0.16rem] lg:text-base font-normal leading-[0.20rem] lg:leading-[20px] tracking-[-2%]">{content}</p>
 		</article>
 	)
 }
 
-function GoToRight() {
+function GoToRight({scaleRatio}) {
 	return (
-		<svg width="40" height="168" viewBox="0 0 40 168" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'left', }} width="40" height="168" viewBox="0 0 40 168" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path opacity="0.12" d="M40 168C16.416 153.566 0 121.386 0 84.0008C0 46.6156 16.4158 14.4337 40 0V168Z" fill="black"/>
 			<path d="M22.9713 84.6863L14.486 76.201L17.3145 73.3726L28.6282 84.6863L17.3145 96L14.486 93.1716L22.9713 84.6863Z" fill="#161619"/>
 		</svg>
 	)
 }
 
-function GoToLeft() {
+function GoToLeft({scaleRatio}) {
 	return (
-		<svg width="40" height="168" viewBox="0 0 40 168" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'left', }} width="40" height="168" viewBox="0 0 40 168" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path opacity="0.12" d="M2.38419e-06 168C23.584 153.566 40 121.386 40 84.0008C40 46.6156 23.5842 14.4337 2.38419e-06 0V168Z" fill="black"/>
 			<path d="M17.0287 84.6863L25.514 76.201L22.6855 73.3726L11.3718 84.6863L22.6855 96L25.514 93.1716L17.0287 84.6863Z" fill="#161619"/>
 		</svg>
@@ -130,7 +128,7 @@ function GoToLeft() {
 
 function AboutCirclesCard({showSection}) {
 	return (
-		<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} scale-85 lg:scale-100 transition-translate duration-700 m-auto relative min-w-[696px] min-h-[696px] hover:cursor-pointer`}>
+		<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} scale-85 lg:scale-100 transition-translate duration-700 m-auto relative min-w-[6.96rem] min-h-[6.96rem] lg:min-w-[696px] lg:min-h-[696px] hover:cursor-pointer`}>
 			<div className="about-circle-div w-full h-full top-0 right-0" data-circle="true">
 				{/* <p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="true"></p> */}
 				{/* <p className="circle-point-visible circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="true"></p> */}
@@ -178,45 +176,17 @@ function EcosystemHeader() {
 	)
 }
 
-function EcosystemCard() {
+function EcosystemContainer({smallScreenRatioDecimal}) {
 	return (
-		<div className="overflow-hidden relative m-auto w-full h-[1.28rem] lg:h-[6rem] flex will-change-transform mt-[0.8rem] lg:mt-[10rem]">
-			<div className="absolute top-0 left-0 w-full h-full m-auto flex items-center justify-start whitespace-nowrap">
-				<div className="flex items-center scroll-icons gap-[0.32rem] lg:gap-[8rem]">
-					<TestimonialSlideIcons/>
-					<TestimonialSlideIcons/>
-					<TestimonialSlideIcons/>
-					<TestimonialSlideIcons/>
-					<TestimonialSlideIcons/>
-					<TestimonialSlideIcons/>
-				</div>
+		<div className="m-auto w-full flex overflow-hidden gap--[0.32rem] lg:gap--[8rem] py-[0.8rem] lg:py-[10rem] mt-[0.8rem] lg:mt-[10rem] relative">
+			<div className="flex items-center gap--[0.32rem] lg:gap--[8rem] basis-full grow-0 shrink-0 icons-scroll">
+				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</div>
-			<span className="absolute top-0 bottom-0 left-0  w-[0.24rem] lg:w-[3rem] bg-linear-to-r from-white to-white-10"></span>
-			<span className="absolute top-0 bottom-0 right-0 w-[0.24rem] lg:w-[3rem] bg-linear-to-l from-white to-white-10"></span>
-		</div>
-	)
-}
-
-function EcosystemContainer() {
-	return (
-		<div className="m-auto w-full flex overflow-hidden gap-[0.32rem] lg:gap-[8rem] py-[0.8rem] lg:py-[10rem] relative">
-			<div className="flex items-center gap-[0.32rem] lg:gap-[8rem] basis-full grow-0 shrink-0 icons-scroll">
-				<TestimonialSlideIcons/>
-				<TestimonialSlideIcons/>
-				<TestimonialSlideIcons/>
-				<TestimonialSlideIcons/>
-				<TestimonialSlideIcons/>
-				<TestimonialSlideIcons/>
+			<div aria-hidden className="flex items-center gap--[0.32rem] lg:gap--[8rem] basis-full grow-0 shrink-0 icons-scroll">
+				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</div>
-			<div aria-hidden className="flex items-center gap-[0.32rem] lg:gap-[8rem] icons-scroll">
-				<TestimonialSlideIcons/>
-				<TestimonialSlideIcons/>
-				<TestimonialSlideIcons/>
-				<TestimonialSlideIcons/>
-				<TestimonialSlideIcons/>
-				<TestimonialSlideIcons/>
-			</div>
-
 		    <span className="linear-gradient-cover absolute inset-0 left-0 bottom-0"></span>
 		    {/* <span className="absolute top-0 bottom-0 left-0  w-[0.24rem] lg:w-[3rem] bg-linear-to-r from-white to-white-10"></span> */}
 		    {/* <span className="absolute top-0 bottom-0 right-0 w-[0.24rem] lg:w-[3rem] bg-linear-to-l from-white to-white-10"></span> */}
@@ -224,13 +194,14 @@ function EcosystemContainer() {
 	)
 }
 
-function TestimonialSlideIcons() {
+function TestimonialSlideIcons({smallScreenRatioDecimal}) {
+	let scaleRatio = smallScreenRatioDecimal * 0.65
 	return (
-		<div className="flex items-center gap-[0.32rem] lg:gap-[8rem]">
-			<span className="flex items-center justify-center h-[0.32rem] lg:h-[3rem] cursor-pointer"><GateIconBlack/></span>
-			<span className="flex items-center justify-center h-[0.32rem] lg:h-[3rem] cursor-pointer"><ByBitIcon/></span>
-			<span className="flex items-center justify-center h-[0.32rem] lg:h-[3rem] cursor-pointer"><VenturesIcon/></span>
-			<span className="flex items-center justify-center h-[0.32rem] lg:h-[3rem] cursor-pointer"><AwsIcon/></span>
+		<div className="flex items-center gap--[0.32rem] lg:gap-[8rem] lg:mr-[8rem]">
+			<span className="flex items-center justify-center lg:h-[3rem] cursor-pointer"><GateIconBlack scaleRatio={scaleRatio}/></span>
+			<span className="flex items-center justify-center lg:h-[3rem] cursor-pointer"><ByBitIcon scaleRatio={scaleRatio}/></span>
+			<span className="flex items-center justify-center lg:h-[3rem] cursor-pointer"><VenturesIcon scaleRatio={scaleRatio}/></span>
+			<span className="flex items-center justify-center lg:h-[3rem] cursor-pointer"><AwsIcon scaleRatio={scaleRatio}/></span>
 		</div>
 	)
 }

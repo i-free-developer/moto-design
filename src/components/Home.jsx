@@ -6,7 +6,7 @@ import HomePageMobile from './HomePageMobile'
 import HomePageDesktop from './HomePageDesktop'
 import { HeaderSvgDesktop, HeaderSvgMobile } from './HeaderSvg'
 import { ServicesItems, CompanyDomain } from '../data/site-data'
-import { useDrawerHandler, useScreenRatio } from './FunctionCollection'
+import { useDrawerHandler } from './FunctionCollection'
 import { ArrowIcon } from './SocialIconsCollection'
 
 const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'section-drawer-out'}

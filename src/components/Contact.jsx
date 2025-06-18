@@ -32,9 +32,9 @@ function PixelsHeader() {
 	return (
 		<div className="mx-0 lg:mx-[1rem] my-auto overflow-hidden relative h-[1.28rem] lg:h-[13.75rem] flex will-change-transform">
 			<div className="absolute top-0 left-0 w-full h-full m-auto flex items-center justify-start whitespace-nowrap">
-				<div className="scroll-header flex lg:gap-[1rem]">
-					<span className="inline-block text-[1.28rem] leading-[1.28rem] lg:text-[13.75rem] lg:leading-[220px] uppercase font-bold text-nowrap">Pixels are the atomic units of design.</span>
-					<span className="inline-block text-[1.28rem] leading-[1.28rem] lg:text-[13.75rem] lg:leading-[220px] uppercase font-bold text-nowrap">Pixels are the atomic units of design.</span>
+				<div className="scroll-header flex lg:gap--[1rem]">
+					<span className="inline-block text-[1.28rem] leading-[1.28rem] lg:text-[13.75rem] lg:leading-[220px] uppercase font-bold text-nowrap mx-[1.5rem]">Pixels are the atomic units of design.</span>
+					<span className="inline-block text-[1.28rem] leading-[1.28rem] lg:text-[13.75rem] lg:leading-[220px] uppercase font-bold text-nowrap mx-[1.5rem]" aria-hidden>Pixels are the atomic units of design.</span>
 				</div>
 			</div>
 		</div>

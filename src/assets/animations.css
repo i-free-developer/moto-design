@@ -197,7 +197,7 @@
 
 .icons-scroll {
   will-change: transform; /* We should be nice to the browser - let it know what we're going to animate. */
-  animation: icons-horizontal-scrolling 20s linear infinite both;
+  animation: icons-horizontal-scrolling 8s linear infinite both;
 }
 
 .icons-scroll:hover {

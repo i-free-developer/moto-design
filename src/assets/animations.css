@@ -50,6 +50,11 @@
   to { transform: translateX(-50%); }
 }
 
+@keyframes icons-horizontal-scrolling {
+  0% { transform: translateX(0);}
+  100% { transform: translateX(-100%);}
+}
+
 @keyframes slide-vertical-out {
 	from {transform: translateY(0);}
 	to {transform: translateY(10rem);}
@@ -183,9 +188,19 @@
 
 .scroll-icons {
 	animation: horizontal-scroll 20s linear infinite;
+	animation-fill-mode: both;
 }
 
 .scroll-icons:hover {
+	animation-play-state: paused;
+}
+
+.icons-scroll {
+  will-change: transform; /* We should be nice to the browser - let it know what we're going to animate. */
+  animation: icons-horizontal-scrolling 20s linear infinite both;
+}
+
+.icons-scroll:hover {
 	animation-play-state: paused;
 }
 

@@ -30,7 +30,7 @@ export default function App() {
       <CursorDot/>
       <Routes>
           <Route exact path="/" element={<Home loadingPercentage={loadingPercentage} isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
-          <Route exact path="/about" element={<About/>} />
+          <Route exact path="/about" element={<About isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
           <Route exact path="/portfolio" element={<Portfolio/>} />
           <Route exact path="/career" element={<Career/>} />
           <Route exact path="/contact" element={<Contact/>} />

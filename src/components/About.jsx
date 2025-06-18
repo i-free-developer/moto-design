@@ -5,11 +5,10 @@ import { Navbar, LogoIcon } from './Navbar'
 import { TeamMembers, CopyRight, CompanyEmail, CompanyDomain, StatusContents } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem, ByBitIcon, AwsIcon, VenturesIcon, GateIcon, GateIconBlack} from './SocialIconsCollection'
 import backgroundImage from '../assets/dashed-bg.png'
-import { useDrawerHandler, OdometerItem, useScreenRatio } from './FunctionCollection'
+import { useDrawerHandler, OdometerItem } from './FunctionCollection'
 
-export default function About() {
+export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
-	const {isMobileDevice, smallScreenRatioDecimal} = useScreenRatio()
 
 	return (
 		<main className="mx-auto">
@@ -22,10 +21,10 @@ export default function About() {
 					<EcosystemHeader/>
 				</div>
 				
-				<EcosystemCard/>
-
+				{/* <EcosystemCard/> */}
+				<EcosystemContainer/>
 				<div className="px-[0.32rem] lg:px-[3rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
-					<div className="my-[1.2rem] lg:my-[22rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-[0.16rem] lg:gap-6">
+					<div className="my-[1.2rem] lg:my-[12rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-[0.16rem] lg:gap-6">
 						<OurTeamCard />
 						{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
 					</div>
@@ -198,6 +197,31 @@ function EcosystemCard() {
 	)
 }
 
+function EcosystemContainer() {
+	return (
+		<div className="m-auto w-full flex overflow-hidden gap-[0.32rem] lg:gap-[8rem] py-[0.8rem] lg:py-[10rem] relative">
+			<div className="flex items-center gap-[0.32rem] lg:gap-[8rem] basis-full grow-0 shrink-0 icons-scroll">
+				<TestimonialSlideIcons/>
+				<TestimonialSlideIcons/>
+				<TestimonialSlideIcons/>
+				<TestimonialSlideIcons/>
+				<TestimonialSlideIcons/>
+				<TestimonialSlideIcons/>
+			</div>
+			<div aria-hidden className="flex items-center gap-[0.32rem] lg:gap-[8rem] icons-scroll">
+				<TestimonialSlideIcons/>
+				<TestimonialSlideIcons/>
+				<TestimonialSlideIcons/>
+				<TestimonialSlideIcons/>
+				<TestimonialSlideIcons/>
+				<TestimonialSlideIcons/>
+			</div>
+		    <span className="absolute top-0 bottom-0 left-0  w-[0.24rem] lg:w-[3rem] bg-linear-to-r from-white to-white-10"></span>
+		    <span className="absolute top-0 bottom-0 right-0 w-[0.24rem] lg:w-[3rem] bg-linear-to-l from-white to-white-10"></span>
+		</div>
+	)
+}
+
 function TestimonialSlideIcons() {
 	return (
 		<div className="flex items-center gap-[0.32rem] lg:gap-[8rem] h-[0.6rem] lg:h-[6rem]">
@@ -292,9 +316,9 @@ function SiteFooter({isMobileDevice}) {
 function TeamMemberCard({name, avatar, description, title, role}) {
 	const [isHovered, setIsHovered] = useState(false)
 	return (
-		<article className="border border-inset border-[0.03rem] lg:border-4 rounded-[0.16rem] lg:rounded-[1.4rem] w-[2.2rem] lg:w-[26rem] h-[3.3rem] lg:h-[33rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-			<div className={`top-0 relative transition-all duration-500 rounded-[0.16rem] lg:rounded-[1.2rem] flex max-h-full min-h-full min-w-full max-w-full flex-col justify-between ${isHovered ? 'top-[-100%]' : ''}`}>
-				<img src={avatar} className="block h-[2.2rem] w-[2.2rem] lg:h-[26rem] lg:w-[26rem] object-cover object-center rounded-[0.16rem] lg:rounded-t-[1.2rem]"></img>
+		<article className="border border-[0.03rem] lg:border-4 rounded-[0.16rem] lg:rounded-[1.4rem] w-[2.2rem] lg:w-[26rem] h-[3.3rem] lg:h-[33rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+			<div className={`overflow-hidden top-0 relative transition-all duration-500 rounded-0 flex max-h-full min-h-full min-w-full max-w-full flex-col justify-between ${isHovered ? 'lg:top-[-100%]' : ''}`}>
+				<img src={avatar} className="block h-[2.2rem] w-[2.2rem] lg:h-[26rem] lg:w-[26rem] object-cover object-center rounded-t-0"></img>
 				<div className="grid content-center px-[0.24rem] lg:px-[1.5rem] h-[1.1rem] lg:h-[5.5rem] grow">
 					<div className="flex flex-col lg:flex-row lg:items-center justify-between font-normal">
 						<header className="text-[0.28rem] leading-[0.28rem] lg:text-[2.5rem] lg:leading-[2.5rem] tracking-[-2%]">{name}</header>
@@ -303,7 +327,7 @@ function TeamMemberCard({name, avatar, description, title, role}) {
 				</div>
 			</div>
 
-		    <div className={`relative transition-all duration-500 rounded-[0.16rem] lg:rounded-[1.2rem] max-h-full min-h-full min-w-full max-w-full bg-black text-white p-[0.4rem] lg:p-[2.5rem] ${isHovered ? 'top-[-100%] z-100' : 'top-[6px] '}`}>
+		    <div className={`relative transition-all duration-500 rounded-0 max-h-full min-h-full min-w-full max-w-full bg-black text-white p-[0.4rem] lg:p-[2.5rem] ${isHovered ? 'lg:top-[-100%] xz-100' : 'lg:top-[6px] '}`}>
 		     	<header className="text-[0.28rem] lg:text-[4rem] font-bold tracking-[-2%]">{name}</header>
 		     	<p className="uppercase text-[0.24rem] lg:text-[1.5rem] font-normal mt-[0.24rem] lg:mt-[1.5rem]">{title}</p>
 				<p className="text-[0.16rem] lg:text-base font-normal mt-[0.32rem] lg:mt-[4rem]">{description}</p>

@@ -10,6 +10,7 @@ import Portfolio from './components/Portfolio'
 import Career from './components/Career'
 import Contact from './components/Contact'
 import RolePage from './components/RolePage'
+import ImagePage from './components/ImagePage'
 
 export default function App() {
   const [loadingPercentage, setLoadingPercentage] = useState(0);
@@ -35,6 +36,7 @@ export default function App() {
           <Route exact path="/career" element={<Career isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
           <Route exact path="/contact" element={<Contact/>} />
           <Route exact path="/role/:id" element={<RolePage isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
+          <Route exact path="/portfolio/:id" element={<ImagePage isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
           <Route path="*" element={<Home loadingPercentage={loadingPercentage} isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
       </Routes>
     </BrowserRouter>

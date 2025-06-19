@@ -1,0 +1,30 @@
+import { useParams } from "react-router-dom";
+import { PortfolioData } from '../data/site-data'
+import Navbar from './Navbar'
+import { SiteInfoCard,  SiteFooter } from './About'
+import { useDrawerHandler } from './FunctionCollection'
+
+export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
+	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
+	const { id } = useParams();
+	const item = PortfolioData.desktop.find(e => e.id == id)
+
+	return (
+		<main className="mx-auto">
+			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
+			<section id="portfolio-page" className="w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] mx-auto px-[0.32rem] lg:px-[3rem] pt-[0.32rem] lg:pt-[3rem] lg:mt-[8rem] lg:mb-[3rem]" onClick={closeDrawer}>
+				<ImgCard {...item}/>
+				<SiteInfoCard isMobileDevice={isMobileDevice}/>
+				<SiteFooter isMobileDevice={isMobileDevice}/>
+			</section>
+		</main>
+	)
+}
+
+function ImgCard({fullImage, title}) {
+	return (
+		<div className="">
+      		<img src={fullImage} alt={title} className="w-full h-full object-cover object-center"/>
+		</div>
+	)
+}

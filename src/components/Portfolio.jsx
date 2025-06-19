@@ -24,7 +24,7 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 	      	{isMobile ? <MobilePortfolios/> : <DesktopPortfolios/>}
 	      </div>
 	      
-	      <div className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] px-[0.32rem] lg:px-[3rem]">
+	      <div className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] px-[0.32rem] lg:px-[3rem] overflow-x-hidden">
 	      	<SiteInfoCard isMobileDevice={isMobileDevice}/>
 					<SiteFooter isMobileDevice={isMobileDevice}/>
 				</div>

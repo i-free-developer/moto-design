@@ -15,13 +15,13 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 				<div className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] px-[0.32rem] lg:px-[3rem] pt-[0.48rem] lg:pt-[3rem] lg:mt-[8rem] lg:mb-[3rem] overflow-x-hidden">
 					<PortfolioHeader/>
 					<div className="my-[0.48rem] lg:my-[6rem] flex flex-row justify-between">
-						<MobileDeskIcons isMobile={isMobile} setIsMobile={setIsMobile}/>
+						<MobileDeskIcons isMobile={isMobile} setIsMobile={setIsMobile} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 						<p className="self-start lg:mb-[3rem] text-[0.28rem] leading-[0.28rem] lg:text-[2rem] lg:leading-[32px] text-black/64 w-[55%] lg:w-[26rem] tracking-[-2%] font-normal text-right">Our user-centered design encourages productivity and boosts revenue</p>
 					</div>
 				</div>
 				
-				<div className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] px-[0.32rem] lg:px-[3rem]">
-	      	{isMobile ? <MobilePortfolios/> : <DesktopPortfolios/>}
+				<div className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] lg:px-[3rem]">
+	      	{isMobile ? <MobilePortfolios isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/> : <DesktopPortfolios/>}
 	      </div>
 	      
 	      <div className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] px-[0.32rem] lg:px-[3rem] overflow-x-hidden">
@@ -42,11 +42,11 @@ function PortfolioHeader() {
 	)
 }
 
-function MobileDeskIcons({isMobile, setIsMobile}) {
+function MobileDeskIcons({isMobile, setIsMobile, smallScreenRatioDecimal}) {
 	return (
-		<div className="cursor-pointer self-end flex items-center gap-[0.64rem] lg:gap-[2rem] lg:mt-[1rem] lg:mb-[4rem]">
-			<span onClick={() => setIsMobile(true)} className="">{isMobile ? <MobileIconBlack/> : <MobileIconWhite/> }</span>
-			<span onClick={() => setIsMobile(false)} className="">{isMobile ? <DesktopIconWhite/> : <DesktopIconBlack/> }</span>
+		<div className="cursor-pointer self-end flex items-center gap-[0.48rem] lg:gap-[2rem] lg:mt-[1rem] lg:mb-[4rem]">
+			<span onClick={() => setIsMobile(true)} className="">{isMobile ? <MobileIconBlack scaleRatio={smallScreenRatioDecimal}/> : <MobileIconWhite scaleRatio={smallScreenRatioDecimal}/> }</span>
+			<span onClick={() => setIsMobile(false)} className="">{isMobile ? <DesktopIconWhite scaleRatio={smallScreenRatioDecimal}/> : <DesktopIconBlack scaleRatio={smallScreenRatioDecimal}/> }</span>
 		</div>
 	)
 }
@@ -105,16 +105,17 @@ function DesktopBottomCard({title, description}) {
 	)
 }
 
-function MobilePortfolios() {
+function MobilePortfolios({isMobileDevice, smallScreenRatioDecimal}) {
 	const [mobileItems, setMobileItems] = useState([])
 	let all = []
 
 	function chunkArray(arr) {
     const result = [];
-    const step = 4
+    const step = isMobileDevice ? 2 : 4
+    const spIndex = isMobileDevice ? 1 : 2
     for (let i = 0; i < arr.length; i += step) {
     	let s = arr.slice(i, i + step)
-    	if (s.length > 2) { s.splice(2, 0, {}) }
+    	if (s.length > spIndex) { s.splice(spIndex, 0, {}) }
       result.push(s);
     }
     return result;
@@ -127,10 +128,10 @@ function MobilePortfolios() {
 
   return (
     <div className="relative mx-auto">
-      <div className="mx-auto w-full overflow-hidden grid grid-cols-5 gap-[0.28rem] lg:gap-[1.75rem]">
+      <div className="mx-auto w-full overflow-hidden grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-[1.75rem]">
         {mobileItems.map((item, index) => <MobileCard {...item} index={index} key={index}/>)}
       </div>
-      <StickyHandCard />
+      <StickyHandCard scaleRatio={smallScreenRatioDecimal}/>
     </div>
   )
 }
@@ -138,7 +139,7 @@ function MobilePortfolios() {
 function MobileCard({title, image, index}) {
 	let cardIndex = index >= 5 ? index - 5 : index
   return (
-    <div className="col-span-1 w-[2.52rem] h-[5.32rem] lg:w-[342px] lg:h-[722px] lg:w--[416px] lg:h--[886px] rounded-[0.28rem] lg:rounded-[1rem] overflow-hidden">
+    <div className="col-span-1 w-[2.39rem] h-[5.04rem] lg:w-[342px] lg:h-[722px] lg:w--[416px] lg:h--[886px] rounded-[0.28rem] lg:rounded-[1rem] overflow-hidden">
       {image ? <img src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit]" /> : <EmptyCard/> }
     </div>
   )
@@ -146,29 +147,29 @@ function MobileCard({title, image, index}) {
 
 function EmptyCard() { return (<span className="min-w-full min-h-full"></span>) }
 
-function StickyHandCard() {
+function StickyHandCard({scaleRatio}) {
 	const handImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-sticky-hand-img.png'
   return (
-    <div className="absolute top-0 left-0 bottom-0 right-0 w-full h-full flex items-center justify-center">
+    <div className="absolute inset-0 flex items-center justify-center">
       <div className="sticky top-0 bottom-0 translate-x-[19%]">
-        <img className="w--[2.52rem] h--[5.32rem] lg:w-[792px] lg:h-[848px] lg:w--[966px] lg:h--[1034px] object-fit object-center rounded-[0.28rem] lg:rounded-[1rem]" src={handImg} alt="Hand"/>
+        <img className="w-[5.4rem] h-[5.77rem] lg:w-[792px] lg:h-[848px] lg:w--[966px] lg:h--[1034px] object-fit object-center rounded-[0.28rem] lg:rounded-[1rem]" src={handImg} alt="Hand"/>
       </div>
     </div>
   )
 }
 
-function MobileIconWhite() {
+function MobileIconWhite({scaleRatio}) {
 	return (
-		<svg className="icon-fade-in" width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} className="icon-fade-in" width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect x="1" y="1" width="20" height="26" rx="1" stroke="black" strokeWidth="2"/>
 			<rect x="7" y="4" width="8" height="2" rx="1" fill="#161619"/>
 		</svg>
 	)
 }
 
-function MobileIconBlack() {
+function MobileIconBlack({scaleRatio}) {
 	return (
-		<svg className="icon-fade-in" width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} className="icon-fade-in" width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect width="24" height="32" rx="2" fill="#161619"/>
 			<rect x="8" y="3" width="8" height="2" rx="1" fill="#F7F7F7"/>
 			<circle cx="12" cy="26" r="2" fill="#F7F7F7"/>
@@ -176,18 +177,18 @@ function MobileIconBlack() {
 	)
 }
 
-function DesktopIconWhite() {
+function DesktopIconWhite({scaleRatio}) {
 	return (
-		<svg className="icon-fade-in" width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} className="icon-fade-in" width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect x="1" y="1" width="26" height="18" rx="1" stroke="#161619" strokeWidth="2"/>
 			<rect x="8" y="22" width="12" height="2" rx="1" fill="#161619"/>
 		</svg>
 	)
 }
 
-function DesktopIconBlack() {
+function DesktopIconBlack({scaleRatio}) {
 	return (
-		<svg className="icon-fade-in" width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} className="icon-fade-in" width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect width="28" height="20" rx="2" fill="black"/>
 			<rect x="8" y="22" width="12" height="2" rx="1" fill="#161619"/>
 		</svg>

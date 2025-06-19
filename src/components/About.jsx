@@ -39,14 +39,14 @@ function AboutHeader({smallScreenRatioDecimal}) {
 		<div className="mx-auto my-[1.28rem] lg:mt-[13rem] min-w-full relative">
 			<div className="mx-auto w-content uppercase text-center text-[0.32rem] leading-[0.54rem] lg:text-[4rem] lg:leading-[88px] tracking-[10%] font-medium">
 				<p className="relative">Every frame of code
-					<span className="absolute size-[41px] flex items-center top-[-0.2rem] lg:top-[-0.7rem] left-[0.9rem] lg:left-[25%]"><LeftQuote scaleRatio={smallScreenRatioDecimal}/></span>
+					<span className="absolute size-[41px] flex items-center top-0 lg:top-0 left-[0.9rem] lg:left-[25%]"><LeftQuote scaleRatio={smallScreenRatioDecimal}/></span>
 				</p>
 				<p className="">is an elegant murder of</p>
 				<p className="text-wrap wrap-normal">the old paradigm, every pixel</p>
 				<p className="">a philosophical</p>
 				<p className="">statement projected into</p>
-				<p className="">the future.
-					<span className="absolute size-[41px] flex items-center bottom-[-0.2rem] lg:bottom-[-0.7rem] right-[1.6rem] lg:right-[33%]"><RightQuote scaleRatio={smallScreenRatioDecimal}/></span>
+				<p className="relative">the future.
+					<span className="absolute size-[41px] flex items-center top-0 lg:top-0 right-[1.6rem] lg:right-[33%]"><RightQuote scaleRatio={smallScreenRatioDecimal}/></span>
 				</p>
 			</div>
 			<VerticalItem/>

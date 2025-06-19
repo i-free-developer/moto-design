@@ -114,7 +114,7 @@ function MobilePortfolios() {
     const step = 4
     for (let i = 0; i < arr.length; i += step) {
     	let s = arr.slice(i, i + step)
-    	s.splice(2, 0, {});
+    	if (s.length > 2) { s.splice(2, 0, {}) }
       result.push(s);
     }
     return result;
@@ -139,7 +139,7 @@ function MobileCard({title, image, index}) {
 	let cardIndex = index >= 5 ? index - 5 : index
   return (
     <div className="col-span-1 w-[2.52rem] h-[5.32rem] lg:w-[342px] lg:h-[722px] lg:w--[416px] lg:h--[886px] rounded-[0.28rem] lg:rounded-[1rem] overflow-hidden">
-      {(cardIndex === 2) ? <EmptyCard/> : <img src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit]" /> }
+      {image ? <img src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit]" /> : <EmptyCard/> }
     </div>
   )
 }

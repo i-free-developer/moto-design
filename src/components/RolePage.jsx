@@ -4,13 +4,12 @@ import { OpenningRoles } from '../data/site-data'
 import { HowToApply } from './Career'
 import Navbar from './Navbar'
 import { SiteInfoCard,  SiteFooter } from './About'
-import { useDrawerHandler, useScreenRatio } from './FunctionCollection'
+import { useDrawerHandler } from './FunctionCollection'
 
-export default function RolePage() {
+export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 	const { id } = useParams();
 	const {title, roleTag, tags, responsibilities, requirements} = OpenningRoles.find(e => e.id == id)
-	const {isMobileDevice, smallScreenRatioDecimal} = useScreenRatio()
 
 	return (
 		<main className="mx-auto">

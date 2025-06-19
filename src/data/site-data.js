@@ -133,6 +133,25 @@ const StatusContents = [
 	{title: '25',  suffix: 'k', content: 'We have over 25k followers on global social media'},
 ]
 
+const PortfolioData = {
+	desktop: [
+		{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-meanfi-desktop.png'},
+		{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-kylin-desktop.png'},
+		{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-aegis-desktop.png'},
+		{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-cosmos-desktop.png'},
+		{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-metaplex-desktop.png'},
+		// {title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-tars-desktop.png'},
+	],
+	mobile: [
+		{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-aegis.png' },
+		{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-cosmos.png' },
+		{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-kylin.png' },
+		{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-meanfi.png' },
+		{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-metaplex.png' },
+		{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-tars.png' },
+	]
+}
+
 const ServicesItems = ['Web Design / UI & UX', '3D & Concept Animation', 'Brand Identity & Social Media Visual']
 
 const CopyRight = '© 2025 Moto Design LLC. All rights reserved.'
@@ -141,5 +160,5 @@ const CompanyEmail = 'Hello@motodesign@.cn'
 
 const CompanyDomain = 'motodesign.cn'
 
-export {TimelineItems, PerkItemsData, OpenningRoles, TeamMembers, DesktopPortfolioItems, MobilePortfolioItems, StatusContents, ServicesItems, CopyRight, CompanyEmail, CompanyDomain}
+export {TimelineItems, PerkItemsData, OpenningRoles, TeamMembers, PortfolioData, StatusContents, ServicesItems, CopyRight, CompanyEmail, CompanyDomain}
 

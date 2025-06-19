@@ -4,11 +4,10 @@ import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../da
 import Navbar from './Navbar'
 import { StarIcon, ArrowIcon } from './SocialIconsCollection'
 import { SiteInfoCard,  SiteFooter } from './About'
-import { UseThrottle, useDrawerHandler, useScreenRatio } from './FunctionCollection'
+import { UseThrottle, useDrawerHandler } from './FunctionCollection'
 
-export default function Career() {
+export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
-	const {isMobileDevice, smallScreenRatioDecimal} = useScreenRatio()
 
 	return (
 		<main className="mx-auto">

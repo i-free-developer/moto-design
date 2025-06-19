@@ -1,27 +1,33 @@
 import { useState } from 'react'
-import { DesktopPortfolioItems, MobilePortfolioItems } from '../data/site-data'
+import { PortfolioData } from '../data/site-data'
 import Navbar from './Navbar'
 import { SiteInfoCard,  SiteFooter } from './About'
-import { useDrawerHandler, useScreenRatio } from './FunctionCollection'
+import { useDrawerHandler } from './FunctionCollection'
 
-export default function Portfolio() {
+export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 	const [isMobile, setIsMobile] = useState(false)
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
-	const {isMobileDevice, smallScreenRatioDecimal} = useScreenRatio()
 	
 	return (
 		<main className="mx-auto">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
-			<section id="portfolio" className="w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] mx-auto px-[0.32rem] lg:px-[3rem] pt-[0.48rem] lg:pt-[3rem] lg:mt-[8rem] lg:mb-[3rem]" onClick={closeDrawer}>
-				<PortfolioHeader/>
-				<div className="my-[0.48rem] lg:my-[6rem] flex flex-row justify-between">
-					<MobileDeskIcons isMobile={isMobile} setIsMobile={setIsMobile}/>
-					<p className="self-start lg:mb-[3rem] text-[0.28rem] leading-[0.28rem] lg:text-[2rem] lg:leading-[32px] text-black/64 w-[55%] lg:w-[26rem] tracking-[-2%] font-normal text-right">Our user-centered design encourages productivity and boosts revenue</p>
+			<section id="portfolio" className="" onClick={closeDrawer}>
+				<div className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] px-[0.32rem] lg:px-[3rem] pt-[0.48rem] lg:pt-[3rem] lg:mt-[8rem] lg:mb-[3rem] overflow-x-hidden">
+					<PortfolioHeader/>
+					<div className="my-[0.48rem] lg:my-[6rem] flex flex-row justify-between">
+						<MobileDeskIcons isMobile={isMobile} setIsMobile={setIsMobile}/>
+						<p className="self-start lg:mb-[3rem] text-[0.28rem] leading-[0.28rem] lg:text-[2rem] lg:leading-[32px] text-black/64 w-[55%] lg:w-[26rem] tracking-[-2%] font-normal text-right">Our user-centered design encourages productivity and boosts revenue</p>
+					</div>
 				</div>
-
-	      {isMobile ? <MobilePortfolios/> : <DesktopPortfolios/>}
-	      <SiteInfoCard isMobileDevice={isMobileDevice}/>
-				<SiteFooter isMobileDevice={isMobileDevice}/>
+				
+				<div className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] px-[0.32rem] lg:px-[3rem]">
+	      	{isMobile ? <MobilePortfolios/> : <DesktopPortfolios/>}
+	      </div>
+	      
+	      <div className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] px-[0.32rem] lg:px-[3rem]">
+	      	<SiteInfoCard isMobileDevice={isMobileDevice}/>
+					<SiteFooter isMobileDevice={isMobileDevice}/>
+				</div>
 			</section>
 		</main>
 	)
@@ -48,21 +54,26 @@ function MobileDeskIcons({isMobile, setIsMobile}) {
 function DesktopPortfolios() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-[0.24rem] lg:gap-[1.5rem]">
-      {DesktopPortfolioItems.map((item, index) => <DesktopCard {...item} key={index}/>)}
+      {PortfolioData.desktop.map((item, index) => <DesktopCard {...item} index={index} totalNumber={PortfolioData.desktop.length} key={index}/>)}
     </div>
   )
 }
 
-function DesktopCard({title, description, colums, image, url}) {
+function DesktopCard({title, description, image, url, index, totalNumber}) {
 	const [isHovered, setIsHovered] = useState(true)
+	let colsIndex = index >= 5 ? index - 5 : index;
+	if (index === totalNumber - 1) { colsIndex = 4}
+
 	const spanClasses = {
+		0: 'lg:col-span-3 relative h-[4.8rem] lg:h-[36rem]',
+		1: 'lg:col-span-2 relative h-[4.8rem] lg:h-[36rem]',
 	  2: 'lg:col-span-2 relative h-[4.8rem] lg:h-[36rem]',
 	  3: 'lg:col-span-3 relative h-[4.8rem] lg:h-[36rem]',
-	  5: 'lg:col-span-5 relative h-[4.8rem] lg:h-[36rem]',
+	  4: 'lg:col-span-5 relative h-[4.8rem] lg:h-[36rem]',
 	}
 
 	return (
-		<div className={spanClasses[colums]}>
+		<div className={spanClasses[colsIndex]}>
 			<span
         style={{pointerEvents: 'none'}}
         className={`
@@ -96,39 +107,42 @@ function DesktopBottomCard({title, description}) {
 
 function MobilePortfolios() {
   return (
-    <div className="w-full relative">
-      <div className="max-w-full overflow-hidden flex justify-center">
-        <div>
-          <div className="flex gap-[0.32rem] lg:gap-[2rem] mb-[0.32rem] lg:mb-[2rem]">
-            {MobilePortfolioItems.map((item, index) => <MobileCard {...item} index={index} key={index}/>)}
-          </div>
-          <div className="flex gap-[0.32rem] lg:gap-[2rem] my-[0.32rem] lg:my-[2rem]">
-            {MobilePortfolioItems.map((item, index) => <MobileCard {...item} index={index} key={index} />)}
-          </div>
-          <div className="flex gap-[0.32rem] lg:gap-[2rem] mt-[0.32rem] lg:mt-[2rem]">
-            {MobilePortfolioItems.map((item, index) => <MobileCard {...item} index={index} key={index} />)}
-          </div>
-        </div>
+    <div className="relative overflow--hidden mx-auto">
+      <div className="w-full overflow--hidden grid grid-cols-5 gap-[0.28rem] lg:gap-[1.75rem]">
+        {PortfolioData.desktop.map((item, index) => <MobileCard {...item} index={index} key={index}/>)}
+        
+        {/* <div> */}
+          {/* <div className="flex gap-[0.32rem] lg:gap-[2rem] my-[0.32rem] lg:my-[2rem]"> */}
+          {/*   {PortfolioData.mobile.map((item, index) => <MobileCard {...item} index={index} key={index} />)} */}
+          {/* </div> */}
+          {/* <div className="flex gap-[0.32rem] lg:gap-[2rem] mt-[0.32rem] lg:mt-[2rem]"> */}
+          {/*   {PortfolioData.mobile.map((item, index) => <MobileCard {...item} index={index} key={index} />)} */}
+          {/* </div> */}
+        {/* </div> */}
       </div>
 
-      <StickyCard />
+      <StickyHandCard />
     </div>
   )
 }
 
 function MobileCard({title, image, index}) {
+	let cardIndex = index >= 5 ? index - 5 : index
   return (
-    <div className="w-[2.52rem] h-[5.32rem] lg:w-[400px] lg:h-[840px] rounded-[0.28rem] lg:rounded-[1rem]">
-      {(index === 2) ? null : <img src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit]" /> }
+    <div className="col-span-1 w-[2.52rem] h-[5.32rem] lg:w-[342px] lg:h-[722px] lg:w--[416px] lg:h--[886px] rounded-[0.28rem] lg:rounded-[1rem] overflow-hidden">
+      {(cardIndex === 2) ? <EmptyCard/> : <img src={image} alt={title} className="w-full h-full object-cover object-bottom rounded-[inherit]" /> }
     </div>
   )
 }
 
-function StickyCard() {
+function EmptyCard() { return (<span className="min-w-full min-h-full"></span>) }
+
+function StickyHandCard() {
+	const handImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-sticky-hand-img.png'
   return (
-    <div className="absolute top-0 left-0 bottom-0 right-0 w-full h-full flex flex-col">
-      <div className="sticky top-0 bottom-0 flex items-center justify-center">
-        <img className="w-[2.52rem] h-[5.32rem] lg:w-[400px] lg:h-[840px] object-fit object-center rounded-[0.28rem] lg:rounded-[1rem]" src="https://plus.unsplash.com/premium_photo-1722178429928-caa36778a04b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2fHx8ZW58MHx8fHx8" alt=""/>
+    <div className="absolute top-0 left-0 bottom-0 right-0 w-full h-full flex items-center justify-center">
+      <div className="sticky top-0 bottom-0 translate-x-[19%]">
+        <img className="w--[2.52rem] h--[5.32rem] lg:w-[792px] lg:h-[848px] lg:w--[966px] lg:h--[1034px] object-fit object-center rounded-[0.28rem] lg:rounded-[1rem]" src={handImg} alt="Hand"/>
       </div>
     </div>
   )

@@ -27,15 +27,15 @@ export default function App() {
   return (
     <BrowserRouter className="mx-auto">
       <ScrollToTop/>
-      <CursorDot/>
+      { !isMobileDevice && <CursorDot/>}
       <Routes>
           <Route exact path="/" element={<Home loadingPercentage={loadingPercentage} isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
           <Route exact path="/about" element={<About isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
-          <Route exact path="/portfolio" element={<Portfolio/>} />
-          <Route exact path="/career" element={<Career/>} />
+          <Route exact path="/portfolio" element={<Portfolio isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
+          <Route exact path="/career" element={<Career isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
           <Route exact path="/contact" element={<Contact/>} />
-          <Route exact path="/role/:id" element={<RolePage/>} />
-          <Route path="*" element={<Home loadingPercentage={loadingPercentage}/>} />
+          <Route exact path="/role/:id" element={<RolePage isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
+          <Route path="*" element={<Home loadingPercentage={loadingPercentage} isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
       </Routes>
     </BrowserRouter>
   )

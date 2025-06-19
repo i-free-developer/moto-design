@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { PortfolioData } from '../data/site-data'
 import Navbar from './Navbar'
 import { SiteInfoCard,  SiteFooter } from './About'
@@ -106,21 +106,30 @@ function DesktopBottomCard({title, description}) {
 }
 
 function MobilePortfolios() {
-  return (
-    <div className="relative overflow--hidden mx-auto">
-      <div className="w-full overflow--hidden grid grid-cols-5 gap-[0.28rem] lg:gap-[1.75rem]">
-        {PortfolioData.desktop.map((item, index) => <MobileCard {...item} index={index} key={index}/>)}
-        
-        {/* <div> */}
-          {/* <div className="flex gap-[0.32rem] lg:gap-[2rem] my-[0.32rem] lg:my-[2rem]"> */}
-          {/*   {PortfolioData.mobile.map((item, index) => <MobileCard {...item} index={index} key={index} />)} */}
-          {/* </div> */}
-          {/* <div className="flex gap-[0.32rem] lg:gap-[2rem] mt-[0.32rem] lg:mt-[2rem]"> */}
-          {/*   {PortfolioData.mobile.map((item, index) => <MobileCard {...item} index={index} key={index} />)} */}
-          {/* </div> */}
-        {/* </div> */}
-      </div>
+	const [mobileItems, setMobileItems] = useState([])
+	let all = []
 
+	function chunkArray(arr) {
+    const result = [];
+    const step = 4
+    for (let i = 0; i < arr.length; i += step) {
+    	let s = arr.slice(i, i + step)
+    	s.splice(2, 0, {});
+      result.push(s);
+    }
+    return result;
+	}
+
+	useEffect(() => {
+		let items = chunkArray(PortfolioData.desktop).flat()
+		setMobileItems(items)
+	}, [])
+
+  return (
+    <div className="relative mx-auto">
+      <div className="mx-auto w-full overflow-hidden grid grid-cols-5 gap-[0.28rem] lg:gap-[1.75rem]">
+        {mobileItems.map((item, index) => <MobileCard {...item} index={index} key={index}/>)}
+      </div>
       <StickyHandCard />
     </div>
   )
@@ -130,7 +139,7 @@ function MobileCard({title, image, index}) {
 	let cardIndex = index >= 5 ? index - 5 : index
   return (
     <div className="col-span-1 w-[2.52rem] h-[5.32rem] lg:w-[342px] lg:h-[722px] lg:w--[416px] lg:h--[886px] rounded-[0.28rem] lg:rounded-[1rem] overflow-hidden">
-      {(cardIndex === 2) ? <EmptyCard/> : <img src={image} alt={title} className="w-full h-full object-cover object-bottom rounded-[inherit]" /> }
+      {(cardIndex === 2) ? <EmptyCard/> : <img src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit]" /> }
     </div>
   )
 }

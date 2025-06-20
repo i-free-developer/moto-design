@@ -24,7 +24,7 @@ export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
 function ImgCard({fullImage, title}) {
 	return (
 		<div className="">
-      		<img src={fullImage} alt={title} className="w-full h-full object-cover object-center"/>
+      		<img loading="lazy" src={fullImage} alt={title} className="w-full h-full object-cover object-center"/>
 		</div>
 	)
 }

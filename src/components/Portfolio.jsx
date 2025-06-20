@@ -62,9 +62,16 @@ function DesktopPortfolios() {
 
 function DesktopCard({id, title, description, image, url, index, totalNumber}) {
 	const [isHovered, setIsHovered] = useState(true)
-	let colsIndex = index >= 5 ? index - 5 : index;
-	if (index === totalNumber - 1) { colsIndex = 4}
-
+	const [colsIndex, setColsIndex] = useState(0)
+	
+	useEffect(() => {
+		let itemIndex = index
+		while (itemIndex > 4) { itemIndex = itemIndex % 5 }
+		// let finalIndex = itemIndex === 5 ? itemIndex - 1 : itemIndex;
+		// if (index === totalNumber - 1) { itemIndex = 4}
+		setColsIndex(itemIndex)
+	}, [index])
+	
 	const spanClasses = {
 		0: 'col-span-1 lg:col-span-3 relative h-[4.8rem] lg:h-[36rem]',
 		1: 'col-span-1 lg:col-span-2 relative h-[4.8rem] lg:h-[36rem]',
@@ -83,7 +90,7 @@ function DesktopCard({id, title, description, image, url, index, totalNumber}) {
 			`}></span>
 			<Link to={`/portfolio/${id}`} className="max-w-full h-full block cursor-pointer rounded-[0.28rem] lg:rounded-3xl">
 				<div className="w-full h-full overflow-hidden rounded-[inherit]">
-					<img src={image} className={`w-full h-full object-cover object-center rounded-[inherit] ${isHovered ? 'scale-104' : ''}`} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}></img>
+					<img src={image} loading="lazy" className={`w-full h-full object-cover object-center rounded-[inherit] ${isHovered ? 'scale-104' : ''}`} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}></img>
 				</div>
 				<DesktopBottomCard title={title} description={description}/>
 			</Link>
@@ -137,10 +144,9 @@ function MobilePortfolios({isMobileDevice, smallScreenRatioDecimal}) {
 }
 
 function MobileCard({title, image, index}) {
-	let cardIndex = index >= 5 ? index - 5 : index
   return (
     <div className="col-span-1 w-[2.39rem] h-[5.04rem] lg:w-[342px] lg:h-[722px] lg:w--[416px] lg:h--[886px] rounded-[0.28rem] lg:rounded-[1rem] overflow-hidden">
-      {image ? <img src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit]" /> : <EmptyCard/> }
+      {image ? <img loading="lazy" src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit]" /> : <EmptyCard/> }
     </div>
   )
 }
@@ -152,7 +158,7 @@ function StickyHandCard({scaleRatio}) {
   return (
     <div className="absolute inset-0 flex items-center justify-center">
       <div className="sticky top-0 bottom-0 translate-x-[19%]">
-        <img className="w-[5.4rem] h-[5.77rem] lg:w-[792px] lg:h-[848px] lg:w--[966px] lg:h--[1034px] object-fit object-center rounded-[0.28rem] lg:rounded-[1rem]" src={handImg} alt="Hand"/>
+        <img loading="lazy" className="w-[5.4rem] h-[5.77rem] lg:w-[792px] lg:h-[848px] lg:w--[966px] lg:h--[1034px] object-fit object-center rounded-[0.28rem] lg:rounded-[1rem]" src={handImg} alt="Hand"/>
       </div>
     </div>
   )

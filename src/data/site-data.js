@@ -140,7 +140,6 @@ const PortfolioData = {
 		{id: 3, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-aegis-desktop.png',    fullImage: 'https://assets-sh-padelx.shanghaipadel.com/moto-aegis.png'},
 		{id: 4, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-cosmos-desktop.png',   fullImage: 'https://assets-sh-padelx.shanghaipadel.com/moto-cosmos.png'},
 		{id: 5, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-metaplex-desktop.png', fullImage: 'https://assets-sh-padelx.shanghaipadel.com/moto-metaplex.png'},
-		// {title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-tars-desktop.png'},
 	],
 	mobile: [
 		{ id: 1, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-1-mobile.png' },

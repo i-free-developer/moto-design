@@ -108,21 +108,20 @@ function DesktopBottomCard({title, description}) {
 
 function MobilePortfolios({isMobileDevice, smallScreenRatioDecimal}) {
 	const [mobileItems, setMobileItems] = useState([])
-	let all = []
-
-	function chunkArray(arr) {
-    const result = [];
-    const step = isMobileDevice ? 2 : 4
-    const spIndex = isMobileDevice ? 1 : 2
-    for (let i = 0; i < arr.length; i += step) {
-    	let s = arr.slice(i, i + step)
-    	if (s.length > spIndex) { s.splice(spIndex, 0, {}) }
-      result.push(s);
-    }
-    return result;
-	}
 
 	useEffect(() => {
+		function chunkArray(arr) {
+	    const result = [];
+	    const step = isMobileDevice ? 2 : 4
+	    const spIndex = isMobileDevice ? 1 : 2
+	    for (let i = 0; i < arr.length; i += step) {
+	    	let s = arr.slice(i, i + step)
+	    	if (s.length > spIndex) { s.splice(spIndex, 0, {}) }
+	      result.push(s);
+	    }
+	    return result;
+		}
+
 		let items = chunkArray(PortfolioData.mobile).flat()
 		setMobileItems(items)
 	}, [])

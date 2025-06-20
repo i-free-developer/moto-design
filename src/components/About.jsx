@@ -85,7 +85,7 @@ function AboutStatusContainer({smallScreenRatioDecimal}) {
 			<div className="mx-auto overflow-x-hidden w-full lg:my-[22rem] flex items-center justify-between">
 				<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} transition-translate duration-700 mx-auto min-w-full max-w-full lg:ml-0 lg:min-w-[45%] lg:w-[45%] tracking-[-2%]`}>
 					<p className="uppercase text-[0.48rem] lg:text-[4rem] font-bold leading-[0.48rem] lg:leading-[4rem]">we strive to innovate</p>
-					<p className="text-[0.16rem] lg:text-[21px] font-normal leading-[24px] mt-[0.2rem] lg:my-[2rem]">Some Number About Us</p>	
+					<p className="text-[0.16rem] lg:text-[21px] font-normal leading-[24px] mt-[0.2rem] lg:my-[2rem]">Some Numbers About Us</p>	
 					<div className="w-full grid grid-cols-2 gap-[0.48rem] lg:gap-[4rem] mt-[0.96rem] lg:my-[3rem]">
 						{StatusContents.map((item, index) => <StatusItemCard {...item} i={index} key={index}/>)}
 					</div>

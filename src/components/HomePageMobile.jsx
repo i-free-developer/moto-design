@@ -18,7 +18,7 @@ export default function HomePageMobile({smallScreenRatioDecimal}) {
 
 	return (
 		<main id="home" className="min-h-screen max-h-screen min-w-screen max-w-screen overflow-hidden relative">
-			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>
+			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} closeDrawer={closeDrawer}/>
 			<HomeSectionMobile headerClassName={headerClassName} onCloseDrawer={closeDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} />
 			<ServiceOfferingsMobile/>
 		</main>

@@ -3,13 +3,11 @@ import { Link } from "react-router-dom"
 import '../assets/animations.css';
 import { CompanyEmail } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem } from './SocialIconsCollection'
-import { useScrollTo, useScrollDirection, useScreenRatio } from './FunctionCollection'
+import { useScrollTo, useScrollDirection } from './FunctionCollection'
 
-
-export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer, frostedGlass = false}) {
+export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer, smallScreenRatioDecimal, frostedGlass = false}) {
 	const scrollDirection = useScrollDirection();
-	const {smallScreenRatioDecimal} = useScreenRatio()
-
+	
 	useEffect(() => {
 	    const preventScroll = (e) => {
 	      e.preventDefault();

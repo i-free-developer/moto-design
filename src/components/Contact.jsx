@@ -13,12 +13,12 @@ const placeHolders = ['Name', 'Roles*', 'Enter your email*', 'A brief introducti
 // 	3: ['Submit'],
 // }
 
-export default function Contact() {
+export default function Contact({isMobileDevice, smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 
 	return (
 		<main className="mx-auto min-h-screen max-h-screen overflow-hidden">
-			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
+			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} />
 			<section id="contact-us" className="mx-auto relative max-w-[750px] lg:max-w-full" onClick={closeDrawer}>
 				<PixelsHeader/>
 				<ContactContainer/>

@@ -11,7 +11,7 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 	
 	return (
 		<main className="mx-auto">
-			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer}/>
+			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
 			<section id="portfolio" className="" onClick={closeDrawer}>
 				<div className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] px-[0.32rem] lg:px-[3rem] pt-[0.48rem] lg:pt-[3rem] lg:mt-[8rem] lg:mb-[3rem] overflow-x-hidden">
 					<PortfolioHeader/>
@@ -54,7 +54,7 @@ function MobileDeskIcons({isMobile, setIsMobile, smallScreenRatioDecimal}) {
 
 function DesktopPortfolios() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 gap-[0.24rem] lg:gap-[1.5rem]">
+    <div className="px-[0.32rem] lg:px-0 grid grid-cols-1 lg:grid-cols-5 gap-[0.24rem] lg:gap-[1.5rem]">
       {PortfolioData.desktop.map((item, index) => <DesktopCard {...item} index={index} totalNumber={PortfolioData.desktop.length} key={index}/>)}
     </div>
   )
@@ -66,15 +66,15 @@ function DesktopCard({id, title, description, image, url, index, totalNumber}) {
 	if (index === totalNumber - 1) { colsIndex = 4}
 
 	const spanClasses = {
-		0: 'lg:col-span-3 relative h-[4.8rem] lg:h-[36rem]',
-		1: 'lg:col-span-2 relative h-[4.8rem] lg:h-[36rem]',
-	  2: 'lg:col-span-2 relative h-[4.8rem] lg:h-[36rem]',
-	  3: 'lg:col-span-3 relative h-[4.8rem] lg:h-[36rem]',
-	  4: 'lg:col-span-5 relative h-[4.8rem] lg:h-[36rem]',
+		0: 'col-span-1 lg:col-span-3 relative h-[4.8rem] lg:h-[36rem]',
+		1: 'col-span-1 lg:col-span-2 relative h-[4.8rem] lg:h-[36rem]',
+	  2: 'col-span-1 lg:col-span-2 relative h-[4.8rem] lg:h-[36rem]',
+	  3: 'col-span-1 lg:col-span-3 relative h-[4.8rem] lg:h-[36rem]',
+	  4: 'col-span-1 lg:col-span-5 relative h-[4.8rem] lg:h-[36rem]',
 	}
 
 	return (
-		<div className={spanClasses[colsIndex]}>
+		<div className={`${spanClasses[colsIndex]} rounded-[0.28rem] lg:rounded-3xl overflow-hidden`}>
 			<span
         style={{pointerEvents: 'none'}}
         className={`

@@ -12,7 +12,7 @@ export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 
 	return (
 		<main className="mx-auto">
-      		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} frostedGlass={true} key="about"/>
+      		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true} key="about"/>
 			<section id="about" className="mx-auto lg:pt-[3rem]" onClick={closeDrawer}>
 				<div className="px-[0.32rem] lg:px-[3rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
 					<AboutHeader smallScreenRatioDecimal={smallScreenRatioDecimal}/>

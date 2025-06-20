@@ -34,7 +34,7 @@ export default function App() {
           <Route exact path="/about" element={<About isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
           <Route exact path="/portfolio" element={<Portfolio isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
           <Route exact path="/career" element={<Career isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
-          <Route exact path="/contact" element={<Contact/>} />
+          <Route exact path="/contact" element={<Contact isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
           <Route exact path="/role/:id" element={<RolePage isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
           <Route exact path="/portfolio/:id" element={<ImagePage isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
           <Route path="*" element={<Home loadingPercentage={loadingPercentage} isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />

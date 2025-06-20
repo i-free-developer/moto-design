@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import '../assets/site-styles.css';
 import { Navbar, LogoIcon } from './Navbar'
+import { AboutHeaderSvg } from './HeaderSvg'
 import { TeamMembers, CopyRight, CompanyEmail, CompanyDomain, StatusContents } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem, ByBitIcon, AwsIcon, VenturesIcon, GateIcon, GateIconBlack} from './SocialIconsCollection'
 import backgroundImage from '../assets/dashed-bg.png'
@@ -15,14 +16,14 @@ export default function About({isMobileDevice, smallScreenRatioDecimal}) {
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true} key="about"/>
 			<section id="about" className="mx-auto lg:pt-[3rem]" onClick={closeDrawer}>
 				<div className="px-[0.32rem] lg:px-[3rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
-					<AboutHeader smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+					{isMobileDevice ? <AboutHeaderMobile smallScreenRatioDecimal={smallScreenRatioDecimal}/> : <AboutHeaderDesktop/>} 
 					<AboutBrand/>
-					<AboutStatusContainer smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-					<EcosystemHeader/>
 				</div>				
+				<AboutStatusContainer smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				<EcosystemHeader/>
 				<EcosystemContainer smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<div className="px-[0.32rem] lg:px-[3rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
-					<div className="my-[1.2rem] lg:my-[8rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-[0.16rem] lg:gap-6">
+					<div className="my-[1.2rem] lg:my-[22rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-[0.16rem] lg:gap-6">
 						<OurTeamCard />
 						{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
 					</div>
@@ -34,19 +35,19 @@ export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 	)
 }
 
-function AboutHeader({smallScreenRatioDecimal}) {
+function AboutHeaderDesktop() {
 	return (
-		<div className="mx-auto my-[1.28rem] lg:mt-[13rem] min-w-full relative">
+		<div className="mx-auto mt-[1.28rem] lg:mt-[13rem] min-w-full relative">
 			<div className="mx-auto w-content uppercase text-center text-[0.32rem] leading-[0.54rem] lg:text-[4rem] lg:leading-[88px] tracking-[10%] font-medium">
 				<p className="relative">Every frame of code
-					<span className="absolute size-[41px] flex items-center top-0 lg:top-0 left-[0.9rem] lg:left-[25%]"><LeftQuote scaleRatio={smallScreenRatioDecimal}/></span>
+					<span className="absolute size-[41px] flex items-center top-0 lg:top-0 left-[0.9rem] lg:left-[25%]"><LeftQuote/></span>
 				</p>
 				<p className="">is an elegant murder of</p>
 				<p className="text-wrap wrap-normal">the old paradigm, every pixel</p>
 				<p className="">a philosophical</p>
 				<p className="">statement projected into</p>
 				<p className="relative">the future.
-					<span className="absolute size-[41px] flex items-center top-0 lg:top-0 right-[1.6rem] lg:right-[33%]"><RightQuote scaleRatio={smallScreenRatioDecimal}/></span>
+					<span className="absolute size-[41px] flex items-center top-0 lg:top-0 right-[1.6rem] lg:right-[33%]"><RightQuote/></span>
 				</p>
 			</div>
 			<VerticalItem/>
@@ -54,9 +55,20 @@ function AboutHeader({smallScreenRatioDecimal}) {
 	)
 }
 
+function AboutHeaderMobile({smallScreenRatioDecimal}) {
+	return (
+		<div className="mx-auto mt-[1.6rem] min-w-full relative">
+			<span className="flex items-center justify-center"><AboutHeaderSvg scaleRatio={smallScreenRatioDecimal}/></span>
+			<span className=""><VerticalItem/></span>
+		</div>
+	)
+}
+
+
+
 function VerticalItem() {
 	return (
-		<div id="v-item" className="absolute left-[0.32rem] lg:left-0 bottom-[-0.48rem] lg:bottom-0 flex flex-col items-center justify-center">	
+		<div id="v-item" className="absolute left-[-0.12rem] lg:left-0 bottom-[-0.24rem] lg:bottom-0 flex flex-col items-center justify-center">	
 			<div className="flex gap-[0.08rem] lg:gap-4 items-center text-[0.12rem] lg:text-base font-medium leading-[16px] text-black/64" style={{writingMode: 'vertical-lr'}}>
 				<span className="rotate-180">{CompanyDomain}</span>
 				<span className="border border-[0.8px] border-black/64 h-[1.2rem] lg:h-[8rem] translate-x-[50%]"></span>
@@ -67,7 +79,7 @@ function VerticalItem() {
 
 function AboutBrand() {
 	return (
-		<div className="border border-[0.02rem] lg:border-4 rounded-[0.16rem] lg:rounded-2xl p-[0.32rem] lg:px-[4rem] lg:py-[3rem] lg:my-[22rem] flex justify-between">
+		<div className="border border-[0.02rem] lg:border-4 rounded-[0.16rem] lg:rounded-2xl p-[0.32rem] lg:px-[4rem] lg:py-[3rem] mt-[1.28rem] lg:mt-[22rem] flex justify-between">
 			<p className="uppercase text-[0.24rem] lg:text-[2rem] font-bold w-1/4 gap-[0.16rem] lg:gap-[1rem] lg:w-1/3">About brand:</p>
 			<div className="w-3/4 grow-1 lg:grow-0 lg:w-1/2 flex flex-col justify-between gap-[0.32rem] lg:gap-[2rem] text-[0.2rem] lg:text-xl font-medium">
 				<p className="">We're a visual design team with 8 years in the Web3 field.</p>
@@ -81,9 +93,9 @@ function AboutBrand() {
 function AboutStatusContainer({smallScreenRatioDecimal}) {
 	const [showSection, setShowSection] = useState('left')	
 	return (
-		<div className="mx-auto w-full relative my-[1.68rem] lg:my-0">
-			<div className="mx-auto overflow-x-hidden w-full lg:my-[22rem] flex items-center justify-between">
-				<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} transition-translate duration-700 mx-auto min-w-full max-w-full lg:ml-0 lg:min-w-[45%] lg:w-[45%] tracking-[-2%]`}>
+		<div className="mx-auto relative mt-[1.68rem] lg:mt-[22rem] lg:px-[3rem] w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
+			<div className="mx-auto overflow-x-hidden w-full flex items-center justify-between pl-[0.32rem] lg:pl-0">
+				<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} transition-translate duration-700 lg:ml-0 mx-auto min-w-full max-w-full lg:min-w-[45%] lg:w-[45%] tracking-[-2%]`}>
 					<p className="uppercase text-[0.48rem] lg:text-[4rem] font-bold leading-[0.48rem] lg:leading-[4rem]">we strive to innovate</p>
 					<p className="text-[0.16rem] lg:text-[21px] font-normal leading-[24px] mt-[0.2rem] lg:my-[2rem]">Some Numbers About Us</p>	
 					<div className="w-full grid grid-cols-2 gap-[0.48rem] lg:gap-[4rem] mt-[0.96rem] lg:my-[3rem]">
@@ -92,7 +104,7 @@ function AboutStatusContainer({smallScreenRatioDecimal}) {
 				</div>
 				<AboutCirclesCard showSection={showSection}/>
 			</div>
-			{ showSection === 'left' && <span className="flex items-center justify-center go-right absolute lg:hidden top-[45%] right-0 z-200" onClick={() => {setShowSection('right')}}><GoToRight scaleRatio={smallScreenRatioDecimal}/></span>}
+			{ showSection === 'left' && <span className="flex items-center justify-center go-right absolute lg:hidden top-[45%] right-[-0.32rem] z-200" onClick={() => {setShowSection('right')}}><GoToRight scaleRatio={smallScreenRatioDecimal}/></span>}
 			{ showSection === 'right' &&  <span className="flex items-center justify-center go-left absolute lg:hidden top-[45%] left-0 z-200" onClick={() => {setShowSection('left')}}><GoToLeft scaleRatio={smallScreenRatioDecimal}/></span>}			
 		</div>
 	)
@@ -128,7 +140,7 @@ function GoToLeft({scaleRatio}) {
 
 function AboutCirclesCard({showSection}) {
 	return (
-		<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} scale-85 lg:scale-100 transition-translate duration-700 m-auto relative min-w-[6.96rem] min-h-[6.96rem] lg:min-w-[696px] lg:min-h-[696px] hover:cursor-pointer`}>
+		<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} lg:mr-[2rem] scale-85 lg:scale-100 transition-translate duration-700 m-auto relative min-w-[6.96rem] min-h-[6.96rem] lg:min-w-[696px] lg:min-h-[696px] hover:cursor-pointer`}>
 			<div className="about-circle-div w-full h-full top-0 right-0" data-circle="true">
 				{/* <p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="true"></p> */}
 				{/* <p className="circle-point-visible circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="true"></p> */}
@@ -169,7 +181,7 @@ function AboutCirclesCard({showSection}) {
 
 function EcosystemHeader() {
 	return (
-		<div className="mx-auto w-full lg:text-center">
+		<div className="mx-auto lg:text-center px-[0.32rem] lg:px-[3rem] mt-[2.16rem] lg:mt-[22rem] w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
 			<h2 className="uppercase text-[0.48rem] lg:text-[4rem] font-bold leading-[0.48rem] lg:leading-[64px] tracking-[-2%]">ecosystem resource</h2>
 			<p className="lg:px-[10rem] text-[0.16rem] lg:text-[1.75rem] leading-[0.2rem] lg:leading-[36px] tracking-[-2%] mt-[0.16rem] lg:mt-[2.5rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries,providing them with visual design, creative, and industry consulting services.</p>	
 		</div>
@@ -323,17 +335,17 @@ function OurTeamCard() {
 	)
 }
 
-function LeftQuote({scaleRatio}) {
+function LeftQuote() {
 	return (
-		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'bottom right', }} width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path d="M14.4238 22.408V14.344C14.4238 10.632 15.2238 7.56 16.8238 5.128C18.4878 2.696 20.8878 1.09599 24.0238 0.327997V3.68799C22.1038 4.2 20.7278 5.16 19.8958 6.568C19.0638 7.912 18.5838 9.672 18.4558 11.848H22.1038V22.408H14.4238ZM0.0237505 22.408V14.344C0.0237505 10.632 0.82375 7.56 2.42375 5.128C4.08775 2.696 6.48775 1.09599 9.62375 0.327997V3.68799C7.70375 4.2 6.32775 5.16 5.49575 6.568C4.66375 7.912 4.18375 9.672 4.05575 11.848H7.70375V22.408H0.0237505Z" fill="black"/>
 		</svg>
 	)
 }
 
-function RightQuote({scaleRatio}) {
+function RightQuote() {
 	return (
-		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'top left', }} width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path d="M10.5763 0.591999L10.5763 8.656C10.5763 12.368 9.77625 15.44 8.17625 17.872C6.51225 20.304 4.11225 21.904 0.976253 22.672L0.976253 19.312C2.89625 18.8 4.27225 17.84 5.10425 16.432C5.93625 15.088 6.41625 13.328 6.54425 11.152L2.89625 11.152L2.89626 0.591998L10.5763 0.591999ZM24.9763 0.592L24.9763 8.656C24.9763 12.368 24.1763 15.44 22.5763 17.872C20.9123 20.304 18.5123 21.904 15.3763 22.672L15.3763 19.312C17.2963 18.8 18.6723 17.84 19.5043 16.432C20.3363 15.088 20.8163 13.328 20.9443 11.152L17.2963 11.152L17.2963 0.592L24.9763 0.592Z" fill="black"/>
 		</svg>
 	)

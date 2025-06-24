@@ -165,7 +165,7 @@ function ButtonNoDot({btnAction, btnText}) {
 
 function SumbittedGroup({isMobileDevice, smallScreenRatioDecimal}) {
 	return (
-		<div className="mx-auto w-full mt-[1.28rem] lg:mt-[4rem] h-[1.92rem] lg:h-[16rem] flex items-center justify-center scale-90">
+		<div className="mx-auto w-full mt-[1.28rem] lg:mt-[4rem] h--[1.92rem] lg:h-[16rem] flex items-center justify-center lg:scale-90">
 			{isMobileDevice? <SubmittedAlreadyIconSmall scaleRatio={smallScreenRatioDecimal}/> : <SubmittedAlreadyIconBig/>} 
 		</div>
 	)

@@ -149,7 +149,7 @@ function ButtonGroups({currentStep, goBack, goNext, goSubmit, getInTouch, loadin
 
 function ButtonWithDot({btnAction, btnText}) {
 	const [isHovered, setIsHovered] = useState(false);
-	const ArrowElement = (<span className={`bg-white size-[0.30rem] lg:size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-500 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></span>)
+	const ArrowElement = (<span className={`bg-white size-[0.30rem] lg:size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></span>)
 	return (
 		<span className="bg-black rounded-full pl-[0.24rem] lg:pl-[1.5rem] pr-[0.08rem] lg:pr-[0.5rem] py-[0.04rem] lg:py-[0.25rem] flex items-center justify-between gap-[0.40rem] lg:gap-0" onClick={btnAction} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<span className="text-[#f7f7f7] text-[0.28rem] lg:text-[2rem] font-medium mr-[0.16rem] lg:mr-[1.5rem]">{btnText}</span>

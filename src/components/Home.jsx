@@ -19,7 +19,7 @@ export default function Home({loadingPercentage, isMobileDevice, smallScreenRati
 	// const serviceClassName = serviceClasses[drawerStatus]
 	// const verticalClassName = verticalClasses[drawerStatus]
 
-	if (loadingPercentage < 100) {
+	if (loadingPercentage <= 100) {
 		return <Loading loadingPercentage={loadingPercentage}/>
 	} else {
 		return isMobileDevice ? <HomePageMobile smallScreenRatioDecimal={smallScreenRatioDecimal}/> : <HomePageDesktop/>

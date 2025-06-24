@@ -150,14 +150,14 @@ function RolesContainer() {
 function RoleCard({team, title, tags, index, id}) {
 	return (
 		<article className="relative lg:w-[55rem] tracking-[-2%] scroll-fade-in">
-			{index === 0 &&  <hr className="border border-2 border-black/20 mb-[0.24rem] lg:mb-[3rem] lg:w-[55rem]"></hr> }
+			{index === 0 &&  <hr className="border border-black/20 mb-[0.24rem] lg:mb-[3rem] lg:w-[55rem]"></hr> }
 			<header className="font-bold text-[0.16rem] lg:text-xl">{team}</header>
 			<div className="">
 				<p className="text-[0.32rem] lg:text-[2rem] font-normal mt-[0.24rem] lg:mt-[1.5rem]">{title}</p>
 				<div className="flex flex-row items-center gap-2 mt-[0.48rem] lg:mt-[3rem]">
 					{tags.map((tag, index) => <span className="text-[0.16rem] lg:text-xl font-medium text-black opacity-40" key={index}>{tag}</span>)}
 				</div>
-				<hr className="border border-2 border-black/20 my-[0.24rem] lg:my-[3rem] w-full lg:w-[55rem]"></hr>
+				<hr className="border border-black/20 my-[0.24rem] lg:my-[3rem] w-full lg:w-[55rem]"></hr>
 				<ApplyButon id={id}/>
 			</div>
 		</article>
@@ -166,7 +166,7 @@ function RoleCard({team, title, tags, index, id}) {
 
 function ApplyButon({id}) {
 	const [isHovered, setIsHovered] = useState(false);
-	const ArrowElement = (<div className={`bg-white size-[0.24rem] lg:size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-500 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>)
+	const ArrowElement = (<div className={`bg-white size-[0.24rem] lg:size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>)
 	const DotElement = (<div className="size-[2.5rem] flex items-center justify-center"><span className="size-[0.5rem] bg-white rounded-full"></span></div>)
 
 	return (

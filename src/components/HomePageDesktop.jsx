@@ -56,7 +56,7 @@ function ServiceOfferingsDesktop() {
 				<Link to="/portfolio" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 					<button className="cursor-pointer bg-black px-[0.28rem] py-[0.14rem] lg:pl-6 lg:py-2 lg:h-[3rem] text-[0.2rem] leading-[0.2rem] lg:text-xl lg:leading-xl flex items-center justify-between gap-[0.16rem] lg:gap-4 text-[#f7f7f7] font-medium rounded-full">
 						<span>See What We've Made</span>
-						<div className={`border border-white bg-white size-[0.4rem] lg:size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-400 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>
+						<div className={`border border-white bg-white size-[0.4rem] lg:size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>
 					</button>
 				</Link>
 			</div>

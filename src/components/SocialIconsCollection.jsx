@@ -1,10 +1,9 @@
-
 const SocialIconItems = [
-  { name: 'X',   iconWhite: <XIcon/>,           iconBlack: <XIconBlack/>,            url: ''},
-  { name: 'In',  iconWhite: <LinkedinIcon/>,    iconBlack: <LinkedinIconBlack/>,     url: ''},
-	{ name: 'Be',  iconWhite: <BeIcon/>,          iconBlack: <BeIconBlack/>,           url: ''},
-	{ name: 'Ins', iconWhite: <InstagramIcon/>,   iconBlack: <InstagramIconBlack/>,    url: ''},
-	{ name: 'XHS', iconWhite: <XiaoHongShuIcon/>, iconBlack: <XiaoHongShuIconBlack />, url: ''},
+  { name: 'X',   iconWhite: <XIcon/>,           iconBlack: <XIconBlack/>,            url: 'https://x.com/MotoDesign_'},
+  { name: 'In',  iconWhite: <LinkedinIcon/>,    iconBlack: <LinkedinIconBlack/>,     url: '#'},
+	{ name: 'Be',  iconWhite: <BeIcon/>,          iconBlack: <BeIconBlack/>,           url: '#'},
+	// { name: 'Ins', iconWhite: <InstagramIcon/>,   iconBlack: <InstagramIconBlack/>,    url: ''},
+	{ name: 'XHS', iconWhite: <XiaoHongShuIcon/>, iconBlack: <XiaoHongShuIconBlack />, url: 'https://www.xiaohongshu.com/user/profile/63f71acf000000000f013e49'},
 ]
 
 const SiteLinks = [
@@ -16,7 +15,7 @@ const SiteLinks = [
 
 function SocialIconLinkItem({url, iconWhite, iconBlack, color='black'}) {
 	return(
-    <a href={url} style={{overflow: 'visible'}} className="flex items-center cursor-pointer transition duration-150 active:scale-120 hover:scale-120">{color === 'black' ? iconBlack : iconWhite}</a>
+    <a href={url} target="_blank" style={{overflow: 'visible'}} className="flex items-center cursor-pointer transition duration-150 active:scale-120 hover:scale-120">{color === 'black' ? iconBlack : iconWhite}</a>
 	)
 }
 

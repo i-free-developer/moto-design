@@ -90,7 +90,7 @@ function DesktopCard({id, title, description, image, url, index, totalNumber}) {
 			`}></span>
 			<Link to={`/portfolio/${id}`} className="max-w-full h-full block cursor-pointer rounded-[0.28rem] lg:rounded-3xl">
 				<div className="w-full h-full overflow-hidden rounded-[inherit]">
-					<img src={image} loading="lazy" className={`w-full h-full object-cover object-center rounded-[inherit] ${isHovered ? 'scale-104' : ''}`} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}></img>
+					<img src={image} loading="lazy" className={`w-full h-full object-cover object-center rounded-[inherit] transition-transform duration-400 ${isHovered ? 'scale-104' : ''}`} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}></img>
 				</div>
 				<DesktopBottomCard title={title} description={description}/>
 			</Link>

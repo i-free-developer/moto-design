@@ -190,12 +190,16 @@ function EcosystemHeader() {
 
 function EcosystemContainer({smallScreenRatioDecimal}) {
 	return (
-		<div className="m-auto w-full flex overflow-hidden gap--[0.32rem] lg:gap--[8rem] py-[0.8rem] lg:py-[10rem] mt-[0.8rem] lg:mt-[4rem] relative">
-			<div className="flex items-center gap--[0.32rem] lg:gap--[8rem] basis-full grow-0 shrink-0 icons-scroll">
+		<div className="m-auto w-full flex items-center overflow-hidden gap--[0.32rem] lg:gap--[8rem] py-[0.8rem] lg:py-[10rem] mt-[0.8rem] lg:mt-[4rem] relative">
+			<div className="flex items-center gap--[0.32rem] lg:gap--[8rem] basis-full grow-0 shrink-0 icons-scroll mr-[-0.8rem] lg:mr-0 ">
+				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</div>
-			<div aria-hidden className="flex items-center gap--[0.32rem] lg:gap--[8rem] basis-full grow-0 shrink-0 icons-scroll">
+			<div aria-hidden className="flex items-center gap--[0.32rem] lg:gap--[8rem] basis-full grow-0 shrink-0 icons-scroll ml-0">
+				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</div>
@@ -209,7 +213,7 @@ function EcosystemContainer({smallScreenRatioDecimal}) {
 function TestimonialSlideIcons({smallScreenRatioDecimal}) {
 	let scaleRatio = smallScreenRatioDecimal * 0.65
 	return (
-		<div className="flex items-center gap--[0.32rem] lg:gap-[8rem] lg:mr-[8rem]">
+		<div className="flex items-center gap-[-0.8rem] lg:gap-[4rem] mr-[-0.8rem] lg:mr-[4rem]">
 			<span className="flex items-center justify-center lg:h-[3rem] cursor-pointer"><GateIconBlack scaleRatio={scaleRatio}/></span>
 			<span className="flex items-center justify-center lg:h-[3rem] cursor-pointer"><ByBitIcon scaleRatio={scaleRatio}/></span>
 			<span className="flex items-center justify-center lg:h-[3rem] cursor-pointer"><VenturesIcon scaleRatio={scaleRatio}/></span>

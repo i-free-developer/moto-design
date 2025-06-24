@@ -38,14 +38,14 @@ export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer, sm
 	return (
 		// h-5.2rem px-3.5rem
 		<div className={`mx-auto sticky relative z-100 ${ scrollDirection === "down" ? "top-[-5rem] lg:top-[-6rem]" : "top-0"}`}>
-		<section id="navbar" className={`text-black mx-auto px-[0.32rem] lg:px-[3.5rem] py-[0.12rem] lg:py-[1.6rem] lg:rounded-md lg:rounded-xl transition-[top] duration-400 ${frostedGlass ? 'bg-white/40 backdrop-blur-[20px]' : ''}`}>
-			<nav className="flex justify-between items-center h-[0.34rem] lg:h-[2rem]" onClick={closeDrawer}>
-				<div onClick={handleClickDrawer} className="cursor-pointer size-[0.25rem] lg:size-[1.25rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
-				<Link to="/" className="max-h-[0.34rem] lg:h-[2rem] object-fit flex items-center justify-center"><LogoIcon scaleRatio={smallScreenRatioDecimal}/></Link>
-				<LangButtons/>
-			</nav>
-		</section>
-		{<DrawerCard drawerStatus={drawerStatus}/>}
+			<section id="navbar" className={`text-black mx-auto px-[0.32rem] lg:px-[3.5rem] py-[0.12rem] lg:py-[1.6rem] lg:rounded-md lg:rounded-xl transition-[top] duration-400 ${frostedGlass ? 'bg-[#F7F7F7]/40 backdrop-blur-[20px]' : ''}`}>
+				<nav className="flex justify-between items-center h-[0.34rem] lg:h-[2rem]" onClick={closeDrawer}>
+					<div onClick={handleClickDrawer} className="cursor-pointer size-[0.25rem] lg:size-[1.25rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
+					<Link to="/" className="max-h-[0.34rem] lg:h-[2rem] object-fit flex items-center justify-center"><LogoIcon scaleRatio={smallScreenRatioDecimal}/></Link>
+					<LangButtons/>
+				</nav>
+			</section>
+			{<DrawerCard drawerStatus={drawerStatus}/>}
 		</div>
 	)
 }
@@ -57,7 +57,7 @@ function DrawerCard({drawerStatus}) {
 	const drawerClassName = drawerClasses[drawerStatus]
 	return(
 		<div
-			className={`bg-white/40 backdrop-blur-[20px] px-[0.72rem] lg:px-[4rem] pt-[0.96rem] lg:pt-[8rem] pb-[0.72rem] lg:pb-[4rem] w-[4.6rem] lg:w-[26rem] h-[9.5rem] lg:h-[calc(100vh-5.2rem-56px)] flex flex-col justify-between absolute top-[0.6rem] lg:top-[5.15rem] rounded-[0.24rem] lg:rounded-2xl ${drawerClassName}`}>
+			className={`bg-[#F7F7F7]/40 backdrop-blur-[20px] px-[0.72rem] lg:px-[4rem] pt-[0.96rem] lg:pt-[8rem] pb-[0.72rem] lg:pb-[4rem] w-[4.6rem] lg:w-[35rem] h-[calc(100vh-4.8rem)] lg:h-[calc(100vh-5.2rem-56px)] flex flex-col justify-between absolute top-[0.6rem] lg:top-[5.15rem] rounded-[0.24rem] lg:rounded-2xl ${drawerClassName}`}>
 			<div className="flex flex-col items-start gap-[0.4rem] lg:gap-[2.5rem]">
        			{SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>

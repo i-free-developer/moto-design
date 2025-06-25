@@ -15,14 +15,14 @@ export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 		<main className="mx-auto">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true} key="about"/>
 			<section id="about" className="mx-auto lg:pt-[3rem]" onClick={closeDrawer}>
-				<div className="px-[0.32rem] lg:px-[3rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
+				<div className="px-[0.32rem] lg:px-[3rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
 					{isMobileDevice ? <AboutHeaderMobile smallScreenRatioDecimal={smallScreenRatioDecimal}/> : <AboutHeaderDesktop/>} 
 					<AboutBrand/>
 				</div>				
 				<AboutStatusContainer smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<EcosystemHeader/>
 				<EcosystemContainer smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<div className="px-[0.32rem] lg:px-[3rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
+				<div className="px-[0.32rem] lg:px-[3rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<div className="my-[1.2rem] lg:my-[22rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-[0.16rem] lg:gap-6">
 						<OurTeamCard />
 						{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
@@ -181,7 +181,7 @@ function AboutCirclesCard({showSection}) {
 
 function EcosystemHeader() {
 	return (
-		<div className="mx-auto lg:text-center px-[0.32rem] lg:px-[3rem] mt-[2.16rem] lg:mt-[22rem] w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
+		<div className="mx-auto lg:text-center px-[0.32rem] lg:px-[3rem] mt-[2.16rem] lg:mt-[22rem] w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
 			<h2 className="uppercase text-[0.48rem] lg:text-[4rem] font-bold leading-[0.48rem] lg:leading-[64px] tracking-[-2%]">ecosystem resource</h2>
 			<p className="lg:px-[10rem] text-[0.16rem] lg:text-[1.75rem] leading-[0.2rem] lg:leading-[36px] tracking-[-2%] mt-[0.16rem] lg:mt-[2.5rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries,providing them with visual design, creative, and industry consulting services.</p>	
 		</div>

@@ -19,7 +19,7 @@ export default function HomePageDesktop() {
 	// const verticalClassName = verticalClasses[drawerStatus]
 
 	return (
-		<main id="home" className="min-h-screen lg:min-h-screen lg:max-h-screen overflow-hidden relative">
+		<main id="home" className="min-h-screen lg:max-h-screen overflow-hidden relative">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer} bigScreenRatioDecimal={bigScreenRatioDecimal}/>
 			<HomeSectionDesktop headerClassName={headerClassName} onCloseDrawer={closeDrawer} bigScreenRatioDecimal={bigScreenRatioDecimal}/>
 			<ServiceOfferingsDesktop/>
@@ -29,7 +29,7 @@ export default function HomePageDesktop() {
 
 function HomeSectionDesktop({headerClassName, onCloseDrawer, bigScreenRatioDecimal}) {
 	return (
-		<section id="landing" className="max-w-screen lg:min-w-screen lg:max-w-screen p-x-[0.32rem] text-black" onClick={onCloseDrawer}>
+		<section id="landing" className="max-w-screen p-x-[0.32rem] text-black" onClick={onCloseDrawer}>
 			<div className="h-[calc(100vh-13.6rem)] place-i-tems-center place-content-center">
 				<div className="flex items-center justify-between ml-[7rem] mr-[5.5rem]">
 					<div className={`${headerClassName}`}><HeaderSvgDesktop scaleRatio={bigScreenRatioDecimal}/></div>

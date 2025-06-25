@@ -13,7 +13,7 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 		<main className="mx-auto">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
 			<section id="portfolio" className="" onClick={closeDrawer}>
-				<div className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] px-[0.32rem] lg:px-[3rem] pt-[0.48rem] lg:pt-[3rem] lg:mt-[8rem] lg:mb-[3rem] overflow-x-hidden">
+				<div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] px-[0.32rem] lg:px-[3rem] pt-[0.48rem] lg:pt-[3rem] lg:mt-[8rem] lg:mb-[3rem] overflow-x-hidden">
 					<PortfolioHeader/>
 					<div className="my-[0.48rem] lg:my-[6rem] flex flex-row justify-between">
 						<MobileDeskIcons isMobile={isMobile} setIsMobile={setIsMobile} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
@@ -21,11 +21,11 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 					</div>
 				</div>
 				
-				<div className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] lg:px-[3rem]">
+				<div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] lg:px-[3rem]">
 	      	{isMobile ? <MobilePortfolios isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/> : <DesktopPortfolios/>}
 	      </div>
 	      
-	      <div className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] px-[0.32rem] lg:px-[3rem] overflow-x-hidden">
+	      <div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] px-[0.32rem] lg:px-[3rem] overflow-x-hidden">
 	      	<SiteInfoCard isMobileDevice={isMobileDevice}/>
 					<SiteFooter isMobileDevice={isMobileDevice}/>
 				</div>

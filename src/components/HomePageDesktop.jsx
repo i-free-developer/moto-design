@@ -4,7 +4,7 @@ import Navbar from './Navbar'
 import HomePageMobile from './HomePageMobile'
 import { HeaderSvgDesktop } from './HeaderSvg'
 import { ServicesItems, CompanyDomain } from '../data/site-data'
-import { useDrawerHandler, useScreenRatio } from './FunctionCollection'
+import { useDrawerHandler, useScreenRatio, useHoverHandler } from './FunctionCollection'
 import { ArrowIcon } from './SocialIconsCollection'
 
 const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'section-drawer-out'}
@@ -13,21 +13,21 @@ const serviceClasses = {initial: '', opened: 'horizontal-bar-out', closed: 'hori
 
 export default function HomePageDesktop() {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
+	const {bigScreenRatioDecimal} = useScreenRatio()
 	const headerClassName = headerClasses[drawerStatus]
 	// const serviceClassName = serviceClasses[drawerStatus]
 	// const verticalClassName = verticalClasses[drawerStatus]
 
 	return (
 		<main id="home" className="min-h-screen lg:min-h-screen lg:max-h-screen overflow-hidden relative">
-			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer}/>
-			<HomeSectionDesktop headerClassName={headerClassName} onCloseDrawer={closeDrawer}/>
+			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer} bigScreenRatioDecimal={bigScreenRatioDecimal}/>
+			<HomeSectionDesktop headerClassName={headerClassName} onCloseDrawer={closeDrawer} bigScreenRatioDecimal={bigScreenRatioDecimal}/>
 			<ServiceOfferingsDesktop/>
 		</main>
 	)
 }
 
-function HomeSectionDesktop({headerClassName, onCloseDrawer}) {
-	const {bigScreenRatioDecimal} = useScreenRatio()
+function HomeSectionDesktop({headerClassName, onCloseDrawer, bigScreenRatioDecimal}) {
 	return (
 		<section id="landing" className="max-w-screen lg:min-w-screen lg:max-w-screen p-x-[0.32rem] text-black" onClick={onCloseDrawer}>
 			<div className="h-[calc(100vh-13.6rem)] place-i-tems-center place-content-center">
@@ -41,7 +41,7 @@ function HomeSectionDesktop({headerClassName, onCloseDrawer}) {
 }
 
 function ServiceOfferingsDesktop() {
-	const [isHovered, setIsHovered] = useState(false);
+	const {isHovered, setIsHovered} = useHoverHandler();
 	const designedBigWidth = 1920; // 设计稿宽度
 	const baseSize = 100; // 基准值 (1rem = 100px)
 	const [isMobileDevice, setIsMobileDevice] = useState(false)
@@ -74,10 +74,10 @@ function ServiceOfferingsDesktop() {
 						{ServicesItems.map((item, index) => <span className={`opacity-64 text-[${fontSize}px] leading-[${fontSize}px] font-medium justify-self-start`} key={index}>{item}</span>)}
 					</div>
 				</div>
-				<Link to="/portfolio" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-					<button className={`cursor-pointer bg-black pl-6 py-2 h-[3rem] text-[${fontSize}px] leading-[${fontSize}px] flex items-center justify-between gap-4 text-[#f7f7f7] font-medium rounded-full`}>
+				<Link to="/portfolio" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+					<button className={`cursor-pointer bg-black pl-6 py-2 h-[3rem] text-[${fontSize}px] leading-[${fontSize}px] flex items-center justify-between gap-2 text-[#f7f7f7] font-medium rounded-full`}>
 						<span>See What We've Made</span>
-						<div className={`border border-white bg-white size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>
+						<div className={`border border-white bg-white size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-300 mr-1 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>
 					</button>
 				</Link>
 			</div>

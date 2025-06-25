@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { PortfolioData } from '../data/site-data'
 import Navbar from './Navbar'
 import { SiteInfoCard,  SiteFooter } from './About'
-import { useDrawerHandler } from './FunctionCollection'
+import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
 
 export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 	const [isMobile, setIsMobile] = useState(false)
@@ -61,7 +61,7 @@ function DesktopPortfolios() {
 }
 
 function DesktopCard({id, title, description, image, url, index, totalNumber}) {
-	const [isHovered, setIsHovered] = useState(false)
+	const {isHovered, setIsHovered} = useHoverHandler();
 	const [colsIndex, setColsIndex] = useState(0)
 	
 	useEffect(() => {
@@ -99,7 +99,7 @@ function DesktopCard({id, title, description, image, url, index, totalNumber}) {
 }
 
 function DesktopBottomCard({title, description}) {
-	const [isHovered, setIsHovered] = useState(false)
+	const {isHovered, setIsHovered} = useHoverHandler();
 	return (
 		<div className="z-10 absolute left-[0.12rem] lg:left-6 right-[0.12rem] lg:right-6 bottom-[0.12rem] lg:bottom-6 px-[0.24rem] lg:px-6 py-[0.24rem] lg:py-4 bg-white rounded-[0.24rem] lg:rounded-2xl flex justify-between items-center" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<div className="max-w-3/4">

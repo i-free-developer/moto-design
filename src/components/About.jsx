@@ -6,7 +6,7 @@ import { AboutHeaderSvg } from './HeaderSvg'
 import { TeamMembers, CopyRight, CompanyEmail, CompanyDomain, StatusContents } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem, ByBitIcon, AwsIcon, VenturesIcon, GateIcon, GateIconBlack} from './SocialIconsCollection'
 import backgroundImage from '../assets/dashed-bg-v2.png'
-import { useDrawerHandler, OdometerItem } from './FunctionCollection'
+import { useDrawerHandler, OdometerItem, useHoverHandler } from './FunctionCollection'
 
 export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
@@ -303,7 +303,7 @@ function SiteFooter({isMobileDevice}) {
 }
 
 function TeamMemberCard({name, avatar, description, title, role}) {
-	const [isHovered, setIsHovered] = useState(false)
+	const {isHovered, setIsHovered} = useHoverHandler();
 	return (
 		<article className="border border-[0.03rem] lg:border-4 rounded-[0.16rem] lg:rounded-[1.4rem] w-[2.2rem] lg:w-[26rem] h-[3.3rem] lg:h-[33rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<div className={`overflow-hidden top-0 relative transition-all duration-500 rounded-0 flex max-h-full min-h-full min-w-full max-w-full flex-col justify-between ${isHovered ? 'lg:top-[-100%]' : ''}`}>

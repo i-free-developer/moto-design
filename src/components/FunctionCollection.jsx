@@ -76,6 +76,11 @@ function useDrawerHandler() {
   return {drawerStatus, handleClickDrawer, closeDrawer}
 }
 
+function useHoverHandler() {
+  const [isHovered, setIsHovered] = useState(false);
+  return {isHovered, setIsHovered}
+}
+
 function isElementInViewport(item) {
   const rect = item.getBoundingClientRect()
   return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth)
@@ -115,7 +120,7 @@ function useScreenRatio() {
       setSmallScreenRatioDecimal(smallScreenRatioDecimalRaw)
     }
 
-    if (windowWidth >= designedBigWidth) {
+    if (windowWidth >= designedSmallWidth) {
       let bigScreenRatio = windowWidth / designedBigWidth;
       let bigScreenRatioDecimalRaw = parseFloat((windowWidth / designedBigWidth).toFixed(2))
       setBigScreenRatioInt(Math.round(bigScreenRatio * 100))
@@ -196,4 +201,4 @@ function OdometerItem ({ value, format = '(,ddd)', duration = 2500 }) {
   return (<span ref={odometerRef} className="odometer" />);
 }
 
-export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler, isElementInViewport, OdometerItem, useScreenRatio, useSmallScreenRatio }
+export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler, isElementInViewport, OdometerItem, useScreenRatio, useSmallScreenRatio, useHoverHandler }

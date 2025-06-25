@@ -4,7 +4,7 @@ import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../da
 import Navbar from './Navbar'
 import { StarIcon, ArrowIcon } from './SocialIconsCollection'
 import { SiteInfoCard,  SiteFooter } from './About'
-import { UseThrottle, useDrawerHandler } from './FunctionCollection'
+import { UseThrottle, useDrawerHandler, useHoverHandler } from './FunctionCollection'
 
 export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
@@ -165,13 +165,13 @@ function RoleCard({team, title, tags, index, id}) {
 }
 
 function ApplyButon({id}) {
-	const [isHovered, setIsHovered] = useState(false);
+	const {isHovered, setIsHovered} = useHoverHandler();
 	const ArrowElement = (<div className={`bg-white size-[0.24rem] lg:size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>)
 	const DotElement = (<div className="size-[2.5rem] flex items-center justify-center"><span className="size-[0.5rem] bg-white rounded-full"></span></div>)
 
 	return (
 		<Link to={`/role/${id}`} className="will-change-transform absolute bottom-[0.48rem] lg:bottom-[6rem] right-0 flex items-center justify-evenly lg:gap-[1rem] bg-slate-900 rounded-full w-[1.3rem] lg:w-[9.75rem] h-[0.4rem] lg:h-[3rem]"
-			onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+			onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<span className="text-white font-medium text-[0.2rem] lg:text-2xl lg:ml-[0.5rem]">Apply</span>
 			{/* {isHovered ? ArrowElement : DotElement} */}
 			{ArrowElement}

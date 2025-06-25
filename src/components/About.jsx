@@ -5,7 +5,7 @@ import { Navbar, LogoIcon } from './Navbar'
 import { AboutHeaderSvg } from './HeaderSvg'
 import { TeamMembers, CopyRight, CompanyEmail, CompanyDomain, StatusContents } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem, ByBitIcon, AwsIcon, VenturesIcon, GateIcon, GateIconBlack} from './SocialIconsCollection'
-import backgroundImage from '../assets/dashed-bg.png'
+import backgroundImage from '../assets/dashed-bg-v2.png'
 import { useDrawerHandler, OdometerItem } from './FunctionCollection'
 
 export default function About({isMobileDevice, smallScreenRatioDecimal}) {
@@ -227,10 +227,10 @@ function SiteInfoCard({isMobileDevice}) {
 	return (
 		<div style={{
 			backgroundImage: `url(${backgroundImage})`,
-			backgroundSize: 'cover',
-			backgroundPosition: 'bottom',
+			// backgroundSize: 'cover',
+			backgroundPosition: '0 100%',
 			// width: '100vw',
-		}} className="bg-bottom py-[0.48rem] mt-[1rem] lg:mt-0 lg:py-[12rem]">
+		}} className="bg-repeat-space py-[0.48rem] mt-[1rem] lg:mt-0 lg:py-[12rem]">
 			{ isMobileDevice ? <InfoCardMobile/> : <InfoCardDesktop/> }
 		</div>
 	)

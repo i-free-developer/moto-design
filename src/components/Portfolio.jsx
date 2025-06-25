@@ -81,12 +81,12 @@ function DesktopCard({id, title, description, image, url, index, totalNumber}) {
 	}
 
 	return (
-		<div className={`${spanClasses[colsIndex]} rounded-[0.28rem] lg:rounded-3xl overflow-hidden`}>
+		<div className={`${spanClasses[colsIndex]} rounded-[0.28rem] lg:rounded-3xl overflow-hidden relative`}>
 			<span
         style={{pointerEvents: 'none'}}
         className={`
-				z-5 absolute left-[50%] bottom-0 w-full h-2/5 rounded-[40%] blur-[3rem] bg-sky-800 opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
-				${isHovered ? '-translate-x-[50%] -translate-y-[10%] opacity-80' : '-translate-x-[50%] translate-y-[20%] '}
+				z-5 absolute left-0 right-0 bottom-0 min-w-full h-[30%] rounded-[0] blur--[8px] bg-gradient-to-b from-[#D1D1DA]/0 to-[#3173FF] bg--[#3173FF] opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
+				${isHovered ? 'opacity-100' : 'translate-y-[10%] '}
 			`}></span>
 			<Link to={`/portfolio/${id}`} className="max-w-full h-full block cursor-pointer rounded-[0.28rem] lg:rounded-3xl">
 				<div className="w-full h-full overflow-hidden rounded-[inherit]">
@@ -175,10 +175,9 @@ function MobileIconWhite({scaleRatio}) {
 
 function MobileIconBlack({scaleRatio}) {
 	return (
-		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} className="icon-fade-in" width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<rect width="24" height="32" rx="2" fill="#161619"/>
-			<rect x="8" y="3" width="8" height="2" rx="1" fill="#F7F7F7"/>
-			<circle cx="12" cy="26" r="2" fill="#F7F7F7"/>
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} className="icon-fade-in" width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect width="22" height="28" rx="2" fill="#161619"/>
+			<rect x="7" y="4" width="8" height="2" rx="1" fill="#F7F7F7"/>
 		</svg>
 	)
 }

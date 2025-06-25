@@ -1,10 +1,16 @@
-### Moto site
+### Moto site reactjs + tailwindcss 
+
+```
+npm install
+npm run dev
+npm run build
+```
 
 #### to do
 	[x] fonts npm install @fontsource/plus-jakarta-sans
 	[x] react route npm install react-router-dom 
-	[] form subimit
-	[] single page app?
+	[x] form subimit
+	[x] single page app?
 
 
 ###### resources

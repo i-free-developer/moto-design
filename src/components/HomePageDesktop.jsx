@@ -43,24 +43,23 @@ function HomeSectionDesktop({headerClassName, onCloseDrawer, bigScreenRatioDecim
 function ServiceOfferingsDesktop() {
 	const {isHovered, setIsHovered} = useHoverHandler();
 	const designedBigWidth = 1920; // 设计稿宽度
-	const baseSize = 100; // 基准值 (1rem = 100px)
-	const [isMobileDevice, setIsMobileDevice] = useState(false)
 	const [fontSize, setFontsize] = useState(20)
 	
-	function resizeScreen() {
+	function resetBigFontsize() {
 		let windowWidth = document.documentElement.clientWidth;
-		let bigScreenRatioRaw = windowWidth / designedBigWidth;
-		setFontsize(16 * bigScreenRatioRaw)
-		// document.documentElement.style.fontSize = baseSize * bigScreenRatioRaw + 'px';
+		if (windowWidth < 1920) {
+			let bigScreenRatioRaw = windowWidth / designedBigWidth;
+			setFontsize(20 * bigScreenRatioRaw)
+		}
 	}
 
 	useEffect(() => {
-	    window.addEventListener('load', () => { requestAnimationFrame(resizeScreen) })
-	    window.addEventListener('resize', () => { requestAnimationFrame(resizeScreen) })
+	    window.addEventListener('load', () => { requestAnimationFrame(resetBigFontsize) })
+	    window.addEventListener('resize', () => { requestAnimationFrame(resetBigFontsize) })
 
 	    return () => {
-	      window.removeEventListener('load', resizeScreen);
-	      window.removeEventListener('resize', resizeScreen);
+	      window.removeEventListener('load', resetBigFontsize);
+	      window.removeEventListener('resize', resetBigFontsize);
 	    };
 	}, []);
 

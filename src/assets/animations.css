@@ -1,20 +1,20 @@
 @keyframes drawer-slide-in {
-	from {transform: translateX(-36rem);}
-	to {transform: translateX(3.5rem);}
+	from {transform: translateX(-5.76rem);}
+	to {transform: translateX(0.56rem);}
 }
 
 @keyframes drawer-slide-out {
-	from {transform: translateX(3.5rem);}
-	to {transform: translateX(-36rem); display: none;}
+	from {transform: translateX(0.56rem);}
+	to {transform: translateX(-5.76rem); display: none;}
 }
 
 @keyframes section-slide-in {
 	from {transform: translateX(0);}
-	to {transform: translateX(21rem)}
+	to {transform: translateX(3.36rem)}
 }
 
 @keyframes section-slide-out {
-	from {transform: translateX(21rem);}
+	from {transform: translateX(3.36rem);}
 	to {transform: translateX(0)}
 }
 
@@ -129,15 +129,15 @@
 }
 
 .perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
-	transform: translateX(calc(23.5rem - 2px));
+	transform: translateX(calc(3.76rem - 2px));
 }
 
 .lang-slide-in {
-	animation: slide-down 1s ease forwards;
+	animation: slide-down 0.15s ease forwards;
 }
 
 .lang-slide-out {
-	animation: slide-up 1s ease forwards;
+	animation: slide-up 0.15s ease forwards;
 }
 
 @media (max-width: 750px) {
@@ -234,13 +234,13 @@
 	/*border: 1px solid rgba(241, 241, 241, 0.18);*/
 }
 
-main::-webkit-scrollbar {
-  display: none;             /* Chrome, Safari, Opera */
+body *::-webkit-scrollbar {
+  display: none !important;             /* Chrome, Safari, Opera */
 }
 
-main {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
+body * {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;     /* Firefox */
 }
 
 .border-inset {

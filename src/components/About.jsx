@@ -14,22 +14,22 @@ export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 	return (
 		<main className="mx-auto">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true} key="about"/>
-			<section id="about" className="mx-auto lg:pt-[3rem]" onClick={closeDrawer}>
-				<div className="px-[0.32rem] lg:px-[3rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
+			<section id="about" className="mx-auto lg:pt-[0.48rem]" onClick={closeDrawer}>
+				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
 					{isMobileDevice ? <AboutHeaderMobile smallScreenRatioDecimal={smallScreenRatioDecimal}/> : <AboutHeaderDesktop/>} 
 					<AboutBrand/>
 				</div>				
 				<AboutStatusContainer smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<EcosystemHeader/>
-				<EcosystemContainer smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<div className="px-[0.32rem] lg:px-[3rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
-					<div className="my-[1.2rem] lg:my-[22rem] grid grid-cols-3 lg:grid-cols-4 items-center gap-[0.16rem] lg:gap-6">
+				<EcosystemContainer isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
+					<div className="my-[1.2rem] lg:my-[3.52rem] grid grid-cols-3 lg:grid-cols-4 gap-[0.16rem] lg:gap-x-[0.2rem] lg:gap-y-[0.48rem]">
 						<OurTeamCard />
 						{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
 					</div>
-					<SiteInfoCard isMobileDevice={isMobileDevice}/>
-					<SiteFooter isMobileDevice={isMobileDevice}/>
 				</div>
+				<SiteInfoCard isMobileDevice={isMobileDevice}/>
+				<SiteFooter isMobileDevice={isMobileDevice}/>
 			</section>
 		</main>
 	)
@@ -37,8 +37,8 @@ export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 
 function AboutHeaderDesktop() {
 	return (
-		<div className="mx-auto mt-[1.28rem] lg:mt-[13rem] min-w-full relative">
-			<div className="mx-auto w-content uppercase text-center text-[0.32rem] leading-[0.54rem] lg:text-[4rem] lg:leading-[88px] tracking-[10%] font-medium">
+		<div className="mx-auto mt-[1.28rem] lg:mt-[2.08rem] min-w-full relative">
+			<div className="mx-auto w-content uppercase text-center text-[0.32rem] leading-[0.54rem] lg:text-[0.64rem] lg:leading-[0.88rem] tracking-[10%] font-medium">
 				<p className="relative">Every frame of code
 					<span className="absolute size-[41px] flex items-center top-0 lg:top-0 left-[0.9rem] lg:left-[25%]"><LeftQuote/></span>
 				</p>
@@ -50,7 +50,6 @@ function AboutHeaderDesktop() {
 					<span className="absolute size-[41px] flex items-center top-0 lg:top-0 right-[1.6rem] lg:right-[33%]"><RightQuote/></span>
 				</p>
 			</div>
-			<VerticalItem/>
 		</div>
 	)
 }
@@ -59,17 +58,16 @@ function AboutHeaderMobile({smallScreenRatioDecimal}) {
 	return (
 		<div className="mx-auto mt-[1.6rem] min-w-full relative">
 			<span className="flex items-center justify-center"><AboutHeaderSvg scaleRatio={smallScreenRatioDecimal}/></span>
-			<span className=""><VerticalItem/></span>
+			{/* <span className=""><VerticalItem/></span> */}
 		</div>
 	)
 }
 
 
-
 function VerticalItem() {
 	return (
 		<div id="v-item" className="absolute left-[-0.12rem] lg:left-0 bottom-[-0.24rem] lg:bottom-0 flex flex-col items-center justify-center">	
-			<div className="flex gap-[0.08rem] lg:gap-4 items-center text-[0.12rem] lg:text-base font-medium leading-[16px] text-black/64" style={{writingMode: 'vertical-lr'}}>
+			<div className="flex gap-[0.08rem] lg:gap-4 items-center text-[0.12rem] lg:text-[0.16rem] font-medium leading-[16px] text-black/64" style={{writingMode: 'vertical-lr'}}>
 				<span className="rotate-180">{CompanyDomain}</span>
 				<span className="border border-[0.8px] border-black/64 h-[1.2rem] lg:h-[8rem] translate-x-[50%]"></span>
 			</div>
@@ -79,9 +77,9 @@ function VerticalItem() {
 
 function AboutBrand() {
 	return (
-		<div className="border border-[0.02rem] lg:border-4 rounded-[0.16rem] lg:rounded-2xl p-[0.32rem] lg:px-[4rem] lg:py-[3rem] mt-[1.28rem] lg:mt-[22rem] flex justify-between">
-			<p className="uppercase text-[0.24rem] lg:text-[2rem] font-bold w-1/4 gap-[0.16rem] lg:gap-[1rem] lg:w-1/3">About brand:</p>
-			<div className="w-3/4 grow-1 lg:grow-0 lg:w-1/2 flex flex-col justify-between gap-[0.32rem] lg:gap-[2rem] text-[0.2rem] lg:text-xl font-medium">
+		<div className="border border-[0.02rem] lg:border-[0.04rem] rounded-[0.16rem] lg:rounded-[0.24rem] p-[0.32rem] lg:px-[0.64rem] lg:py-[0.48rem] mt-[1.28rem] lg:mt-[3.52rem] flex justify-between">
+			<p className="uppercase text-[0.24rem] lg:text-[0.16rem] font-bold w-1/4 gap-[0.16rem] lg:gap-[0.16rem] lg:w-1/3">About brand:</p>
+			<div className="w-3/4 grow-1 lg:grow-0 lg:w-1/2 flex flex-col justify-between gap-[0.32rem] lg:gap-[0.32rem] text-[0.2rem] lg:text-[0.2rem] font-medium">
 				<p className="">We're a visual design team with 8 years in the Web3 field.</p>
 				<p className="">Our members include front-end experts from top design schools and major tech firms, alongside VC specialists with deep insight into Tokenomics and DApp logic.</p>
 				<p className="">Design is never about forced abstraction or flashy techniques. We operate at the crossroads of web3 and code-based art，hope to deliver visual solutions that perfectly bridge your product and market needs.</p>
@@ -93,12 +91,12 @@ function AboutBrand() {
 function AboutStatusContainer({smallScreenRatioDecimal}) {
 	const [showSection, setShowSection] = useState('left')	
 	return (
-		<div className="mx-auto relative mt-[1.68rem] lg:mt-[22rem] lg:px-[3rem] w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
+		<div className="mx-auto relative mt-[1.68rem] lg:mt-[3.6rem] lg:px-[0.48rem] w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
 			<div className="mx-auto overflow-x-hidden w-full flex items-center justify-between pl-[0.32rem] lg:pl-0">
 				<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} transition-translate duration-700 lg:ml-0 mx-auto min-w-full max-w-full lg:min-w-[45%] lg:w-[45%] tracking-[-2%]`}>
-					<p className="uppercase text-[0.48rem] lg:text-[4rem] font-bold leading-[0.48rem] lg:leading-[4rem]">we strive to innovate</p>
-					<p className="text-[0.16rem] lg:text-[21px] font-normal leading-[24px] mt-[0.2rem] lg:my-[2rem]">Some Numbers About Us</p>	
-					<div className="w-full grid grid-cols-2 gap-[0.48rem] lg:gap-[4rem] mt-[0.96rem] lg:my-[3rem]">
+					<p className="uppercase text-[0.48rem] lg:text-[0.64rem] font-bold leading-[0.48rem] lg:leading-[0.64rem]">we strive to innovate</p>
+					<p className="text-[0.16rem] lg:text-[0.21rem] font-normal leading-[0.24rem] mt-[0.2rem] lg:mt-[0.16rem]">Some Numbers About Us</p>	
+					<div className="w-full grid grid-cols-2 gap-[0.48rem] lg:gap-[0.64rem] mt-[0.96rem] lg:mt-[0.48rem]">
 						{StatusContents.map((item, index) => <StatusItemCard {...item} i={index} key={index}/>)}
 					</div>
 				</div>
@@ -112,10 +110,10 @@ function AboutStatusContainer({smallScreenRatioDecimal}) {
 
 function StatusItemCard({title, suffix, content, i}) {
 	return (
-		<article className="w-[85%] lg:w-4/5 my-[0.16rem] lg:my-[1.5rem]">
-			<header className="text-[0.8rem] lg:text-8xl font-semibold leading-[0.8rem] lg:leading-[96px] tracking-[-8%]">{<OdometerItem value={title}/>} {suffix && <span className={`inline-block ${i == 3 ? 'translate-y-[8%]' : '' }`}>{suffix}</span>}</header>
-			<hr className="w-full border border-[0.01rem] lg:border-1 border-black/20 my-[0.16rem] lg:mt-[2rem] lg:mb-[1.5rem]"></hr>
-			<p className="text-[0.16rem] lg:text-base font-normal leading-[0.20rem] lg:leading-[20px] tracking-[-2%]">{content}</p>
+		<article className="w-[85%] lg:w-4/5 my-[0.16rem] lg:my-[0.16rem]">
+			<header className="text-[0.8rem] lg:text-[0.96rem] font-semibold leading-[0.8rem] lg:leading-[0.96rem] tracking-[-8%]">{<OdometerItem className="min-w-content" value={title}/>} {suffix && <span className={`inline-block ${i == 3 ? 'translate-y-[8%]' : '' }`}>{suffix}</span>}</header>
+			<hr className="w-full border border-[0.01rem] lg:border-1 border-black/20 my-[0.16rem] lg:mt-[0.32rem] lg:mb-[0.2rem]"></hr>
+			<p className="text-[0.16rem] lg:text-[0.16rem] font-normal leading-[0.20rem] lg:leading-[0.2rem] tracking-[-2%]">{content}</p>
 		</article>
 	)
 }
@@ -140,7 +138,7 @@ function GoToLeft({scaleRatio}) {
 
 function AboutCirclesCard({showSection}) {
 	return (
-		<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} lg:mr-[2rem] scale-85 lg:scale-100 transition-translate duration-700 m-auto relative min-w-[6.96rem] min-h-[6.96rem] lg:min-w-[696px] lg:min-h-[696px] hover:cursor-pointer`}>
+		<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} lg:mr-[0.32rem] scale-85 lg:scale-100 transition-translate duration-700 m-auto relative min-w-[6.96rem] min-h-[6.96rem] hover:cursor-pointer`}>
 			<div className="about-circle-div w-full h-full top-0 right-0" data-circle="true">
 				{/* <p className="circle-point circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="true"></p> */}
 				{/* <p className="circle-point-visible circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Restore and follow up" data-point="true"></p> */}
@@ -181,27 +179,27 @@ function AboutCirclesCard({showSection}) {
 
 function EcosystemHeader() {
 	return (
-		<div className="mx-auto lg:text-center px-[0.32rem] lg:px-[3rem] mt-[2.16rem] lg:mt-[22rem] w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
-			<h2 className="uppercase text-[0.48rem] lg:text-[4rem] font-bold leading-[0.48rem] lg:leading-[64px] tracking-[-2%]">ecosystem resource</h2>
-			<p className="lg:px-[10rem] text-[0.16rem] lg:text-[1.75rem] leading-[0.2rem] lg:leading-[36px] tracking-[-2%] mt-[0.16rem] lg:mt-[2.5rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries,providing them with visual design, creative, and industry consulting services.</p>	
+		<div className="mx-auto lg:text-center px-[0.32rem] lg:px-[0.48rem] mt-[2.16rem] lg:mt-[3.36rem] w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
+			<h2 className="uppercase text-[0.48rem] lg:text-[0.64rem] font-bold leading-[0.48rem] lg:leading-[0.64rem] tracking-[-2%]">ecosystem resource</h2>
+			<p className="lg:px-[1.6rem] text-[0.16rem] lg:text-[0.28rem] leading-[0.2rem] lg:leading-[0.36rem] tracking-[-2%] mt-[0.16rem] lg:mt-[0.4rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries,providing them with visual design, creative, and industry consulting services.</p>	
 		</div>
 	)
 }
 
-function EcosystemContainer({smallScreenRatioDecimal}) {
+function EcosystemContainer({isMobileDevice, smallScreenRatioDecimal}) {
 	return (
-		<div className="m-auto w-full flex items-center overflow-hidden gap--[0.32rem] lg:gap--[8rem] py-[0.8rem] lg:py-[10rem] mt-[0.8rem] lg:mt-[4rem] relative">
-			<div className="flex items-center gap--[0.32rem] lg:gap--[8rem] basis-full grow-0 shrink-0 icons-scroll mr-[-0.8rem] lg:mr-0 ">
-				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+		<div className="m-auto w-full flex items-center overflow-hidden gap--[0.32rem] lg:gap--[8rem] py-[0.8rem] lg:py-[1.6rem] mt-[0.8rem] lg:mt-[0.64rem] relative">
+			<div className="flex items-center gap--[0.32rem] lg:gap--[8rem] basis-full grow-0 shrink-0 icons-scroll mr-[0.8rem] lg:mr-0 ">
+				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</div>
 			<div aria-hidden className="flex items-center gap--[0.32rem] lg:gap--[8rem] basis-full grow-0 shrink-0 icons-scroll ml-0">
-				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<TestimonialSlideIcons smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</div>
 		    <span className="linear-gradient-cover absolute inset-0 left-0 bottom-0"></span>
 		    {/* <span className="absolute top-0 bottom-0 left-0  w-[0.24rem] lg:w-[3rem] bg-linear-to-r from-white to-white-10"></span> */}
@@ -210,14 +208,14 @@ function EcosystemContainer({smallScreenRatioDecimal}) {
 	)
 }
 
-function TestimonialSlideIcons({smallScreenRatioDecimal}) {
-	let scaleRatio = smallScreenRatioDecimal * 0.65
+function TestimonialSlideIcons({isMobileDevice, smallScreenRatioDecimal}) {
+	let scaleRatio = isMobileDevice? smallScreenRatioDecimal * 0.65 : 1
 	return (
-		<div className="flex items-center gap-[-0.8rem] lg:gap-[4rem] mr-[-0.8rem] lg:mr-[4rem]">
-			<span className="flex items-center justify-center lg:h-[3rem] cursor-pointer"><GateIconBlack scaleRatio={scaleRatio}/></span>
-			<span className="flex items-center justify-center lg:h-[3rem] cursor-pointer"><ByBitIcon scaleRatio={scaleRatio}/></span>
-			<span className="flex items-center justify-center lg:h-[3rem] cursor-pointer"><VenturesIcon scaleRatio={scaleRatio}/></span>
-			<span className="flex items-center justify-center lg:h-[3rem] cursor-pointer"><AwsIcon scaleRatio={scaleRatio}/></span>
+		<div className="flex items-center gap-[0.8rem] lg:gap-[1.28rem] mr-[0.8rem] lg:mr-[1.28rem]">
+			<span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer"><GateIconBlack scaleRatio={scaleRatio}/></span>
+			<span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer"><ByBitIcon scaleRatio={scaleRatio}/></span>
+			<span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer"><VenturesIcon scaleRatio={scaleRatio}/></span>
+			<span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer"><AwsIcon scaleRatio={scaleRatio}/></span>
 		</div>
 	)
 }
@@ -230,7 +228,7 @@ function SiteInfoCard({isMobileDevice}) {
 			// backgroundSize: 'cover',
 			backgroundPosition: '0 100%',
 			// width: '100vw',
-		}} className="bg-repeat-space py-[0.48rem] mt-[1rem] lg:mt-0 lg:py-[12rem]">
+		}} className="bg-repeat-x mt-[1rem] lg:mt-0 py-[0.48rem] lg:py-[1.92rem] mx-auto w-screen max-w-screen overflow-x-hidden">
 			{ isMobileDevice ? <InfoCardMobile/> : <InfoCardDesktop/> }
 		</div>
 	)
@@ -239,7 +237,7 @@ function SiteInfoCard({isMobileDevice}) {
 function InfoCardMobile() {
 	return (
 		<>
-			<div className="flex justify-between">
+			<div className="mx-auto flex justify-between px-[0.32rem]">
 				<SiteHeader/>
 				<InfoSection/>
 			</div>
@@ -250,9 +248,9 @@ function InfoCardMobile() {
 
 function InfoCardDesktop() {
 	return (
-		<div className="grid grid-cols-2">
+		<div className="mx-auto grid grid-cols-2 px-[0.48rem] lg:max-w-[1920px] ">
 			<SiteHeader/>
-			<div className="mx-auto flex flex-col justify-between items-start">
+			<div className="mx-auto">
 				<InfoSection/>
 				<LogoLinksCard/>
 			</div>
@@ -261,15 +259,15 @@ function InfoCardDesktop() {
 }
 
 function SiteHeader() {
-	return (<header className="text-[0.56rem] leading-[0.64rem] lg:text-[104px] lg:leading-[104px] font-medium text-wrap w-[3.69rem] lg:w-[685px]">Let'screate something extraordinary together.</header>)
+	return (<header className="text-[0.56rem] leading-[0.64rem] lg:text-[1.04rem] lg:leading-[1.04rem] font-medium text-wrap w-[3.69rem] lg:w-[6.85rem]">Let'screate something extraordinary together.</header>)
 }
 
 function InfoSection() {
 	return (
 		<div className="lg:mx-auto flex-col items-center justify-center">
-			<p className="text-[0.32rem] leading-[0.32rem] lg:text-[40px] lg:leading-[24px] font-bold text-right lg:text-left">Infomations</p>
-			<div className="flex flex-col lg:flex-row items-end lg:items-center gap-[0.16rem] lg:gap-[3rem] mt-[0.32rem] lg:mt-[4rem]">
-				{ SiteLinks.map((item, index) => <Link to={item.linkTo} key={index} className="font-semibold text-[0.2rem] leading-[0.2rem] lg:text-2xl lg:leading-[24px]"><span className="text-nowrap">{item.title}</span></Link>)}
+			<p className="text-[0.32rem] leading-[0.32rem] lg:text-[0.4rem] lg:leading-[0.24rem] font-bold text-right lg:text-left">Infomations</p>
+			<div className="flex flex-col lg:flex-row items-end lg:items-center gap-[0.16rem] lg:gap-[0.48rem] mt-[0.32rem] lg:mt-[0.64rem]">
+				{ SiteLinks.map((item, index) => <Link to={item.linkTo} key={index} className="font-semibold text-[0.2rem] leading-[0.2rem] lg:text-[0.24rem] lg:leading-[0.24rem]"><span className="text-nowrap">{item.title}</span></Link>)}
 			</div>
 		</div>
 	)
@@ -277,13 +275,24 @@ function InfoSection() {
 
 function LogoLinksCard() {
 	return (
-		<div className="mx-auto lg:px-0 mt-[0.64rem] lg:mt-[4rem] flex items-center gap-[0.32rem] lg:gap-[2rem]">
+		<div className="mx-auto px-[0.32rem] lg:px-0 mt-[0.64rem] lg:mt-[0.64rem] flex items-center gap-[0.32rem] lg:gap-[0.32rem]">
 			<EllipsIcon/>
 			<div className="">
-				<header className="text-[0.28rem] leading-[0.28rem] lg:text-[28px] lg:leading-[28px] font-bold">Moto Design</header>
-				<p className="text-[0.16rem] lg:text-base font-medium mt-[0.08rem] lg:mt-[0.5rem]">Always trust our aesthetic</p>
-				<div className="mt-[0.32rem] lg:mt-[2rem] flex items-end gap-[0.16rem] lg:gap-[2rem] overflow-visible">
-	        		{SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={item.name} />)}
+				<header className="text-[0.28rem] leading-[0.28rem] font-bold">Moto Design</header>
+				<p className="text-[0.16rem] font-medium mt-[0.08rem]">Always trust our aesthetic</p>
+				<div className="mt-[0.32rem] lg:mt-[0.32rem] flex items-end gap-[0.16rem] lg:gap-[0.32rem] text-black">
+	        		<a href="https://x.com/MotoDesign_" target="_blank" className="flex items-center cursor-pointer transition duration-150 active:scale-120 hover:scale-120">
+	        			<img src="/icon-x.png" className="h-[0.19rem] lg:h-[0.18rem] object-fit object-center"></img>
+	        		</a>
+	        		<a href="" target="_blank" className="flex items-center cursor-pointer transition duration-150 active:scale-120 hover:scale-120">
+	        			<img src="/icon-in.png" className="h-[0.19rem] lg:h-[0.18rem] object-fit object-center"></img>
+	        		</a>
+	        		<a href="" target="_blank" className="flex items-center cursor-pointer transition duration-150 active:scale-120 hover:scale-120">
+	        			<img src="/icon-be.png" className="h-[0.19rem] lg:h-[0.18rem] object-fit object-center"></img>
+	        		</a>
+	        		<a href="https://www.xiaohongshu.com/user/profile/63f71acf000000000f013e49" target="_blank" className="flex items-center cursor-pointer transition duration-150 active:scale-120 hover:scale-120">
+	        			<img src="/icon-xiaohongshu.png" className="h-[0.14rem] lg:h-[0.14rem] object-fit object-center"></img>
+	        		</a>
 				</div>
 			</div>
 		</div>
@@ -292,11 +301,11 @@ function LogoLinksCard() {
 
 function SiteFooter({isMobileDevice}) {
 	return (
-		<div className="w-full mx-auto flex items-center justify-between my-[0.48rem] lg:my-[3rem]">
+		<div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden px-[0.32rem] lg:px-[0.48rem] flex items-center justify-between my-[0.48rem]">
 			<Link to="/">{ isMobileDevice ? <LogoIconMobile/> : <LogoIconDesktop/> }</Link>
-			<div className="w-2/3 lg:w-1/2 flex flex-col lg:flex-row items-end lg:gap-[2rem] lg:items-center lg:justify-between text-[0.12rem] leading-[0.16rem] lg:text-xl font-medium lg:leading-[20px]">
+			<div className="w-2/3 lg:w-1/2 flex flex-col lg:flex-row items-end lg:gap-[0.32rem] lg:items-center lg:justify-between text-[0.12rem] leading-[0.16rem] lg:text-[0.2rem] font-medium lg:leading-[0.2rem]">
 				<p className="">{CompanyEmail}</p>
-				<p className="lg:mr-[6rem]">{CopyRight}</p>
+				<p className="lg:mr-[0.96rem]">{CopyRight}</p>
 			</div>
 		</div>
 	)
@@ -305,21 +314,21 @@ function SiteFooter({isMobileDevice}) {
 function TeamMemberCard({name, avatar, description, title, role}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
 	return (
-		<article className="border border-[0.03rem] lg:border-4 rounded-[0.16rem] lg:rounded-[1.4rem] w-[2.2rem] lg:w-[26rem] h-[3.3rem] lg:h-[33rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-			<div className={`overflow-hidden top-0 relative transition-all duration-500 rounded-0 flex max-h-full min-h-full min-w-full max-w-full flex-col justify-between ${isHovered ? 'lg:top-[-100%]' : ''}`}>
-				<img src={avatar} className="block h-[2.2rem] w-[2.2rem] lg:h-[26rem] lg:w-[26rem] object-cover object-center rounded-t-0"></img>
-				<div className="grid content-center px-[0.24rem] lg:px-[1.5rem] h-[1.1rem] lg:h-[5.5rem] grow">
-					<div className="flex flex-col lg:flex-row lg:items-center justify-between font-normal">
-						<header className="text-[0.28rem] leading-[0.28rem] lg:text-[2.5rem] lg:leading-[2.5rem] tracking-[-2%]">{name}</header>
-						<p className="mt-[0.08rem] lg:mt-0 text-[0.12rem] lg:text-right lg:text-xs">{role}</p>
+		<article className="box-border border border-[0.03rem] lg:border-[4px] rounded-[0.16rem] w-[2.2rem] lg:w-[4.14rem] h-[3.3rem] lg:h-[5.02rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+			<div className={`overflow-hidden top-0 rounded-0 flex max-h-full min-h-full min-w-full max-w-full flex-col justify-between`}>
+				<img src={avatar} className="mx-auto h-[2.2rem] w-[2.2rem] lg:h-[4.06rem] lg:w-[4.06rem] object-cover object-center lg:scale-103"></img>
+				<div className="w-full grid content-center px-[0.24rem] pt-[0.16rem] pb-[0.12rem] h-[1.1rem] grow">
+					<div className="lg:h-[0.88rem] min-w-full flex flex-col lg:flex-row lg:items-center justify-between font-normal">
+						<header className="text-[0.28rem] leading-[0.28rem] lg:text-[0.4rem] lg:leading-[0.4rem] tracking-[-2%] text-nowrap">{name}</header>
+						<p className="mt-[0.08rem] lg:mt-0 text-[0.12rem] lg:text-right lg:text-[0.1rem]">{role}</p>
 					</div>
 				</div>
 			</div>
 
-		    <div className={`relative transition-all duration-500 rounded-0 max-h-full min-h-full min-w-full max-w-full bg-black text-white p-[0.4rem] lg:p-[2.5rem] ${isHovered ? 'lg:top-[-100%] xz-100' : 'lg:top-[6px] '}`}>
-		     	<header className="text-[0.28rem] lg:text-[4rem] font-bold tracking-[-2%]">{name}</header>
-		     	<p className="uppercase text-[0.24rem] lg:text-[1.5rem] font-normal mt-[0.24rem] lg:mt-[1.5rem]">{title}</p>
-				<p className="text-[0.16rem] lg:text-base font-normal mt-[0.32rem] lg:mt-[4rem]">{description}</p>
+		    <div className={`relative transition-all duration-300 rounded-0 max-h-full min-h-full min-w-full max-w-full bg-black text-white p-[0.4rem] lg:p-[0.4rem] ${isHovered ? 'lg:top-[-100%] z-10' : 'lg:top-[6px] '}`}>
+		     	<header className="text-[0.28rem] lg:text-[0.48rem] font-bold tracking-[-2%]">{name}</header>
+		     	<p className="uppercase text-[0.24rem] lg:text-[0.24rem] font-normal mt-[0.24rem] lg:mt-[0.24rem]">{title}</p>
+				<p className="text-[0.16rem] lg:text-[0.16rem] font-normal mt-[0.32rem] lg:mt-[0.32rem]">{description}</p>
 		    </div>
 		</article>
 	)
@@ -327,14 +336,14 @@ function TeamMemberCard({name, avatar, description, title, role}) {
 
 function OurTeamCard() {
 	return (
-		<div className="mb-[0.32rem] lg:mb-0 col-span-3 lg:col-span-2 flex flex-col w-4/5">
-			<div className="flex sm:gap-[0.08rem] mb-[0.16rem] lg:mb-8">
-				<span className="text-[0.48rem] leading-[0.48rem] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase tracking-[-2%]">our</span>
-				<span className="lg:hidden text-[0.48rem] leading-[0.48rem] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase text-right tracking-[-2%]">team</span>
+		<div className="col-span-3 lg:col-span-2 flex flex-col pb-[0.32rem] lg:pr-[1.44rem]">
+			<div className="flex sm:gap-[0.08rem] mb-[0.16rem] lg:mb-[0.08rem]">
+				<span className="text-[0.48rem] leading-[0.48rem] lg:text-[1.68rem] lg:leading-[1.68rem] font-bold uppercase tracking-[-2%]">our</span>
+				<span className="lg:hidden text-[0.48rem] leading-[0.48rem] lg:text-[1.68rem] lg:leading-[1.68rem] font-bold uppercase text-right tracking-[-2%]">team</span>
 			</div>
-			<p className="text-[0.16rem] lg:text-base">As a dynamic design company, we endow products with artistic power,</p>
-			<p className="text-[0.16rem] lg:text-base">attract global enterprises, and redefine the future of products.</p>
-			<p className="hidden lg:block lg:mt-4 text-5xl leading-[48px] lg:text-[10.5rem] lg:leading-[168px] font-bold uppercase text-right tracking-[-2%]">team</p>
+			<p className="text-[0.16rem] lg:text-[0.16rem]">As a dynamic design company, we endow products with artistic power,</p>
+			<p className="text-[0.16rem] lg:text-[0.16rem]">attract global enterprises, and redefine the future of products.</p>
+			<p className="hidden lg:block lg:mt-[0.04rem] text-5xl leading-[48px] lg:text-[1.68rem] lg:leading-[1.68rem] font-bold uppercase text-right tracking-[-2%]">team</p>
 		</div>
 	)
 }

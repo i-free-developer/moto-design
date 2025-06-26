@@ -29,9 +29,9 @@ export default function HomePageDesktop() {
 
 function HomeSectionDesktop({headerClassName, onCloseDrawer, bigScreenRatioDecimal}) {
 	return (
-		<section id="landing" className="max-w-screen p-x-[0.32rem] text-black" onClick={onCloseDrawer}>
-			<div className="h-[calc(100vh-13.6rem)] place-i-tems-center place-content-center">
-				<div className="flex items-center justify-between ml-[7rem] mr-[5.5rem]">
+		<section id="landing" className="max-w-screen text-black" onClick={onCloseDrawer}>
+			<div className="h-[calc(100vh-2.17rem)] place-i-tems-center place-content-center">
+				<div className="flex items-center justify-between ml-[1.12rem] mr-[0.88rem]">
 					<div className={`${headerClassName}`}><HeaderSvgDesktop scaleRatio={bigScreenRatioDecimal}/></div>
 					<VerticalElement/> 
 				</div>
@@ -42,41 +42,21 @@ function HomeSectionDesktop({headerClassName, onCloseDrawer, bigScreenRatioDecim
 
 function ServiceOfferingsDesktop() {
 	const {isHovered, setIsHovered} = useHoverHandler();
-	const designedBigWidth = 1920; // 设计稿宽度
-	const [fontSize, setFontsize] = useState(20)
-	
-	function resetBigFontsize() {
-		let windowWidth = document.documentElement.clientWidth;
-		if (windowWidth < 1920) {
-			let bigScreenRatioRaw = windowWidth / designedBigWidth;
-			setFontsize(20 * bigScreenRatioRaw)
-		}
-	}
-
-	useEffect(() => {
-	    window.addEventListener('load', () => { requestAnimationFrame(resetBigFontsize) })
-	    window.addEventListener('resize', () => { requestAnimationFrame(resetBigFontsize) })
-
-	    return () => {
-	      window.removeEventListener('load', resetBigFontsize);
-	      window.removeEventListener('resize', resetBigFontsize);
-	    };
-	}, []);
 
 	return (
 		<div className={`absolute bottom-0 left-0 right-0`}>
 			<hr className="border border-[0.01rem] lg:border-[1.2px] border-black/40"></hr>
-			<div className="w-full flex lg:items-center justify-between lg:pb-[4rem] lg:pl-[7rem] lg:pr-[4.5rem] mt-[0.64rem] lg:mt-[1.5rem]">
-				<div className="flex flex-col lg:flex-row lg:items-center lg:justify-around gap-[0.16rem]">
-					<span className={`font-bold uppercase text-[${fontSize}px] leading-[${fontSize}px]`}>Service Offerings:</span>
-					<div className="flex items-center justify-around gap-[3rem] ml-[4rem]">
-						{ServicesItems.map((item, index) => <span className={`opacity-64 text-[${fontSize}px] leading-[${fontSize}px] font-medium justify-self-start`} key={index}>{item}</span>)}
+			<div className="w-full flex items-center justify-between pb-[0.64rem] pl-[1.12rem] pr-[0.72rem] mt-[0.24rem]">
+				<div className="flex items-center justify-around gap-[0.16rem]">
+					<span className={`font-bold uppercase text-[0.2rem] leading-[0.2rem]`}>Service Offerings:</span>
+					<div className="flex items-center justify-around gap-[0.48rem] ml-[0.64rem]">
+						{ServicesItems.map((item, index) => <span className={`opacity-64 text-[0.2rem] leading-[0.2rem] font-medium justify-self-start`} key={index}>{item}</span>)}
 					</div>
 				</div>
 				<Link to="/portfolio" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-					<button className={`cursor-pointer bg-black pl-6 py-2 h-[3rem] text-[${fontSize}px] leading-[${fontSize}px] flex items-center justify-between gap-2 text-[#f7f7f7] font-medium rounded-full`}>
+					<button className={`cursor-pointer bg-black pl-[0.24rem] py-[0.06rem] pr-[0.04rem] text-[0.2rem] leading-[0.2rem] flex items-center justify-between gap-[0.08rem] text-[#f7f7f7] font-medium rounded-full`}>
 						<span>See What We've Made</span>
-						<div className={`border border-white bg-white size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-300 mr-1 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>
+						<div className={`border border-white bg-white size-[0.4rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>
 					</button>
 				</Link>
 			</div>
@@ -87,9 +67,9 @@ function ServiceOfferingsDesktop() {
 function VerticalElement() {
 	return (
 		<div className="flex justify-center self-start">	
-			<div className={`flex gap-[0.16rem] lg:gap-4 items-center text-base font-medium leading-[1rem] text-black/64`} style={{writingMode: 'vertical-lr'}}>
+			<div className={`flex gap-[0.04rem] items-center text-[0.16rem] font-medium leading-[0.16rem] text-black/64`} style={{writingMode: 'vertical-lr'}}>
 				<span className="rotate-180">{CompanyDomain}</span>
-				<span className="border border-[0.8px] border-black/64 h-[1.28rem] lg:h-[8rem] translate-x-[50%]"></span>
+				<span className="border border-[0.8px] border-black/64 h-[1.28rem] translate-x-[50%]"></span>
 			</div>
 		</div>
 	)

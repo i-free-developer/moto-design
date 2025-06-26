@@ -27,7 +27,7 @@ function UseThrottle(callback, delay) {
 
 function useScrollDirection() {
     const [scrollDirection, setScrollDirection] = useState(null);
-    const scrollDistance = 18
+    const scrollDistance = 2
     useEffect(() => {
         let lastScrollY = window.pageYOffset;
         // function to run on scroll
@@ -98,14 +98,19 @@ function useScreenRatio() {
 
   function resizeScreen() {
     let windowWidth = document.documentElement.clientWidth;
-    let smallScreenRatioRaw = windowWidth / designedSmallWidth;
 
     if (windowWidth <= designedSmallWidth) {
       setIsMobileDevice(true)
-      document.documentElement.style.fontSize = baseSize * smallScreenRatioRaw + 'px';
-    } else {
+      let sRem = (baseSize * (windowWidth / designedSmallWidth)).toFixed(2) + 'px'
+      if (document.documentElement.style.fontSize != sRem) {document.documentElement.style.fontSize = sRem;}
+    } else if (windowWidth <= designedBigWidth) {
       setIsMobileDevice(false)
-      document.documentElement.style.fontSize = '16px';
+      let bRem = (baseSize * (windowWidth / designedBigWidth)).toFixed(2) + 'px'
+      if (document.documentElement.style.fontSize != bRem) {document.documentElement.style.fontSize = bRem;}
+      // document.documentElement.style.fontSize = baseSize * bigScreenRatioRaw + 'px';
+    } else {
+      document.documentElement.style.fontSize = baseSize * 1 + 'px';
+      // document.documentElement.style.fontSize = '16px';
     }
     setScreenRatios()
   }
@@ -118,13 +123,14 @@ function useScreenRatio() {
       // console.log('resizeSmallScreen', smallScreenRatio, smallScreenRatioDecimalRaw, Math.round(smallScreenRatio * 100))
       setSmallScreenRatioInt(Math.round(smallScreenRatio * 100))
       setSmallScreenRatioDecimal(smallScreenRatioDecimalRaw)
-    }
-
-    if (windowWidth >= designedSmallWidth) {
+    } else if (windowWidth <= designedBigWidth) {
       let bigScreenRatio = windowWidth / designedBigWidth;
       let bigScreenRatioDecimalRaw = parseFloat((windowWidth / designedBigWidth).toFixed(2))
       setBigScreenRatioInt(Math.round(bigScreenRatio * 100))
       setBigScreenRatioDecimal(bigScreenRatioDecimalRaw)
+    } else {
+      setBigScreenRatioInt(100)
+      setBigScreenRatioDecimal(1.0)
     }
   }
 

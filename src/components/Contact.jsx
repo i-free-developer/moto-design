@@ -19,7 +19,7 @@ export default function Contact({isMobileDevice, smallScreenRatioDecimal}) {
 	return (
 		<main className="mx-auto min-h-screen max-h-screen overflow-hidden">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} />
-			<section id="contact-us" className="mx-auto relative max-w-[750px] pt-[0.4rem] lg:pt-0 lg:max-w-full" onClick={closeDrawer}>
+			<section id="contact-us" className="mx-auto relative max-w-[750px] lg:max-w-full pt-[0.4rem] lg:pt-0" onClick={closeDrawer}>
 				<PixelsHeader/>
 				<ContactContainer isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 	      		<CopyRightCard/>
@@ -30,11 +30,11 @@ export default function Contact({isMobileDevice, smallScreenRatioDecimal}) {
 
 function PixelsHeader() {
 	return (
-		<div className="mx-0 lg:mx-[1rem] my-auto overflow-hidden relative h-[1.28rem] lg:h-[13.75rem] flex will-change-transform">
+		<div className="mx-0 lg:mx-[0.16rem] my-auto overflow-hidden relative h-[1.28rem] lg:h-[2.2rem] flex will-change-transform">
 			<div className="absolute top-0 left-0 w-full h-full m-auto flex items-center justify-start whitespace-nowrap">
-				<div className="scroll-header flex lg:gap--[1rem]">
-					<span className="inline-block text-[1.28rem] leading-[1.28rem] lg:text-[13.75rem] lg:leading-[220px] uppercase font-bold text-nowrap mx-[1.5rem]">Pixels are the atomic units of design.</span>
-					<span className="inline-block text-[1.28rem] leading-[1.28rem] lg:text-[13.75rem] lg:leading-[220px] uppercase font-bold text-nowrap mx-[1.5rem]" aria-hidden>Pixels are the atomic units of design.</span>
+				<div className="scroll-header flex">
+					<span className="inline-block text-[1.28rem] leading-[1.28rem] lg:text-[2.2rem] lg:leading-[2.2rem] uppercase font-bold text-nowrap mx-[0.24rem]">Pixels are the atomic units of design.</span>
+					<span className="inline-block text-[1.28rem] leading-[1.28rem] lg:text-[2.2rem] lg:leading-[2.2rem] uppercase font-bold text-nowrap mx-[0.24rem]" aria-hidden>Pixels are the atomic units of design.</span>
 				</div>
 			</div>
 		</div>
@@ -65,16 +65,16 @@ function ContactContainer({isMobileDevice, smallScreenRatioDecimal}) {
 	}
 
 	return (
-		<div className="relative mx-[0.32rem] lg:mx-[3.5rem] mt-[-0.64rem] lg:mt-[-6.875rem] px-[0.4rem] lg:px-[2rem] h-[calc(100vh-1.8rem)] lg:h-[calc(100vh-16rem)] backdrop-blur-sm bg-gray-100/40 rounded-[0.24rem] lg:rounded-3xl">
-			<div className="lg:w-1/2 mx-auto flex flex-col justify-between items-center h-[calc(100vh-5rem)] lg:h-[calc(100vh-18rem)]">
+		<div className="relative mx-[0.32rem] lg:mx-[0.56rem] mt-[-0.64rem] lg:mt-[-1.1rem] px-[0.4rem] lg:px-[0.32rem] h-[calc(100vh-0.4rem-1.28rem-0.54rem)] lg:h-[calc(100vh-1.74rem-0.98rem)] backdrop-blur-sm bg-gray-100/40 rounded-[0.24rem] lg:rounded-[0.3rem]">
+			<div className="lg:w-1/2 mx-auto flex flex-col justify-between items-center h-[calc(100vh-5rem)] lg:h-[calc(100vh-2.88rem)]">
 				<FormHeader currentStep={currentStep}/>
 				<FormBody currentStep={currentStep} goSubmit={goSubmit} finalData={finalData} setFinalData={setFinalData} goToStep={goToStep} isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<div className="mx-auto mt-[0.32rem] lg:mt-[2rem] flex items-center justify-center w-full">
+				<div className="mx-auto mt-[0.32rem] lg:mt-[0.32rem] flex items-center justify-center w-full">
 					<ButtonGroups currentStep={currentStep} loading={loading} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
 				</div>
       		</div>
-      		<div className="absolute bottom-[0.32rem] lg:bottom-[2rem] left-[0.32rem] lg:left-[2rem] w-[50%] lg:w-[40%]"><ThankYouCard/></div>
-			<div className="absolute bottom-[0.32rem] lg:bottom-[2rem] right-[0.32rem] lg:right-[2rem] w-[40%] lg:w-[30%] flex items-center justify-end"><ContactEmailCard/></div>
+      		<div className="absolute bottom-[0.32rem] lg:bottom-[0.32rem] left-[0.32rem] lg:left-[0.32rem] w-[50%] lg:w-[40%]"><ThankYouCard/></div>
+			<div className="absolute bottom-[0.32rem] lg:bottom-[0.32rem] right-[0.32rem] lg:right-[0.32rem] w-[40%] lg:w-[30%] flex items-center justify-end"><ContactEmailCard/></div>
 		</div>
 	)
 }
@@ -91,8 +91,8 @@ function FormBody({currentStep, finalData, setFinalData, goSubmit, goToStep, isM
 		return (<SumbittedGroup isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>) 
 	} else {
 		return (
-			<form className="mx-auto w-full lg:w-[50rem] lg:max-w-[1/2] mt-[1.28rem] lg:mt-[4rem] h-[1.28rem] lg:h-[16rem]" onSubmit={handleSubmit}>
-				<input autofocuse="true" type="text" name={`${currentStep}`} value={finalData[currentStep]} onChange={handleFormInput} className="mx-auto w-full h-[1.28rem] lg:h-[10.5rem] appearance-none border border-black border-[0.04rem] lg:border-4 rounded-full px-[0.16rem] lg:px-[6rem] text-black/64 text-[0.2rem] lg:text-5xl font-medium focus:outline-none focus:border-black block placeholder-black/64" placeholder={holderText} required={true}></input>
+			<form className="mx-auto w-full lg:w-[8rem] lg:max-w-[1/2] mt-[1.28rem] lg:mt-[0.64rem] h-[1.28rem] lg:h-[2.56rem]" onSubmit={handleSubmit}>
+				<input autofocuse="true" type="text" name={`${currentStep}`} value={finalData[currentStep]} onChange={handleFormInput} className="mx-auto w-full h-[1.28rem] lg:h-[1.68rem] appearance-none border border-black border-[0.04rem] rounded-full px-[0.16rem] lg:px-[0.96rem] text-black/64 text-[0.2rem] lg:text-[0.48rem] font-medium focus:outline-none focus:border-black block placeholder-black/64" placeholder={holderText} required={true}></input>
 				<BarGroup currentStep={currentStep} goToStep={goToStep}/>
 			</form>
 		)
@@ -110,20 +110,20 @@ function FormHeader({currentStep}) {
 	}
 
 	return (
-		<div className="mx-auto flex flex-col mt-[2.4rem] lg:mt-[12rem] font-medium text-center">
-			<header className="text-[0.32rem] lg:text-[2rem]">{textHeader}</header>
-			<p className="text-[0.16rem] lg:text-base text-black/64 mt-[0.08rem] lg:mt-[0.5rem]">{textBody}</p>
+		<div className="mx-auto flex flex-col mt-[2.4rem] lg:mt-[1.92rem] font-medium text-center">
+			<header className="text-[0.32rem] lg:text-[0.32rem]">{textHeader}</header>
+			<p className="text-[0.16rem] lg:text-[0.16rem] text-black/64 mt-[0.08rem] lg:mt-[0.08rem]">{textBody}</p>
 		</div>
 	)
 }
 
 function BarGroup({currentStep, goToStep}) {
 	return (
-		<div className="w-full mt-[0.16rem] lg:mt-[1rem] mx-auto flex gap-[8px] items-center justify-center cursor-pointer">
-			<span className="py-[0.24rem] lg:py-[1.5rem] flex items-center justify-center" data-step="0" onClick={goToStep}><span className={`border border-[0.04rem] lg:border-4 w-[0.32rem] lg:w-[2rem] ${ currentStep === 0 ? 'border-black' : 'border-black/20'}`} data-step="0" onClick={goToStep}></span></span>
-			<span className="py-[0.24rem] lg:py-[1.5rem] flex items-center justify-center" data-step="1" onClick={goToStep}><span className={`border border-[0.04rem] lg:border-4 w-[0.32rem] lg:w-[2rem] ${ currentStep === 1 ? 'border-black' : 'border-black/20'}`} data-step="1" onClick={goToStep}></span></span>
-			<span className="py-[0.24rem] lg:py-[1.5rem] flex items-center justify-center" data-step="2" onClick={goToStep}><span className={`border border-[0.04rem] lg:border-4 w-[0.32rem] lg:w-[2rem] ${ currentStep === 2 ? 'border-black' : 'border-black/20'}`} data-step="2" onClick={goToStep}></span></span>
-			<span className="py-[0.24rem] lg:py-[1.5rem] flex items-center justify-center" data-step="3" onClick={goToStep}><span className={`border border-[0.04rem] lg:border-4 w-[0.32rem] lg:w-[2rem] ${ currentStep === 3 ? 'border-black' : 'border-black/20'}`} data-step="3" onClick={goToStep}></span></span>
+		<div className="w-full mt-[0.16rem] lg:mt-[0.16rem] mx-auto flex gap-[8px] items-center justify-center cursor-pointer">
+			<span className="py-[0.24rem] flex items-center justify-center" data-step="0" onClick={goToStep}><span className={`border border-[0.04rem] w-[0.32rem] ${ currentStep === 0 ? 'border-black' : 'border-black/20'}`} data-step="0" onClick={goToStep}></span></span>
+			<span className="py-[0.24rem] flex items-center justify-center" data-step="1" onClick={goToStep}><span className={`border border-[0.04rem] w-[0.32rem] ${ currentStep === 1 ? 'border-black' : 'border-black/20'}`} data-step="1" onClick={goToStep}></span></span>
+			<span className="py-[0.24rem] flex items-center justify-center" data-step="2" onClick={goToStep}><span className={`border border-[0.04rem] w-[0.32rem] ${ currentStep === 2 ? 'border-black' : 'border-black/20'}`} data-step="2" onClick={goToStep}></span></span>
+			<span className="py-[0.24rem] flex items-center justify-center" data-step="3" onClick={goToStep}><span className={`border border-[0.04rem] w-[0.32rem] ${ currentStep === 3 ? 'border-black' : 'border-black/20'}`} data-step="3" onClick={goToStep}></span></span>
 		</div>
 	)
 }
@@ -141,7 +141,7 @@ function ButtonGroups({currentStep, goBack, goNext, goSubmit, getInTouch, loadin
 	}
 
 	return	(
-		<div className="mx-auto flex items-center justify-center lg:grow gap-[0.16rem] lg:gap-4 cursor-pointer">
+		<div className="mx-auto flex items-center justify-center lg:grow gap-[0.16rem] cursor-pointer">
 			{btnGroups}
 		</div>
 	)
@@ -149,23 +149,22 @@ function ButtonGroups({currentStep, goBack, goNext, goSubmit, getInTouch, loadin
 
 function ButtonWithDot({btnAction, btnText}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
-	const ArrowElement = (<span className={`bg-white size-[0.30rem] lg:size-[2.5rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></span>)
+	const ArrowElement = (<span className={`bg-white size-[0.3rem] lg:size-[0.4rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></span>)
 	return (
-		<span className="bg-black rounded-full pl-[0.24rem] lg:pl-[1.5rem] pr-[0.08rem] lg:pr-[0.5rem] py-[0.04rem] lg:py-[0.25rem] flex items-center justify-between gap-[0.40rem] lg:gap-0" onClick={btnAction} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-			<span className="text-[#f7f7f7] text-[0.28rem] lg:text-[2rem] font-medium mr-[0.16rem] lg:mr-[1.5rem]">{btnText}</span>
-			{/* <span className="size-[0.5rem] bg-white rounded-full ml-[5rem] z-300"></span> */}
+		<span className="bg-black rounded-full pl-[0.24rem] pr-[0.08rem] py-[0.04rem] flex items-center justify-between gap-[0.16rem]" onClick={btnAction} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+			<span className="text-[#f7f7f7] text-[0.28rem] lg:text-[0.32rem] font-medium">{btnText}</span>
 			{ArrowElement}
 		</span>
 	)
 }
 
 function ButtonNoDot({btnAction, btnText}) {
-	return (<span className="bg-black rounded-full px-[0.24rem] lg:px-[1.5rem] py-[0.04rem] lg:py-[0.25rem] flex items-center justify-center" onClick={btnAction}><span className="text-[#f7f7f7] text-[0.28rem] lg:text-[2rem] font-medium">{btnText}</span></span>)
+	return (<span className="bg-black rounded-full px-[0.24rem] py-[0.04rem] flex items-center justify-center" onClick={btnAction}><span className="text-[#f7f7f7] text-[0.28rem] lg:text-[0.32rem] font-medium">{btnText}</span></span>)
 }
 
 function SumbittedGroup({isMobileDevice, smallScreenRatioDecimal}) {
 	return (
-		<div className="mx-auto w-full mt-[1.28rem] lg:mt-[4rem] h--[1.92rem] lg:h-[16rem] flex items-center justify-center lg:scale-90">
+		<div className="mx-auto w-full mt-[1.28rem] lg:mt-[0.64rem] h--[1.92rem] lg:h-[2.56rem] flex items-center justify-center lg:scale-90">
 			{isMobileDevice? <SubmittedAlreadyIconSmall scaleRatio={smallScreenRatioDecimal}/> : <SubmittedAlreadyIconBig/>} 
 		</div>
 	)
@@ -174,11 +173,11 @@ function SumbittedGroup({isMobileDevice, smallScreenRatioDecimal}) {
 function ThankYouCard() {
 	return (
 		<div className="w-full lg:w-3/5 text-nowrap relative">
-			<p className="text-wrap text-[0.12rem] lg:text-base font-medium">Thank you for your attention!</p>
-			<p className="text-wrap text-[0.12rem] lg:text-base font-medium">Whether it's product consultation,</p>
-			<p className="text-wrap text-[0.12rem] lg:text-base font-medium">cooperation invitations, or valuable suggestions,</p>
-			<p className="text-wrap text-[0.12rem] lg:text-base font-medium">we will listen attentively.</p>
-    		<div className="absolute left-0 top-[-0.32rem] lg:top-[-4rem]">{<StarIcon/>}</div>
+			<p className="text-wrap text-[0.12rem] lg:text-[0.16rem] font-medium">Thank you for your attention!</p>
+			<p className="text-wrap text-[0.12rem] lg:text-[0.16rem] font-medium">Whether it's product consultation,</p>
+			<p className="text-wrap text-[0.12rem] lg:text-[0.16rem] font-medium">cooperation invitations, or valuable suggestions,</p>
+			<p className="text-wrap text-[0.12rem] lg:text-[0.16rem] font-medium">we will listen attentively.</p>
+    		<div className="absolute left-0 top-[-0.32rem] lg:top-[-0.64rem]">{<StarIcon/>}</div>
 		</div>
 	)
 }
@@ -186,16 +185,16 @@ function ThankYouCard() {
 function ContactEmailCard() {
 	return (
 		<div className="w-full my-auto text-right font-medium">
-      		<p className="text-[0.12rem] lg:text-base">Email Address</p>
-      		<p className="text-[0.14rem] lg:text-[1.75rem]">{CompanyEmail}</p>
+      		<p className="text-[0.12rem] lg:text-[0.16rem]">Email Address</p>
+      		<p className="text-[0.14rem] lg:text-[0.28rem]">{CompanyEmail}</p>
     	</div>
 	)
 }
 
 function CopyRightCard() {
 	return (
-		<div className="w-full h-[0.64rem] lg:h-[4rem] flex items-center justify-center">
-			<p className="text-center text-black/50 text-[0.12rem] lg:text-xs font-medium">{CopyRight}</p>
+		<div className="w-full h-[0.64rem] flex items-center justify-center">
+			<p className="text-center text-black/50 text-[0.12rem] font-medium">{CopyRight}</p>
 		</div>
 	)
 }

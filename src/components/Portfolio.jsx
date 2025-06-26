@@ -13,22 +13,20 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 		<main className="mx-auto">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
 			<section id="portfolio" className="" onClick={closeDrawer}>
-				<div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] px-[0.32rem] lg:px-[3rem] pt-[0.48rem] lg:pt-[3rem] lg:mt-[8rem] lg:mb-[3rem] overflow-x-hidden">
+				<div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] px-[0.32rem] lg:px-[0.48rem] pt-[0.48rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem] overflow-x-hidden">
 					<PortfolioHeader/>
-					<div className="my-[0.48rem] lg:my-[6rem] flex flex-row justify-between">
+					<div className="my-[0.48rem] lg:my-[0.96rem] flex flex-row justify-between">
 						<MobileDeskIcons isMobile={isMobile} setIsMobile={setIsMobile} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-						<p className="self-start lg:mb-[3rem] text-[0.28rem] leading-[0.28rem] lg:text-[2rem] lg:leading-[32px] text-black/64 w-[55%] lg:w-[26rem] tracking-[-2%] font-normal text-right">Our user-centered design encourages productivity and boosts revenue</p>
+						<p className="self-start lg:mb-[0.48rem] text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 w-[55%] lg:w-[4.16rem] tracking-[-2%] font-normal text-right">Our user-centered design encourages productivity and boosts revenue</p>
 					</div>
 				</div>
 				
-				<div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] lg:px-[3rem]">
+				<div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] lg:px-[0.48rem]">
 	      	{isMobile ? <MobilePortfolios isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/> : <DesktopPortfolios/>}
 	      </div>
 	      
-	      <div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] px-[0.32rem] lg:px-[3rem] overflow-x-hidden">
-	      	<SiteInfoCard isMobileDevice={isMobileDevice}/>
-					<SiteFooter isMobileDevice={isMobileDevice}/>
-				</div>
+	      <SiteInfoCard isMobileDevice={isMobileDevice}/>
+				<SiteFooter isMobileDevice={isMobileDevice}/>
 			</section>
 		</main>
 	)
@@ -36,16 +34,16 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 
 function PortfolioHeader() {
 	return (
-		<article className="flex flex-col lg:flex-row justify-between my-[1rem] lg:my-[4rem] tracking-[-2%]">
-			<header className="text-[0.56rem] leading-[0.64rem] lg:text-[5rem] lg:leading-[96px] lg:w-[45%] font-normal">We don't do cookie-cutter solutions</header>
-			<p className="mt-[0.16rem] lg:mt-[1rem] lg:mt-0 w-full lg:w-[20%] text-black/64 text-[0.24rem] leading-[0.24rem] lg:text-2xl lg:leading-[24px] lg:text-right font-normal">Backing the best Web 3.0 founders & products</p>
+		<article className="flex flex-col lg:flex-row justify-between my-[1rem] lg:my-[0.64rem] tracking-[-2%]">
+			<header className="text-[0.56rem] leading-[0.64rem] lg:text-[0.8rem] lg:leading-[0.96rem] lg:w-[45%] font-normal">We don't do cookie-cutter solutions</header>
+			<p className="mt-[0.16rem] lg:mt-[0.16rem] w-full lg:w-[20%] text-black/64 text-[0.24rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.24rem] lg:text-right font-normal">Backing the best Web 3.0 founders & products</p>
 		</article>
 	)
 }
 
 function MobileDeskIcons({isMobile, setIsMobile, smallScreenRatioDecimal}) {
 	return (
-		<div className="cursor-pointer self-end flex items-center gap-[0.48rem] lg:gap-[2rem] lg:mt-[1rem] lg:mb-[4rem]">
+		<div className="cursor-pointer self-end flex items-center gap-[0.48rem] lg:gap-[0.32rem] lg:mt-[0.16rem] lg:mb-[0.64rem]">
 			<span onClick={() => setIsMobile(true)} className="">{isMobile ? <MobileIconBlack scaleRatio={smallScreenRatioDecimal}/> : <MobileIconWhite scaleRatio={smallScreenRatioDecimal}/> }</span>
 			<span onClick={() => setIsMobile(false)} className="">{isMobile ? <DesktopIconWhite scaleRatio={smallScreenRatioDecimal}/> : <DesktopIconBlack scaleRatio={smallScreenRatioDecimal}/> }</span>
 		</div>
@@ -54,7 +52,7 @@ function MobileDeskIcons({isMobile, setIsMobile, smallScreenRatioDecimal}) {
 
 function DesktopPortfolios() {
   return (
-    <div className="px-[0.32rem] lg:px-0 grid grid-cols-1 lg:grid-cols-5 gap-[0.24rem] lg:gap-[1.5rem]">
+    <div className="px-[0.32rem] lg:px-0 grid grid-cols-1 lg:grid-cols-5 gap-[0.24rem] lg:gap-[0.24rem]">
       {PortfolioData.desktop.map((item, index) => <DesktopCard {...item} index={index} totalNumber={PortfolioData.desktop.length} key={index}/>)}
     </div>
   )
@@ -73,22 +71,22 @@ function DesktopCard({id, title, description, image, url, index, totalNumber}) {
 	}, [index])
 	
 	const spanClasses = {
-		0: 'col-span-1 lg:col-span-3 relative h-[4.8rem] lg:h-[36rem]',
-		1: 'col-span-1 lg:col-span-2 relative h-[4.8rem] lg:h-[36rem]',
-	  2: 'col-span-1 lg:col-span-2 relative h-[4.8rem] lg:h-[36rem]',
-	  3: 'col-span-1 lg:col-span-3 relative h-[4.8rem] lg:h-[36rem]',
-	  4: 'col-span-1 lg:col-span-5 relative h-[4.8rem] lg:h-[36rem]',
+		0: 'col-span-1 lg:col-span-3 relative h-[4.8rem] lg:h-[5.76rem]',
+		1: 'col-span-1 lg:col-span-2 relative h-[4.8rem] lg:h-[5.76rem]',
+	  2: 'col-span-1 lg:col-span-2 relative h-[4.8rem] lg:h-[5.76rem]',
+	  3: 'col-span-1 lg:col-span-3 relative h-[4.8rem] lg:h-[5.76rem]',
+	  4: 'col-span-1 lg:col-span-5 relative h-[4.8rem] lg:h-[5.76rem]',
 	}
 
 	return (
-		<div className={`${spanClasses[colsIndex]} rounded-[0.28rem] lg:rounded-3xl overflow-hidden relative`}>
+		<div className={`${spanClasses[colsIndex]} rounded-[0.28rem] lg:rounded-[0.3rem] overflow-hidden relative`}>
 			<span
         style={{pointerEvents: 'none'}}
         className={`
 				z-5 absolute left-0 right-0 bottom-0 min-w-full h-[30%] rounded-[0] blur--[8px] bg-gradient-to-b from-[#D1D1DA]/0 to-[#3173FF] bg--[#3173FF] opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
 				${isHovered ? 'opacity-100' : 'translate-y-[10%] '}
 			`}></span>
-			<Link to={`/portfolio/${id}`} className="max-w-full h-full block cursor-pointer rounded-[0.28rem] lg:rounded-3xl">
+			<Link to={`/portfolio/${id}`} className="max-w-full h-full block cursor-pointer rounded-[0.28rem] lg:rounded-[0.3rem]">
 				<div className="w-full h-full overflow-hidden rounded-[inherit]">
 					<img src={image} loading="lazy" className={`w-full h-full object-cover object-center rounded-[inherit] transition-transform duration-400 ${isHovered ? 'scale-104' : ''}`} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}></img>
 				</div>
@@ -101,13 +99,13 @@ function DesktopCard({id, title, description, image, url, index, totalNumber}) {
 function DesktopBottomCard({title, description}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
 	return (
-		<div className="z-10 absolute left-[0.12rem] lg:left-6 right-[0.12rem] lg:right-6 bottom-[0.12rem] lg:bottom-6 px-[0.24rem] lg:px-6 py-[0.24rem] lg:py-4 bg-white rounded-[0.24rem] lg:rounded-2xl flex justify-between items-center" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+		<div className="z-10 absolute left-[0.12rem] right-[0.12rem] bottom-[0.12rem] px-[0.32rem] py-[0.24rem] lg:py-[0.24rem] bg-white rounded-[0.24rem] flex justify-between items-center" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<div className="max-w-3/4">
-				<header className="font-bold mb-[0.16rem] lg:mb-2 text-[0.24rem] lg:text-2xl">{title}</header>
-				<p className="text-[0.16rem] lg:text-xl">{description}</p>
+				<header className="font-bold mb-[0.16rem] lg:mb-[0.02] text-[0.24rem]">{title}</header>
+				<p className="text-[0.16rem]">{description}</p>
 			</div>
-			<div className="size-[0.72rem] lg:size-[72px] bg-black/16 flex items-center justify-center rounded-full">
-				<div className={`w-[0.8rem] lg:w-10 ${isHovered ? '-rotate-45' : '-rotate-0'} flex items-center justify-center transition-rotate transition-transform duration-400`}><ArrowRight/></div>
+			<div className="size-[0.72rem] lg:size-[0.72rem] bg-black/16 flex items-center justify-center rounded-full">
+				<div className={`w-[0.8rem] lg:w-[0.24rem] ${isHovered ? '-rotate-45' : '-rotate-0'} flex items-center justify-center transition-rotate transition-transform duration-400`}><ArrowRight/></div>
 			</div>
 		</div>
 	)

@@ -36,11 +36,11 @@ export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer, sm
   }, [drawerStatus])
 
 	return (
-		// h-5.2rem px-3.5rem
-		<div className={`mx-auto sticky relative z-100 ${ scrollDirection === "down" ? "top-[-5rem] lg:top-[-6rem]" : "top-0"}`}>
-			<section id="navbar" className={`text-black mx-auto px-[0.32rem] lg:px-[3.5rem] py-[0.12rem] lg:py-[1.6rem] lg:rounded-md lg:rounded-xl transition-[top] duration-400 ${frostedGlass ? 'bg-[#F7F7F7]/40 backdrop-blur-[20px]' : ''}`}>
-				<nav className="flex justify-between items-center h-[0.34rem] lg:h-[2rem]" onClick={closeDrawer}>
-					<div onClick={handleClickDrawer} className="cursor-pointer size-[0.25rem] lg:size-[1.25rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
+		// h-0.54rem lg:h-0.98rem px-3.5rem h-0.34+0.32*2=0.98
+		<div className={`mx-auto sticky relative z-100 min-w-screen max-w-screen ${ scrollDirection === "down" ? "top-[-0.54rem] lg:top-[-0.98rem]" : "top-0"}`}>
+			<section id="navbar" className={`text-black mx-auto px-[0.32rem] lg:px-[0.56rem] py-[0.12rem] lg:py-[0.32rem] lg:rounded-xl transition-[top] duration-400 ${frostedGlass ? 'bg--[#F7F7F7]/40 bg-white/40 backdrop-blur-[20px]' : ''}`}>
+				<nav className="flex justify-between items-center h-[0.34rem]" onClick={closeDrawer}>
+					<div onClick={handleClickDrawer} className="cursor-pointer size-[0.25rem] lg:size--[1.25rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
 					<Link to="/" className="max-h-[0.34rem] lg:h-[2rem] object-fit flex items-center justify-center"><LogoIcon scaleRatio={smallScreenRatioDecimal || bigScreenRatioDecimal}/></Link>
 					<LangButtons/>
 				</nav>
@@ -57,8 +57,8 @@ function DrawerCard({drawerStatus}) {
 	const drawerClassName = drawerClasses[drawerStatus]
 	return(
 		<div
-			className={`bg-[#F7F7F7]/40 backdrop-blur-[20px] px-[0.72rem] lg:px-[4rem] pt-[0.96rem] lg:pt-[8rem] pb-[0.72rem] lg:pb-[4rem] w-[4.6rem] lg:w-[35rem] h-[calc(100vh-4.8rem)] lg:h-[calc(100vh-5.2rem-56px)] flex flex-col justify-between absolute top-[0.6rem] lg:top-[5.15rem] rounded-[0.24rem] lg:rounded-2xl ${drawerClassName}`}>
-			<div className="flex flex-col items-start gap-[0.4rem] lg:gap-[2.5rem]">
+			className={`bg-[#F7F7F7]/40 backdrop-blur-[20px] px-[0.72rem] lg:px-[0.64rem] pt-[0.96rem] lg:pt-[1.8rem] pb-[0.72rem] lg:pb-[0.64rem] w-[4.6rem] lg:w-[5.6rem] h-[calc(100vh-4.8rem)] lg:h-[calc(100vh-0.98rem-56px)] flex flex-col justify-between absolute top-[0.6rem] lg:top-[0.98rem] rounded-[0.24rem] ${drawerClassName}`}>
+			<div className="flex flex-col items-start gap-[0.4rem] lg:gap-[0.32rem]">
        			{SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>
 			<SocialIconsContainer/>
@@ -68,12 +68,12 @@ function DrawerCard({drawerStatus}) {
 
 function SocialIconsContainer() {
 	return (
-		<div className="pr-[1rem] lg:pr-[2rem]">
-			<div className="flex items-end gap-[0.38rem] lg:gap-[2rem]">
+		<div className="pr-[1rem] lg:pr-[0.32rem]">
+			<div className="flex items-end gap-[0.38rem] lg:gap-[0.32rem]">
         		{SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
 			</div>
-			<hr className="border border-[0.8px] mt-[0.32rem] lg:mt-[1.5rem] w-full w--[2.32rem] lg:w--[13rem]"></hr>
-			<p className="text-[0.12rem] lg:text-xs font-medium text-[#161619]/48 mt-[0.24rem] lg:mt-[1.5rem]">{CompanyEmail}</p>
+			<hr className="border border-[0.8px] mt-[0.32rem] lg:mt-[0.24rem] w-full w--[2.32rem] lg:w--[13rem]"></hr>
+			<p className="text-[0.12rem] lg:text-[0.12rem] font-medium text-[#161619]/48 mt-[0.24rem] lg:mt-[0.24rem]">{CompanyEmail}</p>
 		</div>
 	)
 }
@@ -84,8 +84,8 @@ function SiteLinkItem({url, title, linkTo}) {
 
 	return (
 		<div className="flex flex-col" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => scrollTo(url)}>
-			<Link to={linkTo} className="text-[0.4rem] lg:text-5xl font-semibold">{title}</Link>
-			<hr className={`mt-[0.12rem] lg:mt-[6px] ${isHovered ? 'hover-border' : 'border border-[1px] border-transparent'}`}></hr>
+			<Link to={linkTo} className="text-[0.4rem] lg:text-[0.48rem] font-semibold">{title}</Link>
+			<hr className={`mt-[0.12rem] lg:mt-[0.06rem] ${isHovered ? 'hover-border' : 'border border-[1px] border-transparent'}`}></hr>
 		</div>
 	)
 }
@@ -95,20 +95,20 @@ function LangButtons() {
 	const langClasses = {initial: 'hidden', closed: 'lang-slide-out', opened: 'lang-slide-in'}
 	function handleLang() {
 		let newStatus; 
-	  if (langStatus === 'initial' || langStatus === 'closed') { newStatus = 'opened' } 
-	  if (langStatus === 'opened') { newStatus = 'closed' }
-	  setLangStatus(newStatus)
+		if (langStatus === 'initial' || langStatus === 'closed') { newStatus = 'opened' } 
+		if (langStatus === 'opened') { newStatus = 'closed' }
+		setLangStatus(newStatus)
 	}
 	let langClassName = langClasses[langStatus]
 
 	return (
 		<div className="relative cursor-pointer">
 			<div className="flex items-end justify-between" onClick={handleLang}>
-				<span className="text-[0.3rem] lg:text-xl font-bold mr-[6px]">En</span>
+				<span className="text-[0.3rem] lg:text-[0.2rem] font-bold mr-[6px]">En</span>
 				<span className="mb-[6px]">{langStatus ? <LangArrowIcon/> : <LangArrowIcon />}</span>
 			</div>
-			<div className={`absolute top-[0.45rem] lg:top-[2rem] flex items-center justify-center ${langClassName}`}>
-				<span className="text-[0.3rem] lg:text-xl font-bold">Cn</span>
+			<div className={`absolute top-[0.45rem] lg:top-[0.32rem] flex items-center justify-center ${langClassName}`}>
+				<span className="text-[0.3rem] lg:text-[0.2rem] font-bold">Cn</span>
 			</div>
 		</div>
 	)

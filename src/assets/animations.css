@@ -80,12 +80,6 @@
 	to { opacity: 0; translateY: -200%; }
 }
 
-@keyframes opacity-fade-in {
-	from { opacity: 0; scale: 1; }
-	50% { opacity: 0.5; scale: 1; }
-	to { opacity: 1; scale: 1;}
-}
-
 .drawer-in {
 	animation: drawer-slide-in 0.4s linear;
 	animation-fill-mode: forwards;
@@ -218,10 +212,6 @@
 /*	animation-range: entry 0% cover 50%;*/
 	/*animation-timeline: scroll(self);*/
 	/*animation-fill-mode: both;*/
-}
-
-.icon-fade-in {
-	animation: opacity-fade-in 1s linear forwards;
 }
 
 .frosted-glass {

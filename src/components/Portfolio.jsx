@@ -133,7 +133,7 @@ function MobilePortfolios({isMobileDevice, smallScreenRatioDecimal}) {
 
   return (
     <div className="relative mx-auto">
-      <div className="mx-auto w-full overflow-hidden grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-[1.75rem]">
+      <div className="mx-auto w-full overflow-hidden grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-[0.28rem]">
         {mobileItems.map((item, index) => <MobileCard {...item} index={index} key={index}/>)}
       </div>
       <StickyHandCard scaleRatio={smallScreenRatioDecimal}/>
@@ -143,7 +143,7 @@ function MobilePortfolios({isMobileDevice, smallScreenRatioDecimal}) {
 
 function MobileCard({title, image, index}) {
   return (
-    <div className="col-span-1 w-[2.39rem] h-[5.04rem] lg:w-[342px] lg:h-[722px] lg:w--[416px] lg:h--[886px] rounded-[0.28rem] lg:rounded-[1rem] overflow-hidden">
+    <div className="col-span-1 w-[2.39rem] h-[5.04rem] lg:w-[3.42rem] lg:h-[7.22rem] rounded-[0.28rem] lg:rounded-[0.16rem] overflow-hidden">
       {image ? <img loading="lazy" src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit]" /> : <EmptyCard/> }
     </div>
   )
@@ -156,7 +156,7 @@ function StickyHandCard({scaleRatio}) {
   return (
     <div className="absolute inset-0 flex items-center justify-center">
       <div className="sticky top-0 bottom-0 translate-x-[19%]">
-        <img loading="lazy" className="w-[5.4rem] h-[5.77rem] lg:w-[792px] lg:h-[848px] lg:w--[966px] lg:h--[1034px] object-fit object-center rounded-[0.28rem] lg:rounded-[1rem]" src={handImg} alt="Hand"/>
+        <img loading="lazy" className="w-[5.4rem] h-[5.77rem] lg:w-[7.92rem] lg:h-[8.48rem] object-fit object-center rounded-[0.28rem] lg:rounded-[0.16rem]" src={handImg} alt="Hand"/>
       </div>
     </div>
   )
@@ -164,7 +164,7 @@ function StickyHandCard({scaleRatio}) {
 
 function MobileIconWhite({scaleRatio}) {
 	return (
-		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} className="icon-fade-in" width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect x="1" y="1" width="20" height="26" rx="1" stroke="black" strokeWidth="2"/>
 			<rect x="7" y="4" width="8" height="2" rx="1" fill="#161619"/>
 		</svg>
@@ -173,7 +173,7 @@ function MobileIconWhite({scaleRatio}) {
 
 function MobileIconBlack({scaleRatio}) {
 	return (
-		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} className="icon-fade-in" width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect width="22" height="28" rx="2" fill="#161619"/>
 			<rect x="7" y="4" width="8" height="2" rx="1" fill="#F7F7F7"/>
 		</svg>
@@ -182,7 +182,7 @@ function MobileIconBlack({scaleRatio}) {
 
 function DesktopIconWhite({scaleRatio}) {
 	return (
-		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} className="icon-fade-in" width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect x="1" y="1" width="26" height="18" rx="1" stroke="#161619" strokeWidth="2"/>
 			<rect x="8" y="22" width="12" height="2" rx="1" fill="#161619"/>
 		</svg>
@@ -191,7 +191,7 @@ function DesktopIconWhite({scaleRatio}) {
 
 function DesktopIconBlack({scaleRatio}) {
 	return (
-		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} className="icon-fade-in" width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect width="28" height="20" rx="2" fill="black"/>
 			<rect x="8" y="22" width="12" height="2" rx="1" fill="#161619"/>
 		</svg>

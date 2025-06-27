@@ -109,8 +109,8 @@ function useScreenRatio() {
       if (document.documentElement.style.fontSize != bRem) {document.documentElement.style.fontSize = bRem;}
       // document.documentElement.style.fontSize = baseSize * bigScreenRatioRaw + 'px';
     } else {
-      document.documentElement.style.fontSize = baseSize * 1 + 'px';
-      // document.documentElement.style.fontSize = '16px';
+      setIsMobileDevice(false)
+      if (document.documentElement.style.fontSize != '100px') {document.documentElement.style.fontSize = baseSize * 1 + 'px'} 
     }
     setScreenRatios()
   }

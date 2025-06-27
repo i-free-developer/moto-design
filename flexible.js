@@ -35,6 +35,7 @@
   }
   
   docEl.setAttribute('data-dpr', dpr);
+  
   if (!metaEl) {
     metaEl = doc.createElement('meta');
     metaEl.setAttribute('name', 'viewport');
@@ -85,12 +86,16 @@
     
     flexible.rem = win.rem = resRem;
   }
+
+  refreshRem();
   
   // 事件监听
   win.addEventListener('resize', function() {
     clearTimeout(tid);
     tid = setTimeout(refreshRem, 300);
   }, false);
+
+  win.addEventListener('load', refreshRem, false);
   
   win.addEventListener('pageshow', function(e) {
     if (e.persisted) {
@@ -107,9 +112,7 @@
       doc.body.style.fontSize = 12 * dpr + 'px';
     }, false);
   }
-  
-  refreshRem();
-  
+    
   flexible.dpr = win.dpr = dpr;
   flexible.refreshRem = refreshRem;
   flexible.rem2px = function(d) {

@@ -52,7 +52,7 @@ function MobileDeskIcons({isMobile, setIsMobile, smallScreenRatioDecimal}) {
 
 function DesktopPortfolios() {
   return (
-    <div className="px-[0.32rem] lg:px-0 grid grid-cols-1 lg:grid-cols-5 gap-[0.24rem] lg:gap-[0.24rem]">
+    <div className="mb-[3.6rem] px-[0.32rem] lg:px-0 grid grid-cols-1 lg:grid-cols-5 gap-[0.24rem] lg:gap-[0.24rem]">
       {PortfolioData.desktop.map((item, index) => <DesktopCard {...item} index={index} totalNumber={PortfolioData.desktop.length} key={index}/>)}
     </div>
   )
@@ -132,7 +132,7 @@ function MobilePortfolios({isMobileDevice, smallScreenRatioDecimal}) {
 	}, [])
 
   return (
-    <div className="relative mx-auto">
+    <div className="relative mx-auto mb-[3.6rem] pb-[10.5%] lg:pb-[6.5%]">
       <div className="mx-auto w-full overflow-hidden grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-[0.28rem]">
         {mobileItems.map((item, index) => <MobileCard {...item} index={index} key={index}/>)}
       </div>

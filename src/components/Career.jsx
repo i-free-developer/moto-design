@@ -123,7 +123,7 @@ function PerksContainer() {
 
 function PerkCard({number, title, subtitle, content, index}) {
 	return (
-		<div className={`perk-card transition-transform duration-300 size-[4rem] lg:size-[5.6rem] p-[0.16rem] flex flex-col justify-between bg-[#f7f7f7] border border-2 border-[#000000] shrink-0 ${index === 0 ? '' : 'ml-[-1.28rem] lg:ml-[-3.76rem]'}`}>
+		<div className={`perk-card transition-transform duration-300 size-[4rem] lg:size-[5.6rem] p-[0.16rem] flex flex-col justify-between bg-[#f7f7f7] border border-2 border-[#000000] shrink-0 ${index === 0 ? '' : 'ml-[-2.72rem] lg:ml-[-3.76rem]'}`}>
 			<div className="flex items-center justify-between">
 				<div className="flex flex-col">
 					<span className="font-normal text-[0.2rem] lg:text-[0.24rem] tracking-[-2%]">{number}</span>

@@ -135,15 +135,15 @@
 }
 
 .logo-masked {
-	-webkit-mask-image: url(moto-mask.svg);
-  mask-image: url(moto-mask.svg);
+	-webkit-mask-image: url(moto-mask-desktop.svg);
+  mask-image: url(moto-mask-desktop.svg);
 }
 
 @media (max-width: 750px) {
 	.horizontal-bar-in, .horizontal-bar-out, .vertical-element-in, .vertical-element-out { animation: none;}
 
 	.perk-card:active ~ .perk-card, .perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
-		transform: translateX(calc(1.28rem - 2px));
+		transform: translateX(calc(2.72rem - 2px));
 	}
 
 	@keyframes drawer-slide-in {

@@ -1,19 +1,15 @@
 (function(win, lib) {
-  var doc = win.document;
-  var docEl = doc.documentElement;
-  var metaEl = doc.querySelector('meta[name="viewport"]');
-  var dpr = 0;
-  var scale = 0;
-  var tid;
-  var flexible = lib.flexible || (lib.flexible = {});
+  const doc = win.document;
+  const docEl = doc.documentElement;
+  let metaEl = doc.querySelector('meta[name="viewport"]');
+  let dpr = 0;
+  let scale = 0;
+  let tid;
+  const flexible = lib.flexible || (lib.flexible = {});
   
-  // 设置基准值
-  var baseSize = 100; // 750设计稿基准值 (750px/10)
-  var desktopBreakpoint = 751; // 桌面端断点
-  var maxWidth = 1920; // 最大宽度限制
   
   if (metaEl) {
-    var match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/);
+    let match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/);
     if (match) {
       scale = parseFloat(match[1]);
       dpr = parseInt(1 / scale);
@@ -21,9 +17,9 @@
   }
   
   if (!dpr && !scale) {
-    var isAndroid = win.navigator.appVersion.match(/android/gi);
-    var isIPhone = win.navigator.appVersion.match(/iphone/gi);
-    var devicePixelRatio = win.devicePixelRatio;
+    let isAndroid = win.navigator.appVersion.match(/android/gi);
+    let isIPhone = win.navigator.appVersion.match(/iphone/gi);
+    const devicePixelRatio = win.devicePixelRatio;
     if (isIPhone) {
       if (devicePixelRatio >= 3) {
         dpr = 3;
@@ -46,42 +42,48 @@
     if (docEl.firstElementChild) {
       docEl.firstElementChild.appendChild(metaEl);
     } else {
-      var wrap = doc.createElement('div');
+      const wrap = doc.createElement('div');
       wrap.appendChild(metaEl);
       doc.write(wrap.innerHTML);
     }
   }
   
+  // 设置基准值
+  const baseSize = 100; // 750设计稿基准值 (750px/10)
+  const desktopBreakpoint = 751; // 桌面端断点
+  const maxWidth = 1920; // 最大宽度限制
+
   // 核心函数：刷新REM值
   function refreshRem() {
-    var width = docEl.getBoundingClientRect().width;
-    
+    let width = docEl.getBoundingClientRect().width;
+    let resRem;
     // 桌面端处理
-    if (width >= desktopBreakpoint * dpr) {
+    if (width > 1920) {
+      resRem = (1 * baseSize).toFixed(2) + 'px'
+      docEl.style.fontSize = resRem
+      docEl.classList.add('desktop-mode');
+      docEl.classList.remove('mobile-mode');
+    } else if (width >= desktopBreakpoint * dpr) {
       // 桌面端 - 使用固定px单位
-      docEl.style.fontSize = '16px';
+      resRem = ((width / 1920) * baseSize).toFixed(2) + 'px'
+      docEl.style.fontSize = resRem
       docEl.classList.add('desktop-mode');
       docEl.classList.remove('mobile-mode');
       
       // 限制最大宽度
-      if (width > maxWidth) {
-        width = maxWidth;
-      }
-    } 
-    // 移动端处理
+      if (width > maxWidth) { width = maxWidth}
+    }
     else {
+      // 移动端处理
       docEl.classList.add('mobile-mode');
       docEl.classList.remove('desktop-mode');
-      
       // 移动端 - 使用REM单位
-      if (width / dpr > 540) {
-        width = 540 * dpr;
-      }
-      var rem = width / 10;
-      docEl.style.fontSize = rem + 'px';
+      if (width / dpr > 540) { width = 540 * dpr }
+      resRem = ((width / 750) * baseSize).toFixed(2);
+      docEl.style.fontSize = resRem
     }
     
-    flexible.rem = win.rem = rem;
+    flexible.rem = win.rem = resRem;
   }
   
   // 事件监听

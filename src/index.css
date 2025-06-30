@@ -40,3 +40,10 @@ body {
 .text-scale-6xl {
   font-size: clamp(2rem, calc(4rem * (100vw / 1920)), 4rem);
 }*/
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  /*src: url("/fonts/custom.woff2") format("woff2");*/
+  font-display: swap; /* 避免阻塞渲染 */
+  -webkit-font-smoothing: antialiased; /* 抗锯齿 */
+}

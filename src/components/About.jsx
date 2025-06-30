@@ -189,13 +189,13 @@ function EcosystemHeader() {
 function EcosystemContainer({isMobileDevice, smallScreenRatioDecimal}) {
 	return (
 		<div className="m-auto w-full flex items-center overflow-hidden gap--[0.32rem] lg:gap--[8rem] py-[0.8rem] lg:py-[1.6rem] mt-[0.8rem] lg:mt-[0.64rem] relative">
-			<div className="flex items-center gap--[0.32rem] lg:gap--[8rem] basis-full grow-0 shrink-0 icons-scroll mr-[0.8rem] lg:mr-0 ">
+			<div className="flex items-center gap--[0.32rem] lg:gap--[8rem] w-full grow-0 shrink-0 icons-scroll mr-[0.8rem] lg:mr-0 ">
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</div>
-			<div aria-hidden className="flex items-center gap--[0.32rem] lg:gap--[8rem] basis-full grow-0 shrink-0 icons-scroll ml-0">
+			<div aria-hidden className="flex items-center gap--[0.32rem] lg:gap--[8rem] w-full grow-0 shrink-0 icons-scroll ml-0">
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
@@ -280,19 +280,8 @@ function LogoLinksCard() {
 			<div className="">
 				<header className="text-[0.28rem] leading-[0.28rem] font-bold">Moto Design</header>
 				<p className="text-[0.16rem] font-medium mt-[0.08rem]">Always trust our aesthetic</p>
-				<div className="mt-[0.32rem] lg:mt-[0.32rem] flex items-end gap-[0.16rem] lg:gap-[0.32rem] text-black">
-	        		<a href="https://x.com/MotoDesign_" target="_blank" className="flex items-center cursor-pointer transition duration-150 active:scale-120 hover:scale-120">
-	        			<img src="/icon-x.png" className="h-[0.19rem] lg:h-[0.18rem] object-fit object-center"></img>
-	        		</a>
-	        		<a href="" target="_blank" className="flex items-center cursor-pointer transition duration-150 active:scale-120 hover:scale-120">
-	        			<img src="/icon-in.png" className="h-[0.19rem] lg:h-[0.18rem] object-fit object-center"></img>
-	        		</a>
-	        		<a href="" target="_blank" className="flex items-center cursor-pointer transition duration-150 active:scale-120 hover:scale-120">
-	        			<img src="/icon-be.png" className="h-[0.19rem] lg:h-[0.18rem] object-fit object-center"></img>
-	        		</a>
-	        		<a href="https://www.xiaohongshu.com/user/profile/63f71acf000000000f013e49" target="_blank" className="flex items-center cursor-pointer transition duration-150 active:scale-120 hover:scale-120">
-	        			<img src="/icon-xiaohongshu.png" className="h-[0.14rem] lg:h-[0.14rem] object-fit object-center"></img>
-	        		</a>
+				<div className="mt-[0.32rem] lg:mt-[0.32rem] flex items-end gap-[0.16rem] lg:gap-[0.32rem]">
+	        		{SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
 				</div>
 			</div>
 		</div>

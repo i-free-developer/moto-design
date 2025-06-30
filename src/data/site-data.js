@@ -1,23 +1,21 @@
 const TimelineItems = [
-	{id: 1, number: '01', title: 'Portfolio review'},
+	{id: 1, number: '01', title: 'Application review'},
 	{id: 2, number: '02', title: 'Interviews'},
 	{id: 3, number: '03', title: 'Background investigation'},
-	{id: 4, number: '04', title: 'Round 2 interview'},
-	{id: 5, number: '05', title: 'Xyz'},
-	{id: 6, number: '06', title: 'About'},
-	{id: 7, number: '07', title: 'Verify'},
-	{id: 8, number: '08', title: 'Offer'},
+	{id: 4, number: '04', title: 'Round Two interview'},
+	{id: 5, number: '05', title: 'Offer'},
+	{id: 6, number: '06', title: 'Onboarding'},
 ]
 
 const PerkItemsData = [
-	{number: '01', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
+	{number: '01', title: 'Perks', subtitle: 'Competitive salary',     content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
 	{number: '02', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '03', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '04', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '05', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '06', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '07', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '08', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
+	{number: '03', title: 'Perks', subtitle: 'Remote work',            content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
+	{number: '04', title: 'Perks', subtitle: 'Flexible leave',         content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
+	{number: '05', title: 'Perks', subtitle: 'Various benefits',       content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
+	{number: '06', title: 'Perks', subtitle: 'Free language learning', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
+	{number: '07', title: 'Perks', subtitle: 'Work with an expert',    content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
+	{number: '08', title: 'Perks', subtitle: 'Diversified growth',     content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
 ]
 
 const OpenningRoles = [

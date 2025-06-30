@@ -189,13 +189,13 @@ function EcosystemHeader() {
 function EcosystemContainer({isMobileDevice, smallScreenRatioDecimal}) {
 	return (
 		<div className="m-auto w-full flex items-center overflow-hidden gap--[0.32rem] lg:gap--[8rem] py-[0.8rem] lg:py-[1.6rem] mt-[0.8rem] lg:mt-[0.64rem] relative">
-			<div className="flex items-center gap--[0.32rem] lg:gap--[8rem] w-full grow-0 shrink-0 icons-scroll mr-[0.8rem] lg:mr-0 ">
+			<div className="flex items-center gap--[0.32rem] lg:gap--[8rem] grow-0 shrink-0 icons-scroll mr-[0.8rem] lg:mr-0 ">
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</div>
-			<div aria-hidden className="flex items-center gap--[0.32rem] lg:gap--[8rem] w-full grow-0 shrink-0 icons-scroll ml-0">
+			<div aria-hidden className="flex items-center gap--[0.32rem] lg:gap--[8rem] grow-0 shrink-0 icons-scroll ml-0">
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>

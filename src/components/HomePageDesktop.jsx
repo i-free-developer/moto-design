@@ -8,15 +8,13 @@ import { useDrawerHandler, useScreenRatio, useHoverHandler } from './FunctionCol
 import { ArrowIcon } from './SocialIconsCollection'
 
 const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'section-drawer-out'}
-const verticalClasses = {initial: '', opened: 'vertical-element-in', closed: 'vertical-element-out'}
-const serviceClasses = {initial: '', opened: 'horizontal-bar-out', closed: 'horizontal-bar-in'}
+// const verticalClasses = {initial: '', opened: 'vertical-element-in', closed: 'vertical-element-out'}
+// const serviceClasses = {initial: '', opened: 'horizontal-bar-out', closed: 'horizontal-bar-in'}
 
 export default function HomePageDesktop() {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 	const {bigScreenRatioDecimal} = useScreenRatio()
 	const headerClassName = headerClasses[drawerStatus]
-	// const serviceClassName = serviceClasses[drawerStatus]
-	// const verticalClassName = verticalClasses[drawerStatus]
 
 	return (
 		<main id="home" className="min-h-screen lg:max-h-screen overflow-hidden relative">

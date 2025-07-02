@@ -38,7 +38,7 @@ function ContactContainer({isMobileDevice, smallScreenRatioDecimal}) {
 	const [displayCard, setDisplayCard] = useState(false)
 	function handDisplayCard() { if (displayCard) {setDisplayCard(false)} }
 	const initData = {0: '', 1: '', 2: '', 3: ''}
-	const [isSubmitted, setIsSubmitted] = useState(true)
+	const [isSubmitted, setIsSubmitted] = useState(false)
 
 	return (
 		<div className="border relative mx-[0.32rem] lg:mx-[0.64rem] mt-[-0.64rem] lg:mt-[-1.1rem] px-[0.4rem] lg:px-[0.56rem] h-[calc(100vh-0.4rem-1.28rem-0.64rem)] lg:h-[calc(100vh-1.74rem-0.98rem)] backdrop-blur-sm bg-gray-100/40 rounded-[0.24rem] lg:rounded-[0.3rem]">

@@ -4,14 +4,7 @@ import Navbar from './Navbar'
 import { StarIcon, ArrowIcon } from './SocialIconsCollection'
 import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
 
-const placeHolders = ['Name', 'Roles*', 'Enter your email*', 'A brief introduction about your project', ]
-
-// const buttonContents = {
-// 	0: ['Next'],
-// 	1: ['Back', 'Next'],
-// 	2: ['Back', 'Next'],
-// 	3: ['Submit'],
-// }
+const SelectOptions = ['Website Design', 'App UI/UX Design', 'Full Brand VI System', 'Graphic Design', '3D Animation & Visual Effects', 'Web3 Strategy Consulting', 'NFT Artwork & Design', 'Social Media Visuals', 'Brand Partnership', 'Other']
 
 export default function Contact({isMobileDevice, smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
@@ -42,36 +35,17 @@ function PixelsHeader() {
 }
 
 function ContactContainer({isMobileDevice, smallScreenRatioDecimal}) {
+	const [displayCard, setDisplayCard] = useState(false)
+	function handDisplayCard() { if (displayCard) {setDisplayCard(false)} }
 	const initData = {0: '', 1: '', 2: '', 3: ''}
-	const { callApi, loading } = useFakeApi();
-	const [currentStep, setCurrentStep] = useState(0)
-	const [finalData, setFinalData] = useState(initData)
-
-	function goBack() { setCurrentStep(currentStep - 1) }
-	function goNext() { setCurrentStep(currentStep + 1) }
-	function getInTouch() { setCurrentStep(0) }
-	function goToStep(e) { console.log(e.target.dataset.step); setCurrentStep(parseInt(e.target.dataset.step))}
-
-	const goSubmit = async () => {
-	    console.log('Submitted name:', finalData);
-	    try {
-	    	const result = await callApi({ data: finalData });
-	      	console.log(result);
-			setCurrentStep(currentStep + 1)
-			setFinalData(initData)
-	    } catch (err) {
-	      	console.error(err);
-	    }
-	}
+	const [isSubmitted, setIsSubmitted] = useState(true)
 
 	return (
-		<div className="relative mx-[0.32rem] lg:mx-[0.56rem] mt-[-0.64rem] lg:mt-[-1.1rem] px-[0.4rem] lg:px-[0.32rem] h-[calc(100vh-0.4rem-1.28rem-0.54rem)] lg:h-[calc(100vh-1.74rem-0.98rem)] backdrop-blur-sm bg-gray-100/40 rounded-[0.24rem] lg:rounded-[0.3rem]">
-			<div className="lg:w-1/2 mx-auto flex flex-col justify-between items-center h-[calc(100vh-5rem)] lg:h-[calc(100vh-2.88rem)]">
-				<FormHeader currentStep={currentStep}/>
-				<FormBody currentStep={currentStep} goSubmit={goSubmit} finalData={finalData} setFinalData={setFinalData} goToStep={goToStep} isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<div className="mx-auto mt-[0.32rem] lg:mt-[0.32rem] flex items-center justify-center w-full">
-					<ButtonGroups currentStep={currentStep} loading={loading} goBack={goBack} goNext={goNext} goSubmit={goSubmit} getInTouch={getInTouch}/>
-				</div>
+		<div className="border relative mx-[0.32rem] lg:mx-[0.64rem] mt-[-0.64rem] lg:mt-[-1.1rem] px-[0.4rem] lg:px-[0.56rem] h-[calc(100vh-0.4rem-1.28rem-0.64rem)] lg:h-[calc(100vh-1.74rem-0.98rem)] backdrop-blur-sm bg-gray-100/40 rounded-[0.24rem] lg:rounded-[0.3rem]"
+		>
+			<div className="mx-auto flex flex-col justify-between items-center h--[calc(100vh-5rem)] lg:h--[calc(100vh-2.88rem)]">
+				<FormHeader isSubmitted={false}/>
+				<FormBody displayCard={displayCard} setDisplayCard={setDisplayCard} isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
       		</div>
       		<div className="absolute bottom-[0.32rem] lg:bottom-[0.32rem] left-[0.32rem] lg:left-[0.32rem] w-[50%] lg:w-[40%]"><ThankYouCard/></div>
 			<div className="absolute bottom-[0.32rem] lg:bottom-[0.32rem] right-[0.32rem] lg:right-[0.32rem] w-[40%] lg:w-[30%] flex items-center justify-end"><ContactEmailCard/></div>
@@ -79,100 +53,118 @@ function ContactContainer({isMobileDevice, smallScreenRatioDecimal}) {
 	)
 }
 
-function FormBody({currentStep, finalData, setFinalData, goSubmit, goToStep, isMobileDevice, smallScreenRatioDecimal}) {
-	const holderText = placeHolders[currentStep]
-	const handleFormInput = (e) => { setFinalData({...finalData, [currentStep]: e.target.value }) }
+function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  isMobileDevice, smallScreenRatioDecimal}) {
+	const [teamData, setTeamData] = useState('')
+	const [userName, setUserName] = useState('')
+	const [userTeam, setUserTeam] = useState('')
+	const [userEmail, setUserEmail] = useState('')
+	const [selectedItems, setSelectedItems] = useState(new Set())
+	const { callApi, loading } = useFakeApi();
 	const handleSubmit = (e) => {
-		goSubmit()
 	    e.preventDefault(); // Prevent page reload
-	};
+		const form = e.target;
+	    const formData = new FormData(form);
+		console.log(formData)
+	    // fetch('/some-api', { method: form.method, body: formData });
 
-	if (currentStep >= 4) { 
-		return (<SumbittedGroup isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>) 
+	    // Or you can work with it as a plain object:
+	    const formJson = Object.fromEntries(formData.entries());
+	    console.log(formJson);
+		goSubmit(formJson)
+	}
+	const goSubmit = async (data) => {
+	    console.log('Submitted name:', data);
+	    try {
+	    	const result = await callApi({ data: data });
+	      	console.log(result);
+	      	setIsSubmitted(true)
+	    } catch (err) {
+	      	console.error(err);
+	    }
+	}
+
+	if (isSubmitted) { 
+		return (<SumbittedGroup isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal} setIsSubmitted={setIsSubmitted}/>) 
 	} else {
 		return (
-			<form className="mx-auto w-full lg:w-[8rem] lg:max-w-[1/2] mt-[1.28rem] lg:mt-[0.64rem] h-[1.28rem] lg:h-[2.56rem]" onSubmit={handleSubmit}>
-				<input autofocuse="true" type="text" name={`${currentStep}`} value={finalData[currentStep]} onChange={handleFormInput} className="mx-auto w-full h-[1.28rem] lg:h-[1.68rem] appearance-none border border-black border-[0.04rem] rounded-full px-[0.16rem] lg:px-[0.96rem] text-black/64 text-[0.2rem] lg:text-[0.48rem] font-medium focus:outline-none focus:border-black block placeholder-black/64" placeholder={holderText} required={true}></input>
-				<BarGroup currentStep={currentStep} goToStep={goToStep}/>
+			<form className="mx-auto w-full lg:w-[14.2rem] lg:mt-[1.28rem] h--[1.28rem] lg:h--[2.56rem] flex flex-col gap-[0.2rem]" onSubmit={handleSubmit}>
+				<div className="text-[0.4rem] leading-[0.4rem] font-medium w-full flex items-center flex-nowrap">
+					<span className="">Hi there, I’m</span>
+					<span className="w-[4.8rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center"><input name="name" value={userName} onChange={e => setUserName(e.target.value)} className="w-full placeholder:text-center mb-[0.06rem] h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your name*" required={true}></input></span>
+					<span className="">and work as</span>
+					<span className="w-[4.4rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center"><input name="role" value={userTeam} onChange={e => setUserTeam(e.target.value)} className="w-full placeholder:text-center mb-[0.06rem] h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Your role in the team*" required={true}></input></span>
+				</div>
+
+				<div className="text-[0.4rem] leading-[0.4rem] font-medium w-full flex items-center justify-center flex-nowrap">
+					<span className="">I’m looking for a creative team to help  with</span>
+					<span className="relative w-[6rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center">
+						<input onClick={() => setDisplayCard(!displayCard)} name="team" value={teamData} onChange={e => {}} className="w-full placeholder:text-center mb-[0.06rem] h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="What type of service are you looking for?" required={true}>
+						</input>
+						<SelectCard displayCard={displayCard} selectedItems={selectedItems} setSelectedItems={setSelectedItems} setTeamData={setTeamData}/>
+					</span>
+				</div>
+
+				<div className="text-[0.4rem] leading-[0.4rem] font-medium w-full flex items-center flex-nowrap">
+					<span className="">The goal is to make it real — with precision and purpose.</span>
+				</div>
+
+				<div className="text-[0.4rem] leading-[0.4rem] font-medium w-full flex items-center flex-nowrap">
+					<span className="">Hit my inbox at</span>
+					<span className="w-[4.8rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center"><input input name="email" value={userEmail} onChange={e => setUserEmail(e.target.value)} className="w-full placeholder:text-center mb-[0.06rem] h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your email*" required={true} type="email"></input></span>
+					<span className="">, let's build something bold!</span>
+				</div>
+				<div className="mx-auto mt-[0.8rem]">
+					<button className="text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] rounded-full bg-black/50">Submit</button>
+				</div>
 			</form>
 		)
 	}
 }
 
-function FormHeader({currentStep}) {
-	let textHeader, textBody;
-	if (currentStep >= 4) {
-		textHeader = 'Successfully Submitted'
-		textBody = 'We will provide you with feedback as soon as possible. Thank you for your patience!'
-	} else {
-		textHeader = 'Please leave your information'
-		textBody = 'we will response as soon as possible!'
+function SelectCard({displayCard, selectedItems, setSelectedItems, setTeamData}) {
+	function handleClickItem(e) {
+		const item = e.target.dataset.item
+		const newSet = new Set(selectedItems);
+		newSet.has(item) ? newSet.delete(item) : newSet.add(item)
+	    setSelectedItems(newSet);
+	    newSet.size > 0 ? setTeamData(Array.from(newSet).join(', ')) : setTeamData('')
 	}
+	return (
+		<div className={`${displayCard ? '' : 'hidden'} z-10 absolute right-0 top-[0.42rem] bg-black py-[0.28rem] pl-[0.28rem] pr-[0.68rem] w-[6rem] flex items-center gap-[0.08rem] flex-wrap text-[0.16rem] font-medium`}>
+			{SelectOptions.map((item, index) => <span className={`${selectedItems.has(item) ? 'bg-white text-black' : 'bg-black text-white'} px-[0.12rem] py-[0.02rem] border rounded-full`} data-item={item} key={index} onClick={handleClickItem}>{item}</span>)}
+		</div>
+	)
+}
+
+function FormHeader({isSubmitted}) {
+	let textHeader, textBody;
+	if (isSubmitted) { textHeader = 'Successfully Submitted', textBody = 'We will provide you with feedback as soon as possible. Thank you for your patience!'} 
+	else { textHeader = 'Please leave your information', textBody = 'we will response as soon as possible!' }
 
 	return (
 		<div className="mx-auto flex flex-col mt-[2.4rem] lg:mt-[1.92rem] font-medium text-center">
 			<header className="text-[0.32rem] lg:text-[0.32rem]">{textHeader}</header>
-			<p className="text-[0.16rem] lg:text-[0.16rem] text-black/64 mt-[0.08rem] lg:mt-[0.08rem]">{textBody}</p>
+			<p className="text-[0.16rem] lg:text-[0.16rem] text-black/64 mt-[0.08rem] lg:mt-[0.12rem]">{textBody}</p>
 		</div>
 	)
 }
 
-function BarGroup({currentStep, goToStep}) {
+function SumbittedGroup({isMobileDevice, smallScreenRatioDecimal, setIsSubmitted}) {
 	return (
-		<div className="w-full mt-[0.16rem] lg:mt-[0.16rem] mx-auto flex gap-[8px] items-center justify-center cursor-pointer">
-			<span className="py-[0.24rem] flex items-center justify-center" data-step="0" onClick={goToStep}><span className={`border border-[0.04rem] w-[0.32rem] ${ currentStep === 0 ? 'border-black' : 'border-black/20'}`} data-step="0" onClick={goToStep}></span></span>
-			<span className="py-[0.24rem] flex items-center justify-center" data-step="1" onClick={goToStep}><span className={`border border-[0.04rem] w-[0.32rem] ${ currentStep === 1 ? 'border-black' : 'border-black/20'}`} data-step="1" onClick={goToStep}></span></span>
-			<span className="py-[0.24rem] flex items-center justify-center" data-step="2" onClick={goToStep}><span className={`border border-[0.04rem] w-[0.32rem] ${ currentStep === 2 ? 'border-black' : 'border-black/20'}`} data-step="2" onClick={goToStep}></span></span>
-			<span className="py-[0.24rem] flex items-center justify-center" data-step="3" onClick={goToStep}><span className={`border border-[0.04rem] w-[0.32rem] ${ currentStep === 3 ? 'border-black' : 'border-black/20'}`} data-step="3" onClick={goToStep}></span></span>
-		</div>
-	)
-}
-
-function ButtonGroups({currentStep, goBack, goNext, goSubmit, getInTouch, loading}) {
-	let btnGroups;
-	if (currentStep === 0) {
-		btnGroups = (<ButtonWithDot btnAction={goNext} btnText="Next"/>)
-	} else if (currentStep === 1 || currentStep === 2) {
-		btnGroups = (<><ButtonWithDot btnAction={goBack} btnText="Back"/><ButtonWithDot btnAction={goNext} btnText="Next"/></>)
-	} else if (currentStep === 3) {
-		btnGroups = (<ButtonNoDot btnAction={goSubmit} btnText={loading ? 'Submitting...' : 'Submit'}/>)
-	} else {
-		btnGroups = (<ButtonNoDot btnAction={getInTouch} btnText="Get in Touch Again"/>)
-	}
-
-	return	(
-		<div className="mx-auto flex items-center justify-center lg:grow gap-[0.16rem] cursor-pointer">
-			{btnGroups}
-		</div>
-	)
-}
-
-function ButtonWithDot({btnAction, btnText}) {
-	const {isHovered, setIsHovered} = useHoverHandler();
-	const ArrowElement = (<span className={`bg-white size-[0.3rem] lg:size-[0.4rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></span>)
-	return (
-		<span className="bg-black rounded-full pl-[0.24rem] pr-[0.08rem] py-[0.04rem] flex items-center justify-between gap-[0.16rem]" onClick={btnAction} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-			<span className="text-[#f7f7f7] text-[0.28rem] lg:text-[0.32rem] font-medium">{btnText}</span>
-			{ArrowElement}
-		</span>
-	)
-}
-
-function ButtonNoDot({btnAction, btnText}) {
-	return (<span className="bg-black rounded-full px-[0.24rem] py-[0.04rem] flex items-center justify-center" onClick={btnAction}><span className="text-[#f7f7f7] text-[0.28rem] lg:text-[0.32rem] font-medium">{btnText}</span></span>)
-}
-
-function SumbittedGroup({isMobileDevice, smallScreenRatioDecimal}) {
-	return (
-		<div className="mx-auto w-full mt-[1.28rem] lg:mt-[0.64rem] h--[1.92rem] lg:h-[2.56rem] flex items-center justify-center lg:scale-90">
-			{isMobileDevice? <SubmittedAlreadyIconSmall scaleRatio={smallScreenRatioDecimal}/> : <SubmittedAlreadyIconBig/>} 
+		<div className="mx-auto w-full mt-[1.28rem] lg:mt-[1.08rem] h--[1.92rem] lg:h--[2.56rem] flex flex-col items-center justify-between lg:scale-90">
+			<div className="mx-auto flex items-center justify-center lg:h-[2.8rem]">
+				{isMobileDevice? <SubmittedAlreadyIconSmall scaleRatio={smallScreenRatioDecimal}/> : <SubmittedAlreadyIconBig/>} 
+			</div>
+			<div className="mx-auto mt-[1.06rem]">
+				<span onClick={e => {setIsSubmitted(false)}} className="text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] rounded-full bg-black text-white">Get in Touch Again</span>
+			</div>
 		</div>
 	)
 }
 
 function ThankYouCard() {
 	return (
-		<div className="w-full lg:w-3/5 text-nowrap relative">
+		<div className="w-full lg:w-content text-nowrap relative">
 			<p className="text-wrap text-[0.12rem] lg:text-[0.16rem] font-medium">Thank you for your attention!</p>
 			<p className="text-wrap text-[0.12rem] lg:text-[0.16rem] font-medium">Whether it's product consultation,</p>
 			<p className="text-wrap text-[0.12rem] lg:text-[0.16rem] font-medium">cooperation invitations, or valuable suggestions,</p>

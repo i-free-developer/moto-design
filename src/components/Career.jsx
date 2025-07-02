@@ -6,6 +6,17 @@ import { StarIcon, ArrowIcon } from './SocialIconsCollection'
 import { SiteInfoCard,  SiteFooter } from './About'
 import { UseThrottle, useDrawerHandler, useHoverHandler } from './FunctionCollection'
 
+// const PerkImages = {
+// 	'01': require('./assets/perk-01.png').default,
+// 	'02': require('./assets/perk-02.png').default,
+// 	'03': require('./assets/perk-03.png').default,
+// 	'04': require('./assets/perk-04.png').default,
+// 	'05': require('./assets/perk-05.png').default,
+// 	'06': require('./assets/perk-06.png').default,
+// 	'07': require('./assets/perk-07.png').default,
+// 	'08': require('./assets/perk-08.png').default,
+// }
+
 export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 
@@ -16,16 +27,21 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<CareerHeader/>
 					<CareerContenr/>
+				</div>
+				<div className="mx-auto w-screen lg:px-[0.48rem] mt-[0.8rem] lg:mt-[1.48rem] ">
 					<TimeLineCard/>
+				</div>
+				<div className="mx-auto w-screen max-w-screen mt-[2.16rem] lg:mt-[2.8rem] overflow-x-hidden">
 					<LifeAtMotoCard/>
 				</div>
-				
-				<div className="mx-auto w-screen max-w-screen mt-[0.8rem] lg:mt-[1.28rem]">	
+
+				<div className="mx-auto w-screen max-w-screen mt-[0.8rem] lg:mt-[1.6rem]">	
 					<PerksContainer/>
 				</div>
 				
 				<div className="px-[0.32rem] lg:px-[0.48rem] lg:mb-[2.88rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<RolesContainer/>
+					<div className="mt-[2.16rem] lg:mt-[2.8rem]"></div>
 					<HowToApply/>
 				</div>
 				<SiteInfoCard isMobileDevice={isMobileDevice}/>
@@ -61,52 +77,45 @@ function PositionBtn() {
 
 function CareerContenr() {
 	return (
-		<div className="flex flex-col lg:flex-row lg:items-center my-[1.28rem] lg:my-[0.64rem]">
+		<div className="flex flex-col lg:flex-row lg:items-center my-[1.68rem] lg:mt-[1.28rem]">
 			<span className="hidden lg:block"><ArrowGroup/></span>
-			<p className="lg:mt-[1.28rem] lg:ml-[9.12rem] text-black/64 font-normal w-[74%] lg:w-[6.08rem] text-[0.24rem] leading-[0.24rem] lg:text-[0.32rem] lg:leading-[0.36rem] tracking-[-2%]">After the <span className="font-bold text-black">portfolio</span> meets our requirement, on average <span className="font-bold text-black">1~3 week</span> interview process with <span className="font-bold text-black">2 inteviews</span>.</p>
+			<p className="lg:ml-[10.06rem] text-black/64 font-normal w-[74%] lg:w-[4.8rem] text-[0.24rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.36rem] tracking-[-2%]">After the <span className="font-bold text-black">portfolio</span> meets our requirement, on average <span className="font-bold text-black">1~3 week</span> interview process with <span className="font-bold text-black">2 inteviews</span>.</p>
 		</div>
 	)
 }
 
 function TimeLineCard() {
-	const [timelineIndex, setTimelineIndex] = useState(0)
-	const numbersLimit = TimelineItems.length
-
-	// const debouncedWheel = useCallback(debounce((e) => {wheelScroll(e)}, 300, { leading: false, trailing: true }), [])
-	const throttledWheel = UseThrottle( (e) => {wheelScroll(e)}, 500 )
-	function wheelScroll(e) {
-  		if (e.deltaY < 0) { setTimelineIndex(x => { return x - 1 > 0 ? x - 1 : 0 }) }
-  		if (e.deltaY > 0) { setTimelineIndex(x => { return x + 1 > numbersLimit ? (numbersLimit - 1) : (x + 1) }) }
-	}
-
 	return (
-		<div className="flex items-center flex-nowrap lg:px-[0.16rem] py-[0.32rem] lg:py-[0.16rem] lg:mt-[2.64rem] overflow-x-auto" onWheel={throttledWheel}>
-			{TimelineItems.map(item => <TimeLineElement {...item} key={item.number} timelineIndex={timelineIndex}/>)}
+		<div className="flex items-center flex-nowrap px-[0.16rem] lg:px-[0.5rem] py-[0.32rem] lg:py-[0.16rem] overflow-x-auto">
+			{TimelineItems.map((item, index) => <TimeLineElement {...item} key={item.id} isEven={index % 2 === 0} isLastItem={index === (TimelineItems.length - 1)}/>)}
 		</div>
 	)
 }
 
 function LifeAtMotoCard() {
 	return (
-		<div className="mx-auto mt-[1.28rem] lg:mt-[2.8rem] w-full lg:px-[0.64rem] text-center scroll-fade-in">
-			<h2 className="font-bold text-[0.48rem] lg:text-[0.88rem] uppercase lg:my-[0.4rem]">Life at moto</h2>
-			<p className="text-[0.16rem] lg:text-[0.4rem] font-normal">We believe great design is borderless, and so are the minds behind it.</p>
-			<p className="text-[0.16rem] lg:text-[0.4rem] font-normal">We’re not everywhere — but we think like we are.</p>
+		<div className="mx-auto w-full text-center scroll-fade-in">
+			<h2 className="font-bold text-[0.48rem] lg:text-[0.8rem] uppercase lg:my-[0.4rem]">Life at moto</h2>
+			<p className="text-[0.16rem] lg:text-[0.24rem] lg:leading-[0.32rem] font-normal">We believe great design is borderless, and so are the minds behind it.</p>
+			<p className="text-[0.16rem] lg:text-[0.24rem] lg:leading-[0.32rem] font-normal">We’re not everywhere — but we think like we are.</p>
 		</div>
 	)
 }
 
-function TimeLineElement({id, number, title, timelineIndex}) {
-	return (
-		<div className="flex flex-col relative grow min-w-content shrink-0">
-			<span className={`w-full border border-2 relative ${ timelineIndex == id ? 'border-black' : 'border-gray'}`}>
-				<span className={`absolute left-[-0.06rem] lg:left-[-0.08rem] -translate-y-[50%] size-[0.12rem] lg:size-[0.16rem] rounded-[50%] ${timelineIndex == id ? 'bg-white border-black border-4 scale-150' : 'border-gray bg-gray border-2'}`}></span>
-			</span>
+function TimeLineElement({id, title, isEven, isLastItem}) {
+	const {isHovered, setIsHovered} = useHoverHandler();
 
-			<div className={`w-content lg:min-w-content flex flex-col lg:flex-row lg:items-end gap-[0.16rem] lg:gap-[0.16rem] font-semibold tracking-[-2%] mt-[0.08rem] lg:mt-[0.08rem] ${ timelineIndex == id ? '' : 'opacity-40'}`}>
-				<span className="text-[0.32rem] leading-[0.32rem] lg:text-[0.48rem] lg:leading-[0.48rem]">{number}</span>
-				<span className="text-[0.2rem] leading-[0.2rem] lg:text-[0.24rem] lg:leading-[0.24rem]">{title}</span>
+	return (
+		<div className="flex flex-col grow min-w-content text-black/40 hover:text-black" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+			<span className="text-[0.24rem] leading-[0.24rem] lg:text-[0.28rem] lg:leading-[0.36rem] translate-x-[-0.06rem]">{id}</span>
+			<div className="flex items-center mt-[0.12rem] mb-[0.32rem] h-[0.4rem] relative text-black">
+				<span className={`w-full ${isEven ? 'h-[0.4rem]' : 'h-[0.2rem]'} border-l-1 lg:border-l-2 ${isLastItem ? 'border-r-1 lg:border-r-2 h-[0.4rem]' : ''}`}></span>
+				<span className="absolute w-full border-t-1 lg:border-t-2 bottom-[0.2rem] lg:bottom-[0.19rem] translate-y--[-0.69rem] lg:translate-y--[-0.77rem]"></span>
+				<span className={`absolute rounded-full border-[0.1rem] flex items-center justify-center left-[-0.13rem] ${isHovered ? 'block' : 'hidden'}`}>
+					<span className="size-[0.08rem] bg-white rounded-full"></span>
+				</span>
 			</div>
+			<span className="text-[0.16rem] leading-[0.16rem] lg:text-[0.24rem] lg:leading-[0.24rem] translate-x-[-0.06rem]">{title}</span>
 		</div>
 	)
 }
@@ -123,30 +132,34 @@ function PerksContainer() {
 
 function PerkCard({number, title, subtitle, content, index}) {
 	return (
-		<div className={`perk-card transition-transform duration-300 size-[4rem] lg:size-[5.6rem] p-[0.16rem] flex flex-col justify-between bg-[#f7f7f7] border border-2 border-[#000000] shrink-0 ${index === 0 ? '' : 'ml-[-2.72rem] lg:ml-[-3.76rem]'}`}>
+		<div className={`perk-card transition-transform duration-300 size-[4rem] lg:size-[4.8rem] pt-[0.24rem] lg:pt-[0.28rem] pb-[0.4rem] px-[0.32rem] flex flex-col justify-between bg-[#f7f7f7] border border-2 border-[#000000] shrink-0 ${index === 0 ? '' : 'ml-[-2.72rem] lg:ml-[-2.74rem]'}`}>
 			<div className="flex items-center justify-between">
 				<div className="flex flex-col">
-					<span className="font-normal text-[0.2rem] lg:text-[0.24rem] tracking-[-2%]">{number}</span>
-					<span className="font-bold scale-90 lg:scale-100"><QIcon/></span>
+					<span className="font-normal text-[0.2rem] tracking-[-2%]">{number}</span>
+					<span className="font-bold mt-[0.1rem]"><PerkIcon iconName={number}/></span>
 				</div>
-				<span className="font-bold text-[0.8rem] lg:text-[1.28rem] tracking-[-2%]">{title}</span>
+				<span className="font-bold text-[0.72rem] lg:text-[0.8rem] tracking-[-2%]">{title}</span>
 			</div>
 			<div>
-				<header className="font-semibold text-[0.32rem] lg:text-[0.48rem] mb-[0.16rem] tracking-[-2%]">{subtitle}</header>
-				<p className="lg:w-[3.52rem] text-wrap text-[0.12rem] lg:text-[0.14rem] font-normal tracking-[-2%]">{content}</p>
+				<header className="font-semibold text-[0.32rem] lg:text-[0.40rem] tracking-[-2%]">{subtitle}</header>
+				<p className="mt-[0.2rem] lg:mt-[0.24rem] text-wrap text-[0.14rem] font-normal tracking-[-2%]">{content}</p>
 			</div>
 		</div>
 	)
 }
 
+function PerkIcon({ iconName }) {
+  return <img src={`/public/perk-icons/perk-${iconName}.png`} alt={iconName} className="size-[0.24rem] object-cover object-center"/>;
+}
+
 function RolesContainer() {
 	return (
-		<div className="mt-[1.28rem] lg:mt-[2.8rem] lg:mb-[2.8rem] grid grid-cols-1 lg:grid-cols-2">
+		<div className="mt-[2.16rem] lg:mt-[2.8rem] lg:mb-[2.8rem] grid grid-cols-1 lg:grid-cols-2">
 			<div className="lg:w-[6.48rem] tracking-[-2%] scroll-fade-in">
-				<h3 className="uppercase font-bold text-[0.2rem] leading-[0.2rem] lg:text-[0.24rem] lg:leading-[0.2rem]">join our team</h3>
-				<p className="uppercase font-bold text-[0.48rem] leading-[0.48rem] lg:text-[0.88rem] lg:leading-[1.04rem] mt-[0.32rem] lg:mt-[0.5rem]">find your perfect role</p>
-				<p className="text-[0.16rem] leading-[0.16rem] lg:text-[0.24rem] lg:leading-[0.32rem] mt-[0.16rem] lg:mt-[0.64rem] font-normal">Explore our open roles and find the one that fits not just your resume, but your rhythm.</p>
-				<p className="text-[0.32rem] lg:text-[0.4rem] mt-[1.28rem] lg:mt-[0.64rem] lg:mt-[2.32rem] font-bold scroll-fade-in"><span className="mr-[0.02rem]">13</span>Positions</p>
+				<h3 className="uppercase font-bold text-[0.2rem] leading-[0.2rem] lg:text-[0.24rem] lg:leading-[0.32rem]">join our team</h3>
+				<p className="uppercase font-bold text-[0.48rem] leading-[0.48rem] lg:text-[0.8rem] lg:leading-[0.96rem] mt-[0.48rem] lg:mt-[0.16rem]">find your perfect role</p>
+				<p className="text-[0.16rem] leading-[0.16rem] lg:text-[0.2rem] lg:leading-[0.28rem] mt-[0.12rem] lg:mt-[0.72rem] font-normal">Explore our open roles and find the one that fits not just your resume, but your rhythm.</p>
+				<p className="text-[0.32rem] lg:text-[0.36rem] mt-[1.28rem] lg:mt-[2.4rem] font-bold scroll-fade-in"><span className="mr-[0.02rem]">13</span>Positions</p>
 			</div>
 			<div id="positions" className="mt-[0.8rem] lg:mt-0 flex flex-col gap-[0.08rem]">
 				{OpenningRoles.map((item, index) => <RoleCard {...item} index={index} key={index}/>)}
@@ -189,11 +202,11 @@ function ApplyButon({id}) {
 
 export function HowToApply() {
 	return (
-		<div className="tracking-[-2%] my-[1.6rem] lg:my-[0.48rem] w-full mx-auto">
-			<h2 className="uppercase font-bold text-[0.48rem] lg:text-[0.88rem] lg:leading-[104px]">how to apply</h2>
-			<p className="mt-[0.48rem] lg:mt-[0.48rem] text-[0.2rem] leading-[0.2rem] lg:text-[0.32rem] lg:leading-[0.48rem]">Send your CV and portfolio to <span className="font-bold">({CompanyEmail})</span>, with the subject "<span className="font-bold">Position + Name</span>".</p>
-			<p className="text-[0.2rem] leading-[0.2rem] lg:text-[0.32rem] lg:leading-[0.48rem]">We’re not just hiring doers—we’re looking for partners in creation.</p>
-			<p className="text-[0.2rem] leading-[0.2rem] lg:text-[0.32rem] lg:leading-[0.48rem] my-[0.32rem] lg:my-[0.48rem]">*File Types: ( pdf, ppt, pptx, txt )</p>
+		<div className="tracking-[-2%] w-full mx-auto">
+			<h2 className="uppercase font-bold text-[0.48rem] lg:text-[0.8rem] lg:leading-[0.8rem]">how to apply</h2>
+			<p className="mt-[0.48rem] lg:mt-[0.48rem] text-[0.2rem] leading-[0.24rem] lg:text-[0.28rem] lg:leading-[0.4rem]">Send your CV and portfolio to <span className="font-bold">({CompanyEmail})</span>, with the subject "<span className="font-bold">Position + Name</span>".</p>
+			<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.28rem] lg:leading-[0.4rem]">We’re not just hiring doers—we’re looking for partners in creation.</p>
+			<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.28rem] lg:leading-[0.4rem] my-[0.24rem] lg:my-[0.4rem]">*File Types: ( pdf, ppt, pptx, txt )</p>
 		</div>
 	)
 }

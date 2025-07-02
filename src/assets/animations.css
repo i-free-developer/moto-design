@@ -123,7 +123,7 @@
 }
 
 .perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
-	transform: translateX(calc(3.76rem - 2px));
+	transform: translateX(calc(2.74rem - 2px));
 }
 
 .lang-slide-in {

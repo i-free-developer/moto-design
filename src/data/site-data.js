@@ -8,14 +8,14 @@ const TimelineItems = [
 ]
 
 const PerkItemsData = [
-	{number: '01', title: 'Perks', subtitle: 'Competitive salary',     content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '02', title: 'Perks', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '03', title: 'Perks', subtitle: 'Remote work',            content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '04', title: 'Perks', subtitle: 'Flexible leave',         content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '05', title: 'Perks', subtitle: 'Various benefits',       content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '06', title: 'Perks', subtitle: 'Free language learning', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '07', title: 'Perks', subtitle: 'Work with an expert',    content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '08', title: 'Perks', subtitle: 'Diversified growth',     content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
+	{number: '01', title: 'One', subtitle: 'Competitive salary',     content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
+	{number: '02', title: 'Two', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
+	{number: '03', title: 'Three', subtitle: 'Remote work',            content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
+	{number: '04', title: 'Four', subtitle: 'Flexible leave',         content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
+	{number: '05', title: 'Five', subtitle: 'Various benefits',       content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
+	{number: '06', title: 'Six', subtitle: 'Free language learning', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
+	{number: '07', title: 'Seven', subtitle: 'Work with an expert',    content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
+	{number: '08', title: 'Eight', subtitle: 'Diversified growth',     content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
 ]
 
 const OpenningRoles = [

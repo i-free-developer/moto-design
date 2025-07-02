@@ -41,8 +41,7 @@ function ContactContainer({isMobileDevice, smallScreenRatioDecimal}) {
 	const [isSubmitted, setIsSubmitted] = useState(true)
 
 	return (
-		<div className="border relative mx-[0.32rem] lg:mx-[0.64rem] mt-[-0.64rem] lg:mt-[-1.1rem] px-[0.4rem] lg:px-[0.56rem] h-[calc(100vh-0.4rem-1.28rem-0.64rem)] lg:h-[calc(100vh-1.74rem-0.98rem)] backdrop-blur-sm bg-gray-100/40 rounded-[0.24rem] lg:rounded-[0.3rem]"
-		>
+		<div className="border relative mx-[0.32rem] lg:mx-[0.64rem] mt-[-0.64rem] lg:mt-[-1.1rem] px-[0.4rem] lg:px-[0.56rem] h-[calc(100vh-0.4rem-1.28rem-0.64rem)] lg:h-[calc(100vh-1.74rem-0.98rem)] backdrop-blur-sm bg-gray-100/40 rounded-[0.24rem] lg:rounded-[0.3rem]">
 			<div className="mx-auto flex flex-col justify-between items-center h--[calc(100vh-5rem)] lg:h--[calc(100vh-2.88rem)]">
 				<FormHeader isSubmitted={false}/>
 				<FormBody displayCard={displayCard} setDisplayCard={setDisplayCard} isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
@@ -87,33 +86,40 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 		return (<SumbittedGroup isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal} setIsSubmitted={setIsSubmitted}/>) 
 	} else {
 		return (
-			<form className="mx-auto w-full lg:w-[14.2rem] lg:mt-[1.28rem] h--[1.28rem] lg:h--[2.56rem] flex flex-col gap-[0.2rem]" onSubmit={handleSubmit}>
-				<div className="text-[0.4rem] leading-[0.4rem] font-medium w-full flex items-center flex-nowrap">
-					<span className="">Hi there, I’m</span>
-					<span className="w-[4.8rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center"><input name="name" value={userName} onChange={e => setUserName(e.target.value)} className="w-full placeholder:text-center mb-[0.06rem] h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your name*" required={true}></input></span>
-					<span className="">and work as</span>
-					<span className="w-[4.4rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center"><input name="role" value={userTeam} onChange={e => setUserTeam(e.target.value)} className="w-full placeholder:text-center mb-[0.06rem] h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Your role in the team*" required={true}></input></span>
+			<form className="mx-auto w-full lg:w-[14.2rem] mt-[0.96rem] lg:mt-[0.98rem] h--[1.28rem] lg:h--[2.56rem] flex flex-col gap-[0.2rem]" onSubmit={handleSubmit}>
+				<div className="text-[0.36rem] leading-[0.36rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-medium w-full lg:flex lg:items-center lg:flex-nowrap">
+					<div className="flex items-center">
+						<span className="">Hi there, I’m</span>
+						<span className="grow lg:w-[4.8rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center"><input name="name" value={userName} onChange={e => setUserName(e.target.value)} className="w-full placeholder:text-center mb-[0.06rem] h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your name*"></input></span>
+					</div>
+					<div className="mt-[0.2rem] lg:mt-0 flex items-center">
+						<span className="">and work as</span>
+						<span className="grow lg:w-[4.4rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center"><input name="role" value={userTeam} onChange={e => setUserTeam(e.target.value)} className="w-full placeholder:text-center mb-[0.06rem] h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Your role in the team*"></input></span>
+					</div>
 				</div>
 
-				<div className="text-[0.4rem] leading-[0.4rem] font-medium w-full flex items-center justify-center flex-nowrap">
-					<span className="">I’m looking for a creative team to help  with</span>
-					<span className="relative w-[6rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center">
-						<input onClick={() => setDisplayCard(!displayCard)} name="team" value={teamData} onChange={e => {}} className="w-full placeholder:text-center mb-[0.06rem] h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="What type of service are you looking for?" required={true}>
-						</input>
+				<div className="text-[0.36rem] leading-[0.36rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-medium w-full flex items-center flex-wrap lg:flex-nowrap">
+					<span className="mt-[0.2rem] lg:mt-0 ">I’m looking for a creative team to help  with</span>
+					<span className="mt-[0.2rem] lg:mt-0 grow relative lg:w-[6rem] lg:ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center">
+						<input onClick={() => setDisplayCard(!displayCard)} name="team" value={teamData} onChange={e => {}} className="w-full placeholder:text-center mb-[0.06rem] h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="What type of service are you looking for?"></input>
 						<SelectCard displayCard={displayCard} selectedItems={selectedItems} setSelectedItems={setSelectedItems} setTeamData={setTeamData}/>
 					</span>
 				</div>
 
-				<div className="text-[0.4rem] leading-[0.4rem] font-medium w-full flex items-center flex-nowrap">
+				<div className="mt-[0.2rem] lg:mt-0 text-[0.36rem] leading-[0.36rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-medium w-full flex items-center flex-wrap lg:flex-nowrap">
 					<span className="">The goal is to make it real — with precision and purpose.</span>
 				</div>
 
-				<div className="text-[0.4rem] leading-[0.4rem] font-medium w-full flex items-center flex-nowrap">
-					<span className="">Hit my inbox at</span>
-					<span className="w-[4.8rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center"><input input name="email" value={userEmail} onChange={e => setUserEmail(e.target.value)} className="w-full placeholder:text-center mb-[0.06rem] h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your email*" required={true} type="email"></input></span>
-					<span className="">, let's build something bold!</span>
+				<div className="mt-[0.2rem] lg:mt-0 text-[0.36rem] leading-[0.36rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-medium w-full flex items-center justify-start flex-wrap lg:flex-nowrap">
+					<div className="flex items-center justify-start w-full lg:w-[55%]">
+						<span className="">Hit my inbox at</span>
+						<span className="grow lg:grow-0 lg:w-[4.8rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex items-center justify-center"><input input name="email" value={userEmail} onChange={e => setUserEmail(e.target.value)} className="w-full placeholder:text-center mb-[0.06rem] h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your email*" type="email"></input></span>
+					</div>
+					<div className="mt-[0.2rem] lg:mt-0 flex items-center lg:flex-nowrap text-nowrap">
+						<span className=""><span className="hidden lg:inline-block">, </span>let's build something bold!</span>
+					</div>
 				</div>
-				<div className="mx-auto mt-[0.8rem]">
+				<div className="mx-auto mt-[0.4rem]">
 					<button className="text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] rounded-full bg-black/50">Submit</button>
 				</div>
 			</form>
@@ -130,8 +136,8 @@ function SelectCard({displayCard, selectedItems, setSelectedItems, setTeamData})
 	    newSet.size > 0 ? setTeamData(Array.from(newSet).join(', ')) : setTeamData('')
 	}
 	return (
-		<div className={`${displayCard ? '' : 'hidden'} z-10 absolute right-0 top-[0.42rem] bg-black py-[0.28rem] pl-[0.28rem] pr-[0.68rem] w-[6rem] flex items-center gap-[0.08rem] flex-wrap text-[0.16rem] font-medium`}>
-			{SelectOptions.map((item, index) => <span className={`${selectedItems.has(item) ? 'bg-white text-black' : 'bg-black text-white'} px-[0.12rem] py-[0.02rem] border rounded-full`} data-item={item} key={index} onClick={handleClickItem}>{item}</span>)}
+		<div className={`${displayCard ? '' : 'hidden'} z-10 absolute right-0 top-[0.42rem] bg-black py-[0.28rem] pl-[0.28rem] pr-[0.25rem] lg:pr-[0.68rem] w-[4.36rem] lg:w-[6rem] flex items-center gap-[0.12rem] flex-wrap text-[0.16rem] font-medium`}>
+			{SelectOptions.map((item, index) => <span className={`${selectedItems.has(item) ? 'bg-white text-black' : 'bg-black text-white'} px-[0.16rem] py-[0.02rem] border rounded-full`} data-item={item} key={index} onClick={handleClickItem}>{item}</span>)}
 		</div>
 	)
 }
@@ -142,7 +148,7 @@ function FormHeader({isSubmitted}) {
 	else { textHeader = 'Please leave your information', textBody = 'we will response as soon as possible!' }
 
 	return (
-		<div className="mx-auto flex flex-col mt-[2.4rem] lg:mt-[1.92rem] font-medium text-center">
+		<div className="mx-auto flex flex-col mt-[1.68rem] lg:mt-[1.62rem] font-medium text-center">
 			<header className="text-[0.32rem] lg:text-[0.32rem]">{textHeader}</header>
 			<p className="text-[0.16rem] lg:text-[0.16rem] text-black/64 mt-[0.08rem] lg:mt-[0.12rem]">{textBody}</p>
 		</div>
@@ -151,11 +157,11 @@ function FormHeader({isSubmitted}) {
 
 function SumbittedGroup({isMobileDevice, smallScreenRatioDecimal, setIsSubmitted}) {
 	return (
-		<div className="mx-auto w-full mt-[1.28rem] lg:mt-[1.08rem] h--[1.92rem] lg:h--[2.56rem] flex flex-col items-center justify-between lg:scale-90">
-			<div className="mx-auto flex items-center justify-center lg:h-[2.8rem]">
+		<div className="mx-auto w-full mt-[1.28rem] lg:mt-[0.98rem] h--[1.92rem] lg:h--[2.56rem] flex flex-col items-center justify-between lg:scale-90">
+			<div className="mx-auto flex items-center justify-center lg:h-[2.2rem]">
 				{isMobileDevice? <SubmittedAlreadyIconSmall scaleRatio={smallScreenRatioDecimal}/> : <SubmittedAlreadyIconBig/>} 
 			</div>
-			<div className="mx-auto mt-[1.06rem]">
+			<div className="mx-auto mt-[0.8rem]">
 				<span onClick={e => {setIsSubmitted(false)}} className="text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] rounded-full bg-black text-white">Get in Touch Again</span>
 			</div>
 		</div>

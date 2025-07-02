@@ -132,7 +132,7 @@ function PerksContainer() {
 
 function PerkCard({number, title, subtitle, content, index}) {
 	return (
-		<div className={`perk-card transition-transform duration-300 size-[4rem] lg:size-[4.8rem] pt-[0.24rem] lg:pt-[0.28rem] pb-[0.4rem] px-[0.32rem] flex flex-col justify-between bg-[#f7f7f7] border border-2 border-[#000000] shrink-0 ${index === 0 ? '' : 'ml-[-2.72rem] lg:ml-[-2.74rem]'}`}>
+		<div className={`perk-card transition-transform duration-300 size-[4rem] lg:size-[4.8rem] pt-[0.24rem] lg:pt-[0.28rem] pb-[0.4rem] px-[0.32rem] bg-[#f7f7f7] border border-2 border-[#000000] shrink-0 ${index === 0 ? '' : 'ml-[-2.72rem] lg:ml-[-2.74rem]'}`}>
 			<div className="flex items-center justify-between">
 				<div className="flex flex-col">
 					<span className="font-normal text-[0.2rem] tracking-[-2%]">{number}</span>
@@ -140,9 +140,9 @@ function PerkCard({number, title, subtitle, content, index}) {
 				</div>
 				<span className="font-bold text-[0.72rem] lg:text-[0.8rem] tracking-[-2%]">{title}</span>
 			</div>
-			<div>
-				<header className="font-semibold text-[0.32rem] lg:text-[0.40rem] tracking-[-2%]">{subtitle}</header>
-				<p className="mt-[0.2rem] lg:mt-[0.24rem] text-wrap text-[0.14rem] font-normal tracking-[-2%]">{content}</p>
+			<div className="mt-[1.6rem] lg:mt-[1.8rem] max-w-full">
+				<header className="font-semibold text-[0.24rem] lg:text-[0.32rem] tracking-[-2%] text-wrap">{subtitle}</header>
+				<p className="mt-[0.2rem] lg:mt-[0.24rem] overflow-hidden text-clip lg:text-wrap text-[0.14rem] font-normal tracking-[-2%]">{content}</p>
 			</div>
 		</div>
 	)

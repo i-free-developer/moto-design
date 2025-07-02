@@ -8,14 +8,16 @@ const TimelineItems = [
 ]
 
 const PerkItemsData = [
-	{number: '01', title: 'One', subtitle: 'Competitive salary',     content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '02', title: 'Two', subtitle: 'Flexible working hours', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '03', title: 'Three', subtitle: 'Remote work',            content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '04', title: 'Four', subtitle: 'Flexible leave',         content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '05', title: 'Five', subtitle: 'Various benefits',       content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '06', title: 'Six', subtitle: 'Free language learning', content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '07', title: 'Seven', subtitle: 'Work with an expert',    content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
-	{number: '08', title: 'Eight', subtitle: 'Diversified growth',     content: 'After the portfolio meets our requirement, on average 1~3 week interview process with 2 inteviews.'},
+	{number: '01', title: 'One',   subtitle: 'Competitive salary',         content: 'Salaries are based on ability and set above market averages, with a clear and attractive bonus system.'},
+	{number: '02', title: 'Two',   subtitle: 'Flexible Working Hours',     content: 'Work hours are adjustable to support a personalized rhythm and a healthy balance between work and life.'},
+	{number: '03', title: 'Three', subtitle: 'Remote-Friendly Team',       content: 'Multiple roles support remote work, with professional tools enabling efficient distributed collaboration across teams.'},
+	{number: '04', title: 'Four',  subtitle: 'Flexible Time Off',          content: 'Public holidays can be shifted; downtime between projects allows you to reallocate leave for personal travel or rest.'},
+	{number: '05', title: 'Five',  subtitle: 'Daily Perks & Benefits',     content: 'Includes transport and meal subsidies, holiday gifts, health checks, and regular team events.'},
+	{number: '06', title: 'Six',   subtitle: 'Global Collaboration',       content: 'Work across languages and time zones with global teams to grow communication and perspective.'},
+	{number: '07', title: 'Seven', subtitle: 'Work With Top Talent',       content: 'Collaborate with designers from leading schools and companies—stay close to fresh ideas and inspiration.'},
+	{number: '08', title: 'Eight', subtitle: 'Cross-Project Growth',       content: 'Work across branding, motion, interaction, and Web3 consulting to build a broad, future-ready skill set.'},
+	{number: '09', title: 'Nine',  subtitle: 'Paid Volunteer Days',        content: 'Take 1–2 paid days off during project gaps to engage in meaningful volunteer work and social good initiatives.'},
+	{number: '10', title: 'Ten',   subtitle: 'Aesthetic Learning', content: 'We reimburse tickets and course fees for design events, exhibitions, and workshops—encouraging continuous visual growth.'},
 ]
 
 const OpenningRoles = [

@@ -149,7 +149,7 @@ function PerkCard({number, title, subtitle, content, index}) {
 }
 
 function PerkIcon({ iconName }) {
-  return <img src={`/public/perk-icons/perk-${iconName}.png`} alt={iconName} className="size-[0.24rem] object-cover object-center"/>;
+  return <img src={`/public/perk-${iconName}.png`} alt={iconName} className="size-[0.24rem] object-cover object-center"/>;
 }
 
 function RolesContainer() {

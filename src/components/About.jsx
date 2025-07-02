@@ -23,7 +23,7 @@ export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 				<EcosystemHeader/>
 				<EcosystemContainer isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
-					<div className="my-[1.2rem] lg:my-[3.52rem] grid grid-cols-3 lg:grid-cols-4 gap-[0.16rem] lg:gap-x-[0.2rem] lg:gap-y-[0.48rem]">
+					<div className="my-[1.2rem] lg:my-[3.52rem] grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-x-[0.2rem] lg:gap-y-[0.4rem]">
 						<OurTeamCard />
 						{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
 					</div>
@@ -303,21 +303,19 @@ function SiteFooter({isMobileDevice}) {
 function TeamMemberCard({name, avatar, description, title, role}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
 	return (
-		<article className="box-border border border-[0.03rem] lg:border-[4px] rounded-[0.16rem] w-[2.2rem] lg:w-[4.14rem] h-[3.3rem] lg:h-[5.02rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+		<article className="box-border border border-[0.03rem] lg:border-[4px] rounded-[0.16rem] w-[2.2rem] lg:w-[3.3rem] h-[3.3rem] lg:h-[4.6rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<div className={`overflow-hidden top-0 rounded-0 flex max-h-full min-h-full min-w-full max-w-full flex-col justify-between`}>
-				<img src={avatar} className="mx-auto h-[2.2rem] w-[2.2rem] lg:h-[4.06rem] lg:w-[4.06rem] object-cover object-center lg:scale-103"></img>
-				<div className="w-full grid content-center px-[0.24rem] pt-[0.16rem] pb-[0.12rem] h-[1.1rem] grow">
-					<div className="lg:h-[0.88rem] min-w-full flex flex-col lg:flex-row lg:items-center justify-between font-normal">
-						<header className="text-[0.28rem] leading-[0.28rem] lg:text-[0.4rem] lg:leading-[0.4rem] tracking-[-2%] text-nowrap">{name}</header>
-						<p className="mt-[0.08rem] lg:mt-0 text-[0.12rem] lg:text-right lg:text-[0.1rem]">{role}</p>
-					</div>
+				<img src={avatar} className="mx-auto w-[2.2rem] h-[2.2rem] lg:w-[3.3rem] lg:h-[3.4rem] object-cover object-center scale-103"></img>
+				<div className="w-full px-[0.2rem] lg:px-[0.24rem] py-[0.2rem] ">
+					<header className="text-[0.28rem] leading-[0.28rem] lg:text-[0.4rem] lg:leading-[0.4rem] tracking-[-2%] text-nowrap">{name}</header>
+					<p className="mt-[0.08rem] text-[0.12rem]">{role}</p>
 				</div>
 			</div>
 
-		    <div className={`relative transition-all duration-300 rounded-0 max-h-full min-h-full min-w-full max-w-full bg-black text-white p-[0.4rem] lg:p-[0.4rem] ${isHovered ? 'lg:top-[-100%] z-10' : 'lg:top-[6px] '}`}>
-		     	<header className="text-[0.28rem] lg:text-[0.48rem] font-bold tracking-[-2%]">{name}</header>
-		     	<p className="uppercase text-[0.24rem] lg:text-[0.24rem] font-normal mt-[0.24rem] lg:mt-[0.24rem]">{title}</p>
-				<p className="text-[0.16rem] lg:text-[0.16rem] font-normal mt-[0.32rem] lg:mt-[0.32rem]">{description}</p>
+		    <div className={`relative transition-all duration-300 rounded-0 lg:h-[2.6rem] min-w-full max-w-full bg-[#F7F7F7]/30 backdrop-blur-[16px] text-black pt-[0.16rem] lg:pt-[0.16rem] pb-[0.16rem] lg:pb-[0.32rem] px-[0.12rem] lg:px-[0.2rem] ${isHovered ? 'lg:top-[-2.6rem] z-10' : 'lg:top-0 '}`}>
+		     	<header className="text-[0.28rem] lg:text-[0.4rem] font-bold tracking-[-2%]">{name}</header>
+		     	<p className="uppercase text-[0.24rem] lg:text-[0.24rem] font-normal mt-[0.12rem] lg:mt-[0.12rem]">{title}</p>
+				<p className="text-[0.16rem] lg:text-[0.16rem] font-normal mt-[0.32rem] lg:mt-[0.4rem]">{description}</p>
 		    </div>
 		</article>
 	)

@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { PortfolioData } from '../data/site-data'
 import Navbar from './Navbar'
-import { SiteInfoCard,  SiteFooter } from './About'
 import { useDrawerHandler } from './FunctionCollection'
+import { SiteInfoCard,  SiteFooter } from './Footer'
 
 export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
@@ -12,8 +12,10 @@ export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
 	return (
 		<main className="mx-auto">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
-			<section id="portfolio-page" className="w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] mx-auto px-[0.32rem] lg:px-[3rem] pt-[0.32rem] lg:pt-[3rem] lg:mt-[8rem] lg:mb-[3rem]" onClick={closeDrawer}>
-				<ImgCard {...item}/>
+			<section id="portfolio-page" className="mx-auto" onClick={closeDrawer}>
+				<div className="w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] mx-auto px-[0.32rem] py-[0.48rem] overflow-x-hidden">
+					<ImgCard {...item}/>
+				</div>
 				<SiteInfoCard isMobileDevice={isMobileDevice}/>
 				<SiteFooter isMobileDevice={isMobileDevice}/>
 			</section>

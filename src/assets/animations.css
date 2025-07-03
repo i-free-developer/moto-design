@@ -135,8 +135,8 @@
 }
 
 .logo-masked {
-	-webkit-mask-image: url('../../public/moto-mask-desktop.svg');
-  mask-image: url('../../public/moto-mask-desktop.svg');
+	-webkit-mask-image: url('/moto-mask-desktop.svg');
+  mask-image: url('/moto-mask-desktop.svg');
 }
 
 @media (max-width: 750px) {

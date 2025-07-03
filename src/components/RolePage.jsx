@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { OpenningRoles } from '../data/site-data'
 import { HowToApply } from './Career'
 import Navbar from './Navbar'
-import { SiteInfoCard,  SiteFooter } from './About'
+import { SiteInfoCard,  SiteFooter } from './Footer'
 import { useDrawerHandler } from './FunctionCollection'
 
 export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
@@ -18,9 +18,9 @@ export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
 					<RoleHeaderCard roleTag={roleTag} title={title} tags={tags}/>
 					<ContentSection title={'Responsibilities'} items={responsibilities}/>
 					<ContentSection title={'Requirements'} items={requirements}/>
-					<div className="my-[1.28rem] lg:my-[1.6rem]"></div>
+					<div className="mt-[1.28rem] lg:mt-[2.6rem]"></div>
 					<HowToApply/>
-					<div className="my-[1.28rem] lg:my-[2.88rem]"></div>
+					<div className="mt-[1.28rem] lg:mt-[2.88rem]"></div>
 				</div>
 				
 				<SiteInfoCard isMobileDevice={isMobileDevice}/>

@@ -1,8 +1,8 @@
 import { useState, useCallback } from 'react'
 import { CopyRight, CompanyEmail } from '../data/site-data'
 import Navbar from './Navbar'
-import { StarIcon, ArrowIcon } from './SocialIconsCollection'
-import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
+import { StarIcon } from './SocialIconsCollection'
+import { useDrawerHandler } from './FunctionCollection'
 
 const SelectOptions = ['Website Design', 'App UI/UX Design', 'Full Brand VI System', 'Graphic Design', '3D Animation & Visual Effects', 'Web3 Strategy Consulting', 'NFT Artwork & Design', 'Social Media Visuals', 'Brand Partnership', 'Other']
 
@@ -58,21 +58,14 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 	const [teamData, setTeamData] = useState('')
 	const [userEmail, setUserEmail] = useState('')
 	const [isDisabled, setIsDisabled] = useState(false)
-	
+
 	const setFormField = (field, value) => {
 		// console.log('field: ',field, 'value: ', value)
 		if (field == 'name') {setUserName(value)}
 		if (field == 'role') {setUserRole(value)}
 		if (field == 'email') {setUserEmail(value)}
 		if (field == 'team') {setTeamData(value)}
-		// console.log(!!userName, !!userRole, !!teamData, !!userEmail)
-		// console.log('checkValidation', checkValidation())
 		// setIsDisabled(!(!!userName && !!userRole && !!teamData && !!userEmail))
-	}
-
-	const checkValidation = () => {
-		// console.log(!!userName, !!userRole, !!teamData, !!userEmail)
-		return !!userName && !!userRole && !!teamData && !!userEmail
 	}
 
 	const handleSubmit = (e) => {
@@ -95,8 +88,8 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 	    }
 	}
 
-	if (isSubmitted) { 
-		return (<SumbittedGroup isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal} setIsSubmitted={setIsSubmitted}/>) 
+	if (isSubmitted) {
+		return (<SumbittedGroup isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal} setIsSubmitted={setIsSubmitted}/>)
 	} else {
 		return (
 			<form id="contact-form" className="mx-auto w-full lg:w-[14.2rem] mt-[0.96rem] lg:mt-[0.98rem] h--[1.28rem] lg:h--[2.56rem] flex flex-col gap-[0.2rem]" onSubmit={handleSubmit}>
@@ -149,7 +142,6 @@ function SelectCard({displayCard, setTeamData, setFormField}) {
 		const newSet = new Set(selectedItems);
 		newSet.has(item) ? newSet.delete(item) : newSet.add(item)
 	    setSelectedItems(newSet);
-	    // let tData = newSet.size > 0 ? Array.from(newSet).join(', ') : ''
 	    setFormField('team', Array.from(newSet).join(', '))
 	}
 	return (
@@ -161,7 +153,7 @@ function SelectCard({displayCard, setTeamData, setFormField}) {
 
 function FormHeader({isSubmitted}) {
 	let textHeader, textBody;
-	if (isSubmitted) { textHeader = 'Successfully Submitted', textBody = 'We will provide you with feedback as soon as possible. Thank you for your patience!'} 
+	if (isSubmitted) { textHeader = 'Successfully Submitted', textBody = 'We will provide you with feedback as soon as possible. Thank you for your patience!'}
 	else { textHeader = 'Please leave your information', textBody = 'we will response as soon as possible!' }
 
 	return (
@@ -176,7 +168,7 @@ function SumbittedGroup({isMobileDevice, smallScreenRatioDecimal, setIsSubmitted
 	return (
 		<div className="mx-auto w-full mt-[1.28rem] lg:mt-[0.98rem] h--[1.92rem] lg:h--[2.56rem] flex flex-col items-center justify-between lg:scale-90">
 			<div className="mx-auto flex items-center justify-center lg:h-[2.2rem]">
-				{isMobileDevice? <SubmittedAlreadyIconSmall scaleRatio={smallScreenRatioDecimal}/> : <SubmittedAlreadyIconBig/>} 
+				{isMobileDevice? <SubmittedAlreadyIconSmall scaleRatio={smallScreenRatioDecimal}/> : <SubmittedAlreadyIconBig/>}
 			</div>
 			<div className="mx-auto mt-[0.8rem]">
 				<span onClick={e => {setIsSubmitted(false)}} className="text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] rounded-full bg-black text-white">Get in Touch Again</span>
@@ -253,11 +245,6 @@ function ArrIcons() {
 	)
 }
 
-// `M0,${radius} A${radius},${radius} 0 0,0 ${diameter},${radius}`;
-// `M0,${diameter},${radius} A${radius},${radius} 0 0 1 0,${radius}`;
-
-{/* <path d="M300,300 a200,200 0 0,0 -200,200 z" fill="yellow" stroke="blue" strokeWidth="5" /> */}
-
 const useFakeApi = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -265,7 +252,7 @@ const useFakeApi = () => {
   const callApi = useCallback(async (mockData, shouldFail = false) => {
     setLoading(true);
     setError(null);
-    
+
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
       if (shouldFail) throw new Error('Mock API failure');

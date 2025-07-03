@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import Navbar from './Navbar'
 import { HeaderSvgMobile } from './HeaderSvg'
@@ -53,7 +52,7 @@ function ServiceOfferingsMobile() {
 
 function VerticalElement() {
 	return (
-		<div className="flex justify-center items-center">	
+		<div className="flex justify-center items-center">
 			<div className={`flex gap-[0.16rem] items-center text-[0.12rem] font-medium leading-[0.12rem] text-black/64`} style={{writingMode: 'vertical-lr'}}>
 				<span className="rotate-180">{CompanyDomain}</span>
 				<span className="border border-[0.8px] border-black/64 h-[1.28rem] translate-x-[50%]"></span>

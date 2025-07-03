@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import Navbar from './Navbar'
-import HomePageMobile from './HomePageMobile'
 import { HeaderSvgDesktop } from './HeaderSvg'
 import { ServicesItems, CompanyDomain } from '../data/site-data'
 import { useDrawerHandler, useScreenRatio, useHoverHandler } from './FunctionCollection'
@@ -31,7 +29,7 @@ function HomeSectionDesktop({headerClassName, onCloseDrawer, bigScreenRatioDecim
 			<div className="h-[calc(100vh-2.17rem)] place-i-tems-center place-content-center">
 				<div className="flex items-center justify-between ml-[1.12rem] mr-[0.88rem]">
 					<div className={`${headerClassName}`}><HeaderSvgDesktop scaleRatio={bigScreenRatioDecimal}/></div>
-					<VerticalElement/> 
+					<VerticalElement/>
 				</div>
 			</div>
 		</section>
@@ -64,7 +62,7 @@ function ServiceOfferingsDesktop() {
 
 function VerticalElement() {
 	return (
-		<div className="flex justify-center self-start">	
+		<div className="flex justify-center self-start">
 			<div className={`flex gap-[0.04rem] items-center text-[0.16rem] font-medium leading-[0.16rem] text-black/64`} style={{writingMode: 'vertical-lr'}}>
 				<span className="rotate-180">{CompanyDomain}</span>
 				<span className="border border-[0.8px] border-black/64 h-[1.28rem] translate-x-[50%]"></span>

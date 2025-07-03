@@ -1,21 +1,9 @@
-import { useState } from 'react'
 import { Link } from "react-router-dom"
 import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../data/site-data'
 import Navbar from './Navbar'
 import { StarIcon, ArrowIcon } from './SocialIconsCollection'
-import { SiteInfoCard,  SiteFooter } from './About'
-import { UseThrottle, useDrawerHandler, useHoverHandler } from './FunctionCollection'
-
-// const PerkImages = {
-// 	'01': require('./assets/perk-01.png').default,
-// 	'02': require('./assets/perk-02.png').default,
-// 	'03': require('./assets/perk-03.png').default,
-// 	'04': require('./assets/perk-04.png').default,
-// 	'05': require('./assets/perk-05.png').default,
-// 	'06': require('./assets/perk-06.png').default,
-// 	'07': require('./assets/perk-07.png').default,
-// 	'08': require('./assets/perk-08.png').default,
-// }
+import { SiteInfoCard,  SiteFooter } from './Footer'
+import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
 
 export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
@@ -35,10 +23,10 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 					<LifeAtMotoCard/>
 				</div>
 
-				<div className="mx-auto w-screen max-w-screen mt-[0.8rem] lg:mt-[1.6rem]">	
+				<div className="mx-auto w-screen max-w-screen mt-[0.8rem] lg:mt-[1.6rem]">
 					<PerksContainer/>
 				</div>
-				
+
 				<div className="px-[0.32rem] lg:px-[0.48rem] lg:mb-[2.88rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<RolesContainer/>
 					<div className="mt-[2.16rem] lg:mt-[2.8rem]"></div>
@@ -57,7 +45,7 @@ function CareerHeader() {
 			<h1 className="font-extrabold text-[0.48rem] lg:text-[0.8rem] uppercase">[Career]</h1>
 			<h2 className="font-extrabold text-[0.88rem] lg:text-[1.28rem] uppercase">How we hire</h2>
 			<div className="flex items-center justify-between mt-[0.32rem] lg:mt-0">
-				<span className="lg:hidden"><ArrowGroup/></span> 
+				<span className="lg:hidden"><ArrowGroup/></span>
 				<span className="lg:absolute lg:bottom-[0.48rem] lg:right-0"><PositionBtn/></span>
 			</div>
 			<span className="absolute top-0 right-0 lg:right-[0.16rem] lg:scale-160"><StarIcon/></span>

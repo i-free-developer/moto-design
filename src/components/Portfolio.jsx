@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import { PortfolioData } from '../data/site-data'
 import Navbar from './Navbar'
-import { SiteInfoCard,  SiteFooter } from './About'
+import { SiteInfoCard,  SiteFooter } from './Footer'
 import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
 
 export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {

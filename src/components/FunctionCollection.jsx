@@ -27,7 +27,7 @@ function UseThrottle(callback, delay) {
 
 function useScrollDirection() {
     const [scrollDirection, setScrollDirection] = useState(null);
-    const scrollDistance = 2
+    const scrollDistance = 1
     useEffect(() => {
         let lastScrollY = window.pageYOffset;
         // function to run on scroll

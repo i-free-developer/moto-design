@@ -57,7 +57,7 @@ function DrawerCard({drawerStatus}) {
 	const drawerClassName = drawerClasses[drawerStatus]
 	return(
 		<div
-			className={`bg-[#F7F7F7]/40 backdrop-blur-[20px] px-[0.72rem] lg:px-[0.64rem] pt-[0.96rem] lg:pt-[1.8rem] pb-[0.72rem] lg:pb-[0.64rem] w-[4.6rem] lg:w-[5.6rem] h-[calc(100vh-4.8rem)] lg:h-[calc(100vh-0.98rem-56px)] flex flex-col justify-between absolute top-[0.6rem] lg:top-[0.98rem] rounded-[0.24rem] ${drawerClassName}`}>
+			className={`bg-[#EAEAEA]/48 backdrop-blur-[20px] px-[0.72rem] lg:px-[0.64rem] pt-[0.96rem] lg:pt-[1.8rem] pb-[0.72rem] lg:pb-[0.64rem] w-[4.6rem] lg:w-[5.6rem] h-[calc(100vh-4.8rem)] lg:h-[calc(100vh-0.98rem-56px)] flex flex-col justify-between absolute top-[0.6rem] lg:top-[0.98rem] rounded-[0.24rem] ${drawerClassName}`}>
 			<div className="flex flex-col items-start gap-[0.4rem] lg:gap-[0.32rem]">
        			{SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>

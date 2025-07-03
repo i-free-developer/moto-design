@@ -252,3 +252,19 @@ a > svg {
 .linear-gradient-cover {
 	background: linear-gradient(90deg, #F7F7F7, transparent 10%, transparent 90%, #F7F7F7);
 }
+
+#contact-form input:focus,  #contact-form input:focus:not(:placeholder-shown) {
+	border: none;
+  outline: none;
+	/*border-color: transparent;*/
+  background: #F7F7F7;
+  /*box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);*/
+}
+
+#contact-form input:-internal-autofill-selected {
+  background: #F7F7F7 !important;
+}
+
+#contact-form input:-webkit-autofill{
+	-webkit-box-shadow:0 0 0 1000px #F7F7F7 inset !important;
+}

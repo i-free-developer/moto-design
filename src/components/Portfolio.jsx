@@ -43,7 +43,7 @@ function PortfolioHeader() {
 
 function MobileDeskIcons({isMobile, setIsMobile, smallScreenRatioDecimal}) {
 	return (
-		<div className="cursor-pointer self-end flex items-center gap-[0.12rem] lg:gap-[0.24rem] lg:mt-[0.16rem] lg:mb-[0.64rem]">
+		<div className="cursor-pointer self-end flex items-center gap-[0.24rem] lg:gap-[0.24rem] lg:mt-[0.16rem] lg:mb-[0.64rem]">
 			<span onClick={() => setIsMobile(true)} className="">{isMobile ? <MobileIconBlack scaleRatio={smallScreenRatioDecimal}/> : <MobileIconWhite scaleRatio={smallScreenRatioDecimal}/> }</span>
 			<span onClick={() => setIsMobile(false)} className="">{isMobile ? <DesktopIconWhite scaleRatio={smallScreenRatioDecimal}/> : <DesktopIconBlack scaleRatio={smallScreenRatioDecimal}/> }</span>
 		</div>
@@ -105,7 +105,7 @@ function DesktopBottomCard({title, description}) {
 				<p className="text-[0.16rem]">{description}</p>
 			</div>
 			<div className="size-[0.72rem] lg:size-[0.72rem] bg-black/16 flex items-center justify-center rounded-full">
-				<div className={`w-[0.8rem] lg:w-[0.24rem] ${isHovered ? '-rotate-45' : '-rotate-0'} flex items-center justify-center transition-rotate transition-transform duration-400`}><ArrowRight/></div>
+				<div className={`w-[0.16rem] lg:w-[0.24rem] ${isHovered ? '-rotate-45' : '-rotate-0'} flex items-center justify-center transition-rotate transition-transform duration-400`}><ArrowRight/></div>
 			</div>
 		</div>
 	)
@@ -134,7 +134,7 @@ function MobilePortfolios({isMobileDevice, smallScreenRatioDecimal}) {
   return (
     <div className="relative mx-auto mb-[3.6rem] pt-[15.5%] lg:pt-0 pb-[10.5%] lg:pb-[6.5%]">
       <div className="mx-auto w-full overflow-hidden grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-[0.28rem]">
-        {mobileItems.map((item, index) => <MobileCard {...item} index={index} key={index}/>)}
+        	{mobileItems.map((item, index) => <MobileCard {...item} index={index} key={index}/>)}
       </div>
       <StickyHandCard scaleRatio={smallScreenRatioDecimal}/>
     </div>
@@ -155,7 +155,7 @@ function StickyHandCard({scaleRatio}) {
 	const handImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-sticky-hand-img.png'
   return (
     <div className="absolute inset-0 flex items-center justify-center">
-      <div className="sticky top-0 bottom-0 translate-x-[19%]">
+      <div style={{overflowY: 'overlay'}} className="sticky top-0 bottom-0 translate-x-[19%]">
         <img loading="lazy" className="w-[5.4rem] h-[5.77rem] lg:w-[7.92rem] lg:h-[8.48rem] object-fit object-center rounded-[0.28rem] lg:rounded-[0.16rem]" src={handImg} alt="Hand"/>
       </div>
     </div>

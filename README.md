@@ -7,6 +7,10 @@ npm run build
 ```
 
 #### to do
+	[ ] career rols contents copy from figma
+	[ ] portfolio redesign mobile view portfolio cards, display part of images
+	[ ] dashed-bg image for mobile view
+	[ ] 
 	[x] fonts npm install @fontsource/plus-jakarta-sans
 	[x] react route npm install react-router-dom 
 	[x] form subimit

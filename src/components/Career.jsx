@@ -3,18 +3,19 @@ import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../da
 import Navbar from './Navbar'
 import { StarIcon, ArrowIcon } from './SocialIconsCollection'
 import { SiteInfoCard,  SiteFooter } from './Footer'
-import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
+import { useDrawerHandler, useHoverHandler, useScreenRatio } from './FunctionCollection'
 
 export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
+	const {smallScreenRatioInt} = useScreenRatio()
 
 	return (
 		<main className="mx-auto">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
 			<section id="career" className="mx-auto pt-[0.32rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem]" onClick={closeDrawer}>
 				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
-					<CareerHeader/>
-					<CareerContenr/>
+					<CareerHeader scaleRatio={smallScreenRatioInt}/>
+					<CareerContenr scaleRatio={smallScreenRatioInt}/>
 				</div>
 				<div className="mx-auto w-screen w-screen max-w-screen lg:px-[0.48rem] mt-[0.8rem] lg:mt-[1.48rem] overflow-x-hidden">
 					<TimeLineCard/>
@@ -39,13 +40,13 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 	)
 }
 
-function CareerHeader() {
+function CareerHeader({scaleRatio}) {
 	return (
 		<div className="relative my-[0.64rem] lg:mt-0 lg:px-[0.16rem]">
 			<h1 className="font-extrabold text-[0.48rem] lg:text-[0.8rem] uppercase">[Career]</h1>
 			<h2 className="font-extrabold text-[0.88rem] lg:text-[1.28rem] uppercase">How we hire</h2>
 			<div className="flex items-center justify-between mt-[0.32rem] lg:mt-0">
-				<span className="lg:hidden"><ArrowGroup/></span>
+				<span className="lg:hidden"><ArrowGroupImg/></span>
 				<span className="lg:absolute lg:bottom-[0.48rem] lg:right-0"><PositionBtn/></span>
 			</div>
 			<span className="absolute top-0 right-0 lg:right-[0.16rem] lg:scale-160"><StarIcon/></span>
@@ -63,10 +64,10 @@ function PositionBtn() {
 	)
 }
 
-function CareerContenr() {
+function CareerContenr({scaleRatio}) {
 	return (
 		<div className="flex flex-col lg:flex-row lg:items-center my-[1.68rem] lg:mt-[1.28rem]">
-			<span className="hidden lg:block"><ArrowGroup/></span>
+			<span className="hidden lg:block"><ArrowGroupImg/></span>
 			<p className="lg:ml-[10.06rem] text-black/64 font-normal w-[74%] lg:w-[4.8rem] text-[0.24rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.36rem] tracking-[-2%]">After the <span className="font-bold text-black">portfolio</span> meets our requirement, on average <span className="font-bold text-black">1~3 week</span> interview process with <span className="font-bold text-black">2 inteviews</span>.</p>
 		</div>
 	)
@@ -206,9 +207,15 @@ function QIcon() {
 	)
 }
 
-function ArrowGroup() {
+function ArrowGroupImg() {
 	return (
-		<svg width="81" height="81" viewBox="0 0 81 81" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+		<img className="h-[0.17rem] object-cover object-center" src="/arrow-group.png"></img>
+	)
+}
+
+function ArrowGroup({scaleRatio}) {
+	return (
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} width="81" height="81" viewBox="0 0 81 81" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 			<rect x="14.1348" y="54.6313" width="20" height="4" transform="rotate(-135 14.1348 54.6313)" fill="#161619"/>
 			<rect x="16.9629" y="29.1755" width="20" height="4" transform="rotate(135 16.9629 29.1755)" fill="#161619"/>
 			<rect width="20" height="4" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 56 54.6313)" fill="#161619"/>

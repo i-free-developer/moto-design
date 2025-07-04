@@ -96,11 +96,11 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 				<div className="text-[0.36rem] leading-[0.36rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-medium w-full lg:flex lg:items-center lg:flex-nowrap">
 					<div className="flex items-center">
 						<span className="">Hi there, &nbsp;I’m</span>
-						<span className="grow lg:w-[4.8rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center items-stretch"><input autoComplete="off" name="name" value={userName} onChange={e => setFormField('name', e.target.value)} className="border-none w-full placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your name*"></input></span>
+						<span className="grow lg:w-[4.8rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center items-stretch"><input autoComplete="off" name="name" value={userName} onChange={e => setFormField('name', e.target.value)} className="border-none w-full text-center placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your name*"></input></span>
 					</div>
 					<div className="mt-[0.2rem] lg:mt-0 flex items-center">
 						<span className="">and work as</span>
-						<span className="grow lg:w-[4.4rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center"><input autoComplete="off" name="role" value={userRole} onChange={e => setFormField('role', e.target.value)} className="border-none w-full placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Your role in the team*"></input></span>
+						<span className="grow lg:w-[4.4rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center"><input autoComplete="off" name="role" value={userRole} onChange={e => setFormField('role', e.target.value)} className="border-none w-full text-center placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Your role in the team*"></input></span>
 					</div>
 				</div>
 
@@ -120,7 +120,7 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 				<div className="mt-[0.2rem] lg:mt-0 text-[0.36rem] leading-[0.36rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-medium w-full flex items-center justify-start flex-wrap lg:flex-nowrap">
 					<div className="flex items-center justify-start w-full lg:w-[55%]">
 						<span className="">Hit my inbox at</span>
-						<span className="grow lg:grow-0 lg:w-[4.8rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex items-center justify-center"><input autoComplete="off" name="email" value={userEmail} onChange={e => setFormField('email', e.target.value)} className="border-none w-full placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your email*" type="email"></input></span>
+						<span className="grow lg:grow-0 lg:w-[4.8rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex items-center justify-center"><input autoComplete="off" name="email" value={userEmail} onChange={e => setFormField('email', e.target.value)} className="border-none w-full text-center placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your email*" type="email"></input></span>
 					</div>
 					<div className="mt-[0.2rem] lg:mt-0 flex items-center lg:flex-nowrap text-nowrap">
 						<span className=""><span className="hidden lg:inline-block">, &nbsp;</span>let's build something bold!</span>

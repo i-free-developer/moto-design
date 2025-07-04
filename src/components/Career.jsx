@@ -3,19 +3,18 @@ import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../da
 import Navbar from './Navbar'
 import { StarIcon, ArrowIcon } from './SocialIconsCollection'
 import { SiteInfoCard,  SiteFooter } from './Footer'
-import { useDrawerHandler, useHoverHandler, useScreenRatio } from './FunctionCollection'
+import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
 
 export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
-	const {smallScreenRatioInt} = useScreenRatio()
 
 	return (
 		<main className="mx-auto">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
 			<section id="career" className="mx-auto pt-[0.32rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem]" onClick={closeDrawer}>
 				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
-					<CareerHeader scaleRatio={smallScreenRatioInt}/>
-					<CareerContenr scaleRatio={smallScreenRatioInt}/>
+					<CareerHeader/>
+					<CareerContenr/>
 				</div>
 				<div className="mx-auto w-screen w-screen max-w-screen lg:px-[0.48rem] mt-[0.8rem] lg:mt-[1.48rem] overflow-x-hidden">
 					<TimeLineCard/>
@@ -34,13 +33,13 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 					<HowToApply/>
 				</div>
 				<SiteInfoCard isMobileDevice={isMobileDevice}/>
-				<SiteFooter isMobileDevice={isMobileDevice}/>
+				<SiteFooter isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</section>
 		</main>
 	)
 }
 
-function CareerHeader({scaleRatio}) {
+function CareerHeader() {
 	return (
 		<div className="relative my-[0.64rem] lg:mt-0 lg:px-[0.16rem]">
 			<h1 className="font-extrabold text-[0.48rem] lg:text-[0.8rem] uppercase">[Career]</h1>
@@ -64,7 +63,7 @@ function PositionBtn() {
 	)
 }
 
-function CareerContenr({scaleRatio}) {
+function CareerContenr() {
 	return (
 		<div className="flex flex-col lg:flex-row lg:items-center my-[1.68rem] lg:mt-[1.28rem]">
 			<span className="hidden lg:block"><ArrowGroupImg/></span>
@@ -121,7 +120,7 @@ function PerksContainer() {
 
 function PerkCard({number, title, subtitle, content, index}) {
 	return (
-		<div className={`perk-card transition-transform duration-300 size-[4rem] lg:size-[4.8rem] pt-[0.24rem] lg:pt-[0.28rem] pb-[0.4rem] px-[0.32rem] bg-[#f7f7f7] border border-2 border-[#000000] shrink-0 ${index === 0 ? '' : 'ml-[-2.72rem] lg:ml-[-2.74rem]'}`}>
+		<div className={`perk-card hover:cursor-pointer transition-transform duration-300 size-[4rem] lg:size-[4.8rem] pt-[0.24rem] lg:pt-[0.28rem] pb-[0.4rem] px-[0.32rem] bg-[#f7f7f7] border border-2 border-[#000000] shrink-0 ${index === 0 ? '' : 'ml-[-2.72rem] lg:ml-[-2.74rem]'}`}>
 			<div className="flex items-center justify-between">
 				<div className="flex flex-col">
 					<span className="font-normal text-[0.2rem] tracking-[-2%]">{number}</span>
@@ -198,30 +197,8 @@ export function HowToApply() {
 }
 
 
-function QIcon() {
-	return (
-		<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<circle cx="10" cy="10" r="8" stroke="black" strokeWidth="4"/>
-			<path d="M16 16L20 20" stroke="black" strokeWidth="4"/>
-		</svg>
-	)
-}
-
 function ArrowGroupImg() {
 	return (
 		<img className="h-[0.17rem] object-cover object-center" src="/arrow-group.png"></img>
-	)
-}
-
-function ArrowGroup({scaleRatio}) {
-	return (
-		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} width="81" height="81" viewBox="0 0 81 81" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-			<rect x="14.1348" y="54.6313" width="20" height="4" transform="rotate(-135 14.1348 54.6313)" fill="#161619"/>
-			<rect x="16.9629" y="29.1755" width="20" height="4" transform="rotate(135 16.9629 29.1755)" fill="#161619"/>
-			<rect width="20" height="4" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 56 54.6313)" fill="#161619"/>
-			<rect width="20" height="4" transform="matrix(0.707107 0.707107 0.707107 -0.707107 53.1719 29.1755)" fill="#161619"/>
-			<rect width="20" height="4" transform="matrix(0.707107 -0.707107 -0.707107 -0.707107 66.8281 54.6316)" fill="#161619"/>
-			<rect width="20" height="4" transform="matrix(0.707107 0.707107 0.707107 -0.707107 64 29.1758)" fill="#161619"/>
-		</svg>
 	)
 }

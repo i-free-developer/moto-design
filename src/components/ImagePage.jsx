@@ -17,7 +17,7 @@ export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
 					<ImgCard {...item}/>
 				</div>
 				<SiteInfoCard isMobileDevice={isMobileDevice}/>
-				<SiteFooter isMobileDevice={isMobileDevice}/>
+				<SiteFooter isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</section>
 		</main>
 	)

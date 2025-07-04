@@ -74,7 +74,7 @@ function SiteFooter({isMobileDevice}) {
   return (
     <div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden px-[0.32rem] lg:px-[0.48rem] flex items-center justify-between my-[0.48rem]">
       <Link to="/">{ isMobileDevice ? <LogoIconMobile/> : <LogoIconDesktop/> }</Link>
-      <div className="w-2/3 lg:w-1/2 flex flex-col lg:flex-row items-end lg:gap-[0.32rem] lg:items-center lg:justify-between text-[0.12rem] leading-[0.16rem] lg:text-[0.2rem] font-medium lg:leading-[0.2rem]">
+      <div className="w-2/3 lg:w-1/2 flex flex-col lg:flex-row items-end lg:gap-[0.32rem] lg:items-center lg:justify-between text-[0.12rem] leading-[0.16rem] lg:text-[0.16rem] font-medium lg:leading-[0.16rem]">
         <p className="">{CompanyEmail}</p>
         <p className="lg:mr-[0.96rem]">{CopyRight}</p>
       </div>

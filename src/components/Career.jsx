@@ -16,20 +16,20 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 					<CareerHeader/>
 					<CareerContenr/>
 				</div>
-				<div className="mx-auto w-screen lg:px-[0.48rem] mt-[0.8rem] lg:mt-[1.48rem] ">
+				<div className="mx-auto w-screen w-screen max-w-screen lg:px-[0.48rem] mt-[0.8rem] lg:mt-[1.48rem] overflow-x-hidden">
 					<TimeLineCard/>
 				</div>
 				<div className="mx-auto w-screen max-w-screen mt-[2.16rem] lg:mt-[2.8rem] overflow-x-hidden">
 					<LifeAtMotoCard/>
 				</div>
 
-				<div className="mx-auto w-screen max-w-screen mt-[0.8rem] lg:mt-[1.6rem]">
+				<div className="mx-auto w-screen max-w-screen mt-[0.8rem] lg:mt-[1.6rem] overflow-x-hidden">
 					<PerksContainer/>
 				</div>
 
 				<div className="px-[0.32rem] lg:px-[0.48rem] lg:mb-[2.88rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<RolesContainer/>
-					<div className="mt-[2.16rem] lg:mt-[2.8rem]"></div>
+					<div className="mt-[2.16rem] mb-[1.66rem] lg:mb-0 lg:mt-[2.8rem]"></div>
 					<HowToApply/>
 				</div>
 				<SiteInfoCard isMobileDevice={isMobileDevice}/>
@@ -94,7 +94,7 @@ function TimeLineElement({id, title, isEven, isLastItem}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
 
 	return (
-		<div className="flex flex-col grow min-w-content text-black/40 hover:text-black" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+		<div className="flex flex-col grow min-w-content text-black/40 hover:text-black hover:cursor-pointer" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<span className="text-[0.24rem] leading-[0.24rem] lg:text-[0.28rem] lg:leading-[0.36rem] translate-x-[-0.06rem]">{id}</span>
 			<div className="flex items-center mt-[0.12rem] mb-[0.32rem] h-[0.4rem] relative text-black">
 				<span className={`w-full ${isEven ? 'h-[0.4rem]' : 'h-[0.2rem]'} border-l-1 lg:border-l-2 ${isLastItem ? 'border-r-1 lg:border-r-2 h-[0.4rem]' : ''}`}></span>
@@ -110,7 +110,7 @@ function TimeLineElement({id, title, isEven, isLastItem}) {
 
 function PerksContainer() {
 	return (
-		<div className="mx-auto flex items-center">
+		<div className="mx-auto flex items-center overflow-x-scroll">
 			<div className="mx-auto whitespace-nowrap flex flex-nowrap">
 				{PerkItemsData.map((item, index) => <PerkCard {...item} index={index} key={item.number}/>)}
 			</div>
@@ -159,14 +159,14 @@ function RolesContainer() {
 function RoleCard({team, title, tags, index, id}) {
 	return (
 		<article className="lg:w-[8.8rem] tracking-[-2%] scroll-fade-in">
-			{index === 0 &&  <hr className="border border-black/20 mb-[0.24rem] lg:mb-[0.48rem] lg:w-[8.8rem]"></hr> }
+			{index === 0 &&  <hr className="border border-[0.8px] lg:border-1 border-black/20 mb-[0.48rem] lg:w-[8.8rem]"></hr> }
 			<header className="font-bold text-[0.16rem] lg:text-[0.2rem]">{team}</header>
 			<div className="relative">
 				<p className="text-[0.32rem] lg:text-[0.32rem] font-normal mt-[0.24rem] lg:mt-[0.24rem]">{title}</p>
 				<div className="flex flex-row items-center gap-[0.02rem] mt-[0.48rem] lg:mt-[0.48rem]">
 					{tags.map((tag, index) => <span className="text-[0.16rem] lg:text-[0.2rem] font-medium text-black opacity-40" key={index}>{tag}</span>)}
 				</div>
-				<hr className="border border-black/20 my-[0.24rem] lg:my-[0.48rem] w-full lg:w-[8.8rem]"></hr>
+				<hr className="border border-[0.8px] lg:border-1 border-black/20 my-[0.48rem] w-full lg:w-[8.8rem]"></hr>
 				<ApplyButon id={id}/>
 			</div>
 		</article>
@@ -175,15 +175,12 @@ function RoleCard({team, title, tags, index, id}) {
 
 function ApplyButon({id}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
-	const ArrowElement = (<div className={`bg-white size-[0.24rem] lg:size-[0.4rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>)
-	// const DotElement = (<div className="size-[2.5rem] flex items-center justify-center"><span className="size-[0.5rem] bg-white rounded-full"></span></div>)
 
 	return (
-		<Link to={`/role/${id}`} className="will-change-transform absolute bottom-[0.48rem] lg:bottom-[0.48rem] right-0 flex items-center justify-between lg:gap-[0.16rem] bg-slate-900 rounded-full pl-[0.24rem] py-[0.04rem] pr-[0.04rem]"
+		<Link to={`/role/${id}`} className="will-change-transform absolute bottom-[0.4rem] lg:bottom-[0.4rem] right-0 flex items-center justify-between gap-[0.24rem] lg:gap-[0.16rem] bg-slate-900 rounded-full pl-[0.24rem] py-[0.06rem] lg:py-[0.04rem] pr-[0.04rem]"
 			onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<span className="text-white font-medium text-[0.2rem] lg:text-[0.24rem]">Apply</span>
-			{/* {isHovered ? ArrowElement : DotElement} */}
-			{ArrowElement}
+			<div className={`bg-white size-[0.24rem] lg:size-[0.4rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>
 		</Link>
 	)
 }

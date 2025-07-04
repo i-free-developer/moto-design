@@ -15,7 +15,7 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 			<section id="portfolio" className="" onClick={closeDrawer}>
 				<div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] px-[0.32rem] lg:px-[0.48rem] pt-[0.48rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem] overflow-x-hidden">
 					<PortfolioHeader/>
-					<div className="my-[0.48rem] lg:my-[0.96rem] flex flex-row justify-between">
+					<div className="pl-[0.16rem] lg:pl-[0.32rem] my-[0.48rem] lg:my-[0.96rem] flex flex-row justify-between">
 						<MobileDeskIcons isMobile={isMobile} setIsMobile={setIsMobile} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 						<p className="self-start lg:mb-[0.48rem] text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 w-[55%] lg:w-[4.16rem] tracking-[-2%] font-normal text-right">Our user-centered design encourages productivity and boosts revenue</p>
 					</div>
@@ -43,7 +43,7 @@ function PortfolioHeader() {
 
 function MobileDeskIcons({isMobile, setIsMobile, smallScreenRatioDecimal}) {
 	return (
-		<div className="cursor-pointer self-end flex items-center gap-[0.48rem] lg:gap-[0.32rem] lg:mt-[0.16rem] lg:mb-[0.64rem]">
+		<div className="cursor-pointer self-end flex items-center gap-[0.12rem] lg:gap-[0.24rem] lg:mt-[0.16rem] lg:mb-[0.64rem]">
 			<span onClick={() => setIsMobile(true)} className="">{isMobile ? <MobileIconBlack scaleRatio={smallScreenRatioDecimal}/> : <MobileIconWhite scaleRatio={smallScreenRatioDecimal}/> }</span>
 			<span onClick={() => setIsMobile(false)} className="">{isMobile ? <DesktopIconWhite scaleRatio={smallScreenRatioDecimal}/> : <DesktopIconBlack scaleRatio={smallScreenRatioDecimal}/> }</span>
 		</div>
@@ -132,7 +132,7 @@ function MobilePortfolios({isMobileDevice, smallScreenRatioDecimal}) {
 	}, [])
 
   return (
-    <div className="relative mx-auto mb-[3.6rem] pb-[10.5%] lg:pb-[6.5%]">
+    <div className="relative mx-auto mb-[3.6rem] pt-[15.5%] lg:pt-0 pb-[10.5%] lg:pb-[6.5%]">
       <div className="mx-auto w-full overflow-hidden grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-[0.28rem]">
         {mobileItems.map((item, index) => <MobileCard {...item} index={index} key={index}/>)}
       </div>

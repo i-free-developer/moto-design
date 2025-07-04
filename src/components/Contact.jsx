@@ -95,7 +95,7 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 			<form id="contact-form" className="mx-auto w-full lg:w-[14.2rem] mt-[0.96rem] lg:mt-[1.28rem] h--[1.28rem] lg:h--[2.56rem] flex flex-col gap-[0.2rem]" onSubmit={handleSubmit}>
 				<div className="text-[0.36rem] leading-[0.36rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-medium w-full lg:flex lg:items-center lg:flex-nowrap">
 					<div className="flex items-center">
-						<span className="">Hi there, &#20;I’m</span>
+						<span className="">Hi there, &nbsp;I’m</span>
 						<span className="grow lg:w-[4.8rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center items-stretch"><input autoComplete="off" name="name" value={userName} onChange={e => setFormField('name', e.target.value)} className="border-none w-full placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your name*"></input></span>
 					</div>
 					<div className="mt-[0.2rem] lg:mt-0 flex items-center">
@@ -123,10 +123,10 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 						<span className="grow lg:grow-0 lg:w-[4.8rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex items-center justify-center"><input autoComplete="off" name="email" value={userEmail} onChange={e => setFormField('email', e.target.value)} className="border-none w-full placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your email*" type="email"></input></span>
 					</div>
 					<div className="mt-[0.2rem] lg:mt-0 flex items-center lg:flex-nowrap text-nowrap">
-						<span className=""><span className="hidden lg:inline-block">,&#20;</span>let's build something bold!</span>
+						<span className=""><span className="hidden lg:inline-block">, &nbsp;</span>let's build something bold!</span>
 					</div>
 				</div>
-				<div className="mx-auto mt-[1.68rem] lg:mt-[0.98rem]">
+				<div className="mx-auto mt-[1.48rem] lg:mt-[0.98rem]">
 					<button disabled={isDisabled} className="text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] rounded-full bg-black/50">{loading ? 'Submiting...' : 'Submit'}</button>
 				</div>
 			</form>

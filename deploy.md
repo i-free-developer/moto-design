@@ -1,4 +1,5 @@
 ###### Server
+2core cpu 4G RAM 20 ~ 40G SSD 
 
 # 更新系统
 sudo apt update && sudo apt upgrade -y

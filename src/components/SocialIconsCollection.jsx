@@ -1,6 +1,6 @@
 const SocialIconItems = [
   { name: 'X',   imgPath: '/icon-x.png',           url: 'https://x.com/MotoDesign_'},
-  { name: 'In',  imgPath: '/icon-in.png',          url: '#'},
+  { name: 'In',  imgPath: '/icon-in.png',          url: 'https://www.linkedin.com/company/motodsgn'},
 	{ name: 'Be',  imgPath: '/icon-be.png',          url: '#'},
 	{ name: 'XHS', imgPath: '/icon-xiaohongshu.png', url: 'https://www.xiaohongshu.com/user/profile/63f71acf000000000f013e49'},
 ]

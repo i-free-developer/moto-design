@@ -22,7 +22,7 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 				</div>
 				
 				<div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] lg:px-[0.48rem]">
-	      	{isMobile ? <MobilePortfolios isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/> : <DesktopPortfolios/>}
+	      	{isMobile ? <MobilePortfolios isMobileDevice={isMobileDevice}/> : <DesktopPortfolios/>}
 	      </div>
 	      
 	      <SiteInfoCard isMobileDevice={isMobileDevice}/>
@@ -111,7 +111,7 @@ function DesktopBottomCard({title, description}) {
 	)
 }
 
-function MobilePortfolios({isMobileDevice, smallScreenRatioDecimal}) {
+function MobilePortfolios({isMobileDevice}) {
 	const [mobileItems, setMobileItems] = useState([])
 
 	useEffect(() => {
@@ -127,21 +127,45 @@ function MobilePortfolios({isMobileDevice, smallScreenRatioDecimal}) {
 	    return result;
 		}
 
-		let items = chunkArray(PortfolioData.mobile).flat()
+		let items = isMobileDevice ? PortfolioData.mobile : chunkArray(PortfolioData.mobile).flat()
 		setMobileItems(items)
-	}, [])
+	}, [isMobileDevice])
 
   return (
-    <div className="relative mx-auto mb-[3.6rem] pt-[15.5%] lg:pt-0 pb-[10.5%] lg:pb-[6.5%]">
-      <div className="mx-auto w-full overflow-hidden grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-[0.28rem]">
-        	{mobileItems.map((item, index) => <MobileCard {...item} index={index} key={index}/>)}
-      </div>
-      <StickyHandCard scaleRatio={smallScreenRatioDecimal}/>
-    </div>
+  	<>
+  		{ isMobileDevice ? <MobilePortfoliosMobileContainer mobileItems={mobileItems}/> : <MobilePortfoliosDesktopContainer mobileItems={mobileItems}/> }
+  	</>
   )
 }
 
-function MobileCard({title, image, index}) {
+function MobilePortfoliosDesktopContainer({mobileItems}) {
+	return (
+		<div className="relative mx-auto mb-[3.6rem] pt-[10.5%] lg:pt-0 pb-[10.5%] lg:pb-[6.5%]">
+      <div className="mx-auto w-full overflow-hidden grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-[0.28rem]">
+        	{mobileItems.map((item, index) => <MobileCardDesktopView {...item} index={index} key={index}/>)}
+      </div>
+      <StickyHandCard/>
+    </div>
+	)
+}
+
+function MobilePortfoliosMobileContainer({mobileItems}) {
+	let itemsCount = mobileItems.length
+	const mobileItemsLeft = mobileItems.slice(0, (itemsCount/2))
+	const mobileItemsRight = mobileItems.slice(itemsCount/2)
+	return (
+		<div className="relative mx-auto mb-[3.6rem] pt-[10.5%]">
+      <div className="mx-auto w-full overflow-hidden flex gap-[0.16rem]">
+      	<div className="flex flex-col gap-[0.16rem] ml-[-0.24rem]">{mobileItemsLeft.map((item, index) => <MobileCardMobileView {...item} index={index} key={index}/>)}</div>
+      	<div className="w-full min-h-full"></div>
+      	<div className="flex flex-col gap-[0.16rem] mr-[-0.24rem]">{mobileItemsRight.map((item, index) => <MobileCardMobileView {...item} index={index} key={index}/>)}</div>
+      </div>
+      <StickyHandCard/>
+    </div>
+	)
+}
+
+function MobileCardDesktopView({title, image, index}) {
   return (
     <div className="col-span-1 w-[2.39rem] h-[5.04rem] lg:w-[3.42rem] lg:h-[7.22rem] rounded-[0.28rem] lg:rounded-[0.16rem] overflow-hidden">
       {image ? <img loading="lazy" src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit]" /> : <EmptyCard/> }
@@ -149,14 +173,22 @@ function MobileCard({title, image, index}) {
   )
 }
 
+function MobileCardMobileView({title, image, index}) {
+	return (
+    <div className="w-[2.39rem] h-[5.04rem] rounded-[0.28rem] overflow-hidden">
+      {image ? <img loading="lazy" src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit]" /> : <EmptyCard/> }
+    </div>
+	 )
+}
+
 function EmptyCard() { return (<span className="min-w-full min-h-full"></span>) }
 
-function StickyHandCard({scaleRatio}) {
+function StickyHandCard() {
 	const handImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-sticky-hand-img.png'
   return (
     <div className="absolute inset-0 flex items-center justify-center">
-      <div style={{overflowY: 'overlay'}} className="sticky top-0 bottom-0 translate-x-[19%]">
-        <img loading="lazy" className="w-[5.4rem] h-[5.77rem] lg:w-[7.92rem] lg:h-[8.48rem] object-fit object-center rounded-[0.28rem] lg:rounded-[0.16rem]" src={handImg} alt="Hand"/>
+      <div style={{overflowY: 'overlay'}} className="sticky top-0 bottom-0 translate-x-[18.8%] lg:translate-x-[19%]">
+        <img loading="lazy" className="w-[5.88rem] w--[5.4rem] h-[6.28rem] h--[5.77rem] lg:w-[7.92rem] lg:h-[8.48rem] object-fit object-center rounded-[0.28rem] lg:rounded-[0.16rem]" src={handImg} alt="Hand"/>
       </div>
     </div>
   )

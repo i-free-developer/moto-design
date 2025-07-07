@@ -113,20 +113,18 @@ function DesktopBottomCard({title, description}) {
 
 function MobilePortfolios({isMobileDevice}) {
 	const [mobileItems, setMobileItems] = useState([])
-
+	function chunkArray(arr) {
+    const result = [];
+    const step = isMobileDevice ? 2 : 4
+    const spIndex = isMobileDevice ? 1 : 2
+    for (let i = 0; i < arr.length; i += step) {
+    	let s = arr.slice(i, i + step)
+    	if (s.length > spIndex) { s.splice(spIndex, 0, {}) }
+      result.push(s);
+    }
+    return result;
+	}
 	useEffect(() => {
-		function chunkArray(arr) {
-	    const result = [];
-	    const step = isMobileDevice ? 2 : 4
-	    const spIndex = isMobileDevice ? 1 : 2
-	    for (let i = 0; i < arr.length; i += step) {
-	    	let s = arr.slice(i, i + step)
-	    	if (s.length > spIndex) { s.splice(spIndex, 0, {}) }
-	      result.push(s);
-	    }
-	    return result;
-		}
-
 		let items = isMobileDevice ? PortfolioData.mobile : chunkArray(PortfolioData.mobile).flat()
 		setMobileItems(items)
 	}, [isMobileDevice])
@@ -150,12 +148,11 @@ function MobilePortfoliosDesktopContainer({mobileItems}) {
 }
 
 function MobilePortfoliosMobileContainer({mobileItems}) {
-	let itemsCount = mobileItems.length
-	const mobileItemsLeft = mobileItems.slice(0, (itemsCount/2))
-	const mobileItemsRight = mobileItems.slice(itemsCount/2)
+	const mobileItemsLeft = mobileItems.filter((e,i) => i % 2 == 0)
+	const mobileItemsRight = mobileItems.filter((e,i) => i % 2 != 0)
 	return (
 		<div className="relative mx-auto mb-[3.6rem] pt-[10.5%]">
-      <div className="mx-auto w-full overflow-hidden flex gap-[0.16rem]">
+      <div className="mx-auto w-full overflow-hidden flex gap-[0.16rem]">      	
       	<div className="flex flex-col gap-[0.16rem] ml-[-0.24rem]">{mobileItemsLeft.map((item, index) => <MobileCardMobileView {...item} index={index} key={index}/>)}</div>
       	<div className="w-full min-h-full"></div>
       	<div className="flex flex-col gap-[0.16rem] mr-[-0.24rem]">{mobileItemsRight.map((item, index) => <MobileCardMobileView {...item} index={index} key={index}/>)}</div>

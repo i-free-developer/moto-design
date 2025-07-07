@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import backgroundImage from '../assets/dashed-bg-v2.png'
 
 function SiteInfoCard({isMobileDevice}) {
+  // sm:1.48rem lg:1.92rem
   return (
     <div style={{
       backgroundImage: `url(${backgroundImage})`,

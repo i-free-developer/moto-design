@@ -24,77 +24,88 @@ const OpenningRoles = [
 	{
 		id: '1',
 		team: 'MOTO  >  Design Department  >  WEB', 
-		title: 'Global SEO & Content Operation Full-time / On-site (ShenZhen）',
+		title: 'Senior UI Designer',
+		fullTime: 'Full-time',
+		onSite: 'On-site (ShenZhen)',
+		isRemote: 'Remote',
 		tags: ['Full-time', 'On-site (ShenZhen)'],
 		roleTag: 'UI Designer',
 		responsibilities: [
 			'Lead the visual design strategy for both web and mobile platforms. Collaborate closely with UX researchers, motion designers, and front-end engineers, providing front-end design support when necessary to ensure seamless integration with client requirements.',
 			'Manage multiple design projects simultaneously with strong time management and attention to quality, ensuring timely delivery of high-fidelity design files.',
 			'Stay updated on design trends and emerging technologies. Analyze competitors and contribute innovative, efficient design solutions to the team.',
-			'Regularly review and optimize your design work through retrospectives and self-reflection.',
+			'Regularly review and optimize your design work through retrospectives and self-reflection.'
 		],
 		requirements: [
 			'A degree in a design-related field, with at least 2 years of experience at a major internet or tech company. (Graduates from top-tier design schools with bilingual communication skills will be given priority.)',
 			'Proficient in Figma, Adobe Creative Suite, and interaction/motion design tools such as ProtoPie or Principle. Familiarity with AI-powered design tools is a plus.',
 			'A refined aesthetic sense with a strong command of interface hierarchy, typography, color theory, and interaction design.',
-			'A complete and polished portfolio is required, showcasing interface and visual design works. (Please note: We conduct detailed background checks on portfolios and candidate credentials. Any discovered misrepresentation or falsification will result in immediate termination of your application.)',
+			'A complete and polished portfolio is required, showcasing interface and visual design works. (Please note: We conduct detailed background checks on portfolios and candidate credentials. Any discovered misrepresentation or falsification will result in immediate termination of your application.)'
 		]
 	},
 	{
 		id: '2',
 		team: 'MOTO  >  Design Department  >  WEB', 
-		title: 'Senior UI Designer / Full-time',
+		title: 'Global SEO & Content Operation',
+		fullTime: 'Full-time',
+		onSite: 'On-site (ShenZhen)',
+		isRemote: 'Remote',
 		tags: ['Full-time', 'On-site (ShenZhen)'],
 		roleTag: 'UI Designer',
 		responsibilities: [
-			'Lead the visual design strategy for both web and mobile platforms. Collaborate closely with UX researchers, motion designers, and front-end engineers, providing front-end design support when necessary to ensure seamless integration with client requirements.',
-			'Manage multiple design projects simultaneously with strong time management and attention to quality, ensuring timely delivery of high-fidelity design files.',
-			'Stay updated on design trends and emerging technologies. Analyze competitors and contribute innovative, efficient design solutions to the team.',
-			'Regularly review and optimize your design work through retrospectives and self-reflection.',
+			"Be responsible for the SEO optimization of the company's brand, formulate multilingual SEO strategies based on different regional, optimize the content structure and keyword layout of the website, and enhance global search visibility",
+			'Monitor and analyze website performance using tools like GA4 and Search Console; refine content strategy based on data.',
+			'Create and localize high-quality brand content — including project write-ups, blog articles, social media copy, and case narratives — primarily in English, ensure that the language style is consistent with the brand tone',
+			'Stay updated with algorithm changes and competitor strategies to continuously refine SEO and content plans.'
 		],
 		requirements: [
-			'A degree in a design-related field, with at least 2 years of experience at a major internet or tech company. (Graduates from top-tier design schools with bilingual communication skills will be given priority.)',
-			'Proficient in Figma, Adobe Creative Suite, and interaction/motion design tools such as ProtoPie or Principle. Familiarity with AI-powered design tools is a plus.',
-			'A refined aesthetic sense with a strong command of interface hierarchy, typography, color theory, and interaction design.',
-			'A complete and polished portfolio is required, showcasing interface and visual design works. (Please note: We conduct detailed background checks on portfolios and candidate credentials. Any discovered misrepresentation or falsification will result in immediate termination of your application.)',
+			'Proven experience in SEO strategy and content operations, with a solid understanding of global search engine ecosystems.',
+			'Strong English writing skills; capable of crafting or managing high-quality multilingual brand content.',
+			'Proficient with SEO tools like Ahrefs, SEMRush, Screaming Frog, GA4, and Google Search Console.',
+			'Sensitive to branding tone, user behavior, and digital trends; combines data insight with aesthetic sensibility.'
 		]
 	},
 	{
 		id: '3',
 		team: 'MOTO  >  Design Department  >  WEB', 
-		title: 'Global SEO & Content Operation Full-time / On-site (ShenZhen）',
+		title: 'Motion & VFX Designer',
+		fullTime: 'Full-time',
+		onSite: 'On-site (ShenZhen)',
+		isRemote: 'Remote',
 		tags: ['Full-time', 'On-site (ShenZhen)'],
-		roleTag: 'UI Designer',
+		roleTag: 'Intern',
 		responsibilities: [
-			'Lead the visual design strategy for both web and mobile platforms. Collaborate closely with UX researchers, motion designers, and front-end engineers, providing front-end design support when necessary to ensure seamless integration with client requirements.',
-			'Manage multiple design projects simultaneously with strong time management and attention to quality, ensuring timely delivery of high-fidelity design files.',
-			'Stay updated on design trends and emerging technologies. Analyze competitors and contribute innovative, efficient design solutions to the team.',
-			'Regularly review and optimize your design work through retrospectives and self-reflection.',
+			'Take full ownership of motion and visual effects design across company projects, including brand visuals, dynamic website showcases, promotional videos, and product demo animations.',
+			'Collaborate closely with UI/UX designers and front-end developers to deliver actionable motion design solutions, with a solid understanding of interaction implementation (CSS animations, WebGL, Lottie, etc.).',
+			'Adapt animations for multiple platforms (web, apps, social media), ensuring visual consistency, performance, and compatibility across browsers and devices.',
+			'Be familiar with web and mobile design standards, ensuring responsive behavior and cross-platform adaptability for both desktop and mobile environments.',
+			'Stay on top of global motion design trends, digital media technologies, and generative interaction art; actively contribute to team brainstorming and creative strategy sessions.'
 		],
 		requirements: [
-			'A degree in a design-related field, with at least 2 years of experience at a major internet or tech company. (Graduates from top-tier design schools with bilingual communication skills will be given priority.)',
-			'Proficient in Figma, Adobe Creative Suite, and interaction/motion design tools such as ProtoPie or Principle. Familiarity with AI-powered design tools is a plus.',
-			'A refined aesthetic sense with a strong command of interface hierarchy, typography, color theory, and interaction design.',
-			'A complete and polished portfolio is required, showcasing interface and visual design works. (Please note: We conduct detailed background checks on portfolios and candidate credentials. Any discovered misrepresentation or falsification will result in immediate termination of your application.)',
+			'Degree in Animation, Fine Arts, Design, Digital Media, or related fields, with no less than 3 years of experience in motion design. We prioritize the quality and originality of your portfolio.',
+			'Proficient in at least two mainstream motion/VFX software tools such as After Effects, Cinema 4D, Blender, Notch, or Houdini.',
+			'Skilled in using UI tools like Figma or Adobe XD for motion integration, with a high sensitivity to dynamic composition, timing, sound, and visual rhythm.',
+			'Passionate about exploring new design tools, with strong interest in AI-assisted creativity, generative visuals, and interactive media art, and a mindset of continuous learning.',
+			'Candidates familiar with at least one programming or interactive design approach (e.g., CSS keyframes, Processing, Framer Motion, Three.js, GSAP, TouchDesigner) will be given priority.'
 		]
 	},
 	{
 		id: '4',
 		team: 'MOTO  >  Design Department  >  WEB', 
-		title: 'Senior UI Designer / Full-time',
+		title: 'Intern (Design/Branding/Content)',
+		fullTime: 'Full-time',
+		onSite: 'On-site (ShenZhen)',
+		isRemote: 'Remote',
 		tags: ['Full-time', 'On-site (ShenZhen)'],
-		roleTag: 'UI Designer',
+		roleTag: 'Intern',
 		responsibilities: [
-			'Lead the visual design strategy for both web and mobile platforms. Collaborate closely with UX researchers, motion designers, and front-end engineers, providing front-end design support when necessary to ensure seamless integration with client requirements.',
-			'Manage multiple design projects simultaneously with strong time management and attention to quality, ensuring timely delivery of high-fidelity design files.',
-			'Stay updated on design trends and emerging technologies. Analyze competitors and contribute innovative, efficient design solutions to the team.',
-			'Regularly review and optimize your design work through retrospectives and self-reflection.',
+			'Contribute to day-to-day tasks across design, branding, and social content operations.',
+			'Handles certain design tasks independently, helping streamline team workflows.',
+			'Support market research efforts and actively engage in team brainstorms, bringing fresh ideas to the table.'
 		],
 		requirements: [
-			'A degree in a design-related field, with at least 2 years of experience at a major internet or tech company. (Graduates from top-tier design schools with bilingual communication skills will be given priority.)',
-			'Proficient in Figma, Adobe Creative Suite, and interaction/motion design tools such as ProtoPie or Principle. Familiarity with AI-powered design tools is a plus.',
-			'A refined aesthetic sense with a strong command of interface hierarchy, typography, color theory, and interaction design.',
-			'A complete and polished portfolio is required, showcasing interface and visual design works. (Please note: We conduct detailed background checks on portfolios and candidate credentials. Any discovered misrepresentation or falsification will result in immediate termination of your application.)',
+			'All majors are welcome, but preference will be given to candidates with backgrounds in design, media, marketing, or related fields.',
+			'Quick to learn new things, with the ability to efficiently complete assigned tasks within working hours. Strong adaptability in team environments and familiar with major global social media platforms. ( Bilingual candidates — especially in Chinese, English, Korean, Japanese, or Arabic — will be given priority.）'
 		]
 	},
 ]

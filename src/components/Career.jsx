@@ -12,7 +12,7 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 		<main className="mx-auto">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
 			<section id="career" className="mx-auto pt-[0.32rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem]" onClick={closeDrawer}>
-				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
+				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
 					<CareerHeader/>
 					<CareerContenr/>
 				</div>
@@ -141,13 +141,14 @@ function PerkIcon({ iconName }) {
 }
 
 function RolesContainer() {
+	const rolesCount = OpenningRoles.length
 	return (
 		<div className="mt-[2.16rem] lg:mt-[2.8rem] lg:mb-[2.8rem] grid grid-cols-1 lg:grid-cols-2">
 			<div className="lg:w-[6.48rem] tracking-[-2%] scroll-fade-in">
 				<h3 className="uppercase font-bold text-[0.2rem] leading-[0.2rem] lg:text-[0.24rem] lg:leading-[0.32rem]">join our team</h3>
 				<p className="uppercase font-bold text-[0.48rem] leading-[0.48rem] lg:text-[0.8rem] lg:leading-[0.96rem] mt-[0.48rem] lg:mt-[0.16rem]">find your perfect role</p>
 				<p className="text-[0.16rem] leading-[0.16rem] lg:text-[0.2rem] lg:leading-[0.28rem] mt-[0.12rem] lg:mt-[0.72rem] font-normal">Explore our open roles and find the one that fits not just your resume, but your rhythm.</p>
-				<p className="text-[0.32rem] lg:text-[0.36rem] mt-[1.28rem] lg:mt-[2.4rem] font-bold scroll-fade-in"><span className="mr-[0.02rem]">13</span>Positions</p>
+				<p className="text-[0.32rem] lg:text-[0.36rem] mt-[1.28rem] lg:mt-[2.4rem] font-bold scroll-fade-in"><span className="mr-[0.02rem]">{rolesCount}</span>Positions</p>
 			</div>
 			<div id="positions" className="mt-[0.8rem] lg:mt-0 flex flex-col gap-[0.08rem]">
 				{OpenningRoles.map((item, index) => <RoleCard {...item} index={index} key={index}/>)}
@@ -156,13 +157,13 @@ function RolesContainer() {
 	)
 }
 
-function RoleCard({team, title, tags, index, id}) {
+function RoleCard({team, title, tags, index, id, fullTime}) {
 	return (
 		<article className="lg:w-[8.8rem] tracking-[-2%] scroll-fade-in">
 			{index === 0 &&  <hr className="border border-[0.8px] lg:border-1 border-black/20 mb-[0.48rem] lg:w-[8.8rem]"></hr> }
 			<header className="font-bold text-[0.16rem] lg:text-[0.2rem]">{team}</header>
 			<div className="relative">
-				<p className="text-[0.32rem] lg:text-[0.32rem] font-normal mt-[0.24rem] lg:mt-[0.24rem]">{title}</p>
+				<p className="text-[0.32rem] lg:text-[0.32rem] font-normal mt-[0.24rem] lg:mt-[0.24rem]">{title}&nbsp;/&nbsp;{fullTime}</p>
 				<div className="flex flex-row items-center gap-[0.02rem] mt-[0.48rem] lg:mt-[0.48rem]">
 					{tags.map((tag, index) => <span className="text-[0.16rem] lg:text-[0.2rem] font-medium text-black opacity-40" key={index}>{tag}</span>)}
 				</div>

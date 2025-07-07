@@ -12,10 +12,10 @@ export default function Contact({isMobileDevice, smallScreenRatioDecimal}) {
 	return (
 		<main className="mx-auto min-w-screen max-w-screen overflow-x-hidden">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} />
-			<section id="contact-us" className="mx-auto relative max-w-[750px] lg:max-w-full pt-[0.4rem] lg:pt-0" onClick={closeDrawer}>
+			<section id="contact-us" className="mx-auto relative max-w-full lg:max-w-full pt-[0.4rem] lg:pt-0" onClick={closeDrawer}>
 				<PixelsHeader/>
 				<ContactContainer isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-	      		<CopyRightCard/>
+	      <CopyRightCard/>
 			</section>
 		</main>
 	)
@@ -107,7 +107,7 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 				<div className="text-[0.36rem] leading-[0.36rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-medium w-full flex items-center flex-wrap lg:flex-nowrap">
 					<span className="mt-[0.2rem] lg:mt-0 ">I’m looking for a creative team to help  with</span>
 					<span className="mt-[0.2rem] lg:mt-0 grow relative lg:w-[6rem] lg:ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center items-center">
-						<input onClick={() => setDisplayCard(!displayCard)} autoComplete="off" name="team" value={teamData} onChange={e => {}} className="cursor-pointer border-none w-full placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="What type of service are you looking for?"></input>
+						<input onClick={() => setDisplayCard(!displayCard)} autoComplete="off" name="team" value={teamData} onChange={e => {}} className="cursor-pointer border-none w-full text-center placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="What type of service are you looking for?"></input>
 						<span className={`${ displayCard ? 'text-black' : 'text-black/40'}`}><ArrIcons/></span>
 						<SelectCard displayCard={displayCard} setTeamData={setTeamData} setFormField={setFormField}/>
 					</span>
@@ -135,18 +135,19 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 }
 
 function SelectCard({displayCard, setTeamData, setFormField}) {
-	const [selectedItems, setSelectedItems] = useState(new Set())
-	function handleClickItem(e) {
+	const [selectedItems, setSelectedItems] = useState([])
+	function handleSelectedItem(e) {
 		e.preventDefault(); e.stopPropagation();
 		const item = e.target.dataset.item
-		const newSet = new Set(selectedItems);
-		newSet.has(item) ? newSet.delete(item) : newSet.add(item)
-	    setSelectedItems(newSet);
-	    setFormField('team', Array.from(newSet).join(', '))
+		let newArr = Array.from(selectedItems);
+		let itemExisted = newArr.find(x => x == item)
+		itemExisted ? newArr = newArr.filter(x => x != item) : newArr.push(item)
+	  setSelectedItems(newArr);
+	  setFormField('team', newArr.join(', '))
 	}
 	return (
 		<div onClick={e => {e.preventDefault(); e.stopPropagation()}} className={`${displayCard ? '' : 'hidden'} z-10 absolute right-0 top-[0.42rem] bg-black py-[0.28rem] pl-[0.28rem] pr-[0.25rem] lg:pr-[0.68rem] w-[4.36rem] lg:w-[6rem] flex items-center gap-[0.12rem] flex-wrap text-[0.16rem] font-medium`}>
-			{SelectOptions.map((item, index) => <span className={`${selectedItems.has(item) ? 'bg-white text-black' : 'bg-black text-white'} px-[0.16rem] py-[0.02rem] border rounded-full`} data-item={item} key={index} onClick={handleClickItem}>{item}</span>)}
+			{SelectOptions.map((item, index) => <span className={`${selectedItems.includes(item) ? 'bg-white text-black' : 'bg-black text-white'} px-[0.16rem] py-[0.02rem] border rounded-full`} data-item={item} key={index} onClick={handleSelectedItem}>{item}</span>)}
 		</div>
 	)
 }

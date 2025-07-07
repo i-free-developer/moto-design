@@ -1,128 +1,197 @@
-import { useState } from 'react'
-import { DesktopPortfolioItems, MobilePortfolioItems } from '../data/site-data'
+import { useState, useEffect } from 'react'
+import { Link } from "react-router-dom"
+import { PortfolioData } from '../data/site-data'
+import Navbar from './Navbar'
+import { SiteInfoCard,  SiteFooter } from './Footer'
+import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
 
-export default function Portfolio({closeDrawer}) {
+export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 	const [isMobile, setIsMobile] = useState(false)
-
+	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
+	
 	return (
-		<section id="portfolio" className="mx-auto px-[4rem] mt-[15rem] mb-[3rem]" onClick={closeDrawer}>
-			<PortfolioHeader/>
-			<div className="flex items-center gap-[0.5rem] mt-[2rem] mb-[6rem] text-[1.75rem]">
-				<span onClick={() => setIsMobile(true)} className={`p-2 ${isMobile ? '' : ''}`}><MobileIcon/></span>
-				<span onClick={() => setIsMobile(false)} className={`p-2 ${!isMobile ? '' : ''}`}><DesktopIcon/></span>
-			</div>
-
-      {isMobile ? <MobilePortfolios/> : <DesktopPortfolios/>}
-		</section>
+		<main className="mx-auto">
+			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
+			<section id="portfolio" className="" onClick={closeDrawer}>
+				<div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] px-[0.32rem] lg:px-[0.48rem] pt-[0.48rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem] overflow-x-hidden">
+					<PortfolioHeader/>
+					<div className="pl-[0.16rem] lg:pl-[0.32rem] my-[0.48rem] lg:my-[0.96rem] flex flex-row justify-between">
+						<MobileDeskIcons isMobile={isMobile} setIsMobile={setIsMobile} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+						<p className="self-start lg:mb-[0.48rem] text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 w-[55%] lg:w-[4.16rem] tracking-[-2%] font-normal text-right">Our user-centered design encourages productivity and boosts revenue</p>
+					</div>
+				</div>
+				
+				<div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] lg:px-[0.48rem]">
+	      	{isMobile ? <MobilePortfolios isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/> : <DesktopPortfolios/>}
+	      </div>
+	      
+	      <SiteInfoCard isMobileDevice={isMobileDevice}/>
+				<SiteFooter isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+			</section>
+		</main>
 	)
 }
 
 function PortfolioHeader() {
 	return (
-		<article className="flex justify-between my-[4rem]">
-			<header className="text-[5rem] w-[46rem]">We don't do cookie-cutter solutions</header>
-			<div className="flex flex-col justify-between items-end gap-[3rem] text-right">
-				<p className="text-2xl text-black/64 w-[18rem]">Backing the best Web 3.0 founders & products</p>
-				<p className="text-[2rem] text-black/64 w-[26rem]">Our user-centered design encourages productivity and boosts revenue</p>
-			</div>
+		<article className="flex flex-col lg:flex-row justify-between my-[1rem] lg:my-[0.64rem] tracking-[-2%]">
+			<header className="text-[0.56rem] leading-[0.64rem] lg:text-[0.8rem] lg:leading-[0.96rem] lg:w-[45%] font-normal">We don't do cookie-cutter solutions</header>
+			<p className="mt-[0.16rem] lg:mt-[0.16rem] w-full lg:w-[20%] text-black/64 text-[0.24rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.24rem] lg:text-right font-normal">Backing the best Web 3.0 founders & products</p>
 		</article>
+	)
+}
+
+function MobileDeskIcons({isMobile, setIsMobile, smallScreenRatioDecimal}) {
+	return (
+		<div className="cursor-pointer self-end flex items-center gap-[0.24rem] lg:gap-[0.24rem] lg:mt-[0.16rem] lg:mb-[0.64rem]">
+			<span onClick={() => setIsMobile(true)} className="">{isMobile ? <MobileIconBlack scaleRatio={smallScreenRatioDecimal}/> : <MobileIconWhite scaleRatio={smallScreenRatioDecimal}/> }</span>
+			<span onClick={() => setIsMobile(false)} className="">{isMobile ? <DesktopIconWhite scaleRatio={smallScreenRatioDecimal}/> : <DesktopIconBlack scaleRatio={smallScreenRatioDecimal}/> }</span>
+		</div>
 	)
 }
 
 function DesktopPortfolios() {
   return (
-    <div className="grid grid-cols-5 gap-[1.5rem]">
-      {DesktopPortfolioItems.map((item, index) => <DesktopCard {...item} key={index}/>)}
+    <div className="mb-[3.6rem] px-[0.32rem] lg:px-0 grid grid-cols-1 lg:grid-cols-5 gap-[0.24rem] lg:gap-[0.24rem]">
+      {PortfolioData.desktop.map((item, index) => <DesktopCard {...item} index={index} totalNumber={PortfolioData.desktop.length} key={index}/>)}
     </div>
   )
 }
 
-function DesktopCard({title, description, colums, image, url}) {
-	const [isHovered, setIsHovered] = useState(true)
+function DesktopCard({id, title, description, image, url, index, totalNumber}) {
+	const {isHovered, setIsHovered} = useHoverHandler();
+	const [colsIndex, setColsIndex] = useState(0)
+	
+	useEffect(() => {
+		let itemIndex = index
+		while (itemIndex > 4) { itemIndex = itemIndex % 5 }
+		// let finalIndex = itemIndex === 5 ? itemIndex - 1 : itemIndex;
+		// if (index === totalNumber - 1) { itemIndex = 4}
+		setColsIndex(itemIndex)
+	}, [index])
+	
 	const spanClasses = {
-	  2: 'col-span-2 relative h-[36rem]',
-	  3: 'col-span-3 relative h-[36rem]',
-	  5: 'col-span-5 relative h-[36rem]',
+		0: 'col-span-1 lg:col-span-3 relative h-[4.8rem] lg:h-[5.76rem]',
+		1: 'col-span-1 lg:col-span-2 relative h-[4.8rem] lg:h-[5.76rem]',
+	  2: 'col-span-1 lg:col-span-2 relative h-[4.8rem] lg:h-[5.76rem]',
+	  3: 'col-span-1 lg:col-span-3 relative h-[4.8rem] lg:h-[5.76rem]',
+	  4: 'col-span-1 lg:col-span-5 relative h-[4.8rem] lg:h-[5.76rem]',
 	}
 
 	return (
-		<div className={spanClasses[colums]}>
+		<div className={`${spanClasses[colsIndex]} rounded-[0.28rem] lg:rounded-[0.3rem] overflow-hidden relative`}>
 			<span
         style={{pointerEvents: 'none'}}
         className={`
-				z-5 absolute left-[50%] bottom-0 w-full h-2/5 rounded-[40%] blur-[3rem] bg-sky-800 opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
-				${isHovered ? '-translate-x-[50%] -translate-y-[10%] opacity-80' : '-translate-x-[50%] translate-y-[20%] '}
+				z-5 absolute left-0 right-0 bottom-0 min-w-full h-[30%] rounded-[0] blur--[8px] bg-gradient-to-b from-[#D1D1DA]/0 to-[#3173FF] bg--[#3173FF] opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
+				${isHovered ? 'opacity-100' : 'translate-y-[10%] '}
 			`}></span>
-			<a href={url} className="max-w-full h-full block cursor-pointer rounded-3xl">
+			<Link to={`/portfolio/${id}`} className="max-w-full h-full block cursor-pointer rounded-[0.28rem] lg:rounded-[0.3rem]">
 				<div className="w-full h-full overflow-hidden rounded-[inherit]">
-					<img src={image} className={`w-full h-full object-cover object-center rounded-[inherit] ${isHovered ? 'scale-104' : ''}`} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}></img>
+					<img src={image} loading="lazy" className={`w-full h-full object-cover object-center rounded-[inherit] transition-transform duration-400 ${isHovered ? 'scale-104' : ''}`} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}></img>
 				</div>
-				<div className="z-10 absolute left-6 right-6 bottom-6 px-6 py-4 bg-white rounded-2xl flex justify-between items-center" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-					<div className="max-w-3/4">
-						<header className="font-bold mb-2 text-2xl">{title}</header>
-						<p className="text-xl">{description}</p>
-					</div>
-					<div className="size-[72px] bg-black/16 flex items-center justify-center rounded-full">
-						<div className={`w-10 ${isHovered ? '-rotate-45' : '-rotate-0'} flex items-center justify-center transition-rotate transition-transform duration-400`}><ArrowRight/></div>
-					</div>
-				</div>
-			</a>
+				<DesktopBottomCard title={title} description={description}/>
+			</Link>
 		</div>
 	)
 }
 
-function MobilePortfolios() {
-  return (
-    <div className="w-full relative">
-      <div className="max-w-full overflow-hidden flex justify-center">
-        <div>
-          <div className="flex gap-[2rem] mb-[2rem]">
-            {MobilePortfolioItems.map((item, index) => <MobileCard {...item} index={index} key={index}/>)}
-          </div>
-          <div className="flex gap-[2rem] my-[2rem]">
-            {MobilePortfolioItems.map((item, index) => <MobileCard {...item} index={index} key={index} />)}
-          </div>
-          <div className="flex gap-[2rem] mt-[2rem]">
-            {MobilePortfolioItems.map((item, index) => <MobileCard {...item} index={index} key={index} />)}
-          </div>
-        </div>
-      </div>
+function DesktopBottomCard({title, description}) {
+	const {isHovered, setIsHovered} = useHoverHandler();
+	return (
+		<div className="z-10 absolute left-[0.12rem] right-[0.12rem] bottom-[0.12rem] px-[0.32rem] py-[0.24rem] lg:py-[0.24rem] bg-white rounded-[0.24rem] flex justify-between items-center" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+			<div className="max-w-3/4">
+				<header className="font-bold mb-[0.16rem] lg:mb-[0.02] text-[0.24rem]">{title}</header>
+				<p className="text-[0.16rem]">{description}</p>
+			</div>
+			<div className="size-[0.72rem] lg:size-[0.72rem] bg-black/16 flex items-center justify-center rounded-full">
+				<div className={`w-[0.16rem] lg:w-[0.24rem] ${isHovered ? '-rotate-45' : '-rotate-0'} flex items-center justify-center transition-rotate transition-transform duration-400`}><ArrowRight/></div>
+			</div>
+		</div>
+	)
+}
 
-      <StickyCard />
+function MobilePortfolios({isMobileDevice, smallScreenRatioDecimal}) {
+	const [mobileItems, setMobileItems] = useState([])
+
+	useEffect(() => {
+		function chunkArray(arr) {
+	    const result = [];
+	    const step = isMobileDevice ? 2 : 4
+	    const spIndex = isMobileDevice ? 1 : 2
+	    for (let i = 0; i < arr.length; i += step) {
+	    	let s = arr.slice(i, i + step)
+	    	if (s.length > spIndex) { s.splice(spIndex, 0, {}) }
+	      result.push(s);
+	    }
+	    return result;
+		}
+
+		let items = chunkArray(PortfolioData.mobile).flat()
+		setMobileItems(items)
+	}, [])
+
+  return (
+    <div className="relative mx-auto mb-[3.6rem] pt-[15.5%] lg:pt-0 pb-[10.5%] lg:pb-[6.5%]">
+      <div className="mx-auto w-full overflow-hidden grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-[0.28rem]">
+        	{mobileItems.map((item, index) => <MobileCard {...item} index={index} key={index}/>)}
+      </div>
+      <StickyHandCard scaleRatio={smallScreenRatioDecimal}/>
     </div>
   )
 }
 
 function MobileCard({title, image, index}) {
   return (
-    <div className="w-[400px] h-[840px] rounded-[1rem]">
-      {(index === 2) ? null : <img src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit]" /> }
+    <div className="col-span-1 w-[2.39rem] h-[5.04rem] lg:w-[3.42rem] lg:h-[7.22rem] rounded-[0.28rem] lg:rounded-[0.16rem] overflow-hidden">
+      {image ? <img loading="lazy" src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit]" /> : <EmptyCard/> }
     </div>
   )
 }
 
-function StickyCard() {
+function EmptyCard() { return (<span className="min-w-full min-h-full"></span>) }
+
+function StickyHandCard({scaleRatio}) {
+	const handImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-sticky-hand-img.png'
   return (
-    <div className="absolute top-0 left-0 bottom-0 right-0 w-full h-full flex flex-col">
-      <div className="sticky top-0 bottom-0 flex items-center justify-center">
-        <img src="https://plus.unsplash.com/premium_photo-1722178429928-caa36778a04b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2fHx8ZW58MHx8fHx8" alt="" className="w-[400px] h-[840px] object-fit object-center rounded-[1rem]" />
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div style={{overflowY: 'overlay'}} className="sticky top-0 bottom-0 translate-x-[19%]">
+        <img loading="lazy" className="w-[5.4rem] h-[5.77rem] lg:w-[7.92rem] lg:h-[8.48rem] object-fit object-center rounded-[0.28rem] lg:rounded-[0.16rem]" src={handImg} alt="Hand"/>
       </div>
     </div>
   )
 }
 
-function MobileIcon() {
+function MobileIconWhite({scaleRatio}) {
 	return (
-		<svg width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect x="1" y="1" width="20" height="26" rx="1" stroke="black" strokeWidth="2"/>
 			<rect x="7" y="4" width="8" height="2" rx="1" fill="#161619"/>
 		</svg>
 	)
 }
 
-function DesktopIcon() {
+function MobileIconBlack({scaleRatio}) {
 	return (
-		<svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect width="22" height="28" rx="2" fill="#161619"/>
+			<rect x="7" y="4" width="8" height="2" rx="1" fill="#F7F7F7"/>
+		</svg>
+	)
+}
+
+function DesktopIconWhite({scaleRatio}) {
+	return (
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect x="1" y="1" width="26" height="18" rx="1" stroke="#161619" strokeWidth="2"/>
+			<rect x="8" y="22" width="12" height="2" rx="1" fill="#161619"/>
+		</svg>
+	)
+}
+
+function DesktopIconBlack({scaleRatio}) {
+	return (
+		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect width="28" height="20" rx="2" fill="black"/>
 			<rect x="8" y="22" width="12" height="2" rx="1" fill="#161619"/>
 		</svg>

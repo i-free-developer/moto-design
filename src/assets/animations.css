@@ -1,98 +1,178 @@
 @keyframes drawer-slide-in {
-	from {transform: translateX(-20rem);}
-	to {transform: translateX(3.5rem)}
+	from {transform: translateX(-5.76rem);}
+	to {transform: translateX(0.56rem);}
 }
 
 @keyframes drawer-slide-out {
-	from {transform: translateX(3.5rem);}
-	to {transform: translateX(-20rem)}
+	from {transform: translateX(0.56rem);}
+	to {transform: translateX(-5.76rem); display: none;}
 }
 
 @keyframes section-slide-in {
 	from {transform: translateX(0);}
-	to {transform: translateX(18rem)}
+	to {transform: translateX(3.36rem)}
 }
 
 @keyframes section-slide-out {
-	from {transform: translateX(18rem);}
+	from {transform: translateX(3.36rem);}
 	to {transform: translateX(0)}
 }
 
-@keyframes progress-bar {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+@media (max-width: 750px) {
+	@keyframes section-slide-in {
+		from {transform: translateX(0);}
+		to {transform: translateX(1.39rem)}
+	}
+
+	@keyframes section-slide-out {
+		from {transform: translateX(1.39rem);}
+		to {transform: translateX(0)}
+	}
+}
+
+@keyframes progress-border {
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 @keyframes slide-right {
-	from {
-/*		left: 0;*/
-		transform: translateX(0);
-	}
-	to {
-/*		left: 20rem;*/
-		transform: translateX(105%);
-	}
+	from { transform: translateX(0);}
+	to { transform: translateX(105%);}
 }
 
 @keyframes infinite-scroll {
-	from {
-    left: 0%;
-  }
-  to {
-    left: -100%
-  }
+	from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes horizontal-scroll {
+	from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes icons-horizontal-scrolling {
+  0% { transform: translateX(0);}
+  100% { transform: translateX(-50%);}
 }
 
 @keyframes slide-vertical-out {
 	from {transform: translateY(0);}
-	to {transform: translateY(8rem);}
+	to {transform: translateY(10rem);}
 }
 
 @keyframes slide-vertical-in {
-	from {transform: translateY(6rem);}
+	from {transform: translateY(10rem);}
 	to {transform: translateY(0);}
 }
 
+@keyframes scroll-fadeIn {
+	from { opacity: 1; scale: 0.9; translateY: 120rem;}
+	to { opacity: 1; scale: 1;translateY: 0;}
+}
+
+@keyframes slide-down {
+	from { opacity: 0; translateY: -200%; }
+	to { opacity: 1; translateY: 0%; }
+}
+
+@keyframes slide-up {
+	from { opacity: 1; translateY: 0; }
+	to { opacity: 0; translateY: -200%; }
+}
+
 .drawer-in {
-	animation: drawer-slide-in 1s ease-in-out;
+	animation: drawer-slide-in 0.4s linear;
 	animation-fill-mode: forwards;
-	left: 1rem;
+/*	left: 1rem;*/
 }
 
 .drawer-out {
-	animation: drawer-slide-out 1s ease-in-out ;
+	animation: drawer-slide-out 0.4s linear;
 	animation-fill-mode: forwards;
 /*	animation-direction: reverse;*/
-	left: -20rem;
+/*	left: -20rem;*/
 }
 
 .section-drawer-in {
-	animation: section-slide-in 1.5s ease-in-out;
+	animation: section-slide-in 0.4s linear;
 	animation-fill-mode: forwards;
 }
 
 .section-drawer-out {
-	animation: section-slide-out 1.5s ease-in-out;
-/*	animation-fill-mode: forwards;*/
+	animation: section-slide-out 0.4s linear;
+	animation-fill-mode: forwards;
 }
 
 .horizontal-bar-in {
-	animation: slide-vertical-in 1.5s ease-in-out;
+	animation: slide-vertical-in 0.8s linear;
 }
 
 .horizontal-bar-out {
-	animation: slide-vertical-out 1.5s ease-in-out;
+	animation: slide-vertical-out 0.8s linear;
 	animation-fill-mode: forwards;
-	display: none;
+}
+
+.vertical-element-in {
+	animation: section-slide-in 1s linear;
+	animation-fill-mode: forwards;
+}
+
+.vertical-element-out {
+	animation: section-slide-out 1s linear;
+	animation-fill-mode: forwards;
+}
+
+.perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
+	transform: translateX(calc(2.74rem - 2px));
+}
+
+.lang-slide-in {
+	animation: slide-down 0.15s ease forwards;
+}
+
+.lang-slide-out {
+	animation: slide-up 0.15s ease forwards;
+}
+
+.logo-masked {
+	-webkit-mask-image: url('/moto-mask-desktop.svg');
+  mask-image: url('/moto-mask-desktop.svg');
+}
+
+@media (max-width: 750px) {
+	.horizontal-bar-in, .horizontal-bar-out, .vertical-element-in, .vertical-element-out { animation: none;}
+
+	.perk-card:active ~ .perk-card, .perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
+		transform: translateX(calc(2.72rem - 2px));
+	}
+
+	@keyframes drawer-slide-in {
+		from {transform: translateX(-6rem);}
+		to {transform: translateX(0.32rem);}
+	}
+
+	@keyframes drawer-slide-out {
+		from {transform: translateX(0.32rem);}
+		to {transform: translateX(-6rem); }
+	}
+
+	.drawer-in {
+		animation: drawer-slide-in 0.4s linear;
+		animation-fill-mode: forwards;
+	/*	left: 1rem;*/
+	}
+
+	.drawer-out {
+		animation: drawer-slide-out 0.4s linear;
+		animation-fill-mode: forwards;
+	/*	animation-direction: reverse;*/
+	/*	left: -20rem;*/
+	}
 }
 
 .hover-border {
-	border: 2px solid;
-	animation: progress-bar 1s ease;
+	border: 1px solid;
+	animation: progress-border 0.4s ease;
 /*	animation-fill-mode: forwards;*/
 }
 
@@ -101,10 +181,90 @@
 	animation-fill-mode: forwards;
 }
 
-.perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
-	transform: translateX(23rem);
+.scroll-header {
+	animation: infinite-scroll 20s linear infinite;
 }
 
-.scroll-header {
-	animation: infinite-scroll 20s linear infinite backwards;
+.scroll-icons {
+	animation: horizontal-scroll 20s linear infinite;
+	animation-fill-mode: both;
+}
+
+.scroll-icons:hover {
+	animation-play-state: paused;
+}
+
+.icons-scroll {
+  will-change: transform; /* We should be nice to the browser - let it know what we're going to animate. */
+  animation: icons-horizontal-scrolling 14s linear infinite both;
+}
+
+.icons-scroll:hover {
+	animation-play-state: paused;
+}
+
+.scroll-fade-in {
+	transition: opacity 2s linear, transform 2s linear;
+	animation: scroll-fadeIn 2s linear both;
+	animation-timeline: view(block);
+	animation-range: 0 30%;
+	/*animation-range: entry 50% entry 70%;*/
+/*	animation-range: entry 0% cover 50%;*/
+	/*animation-timeline: scroll(self);*/
+	/*animation-fill-mode: both;*/
+}
+
+.frosted-glass {
+	/*content: '';*/
+	/*position: absolute;*/
+  /*top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;*/
+  background: rgba(241, 241, 241, 0.8) !important;
+	backdrop-filter: blur(40px) !important;
+	-webkit-backdrop-filter: blur(40px) !important;
+	/*box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );*/
+	/*border-radius: 10px;*/
+	/*border: 1px solid rgba(241, 241, 241, 0.18);*/
+}
+
+body *::-webkit-scrollbar {
+  display: none !important;             /* Chrome, Safari, Opera */
+}
+
+body * {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;     /* Firefox */
+}
+
+.border-inset {
+	border-style: inset;
+}
+
+a > svg {
+	overflow: visible !important;
+	display: block;
+  width: 100%;
+  height: auto;
+}
+
+.linear-gradient-cover {
+	background: linear-gradient(90deg, #F7F7F7, transparent 10%, transparent 90%, #F7F7F7);
+}
+
+#contact-form input:focus,  #contact-form input:focus:not(:placeholder-shown) {
+	border: none;
+  outline: none;
+	/*border-color: transparent;*/
+  background: #F7F7F7;
+  /*box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);*/
+}
+
+#contact-form input:-internal-autofill-selected {
+  background: #F7F7F7 !important;
+}
+
+#contact-form input:-webkit-autofill{
+	-webkit-box-shadow:0 0 0 1000px #F7F7F7 inset !important;
 }

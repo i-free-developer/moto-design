@@ -1,12 +1,20 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <title>Moto Design</title>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/moto.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moto</title>
+    <!-- public/index.html -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <!-- 适配刘海屏 -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <script src="/flexible-rem.js"></script>
+    <link rel="canonical" href=""/>
   </head>
-  <body>
+  
+  <body class="scroll-smooth bg-white">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

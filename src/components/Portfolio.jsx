@@ -139,7 +139,7 @@ function MobilePortfolios({isMobileDevice}) {
 function MobilePortfoliosDesktopContainer({mobileItems}) {
 	return (
 		<div className="relative mx-auto mb-[3.6rem] pt-[10.5%] lg:pt-0 pb-[10.5%] lg:pb-[6.5%]">
-      <div className="mx-auto w-full overflow-hidden grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-[0.28rem]">
+      <div className="mx-auto w-full overflow-hidden grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-[0.2rem]">
         	{mobileItems.map((item, index) => <MobileCardDesktopView {...item} index={index} key={index}/>)}
       </div>
       <StickyHandCard/>
@@ -151,7 +151,7 @@ function MobilePortfoliosMobileContainer({mobileItems}) {
 	const mobileItemsLeft = mobileItems.filter((e,i) => i % 2 == 0)
 	const mobileItemsRight = mobileItems.filter((e,i) => i % 2 != 0)
 	return (
-		<div className="relative mx-auto mb-[3.6rem] pt-[10.5%]">
+		<div className="relative mx-auto mb-[3.6rem] pt--[5.5%] pb-[11%]">
       <div className="mx-auto w-full overflow-hidden flex gap-[0.16rem]">      	
       	<div className="flex flex-col gap-[0.16rem] ml-[-0.24rem]">{mobileItemsLeft.map((item, index) => <MobileCardMobileView {...item} index={index} key={index}/>)}</div>
       	<div className="w-full min-h-full"></div>
@@ -164,7 +164,7 @@ function MobilePortfoliosMobileContainer({mobileItems}) {
 
 function MobileCardDesktopView({title, image, index}) {
   return (
-    <div className="col-span-1 w-[2.39rem] h-[5.04rem] lg:w-[3.42rem] lg:h-[7.22rem] rounded-[0.28rem] lg:rounded-[0.16rem] overflow-hidden">
+    <div className="col-span-1 w-[2.39rem] h-[5.04rem] lg:w-[3.42rem] lg:h-[7.22rem] rounded-[0.28rem] lg:rounded-[48px] overflow-hidden">
       {image ? <img loading="lazy" src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit]" /> : <EmptyCard/> }
     </div>
   )
@@ -184,7 +184,7 @@ function StickyHandCard() {
 	const handImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-sticky-hand-img.png'
   return (
     <div className="absolute inset-0 flex items-center justify-center">
-      <div style={{overflowY: 'overlay'}} className="sticky top-0 bottom-0 translate-x-[18.8%] lg:translate-x-[19%]">
+      <div style={{overflowY: 'overlay'}} className="sticky top-0 bottom-0 translate-x-[18.8%] lg:translate-x-[18.6%]">
         <img loading="lazy" className="w-[5.88rem] w--[5.4rem] h-[6.28rem] h--[5.77rem] lg:w-[7.92rem] lg:h-[8.48rem] object-fit object-center rounded-[0.28rem] lg:rounded-[0.16rem]" src={handImg} alt="Hand"/>
       </div>
     </div>

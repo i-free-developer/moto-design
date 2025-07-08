@@ -204,7 +204,7 @@ function OdometerItem ({ value, format = '(,ddd)', duration = 2500 }) {
     };
   }, [value]);
 
-  return (<span ref={odometerRef} className="odometer" />);
+  return (<span ref={odometerRef} className="odometer min-w-content" />);
 }
 
 export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler, isElementInViewport, OdometerItem, useScreenRatio, useSmallScreenRatio, useHoverHandler }

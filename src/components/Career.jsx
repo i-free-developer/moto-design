@@ -157,15 +157,17 @@ function RolesContainer() {
 	)
 }
 
-function RoleCard({team, title, tags, index, id, fullTime}) {
+function RoleCard({team, title, tags, index, id, fullTime, onSite, isRemote}) {
 	return (
 		<article className="lg:w-[8.8rem] tracking-[-2%] scroll-fade-in">
 			{index === 0 &&  <hr className="border border-[0.8px] lg:border-1 border-black/20 mb-[0.48rem] lg:w-[8.8rem]"></hr> }
 			<header className="font-bold text-[0.16rem] lg:text-[0.2rem]">{team}</header>
 			<div className="relative">
 				<p className="text-[0.32rem] lg:text-[0.32rem] font-normal mt-[0.24rem] lg:mt-[0.24rem]">{title}&nbsp;/&nbsp;{fullTime}</p>
-				<div className="flex flex-row items-center gap-[0.02rem] mt-[0.48rem] lg:mt-[0.48rem]">
-					{tags.map((tag, index) => <span className="text-[0.16rem] lg:text-[0.2rem] font-medium text-black opacity-40" key={index}>{tag}</span>)}
+				<div className="flex flex-row items-center gap-[0.08rem] mt-[0.48rem] lg:mt-[0.48rem] text-[0.16rem] lg:text-[0.2rem] font-medium text-black opacity-40">
+					<span>{fullTime}</span>
+					<span>{onSite}</span>
+					<span>{isRemote}</span>
 				</div>
 				<hr className="border border-[0.8px] lg:border-1 border-black/20 my-[0.48rem] w-full lg:w-[8.8rem]"></hr>
 				<ApplyButon id={id}/>
@@ -191,8 +193,8 @@ export function HowToApply() {
 		<div className="tracking-[-2%] w-full mx-auto">
 			<h2 className="uppercase font-bold text-[0.48rem] lg:text-[0.8rem] lg:leading-[0.8rem]">how to apply</h2>
 			<p className="mt-[0.48rem] lg:mt-[0.48rem] text-[0.2rem] leading-[0.24rem] lg:text-[0.28rem] lg:leading-[0.4rem]">Send your CV and portfolio to <span className="font-bold">({CompanyEmail})</span>, with the subject "<span className="font-bold">Position + Name</span>".</p>
-			<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.28rem] lg:leading-[0.4rem]">We’re not just hiring doers—we’re looking for partners in creation.</p>
-			<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.28rem] lg:leading-[0.4rem] my-[0.24rem] lg:my-[0.4rem]">*File Types: ( pdf, ppt, pptx, txt )</p>
+			<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.4rem]">We’re not just hiring doers—we’re looking for partners in creation.</p>
+			<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.4rem] my-[0.24rem] lg:my-[0.4rem]">*File Types: ( pdf, ppt, pptx, txt )</p>
 		</div>
 	)
 }

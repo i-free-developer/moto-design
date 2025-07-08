@@ -9,7 +9,7 @@ function SiteInfoCard({isMobileDevice}) {
     <div style={{
       backgroundImage: `url(${backgroundImage})`,
       // backgroundSize: 'cover',
-      backgroundPosition: '0 100%',
+      backgroundPosition: '15% 100%',
       // width: '100vw',
     }} className="bg-repeat-x mt-[1rem] lg:mt-0 py-[0.48rem] lg:py-[1.92rem] mx-auto w-screen max-w-screen overflow-x-hidden">
       { isMobileDevice ? <InfoCardMobile/> : <InfoCardDesktop/> }

@@ -17,7 +17,9 @@ export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
 			<section id="role-page" className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden" onClick={closeDrawer}>
 				<div className="mx-auto px-[0.32rem] lg:px-[0.48rem]">
 					<RoleHeaderCard {...roleItem}/>
+					<div className="my-[0.96rem] lg:my-[1.6rem]"></div>
 					<ContentSection title={'Responsibilities'} items={roleItem.responsibilities}/>
+					<div className="mt-[0.96rem]"></div>
 					<ContentSection title={'Requirements'} items={roleItem.requirements}/>
 					<div className="mt-[2.16rem] lg:mt-[2.6rem]"></div>
 					<HowToApply/>
@@ -41,14 +43,14 @@ function RoleHeaderCard({roleTag, title, tags, fullTime, onSite, isRemote}) {
 				<span>{onSite}</span>
 				<span>{isRemote}</span>
 			</div>
-			<hr className="border border-1 lg:border-2 border-black/20 mt-[1.28rem] lg:mt-[1.6rem]"></hr>
+			<hr className="border border-1 border-black/20 my-[0.96rem] lg:my-[1.6rem]"></hr>
 		</div>
 	)
 }
 
 function ContentSection({title, items}) {
 	return (
-		<div className="list-decimal list-inside mt-[0.96rem]">
+		<div className="list-decimal list-inside">
 			<header className="text-[0.32rem] lg:text-[0.32rem] font-bold mb-[0.4rem] tracking-[-2%]">{title}</header>
 			<ol>
 				{items.map((item, index) => <li key={index} className="text-[0.2rem] lg:text-[0.24rem] leading-[0.36rem] lg:leading-[0.4rem] font-normal my-[0.08rem] lg:my-[0.08rem] tracking-[-2%]">{item}</li>)}

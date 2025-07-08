@@ -127,7 +127,7 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 					</div>
 				</div>
 				<div className="mx-auto mt-[1.08rem] lg:mt-[0.98rem]">
-					<button disabled={isDisabled} className="text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] rounded-full text-white bg-black/50">{loading ? 'Submiting...' : 'Submit'}</button>
+					<button disabled={isDisabled} className="cursor-pointer text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] rounded-full text-white bg-black/50">{loading ? 'Submiting...' : 'Submit'}</button>
 				</div>
 			</form>
 		)
@@ -172,7 +172,7 @@ function SumbittedGroup({isMobileDevice, smallScreenRatioDecimal, setIsSubmitted
 				<img src="/submitted-already.png" alt="Submitted Already" className="object-fit object-center"></img>
 			</div>
 			<div className="mx-auto mt-[2.38rem] lg:mt-[1.08rem]">
-				<span onClick={e => {setIsSubmitted(false)}} className="text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] rounded-full bg-black text-white">Get in Touch Again</span>
+				<span onClick={e => {setIsSubmitted(false)}} className="cursor-pointer text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] rounded-full bg-black text-white">Get in Touch Again</span>
 			</div>
 		</div>
 	)

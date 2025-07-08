@@ -1,3 +1,6 @@
+##### deploy
+scp -r dist/* deploy@moto.shanghaipadel.com:staging/dist
+
 ###### Server
 2core cpu 4G RAM 20 ~ 40G SSD 
 

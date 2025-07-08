@@ -97,7 +97,7 @@ function AboutStatusContainer({smallScreenRatioDecimal}) {
 function StatusItemCard({title, suffix, content, i}) {
 	return (
 		<article className="w-[85%] lg:w-4/5 my-[0.16rem] lg:my-[0.16rem]">
-			<div className="min-w-full text-[0.8rem] lg:text-[0.96rem] font-semibold leading-[0.8rem] lg:leading-[0.96rem] tracking-[-8%] flex gap-[0.08rem]">{<OdometerItem className="min-w-content" value={title}/>} {suffix && <span className={`inline-block ${i == 3 ? 'translate-y-[8%]' : '' }`}>{suffix}</span>}</div>
+			<div className="min-w-full text-[0.8rem] lg:text-[0.96rem] font-semibold leading-[0.8rem] lg:leading-[0.96rem] tracking-[-8%] flex gap-[0.08rem]">{<OdometerItem className="min-w-content" value={title}/>} {suffix && <span className={`ml-[1px] lg:ml-0 inline-block ${i == 3 ? 'translate-y-[8%]' : '' }`}>{suffix}</span>}</div>
 			<hr className="w-full border border-[0.01rem] lg:border-1 border-black/20 my-[0.16rem] lg:mt-[0.32rem] lg:mb-[0.2rem]"></hr>
 			<p className="text-[0.16rem] lg:text-[0.16rem] font-normal leading-[0.20rem] lg:leading-[0.2rem] tracking-[-2%]">{content}</p>
 		</article>

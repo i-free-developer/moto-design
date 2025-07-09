@@ -28,7 +28,6 @@ const OpenningRoles = [
 		fullTime: 'Full-time',
 		onSite: 'On-site (ShenZhen)',
 		isRemote: 'Remote',
-		tags: ['Full-time', 'On-site (ShenZhen)'],
 		roleTag: 'UI Designer',
 		responsibilities: [
 			'Lead the visual design strategy for both web and mobile platforms. Collaborate closely with UX researchers, motion designers, and front-end engineers, providing front-end design support when necessary to ensure seamless integration with client requirements.',
@@ -50,7 +49,6 @@ const OpenningRoles = [
 		fullTime: 'Full-time',
 		onSite: 'On-site (ShenZhen)',
 		isRemote: 'Remote',
-		tags: ['Full-time', 'On-site (ShenZhen)'],
 		roleTag: 'UI Designer',
 		responsibilities: [
 			"Be responsible for the SEO optimization of the company's brand, formulate multilingual SEO strategies based on different regional, optimize the content structure and keyword layout of the website, and enhance global search visibility",
@@ -72,7 +70,6 @@ const OpenningRoles = [
 		fullTime: 'Full-time',
 		onSite: 'On-site (ShenZhen)',
 		isRemote: 'Remote',
-		tags: ['Full-time', 'On-site (ShenZhen)'],
 		roleTag: 'Intern',
 		responsibilities: [
 			'Take full ownership of motion and visual effects design across company projects, including brand visuals, dynamic website showcases, promotional videos, and product demo animations.',
@@ -96,7 +93,6 @@ const OpenningRoles = [
 		fullTime: 'Full-time',
 		onSite: 'On-site (ShenZhen)',
 		isRemote: 'Remote',
-		tags: ['Full-time', 'On-site (ShenZhen)'],
 		roleTag: 'Intern',
 		responsibilities: [
 			'Contribute to day-to-day tasks across design, branding, and social content operations.',
@@ -111,15 +107,15 @@ const OpenningRoles = [
 ]
 
 const TeamMembers = [
-	{name: 'Edison',       avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Edison.png',       title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
-	{name: 'Mia Zhan',     avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Mia-Zhan.png',     title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
-	{name: 'Shiyan',       avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Shiyan.png',       title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
-	{name: 'Jasper',       avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Jasper.png',       title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
-	{name: 'Amelia Clark', avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Amelia-Clark.png', title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
-	{name: 'Kinny Liang',  avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Kinny-Liang.png',  title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
-	{name: 'Chan Zhong',   avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Chan-Zhong.png',   title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
-	{name: 'Lesley Chan',  avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Lesley-Chan.png',  title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
-	{name: 'Vince',        avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Vince.png',        title: 'CEO', role: 'Eilven is the founder of our company and an outstanding designer', description: "Eilven, CEO of MOTO, has long been in the design field. He worked at Tencent and ByteDance, leading major projects in Web3.0, apps, and games, winning industry recognition. Under his drive, MOTO built an elite team. Eilven guides design concepts and business strategies. In the future, he'll lead MOTO, centering on innovation and customers, to explore design potential and boost industry growth."},
+	{name: 'Edison',       avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Edison.png',       title: 'Founder',                        role: 'Founder', description: "Graduated from Shenzhen University. Former head of institutional departments at top Web3 firms, with solid strategy and investment experience. Previously a visual designer at Xunlei and Tencent, bridging design and business insight."},
+	{name: 'Mia Zhan',     avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Mia-Zhan.png',     title: 'Co-Founder',                     role: 'Co-Founder', description: "Graduated from Xihua University. Ex-Senior UI Specialist at Tencent with 10+ years in top tech firms like Photon Studio and Tenpay. Skilled in high-end UI and brand systems."},
+	{name: 'Shiyan',       avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Shiyan.png',       title: 'Strategic Partner, UX Expert',   role: 'Strategic Partner, UX Expert', description: "Graduate from SAIC. Former Senior UX Designer at Huawei, focused on user onboarding and interaction flow. Combines user-first thinking with sharp design intuition and structured problem-solving."},
+	{name: 'Jasper',       avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Jasper.png',       title: 'Frontend Engineer',              role: 'Frontend Engineer', description: "Specialized in responsive UI, motion, and code-level design execution. Builds seamless bridges between design and development."},
+	{name: 'Amelia Clark', avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Amelia-Clark.png', title: 'CEO', role: '', description: ""},
+	{name: 'Kinny Liang',  avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Kinny-Liang.png',  title: 'Social Media Strategist',         role: 'Social Media Strategist', description: "Experienced in content planning and brand messaging. Focused on multi-platform strategy, community ops, and visual storytelling."},
+	{name: 'Chan Zhong',   avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Chan-Zhong.png',   title: 'Senior UI Designer',              role: 'Senior UI Designer', description: "Graduated from Shenzhen University, trained at Central Saint Martins. Specializes in brand visuals and 3D, with a strong cross-media design foundation."},
+	{name: 'Lesley Chan',  avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Lesley-Chan.png',  title: 'Senior VFX Artist',               role: 'Senior VFX Artist', description: "Graduated from Shenzhen University. Former TCL VFX artist, skilled in Houdini, AE, and C4D. Focused on particles, fluid sim, and cinematic visuals."},
+	{name: 'Vince',        avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Vince.png',        title: 'Head of Consulting & Operations', role: 'Head of Consulting & Operations', description: "Graduated from Tianjin University. Former Web3 ops lead with expertise in cross-team workflows and global strategy. Deeply connected in the B2B Web3 ecosystem."},
 ]
 
 const DesktopPortfolioItems = [

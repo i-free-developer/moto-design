@@ -9,7 +9,7 @@ export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 	const { id } = useParams();
 	const roleItem = OpenningRoles.find(e => e.id == id)
-	// const {title, roleTag, tags, responsibilities, requirements} = OpenningRoles.find(e => e.id == id)
+	// const {title, roleTag, responsibilities, requirements} = OpenningRoles.find(e => e.id == id)
 
 	return (
 		<main className="mx-auto">
@@ -32,7 +32,7 @@ export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
 	)
 }
 
-function RoleHeaderCard({roleTag, title, tags, fullTime, onSite, isRemote}) {
+function RoleHeaderCard({roleTag, title, fullTime, onSite, isRemote}) {
 	return (
 		<div className="">
 			<span className="rounded-full text-[0.2rem] lg:text-[0.2rem] font-medium bg-black/10 px-[0.24rem] lg:px-[0.24rem] py-[0.12rem] lg:py-[0.12rem]">{roleTag}</span>

@@ -157,7 +157,7 @@ function RolesContainer() {
 	)
 }
 
-function RoleCard({team, title, tags, index, id, fullTime, onSite, isRemote}) {
+function RoleCard({team, title, index, id, fullTime, onSite, isRemote}) {
 	return (
 		<article className="lg:w-[8.8rem] tracking-[-2%] scroll-fade-in">
 			{index === 0 &&  <hr className="border border-[0.8px] lg:border-1 border-black/20 mb-[0.48rem] lg:w-[8.8rem]"></hr> }

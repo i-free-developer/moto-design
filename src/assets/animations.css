@@ -268,3 +268,13 @@ a > svg {
 #contact-form input:-webkit-autofill{
 	-webkit-box-shadow:0 0 0 1000px #F7F7F7 inset !important;
 }
+
+.svg-bg {
+	  background: url('dashed-bg.svg');
+}
+
+.bg-in-black {
+	background: linear-gradient(to bottom, #00000 0%, #D1D1DA 100%, );
+	-webkit-background: linear-gradient(to bottom, #00000 0%, #D1D1DA 100%, );
+	border: 1px solid black;
+}

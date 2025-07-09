@@ -1,8 +1,8 @@
 import { useState, useCallback } from 'react'
 import { CopyRight, CompanyEmail } from '../data/site-data'
 import Navbar from './Navbar'
-import { StarIcon } from './SocialIconsCollection'
-import { useDrawerHandler } from './FunctionCollection'
+import { StarIcon, ArrowIcon } from './SocialIconsCollection'
+import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
 
 const SelectOptions = ['Website Design', 'App UI/UX Design', 'Full Brand VI System', 'Graphic Design', '3D Animation & Visual Effects', 'Web3 Strategy Consulting', 'NFT Artwork & Design', 'Social Media Visuals', 'Brand Partnership', 'Other']
 
@@ -57,7 +57,9 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 	const [userRole, setUserRole] = useState('')
 	const [teamData, setTeamData] = useState('')
 	const [userEmail, setUserEmail] = useState('')
-	const [isDisabled, setIsDisabled] = useState(false)
+	const [isDisabled, setIsDisabled] = useState(true)
+	const [emailIsValid, setEmailIsValid] = useState(true)
+	const {isHovered, setIsHovered} = useHoverHandler();
 
 	const setFormField = (field, value) => {
 		// console.log('field: ',field, 'value: ', value)
@@ -65,7 +67,34 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 		if (field == 'role') {setUserRole(value)}
 		if (field == 'email') {setUserEmail(value)}
 		if (field == 'team') {setTeamData(value)}
-		// setIsDisabled(!(!!userName && !!userRole && !!teamData && !!userEmail))
+	}
+
+	function handleEmailChange(email) {
+		setUserEmail(email)
+		let emailValid = validateEmail(email)
+		setEmailIsValid(emailValid)
+		setIsDisabled(!emailValid)
+	}
+
+	function handleEmailFocus(email) {
+		let emailValid = validateEmail(email)
+		setEmailIsValid(emailValid)
+		setIsDisabled(!emailValid)
+	}
+
+	function handleEmailBlur(email) {
+		let emailValid = validateEmail(email)
+		email ? setEmailIsValid(emailValid) : setEmailIsValid(true)
+		setIsDisabled(!emailValid)
+	}
+
+	function validateEmail(email) {
+	  if (!email) {return false}
+	  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { return false }
+	  // Additional checks
+	  if (email.length > 254) {return false}
+	  if (email.split('@')[0].length > 64) {return false}
+	  return true ; // Valid email
 	}
 
 	const handleSubmit = (e) => {
@@ -120,14 +149,21 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 				<div className="mt-[0.2rem] lg:mt-0 text-[0.36rem] leading-[0.36rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-medium w-full flex items-center justify-start flex-wrap lg:flex-nowrap">
 					<div className="flex items-center justify-start w-full lg:w-[55%]">
 						<span className="">Hit my inbox at</span>
-						<span className="grow lg:grow-0 lg:w-[4.8rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex items-center justify-center"><input autoComplete="off" name="email" value={userEmail} onChange={e => setFormField('email', e.target.value)} className="border-none w-full text-center placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your email*" type="email"></input></span>
+						<span className={`${ emailIsValid ? 'border-black/40 ' : 'border-[#FF0000]'} grow lg:grow-0 lg:w-[4.8rem] ml-[0.12rem] border-b-[1.5px] flex items-center justify-center`}>
+							<input autoComplete="off" name="email" value={userEmail} onChange={e => handleEmailChange(e.target.value)} onBlur={e => handleEmailBlur(e.target.value)} onFocus={e => handleEmailFocus(e.target.value)}
+								className="border-none w-full text-center placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your email*" type="email"></input>
+							</span>
 					</div>
 					<div className="mt-[0.2rem] lg:mt-0 flex items-center lg:flex-nowrap text-nowrap">
 						<span className=""><span className="hidden lg:inline-block">, &nbsp;</span>let's build something bold!</span>
 					</div>
 				</div>
 				<div className="mx-auto mt-[1.08rem] lg:mt-[0.98rem]">
-					<button disabled={isDisabled} className="cursor-pointer text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] rounded-full text-white bg-black/50">{loading ? 'Submiting...' : 'Submit'}</button>
+					<button disabled={isDisabled} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
+					className={`${ isDisabled ? 'bg-black/50' : 'bg-black'} cursor-pointer text-[0.32rem] font-medium pl-[0.32rem] pr-[0.08rem] py-[0.08rem] rounded-full text-white flex items-center`}>
+						{loading ? 'Submiting...' : 'Submit'}
+						<div className={`ml-[0.08rem] bg-white size-[0.24rem] lg:size-[0.48rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>
+					</button>
 				</div>
 			</form>
 		)

@@ -13,15 +13,15 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 		<main className="mx-auto">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
 			<section id="portfolio" className="" onClick={closeDrawer}>
-				<div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] px-[0.32rem] lg:px-[0.48rem] pt-[0.48rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem] overflow-x-hidden">
+				<div className="mx-auto min-w-screen max-w-screen lg:max-w-[1920px] px-[0.32rem] lg:px-[0.48rem] pt-[0.48rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem] overflow-x-hidden">
 					<PortfolioHeader/>
-					<div className="pl-[0.16rem] lg:pl-[0.32rem] my-[0.48rem] lg:my-[0.96rem] flex flex-row justify-between">
+					<div className="pl-[0.16rem] lg:pl-[0.32rem] my-[0.48rem] lg:my-[0.96rem] flex flex-row justify-between overflow-x-hidden">
 						<MobileDeskIcons isMobile={isMobile} setIsMobile={setIsMobile} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 						<p className="self-start lg:mb-[0.48rem] text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 w-[55%] lg:w-[4.16rem] tracking-[-2%] font-normal text-right">Our user-centered design encourages productivity and boosts revenue</p>
 					</div>
 				</div>
 				
-				<div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] lg:px-[0.48rem]">
+				<div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] lg:px-[0.48rem] overflow-x-hidden">
 	      	{isMobile ? <MobilePortfolios isMobileDevice={isMobileDevice}/> : <DesktopPortfolios/>}
 	      </div>
 	      
@@ -34,7 +34,7 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 
 function PortfolioHeader() {
 	return (
-		<article className="flex flex-col lg:flex-row justify-between my-[1rem] lg:my-[0.64rem] tracking-[-2%]">
+		<article className="flex flex-col lg:flex-row justify-between my-[1rem] lg:my-[0.64rem] tracking-[-2%] overflow-x-hidden">
 			<header className="text-[0.56rem] leading-[0.64rem] lg:text-[0.8rem] lg:leading-[0.96rem] lg:w-[45%] font-normal">We don't do cookie-cutter solutions</header>
 			<p className="mt-[0.16rem] lg:mt-[0.16rem] w-full lg:w-[20%] text-black/64 text-[0.24rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.24rem] lg:text-right font-normal">Backing the best Web 3.0 founders & products</p>
 		</article>
@@ -150,7 +150,7 @@ function MobilePortfoliosMobileContainer({mobileItems}) {
 	const mobileItemsLeft = mobileItems.filter((e,i) => i % 2 == 0)
 	const mobileItemsRight = mobileItems.filter((e,i) => i % 2 != 0)
 	return (
-		<div className="relative mx-auto mb-[3.6rem] pt--[5.5%] pb-[11%]">
+		<div className="w-full relative mx-auto mb-[3.6rem] pt--[5.5%] pb-[11%]">
       <div className="mx-auto w-full overflow-hidden flex gap-[0.16rem]">      	
       	<div className="flex flex-col gap-[0.16rem] ml-[-0.24rem]">{mobileItemsLeft.map((item, index) => <MobileCardMobileView {...item} index={index} key={index}/>)}</div>
       	<div className="w-full min-h-full"></div>

@@ -80,10 +80,9 @@ function DesktopCard({id, title, description, image, url, index, totalNumber}) {
 
 	return (
 		<div className={`${spanClasses[colsIndex]} rounded-[0.28rem] lg:rounded-[0.3rem] overflow-hidden relative`}>
-			<span
-        style={{pointerEvents: 'none'}}
+			<span style={{pointerEvents: 'none'}}
         className={`
-				z-5 absolute left-0 right-0 bottom-0 min-w-full h-[30%] rounded-[0] blur--[8px] bg-gradient-to-b from-[#D1D1DA]/0 to-[#3173FF] bg--[#3173FF] opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
+				z-5 absolute left-0 right-0 bottom-0 min-w-full h-[50%] blur--[8px] bg-gradient-to-b from-[#D1D1DA]/0 to-[#000000] opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
 				${isHovered ? 'opacity-100' : 'translate-y-[10%] '}
 			`}></span>
 			<Link to={`/portfolio/${id}`} className="max-w-full h-full block cursor-pointer rounded-[0.28rem] lg:rounded-[0.3rem]">

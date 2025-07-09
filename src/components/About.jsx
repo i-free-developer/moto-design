@@ -221,7 +221,7 @@ function TeamMemberCard({name, avatar, description, title, role}) {
 		    <div className={`relative transition-all duration-300 rounded-0 lg:h-[2.6rem] min-w-full max-w-full bg-[#F7F7F7]/30 backdrop-blur-[16px] text-black pt-[0.16rem] lg:pt-[0.16rem] pb-[0.16rem] lg:pb-[0.28rem] px-[0.12rem] lg:px-[0.2rem] ${isHovered ? 'lg:top-[-2.6rem] z-10' : 'lg:top-0 '}`}>
 		     	<header className="text-[0.28rem] lg:text-[0.4rem] font-bold tracking-[-2%]">{name}</header>
 		     	<p className="uppercase text-[0.24rem] lg:text-[0.22rem] lg:leading-[0.24rem] font-normal mt-[0.12rem] lg:mt-[0.12rem]">{title}</p>
-				<p className="text-[0.16rem] lg:text-[0.16rem] lg:leading-[0.2rem] font-normal mt-[0.32rem] lg:mt-[0.12rem]">{description}</p>
+				<p className="text-[0.16rem] lg:text-[0.14rem] lg:leading-[0.18rem] font-normal mt-[0.32rem] lg:mt-[0.12rem]">{description}</p>
 		    </div>
 		</article>
 	)

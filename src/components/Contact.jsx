@@ -58,34 +58,52 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 	const [teamData, setTeamData] = useState('')
 	const [userEmail, setUserEmail] = useState('')
 	const [isDisabled, setIsDisabled] = useState(true)
+	const [formIsValid, setFormIsValid] = useState(false)
 	const [emailIsValid, setEmailIsValid] = useState(true)
+	const [nameIsValid, setNameIsValid] = useState(true)
+	const [roleIsValid, setRoleIsValid] = useState(true)
+	const [teamIsValid, setTeamIsValid] = useState(true)
 	const {isHovered, setIsHovered} = useHoverHandler();
 
-	const setFormField = (field, value) => {
+	const handleFormFieldChange = (field, value) => {
 		// console.log('field: ',field, 'value: ', value)
-		if (field == 'name') {setUserName(value)}
-		if (field == 'role') {setUserRole(value)}
-		if (field == 'email') {setUserEmail(value)}
-		if (field == 'team') {setTeamData(value)}
+		if (field == 'name') {setUserName(value); setNameIsValid(value.length > 0); setFormIsValid(userEmail.length > 0 && (value.length > 0) && userRole.length > 0 && teamData.length > 0)}
+		if (field == 'role') {setUserRole(value); setRoleIsValid(value.length > 0); setFormIsValid(userEmail.length && (value.length > 0) && userName.length > 0 && teamData.length > 0)}
+		if (field == 'team') {setTeamData(value); setTeamIsValid(value.length > 0); setFormIsValid(userEmail.length && (value.length > 0) && userRole.length > 0 && userName.length > 0)}
+	}
+
+	const handleFormFieldFocus = (field, value) => {
+		if (field == 'name') {setNameIsValid(value.length > 0); setFormIsValid(userEmail.length && (value.length > 0) && userRole.length > 0 && teamData.length > 0)}
+		if (field == 'role') {setRoleIsValid(value.length > 0); setFormIsValid(userEmail.length && (value.length > 0) && userName.length > 0 && teamData.length > 0)}
+		if (field == 'team') {setTeamIsValid(value.length > 0); setFormIsValid(userEmail.length && (value.length > 0) && userRole.length > 0 && userName.length > 0)}
+	}
+
+	const handleFormFieldBlur = (field, value) => {
+		if (field == 'name') {value ? setNameIsValid(value.length > 0) : setNameIsValid(true); setFormIsValid(userEmail.length && (value.length > 0) && userRole.length > 0 && teamData.length > 0)}
+		if (field == 'role') {value ? setRoleIsValid(value.length > 0) : setRoleIsValid(true); setFormIsValid(userEmail.length && (value.length > 0) && userName.length > 0 && teamData.length > 0)}
+		if (field == 'team') {value ? setTeamIsValid(value.length > 0) : setTeamIsValid(true); setFormIsValid(userEmail.length && (value.length > 0) && userRole.length > 0 && userName.length > 0)}
 	}
 
 	function handleEmailChange(email) {
 		setUserEmail(email)
 		let emailValid = validateEmail(email)
 		setEmailIsValid(emailValid)
-		setIsDisabled(!emailValid)
+		// setIsDisabled(!emailValid)
+		setFormIsValid(emailValid && nameIsValid && roleIsValid && teamIsValid)
 	}
 
 	function handleEmailFocus(email) {
 		let emailValid = validateEmail(email)
 		setEmailIsValid(emailValid)
-		setIsDisabled(!emailValid)
+		// setIsDisabled(!emailValid)
+		setFormIsValid(emailValid && nameIsValid && roleIsValid && teamIsValid)
 	}
 
 	function handleEmailBlur(email) {
 		let emailValid = validateEmail(email)
 		email ? setEmailIsValid(emailValid) : setEmailIsValid(true)
-		setIsDisabled(!emailValid)
+		// setIsDisabled(!emailValid)
+		setFormIsValid(emailValid && nameIsValid && roleIsValid && teamIsValid)
 	}
 
 	function validateEmail(email) {
@@ -125,20 +143,27 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 				<div className="text-[0.36rem] leading-[0.36rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-medium w-full lg:flex lg:items-center lg:flex-nowrap">
 					<div className="flex items-center">
 						<span className="">Hi there, &nbsp;I’m</span>
-						<span className="grow lg:w-[4.8rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center items-stretch"><input autoComplete="off" name="name" value={userName} onChange={e => setFormField('name', e.target.value)} className="border-none w-full text-center placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your name*"></input></span>
+						<span className={`${ nameIsValid ? 'border-black/40 ' : 'border-[#FF0000]'} grow lg:w-[4.8rem] ml-[0.12rem] border-b-[1.5px] flex justify-center items-stretch`}>
+							<input autoComplete="off" name="name" value={userName} onChange={e => handleFormFieldChange('name', e.target.value)} onBlur={e => handleFormFieldBlur('name', e.target.value)} onFocus={e => handleFormFieldFocus('name', e.target.value)}
+							className="border-none w-full text-center placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your name*"></input>
+						</span>
 					</div>
 					<div className="mt-[0.2rem] lg:mt-0 flex items-center">
 						<span className="">and work as</span>
-						<span className="grow lg:w-[4.4rem] ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center"><input autoComplete="off" name="role" value={userRole} onChange={e => setFormField('role', e.target.value)} className="border-none w-full text-center placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Your role in the team*"></input></span>
+						<span className={`${ roleIsValid ? 'border-black/40 ' : 'border-[#FF0000]'} grow lg:w-[4.4rem] ml-[0.12rem] border-b-[1.5px] flex justify-center`}>
+							<input autoComplete="off" name="role" value={userRole} onChange={e => handleFormFieldChange('role', e.target.value)} onBlur={e => handleFormFieldBlur('role', e.target.value)} onFocus={e => handleFormFieldFocus('role', e.target.value)}
+							className="border-none w-full text-center placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Your role in the team*"></input>
+						</span>
 					</div>
 				</div>
 
 				<div className="text-[0.36rem] leading-[0.36rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-medium w-full flex items-center flex-wrap lg:flex-nowrap">
 					<span className="mt-[0.2rem] lg:mt-0 ">I’m looking for a creative team to help  with</span>
-					<span className="mt-[0.2rem] lg:mt-0 grow relative lg:w-[6rem] lg:ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center items-center">
-						<input onClick={() => setDisplayCard(!displayCard)} autoComplete="off" name="team" value={teamData} onChange={e => {}} className="cursor-pointer border-none w-full text-center placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="What type of service are you looking for*"></input>
+					<span className={`${ teamIsValid ? 'border-black/40 ' : 'border-[#FF0000]'} mt-[0.2rem] lg:mt-0 grow relative lg:w-[6rem] lg:ml-[0.12rem] border-b-[1.5px] flex justify-center items-center`}>
+						<input onClick={() => setDisplayCard(!displayCard)} autoComplete="off" name="team" value={teamData} onChange={e => {}} onBlur={e => handleFormFieldBlur('team', e.target.value)} onFocus={e => handleFormFieldFocus('team', e.target.value)}
+							className="cursor-pointer border-none w-full text-center placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="What type of service are you looking for*"></input>
 						<span className={`${ displayCard ? 'text-black' : 'text-black/40'}`}><ArrIcons/></span>
-						<SelectCard displayCard={displayCard} setTeamData={setTeamData} setFormField={setFormField}/>
+						<SelectCard displayCard={displayCard} setTeamData={setTeamData} handleFormFieldChange={handleFormFieldChange}/>
 					</span>
 				</div>
 
@@ -159,8 +184,8 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 					</div>
 				</div>
 				<div className="mx-auto mt-[1.08rem] lg:mt-[0.98rem]">
-					<button disabled={isDisabled} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
-						className={`${ isDisabled ? 'bg-black/50' : 'bg-black'} cursor-pointer text-[0.32rem] font-medium pl-[0.32rem] pr-[0.08rem] py-[0.08rem] rounded-full text-white flex items-center`}>
+					<button disabled={!formIsValid} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
+						className={`${ !formIsValid ? 'bg-black/50' : 'bg-black'} cursor-pointer text-[0.32rem] font-medium pl-[0.32rem] pr-[0.08rem] py-[0.08rem] rounded-full text-white flex items-center`}>
 						{loading ? 'Submiting...' : 'Submit'}
 						{isHovered ? <div className={`ml-[0.12rem] lg:ml-[0.08rem] bg-white size-[0.48rem] lg:size-[0.48rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div> : <span className="ml-[0.12rem] lg:ml-[0.08rem] size-[0.48rem] flex items-center justify-center"><span className="size-[0.08rem] bg-white rounded-[50%]"></span></span> }		
 					</button>
@@ -170,7 +195,7 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 	}
 }
 
-function SelectCard({displayCard, setTeamData, setFormField}) {
+function SelectCard({displayCard, setTeamData, handleFormFieldChange}) {
 	const [selectedItems, setSelectedItems] = useState([])
 	function handleSelectedItem(e) {
 		e.preventDefault(); e.stopPropagation();
@@ -179,7 +204,7 @@ function SelectCard({displayCard, setTeamData, setFormField}) {
 		let itemExisted = newArr.find(x => x == item)
 		itemExisted ? newArr = newArr.filter(x => x != item) : newArr.push(item)
 	  setSelectedItems(newArr);
-	  setFormField('team', newArr.join(', '))
+	  handleFormFieldChange('team', newArr.join(', '))
 	}
 	return (
 		<div onClick={e => {e.preventDefault(); e.stopPropagation()}} className={`${displayCard ? '' : 'hidden'} z-10 absolute right-0 top-[0.42rem] bg-black py-[0.28rem] pl-[0.28rem] pr-[0.25rem] lg:pr-[0.68rem] w-[4.36rem] lg:w-[6rem] flex items-center gap-[0.12rem] flex-wrap text-[0.16rem] font-medium`}>

@@ -138,7 +138,7 @@ function MobilePortfolios({isMobileDevice}) {
 function MobilePortfoliosDesktopContainer({mobileItems}) {
 	return (
 		<div className="snap-none relative mx-auto mb-[3.6rem] pt-[10.5%] lg:pt-0 pb-[10.5%] lg:pb-[6.5%]">
-      <div className="mx-auto w-full overflow-hidden grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-[0.2rem]">
+      <div className="mx-auto w-full overflow-hidden grid grid-cols-5 gap-[0.2rem] gap-y-[0.48rem]">
         	{mobileItems.map((item, index) => <MobileCardDesktopView {...item} index={index} key={index}/>)}
       </div>
       <StickyHandCard/>
@@ -163,8 +163,8 @@ function MobilePortfoliosMobileContainer({mobileItems}) {
 
 function MobileCardDesktopView({title, image, index}) {
   return (
-    <div className="col-span-1 w-[2.39rem] h-[5.04rem] lg:w-[3.42rem] lg:h-[7.22rem] rounded-[0.28rem] lg:rounded-[48px] overflow-hidden">
-      {image ? <img loading="lazy" src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit]" /> : <EmptyCard/> }
+    <div className="col-span-1 lg:w-[3.7rem] lg:h-[7.8rem] lg:w--[3.42rem] lg:h--[7.22rem] rounded-[0.48rem] overflow-hidden">
+      {image ? <img loading="lazy" src={image} alt={title} className="w-full h-full object-fit object-center rounded-[inherit]" /> : <EmptyCard/> }
     </div>
   )
 }
@@ -184,7 +184,7 @@ function StickyHandCard() {
 	const handImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-sticky-hand-img.png'
   return (
     <div className="absolute inset-0 flex items-center justify-center">
-      <div className="overflow-y-visible sticky top-0 bottom-0 translate-x-[18.8%] lg:translate-x-[18.6%]">
+      <div className="overflow-y-visible sticky top-0 bottom-0 translate-x-[18.8%] lg:translate-x-[17.6%]">
         <img loading="lazy" className="w-[5.88rem] w--[5.4rem] h-[6.28rem] h--[5.77rem] lg:w-[7.92rem] lg:h-[8.48rem] object-fit object-center rounded-[0.28rem] lg:rounded-[0.16rem]" src={handImg} alt="Hand"/>
       </div>
     </div>

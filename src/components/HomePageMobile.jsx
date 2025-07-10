@@ -37,9 +37,9 @@ function ServiceOfferingsMobile() {
 			<div className="w-full flex items-center justify-between my-[0.36rem] px-[0.32rem]">
 				<span className="font-bold uppercase text-[0.28rem] leading-[0.28rem]">Service Offerings:</span>
 				<Link to="/portfolio" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-					<button className="cursor-pointer bg-black px-[0.24rem] py-[0.08rem] text-[0.2rem] leading-[0.2rem] flex items-center justify-between gap-[0.16rem] text-[#f7f7f7] font-medium rounded-full">
+					<button className="cursor-pointer bg-black pl-[0.24rem] pr-[0.04rem] py-[0.08rem] text-[0.2rem] leading-[0.2rem] flex items-center justify-between gap-[0.16rem] text-[#f7f7f7] font-medium rounded-full">
 						<span>See More</span>
-						<div className={`border border-white bg-white size-[0.4rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>
+						{isHovered ? <div className={`border border-white bg-white size-[0.4rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div> : <span className="size-[0.4rem] flex items-center justify-center"><span className="size-[0.08rem] bg-white rounded-[50%]"></span></span> }		
 					</button>
 				</Link>
 			</div>
@@ -49,6 +49,8 @@ function ServiceOfferingsMobile() {
 		</div>
 	)
 }
+
+
 
 function VerticalElement() {
 	return (

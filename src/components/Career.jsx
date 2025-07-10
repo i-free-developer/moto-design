@@ -183,7 +183,7 @@ function ApplyButon({id}) {
 		<Link to={`/role/${id}`} className="will-change-transform absolute bottom-[0.4rem] lg:bottom-[0.4rem] right-0 flex items-center justify-between gap-[0.24rem] lg:gap-[0.16rem] bg-slate-900 rounded-full pl-[0.24rem] py-[0.06rem] lg:py-[0.04rem] pr-[0.04rem]"
 			onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<span className="text-white font-medium text-[0.2rem] lg:text-[0.24rem]">Apply</span>
-			<div className={`bg-white size-[0.24rem] lg:size-[0.4rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>
+			{isHovered ? <div className={`bg-white size-[0.24rem] lg:size-[0.4rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div> : <span className="size-[0.24rem] lg:size-[0.4rem] flex items-center justify-center"><span className="size-[0.08rem] bg-white rounded-[50%]"></span></span> }		
 		</Link>
 	)
 }

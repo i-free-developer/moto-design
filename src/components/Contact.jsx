@@ -98,12 +98,12 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 	}
 
 	const handleSubmit = (e) => {
-	    e.preventDefault(); // Prevent page reload
+    e.preventDefault(); // Prevent page reload
 		const form = e.target;
-	    const formData = new FormData(form);
-	    // fetch('/some-api', { method: form.method, body: formData });
-	    const formJson = Object.fromEntries(formData.entries());
-	    // console.log(formJson);
+    const formData = new FormData(form);
+    // fetch('/some-api', { method: form.method, body: formData });
+    const formJson = Object.fromEntries(formData.entries());
+    console.log(formJson);
 		goSubmit(formJson)
 	}
 	const goSubmit = async (data) => {
@@ -160,9 +160,9 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 				</div>
 				<div className="mx-auto mt-[1.08rem] lg:mt-[0.98rem]">
 					<button disabled={isDisabled} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
-					className={`${ isDisabled ? 'bg-black/50' : 'bg-black'} cursor-pointer text-[0.32rem] font-medium pl-[0.32rem] pr-[0.08rem] py-[0.08rem] rounded-full text-white flex items-center`}>
+						className={`${ isDisabled ? 'bg-black/50' : 'bg-black'} cursor-pointer text-[0.32rem] font-medium pl-[0.32rem] pr-[0.08rem] py-[0.08rem] rounded-full text-white flex items-center`}>
 						{loading ? 'Submiting...' : 'Submit'}
-						<div className={`ml-[0.12rem] lg:ml-[0.08rem] bg-white size-[0.48rem] lg:size-[0.48rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>
+						{isHovered ? <div className={`ml-[0.12rem] lg:ml-[0.08rem] bg-white size-[0.48rem] lg:size-[0.48rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div> : <span className="ml-[0.12rem] lg:ml-[0.08rem] size-[0.48rem] flex items-center justify-center"><span className="size-[0.08rem] bg-white rounded-[50%]"></span></span> }		
 					</button>
 				</div>
 			</form>
@@ -183,7 +183,7 @@ function SelectCard({displayCard, setTeamData, setFormField}) {
 	}
 	return (
 		<div onClick={e => {e.preventDefault(); e.stopPropagation()}} className={`${displayCard ? '' : 'hidden'} z-10 absolute right-0 top-[0.42rem] bg-black py-[0.28rem] pl-[0.28rem] pr-[0.25rem] lg:pr-[0.68rem] w-[4.36rem] lg:w-[6rem] flex items-center gap-[0.12rem] flex-wrap text-[0.16rem] font-medium`}>
-			{SelectOptions.map((item, index) => <span className={`${selectedItems.includes(item) ? 'bg-white text-black' : 'bg-black text-white'} px-[0.16rem] py-[0.02rem] border rounded-full`} data-item={item} key={index} onClick={handleSelectedItem}>{item}</span>)}
+			{SelectOptions.map((item, index) => <span className={`${selectedItems.includes(item) ? 'bg-[#F1F1F1] text-black' : 'bg-black text-[#F1F1F1]'} px-[0.16rem] py-[0.02rem] border border-[#F1F1F1]/40 hover:border-[#F1F1F1] rounded-full cursor-pointer`} data-item={item} key={index} onClick={handleSelectedItem}>{item}</span>)}
 		</div>
 	)
 }

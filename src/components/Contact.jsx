@@ -68,20 +68,24 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 	const handleFormFieldChange = (field, value) => {
 		// console.log('field: ',field, 'value: ', value)
 		if (field == 'name') {setUserName(value); setNameIsValid(value.length > 0); setFormIsValid(userEmail.length > 0 && (value.length > 0) && userRole.length > 0 && teamData.length > 0)}
-		if (field == 'role') {setUserRole(value); setRoleIsValid(value.length > 0); setFormIsValid(userEmail.length && (value.length > 0) && userName.length > 0 && teamData.length > 0)}
-		if (field == 'team') {setTeamData(value); setTeamIsValid(value.length > 0); setFormIsValid(userEmail.length && (value.length > 0) && userRole.length > 0 && userName.length > 0)}
+		if (field == 'role') {setUserRole(value); setRoleIsValid(value.length > 0); setFormIsValid(userEmail.length > 0 && (value.length > 0) && userName.length > 0 && teamData.length > 0)}
+		if (field == 'team') {setTeamData(value); setTeamIsValid(value.length > 0); setFormIsValid(userEmail.length > 0 && (value.length > 0) && userRole.length > 0 && userName.length > 0)}
+		if (field == 'email') {let emailValid = validateEmail(value); setUserEmail(value); setEmailIsValid(emailValid); setFormIsValid(emailValid && userRole.length > 0 && userName.length > 0 && teamData.length > 0)}
+	
 	}
 
 	const handleFormFieldFocus = (field, value) => {
 		if (field == 'name') {setNameIsValid(value.length > 0); setFormIsValid(userEmail.length && (value.length > 0) && userRole.length > 0 && teamData.length > 0)}
 		if (field == 'role') {setRoleIsValid(value.length > 0); setFormIsValid(userEmail.length && (value.length > 0) && userName.length > 0 && teamData.length > 0)}
 		if (field == 'team') {setTeamIsValid(value.length > 0); setFormIsValid(userEmail.length && (value.length > 0) && userRole.length > 0 && userName.length > 0)}
+		if (field == 'email') {let emailValid = validateEmail(value); setUserEmail(value); setEmailIsValid(emailValid); setFormIsValid(emailValid && userRole.length > 0 && userName.length > 0 && teamData.length > 0)}
 	}
 
 	const handleFormFieldBlur = (field, value) => {
-		if (field == 'name') {value ? setNameIsValid(value.length > 0) : setNameIsValid(true); setFormIsValid(userEmail.length && (value.length > 0) && userRole.length > 0 && teamData.length > 0)}
-		if (field == 'role') {value ? setRoleIsValid(value.length > 0) : setRoleIsValid(true); setFormIsValid(userEmail.length && (value.length > 0) && userName.length > 0 && teamData.length > 0)}
-		if (field == 'team') {value ? setTeamIsValid(value.length > 0) : setTeamIsValid(true); setFormIsValid(userEmail.length && (value.length > 0) && userRole.length > 0 && userName.length > 0)}
+		if (field == 'name') {value ? setNameIsValid(value.length > 0) : setNameIsValid(true); setFormIsValid(userEmail.length > 0 && (value.length > 0) && userRole.length > 0 && teamData.length > 0)}
+		if (field == 'role') {value ? setRoleIsValid(value.length > 0) : setRoleIsValid(true); setFormIsValid(userEmail.length > 0 && (value.length > 0) && userName.length > 0 && teamData.length > 0)}
+		if (field == 'team') {value ? setTeamIsValid(value.length > 0) : setTeamIsValid(true); setFormIsValid(userEmail.length > 0 && (value.length > 0) && userRole.length > 0 && userName.length > 0)}
+		if (field == 'email') {let emailValid = validateEmail(value); setUserEmail(value); value ? setEmailIsValid(emailValid) : setEmailIsValid(true); setFormIsValid(emailValid && userRole.length > 0 && userName.length > 0 && teamData.length > 0)}
 	}
 
 	function handleEmailChange(email) {
@@ -175,7 +179,7 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 					<div className="flex items-center justify-start w-full lg:w-[55%]">
 						<span className="">Hit my inbox at</span>
 						<span className={`${ emailIsValid ? 'border-black/40 ' : 'border-[#FF0000]'} grow lg:grow-0 lg:w-[4.8rem] ml-[0.12rem] border-b-[1.5px] flex items-center justify-center`}>
-							<input autoComplete="off" name="email" value={userEmail} onChange={e => handleEmailChange(e.target.value)} onBlur={e => handleEmailBlur(e.target.value)} onFocus={e => handleEmailFocus(e.target.value)}
+							<input autoComplete="off" name="email" value={userEmail} onChange={e => handleFormFieldChange('email', e.target.value)} onBlur={e => handleFormFieldBlur('email', e.target.value)} onFocus={e => handleFormFieldFocus('email', e.target.value)}
 								className="border-none w-full text-center placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="Enter your email*" type="email"></input>
 							</span>
 					</div>

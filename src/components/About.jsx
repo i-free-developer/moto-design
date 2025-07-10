@@ -14,14 +14,14 @@ export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 		<main className="mx-auto">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true} key="about"/>
 			<section id="about" className="mx-auto lg:pt-[0.48rem]" onClick={closeDrawer}>
-				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
+				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
 					{isMobileDevice ? <AboutHeaderMobile smallScreenRatioDecimal={smallScreenRatioDecimal}/> : <AboutHeaderDesktop/>}
 					<AboutBrand/>
 				</div>
 				<AboutStatusContainer smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<EcosystemHeader/>
 				<EcosystemContainer isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
+				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
 					<div className="my-[1.2rem] lg:my-[3.52rem] grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-x-[0.2rem] lg:gap-y-[0.4rem]">
 						<OurTeamCard />
 						{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
@@ -198,10 +198,10 @@ function TestimonialSlideIcons({isMobileDevice, smallScreenRatioDecimal}) {
 	let scaleRatio = isMobileDevice? smallScreenRatioDecimal * 0.65 : 1
 	return (
 		<div className="flex items-center gap-[0.8rem] lg:gap-[1.28rem] mr-[0.8rem] lg:mr-[1.28rem]">
-			<span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer"><GateIconBlack scaleRatio={scaleRatio}/></span>
-			<span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer"><ByBitIcon scaleRatio={scaleRatio}/></span>
-			<span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer"><VenturesIcon scaleRatio={scaleRatio}/></span>
-			<span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer"><AwsIcon scaleRatio={scaleRatio}/></span>
+			<span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><GateIconBlack scaleRatio={scaleRatio}/></span>
+			<span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><ByBitIcon scaleRatio={scaleRatio}/></span>
+			<span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><VenturesIcon scaleRatio={scaleRatio}/></span>
+			<span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><AwsIcon scaleRatio={scaleRatio}/></span>
 		</div>
 	)
 }

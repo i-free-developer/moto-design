@@ -90,6 +90,7 @@ function useScreenRatio() {
   const designedSmallWidth = 750; // 设计稿宽度
   const designedBigWidth = 1920; // 设计稿宽度
   const baseSize = 100; // 基准值 (1rem = 100px)
+  const bigScreenFixedRatio = 0.9
   const [isMobileDevice, setIsMobileDevice] = useState(false)
   const [bigScreenRatioInt, setBigScreenRatioInt] = useState(1)
   const [bigScreenRatioDecimal, setBigScreenRatioDecimal] = useState(1.0)
@@ -105,12 +106,12 @@ function useScreenRatio() {
       if (document.documentElement.style.fontSize != sRem) {document.documentElement.style.fontSize = sRem;}
     } else if (windowWidth <= designedBigWidth) {
       setIsMobileDevice(false)
-      let bRem = (baseSize * (windowWidth / designedBigWidth)).toFixed(2) + 'px'
+      let bRem = (baseSize * (windowWidth / designedBigWidth)).toFixed(2) * bigScreenFixedRatio + 'px'
       if (document.documentElement.style.fontSize != bRem) {document.documentElement.style.fontSize = bRem;}
       // document.documentElement.style.fontSize = baseSize * bigScreenRatioRaw + 'px';
     } else {
       setIsMobileDevice(false)
-      if (document.documentElement.style.fontSize != '100px') {document.documentElement.style.fontSize = baseSize * 1 + 'px'} 
+      if (document.documentElement.style.fontSize != '90px') {document.documentElement.style.fontSize = baseSize * 1 * bigScreenFixedRatio + 'px'} 
     }
     setScreenRatios()
   }
@@ -125,7 +126,7 @@ function useScreenRatio() {
       setSmallScreenRatioDecimal(smallScreenRatioDecimalRaw)
     } else if (windowWidth <= designedBigWidth) {
       let bigScreenRatio = windowWidth / designedBigWidth;
-      let bigScreenRatioDecimalRaw = parseFloat((windowWidth / designedBigWidth).toFixed(2))
+      let bigScreenRatioDecimalRaw = parseFloat((windowWidth / designedBigWidth).toFixed(2)) * bigScreenFixedRatio
       setBigScreenRatioInt(Math.round(bigScreenRatio * 100))
       setBigScreenRatioDecimal(bigScreenRatioDecimalRaw)
     } else {

@@ -12,7 +12,7 @@ export default function Contact({isMobileDevice, smallScreenRatioDecimal}) {
 	return (
 		<main className="mx-auto min-w-screen max-w-screen overflow-x-hidden">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} />
-			<section id="contact-us" className="mx-auto relative max-w-full lg:max-w-full pt-[0.4rem] lg:pt-0" onClick={closeDrawer}>
+			<section id="contact-us" className="mx-auto relative max-w-full pt-[0.4rem] lg:pt-0" onClick={closeDrawer}>
 				<PixelsHeader/>
 				<ContactContainer isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 	      <CopyRightCard/>

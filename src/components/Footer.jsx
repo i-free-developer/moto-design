@@ -43,7 +43,7 @@ function InfoCardDesktop() {
 }
 
 function SiteHeader() {
-  return (<header className="text-[0.56rem] leading-[0.64rem] lg:text-[1.04rem] lg:leading-[1.04rem] font-medium text-wrap w-[3.69rem] lg:w-[6.85rem]">Let'screate something extraordinary together.</header>)
+  return (<header className="text-[0.56rem] leading-[0.64rem] lg:text-[1.04rem] lg:leading-[1.04rem] font-medium text-wrap w-[3.69rem] lg:w-[6.85rem]">Let's create something extraordinary together.</header>)
 }
 
 function InfoSection() {
@@ -61,11 +61,12 @@ function LogoLinksCard() {
   return (
     <div className="mx-auto px-[0.32rem] lg:px-0 mt-[0.64rem] lg:mt-[0.64rem] flex items-center gap-[0.32rem] lg:gap-[0.32rem]">
       <span className="w-[2.22rem] h-[1.12rem]"><img src="/footer-logo.png" className="object-center object-fit "></img></span>
+
       <div className="">
         <header className="text-[0.28rem] leading-[0.28rem] font-bold">Moto Design</header>
         <p className="text-[0.16rem] font-medium mt-[0.08rem]">Always trust our aesthetic</p>
         <div className="mt-[0.32rem] lg:mt-[0.32rem] flex items-end gap-[0.16rem] lg:gap-[0.32rem]">
-              {SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
+          {SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
         </div>
       </div>
     </div>

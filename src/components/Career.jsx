@@ -16,7 +16,7 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 					<CareerHeader/>
 					<CareerContenr/>
 				</div>
-				<div className="mx-auto w-screen w-screen max-w-screen lg:px-[0.48rem] mt-[0.8rem] lg:mt-[1.48rem] overflow-x-hidden">
+				<div className="mx-auto w-screen max-w-screen lg:px-[0.48rem] mt-[0.8rem] lg:mt-[1.48rem] overflow-x-hidden">
 					<TimeLineCard/>
 				</div>
 				<div className="mx-auto w-screen max-w-screen mt-[2.16rem] lg:mt-[2.8rem] overflow-x-hidden">
@@ -27,7 +27,7 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 					<PerksContainer/>
 				</div>
 
-				<div className="px-[0.32rem] lg:px-[0.48rem] lg:mb-[2.88rem] mx-auto w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
+				<div className="px-[0.32rem] lg:px-[0.48rem] lg:mb-[2.88rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
 					<RolesContainer/>
 					<div className="mt-[2.16rem] mb-[1.66rem] lg:mb-0 lg:mt-[2.8rem]"></div>
 					<HowToApply/>
@@ -98,8 +98,8 @@ function TimeLineElement({id, title, isEven, isLastItem}) {
 			<span className="text-[0.24rem] leading-[0.24rem] lg:text-[0.28rem] lg:leading-[0.36rem] translate-x-[-0.06rem]">{id}</span>
 			<div className="flex items-center mt-[0.12rem] mb-[0.32rem] h-[0.4rem] relative text-black">
 				<span className={`w-full ${isEven ? 'h-[0.4rem]' : 'h-[0.2rem]'} border-l-1 lg:border-l-2 ${isLastItem ? 'border-r-1 lg:border-r-2 h-[0.4rem]' : ''}`}></span>
-				<span className="absolute w-full border-t-1 lg:border-t-2 bottom-[0.2rem] lg:bottom-[0.19rem] translate-y--[-0.69rem] lg:translate-y--[-0.77rem]"></span>
-				<span className={`absolute rounded-full border-[0.1rem] flex items-center justify-center left-[-0.13rem] ${isHovered ? 'block' : 'hidden'}`}>
+				<span className="absolute w-full border-t-2 lg:border-t-2 bottom-[0.2rem] lg:bottom-[0.19rem] translate-y--[-0.69rem] lg:translate-y--[-0.77rem]"></span>
+				<span className={`absolute rounded-full border-[0.1rem] flex items-center justify-center left-[-0.129rem] ${isHovered ? 'block' : 'hidden'}`}>
 					<span className="size-[0.08rem] bg-white rounded-full"></span>
 				</span>
 			</div>
@@ -148,7 +148,7 @@ function RolesContainer() {
 				<h3 className="uppercase font-bold text-[0.2rem] leading-[0.2rem] lg:text-[0.24rem] lg:leading-[0.32rem]">join our team</h3>
 				<p className="uppercase font-bold text-[0.48rem] leading-[0.48rem] lg:text-[0.8rem] lg:leading-[0.96rem] mt-[0.48rem] lg:mt-[0.16rem]">find your perfect role</p>
 				<p className="text-[0.16rem] leading-[0.16rem] lg:text-[0.2rem] lg:leading-[0.28rem] mt-[0.12rem] lg:mt-[0.72rem] font-normal">Explore our open roles and find the one that fits not just your resume, but your rhythm.</p>
-				<p className="text-[0.32rem] lg:text-[0.36rem] mt-[1.28rem] lg:mt-[2.4rem] font-bold scroll-fade-in"><span className="mr-[0.02rem]">{rolesCount}</span>Positions</p>
+				<p className="text-[0.32rem] lg:text-[0.36rem] mt-[1.28rem] lg:mt-[2.4rem] font-bold scroll-fade-in"><span className="">{rolesCount}&nbsp;</span>Positions</p>
 			</div>
 			<div id="positions" className="mt-[0.8rem] lg:mt-0 flex flex-col gap-[0.08rem]">
 				{OpenningRoles.map((item, index) => <RoleCard {...item} index={index} key={index}/>)}
@@ -194,7 +194,7 @@ export function HowToApply() {
 			<h2 className="uppercase font-bold text-[0.48rem] lg:text-[0.8rem] lg:leading-[0.8rem]">how to apply</h2>
 			<p className="mt-[0.48rem] lg:mt-[0.48rem] text-[0.2rem] leading-[0.24rem] lg:text-[0.28rem] lg:leading-[0.4rem]">Send your CV and portfolio to <span className="font-bold">({CompanyEmail})</span>, with the subject "<span className="font-bold">Position + Name</span>".</p>
 			<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.4rem]">We’re not just hiring doers—we’re looking for partners in creation.</p>
-			<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.4rem] my-[0.24rem] lg:my-[0.4rem]">*File Types: ( pdf, ppt, pptx, txt )</p>
+			<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.4rem] my-[0.24rem] lg:my-[0.4rem]">*File Types: ( PDF format only )</p>
 		</div>
 	)
 }

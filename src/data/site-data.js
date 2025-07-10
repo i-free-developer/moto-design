@@ -158,12 +158,16 @@ const PortfolioData = {
 		{ id: 6, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-6-mobile.png' },
 		{ id: 7, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-7-mobile.png' },
 		{ id: 8, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-8-mobile.png' },
+		{ id: 8, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-9-mobile.png' },
+		{ id: 8, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-10-mobile.png' },
+		{ id: 8, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-11-mobile.png' },
+		{ id: 8, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-12-mobile.png' },
 	]
 }
 
 const ServicesItems = ['Web Design / UI & UX', '3D & Concept Animation', 'Brand Identity & Social Media Visual']
 
-const CopyRight = '© 2025 Moto Design LLC. All rights reserved.'
+const CopyRight = '© 2025 Moto Design Ltd. All rights reserved.'
 
 const CompanyEmail = 'Hello@motodesign@.cn'
 

@@ -21,7 +21,7 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 					</div>
 				</div>
 				
-				<div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] lg:px-[0.48rem] overflow-x-hidden">
+				<div className="mx-auto w-screen max-w-screen lg:max-w-[1920px] lg:px-[0.48rem]">
 	      	{isMobile ? <MobilePortfolios isMobileDevice={isMobileDevice}/> : <DesktopPortfolios/>}
 	      </div>
 	      
@@ -82,7 +82,7 @@ function DesktopCard({id, title, description, image, url, index, totalNumber}) {
 		<div className={`${spanClasses[colsIndex]} rounded-[0.28rem] lg:rounded-[0.3rem] overflow-hidden relative`}>
 			<span style={{pointerEvents: 'none'}}
         className={`
-				z-5 absolute left-0 right-0 bottom-0 min-w-full h-[65%] blur--[8px] bg-gradient-to-b from-[#D1D1DA]/0 from-0% via-[#D1D1DA]/5 via-20% via-[#D1D1DA]/10 via-40% to-[#000000] to-90% opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
+				z-5 absolute left-0 right-0 bottom-0 min-w-full h-[80%] blur--[8px] bg-gradient-to-b from-[#D1D1DA]/0 from-0% via-[#D1D1DA]/3 via-45% via-[#D1D1DA]/5 via-45% to-[#000000] to-100% opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
 				${isHovered ? 'opacity-100' : 'translate-y-[10%] '}
 			`}></span>
 			<Link to={`/portfolio/${id}`} className="max-w-full h-full block cursor-pointer rounded-[0.28rem] lg:rounded-[0.3rem]">
@@ -137,7 +137,7 @@ function MobilePortfolios({isMobileDevice}) {
 
 function MobilePortfoliosDesktopContainer({mobileItems}) {
 	return (
-		<div className="relative mx-auto mb-[3.6rem] pt-[10.5%] lg:pt-0 pb-[10.5%] lg:pb-[6.5%]">
+		<div className="snap-none relative mx-auto mb-[3.6rem] pt-[10.5%] lg:pt-0 pb-[10.5%] lg:pb-[6.5%]">
       <div className="mx-auto w-full overflow-hidden grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-[0.2rem]">
         	{mobileItems.map((item, index) => <MobileCardDesktopView {...item} index={index} key={index}/>)}
       </div>
@@ -150,7 +150,7 @@ function MobilePortfoliosMobileContainer({mobileItems}) {
 	const mobileItemsLeft = mobileItems.filter((e,i) => i % 2 == 0)
 	const mobileItemsRight = mobileItems.filter((e,i) => i % 2 != 0)
 	return (
-		<div className="w-full relative mx-auto mb-[3.6rem] pt--[5.5%] pb-[11%]">
+		<div className="snap-none w-full relative mx-auto mb-[3.6rem] pt--[5.5%] pb-[11%]">
       <div className="mx-auto w-full overflow-hidden flex gap-[0.16rem]">      	
       	<div className="flex flex-col gap-[0.16rem] ml-[-0.24rem]">{mobileItemsLeft.map((item, index) => <MobileCardMobileView {...item} index={index} key={index}/>)}</div>
       	<div className="w-full min-h-full"></div>
@@ -180,10 +180,11 @@ function MobileCardMobileView({title, image, index}) {
 function EmptyCard() { return (<span className="min-w-full min-h-full"></span>) }
 
 function StickyHandCard() {
+	// style={{overflowY: 'overlay'}} 
 	const handImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-sticky-hand-img.png'
   return (
     <div className="absolute inset-0 flex items-center justify-center">
-      <div style={{overflowY: 'overlay'}} className="sticky top-0 bottom-0 translate-x-[18.8%] lg:translate-x-[18.6%]">
+      <div className="overflow-y-visible sticky top-0 bottom-0 translate-x-[18.8%] lg:translate-x-[18.6%]">
         <img loading="lazy" className="w-[5.88rem] w--[5.4rem] h-[6.28rem] h--[5.77rem] lg:w-[7.92rem] lg:h-[8.48rem] object-fit object-center rounded-[0.28rem] lg:rounded-[0.16rem]" src={handImg} alt="Hand"/>
       </div>
     </div>

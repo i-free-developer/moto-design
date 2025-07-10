@@ -97,7 +97,7 @@ function AboutStatusContainer({smallScreenRatioDecimal}) {
 function StatusItemCard({title, suffix, content, i}) {
 	return (
 		<article className="w-[85%] lg:w-4/5 my-[0.16rem] lg:my-[0.16rem]">
-			<div className="min-w-full text-[0.8rem] lg:text-[0.96rem] font-semibold leading-[0.8rem] lg:leading-[0.96rem] tracking-[-8%] flex gap-[0.08rem]">{<OdometerItem className="min-w-content" value={title}/>} {suffix && <span className={`ml-[1px] lg:ml-0 inline-block ${i == 3 ? 'translate-y-[8%]' : '' }`}>{suffix}</span>}</div>
+			<div className="min-w-full text-[0.8rem] lg:text-[0.96rem] font-semibold leading-[0.8rem] lg:leading-[0.96rem] tracking-[-8%] flex gap-[0.08rem]">{<OdometerItem className="min-w-content" value={title}/>} {suffix && <span className={`ml-[1px] lg:ml-0 inline-block ${i == 3 ? 'translate-y-[6.5%]' : '' }`}>{suffix}</span>}</div>
 			<hr className="w-full border border-[0.01rem] lg:border-1 border-black/20 my-[0.16rem] lg:mt-[0.32rem] lg:mb-[0.2rem]"></hr>
 			<p className="text-[0.16rem] lg:text-[0.16rem] font-normal leading-[0.20rem] lg:leading-[0.2rem] tracking-[-2%]">{content}</p>
 		</article>
@@ -213,14 +213,14 @@ function TeamMemberCard({name, avatar, description, title, role}) {
 			<div className={`overflow-hidden top-0 rounded-0 flex max-h-full min-h-full min-w-full max-w-full flex-col justify-between`}>
 				<img src={avatar} className="mx-auto w-[2.2rem] h-[2.2rem] lg:w-[3.3rem] lg:h-[3.4rem] object-cover object-center scale-103"></img>
 				<div className="w-full px-[0.2rem] lg:px-[0.24rem] py-[0.2rem] ">
-					<header className="text-[0.28rem] leading-[0.28rem] lg:text-[0.4rem] lg:leading-[0.4rem] tracking-[-2%] text-nowrap">{name}</header>
-					<p className="mt-[0.08rem] text-[0.12rem] lg:text-[0.16rem]">{role}</p>
+					<header className="capitalize text-[0.28rem] leading-[0.28rem] lg:text-[0.4rem] lg:leading-[0.4rem] tracking-[-2%] text-nowrap">{name}</header>
+					<p className="capitalize mt-[0.08rem] text-[0.12rem] lg:text-[0.16rem]">{role}</p>
 				</div>
 			</div>
 
 		    <div className={`relative transition-all duration-300 rounded-0 lg:h-[2.6rem] min-w-full max-w-full bg-[#F7F7F7]/30 backdrop-blur-[16px] text-black pt-[0.16rem] lg:pt-[0.16rem] pb-[0.16rem] lg:pb-[0.28rem] px-[0.12rem] lg:px-[0.2rem] ${isHovered ? 'lg:top-[-2.6rem] z-10' : 'lg:top-0 '}`}>
-		     	<header className="text-[0.28rem] lg:text-[0.4rem] font-bold tracking-[-2%]">{name}</header>
-		     	<p className="uppercase text-[0.24rem] lg:text-[0.22rem] lg:leading-[0.24rem] font-normal mt-[0.12rem] lg:mt-[0.12rem]">{title}</p>
+		     	<header className="capitalize text-[0.28rem] lg:text-[0.4rem] font-bold tracking-[-2%]">{name}</header>
+		     	<p className="capitalize text-[0.24rem] lg:text-[0.22rem] lg:leading-[0.24rem] font-normal mt-[0.12rem] lg:mt-[0.12rem]">{title}</p>
 				<p className="text-[0.16rem] lg:text-[0.14rem] lg:leading-[0.18rem] font-normal mt-[0.32rem] lg:mt-[0.12rem]">{description}</p>
 		    </div>
 		</article>

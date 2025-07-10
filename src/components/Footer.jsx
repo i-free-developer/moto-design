@@ -1,7 +1,6 @@
 import { SocialIconItems, SiteLinks, SocialIconLinkItem} from './SocialIconsCollection'
 import { CopyRight, CompanyEmail } from '../data/site-data'
 import { Link } from "react-router-dom"
-// import backgroundImage from '../assets/dashed-bg-v2.png'
 // import backgroundImageSvg from '../assets/dashed-bg.svg'
 
 function SiteInfoCard({isMobileDevice}) {
@@ -10,8 +9,8 @@ function SiteInfoCard({isMobileDevice}) {
     <div style={{
       // backgroundImage: `url(${backgroundImageSvg})`,
       // backgroundImage: `url(${bgSvg})`,
-      backgroundSize: 'cover',
-      backgroundPosition: '15% 100%',
+      // backgroundSize: 'cover',
+      // backgroundPosition: '0% 100%',
       // width: '100vw',
     }} className="svg-bg bg-repeat-x mt-[1rem] lg:mt-0 py-[0.48rem] lg:pt-[1.92rem] lg:pb-[1.3rem] mx-auto w-screen max-w-screen overflow-x-hidden">
       { isMobileDevice ? <InfoCardMobile/> : <InfoCardDesktop/> }

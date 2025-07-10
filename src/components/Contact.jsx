@@ -136,7 +136,7 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 				<div className="text-[0.36rem] leading-[0.36rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-medium w-full flex items-center flex-wrap lg:flex-nowrap">
 					<span className="mt-[0.2rem] lg:mt-0 ">I’m looking for a creative team to help  with</span>
 					<span className="mt-[0.2rem] lg:mt-0 grow relative lg:w-[6rem] lg:ml-[0.12rem] border-b-[1.5px] border-black/40 flex justify-center items-center">
-						<input onClick={() => setDisplayCard(!displayCard)} autoComplete="off" name="team" value={teamData} onChange={e => {}} className="cursor-pointer border-none w-full text-center placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="What type of service are you looking for?"></input>
+						<input onClick={() => setDisplayCard(!displayCard)} autoComplete="off" name="team" value={teamData} onChange={e => {}} className="cursor-pointer border-none w-full text-center placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="What type of service are you looking for*"></input>
 						<span className={`${ displayCard ? 'text-black' : 'text-black/40'}`}><ArrIcons/></span>
 						<SelectCard displayCard={displayCard} setTeamData={setTeamData} setFormField={setFormField}/>
 					</span>

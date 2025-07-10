@@ -139,37 +139,6 @@
   mask-image: url('/moto-mask-desktop.svg');
 }
 
-@media (max-width: 750px) {
-	.horizontal-bar-in, .horizontal-bar-out, .vertical-element-in, .vertical-element-out { animation: none;}
-
-	.perk-card:active ~ .perk-card, .perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
-		transform: translateX(calc(2.72rem - 2px));
-	}
-
-	@keyframes drawer-slide-in {
-		from {transform: translateX(-6rem);}
-		to {transform: translateX(0.32rem);}
-	}
-
-	@keyframes drawer-slide-out {
-		from {transform: translateX(0.32rem);}
-		to {transform: translateX(-6rem); }
-	}
-
-	.drawer-in {
-		animation: drawer-slide-in 0.4s linear;
-		animation-fill-mode: forwards;
-	/*	left: 1rem;*/
-	}
-
-	.drawer-out {
-		animation: drawer-slide-out 0.4s linear;
-		animation-fill-mode: forwards;
-	/*	animation-direction: reverse;*/
-	/*	left: -20rem;*/
-	}
-}
-
 .hover-border {
 	border: 1px solid;
 	animation: progress-border 0.4s ease;
@@ -270,11 +239,50 @@ a > svg {
 }
 
 .svg-bg {
-	  background: url('dashed-bg.svg');
+  background: url('dashed-bg.svg');
+  background-size: 100%;
+  background-position: 0 100%;
 }
 
 .bg-in-black {
 	background: linear-gradient(to bottom, #00000 0%, #D1D1DA 100%, );
 	-webkit-background: linear-gradient(to bottom, #00000 0%, #D1D1DA 100%, );
 	border: 1px solid black;
+}
+
+@media (max-width: 750px) {
+	.horizontal-bar-in, .horizontal-bar-out, .vertical-element-in, .vertical-element-out { animation: none;}
+
+	.perk-card:active ~ .perk-card, .perk-card:hover ~ .perk-card, .perk-card:focus-within ~ .perk-card {
+		transform: translateX(calc(2.72rem - 2px));
+	}
+
+	@keyframes drawer-slide-in {
+		from {transform: translateX(-6rem);}
+		to {transform: translateX(0.32rem);}
+	}
+
+	@keyframes drawer-slide-out {
+		from {transform: translateX(0.32rem);}
+		to {transform: translateX(-6rem); }
+	}
+
+	.drawer-in {
+		animation: drawer-slide-in 0.4s linear;
+		animation-fill-mode: forwards;
+	/*	left: 1rem;*/
+	}
+
+	.drawer-out {
+		animation: drawer-slide-out 0.4s linear;
+		animation-fill-mode: forwards;
+	/*	animation-direction: reverse;*/
+	/*	left: -20rem;*/
+	}
+
+	.svg-bg {
+	  background: url('dashed-bg.svg');
+	  background-size: 200%;
+  background-position: 0% 100%;
+	}
 }

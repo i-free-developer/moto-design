@@ -17,7 +17,7 @@ export default function App() {
   const {isMobileDevice, smallScreenRatioDecimal} = useScreenRatio()
 
   useEffect(() => {
-      const intervalCount = RandomInt(10, 30)
+      const intervalCount = RandomInt(8, 18)
       const intervalElement = setInterval(() => {
           setLoadingPercentage((prev) => prev + 1);
         }, intervalCount);

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import '../assets/site-styles.css';
 import { Navbar } from './Navbar'
 import { AboutHeaderSvg } from './HeaderSvg'
-import { TeamMembers, StatusContents } from '../data/site-data'
+import { TeamMembers, StatusContents, TestimonialIcons } from '../data/site-data'
 import { ByBitIcon, AwsIcon, VenturesIcon, GateIconBlack} from './SocialIconsCollection'
 import { useDrawerHandler, OdometerItem, useHoverHandler } from './FunctionCollection'
 import { SiteInfoCard,  SiteFooter } from './Footer'
@@ -179,13 +179,13 @@ function EcosystemContainer({isMobileDevice, smallScreenRatioDecimal}) {
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				{/* <TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/> */}
 			</div>
 			<div aria-hidden className="flex items-center gap--[0.32rem] lg:gap--[8rem] grow-0 shrink-0 icons-scroll ml-0">
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				{/* <TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/> */}
 			</div>
 		    <span className="linear-gradient-cover absolute inset-0 left-0 bottom-0"></span>
 		    {/* <span className="absolute top-0 bottom-0 left-0  w-[0.24rem] lg:w-[3rem] bg-linear-to-r from-white to-white-10"></span> */}
@@ -198,10 +198,11 @@ function TestimonialSlideIcons({isMobileDevice, smallScreenRatioDecimal}) {
 	let scaleRatio = isMobileDevice? smallScreenRatioDecimal * 0.65 : 1
 	return (
 		<div className="flex items-center gap-[0.8rem] lg:gap-[1.28rem] mr-[0.8rem] lg:mr-[1.28rem]">
-			<span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><GateIconBlack scaleRatio={scaleRatio}/></span>
-			<span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><ByBitIcon scaleRatio={scaleRatio}/></span>
-			<span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><VenturesIcon scaleRatio={scaleRatio}/></span>
-			<span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><AwsIcon scaleRatio={scaleRatio}/></span>
+			{TestimonialIcons.map((e, index) => <span className="flex items-center justify-center h-[0.32rem] lg:h-[0.48rem] cursor-pointer hover:brightness-0" key={index}><img src={e} alt={e.split('/')[-1]} className="h-[0.32rem] lg:h-[0.48rem] object-cover object-center"></img></span>)}
+			{/* <span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><GateIconBlack scaleRatio={scaleRatio}/></span> */}
+			{/* <span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><ByBitIcon scaleRatio={scaleRatio}/></span> */}
+			{/* <span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><VenturesIcon scaleRatio={scaleRatio}/></span> */}
+			{/* <span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><AwsIcon scaleRatio={scaleRatio}/></span> */}
 		</div>
 	)
 }
@@ -209,9 +210,9 @@ function TestimonialSlideIcons({isMobileDevice, smallScreenRatioDecimal}) {
 function TeamMemberCard({name, avatar, description, title, role}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
 	return (
-		<article className="box-border border border-[0.03rem] lg:border-[4px] rounded-[0.16rem] w-[2.2rem] lg:w-[3.3rem] h-[3.3rem] lg:h-[4.6rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+		<article className="box-border border border-[0.03rem] lg:border-[4px] rounded-[0.16rem] w-[2.2rem] lg:w-[3.66rem] h-[3.3rem] lg:h-[5.11rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<div className={`overflow-hidden top-0 rounded-0 flex max-h-full min-h-full min-w-full max-w-full flex-col justify-between`}>
-				<img src={avatar} className="mx-auto w-[2.2rem] h-[2.2rem] lg:w-[3.3rem] lg:h-[3.4rem] object-cover object-center scale-103"></img>
+				<img src={avatar} className="mx-auto w-[2.2rem] h-[2.2rem] lg:w-[3.66rem] lg:h-[3.66rem] object-cover object-center"></img>
 				<div className="w-full px-[0.2rem] lg:px-[0.24rem] py-[0.2rem] ">
 					<header className="capitalize text-[0.28rem] leading-[0.28rem] lg:text-[0.4rem] lg:leading-[0.4rem] tracking-[-2%] text-nowrap">{name}</header>
 					<p className="capitalize mt-[0.08rem] text-[0.12rem] lg:text-[0.16rem]">{role}</p>

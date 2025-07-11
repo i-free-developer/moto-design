@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import { CopyRight, CompanyEmail } from '../data/site-data'
+import { CopyRight, CompanyEmail, SubmittedImg } from '../data/site-data'
 import Navbar from './Navbar'
 import { StarIcon, ArrowIcon } from './SocialIconsCollection'
 import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
@@ -233,8 +233,8 @@ function FormHeader({isSubmitted}) {
 function SumbittedGroup({isMobileDevice, smallScreenRatioDecimal, setIsSubmitted}) {
 	return (
 		<div className="mx-auto w-full mt-[1.28rem] lg:mt-[1.08rem] h--[1.92rem] lg:h--[2.8rem] flex flex-col items-center justify-between lg:scale-90">
-			<div className="mx-auto flex items-center justify-center h-[2.34rem] w-[3.95rem] lg:h-[2.8rem] lg:w-[4.6rem]">
-				<img src="/submitted-already.png" alt="Submitted Already" className="object-fit object-center"></img>
+			<div className="mx-auto flex items-center justify-center h--[2.34rem] w--[3.95rem] h-[2.8rem] w-[4.6rem]">
+				<img src={SubmittedImg} alt="Submitted Already" className="object-fit object-center"></img>
 			</div>
 			<div className="mx-auto mt-[2.38rem] lg:mt-[1.08rem]">
 				<span onClick={e => {setIsSubmitted(false)}} className="cursor-pointer text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] rounded-full bg-black text-white">Get in Touch Again</span>

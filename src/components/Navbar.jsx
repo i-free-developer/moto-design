@@ -86,7 +86,7 @@ function SiteLinkItem({url, title, linkTo}) {
 	return (
 		<div className="flex flex-col" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => scrollTo(url)}>
 			<Link to={linkTo} className="text-[0.4rem] lg:text-[0.48rem] font-semibold">{title}</Link>
-			<hr className={`mt-[0.06rem] lg:mt-[0.06rem] ${isHovered ? 'hover-border' : 'border border-[1px] border-transparent'}`}></hr>
+			<hr className={`mt-[-0.08rem] lg:mt-[-0.08rem] ${isHovered ? 'hover-border' : 'border border-[1px] border-transparent'}`}></hr>
 		</div>
 	)
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
-import { PortfolioData } from '../data/site-data'
+import { PortfolioData, HandImg } from '../data/site-data'
 import Navbar from './Navbar'
 import { SiteInfoCard,  SiteFooter } from './Footer'
 import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
@@ -82,7 +82,7 @@ function DesktopCard({id, title, description, image, url, index, totalNumber}) {
 		<div className={`${spanClasses[colsIndex]} rounded-[0.28rem] lg:rounded-[0.3rem] overflow-hidden relative`}>
 			<span style={{pointerEvents: 'none'}}
         className={`
-				z-5 absolute left-0 right-0 bottom-0 min-w-full h-[80%] blur--[8px] bg-gradient-to-b from-[#D1D1DA]/0 from-0% via-[#D1D1DA]/3 via-45% via-[#D1D1DA]/5 via-45% to-[#000000] to-100% opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
+				z-5 absolute left-0 right-0 bottom-0 min-w-full h-[100%] blur--[8px] bg-gradient-to-b from-[#D1D1DA]/0 from-0% via-[#69696D]/50 via-65% to-[#000000] to-100% opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
 				${isHovered ? 'opacity-100' : 'translate-y-[10%] '}
 			`}></span>
 			<Link to={`/portfolio/${id}`} className="max-w-full h-full block cursor-pointer rounded-[0.28rem] lg:rounded-[0.3rem]">
@@ -181,11 +181,10 @@ function EmptyCard() { return (<span className="min-w-full min-h-full"></span>) 
 
 function StickyHandCard() {
 	// style={{overflowY: 'overlay'}} 
-	const handImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-sticky-hand-img.png'
   return (
     <div className="absolute inset-0 flex items-center justify-center">
       <div className="overflow-y-visible sticky top-0 bottom-0 translate-x-[18.8%] lg:translate-x-[17.6%]">
-        <img loading="lazy" className="w-[5.88rem] w--[5.4rem] h-[6.28rem] h--[5.77rem] lg:w-[7.92rem] lg:h-[8.48rem] object-fit object-center rounded-[0.28rem] lg:rounded-[0.16rem]" src={handImg} alt="Hand"/>
+        <img loading="lazy" className="w-[5.88rem] w--[5.4rem] h-[6.28rem] h--[5.77rem] lg:w-[7.92rem] lg:h-[8.48rem] object-fit object-center rounded-[0.28rem] lg:rounded-[0.16rem]" src={HandImg} alt="Hand"/>
       </div>
     </div>
   )

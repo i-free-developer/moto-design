@@ -60,8 +60,6 @@ function ServiceOfferingsDesktop() {
 	)
 }
 
-
-
 function VerticalElement() {
 	return (
 		<div className="flex justify-center self-start">

@@ -165,6 +165,18 @@ const PortfolioData = {
 	]
 }
 
+const TestimonialIcons = [
+	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-ventures.png',
+	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-gateio-gray.png',
+	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-chain-catcher.png',
+	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-aws.png',
+	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-bybit.png',
+	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-rootdata.png',
+	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-gateio-black.png',
+]
+
+const SubmittedImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-submitted-already.png'
+
 const ServicesItems = ['Web Design / UI & UX', '3D & Concept Animation', 'Brand Identity & Social Media Visual']
 
 const CopyRight = '© 2025 Moto Design Ltd. All rights reserved.'
@@ -173,5 +185,7 @@ const CompanyEmail = 'Hello@motodesign@.cn'
 
 const CompanyDomain = 'motodesign.cn'
 
-export {TimelineItems, PerkItemsData, OpenningRoles, TeamMembers, PortfolioData, StatusContents, ServicesItems, CopyRight, CompanyEmail, CompanyDomain}
+const HandImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-sticky-hand-img.png'
+
+export {TimelineItems, PerkItemsData, OpenningRoles, TeamMembers, PortfolioData, StatusContents, ServicesItems, CopyRight, CompanyEmail, CompanyDomain, HandImg, TestimonialIcons, SubmittedImg}
 

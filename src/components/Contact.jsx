@@ -88,6 +88,12 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 		if (field == 'email') {let emailValid = validateEmail(value); setUserEmail(value); value ? setEmailIsValid(emailValid) : setEmailIsValid(true); setFormIsValid(emailValid && userRole.length > 0 && userName.length > 0 && teamData.length > 0)}
 	}
 
+	function handleFinalCheck(e) {
+	    e.preventDefault(); // Prevent page reload
+		setNameIsValid(userName.length > 0); setEmailIsValid(validateEmail(userEmail)); setRoleIsValid(userRole.length > 0); setTeamIsValid(teamData.length > 0)
+		if (formIsValid) {handleSubmit(e)}
+	}
+
 	function handleEmailChange(email) {
 		setUserEmail(email)
 		let emailValid = validateEmail(email)
@@ -120,14 +126,15 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 	}
 
 	const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent page reload
-		const form = e.target;
-    const formData = new FormData(form);
-    // fetch('/some-api', { method: form.method, body: formData });
-    const formJson = Object.fromEntries(formData.entries());
-    console.log(formJson);
+	    e.preventDefault(); // Prevent page reload
+		const form = document.querySelector('form') //e.target;
+	    const formData = new FormData(form);
+	    // fetch('/some-api', { method: form.method, body: formData });
+	    const formJson = Object.fromEntries(formData.entries());
+	    console.log(formJson);
 		goSubmit(formJson)
 	}
+	
 	const goSubmit = async (data) => {
 	    // console.log('Submitted name:', data);
 	    try {
@@ -143,7 +150,7 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 		return (<SumbittedGroup isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal} setIsSubmitted={setIsSubmitted}/>)
 	} else {
 		return (
-			<form id="contact-form" className="mx-auto w-full lg:w-[14.2rem] mt-[0.96rem] lg:mt-[1.28rem] h--[1.28rem] lg:h--[2.56rem] flex flex-col gap-[0.2rem]" onSubmit={handleSubmit}>
+			<form id="contact-form" className="mx-auto w-full lg:w-[14.2rem] mt-[0.96rem] lg:mt-[1.28rem] h--[1.28rem] lg:h--[2.56rem] flex flex-col gap-[0.2rem]">
 				<div className="text-[0.36rem] leading-[0.36rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-medium w-full lg:flex lg:items-center lg:flex-nowrap">
 					<div className="flex items-center">
 						<span className="">Hi there, &nbsp;I’m</span>
@@ -188,9 +195,9 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 					</div>
 				</div>
 				<div className="mx-auto mt-[1.08rem] lg:mt-[0.98rem]">
-					<button disabled={!formIsValid} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
+					<button onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={e => {handleFinalCheck(e)}}
 						className={`${ !formIsValid ? 'bg-black/50' : 'bg-black'} cursor-pointer text-[0.32rem] font-medium pl-[0.32rem] pr-[0.08rem] py-[0.08rem] rounded-full text-white flex items-center`}>
-						{loading ? 'Submiting...' : 'Submit'}
+						{loading ? 'Submitting...' : 'Submit'}
 						<div className={`ml-[0.12rem] lg:ml-[0.08rem] bg-white size-[0.48rem] lg:size-[0.48rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>		
 					</button>
 				</div>
@@ -237,7 +244,7 @@ function SumbittedGroup({isMobileDevice, smallScreenRatioDecimal, setIsSubmitted
 				<img src={SubmittedImg} alt="Submitted Already" className="object-fit object-center"></img>
 			</div>
 			<div className="mx-auto mt-[2.38rem] lg:mt-[1.08rem]">
-				<span onClick={e => {setIsSubmitted(false)}} className="cursor-pointer text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] rounded-full bg-black text-white">Get in Touch Again</span>
+				<span onClick={e => {setIsSubmitted(false)}} className="cursor-pointer text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] min-h-[0.48rem] flex items-center justify-center rounded-full bg-black text-white">Get in Touch Again</span>
 			</div>
 		</div>
 	)

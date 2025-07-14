@@ -197,8 +197,8 @@ function EcosystemContainer({isMobileDevice, smallScreenRatioDecimal}) {
 function TestimonialSlideIcons({isMobileDevice, smallScreenRatioDecimal}) {
 	let scaleRatio = isMobileDevice? smallScreenRatioDecimal * 0.65 : 1
 	return (
-		<div className="flex items-center gap-[0.8rem] lg:gap-[1.28rem] mr-[0.8rem] lg:mr-[1.28rem]">
-			{TestimonialIcons.map((e, index) => <span className="flex items-center justify-center h-[0.32rem] lg:h-[0.48rem] cursor-pointer hover:brightness-0" key={index}><img src={e} alt={e.split('/')[-1]} className="h-[0.32rem] lg:h-[0.48rem] object-cover object-center"></img></span>)}
+		<div className="flex items-center gap-[0.8rem] lg:gap-[1.2rem] mr-[0.8rem] lg:mr-[1.2rem]">
+			{TestimonialIcons.map((e, index) => <span className="flex items-center justify-center h-[0.32rem] lg:h-[0.48rem] cursor-pointer hover:brightness-0" key={index}><img src={e} alt={e.split('/')[-1]} className="h-[0.32rem] lg:h-[0.48rem] grayscale object-fit object-center"></img></span>)}
 			{/* <span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><GateIconBlack scaleRatio={scaleRatio}/></span> */}
 			{/* <span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><ByBitIcon scaleRatio={scaleRatio}/></span> */}
 			{/* <span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><VenturesIcon scaleRatio={scaleRatio}/></span> */}

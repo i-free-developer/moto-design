@@ -11,7 +11,8 @@ const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'sectio
 
 export default function HomePageDesktop() {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
-	const {bigScreenRatioDecimal} = useScreenRatio()
+	let {bigScreenRatioDecimal} = useScreenRatio()
+	bigScreenRatioDecimal = bigScreenRatioDecimal / 0.9
 	const headerClassName = headerClasses[drawerStatus]
 
 	return (

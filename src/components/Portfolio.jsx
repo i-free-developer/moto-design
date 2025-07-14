@@ -1,16 +1,27 @@
 import { useState, useEffect } from 'react'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { PortfolioData, HandImg } from '../data/site-data'
 import Navbar from './Navbar'
 import { SiteInfoCard,  SiteFooter } from './Footer'
-import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
+import { useDrawerHandler, useHoverHandler, ScrollToTop } from './FunctionCollection'
 
 export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 	const [isMobile, setIsMobile] = useState(false)
+	const [displayOverlay, setDiaplayOverlay] = useState(false)
+	const [currentPortfolio, setCurrentPortfolio] = useState({})
+	const [portfolioItems, setPortfolioItems] = useState({desktop: [], mobile: []})
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 	
+	useEffect(() => {
+		setPortfolioItems(PortfolioData)
+		setCurrentPortfolio(PortfolioData.desktop[0])
+	}, [])
+
+	function closeOverlay() {setDiaplayOverlay(false); setCurrentPortfolio({})}
+	function openOverlay(e) {setDiaplayOverlay(true); setCurrentPortfolio(e)}
+	
 	return (
-		<main className="mx-auto">
+		<main className="mx-auto relative">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
 			<section id="portfolio" className="" onClick={closeDrawer}>
 				<div className="mx-auto min-w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] px-[0.32rem] lg:px-[0.48rem] pt-[0.48rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem] overflow-x-hidden">
@@ -22,12 +33,13 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 				</div>
 				
 				<div className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] lg:px-[0.48rem]">
-	      	{isMobile ? <MobilePortfolios isMobileDevice={isMobileDevice}/> : <DesktopPortfolios/>}
+	      	{isMobile ? <MobilePortfolios isMobileDevice={isMobileDevice} itemsArray={PortfolioData.mobile}/> : <DesktopPortfolios isMobileDevice={isMobileDevice} itemsArray={portfolioItems.desktop} openOverlay={openOverlay}/>}
 	      </div>
 	      
 	      <SiteInfoCard isMobileDevice={isMobileDevice}/>
 				<SiteFooter isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</section>
+			{displayOverlay && <OverlaySection currentPortfolio={currentPortfolio} closeOverlay={closeOverlay}/> }
 		</main>
 	)
 }
@@ -50,18 +62,27 @@ function MobileDeskIcons({isMobile, setIsMobile, smallScreenRatioDecimal}) {
 	)
 }
 
-function DesktopPortfolios() {
+function DesktopPortfolios({isMobileDevice, itemsArray, openOverlay}) {
+	// console.log('itemsArray',itemsArray)
   return (
     <div className="mb-[3.6rem] px-[0.32rem] lg:px-0 grid grid-cols-1 lg:grid-cols-5 gap-[0.24rem] lg:gap-[0.24rem]">
-      {PortfolioData.desktop.map((item, index) => <DesktopCard {...item} index={index} totalNumber={PortfolioData.desktop.length} key={index}/>)}
+      {itemsArray.map((item, index) => <DesktopCard {...item} index={index} isMobileDevice={isMobileDevice} totalNumber={itemsArray.length} key={index} openOverlay={openOverlay}/>)}
     </div>
   )
 }
 
-function DesktopCard({id, title, description, image, url, index, totalNumber}) {
+function DesktopCard({isMobileDevice, id, title, description, image, url, fullImage, index, totalNumber, openOverlay}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
 	const [colsIndex, setColsIndex] = useState(0)
-	
+	const navigate = useNavigate()
+	function clickNavigate(e) {
+		e.preventDefault;
+		if (isMobileDevice) {
+			navigate(`/portfolio/${id}`)
+		} else {
+			openOverlay({id, title, fullImage})
+		}
+	}
 	useEffect(() => {
 		let itemIndex = index
 		while (itemIndex > 4) { itemIndex = itemIndex % 5 }
@@ -82,15 +103,15 @@ function DesktopCard({id, title, description, image, url, index, totalNumber}) {
 		<div className={`${spanClasses[colsIndex]} rounded-[0.28rem] lg:rounded-[0.3rem] overflow-hidden relative`}>
 			<span style={{pointerEvents: 'none'}}
         className={`
-				z-5 absolute left-0 right-0 bottom-0 min-w-full h-[100%] bg-gradient-to-b from-[#D1D1DA]/0 from-0% via-[#69696D]/50 via-65% to-[#000000] to-100% opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
+				z-5 absolute left-0 right-0 bottom-0 min-w-full h-[50%] bg-gradient-to-b from-[#FFFFFF]/0 to-[#000000] opacity-0 transition-opacity transition-transform duration-400 ease-[cubic-bezier(0,0,.4,.97)]
 				${isHovered ? 'opacity-100' : 'translate-y-[10%] '}
 			`}></span>
-			<Link to={`/portfolio/${id}`} className="max-w-full h-full block cursor-pointer rounded-[0.28rem] lg:rounded-[0.3rem]">
+			<div onClick={clickNavigate} className="max-w-full h-full block cursor-pointer rounded-[0.28rem] lg:rounded-[0.3rem]">
 				<div className="w-full h-full overflow-hidden rounded-[inherit]">
 					<img src={image} loading="lazy" className={`w-full h-full object-cover object-center rounded-[inherit] transition-transform duration-400 ${isHovered ? 'scale-104' : ''}`} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}></img>
 				</div>
 				<DesktopBottomCard title={title} description={description}/>
-			</Link>
+			</div>
 		</div>
 	)
 }
@@ -110,7 +131,7 @@ function DesktopBottomCard({title, description}) {
 	)
 }
 
-function MobilePortfolios({isMobileDevice}) {
+function MobilePortfolios({isMobileDevice, itemsArray}) {
 	const [mobileItems, setMobileItems] = useState([])
 	function chunkArray(arr) {
     const result = [];
@@ -124,7 +145,7 @@ function MobilePortfolios({isMobileDevice}) {
     return result;
 	}
 	useEffect(() => {
-		let items = isMobileDevice ? PortfolioData.mobile : chunkArray(PortfolioData.mobile).flat()
+		let items = isMobileDevice ? itemsArray : chunkArray(itemsArray).flat()
 		setMobileItems(items)
 	}, [isMobileDevice])
 
@@ -190,6 +211,20 @@ function StickyHandCard() {
   )
 }
 
+function OverlaySection({currentPortfolio, closeOverlay}) {
+	return (
+		<section className="absolute left-0 top-0 right-0 bg-[#000000]/88 min-h-[100vh] z-200">
+			<ScrollToTop/>
+			<div className="relative">
+				<span onClick={closeOverlay} className="cursor-pointer absolute size-[0.8rem] bg-[#F7F7F7] flex items-center justify-center mt-[0.56rem] ml-[0.56rem] rounded-[50%]"><CloseBtn/></span>
+				<div className="w-screen max-w-screen lg:min-w-[1600px] lg:max-w-[1600px] mx-auto overflow-x-hidden">
+					<img loading="lazy" src={currentPortfolio.fullImage} alt={currentPortfolio.title} className="w-full h-full object-cover object-center"/>
+				</div>
+			</div>
+		</section>
+	)
+}
+
 function MobileIconWhite({scaleRatio}) {
 	return (
 		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -234,4 +269,13 @@ function ArrowRight() {
       <rect x="1" y="8.77539" width="16" height="2" fill="#161619" />
     </svg>
   )
+}
+
+function CloseBtn() {
+	return (
+		<svg width="38" height="37" viewBox="0 0 38 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect x="11.0513" y="7.94873" width="26" height="4" transform="rotate(45 11.0513 7.94873)" fill="#161619"/>
+			<rect x="8.56396" y="26.3335" width="26" height="4" transform="rotate(-45 8.56396 26.3335)" fill="#161619"/>
+		</svg>
+	)
 }

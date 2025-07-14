@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import '../assets/animations.css';
 import { CompanyEmail } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem } from './SocialIconsCollection'
@@ -7,7 +7,12 @@ import { useScrollTo, useScrollDirection, useHoverHandler } from './FunctionColl
 
 export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer, smallScreenRatioDecimal, bigScreenRatioDecimal, frostedGlass = false}) {
 	const scrollDirection = useScrollDirection();
-	
+	const [isPortfolioPath, setIsportfolioPage] = useState(false)
+	const { pathname } = useLocation();
+	// pathname: '/portfolio/1'
+	// console.log(pathname)
+	function checkPortfolioPath(path) { return /^\/portfolio\/\d+$/.test(path) || /^\/role\/\d+$/.test(path)}
+
 	useEffect(() => {
 	    const preventScroll = (e) => {
 	      e.preventDefault();
@@ -33,15 +38,21 @@ export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer, sm
 	        document.removeEventListener("wheel", preventScroll); // clean up
 	        document.removeEventListener("keydown", preventKeyBoardScroll); // clean up
 	    }
-  }, [drawerStatus])
+    }, [drawerStatus])
+
+	useEffect(() => {
+		setIsportfolioPage(checkPortfolioPath(pathname))
+	}, [])
+
 
 	return (
 		// sm: py-0.12rem -> py-0.4rem h-0.34+0.4*2= 1.14rem
 		// h-0.54rem lg:h-0.98rem px-3.5rem h-0.34+0.32*2=0.98
 		<div className={`mx-auto sticky relative z-100 min-w-screen max-w-screen ${ scrollDirection === "down" ? "top-[-1.14rem] lg:top-[-0.98rem]" : "top-0"}`}>
-			<section id="navbar" className={`text-black mx-auto px-[0.32rem] lg:px-[0.56rem] py-[0.4rem] lg:py-[0.32rem] lg:rounded-xl transition-[top] duration-400 ${frostedGlass ? 'bg--[#F7F7F7]/40 bg-white/40 backdrop-blur-[20px]' : ''}`}>
+			<section id="navbar" className={`text-black mx-auto px-[0.32rem] lg:px-[0.56rem] py-[0.4rem] lg:py-[0.32rem] transition-[top] duration-400 ${frostedGlass ? 'bg--[#F7F7F7]/40 bg-white/40 backdrop-blur-[20px]' : ''}`}>
 				<nav className="flex justify-between items-center h-[0.34rem]" onClick={closeDrawer}>
-					<div onClick={handleClickDrawer} className="cursor-pointer size-[0.25rem] lg:size--[1.25rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>
+					{/* <div onClick={handleClickDrawer} className="cursor-pointer size-[0.25rem] lg:size--[1.25rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div> */}
+					<LeftIcons handleClickDrawer={handleClickDrawer} drawerStatus={drawerStatus} isPortfolioPath={isPortfolioPath}/>
 					<Link to="/" className="max-h-[0.34rem] lg:h-[2rem] object-fit flex items-center justify-center"><LogoIcon scaleRatio={smallScreenRatioDecimal || bigScreenRatioDecimal}/></Link>
 					<LangButtons/>
 				</nav>
@@ -58,8 +69,8 @@ function DrawerCard({drawerStatus}) {
 	const drawerClassName = drawerClasses[drawerStatus]
 	return(
 		<div
-			className={`bg-[#EAEAEA]/48 backdrop-blur-[20px] px-[0.72rem] lg:px-[0.64rem] pt-[0.96rem] lg:pt-[1.28rem] pb-[0.72rem] lg:pb-[0.64rem] w-[4.6rem] lg:w-[5.6rem] min-h-[9.5rem] h-[calc(100vh-4.8rem-0.56rem)] lg:min-h-[9rem] lg:h-[calc(100vh-0.98rem-56px)] flex flex-col justify-between absolute top-[1.14rem] lg:top-[0.98rem] rounded-[0.24rem] ${drawerClassName}`}>
-			<div className="flex flex-col items-start gap-[0.6rem] lg:gap-[0.4rem]">
+			className={`bg-[#EAEAEA]/48 backdrop-blur-[20px] px-[0.72rem] lg:px-[0.64rem] pt-[1.88rem] lg:pt-[1.98rem] pb-[0.72rem] lg:pb-[0.64rem] w-[4.8rem] lg:w-[5.8rem] min-h-[9.5rem] h-[calc(100vh-4.8rem-0.56rem)] lg:min-h-[9rem] lg:h-[calc(100vh-0.98rem-56px)] flex flex-col justify-between absolute top-[1.14rem] lg:top-[0.98rem] rounded-[0.24rem] ${drawerClassName}`}>
+			<div className="flex flex-col items-start gap-[0.48rem] lg:gap-[0.32rem]">
        			{SiteLinks.map((item, index) => <SiteLinkItem {...item} key={index}/>)}
 			</div>
 			<SocialIconsContainer/>
@@ -115,6 +126,16 @@ function LangButtons() {
 	)
 }
 
+function LeftIcons({isPortfolioPath, handleClickDrawer, drawerStatus}) {
+	const navigate = useNavigate()
+	function handleGoBack() { navigate(-1) }
+	if (isPortfolioPath) {
+		return (<div onClick={handleGoBack} className="cursor-pointer size-[0.25rem] lg:size--[1.25rem] flex items-center justify-center"><BackIcon/></div>)
+	} else {
+		return (<div onClick={handleClickDrawer} className="cursor-pointer size-[0.25rem] lg:size--[1.25rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>)
+	}
+}
+
 function LogoIcon({scaleRatio = 1}) {
 	return (
 		<svg style={{ transform: `scale(${scaleRatio})`, transformOrigin: 'center', }} width="128" height="31" viewBox="0 0 128 31" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -147,6 +168,16 @@ function CloseIcon() {
 function LangArrowIcon() {
 	return (
 		<svg width="6" height="5" viewBox="0 0 6 5" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3 5L5.59808 0.5H0.401924L3 5Z" fill="currentColor"/></svg>
+	)
+}
+
+function BackIcon() {
+	return (
+		<svg width="29" height="23" viewBox="0 0 29 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect y="11.3137" width="16" height="5" transform="rotate(-45 0 11.3137)" fill="#161619"/>
+			<rect width="16" height="5" transform="matrix(0.707107 0.707107 0.707107 -0.707107 0 11.3639)" fill="#161619"/>
+			<rect x="3" y="9" width="26" height="5" fill="#161619"/>
+		</svg>
 	)
 }
 

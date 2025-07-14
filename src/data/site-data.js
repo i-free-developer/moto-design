@@ -20,6 +20,7 @@ const PerkItemsData = [
 	{number: '10', title: 'Ten',   subtitle: 'Aesthetic Learning', content: 'We reimburse tickets and course fees for design events, exhibitions, and workshops—encouraging continuous visual growth.'},
 ]
 
+// 5 roles
 const OpenningRoles = [
 	{
 		id: '1',
@@ -45,22 +46,26 @@ const OpenningRoles = [
 	{
 		id: '2',
 		team: 'MOTO  >  Design Department  >  WEB', 
-		title: 'Global SEO & Content Operation',
+		title: 'Senior Front-end Expert',
 		fullTime: 'Full-time',
 		onSite: 'On-site (ShenZhen)',
 		isRemote: 'Remote',
 		roleTag: 'UI Designer',
 		responsibilities: [
-			"Be responsible for the SEO optimization of the company's brand, formulate multilingual SEO strategies based on different regional, optimize the content structure and keyword layout of the website, and enhance global search visibility",
-			'Monitor and analyze website performance using tools like GA4 and Search Console; refine content strategy based on data.',
-			'Create and localize high-quality brand content — including project write-ups, blog articles, social media copy, and case narratives — primarily in English, ensure that the language style is consistent with the brand tone',
-			'Stay updated with algorithm changes and competitor strategies to continuously refine SEO and content plans.'
+			'Work closely with the design team to translate design prototypes into pixel-perfect, high-fidelity interfaces.',
+			'Ensure responsive design and cross-device adaptability, delivering consistent performance across all breakpoints.',
+			'Lead interaction development, including animation frameworks, transitions, scroll behavior, and microinteractions.',
+			'Collaborate with backend developers and product managers, and contribute to improving workflows and development standards.'
 		],
 		requirements: [
-			'Proven experience in SEO strategy and content operations, with a solid understanding of global search engine ecosystems.',
-			'Strong English writing skills; capable of crafting or managing high-quality multilingual brand content.',
-			'Proficient with SEO tools like Ahrefs, SEMRush, Screaming Frog, GA4, and Google Search Console.',
-			'Sensitive to branding tone, user behavior, and digital trends; combines data insight with aesthetic sensibility.'
+			'Solid foundation in HTML, CSS, and JavaScript, with proficiency in at least one modern framework like React, Vue, or Next.js.',
+			'Experience with motion libraries and animation APIs like GSAP, Framer Motion, and WebGL-based libraries such as Three.js.',
+			'Experienced with modern frontend tooling—build systems (Vite, Webpack), Git workflows, and performance tuning.',
+			'Emphasize clean code, maintainable structure, and take part in code reviews and refactoring tasks, committed to effective teamwork and shared goals.'
+		],
+		bonusPoints: [
+			'Design-sensitive: capable of translating abstract visual intentions into precise code, and providing feedback from a front-end perspective.',
+			'Candidates with independently developed projects or fully launched products are preferred.'
 		]
 	},
 	{
@@ -83,11 +88,36 @@ const OpenningRoles = [
 			'Proficient in at least two mainstream motion/VFX software tools such as After Effects, Cinema 4D, Blender, Notch, or Houdini.',
 			'Skilled in using UI tools like Figma or Adobe XD for motion integration, with a high sensitivity to dynamic composition, timing, sound, and visual rhythm.',
 			'Passionate about exploring new design tools, with strong interest in AI-assisted creativity, generative visuals, and interactive media art, and a mindset of continuous learning.',
-			'Candidates familiar with at least one programming or interactive design approach (e.g., CSS keyframes, Processing, Framer Motion, Three.js, GSAP, TouchDesigner) will be given priority.'
-		]
+		],
+		bonusPoints: ['Candidates familiar with at least one programming or interactive design approach (e.g., CSS keyframes, Processing, Framer Motion, Three.js, GSAP, TouchDesigner) will be given priority.']
 	},
 	{
 		id: '4',
+		team: 'MOTO  >  Design Department  >  WEB', 
+		title: 'Global SEO & Content Operation',
+		fullTime: 'Full-time',
+		onSite: 'On-site (ShenZhen)',
+		isRemote: 'Remote',
+		roleTag: 'UI Designer',
+		responsibilities: [
+			"Be responsible for the SEO optimization of the company's brand, formulate multilingual SEO strategies based on different regional, optimize the content structure and keyword layout of the website, and enhance global search visibility",
+			'Monitor and analyze website performance using tools like GA4 and Search Console; refine content strategy based on data.',
+			'Create and localize high-quality brand content — including project write-ups, blog articles, social media copy, and case narratives — primarily in English, ensure that the language style is consistent with the brand tone',
+			'Stay updated with algorithm changes and competitor strategies to continuously refine SEO and content plans.'
+		],
+		requirements: [
+			'Proven experience in SEO strategy and content operations, with a solid understanding of global search engine ecosystems.',
+			'Strong English writing skills; capable of crafting or managing high-quality multilingual brand content.',
+			'Proficient with SEO tools like Ahrefs, SEMRush, Screaming Frog, GA4, and Google Search Console.',
+			'Sensitive to branding tone, user behavior, and digital trends; combines data insight with aesthetic sensibility.'
+		],
+		bonusPoints: [
+			'Experience in building or managing content for international brand websites is a strong plus.',
+			'Bonus for candidates with overseas experience or strong cross-cultural communication skills.'
+		]
+	},
+	{
+		id: '5',
 		team: 'MOTO  >  Design Department  >  WEB', 
 		title: 'Intern (Design/Branding/Content)',
 		fullTime: 'Full-time',
@@ -102,6 +132,10 @@ const OpenningRoles = [
 		requirements: [
 			'All majors are welcome, but preference will be given to candidates with backgrounds in design, media, marketing, or related fields.',
 			'Quick to learn new things, with the ability to efficiently complete assigned tasks within working hours. Strong adaptability in team environments and familiar with major global social media platforms. ( Bilingual candidates — especially in Chinese, English, Korean, Japanese, or Arabic — will be given priority.）'
+		],
+		subSections: [
+			{title: 'Design-related positions', content: 'Solid design fundamentals, expert software skills, sharp aesthetics, and a curious mind for new design tools.'},
+			{title: 'Content operation positions', content: 'Strong copywriting skills with the ability to quickly and appropriately craft content for various business needs. Proficient in using AI tools to enhance efficiency. Previous experience in successful event planning during university is a plus. Sensitive and professional in understanding client needs — candidates with a natural talent for digital marketing will be prioritized.'}
 		]
 	},
 ]
@@ -116,22 +150,6 @@ const TeamMembers = [
 	{name: 'Lesley Chan',  avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Lesley-Chan.png',  title: 'Senior VFX Artist',               role: 'Senior VFX Artist',               description: "Graduated from Shenzhen University. Former TCL VFX artist, skilled in Houdini, AE, and C4D. Focused on particles, fluid sim, and cinematic visuals."},
 	{name: 'Vince',        avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Vince.png',        title: 'Head of Consulting & Operations', role: 'Head of Consulting & Operations', description: "Graduated from Tianjin University. Former Web3 ops lead with expertise in cross-team workflows and global strategy. Deeply connected in the B2B Web3 ecosystem."},
 	// {name: 'Amelia Clark', avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Amelia-Clark.png', title: 'CEO', role: '', description: ""},
-]
-
-const DesktopPortfolioItems = [
-	{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 3, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
-	{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 2, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
-	{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 2, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
-	{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 3, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
-	{title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 5, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
-]
-
-const MobilePortfolioItems = [
-	{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 3, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-	{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 2, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-	{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 2, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-	{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 3, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-	{ title: 'Title A', description: 'Backing the best Web 3.0 founders & products', colums: 5, url: '#', image: 'https://plus.unsplash.com/premium_photo-1673795753320-a9df2df4461e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
 ]
 
 const StatusContents = [
@@ -172,7 +190,7 @@ const TestimonialIcons = [
 	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-aws.png',
 	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-bybit.png',
 	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-rootdata.png',
-	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-gateio-black.png',
+	// 'https://assets-sh-padelx.shanghaipadel.com/moto-icon-gateio-black.png',
 ]
 
 const SubmittedImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-submitted-already.png'

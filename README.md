@@ -16,6 +16,24 @@ npm run build
 	[x] form subimit
 	[x] single page app?
 
+	contact page submit 点击 不填写显示红线
+
+	所有按钮移动端没有箭头， 箭头变大动画调整
+
+	nav drawer 调整比例 间距 首页调整间距 动画 流畅 
+
+	进度条动画hover 离开后退回
+
+	portfolio页面overlay 展示 按钮关闭
+
+	移动端后退按钮
+
+	footer email向右移动
+
+	首页loading mask动画
+
+
+
 
 ###### resources
 https://www.hyperui.dev/components/application/steps
@@ -69,6 +87,10 @@ text-9xl   /* 8rem (128px) */
 
 
 ##### general resources
+transform: translateY(150%);
+transition: transform .4s cubic-bezier(1,0,.68,1),opacity .2s linear;
+
+
 https://www.awsmd.com/
 https://consensys.io/
 https://baiyun.me/improve-the-user-experience-for-react-apps

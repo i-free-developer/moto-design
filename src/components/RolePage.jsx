@@ -21,6 +21,13 @@ export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
 					<ContentSection title={'Responsibilities'} items={roleItem.responsibilities}/>
 					<div className="mt-[0.96rem]"></div>
 					<ContentSection title={'Requirements'} items={roleItem.requirements}/>
+					
+					{ roleItem.bonusPoints && <div className="mt-[0.96rem]"></div>}
+					{ roleItem.bonusPoints && <ContentSection title={'Bonus Points'} items={roleItem.bonusPoints}/>}
+
+					{ roleItem.subSections && <div className="mt-[0.96rem]"></div>}
+					{ roleItem.subSections && roleItem.subSections.map((item, index) => <SubSection {...item} key={index}/>)}
+
 					<div className="mt-[2.16rem] lg:mt-[2.6rem]"></div>
 					<HowToApply/>
 					<div className="mt-[1.98rem] lg:mt-[2.88rem]"></div>
@@ -50,10 +57,20 @@ function RoleHeaderCard({roleTag, title, fullTime, onSite, isRemote}) {
 
 function ContentSection({title, items}) {
 	return (
-		<div className="list-decimal list-inside">
+		<div className="">
 			<header className="text-[0.32rem] lg:text-[0.32rem] font-bold mb-[0.4rem] tracking-[-2%]">{title}</header>
-			<ol>
+			<ol className="list-decimal list-inside">
 				{items.map((item, index) => <li key={index} className="text-[0.2rem] lg:text-[0.24rem] leading-[0.36rem] lg:leading-[0.4rem] font-normal my-[0.08rem] lg:my-[0.08rem] tracking-[-2%]">{item}</li>)}
+			</ol>
+		</div>
+	)
+}
+
+function SubSection({title, content}) {
+	return (
+		<div className="mt-[0.48rem]">
+			<ol className="list-none list-inside">
+				<li className="text-[0.2rem] lg:text-[0.24rem] leading-[0.36rem] lg:leading-[0.4rem]"><span className="font-bold">{title}:</span><span className="font-normal text-wrap">{content}</span></li>
 			</ol>
 		</div>
 	)

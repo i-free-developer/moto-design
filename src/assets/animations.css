@@ -1,11 +1,11 @@
 @keyframes drawer-slide-in {
-	from {transform: translateX(-5.76rem);}
+	from {transform: translateX(-6.4rem);}
 	to {transform: translateX(0.56rem);}
 }
 
 @keyframes drawer-slide-out {
 	from {transform: translateX(0.56rem);}
-	to {transform: translateX(-5.76rem); display: none;}
+	to {transform: translateX(-6.4rem); display: none;}
 }
 
 @keyframes section-slide-in {
@@ -81,13 +81,13 @@
 }
 
 .drawer-in {
-	animation: drawer-slide-in 0.4s linear;
+	animation: drawer-slide-in 0.4s cubic-bezier(0.42, 0, 1, 1);
 	animation-fill-mode: forwards;
 /*	left: 1rem;*/
 }
 
 .drawer-out {
-	animation: drawer-slide-out 0.4s linear;
+	animation: drawer-slide-out 0.4s ease-in;
 	animation-fill-mode: forwards;
 /*	animation-direction: reverse;*/
 /*	left: -20rem;*/
@@ -165,7 +165,7 @@
 
 .icons-scroll {
   will-change: transform; /* We should be nice to the browser - let it know what we're going to animate. */
-  animation: icons-horizontal-scrolling 14s linear infinite both;
+  animation: icons-horizontal-scrolling 16s linear infinite both;
 }
 
 .icons-scroll:hover {
@@ -258,23 +258,23 @@ a > svg {
 	}
 
 	@keyframes drawer-slide-in {
-		from {transform: translateX(-6rem);}
+		from {transform: translateX(-5.2rem);}
 		to {transform: translateX(0.32rem);}
 	}
 
 	@keyframes drawer-slide-out {
 		from {transform: translateX(0.32rem);}
-		to {transform: translateX(-6rem); }
+		to {transform: translateX(-5.2rem); }
 	}
 
 	.drawer-in {
-		animation: drawer-slide-in 0.4s linear;
+		animation: drawer-slide-in 0.4s cubic-bezier(0.42, 0, 1, 1);
 		animation-fill-mode: forwards;
 	/*	left: 1rem;*/
 	}
 
 	.drawer-out {
-		animation: drawer-slide-out 0.4s linear;
+		animation: drawer-slide-out 0.4s ease-in;
 		animation-fill-mode: forwards;
 	/*	animation-direction: reverse;*/
 	/*	left: -20rem;*/
@@ -283,6 +283,11 @@ a > svg {
 	.svg-bg {
 	  background: url('dashed-bg.svg');
 	  background-size: 200%;
-  background-position: 0% 100%;
+  	background-position: 0% 100%;
+	}
+
+	.logo-masked {
+		-webkit-mask-image: url('/moto-mask-mobile.svg');
+	  mask-image: url('/moto-mask-mobile.svg');
 	}
 }

@@ -28,7 +28,7 @@ const OpenningRoles = [
 		title: 'Senior UI Designer',
 		fullTime: 'Full-time',
 		onSite: 'On-site (ShenZhen)',
-		isRemote: 'Remote',
+		isRemote: '',
 		roleTag: 'UI Designer',
 		responsibilities: [
 			'Lead the visual design strategy for both web and mobile platforms. Collaborate closely with UX researchers, motion designers, and front-end engineers, providing front-end design support when necessary to ensure seamless integration with client requirements.',
@@ -50,7 +50,7 @@ const OpenningRoles = [
 		fullTime: 'Full-time',
 		onSite: 'On-site (ShenZhen)',
 		isRemote: 'Remote',
-		roleTag: 'UI Designer',
+		roleTag: 'Front-end Engineer',
 		responsibilities: [
 			'Work closely with the design team to translate design prototypes into pixel-perfect, high-fidelity interfaces.',
 			'Ensure responsive design and cross-device adaptability, delivering consistent performance across all breakpoints.',
@@ -74,8 +74,8 @@ const OpenningRoles = [
 		title: 'Motion & VFX Designer',
 		fullTime: 'Full-time',
 		onSite: 'On-site (ShenZhen)',
-		isRemote: 'Remote',
-		roleTag: 'Intern',
+		isRemote: '',
+		roleTag: 'Motion Designer',
 		responsibilities: [
 			'Take full ownership of motion and visual effects design across company projects, including brand visuals, dynamic website showcases, promotional videos, and product demo animations.',
 			'Collaborate closely with UI/UX designers and front-end developers to deliver actionable motion design solutions, with a solid understanding of interaction implementation (CSS animations, WebGL, Lottie, etc.).',
@@ -98,7 +98,7 @@ const OpenningRoles = [
 		fullTime: 'Full-time',
 		onSite: 'On-site (ShenZhen)',
 		isRemote: 'Remote',
-		roleTag: 'UI Designer',
+		roleTag: 'SEO & Operation',
 		responsibilities: [
 			"Be responsible for the SEO optimization of the company's brand, formulate multilingual SEO strategies based on different regional, optimize the content structure and keyword layout of the website, and enhance global search visibility",
 			'Monitor and analyze website performance using tools like GA4 and Search Console; refine content strategy based on data.',
@@ -122,7 +122,7 @@ const OpenningRoles = [
 		title: 'Intern (Design/Branding/Content)',
 		fullTime: 'Full-time',
 		onSite: 'On-site (ShenZhen)',
-		isRemote: 'Remote',
+		isRemote: '',
 		roleTag: 'Intern',
 		responsibilities: [
 			'Contribute to day-to-day tasks across design, branding, and social content operations.',

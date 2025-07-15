@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom"
 import '../assets/animations.css';
 import { CompanyEmail } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem } from './SocialIconsCollection'
-import { useScrollTo, useScrollDirection, useHoverHandler } from './FunctionCollection'
+import { useScrollDirection, useHoverHandler } from './FunctionCollection'
 
 export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer, smallScreenRatioDecimal, bigScreenRatioDecimal, frostedGlass = false}) {
 	const scrollDirection = useScrollDirection();
@@ -52,7 +52,7 @@ export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer, sm
 			<section id="navbar" className={`text-black mx-auto px-[0.32rem] lg:px-[0.56rem] py-[0.4rem] lg:py-[0.32rem] transition-[top] duration-400 ${frostedGlass ? 'bg--[#F7F7F7]/40 bg-white/40 backdrop-blur-[20px]' : ''}`}>
 				<nav className="flex justify-between items-center h-[0.34rem]" onClick={closeDrawer}>
 					{/* <div onClick={handleClickDrawer} className="cursor-pointer size-[0.25rem] lg:size--[1.25rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div> */}
-					<LeftIcons handleClickDrawer={handleClickDrawer} drawerStatus={drawerStatus} isPortfolioPath={isPortfolioPath}/>
+					<LeftSectionIcons handleClickDrawer={handleClickDrawer} drawerStatus={drawerStatus} isPortfolioPath={isPortfolioPath}/>
 					<Link to="/" className="max-h-[0.34rem] lg:h-[2rem] object-fit flex items-center justify-center"><LogoIcon scaleRatio={smallScreenRatioDecimal || bigScreenRatioDecimal}/></Link>
 					<LangButtons/>
 				</nav>
@@ -92,12 +92,11 @@ function SocialIconsContainer() {
 
 function SiteLinkItem({url, title, linkTo}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
-	const scrollTo = useScrollTo();
-
+	const [mouseLeft, setMouseLeft] = useState(false)
 	return (
-		<div className="flex flex-col" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => scrollTo(url)}>
+		<div className="flex flex-col" onMouseEnter={() => {setIsHovered(true); setMouseLeft(false)}} onMouseOver={() => {setIsHovered(true); setMouseLeft(false)}} onMouseLeave={() => {setIsHovered(false); setMouseLeft(true)}}>
 			<Link to={linkTo} className="text-[0.4rem] lg:text-[0.48rem] font-semibold">{title}</Link>
-			<hr className={`mt-[-0.08rem] lg:mt-[-0.08rem] ${isHovered ? 'hover-border' : 'border border-[1px] border-transparent'}`}></hr>
+			<hr className={`mt-[-0.08rem] lg:mt-[-0.08rem] border border-[1px] ${isHovered ? 'hover-border' : 'border-transparent'} ${ mouseLeft ? 'reverse-border' : 'border-transparent'}`}></hr>
 		</div>
 	)
 }
@@ -126,9 +125,10 @@ function LangButtons() {
 	)
 }
 
-function LeftIcons({isPortfolioPath, handleClickDrawer, drawerStatus}) {
+function LeftSectionIcons({isPortfolioPath, handleClickDrawer, drawerStatus}) {
 	const navigate = useNavigate()
 	function handleGoBack() { navigate(-1) }
+
 	if (isPortfolioPath) {
 		return (<div onClick={handleGoBack} className="cursor-pointer size-[0.25rem] lg:size--[1.25rem] flex items-center justify-center"><BackIcon/></div>)
 	} else {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { PortfolioData, HandImg } from '../data/site-data'
 import Navbar from './Navbar'
 import { SiteInfoCard,  SiteFooter } from './Footer'
@@ -11,7 +11,7 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 	const [currentPortfolio, setCurrentPortfolio] = useState({})
 	const [portfolioItems, setPortfolioItems] = useState({desktop: [], mobile: []})
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
-	
+
 	useEffect(() => {
 		setPortfolioItems(PortfolioData)
 		setCurrentPortfolio(PortfolioData.desktop[0])
@@ -19,7 +19,7 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 
 	function closeOverlay() {setDiaplayOverlay(false); setCurrentPortfolio({})}
 	function openOverlay(e) {setDiaplayOverlay(true); setCurrentPortfolio(e)}
-	
+
 	return (
 		<main className="mx-auto relative">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
@@ -31,11 +31,11 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 						<p className="self-start lg:mb-[0.48rem] text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 w-[55%] lg:w-[4.16rem] tracking-[-2%] font-normal text-right">Our user-centered design encourages productivity and boosts revenue</p>
 					</div>
 				</div>
-				
+
 				<div className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] lg:px-[0.48rem]">
 	      	{isMobile ? <MobilePortfolios isMobileDevice={isMobileDevice} itemsArray={PortfolioData.mobile}/> : <DesktopPortfolios isMobileDevice={isMobileDevice} itemsArray={portfolioItems.desktop} openOverlay={openOverlay}/>}
 	      </div>
-	      
+
 	      <SiteInfoCard isMobileDevice={isMobileDevice}/>
 				<SiteFooter isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</section>
@@ -90,7 +90,7 @@ function DesktopCard({isMobileDevice, id, title, description, image, url, fullIm
 		// if (index === totalNumber - 1) { itemIndex = 4}
 		setColsIndex(itemIndex)
 	}, [index])
-	
+
 	const spanClasses = {
 		0: 'col-span-1 lg:col-span-3 relative h-[4.8rem] lg:h-[5.76rem]',
 		1: 'col-span-1 lg:col-span-2 relative h-[4.8rem] lg:h-[5.76rem]',
@@ -98,7 +98,7 @@ function DesktopCard({isMobileDevice, id, title, description, image, url, fullIm
 	  3: 'col-span-1 lg:col-span-3 relative h-[4.8rem] lg:h-[5.76rem]',
 	  4: 'col-span-1 lg:col-span-5 relative h-[4.8rem] lg:h-[5.76rem]',
 	}
-	// 
+	//
 	return (
 		<div className={`${spanClasses[colsIndex]} rounded-[0.28rem] lg:rounded-[0.3rem] overflow-hidden relative`}>
 			<span style={{pointerEvents: 'none'}}
@@ -172,7 +172,7 @@ function MobilePortfoliosMobileContainer({mobileItems}) {
 	const mobileItemsRight = mobileItems.filter((e,i) => i % 2 != 0)
 	return (
 		<div className="snap-none w-full relative mx-auto mb-[3.6rem] pt--[5.5%] pb-[11%]">
-      <div className="mx-auto w-full overflow-hidden flex gap-[0.16rem]">      	
+      <div className="mx-auto w-full overflow-hidden flex gap-[0.16rem]">
       	<div className="flex flex-col gap-[0.16rem] ml-[-0.24rem]">{mobileItemsLeft.map((item, index) => <MobileCardMobileView {...item} index={index} key={index}/>)}</div>
       	<div className="w-full min-h-full"></div>
       	<div className="flex flex-col gap-[0.16rem] mr-[-0.24rem]">{mobileItemsRight.map((item, index) => <MobileCardMobileView {...item} index={index} key={index}/>)}</div>
@@ -201,7 +201,7 @@ function MobileCardMobileView({title, image, index}) {
 function EmptyCard() { return (<span className="min-w-full min-h-full"></span>) }
 
 function StickyHandCard() {
-	// style={{overflowY: 'overlay'}} 
+	// style={{overflowY: 'overlay'}}
   return (
     <div className="absolute inset-0 flex items-center justify-center">
       <div className="overflow-y-visible sticky top-0 bottom-0 translate-x-[18.8%] lg:translate-x-[17.6%]">

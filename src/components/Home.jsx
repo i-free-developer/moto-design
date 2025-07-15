@@ -6,6 +6,6 @@ export default function Home({loadingPercentage, isMobileDevice, smallScreenRati
 	if (loadingPercentage <= 100) {
 		return <Loading loadingPercentage={loadingPercentage} isMobileDevice={isMobileDevice}/>
 	} else {
-		return isMobileDevice ? <HomePageMobile smallScreenRatioDecimal={smallScreenRatioDecimal}/> : <HomePageDesktop/>
+		return isMobileDevice ? <HomePageMobile smallScreenRatioDecimal={smallScreenRatioDecimal}/> : <HomePageDesktop smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 	}
 }

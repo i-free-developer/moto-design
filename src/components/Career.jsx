@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../data/site-data'
 import Navbar from './Navbar'
-import { StarIcon, ArrowIcon } from './SocialIconsCollection'
+import { StarIcon, ArrowOnlyIcon } from './SocialIconsCollection'
 import { SiteInfoCard,  SiteFooter } from './Footer'
 import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
 
@@ -28,7 +28,7 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 				</div>
 
 				<div className="px-[0.32rem] lg:px-[0.48rem] lg:mb-[2.88rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
-					<RolesContainer/>
+					<RolesContainer isMobileDevice={isMobileDevice}/>
 					<div className="mt-[2.16rem] mb-[1.66rem] lg:mb-0 lg:mt-[2.8rem]"></div>
 					<HowToApply/>
 				</div>
@@ -58,7 +58,7 @@ function PositionBtn() {
 	return (
 		<div className="px-[0.24rem] py-[0.12rem] lg:py-[0.16rem] border border-2 rounded-full flex gap-[0.16rem] items-center justify-between cursor-pointer" onClick={scrollToPositions}>
 			<span className="font-medium text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.24rem]">Positions</span>
-			<span className="size-[0.08rem] rounded-[50%] bg-slate-900"></span>
+			<span className="size-[0.08rem] rounded-[50%] bg-black"></span>
 		</div>
 	)
 }
@@ -140,7 +140,7 @@ function PerkIcon({ iconName }) {
   return <img src={`/perk-${iconName}.png`} alt={iconName} className="size-[0.24rem] object-cover object-center"/>;
 }
 
-function RolesContainer() {
+function RolesContainer({isMobileDevice}) {
 	const rolesCount = OpenningRoles.length
 	return (
 		<div className="mt-[2.16rem] lg:mt-[2.8rem] lg:mb-[2.8rem] grid grid-cols-1 lg:grid-cols-2">
@@ -151,13 +151,13 @@ function RolesContainer() {
 				<p className="text-[0.32rem] lg:text-[0.36rem] mt-[1.28rem] lg:mt-[2.4rem] font-bold scroll-fade-in"><span className="">{rolesCount}&nbsp;</span>Positions</p>
 			</div>
 			<div id="positions" className="mt-[0.8rem] lg:mt-0 flex flex-col gap-[0.08rem]">
-				{OpenningRoles.map((item, index) => <RoleCard {...item} index={index} key={index}/>)}
+				{OpenningRoles.map((item, index) => <RoleCard {...item} isMobileDevice={isMobileDevice} index={index} key={index}/>)}
 			</div>
 		</div>
 	)
 }
 
-function RoleCard({team, title, index, id, fullTime, onSite, isRemote}) {
+function RoleCard({team, title, index, id, fullTime, onSite, isRemote, isMobileDevice}) {
 	return (
 		<article className="lg:w-[8.8rem] tracking-[-2%] scroll-fade-in">
 			{index === 0 &&  <hr className="border border-[0.8px] lg:border-1 border-black/20 mb-[0.48rem] lg:w-[8.8rem]"></hr> }
@@ -170,20 +170,32 @@ function RoleCard({team, title, index, id, fullTime, onSite, isRemote}) {
 					<span>{isRemote}</span>
 				</div>
 				<hr className="border border-[0.8px] lg:border-1 border-black/20 my-[0.48rem] w-full lg:w-[8.8rem]"></hr>
-				<ApplyButon id={id}/>
+				{isMobileDevice ? <ApplyButtonMobile id={id}/> : <ApplyButtonDeskstop id={id}/>}
 			</div>
 		</article>
 	)
 }
 
-function ApplyButon({id}) {
+function ApplyButtonDeskstop({id}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
 
 	return (
-		<Link to={`/role/${id}`} className="will-change-transform absolute bottom-[0.4rem] lg:bottom-[0.4rem] right-0 flex items-center justify-between gap-[0.24rem] lg:gap-[0.16rem] bg-slate-900 rounded-full pl-[0.24rem] py-[0.06rem] lg:py-[0.04rem] pr-[0.04rem]"
+		<Link to={`/role/${id}`} className="will-change-transform absolute bottom-[0.4rem] lg:bottom-[0.4rem] right-0 flex items-center justify-between gap-[0.24rem] lg:gap-[0.16rem] bg-black rounded-full pl-[0.24rem] py-[0.06rem] lg:py-[0.04rem] pr-[0.04rem]"
 			onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<span className="text-white font-medium text-[0.2rem] lg:text-[0.24rem]">Apply</span>
-			<div className={`bg-white size-[0.24rem] lg:size-[0.4rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>	
+			{/* <div className={`bg-white size-[0.24rem] lg:size-[0.4rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>	 */}
+			<div className={`relative size-[0.4rem] flex items-center justify-center rounded-full transition duration-300`}>
+				<span className={`absolute rounded-full border border-white bg-white size-[0.08rem] transition duration-300 ${isHovered ? 'scale-460' : ''}`}></span>
+				<span className={`transition duration-300 ${isHovered ? 'scale-100' : 'scale-0'}`}><ArrowOnlyIcon/></span>
+			</div>
+		</Link>
+	)
+}
+
+function ApplyButtonMobile({id}) {
+	return (
+		<Link to={`/role/${id}`} className="absolute bottom-[0.4rem] right-0 flex items-center justify-center bg-black rounded-full px-[0.24rem] py-[0.06rem] text-white font-medium text-[0.2rem]">
+			Apply
 		</Link>
 	)
 }
@@ -201,7 +213,5 @@ export function HowToApply() {
 
 
 function ArrowGroupImg() {
-	return (
-		<img className="h-[0.17rem] object-cover object-center" src="/arrow-group.png"></img>
-	)
+	return ( <img className="h-[0.17rem] object-cover object-center" src="/arrow-group.png"></img> )
 }

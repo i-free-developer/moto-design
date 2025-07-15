@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 import { CopyRight, CompanyEmail, SubmittedImg } from '../data/site-data'
 import Navbar from './Navbar'
-import { StarIcon, ArrowIcon } from './SocialIconsCollection'
+import { StarIcon, ArrowOnlyIcon } from './SocialIconsCollection'
 import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
 
 const SelectOptions = ['Website Design', 'App UI/UX Design', 'Full Brand VI System', 'Graphic Design', '3D Animation & Visual Effects', 'Web3 Strategy Consulting', 'NFT Artwork & Design', 'Social Media Visuals', 'Brand Partnership', 'Other']
@@ -71,7 +71,7 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 		if (field == 'role') {setUserRole(value); setRoleIsValid(value.length > 0); setFormIsValid(userEmail.length > 0 && (value.length > 0) && userName.length > 0 && teamData.length > 0)}
 		if (field == 'team') {setTeamData(value); setTeamIsValid(value.length > 0); setFormIsValid(userEmail.length > 0 && (value.length > 0) && userRole.length > 0 && userName.length > 0)}
 		if (field == 'email') {let emailValid = validateEmail(value); setUserEmail(value); setEmailIsValid(emailValid); setFormIsValid(emailValid && userRole.length > 0 && userName.length > 0 && teamData.length > 0)}
-	
+
 	}
 
 	const handleFormFieldFocus = (field, value) => {
@@ -94,28 +94,6 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 		if (formIsValid) {handleSubmit(e)}
 	}
 
-	function handleEmailChange(email) {
-		setUserEmail(email)
-		let emailValid = validateEmail(email)
-		setEmailIsValid(emailValid)
-		// setIsDisabled(!emailValid)
-		setFormIsValid(emailValid && nameIsValid && roleIsValid && teamIsValid)
-	}
-
-	function handleEmailFocus(email) {
-		let emailValid = validateEmail(email)
-		setEmailIsValid(emailValid)
-		// setIsDisabled(!emailValid)
-		setFormIsValid(emailValid && nameIsValid && roleIsValid && teamIsValid)
-	}
-
-	function handleEmailBlur(email) {
-		let emailValid = validateEmail(email)
-		email ? setEmailIsValid(emailValid) : setEmailIsValid(true)
-		// setIsDisabled(!emailValid)
-		setFormIsValid(emailValid && nameIsValid && roleIsValid && teamIsValid)
-	}
-
 	function validateEmail(email) {
 	  if (!email) {return false}
 	  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { return false }
@@ -134,7 +112,7 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 	    console.log(formJson);
 		goSubmit(formJson)
 	}
-	
+
 	const goSubmit = async (data) => {
 	    // console.log('Submitted name:', data);
 	    try {
@@ -195,15 +173,35 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 					</div>
 				</div>
 				<div className="mx-auto mt-[1.08rem] lg:mt-[0.98rem]">
-					<button onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={e => {handleFinalCheck(e)}}
-						className={`${ !formIsValid ? 'bg-black/50' : 'bg-black'} cursor-pointer text-[0.32rem] font-medium pl-[0.32rem] pr-[0.08rem] py-[0.08rem] rounded-full text-white flex items-center`}>
-						{loading ? 'Submitting...' : 'Submit'}
-						<div className={`ml-[0.12rem] lg:ml-[0.08rem] bg-white size-[0.48rem] lg:size-[0.48rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>		
-					</button>
+					{isMobileDevice ? <ButtonMobile formIsValid={formIsValid} loading={loading} handleFinalCheck={handleFinalCheck}/> : <ButtonDeskstop formIsValid={formIsValid} loading={loading} handleFinalCheck={handleFinalCheck}/>}
 				</div>
 			</form>
 		)
 	}
+}
+
+function ButtonMobile({formIsValid, loading, handleFinalCheck}) {
+	return (
+		<button onClick={handleFinalCheck} className={`${ !formIsValid ? 'bg-black/50' : 'bg-black'} cursor-pointer text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] rounded-full text-white flex items-center justify-center`}>
+			{loading ? 'Submitting...' : 'Submit'}
+		</button>
+	)
+}
+
+function ButtonDeskstop({formIsValid, loading, handleFinalCheck}) {
+	const {isHovered, setIsHovered} = useHoverHandler();
+
+	return (
+		<button onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={handleFinalCheck}
+			className={`${ !formIsValid ? 'bg-black/50' : 'bg-black'} cursor-pointer text-[0.32rem] font-medium pl-[0.32rem] pr-[0.08rem] py-[0.08rem] rounded-full text-white flex items-center`}>
+			{loading ? 'Submitting...' : 'Submit'}
+			{/* <div className={`ml-[0.12rem] lg:ml-[0.08rem] bg-white size-[0.48rem] lg:size-[0.48rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>		 */}
+			<div className={`relative size-[0.5rem] ml-[0.12rem] flex items-center justify-center rounded-full`}>
+				<span className={`absolute rounded-full border border-white bg-white size-[0.08rem] transition duration-300 ${isHovered ? 'scale-600' : ''}`}></span>
+				<span className={`transition duration-300 ${isHovered ? 'scale-100' : 'scale-0'}`}><ArrowOnlyIcon/></span>
+			</div>
+		</button>
+	)
 }
 
 function SelectCard({displayCard, setTeamData, handleFormFieldChange}) {
@@ -239,11 +237,11 @@ function FormHeader({isSubmitted}) {
 
 function SumbittedGroup({isMobileDevice, smallScreenRatioDecimal, setIsSubmitted}) {
 	return (
-		<div className="mx-auto w-full mt-[1.28rem] lg:mt-[1.08rem] h--[1.92rem] lg:h--[2.8rem] flex flex-col items-center justify-between lg:scale-90">
+		<div className="mx-auto w-full mt-[1.28rem] lg:mt-[1.08rem] h--[1.92rem] lg:h--[2.8rem] flex flex-col items-center justify-between lg:scale-91">
 			<div className="mx-auto flex items-center justify-center h--[2.34rem] w--[3.95rem] h-[2.8rem] w-[4.6rem]">
 				<img src={SubmittedImg} alt="Submitted Already" className="object-fit object-center"></img>
 			</div>
-			<div className="mx-auto mt-[2.38rem] lg:mt-[1.08rem]">
+			<div className="mx-auto mt-[2.935rem] lg:mt-[0.98rem]">
 				<span onClick={e => {setIsSubmitted(false)}} className="cursor-pointer text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] min-h-[0.48rem] flex items-center justify-center rounded-full bg-black text-white">Get in Touch Again</span>
 			</div>
 		</div>

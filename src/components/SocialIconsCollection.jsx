@@ -111,5 +111,15 @@ function ArrowIcon() {
 	)
 }
 
-export { SocialIconItems, SiteLinks, SocialIconLinkItem, ByBitIcon, AwsIcon, VenturesIcon, GateIcon, GateIconBlack, LogoIconWhite, StarIcon, ArrowIcon}
+function ArrowOnlyIcon() {
+	return (
+		<svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+			<rect x="7.9165" y="1.05713" width="8.01079" height="2" transform="rotate(45 7.9165 1.05713)" fill="#161619"/>
+			<rect x="6.4917" y="10.9824" width="8.04497" height="2" transform="rotate(-45 6.4917 10.9824)" fill="#161619"/>
+			<rect x="0.999512" y="5.88672" width="10" height="2" fill="#161619"/>
+		</svg>
+	)
+}
+
+export { SocialIconItems, SiteLinks, SocialIconLinkItem, ByBitIcon, AwsIcon, VenturesIcon, GateIcon, GateIconBlack, LogoIconWhite, StarIcon, ArrowIcon, ArrowOnlyIcon}
 

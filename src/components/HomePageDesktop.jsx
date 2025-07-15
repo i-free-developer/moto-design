@@ -3,13 +3,13 @@ import Navbar from './Navbar'
 import { HeaderSvgDesktop } from './HeaderSvg'
 import { ServicesItems, CompanyDomain } from '../data/site-data'
 import { useDrawerHandler, useScreenRatio, useHoverHandler } from './FunctionCollection'
-import { ArrowIcon } from './SocialIconsCollection'
+import { ArrowOnlyIcon } from './SocialIconsCollection'
 
 const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'section-drawer-out'}
 // const verticalClasses = {initial: '', opened: 'vertical-element-in', closed: 'vertical-element-out'}
 // const serviceClasses = {initial: '', opened: 'horizontal-bar-out', closed: 'horizontal-bar-in'}
 
-export default function HomePageDesktop() {
+export default function HomePageDesktop({smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 	let {bigScreenRatioDecimal} = useScreenRatio()
 	bigScreenRatioDecimal = bigScreenRatioDecimal / 0.9
@@ -17,7 +17,7 @@ export default function HomePageDesktop() {
 
 	return (
 		<main id="home" className="min-h-screen lg:max-h-screen overflow-hidden relative">
-			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer} bigScreenRatioDecimal={bigScreenRatioDecimal}/>
+			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} closeDrawer={closeDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			<HomeSectionDesktop headerClassName={headerClassName} onCloseDrawer={closeDrawer} bigScreenRatioDecimal={bigScreenRatioDecimal}/>
 			<ServiceOfferingsDesktop/>
 		</main>
@@ -53,7 +53,10 @@ function ServiceOfferingsDesktop() {
 				<Link to="/portfolio" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 					<button className={`cursor-pointer bg-black pl-[0.24rem] py-[0.06rem] pr-[0.04rem] text-[0.2rem] leading-[0.2rem] flex items-center justify-between gap-[0.08rem] text-[#f7f7f7] font-medium rounded-full`}>
 						<span>See What We've Made</span>
-						<div className={`border border-white bg-white size-[0.4rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>		
+						<div className={`relative size-[0.4rem] flex items-center justify-center rounded-full transition duration-300`}>
+							<span className={`absolute rounded-full border border-white bg-white size-[0.08rem] transition duration-300 ${isHovered ? 'scale-460' : ''}`}></span>
+							<span className={`transition duration-300 ${isHovered ? 'scale-100' : 'scale-0'}`}><ArrowOnlyIcon/></span>
+						</div>
 					</button>
 				</Link>
 			</div>

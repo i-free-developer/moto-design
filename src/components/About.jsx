@@ -167,7 +167,7 @@ function EcosystemHeader() {
 	return (
 		<div className="mx-auto lg:text-center px-[0.32rem] lg:px-[0.48rem] mt-[2.16rem] lg:mt-[3.36rem] w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
 			<h2 className="uppercase text-[0.48rem] lg:text-[0.64rem] font-bold leading-[0.48rem] lg:leading-[0.64rem] tracking-[-2%]">ecosystem resource</h2>
-			<p className="lg:px-[1.6rem] text-[0.16rem] lg:text-[0.24rem] leading-[0.2rem] lg:leading-[0.36rem] tracking-[-2%] mt-[0.16rem] lg:mt-[0.4rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries,providing them with visual design, creative, and industry consulting services.</p>
+			<p className="lg:px-[1.6rem] text-[0.16rem] lg:text-[0.24rem] leading-[0.2rem] lg:leading-[0.36rem] tracking-[-2%] mt-[0.16rem] lg:mt-[0.4rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries, providing them with visual design, creative, and industry consulting services.</p>
 		</div>
 	)
 }

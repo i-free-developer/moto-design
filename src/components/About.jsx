@@ -96,8 +96,8 @@ function AboutStatusContainer({smallScreenRatioDecimal}) {
 
 function StatusItemCard({title, suffix, content, i}) {
 	return (
-		<article className="w-[85%] lg:w-4/5 my-[0.16rem] lg:my-[0.16rem]">
-			<div className="min-w-full text-[0.8rem] lg:text-[0.96rem] font-semibold leading-[0.8rem] lg:leading-[0.96rem] tracking-[-8%] flex gap-[0.08rem]">{<OdometerItem className="min-w-content" value={title}/>} {suffix && <span className={`ml-[1px] lg:ml-0 inline-block ${i == 3 ? 'translate-y-[6.5%]' : '' }`}>{suffix}</span>}</div>
+		<article className="w-[80%] lg:w-4/5 my-[0.16rem] lg:my-[0.16rem]">
+			<div className="min-w-full text-[0.64rem] lg:text-[0.96rem] font-semibold leading-[0.64rem] lg:leading-[0.96rem] tracking-[-8%] flex gap-[0.08rem]">{<OdometerItem className="min-w-content" value={title}/>} {suffix && <span className={`inline-block ${i == 3 ? 'translate-y-[6.5%]' : '' }`}>{suffix}</span>}</div>
 			<hr className="w-full border border-[0.01rem] lg:border-1 border-black/20 my-[0.16rem] lg:mt-[0.32rem] lg:mb-[0.2rem]"></hr>
 			<p className="text-[0.16rem] lg:text-[0.16rem] font-normal leading-[0.20rem] lg:leading-[0.2rem] tracking-[-2%]">{content}</p>
 		</article>
@@ -144,6 +144,7 @@ function AboutCirclesCard({showSection}) {
 				<p className="circle-point top-[54.3578%] right-[99.8097%]" data-label="Vertical Media" data-point="false"></p>
 				<p className="circle-point top-[92.8097%] right-[23.6422%]" data-label="VC" data-point="true"></p>
 				<p className="circle-point top-[79.3022%] right-[8.8606%]" data-label="Legal" data-point="true"></p>
+				<p className="circle-point top-[99.3022%] right-[57.8606%]" data-label="Liquidity" data-point="true"></p>
 			</div>
 			<div className="about-circle-div w-[50%] h-[50%] top-[7.4%] right-[7.4%]" data-circle="true">
 				<p className="circle-point-visible circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Product" data-up="true" data-point="true"></p>
@@ -155,9 +156,9 @@ function AboutCirclesCard({showSection}) {
 			</div>
 			<div className="about-circle-div w-[30.9%] h-[30.9%] top-[10.2%] right-[10.2%]" data-circle="true">
 				<p className="circle-point-visible circle-data-point top-[14.6447%] right-[14.6447%]" data-label="Brand Identity" data-point="true"></p>
-				<p className="circle-point top-[82.1394%] right-[11.6978%]" data-label="Visual identity system(VI)" data-point="false"></p>
-				<p className="circle-point top-[95.3154%] right-[71.1309%]" data-label="Font" data-point="false"></p>
-				<p className="circle-point top-[50%] right-[100%]" data-label="Story" data-point="false"></p>
+				<p className="circle-point top-[82.1394%] right-[11.6978%]" data-label="Story" data-point="false"></p>
+				<p className="circle-point top-[95.3154%] right-[71.1309%]" data-label="Visual identity system(VI)" data-point="false"></p>
+				<p className="circle-point top-[50%] right-[100%]" data-label="Font" data-point="false"></p>
 			</div>
 		</div>
 	)
@@ -198,7 +199,7 @@ function TestimonialSlideIcons({isMobileDevice, smallScreenRatioDecimal}) {
 	let scaleRatio = isMobileDevice? smallScreenRatioDecimal * 0.65 : 1
 	return (
 		<div className="flex items-center gap-[0.8rem] lg:gap-[1.2rem] mr-[0.8rem] lg:mr-[1.2rem]">
-			{TestimonialIcons.map((e, index) => <span className="flex items-center justify-center h-[0.32rem] lg:h-[0.48rem] cursor-pointer hover:brightness-0" key={index}><img src={e} alt={e.split('/')[-1]} className="h-[0.32rem] lg:h-[0.48rem] grayscale object-fit object-center"></img></span>)}
+			{TestimonialIcons.map((e, index) => <span className="flex items-center justify-center h-[0.32rem] lg:h-[0.48rem] cursor-pointer hover:brightness-0" key={index}><img src={e} alt={e.split('/')[-1]} className="h-[0.32rem] lg:h-[0.48rem] gray-scale object-fit object-center"></img></span>)}
 			{/* <span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><GateIconBlack scaleRatio={scaleRatio}/></span> */}
 			{/* <span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><ByBitIcon scaleRatio={scaleRatio}/></span> */}
 			{/* <span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><VenturesIcon scaleRatio={scaleRatio}/></span> */}
@@ -257,6 +258,4 @@ function RightQuote() {
 		</svg>
 	)
 }
-// export { SiteInfoCard,  SiteFooter }
-
 

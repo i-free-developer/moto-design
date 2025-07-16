@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../data/site-data'
 import Navbar from './Navbar'
-import { StarIcon, ArrowOnlyIcon } from './SocialIconsCollection'
+import { StarIcon, ArrowOnlyIcon, PerkIconsArray } from './SocialIconsCollection'
 import { SiteInfoCard,  SiteFooter } from './Footer'
 import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
 
@@ -74,8 +74,11 @@ function CareerContenr() {
 
 function TimeLineCard() {
 	return (
-		<div className="flex items-center flex-nowrap px-[0.16rem] lg:px-[0.5rem] py-[0.32rem] lg:py-[0.16rem] overflow-x-auto">
-			{TimelineItems.map((item, index) => <TimeLineElement {...item} key={item.id} isEven={index % 2 === 0} isLastItem={index === (TimelineItems.length - 1)}/>)}
+		<div className="w-full mx-auto flex items-center overflow-x-scroll">
+			{/* <div className="mx-auto whitespace-nowrap flex flex-nowrap"> */}
+			<div className="w-full flex items-center flex-nowrap px-[0.32rem] lg:px-[0.5rem] py-[0.32rem] lg:py-[0.16rem] overflow-x-auto">
+				{TimelineItems.map((item, index) => <TimeLineElement {...item} key={item.id} isEven={index % 2 === 0} isLastItem={index === (TimelineItems.length - 1)}/>)}
+			</div>
 		</div>
 	)
 }
@@ -94,7 +97,7 @@ function TimeLineElement({id, title, isEven, isLastItem}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
 
 	return (
-		<div className="flex flex-col grow min-w-content text-black/40 hover:text-black hover:cursor-pointer" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+		<div className="flex flex-col grow box-border min-w-content text-black/40 hover:text-black hover:cursor-pointer" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<span className="text-[0.24rem] leading-[0.24rem] lg:text-[0.28rem] lg:leading-[0.36rem] translate-x-[-0.06rem]">{id}</span>
 			<div className="flex items-center mt-[0.12rem] mb-[0.32rem] h-[0.4rem] relative text-black">
 				<span className={`w-full ${isEven ? 'h-[0.4rem]' : 'h-[0.2rem]'} border-l-1 lg:border-l-2 ${isLastItem ? 'border-r-1 lg:border-r-2 h-[0.4rem]' : ''}`}></span>
@@ -103,7 +106,7 @@ function TimeLineElement({id, title, isEven, isLastItem}) {
 					<span className="size-[0.08rem] bg-white rounded-full"></span>
 				</span>
 			</div>
-			<span className="text-[0.16rem] leading-[0.16rem] lg:text-[0.24rem] lg:leading-[0.24rem] translate-x-[-0.06rem]">{title}</span>
+			<span className="pr-[0.4rem] lg:pr-0 text-nowrap text-[0.16rem] leading-[0.16rem] lg:text-[0.24rem] lg:leading-[0.24rem] translate-x-[-0.06rem]">{title}</span>
 		</div>
 	)
 }
@@ -124,7 +127,7 @@ function PerkCard({number, title, subtitle, content, index}) {
 			<div className="flex items-center justify-between">
 				<div className="flex flex-col">
 					<span className="font-normal text-[0.2rem] tracking-[-2%]">{number}</span>
-					<span className="font-bold mt-[0.1rem]"><PerkIcon iconName={number}/></span>
+					<span className="font-bold mt-[0.1rem] size-[0.24rem] flex items-center justify-center"><PerkIcon iconName={number}/></span>
 				</div>
 				<span className="font-bold text-[0.72rem] lg:text-[0.8rem] tracking-[-2%]">{title}</span>
 			</div>

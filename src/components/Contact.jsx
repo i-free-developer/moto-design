@@ -75,6 +75,7 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 	}
 
 	const handleFormFieldFocus = (field, value) => {
+		return
 		if (field == 'name') {setNameIsValid(value.length > 0); setFormIsValid(userEmail.length && (value.length > 0) && userRole.length > 0 && teamData.length > 0)}
 		if (field == 'role') {setRoleIsValid(value.length > 0); setFormIsValid(userEmail.length && (value.length > 0) && userName.length > 0 && teamData.length > 0)}
 		if (field == 'team') {setTeamIsValid(value.length > 0); setFormIsValid(userEmail.length && (value.length > 0) && userRole.length > 0 && userName.length > 0)}

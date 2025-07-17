@@ -186,12 +186,11 @@ const PortfolioData = {
 
 const TestimonialIcons = [
 	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-ventures.png',
-	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-gateio-gray.png',
+	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-gateio.png',
 	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-chain-catcher.png',
 	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-aws.png',
 	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-bybit.png',
 	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-rootdata.png',
-	// 'https://assets-sh-padelx.shanghaipadel.com/moto-icon-gateio-black.png',
 ]
 
 const SubmittedImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-submitted-already.png'

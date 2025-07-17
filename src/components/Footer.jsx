@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 
 function SiteInfoCard({isMobileDevice}) {
   // sm:1.48rem lg:1.92rem
+  // bg-repeat-x mt-[1rem] lg:mt-0 py-[0.48rem] lg:pt-[1.92rem] lg:pb-[1.3rem] 
   return (
     <div style={{
       // backgroundImage: `url(${backgroundImageSvg})`,
@@ -12,7 +13,8 @@ function SiteInfoCard({isMobileDevice}) {
       // backgroundSize: 'cover',
       // backgroundPosition: '0% 100%',
       // width: '100vw',
-    }} className="svg-bg bg-repeat-x mt-[1rem] lg:mt-0 py-[0.48rem] lg:pt-[1.92rem] lg:pb-[1.3rem] mx-auto w-screen max-w-screen overflow-x-hidden">
+
+    }} className="-z-10 svg-bg bg-repeat-x pt-[4.3rem] lg:pt-[6.9rem] pb-[0.48rem] lg:pb-[1.3rem] mx-auto w-screen max-w-screen overflow-x-hidden">
       { isMobileDevice ? <InfoCardMobile/> : <InfoCardDesktop/> }
     </div>
   )

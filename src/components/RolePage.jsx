@@ -30,9 +30,9 @@ export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
 
 					<div className="mt-[2.16rem] lg:mt-[2.6rem]"></div>
 					<HowToApply/>
-					<div className="mt-[1.98rem] lg:mt-[2.88rem]"></div>
+					<div className="mt--[1.98rem] lg:mt-[2.88rem]"></div>
 				</div>
-				<SiteInfoCard isMobileDevice={isMobileDevice}/>
+				<div className="mt-[-1.98rem] lg:mt-[-6rem]"><SiteInfoCard isMobileDevice={isMobileDevice}/></div>
 				<SiteFooter isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</section>
 		</main>

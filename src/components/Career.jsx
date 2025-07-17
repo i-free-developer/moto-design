@@ -32,7 +32,7 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 					<div className="mt-[2.16rem] mb-[1.66rem] lg:mb-0 lg:mt-[2.8rem]"></div>
 					<HowToApply/>
 				</div>
-				<SiteInfoCard isMobileDevice={isMobileDevice}/>
+				<div className="mt-[-0.8rem] lg:mt-[-7rem]"><SiteInfoCard isMobileDevice={isMobileDevice}/></div>
 				<SiteFooter isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</section>
 		</main>

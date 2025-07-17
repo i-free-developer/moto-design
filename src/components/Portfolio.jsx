@@ -41,7 +41,7 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 	      	{isMobile ? <MobilePortfolios isMobileDevice={isMobileDevice} itemsArray={PortfolioData.mobile}/> : <DesktopPortfolios isMobileDevice={isMobileDevice} itemsArray={portfolioItems.desktop} openOverlay={openOverlay}/>}
 	      </div>
 
-	      <SiteInfoCard isMobileDevice={isMobileDevice}/>
+				<div className="mt-[-5rem] lg:mt-[-3rem]"><SiteInfoCard isMobileDevice={isMobileDevice}/></div>
 				<SiteFooter isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</section>
 			{displayOverlay && <OverlaySection currentPortfolio={currentPortfolio} closeOverlay={closeOverlay}/> }
@@ -74,7 +74,7 @@ function MobileDeskIcons({isMobile, setIsMobile, smallScreenRatioDecimal}) {
 function DesktopPortfolios({isMobileDevice, itemsArray, openOverlay}) {
 	// console.log('itemsArray',itemsArray)
   return (
-    <div className="mb-[3.6rem] px-[0.32rem] lg:px-0 grid grid-cols-1 lg:grid-cols-5 gap-[0.24rem] lg:gap-[0.24rem]">
+    <div className="mb-[3.6rem] lg:mb-0 px-[0.32rem] lg:px-0 grid grid-cols-1 lg:grid-cols-5 gap-[0.24rem] lg:gap-[0.24rem]">
       {itemsArray.map((item, index) => <DesktopCard {...item} index={index} isMobileDevice={isMobileDevice} totalNumber={itemsArray.length} key={index} openOverlay={openOverlay}/>)}
     </div>
   )
@@ -167,7 +167,7 @@ function MobilePortfolios({isMobileDevice, itemsArray}) {
 
 function MobilePortfoliosDesktopContainer({mobileItems}) {
 	return (
-		<div className="snap-none relative mx-auto mb-[3.6rem] pt-[10.5%] lg:pt-0 pb-[10.5%] lg:pb-[6.5%]">
+		<div className="snap-none relative mx-auto mb--[3.6rem] pt-[10.5%] lg:pt-0 pb-[10.5%] lg:pb-[6.5%]">
       <div className="mx-auto w-full overflow-hidden grid grid-cols-5 gap-[0.2rem] gap-y-[0.48rem]">
         	{mobileItems.map((item, index) => <MobileCardDesktopView {...item} index={index} key={index}/>)}
       </div>

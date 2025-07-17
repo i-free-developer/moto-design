@@ -3,7 +3,6 @@ import '../assets/site-styles.css';
 import { Navbar } from './Navbar'
 import { AboutHeaderSvg } from './HeaderSvg'
 import { TeamMembers, StatusContents, TestimonialIcons } from '../data/site-data'
-import { ByBitIcon, AwsIcon, VenturesIcon, GateIconBlack} from './SocialIconsCollection'
 import { useDrawerHandler, OdometerItem, useHoverHandler } from './FunctionCollection'
 import { SiteInfoCard,  SiteFooter } from './Footer'
 
@@ -27,7 +26,7 @@ export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 						{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
 					</div>
 				</div>
-				<SiteInfoCard isMobileDevice={isMobileDevice}/>
+				<div className="mt-[-3rem] lg:mt-[-7.5rem]"><SiteInfoCard isMobileDevice={isMobileDevice}/></div>
 				<SiteFooter isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</section>
 		</main>
@@ -176,17 +175,17 @@ function EcosystemHeader() {
 function EcosystemContainer({isMobileDevice, smallScreenRatioDecimal}) {
 	return (
 		<div className="m-auto w-full flex items-center overflow-hidden gap--[0.32rem] lg:gap--[8rem] py-[0.8rem] lg:py-[1.6rem] mt-[0.8rem] lg:mt-[0.64rem] relative">
-			<div className="flex items-center gap--[0.32rem] lg:gap--[8rem] grow-0 shrink-0 icons-scroll mr-[0.8rem] lg:mr-0 ">
+			<div className="flex items-center gap--[0.32rem] lg:gap--[8rem] grow-0 shrink-0 icons-scroll mr-[0.4rem]">
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				{/* <TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/> */}
+				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</div>
-			<div aria-hidden className="flex items-center gap--[0.32rem] lg:gap--[8rem] grow-0 shrink-0 icons-scroll ml-0">
+			<div aria-hidden className="flex items-center gap--[0.32rem] lg:gap--[8rem] grow-0 shrink-0 icons-scroll">
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				{/* <TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/> */}
+				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</div>
 		    <span className="linear-gradient-cover absolute inset-0 left-0 bottom-0"></span>
 		    {/* <span className="absolute top-0 bottom-0 left-0  w-[0.24rem] lg:w-[3rem] bg-linear-to-r from-white to-white-10"></span> */}
@@ -198,12 +197,8 @@ function EcosystemContainer({isMobileDevice, smallScreenRatioDecimal}) {
 function TestimonialSlideIcons({isMobileDevice, smallScreenRatioDecimal}) {
 	let scaleRatio = isMobileDevice? smallScreenRatioDecimal * 0.65 : 1
 	return (
-		<div className="flex items-center gap-[0.8rem] lg:gap-[1.2rem] mr-[0.8rem] lg:mr-[1.2rem]">
-			{TestimonialIcons.map((e, index) => <span className="flex items-center justify-center h-[0.32rem] lg:h-[0.48rem] cursor-pointer hover:brightness-0" key={index}><img src={e} alt={e.split('/')[-1]} className="h-[0.32rem] lg:h-[0.48rem] gray-scale object-fit object-center"></img></span>)}
-			{/* <span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><GateIconBlack scaleRatio={scaleRatio}/></span> */}
-			{/* <span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><ByBitIcon scaleRatio={scaleRatio}/></span> */}
-			{/* <span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><VenturesIcon scaleRatio={scaleRatio}/></span> */}
-			{/* <span className="flex items-center justify-center lg:h-[0.48rem] cursor-pointer hover:brightness-0"><AwsIcon scaleRatio={scaleRatio}/></span> */}
+		<div className="flex items-center gap-[0.4rem] mr-[0.4rem] lg:gap-[0.4rem] lg:mr-[0.4rem]">
+			{TestimonialIcons.map((e, index) => <span className="flex items-center justify-center h-[0.48rem] lg:h-[0.48rem] cursor-pointer hover:brightness-0" key={index}><img src={e} alt={e.split('/')[-1]} className="h-[0.48rem] lg:h-[0.48rem] object-fit object-center"></img></span>)}
 		</div>
 	)
 }

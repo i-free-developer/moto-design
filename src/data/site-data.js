@@ -4,7 +4,8 @@ const TimelineItems = [
 	{id: 3, number: '03', title: 'Background investigation'},
 	{id: 4, number: '04', title: 'Round Two interview'},
 	{id: 5, number: '05', title: 'Offer'},
-	{id: 6, number: '06', title: 'Onboarding'},
+	{id: 6, number: '06', title: 'Probation review'},
+	{id: 7, number: '07', title: 'Onboarding'},
 ]
 
 const PerkItemsData = [
@@ -27,7 +28,7 @@ const OpenningRoles = [
 		team: 'MOTO  >  Design Department  >  WEB', 
 		title: 'Senior UI Designer',
 		fullTime: 'Full-time',
-		onSite: 'On-site (ShenZhen)',
+		onSite: 'On-site (Shenzhen)',
 		isRemote: '',
 		roleTag: 'UI Designer',
 		responsibilities: [
@@ -48,7 +49,7 @@ const OpenningRoles = [
 		team: 'MOTO  >  Design Department  >  WEB', 
 		title: 'Senior Front-end Expert',
 		fullTime: 'Full-time',
-		onSite: 'On-site (ShenZhen)',
+		onSite: 'On-site (Shenzhen)',
 		isRemote: 'Remote',
 		roleTag: 'Front-end Engineer',
 		responsibilities: [
@@ -73,7 +74,7 @@ const OpenningRoles = [
 		team: 'MOTO  >  Design Department  >  WEB', 
 		title: 'Motion & VFX Designer',
 		fullTime: 'Full-time',
-		onSite: 'On-site (ShenZhen)',
+		onSite: 'On-site (Shenzhen)',
 		isRemote: '',
 		roleTag: 'Motion Designer',
 		responsibilities: [
@@ -96,7 +97,7 @@ const OpenningRoles = [
 		team: 'MOTO  >  Design Department  >  WEB', 
 		title: 'Global SEO & Content Operation',
 		fullTime: 'Full-time',
-		onSite: 'On-site (ShenZhen)',
+		onSite: 'On-site (Shenzhen)',
 		isRemote: 'Remote',
 		roleTag: 'SEO & Operation',
 		responsibilities: [
@@ -121,7 +122,7 @@ const OpenningRoles = [
 		team: 'MOTO  >  Design Department  >  WEB', 
 		title: 'Intern (Design/Branding/Content)',
 		fullTime: 'Full-time',
-		onSite: 'On-site (ShenZhen)',
+		onSite: 'On-site (Shenzhen)',
 		isRemote: '',
 		roleTag: 'Intern',
 		responsibilities: [
@@ -205,5 +206,7 @@ const CompanyDomain = 'motodesign.cn'
 
 const HandImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-sticky-hand-img.png'
 
-export {TimelineItems, PerkItemsData, OpenningRoles, TeamMembers, PortfolioData, StatusContents, ServicesItems, CopyRight, CompanyEmail, CompanyDomain, HandImg, TestimonialIcons, SubmittedImg}
+const ApiPath = 'http://localhost:3000/api/'
+
+export {TimelineItems, PerkItemsData, OpenningRoles, TeamMembers, PortfolioData, StatusContents, ServicesItems, CopyRight, CompanyEmail, CompanyDomain, HandImg, TestimonialIcons, SubmittedImg, ApiPath}
 

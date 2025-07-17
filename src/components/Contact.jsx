@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import { CopyRight, CompanyEmail, SubmittedImg } from '../data/site-data'
+import { CopyRight, CompanyEmail, SubmittedImg, ApiPath } from '../data/site-data'
 import Navbar from './Navbar'
 import { StarIcon, ArrowOnlyIcon } from './SocialIconsCollection'
 import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
@@ -52,7 +52,8 @@ function ContactContainer({isMobileDevice, smallScreenRatioDecimal}) {
 }
 
 function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  isMobileDevice, smallScreenRatioDecimal}) {
-	const { callApi, loading } = useFakeApi();
+	const { callApi, loading } = useFakeApi(); //useFakeApi();
+	// const { callApi, loading } = usePostApi(); //useFakeApi();
 	const [userName, setUserName] = useState('')
 	const [userRole, setUserRole] = useState('')
 	const [teamData, setTeamData] = useState('')
@@ -311,3 +312,28 @@ const useFakeApi = () => {
 
   return { callApi, loading, error };
 };
+
+const usePostApi = () => {
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState(null);
+
+	const callApi = useCallback(async (data) => {
+	setLoading(true);
+	setError(null);
+	try {
+		const response = await fetch(ApiPath + 'customers', {
+			method: "POST", mode: "cors", cache: "no-cache",
+			headers: { "Content-Type": "application/json"},
+			body: JSON.stringify(data), // body data type must match "Content-Type" header
+		});
+	  return response.json();
+	} catch (err) {
+	  setError(err.message);
+	  throw err;
+	} finally {
+	  setLoading(false);
+	}
+	}, []);
+
+	return { callApi, loading, error };
+}

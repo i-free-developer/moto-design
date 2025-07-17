@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { PortfolioData } from '../data/site-data'
 import Navbar from './Navbar'
 import { useDrawerHandler } from './FunctionCollection'
-import { SiteInfoCard,  SiteFooter } from './Footer'
 
 export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
@@ -16,8 +15,6 @@ export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
 				<div className="w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] mx-auto px-[0.32rem] py-[0.48rem] overflow-x-hidden">
 					<ImgCard {...item}/>
 				</div>
-				<SiteInfoCard isMobileDevice={isMobileDevice}/>
-				<SiteFooter isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</section>
 		</main>
 	)

@@ -234,7 +234,7 @@ function OurTeamCard() {
 		<div className="col-span-3 lg:col-span-2 flex flex-col pb-[0.32rem] lg:pr-[1.44rem]">
 			<div className="flex sm:gap-[0.08rem] mb-[0.16rem] lg:mb-[0.08rem]">
 				<span className="text-[0.48rem] leading-[0.48rem] lg:text-[1.68rem] lg:leading-[1.68rem] font-bold uppercase tracking-[-2%]">our</span>
-				<span className="lg:hidden text-[0.48rem] leading-[0.48rem] lg:text-[1.68rem] lg:leading-[1.68rem] font-bold uppercase text-right tracking-[-2%]">team</span>
+				<span className="lg:hidden text-[0.48rem] leading-[0.48rem] lg:text-[1.68rem] lg:leading-[1.68rem] font-bold uppercase text-right tracking-[-2%]">&nbsp;team</span>
 			</div>
 			<p className="text-[0.16rem] lg:text-[0.16rem]">As a dynamic design company, we endow products with artistic power,</p>
 			<p className="text-[0.16rem] lg:text-[0.16rem]">attract global enterprises, and redefine the future of products.</p>

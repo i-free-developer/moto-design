@@ -150,7 +150,10 @@ function RolesContainer({isMobileDevice}) {
 			<div className="lg:w-[6.48rem] tracking-[-2%] scroll-fade-in">
 				<h3 className="uppercase font-bold text-[0.2rem] leading-[0.2rem] lg:text-[0.24rem] lg:leading-[0.32rem]">join our team</h3>
 				<p className="uppercase font-bold text-[0.48rem] leading-[0.48rem] lg:text-[0.8rem] lg:leading-[0.96rem] mt-[0.48rem] lg:mt-[0.16rem]">find your perfect role</p>
-				<p className="text-[0.16rem] leading-[0.16rem] lg:text-[0.2rem] lg:leading-[0.28rem] mt-[0.12rem] lg:mt-[0.72rem] font-normal">Explore our open roles and find the one that fits not just your resume, but your rhythm.</p>
+				<div className="mt-[0.12rem] lg:mt-[0.72rem] flex lg:flex-col lg:gap-[0.04rem]">
+					<p className="text-[0.16rem] leading-[0.16rem] lg:text-[0.2rem] lg:leading-[0.28rem] font-normal">Explore our open roles and find the one that</p>
+					<p className="text-[0.16rem] leading-[0.16rem] lg:text-[0.2rem] lg:leading-[0.28rem] font-normal">fits not just your resume, but your rhythm.</p>
+				</div>
 				<p className="text-[0.32rem] lg:text-[0.36rem] mt-[1.28rem] lg:mt-[2.4rem] font-bold scroll-fade-in"><span className="">{rolesCount}&nbsp;</span>Positions</p>
 			</div>
 			<div id="positions" className="mt-[0.8rem] lg:mt-0 flex flex-col gap-[0.08rem]">
@@ -207,7 +210,10 @@ export function HowToApply() {
 	return (
 		<div className="tracking-[-2%] w-full mx-auto">
 			<h2 className="uppercase font-bold text-[0.48rem] lg:text-[0.8rem] lg:leading-[0.8rem]">how to apply</h2>
-			<p className="mt-[0.48rem] lg:mt-[0.48rem] text-[0.2rem] leading-[0.24rem] lg:text-[0.28rem] lg:leading-[0.4rem]">Send your CV and portfolio to <span className="font-bold">({CompanyEmail})</span>, with the subject "<span className="font-bold">Position + Name</span>".</p>
+			<div className="mt-[0.48rem] lg:mt-[0.48rem] lg:flex">
+				<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.28rem] lg:leading-[0.4rem]">Send your CV and portfolio to <span className="font-bold">({CompanyEmail})</span>,</p>
+				<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.28rem] lg:leading-[0.4rem]">with the subject "<span className="font-bold">Position + Name</span>".</p>
+			</div>
 			<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.4rem]">We’re not just hiring doers—we’re looking for partners in creation.</p>
 			<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.4rem] my-[0.24rem] lg:my-[0.4rem]">*File Types: ( PDF format only )</p>
 		</div>

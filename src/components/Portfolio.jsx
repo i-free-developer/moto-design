@@ -28,7 +28,12 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 					<PortfolioHeader/>
 					<div className="pl-[0.16rem] lg:pl-[0.32rem] my-[0.48rem] lg:my-[0.96rem] flex flex-row justify-between overflow-x-hidden">
 						<MobileDeskIcons isMobile={isMobile} setIsMobile={setIsMobile} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-						<p className="self-start lg:mb-[0.48rem] text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 w-[55%] lg:w-[4.16rem] tracking-[-2%] font-normal text-right">Our user-centered design encourages productivity and boosts revenue</p>
+						<div className="self-start lg:mb-[0.48rem] ">
+							<p className="text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 w--[55%] lg:w--[4.16rem] tracking-[-2%] font-normal text-right">Our user-centered design</p>
+							<p className="text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 w--[55%] lg:w--[4.16rem] tracking-[-2%] font-normal text-right">encourages productivity and</p>
+							<p className="text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 w--[55%] lg:w--[4.16rem] tracking-[-2%] font-normal text-right">boosts revenue</p>
+							
+						</div>
 					</div>
 				</div>
 
@@ -46,9 +51,13 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 
 function PortfolioHeader() {
 	return (
-		<article className="flex flex-col lg:flex-row justify-between my-[1rem] lg:my-[0.64rem] tracking-[-2%] overflow-x-hidden">
+		<article className="flex flex-col lg:flex-row justify-between my-[1rem] lg:my-[0.64rem] tracking-[-2%] overflow-hidden">
 			<header className="text-[0.56rem] leading-[0.64rem] lg:text-[0.8rem] lg:leading-[0.96rem] lg:w-[45%] font-normal">We don't do cookie-cutter solutions</header>
-			<p className="mt-[0.16rem] lg:mt-[0.16rem] w-full lg:w-[20%] text-black/64 text-[0.24rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.24rem] lg:text-right font-normal">Backing the best Web 3.0 founders & products</p>
+			<div className="mt-[0.16rem] lg:mt-[0.16rem] w-full lg:w-[20%] flex lg:flex-col">
+				<p className="text-black/64 text-[0.24rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.24rem] lg:text-right font-normal">Backing the best Web 3.0</p>
+				<span className="lg:hidden w-[0.06rem]"></span>
+				<p className="text-black/64 text-[0.24rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.24rem] lg:text-right font-normal">founders & products</p>
+			</div>
 		</article>
 	)
 }

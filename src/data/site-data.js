@@ -162,25 +162,25 @@ const StatusContents = [
 
 const PortfolioData = {
 	desktop: [
-		{id: 1, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-meanfi-desktop.png',   fullImage: 'https://assets-sh-padelx.shanghaipadel.com/moto-meanfi.png'},
-		{id: 2, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-kylin-desktop.png',    fullImage: 'https://assets-sh-padelx.shanghaipadel.com/moto-kylin.png'},
-		{id: 3, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-aegis-desktop.png',    fullImage: 'https://assets-sh-padelx.shanghaipadel.com/moto-aegis.png'},
-		{id: 4, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-cosmos-desktop.png',   fullImage: 'https://assets-sh-padelx.shanghaipadel.com/moto-cosmos.png'},
-		{id: 5, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-metaplex-desktop.png', fullImage: 'https://assets-sh-padelx.shanghaipadel.com/moto-metaplex.png'},
+		{id: 1, title: 'UI/UX Design for a Minimalist DeFi Platform',  description: 'A clean interface for non-custodial DeFi banking, focused on payments and yield tools. Prioritizes clarity, data visibility, and user autonomy.', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-meanfi-desktop.png',   fullImage: 'https://assets-sh-padelx.shanghaipadel.com/moto-meanfi.png'},
+		{id: 2, title: 'Kylin Web3 Platform Design',                   description: 'A bold, tech-forward design tailored for Web3-native users, supporting oracle and indexing services with scalable on-chain data access.',         url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-kylin-desktop.png',    fullImage: 'https://assets-sh-padelx.shanghaipadel.com/moto-kylin.png'},
+		{id: 3, title: 'Stablecoin Platform Design for Aegis',         description: 'A transparent, credible interface for Aegis’s stablecoin and lending suite, built to boost user trust in permissionless finance.',                url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-aegis-desktop.png',    fullImage: 'https://assets-sh-padelx.shanghaipadel.com/moto-aegis.png'},
+		{id: 4, title: 'UI Design for the Internet of Blockchains',    description: 'Futuristic visuals for Cosmos’ interchain vision, balancing technical depth with accessible multichain narratives.',                              url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-cosmos-desktop.png',   fullImage: 'https://assets-sh-padelx.shanghaipadel.com/moto-cosmos.png'},
+		{id: 5, title: 'Website Design for an NFT Protocol on Solana', description: 'A developer-first site that streamlines access to NFT minting, auctions, and tools across the Solana ecosystem.',                                 url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-metaplex-desktop.png', fullImage: 'https://assets-sh-padelx.shanghaipadel.com/moto-metaplex.png'},
 	],
 	mobile: [
-		{ id: 1, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-1.png' },
-		{ id: 2, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-2.png' },
-		{ id: 3, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-3.png' },
-		{ id: 4, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-4.png' },
-		{ id: 5, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-5.png' },
-		{ id: 6, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-6.png' },
-		{ id: 7, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-7.png' },
-		{ id: 8, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-8.png' },
-		{ id: 8, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-9.png' },
-		{ id: 8, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-10.png' },
-		{ id: 8, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-11.png' },
-		{ id: 8, title: 'Title A', description: 'Backing the best Web 3.0 founders & products', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-12.png' },
+		{ id: 1, title: '#', description: '#', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-1.png' },
+		{ id: 2, title: '#', description: '#', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-2.png' },
+		{ id: 3, title: '#', description: '#', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-3.png' },
+		{ id: 4, title: '#', description: '#', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-4.png' },
+		{ id: 5, title: '#', description: '#', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-5.png' },
+		{ id: 6, title: '#', description: '#', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-6.png' },
+		{ id: 7, title: '#', description: '#', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-7.png' },
+		{ id: 8, title: '#', description: '#', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-8.png' },
+		{ id: 8, title: '#', description: '#', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-9.png' },
+		{ id: 8, title: '#', description: '#', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-10.png' },
+		{ id: 8, title: '#', description: '#', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-11.png' },
+		{ id: 8, title: '#', description: '#', url: '#', image: 'https://assets-sh-padelx.shanghaipadel.com/moto-mobile-12.png' },
 	]
 }
 

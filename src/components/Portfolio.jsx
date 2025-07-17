@@ -129,11 +129,11 @@ function DesktopBottomCard({title, description}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
 	return (
 		<div className="z-10 absolute left-[0.12rem] right-[0.12rem] bottom-[0.12rem] px-[0.32rem] py-[0.24rem] lg:py-[0.24rem] bg-white rounded-[0.24rem] flex justify-between items-center" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-			<div className="max-w-3/4">
-				<header className="font-bold mb-[0.16rem] lg:mb-[0.02] text-[0.24rem]">{title}</header>
-				<p className="text-[0.16rem]">{description}</p>
+			<div className="">
+				<header className="font-bold text-[0.24rem]">{title}</header>
+				<p className="text-[0.16rem] leading-[0.2rem] mt-[0.16rem]">{description}</p>
 			</div>
-			<div className="size-[0.72rem] lg:size-[0.72rem] bg-black/16 flex items-center justify-center rounded-full">
+			<div className="min-w-[0.72rem] size-[0.72rem] lg:size-[0.72rem] bg-black/16 flex items-center justify-center rounded-full">
 				<div className={`w-[0.16rem] lg:w-[0.24rem] ${isHovered ? '-rotate-45' : '-rotate-0'} flex items-center justify-center transition-rotate transition-transform duration-400`}><ArrowRight/></div>
 			</div>
 		</div>

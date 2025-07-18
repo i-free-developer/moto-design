@@ -212,22 +212,22 @@ function TestimonialSlideIcons() {
 	)
 }
 
-function TeamMemberCard({name, avatar, description, title, role}) {
+function TeamMemberCard({name, subtitle, avatar, description, title}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
 	return (
-		<article className="box-border border border-[0.03rem] lg:border-[4px] rounded-[0.16rem] w-[2.2rem] lg:w-[3.66rem] h-[3.3rem] lg:h-[5.11rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+		<article className="box-border border border-[0.03rem] lg:border-[4px] rounded-[0.16rem] w-[2.2rem] lg:w-[3.66rem] h-[3.4rem] lg:h-[5.11rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<div className={`overflow-hidden top-0 rounded-0 flex max-h-full min-h-full min-w-full max-w-full flex-col justify-between`}>
-				<img src={avatar} loading="lazy" className="mx-auto w-[2.2rem] h-[2.2rem] lg:w-[3.66rem] lg:h-[3.66rem] object-cover object-center"></img>
-				<div className="w-full px-[0.2rem] lg:px-[0.24rem] py-[0.2rem] ">
-					<header className="capitalize text-[0.28rem] leading-[0.28rem] lg:text-[0.4rem] lg:leading-[0.4rem] tracking-[-2%] text-nowrap">{name}</header>
-					<p className="capitalize mt-[0.08rem] text-[0.12rem] lg:text-[0.16rem]">{role}</p>
+				<div className="mx-auto w-[2.2rem] h-[2.2rem] lg:w-[3.66rem] lg:h-[3.66rem]"><img src={avatar} loading="lazy" className="object-cover object-center scale-103"></img></div>
+				<div className="w-full mt-0 px-[0.2rem] pt-[0.16rem] pb-[0.12rem] lg:py-[0.2rem] lg:pb-[0.24rem]">
+					<header className="capitalize text-[0.28rem] leading-[0.28rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-normal tracking-[-2%] text-nowrap">{name}</header>
+					<p className="capitalize mt-[0.12rem] text-[0.12rem] leading-[0.12rem] lg:text-[0.14rem] lg:leading-[0.16rem]">{subtitle}</p>
 				</div>
 			</div>
 
-		    <div className={`relative transition-all duration-300 rounded-0 lg:h-[2.6rem] min-w-full max-w-full bg-[#F7F7F7]/30 backdrop-blur-[16px] text-black pt-[0.16rem] lg:pt-[0.16rem] pb-[0.16rem] lg:pb-[0.28rem] px-[0.12rem] lg:px-[0.2rem] ${isHovered ? 'lg:top-[-2.6rem] z-10' : 'lg:top-0 '}`}>
+		    <div className={`relative transition-all duration-300 rounded-0 h-[1.2rem] lg:h-[2.88rem] min-w-full max-w-full bg-[#F7F7F7]/30 backdrop-blur-[16px] text-black pt-[0.16rem] lg:pt-[0.16rem] pb-[0.16rem] lg:pb-[0.28rem] px-[0.12rem] lg:px-[0.2rem] ${isHovered ? 'lg:top-[-2.88rem] z-10' : 'lg:top-0 '}`}>
 		     	<header className="capitalize text-[0.28rem] lg:text-[0.4rem] font-bold tracking-[-2%]">{name}</header>
-		     	<p className="capitalize text-[0.24rem] lg:text-[0.22rem] lg:leading-[0.24rem] font-normal mt-[0.12rem] lg:mt-[0.12rem]">{title}</p>
-				<p className="text-[0.16rem] lg:text-[0.14rem] lg:leading-[0.18rem] font-normal mt-[0.32rem] lg:mt-[0.12rem]">{description}</p>
+		     	<p className="capitalize text-[0.24rem] lg:text-[0.22rem] lg:leading-[0.24rem] font-semibold mt-[0.12rem] lg:mt-[0.12rem]">{title}</p>
+				<p className="text-[0.16rem] lg:text-[0.16rem] lg:leading-[0.2rem] font-normal mt-[0.32rem] lg:mt-[0.4rem]">{description}</p>
 		    </div>
 		</article>
 	)

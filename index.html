@@ -44,6 +44,7 @@
       }
 
       function refreshRem() {
+        console.log('index', performance.now())
         const dpr = getDpr()
         let width = document.documentElement.getBoundingClientRect().width;
         // 设置基准值
@@ -73,21 +74,25 @@
         }    
       }
 
+      refreshRem();
+
       // 事件监听
-      let tid;
-      window.addEventListener('load', refreshRem, false);
-
-      window.addEventListener('resize', function() {
-        clearTimeout(tid);
-        tid = setTimeout(refreshRem, 300);
-      }, false);
-
-      window.addEventListener('pageshow', function(e) {
-        if (e.persisted) {
-          clearTimeout(tid);
-          tid = setTimeout(refreshRem, 100);
-        }
-      }, false);
+//       let tid;
+//       document.addEventListener('load', function() {
+//         // refreshRem()
+//       }, false);
+// 
+//       document.addEventListener('resize', function() {
+//         clearTimeout(tid);
+//         // tid = setTimeout(refreshRem, 300);
+//       }, false);
+// 
+//       document.addEventListener('pageshow', function(e) {
+//         if (e.persisted) {
+//           clearTimeout(tid);
+//           // tid = setTimeout(refreshRem, 100);
+//         }
+//       }, false);
     </script>
     <link rel="canonical" href=""/>
   </head>

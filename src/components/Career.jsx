@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../data/site-data'
 import Navbar from './Navbar'
-import { StarIcon, ArrowOnlyIcon, PerkIconsArray } from './SocialIconsCollection'
+import { StarIcon, ArrowOnlyIcon, PerkIconsArray, MobileArrowBtn} from './SocialIconsCollection'
 import { SiteInfoCard,  SiteFooter } from './Footer'
 import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
 
@@ -56,7 +56,7 @@ function CareerHeader() {
 function PositionBtn() {
 	function scrollToPositions() { document.querySelector('#positions').scrollIntoView({ behavior: 'smooth', block: 'start' }) }
 	return (
-		<div className="px-[0.24rem] py-[0.12rem] lg:py-[0.16rem] border border-2 rounded-full flex gap-[0.16rem] items-center justify-between cursor-pointer" onClick={scrollToPositions}>
+		<div className="px-[0.24rem] py-[0.12rem] lg:py-[0.16rem] border border-1 lg:border-2 rounded-full flex gap-[0.16rem] items-center justify-between cursor-pointer" onClick={scrollToPositions}>
 			<span className="font-medium text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.24rem]">Positions</span>
 			<span className="size-[0.08rem] rounded-[50%] bg-black"></span>
 		</div>
@@ -140,11 +140,10 @@ function PerkCard({number, title, subtitle, content, index}) {
 }
 
 function PerkIcon({ iconName }) {
-  return <img src={`/perk-${iconName}.png`} alt={iconName} className="size-[0.24rem] object-cover object-center"/>;
+  return <img src={`/perk-${iconName}.png`} loading="lazy" alt={iconName} className="size-[0.24rem] object-cover object-center"/>;
 }
 
 function RolesContainer({isMobileDevice}) {
-	const rolesCount = OpenningRoles.length
 	return (
 		<div className="mt-[2.16rem] lg:mt-[2.8rem] lg:mb-[2.8rem] grid grid-cols-1 lg:grid-cols-2">
 			<div className="lg:w-[6.48rem] tracking-[-2%] scroll-fade-in">
@@ -154,7 +153,7 @@ function RolesContainer({isMobileDevice}) {
 					<p className="text-[0.16rem] leading-[0.16rem] lg:text-[0.2rem] lg:leading-[0.28rem] font-normal">Explore our open roles and find the one that</p>
 					<p className="text-[0.16rem] leading-[0.16rem] lg:text-[0.2rem] lg:leading-[0.28rem] font-normal">fits not just your resume, but your rhythm.</p>
 				</div>
-				<p className="text-[0.32rem] lg:text-[0.36rem] mt-[1.28rem] lg:mt-[2.4rem] font-bold scroll-fade-in"><span className="">{rolesCount}&nbsp;</span>Positions</p>
+				<p className="text-[0.32rem] lg:text-[0.36rem] mt-[1.28rem] lg:mt-[2.4rem] font-bold scroll-fade-in"><span className="">{OpenningRoles.length}&nbsp;</span>Positions</p>
 			</div>
 			<div id="positions" className="mt-[0.8rem] lg:mt-0 flex flex-col gap-[0.08rem]">
 				{OpenningRoles.map((item, index) => <RoleCard {...item} isMobileDevice={isMobileDevice} index={index} key={index}/>)}
@@ -200,8 +199,9 @@ function ApplyButtonDeskstop({id}) {
 
 function ApplyButtonMobile({id}) {
 	return (
-		<Link to={`/role/${id}`} className="absolute bottom-[0.4rem] right-0 flex items-center justify-center bg-black rounded-full px-[0.24rem] py-[0.06rem] text-white font-medium text-[0.2rem]">
+		<Link to={`/role/${id}`} className="absolute bottom-[0.4rem] right-0 flex items-center bg-black rounded-full pl-[0.24rem] pr-[0.04rem] py-[0.06rem] text-white font-medium text-[0.2rem]">
 			Apply
+			<span className="size-[0.36rem] bg-white rounded-full flex items-center justify-center ml-[0.16rem]"><MobileArrowBtn/></span>
 		</Link>
 	)
 }
@@ -222,5 +222,5 @@ export function HowToApply() {
 
 
 function ArrowGroupImg() {
-	return ( <img className="h-[0.17rem] object-cover object-center" src="/arrow-group.png"></img> )
+	return ( <img className="h-[0.17rem] object-cover object-center" src="/arrow-group.png" loading="lazy"></img> )
 }

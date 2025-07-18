@@ -6,6 +6,9 @@ npm run dev
 npm run build
 ```
 
+##### deploy
+scp -r dist/* deploy@moto.shanghaipadel.com:staging/dist
+
 #### to do
 	[ ] career rols contents copy from figma
 	[ ] portfolio redesign mobile view portfolio cards, display part of images
@@ -46,10 +49,6 @@ https://github.com/constgenius/InfiniteScroll/blob/main/styles.css
 https://codepen.io/julianofreitas/pen/BayKper
 https://codesandbox.io/p/sandbox/infinite-horizontal-auto-scroll-y82f8?file=%2Fsrc%2Fstyles.css%3A31%2C49-31%2C58
 https://codepen.io/girish/pen/dgWqBr
-
-##### deploy
-scp -r dist/* deploy@moto.shanghaipadel.com:staging/dist
-
 
 ##### letter-space tracking-[-2%]
 ##### line-height leading-[20px]

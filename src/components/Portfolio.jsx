@@ -128,7 +128,7 @@ function DesktopCard({isMobileDevice, id, title, description, image, url, fullIm
 function DesktopBottomCard({title, description}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
 	return (
-		<div className="z-10 absolute left-[0.12rem] right-[0.12rem] bottom-[0.12rem] px-[0.32rem] py-[0.24rem] lg:py-[0.24rem] bg-white rounded-[0.24rem] flex justify-between items-center" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+		<div className="z-10 absolute h-[1.2rem] left-[0.12rem] right-[0.12rem] bottom-[0.12rem] px-[0.32rem] py-[0.24rem] lg:py-[0.24rem] bg-white rounded-[0.24rem] flex justify-between items-center" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<div className="">
 				<header className="font-bold text-[0.24rem]">{title}</header>
 				<p className="text-[0.16rem] leading-[0.2rem] mt-[0.16rem]">{description}</p>

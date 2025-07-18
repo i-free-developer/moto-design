@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../assets/site-styles.css';
 import { Navbar } from './Navbar'
 import { AboutHeaderSvg } from './HeaderSvg'
@@ -19,7 +19,7 @@ export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 				</div>
 				<AboutStatusContainer smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<EcosystemHeader/>
-				<EcosystemContainer isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				<EcosystemContainer/>
 				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
 					<div className="my-[1.2rem] lg:my-[3.52rem] grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-x-[0.2rem] lg:gap-y-[0.4rem]">
 						<OurTeamCard />
@@ -53,9 +53,14 @@ function AboutHeaderDesktop() {
 }
 
 function AboutHeaderMobile({smallScreenRatioDecimal}) {
+	const [smallRatio, setSmallRatio] = useState(1.0)
+	useEffect(() => {
+		setSmallRatio(smallScreenRatioDecimal)
+	}, [smallScreenRatioDecimal])
+
 	return (
 		<div className="mx-auto mt-[1.6rem] min-w-full relative">
-			<span className="flex items-center justify-center"><AboutHeaderSvg scaleRatio={smallScreenRatioDecimal}/></span>
+			<span className="flex items-center justify-center"><AboutHeaderSvg scaleRatio={smallRatio}/></span>
 		</div>
 	)
 }
@@ -75,6 +80,11 @@ function AboutBrand() {
 
 function AboutStatusContainer({smallScreenRatioDecimal}) {
 	const [showSection, setShowSection] = useState('left')
+	const [smallRatio, setSmallRatio] = useState(1.0)
+	useEffect(() => {
+		setSmallRatio(smallScreenRatioDecimal)
+	}, [smallScreenRatioDecimal])
+
 	return (
 		<div className="mx-auto relative mt-[1.68rem] lg:mt-[3.6rem] lg:px-[0.48rem] w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
 			<div className="mx-auto overflow-x-hidden w-full flex items-center justify-between pl-[0.32rem] lg:pl-0">
@@ -87,8 +97,8 @@ function AboutStatusContainer({smallScreenRatioDecimal}) {
 				</div>
 				<AboutCirclesCard showSection={showSection}/>
 			</div>
-			{ showSection === 'left' && <span className="flex items-center justify-center go-right absolute lg:hidden top-[45%] right-[-0.32rem] z-200" onClick={() => {setShowSection('right')}}><GoToRight scaleRatio={smallScreenRatioDecimal}/></span>}
-			{ showSection === 'right' &&  <span className="flex items-center justify-center go-left absolute lg:hidden top-[45%] left-0 z-200" onClick={() => {setShowSection('left')}}><GoToLeft scaleRatio={smallScreenRatioDecimal}/></span>}
+			{ showSection === 'left' && <span className="flex items-center justify-center go-right absolute lg:hidden top-[45%] right-[-0.32rem] z-200" onClick={() => {setShowSection('right')}}><GoToRight scaleRatio={smallRatio}/></span>}
+			{ showSection === 'right' &&  <span className="flex items-center justify-center go-left absolute lg:hidden top-[45%] left-0 z-200" onClick={() => {setShowSection('left')}}><GoToLeft scaleRatio={smallRatio}/></span>}
 		</div>
 	)
 }
@@ -96,7 +106,7 @@ function AboutStatusContainer({smallScreenRatioDecimal}) {
 function StatusItemCard({title, suffix, content, i}) {
 	return (
 		<article className="w-[80%] lg:w-4/5 my-[0.16rem] lg:my-[0.16rem]">
-			<div className="min-w-full text-[0.64rem] lg:text-[0.96rem] font-semibold leading-[0.64rem] lg:leading-[0.96rem] tracking-[-8%] flex gap-[0.08rem]">{<OdometerItem className="min-w-content" value={title}/>} {suffix && <span className={`inline-block ${i == 3 ? 'translate-y-[6.5%]' : '' }`}>{suffix}</span>}</div>
+			<div className="min-w-full text-[0.64rem] lg:text-[0.96rem] font-semibold leading-[0.64rem] lg:leading-[0.96rem] tracking-[-8%] flex gap-[0.08rem]">{<OdometerItem className="min-w-content" value={title}/>} {suffix && <span className={`inline-block ml-[-0.04rem] ${i == 3 ? 'translate-y-[6.5%]' : '' }`}>{suffix}</span>}</div>
 			<hr className="w-full border border-[0.01rem] lg:border-1 border-black/20 my-[0.16rem] lg:mt-[0.32rem] lg:mb-[0.2rem]"></hr>
 			<p className="text-[0.16rem] lg:text-[0.16rem] font-normal leading-[0.20rem] lg:leading-[0.2rem] tracking-[-2%]">{content}</p>
 		</article>
@@ -142,8 +152,8 @@ function AboutCirclesCard({showSection}) {
 				<p className="circle-point top-[32.899%]  right-[96.9846%]" data-label="Strategic Review" data-point="false"></p>
 				<p className="circle-point top-[54.3578%] right-[99.8097%]" data-label="Vertical Media" data-point="false"></p>
 				<p className="circle-point top-[92.8097%] right-[23.6422%]" data-label="VC" data-point="true"></p>
-				<p className="circle-point top-[79.3022%] right-[8.8606%]" data-label="Legal" data-point="true"></p>
-				<p className="circle-point top-[99.3022%] right-[57.8606%]" data-label="Liquidity" data-point="true"></p>
+				<p className="circle-point top-[79.3022%] right-[8.8606%]" data-label="Liquidity" data-point="true"></p>
+				<p className="circle-point top-[99.3022%] right-[57.8606%]" data-label="Legal" data-point="true"></p>
 			</div>
 			<div className="about-circle-div w-[50%] h-[50%] top-[7.4%] right-[7.4%]" data-circle="true">
 				<p className="circle-point-visible circle-data-point top-[85.3553%] right-[85.3553%]" data-label="Product" data-up="true" data-point="true"></p>
@@ -156,7 +166,7 @@ function AboutCirclesCard({showSection}) {
 			<div className="about-circle-div w-[30.9%] h-[30.9%] top-[10.2%] right-[10.2%]" data-circle="true">
 				<p className="circle-point-visible circle-data-point top-[14.6447%] right-[14.6447%]" data-label="Brand Identity" data-point="true"></p>
 				<p className="circle-point top-[82.1394%] right-[11.6978%]" data-label="Story" data-point="false"></p>
-				<p className="circle-point top-[95.3154%] right-[71.1309%]" data-label="Visual identity system(VI)" data-point="false"></p>
+				<p className="circle-point top-[95.3154%] right-[71.1309%]" data-label="Visual identity(VI)" data-point="false"></p>
 				<p className="circle-point top-[50%] right-[100%]" data-label="Font" data-point="false"></p>
 			</div>
 		</div>
@@ -172,20 +182,20 @@ function EcosystemHeader() {
 	)
 }
 
-function EcosystemContainer({isMobileDevice, smallScreenRatioDecimal}) {
+function EcosystemContainer() {
 	return (
 		<div className="m-auto w-full flex items-center overflow-hidden gap--[0.32rem] lg:gap--[8rem] py-[0.8rem] lg:py-[1.6rem] mt-[0.8rem] lg:mt-[0.64rem] relative">
 			<div className="flex items-center gap--[0.32rem] lg:gap--[8rem] grow-0 shrink-0 icons-scroll mr-[0.4rem]">
-				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				<TestimonialSlideIcons/>
+				<TestimonialSlideIcons/>
+				<TestimonialSlideIcons/>
+				<TestimonialSlideIcons/>
 			</div>
 			<div aria-hidden className="flex items-center gap--[0.32rem] lg:gap--[8rem] grow-0 shrink-0 icons-scroll">
-				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
-				<TestimonialSlideIcons isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
+				<TestimonialSlideIcons/>
+				<TestimonialSlideIcons/>
+				<TestimonialSlideIcons/>
+				<TestimonialSlideIcons/>
 			</div>
 		    <span className="linear-gradient-cover absolute inset-0 left-0 bottom-0"></span>
 		    {/* <span className="absolute top-0 bottom-0 left-0  w-[0.24rem] lg:w-[3rem] bg-linear-to-r from-white to-white-10"></span> */}
@@ -194,11 +204,10 @@ function EcosystemContainer({isMobileDevice, smallScreenRatioDecimal}) {
 	)
 }
 
-function TestimonialSlideIcons({isMobileDevice, smallScreenRatioDecimal}) {
-	let scaleRatio = isMobileDevice? smallScreenRatioDecimal * 0.65 : 1
+function TestimonialSlideIcons() {
 	return (
 		<div className="flex items-center gap-[0.4rem] mr-[0.4rem] lg:gap-[0.4rem] lg:mr-[0.4rem]">
-			{TestimonialIcons.map((e, index) => <span className="flex items-center justify-center h-[0.48rem] lg:h-[0.48rem] cursor-pointer hover:brightness-0" key={index}><img src={e} alt={e.split('/')[-1]} className="h-[0.48rem] lg:h-[0.48rem] object-fit object-center"></img></span>)}
+			{TestimonialIcons.map((e, index) => <span className="flex items-center justify-center h-[0.54rem] lg:h-[0.54rem] cursor-pointer hover:brightness-0" key={index}><img src={e} loading="lazy" alt={e.split('/')[-1]} className="h-[0.54rem] lg:h-[0.54rem] object-fit object-center"></img></span>)}
 		</div>
 	)
 }
@@ -208,7 +217,7 @@ function TeamMemberCard({name, avatar, description, title, role}) {
 	return (
 		<article className="box-border border border-[0.03rem] lg:border-[4px] rounded-[0.16rem] w-[2.2rem] lg:w-[3.66rem] h-[3.3rem] lg:h-[5.11rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<div className={`overflow-hidden top-0 rounded-0 flex max-h-full min-h-full min-w-full max-w-full flex-col justify-between`}>
-				<img src={avatar} className="mx-auto w-[2.2rem] h-[2.2rem] lg:w-[3.66rem] lg:h-[3.66rem] object-cover object-center"></img>
+				<img src={avatar} loading="lazy" className="mx-auto w-[2.2rem] h-[2.2rem] lg:w-[3.66rem] lg:h-[3.66rem] object-cover object-center"></img>
 				<div className="w-full px-[0.2rem] lg:px-[0.24rem] py-[0.2rem] ">
 					<header className="capitalize text-[0.28rem] leading-[0.28rem] lg:text-[0.4rem] lg:leading-[0.4rem] tracking-[-2%] text-nowrap">{name}</header>
 					<p className="capitalize mt-[0.08rem] text-[0.12rem] lg:text-[0.16rem]">{role}</p>

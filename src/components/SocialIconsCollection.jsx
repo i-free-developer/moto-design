@@ -13,7 +13,7 @@ const SiteLinks = [
 ]
 
 function SocialIconLinkItem({url, imgPath}) {
-	return(<a href={url} target="_blank" className="flex items-center cursor-pointer transition duration-150 active:scale-110 hover:scale-110"><img src={imgPath} className="h-[0.2rem] object-fit object-center"></img></a>)
+	return(<a href={url} target="_blank" className="flex items-center cursor-pointer transition duration-150 active:scale-110 hover:scale-110"><img src={imgPath} loading="lazy" className="h-[0.2rem] object-fit object-center"></img></a>)
 }
 
 function StarIcon() {
@@ -33,6 +33,10 @@ function ArrowOnlyIcon() {
 			<rect x="0.999512" y="5.88672" width="10" height="2" fill="#161619"/>
 		</svg>
 	)
+}
+
+function MobileArrowBtn() {
+	return (<img src="/moto-icon-arrow-only.png" loading="lazy" className="w-1/2 h-1/2 object-cover object-center"></img>)
 }
 
 function PerkIconOne() {
@@ -145,5 +149,5 @@ const PerkIconsArray = {
 	'10': <PerkIconTen/>,
 }
 
-export { SocialIconItems, SiteLinks, SocialIconLinkItem, StarIcon, ArrowOnlyIcon, PerkIconsArray}
+export { SocialIconItems, SiteLinks, SocialIconLinkItem, StarIcon, ArrowOnlyIcon, PerkIconsArray, MobileArrowBtn}
 

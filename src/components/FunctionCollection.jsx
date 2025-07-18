@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, useLayoutEffect } from 'react'
 
 import { throttle } from 'lodash';
 
@@ -97,7 +97,16 @@ function useScreenRatio() {
   const [smallScreenRatioInt, setSmallScreenRatioInt] = useState(100)
   const [smallScreenRatioDecimal, setSmallScreenRatioDecimal] = useState(1.0)
 
+  function processResponsive() {
+    addLoadedClass()
+    resizeScreen()
+    setScreenRatios()
+  }
+
+  function addLoadedClass() { document.documentElement.classList.add('loaded'); document.body.classList.add('loaded') }
+
   function resizeScreen() {
+    console.log('resizeScreen', performance.now())
     let windowWidth = document.documentElement.clientWidth;
 
     if (windowWidth <= designedSmallWidth) {
@@ -113,7 +122,7 @@ function useScreenRatio() {
       setIsMobileDevice(false)
       if (document.documentElement.style.fontSize != '90px') {document.documentElement.style.fontSize = baseSize * 1 * bigScreenFixedRatio + 'px'} 
     }
-    setScreenRatios()
+    // console.log('reactjs', performance.now())
   }
 
   function setScreenRatios() {
@@ -134,49 +143,40 @@ function useScreenRatio() {
       setBigScreenRatioDecimal(1.0)
     }
   }
+  // requestAnimationFrame(processResponsive)
+  // DOMContentLoaded
+  useLayoutEffect(() => {
+    window.addEventListener("DOMContentLoaded", processResponsive);
+    window.addEventListener('load', processResponsive)
+    window.addEventListener('resize', processResponsive)
+    window.addEventListener('pageshow', processResponsive)
+    window.addEventListener('load', addLoadedClass)
+    window.addEventListener('scroll', addLoadedClass)
+    window.addEventListener('click', addLoadedClass)
+    window.addEventListener('keydown', addLoadedClass)
+    window.addEventListener('mousemove', addLoadedClass)
+    window.addEventListener('touchstart', addLoadedClass)
 
-  useEffect(() => {
-    window.addEventListener('load', () => { requestAnimationFrame(resizeScreen) })
-    window.addEventListener('resize', () => { requestAnimationFrame(resizeScreen) })
 
     return () => {
-      window.removeEventListener('load', resizeScreen);
-      window.removeEventListener('resize', resizeScreen);
+      window.removeEventListener('DOMContentLoaded', processResponsive);
+      window.removeEventListener('load', processResponsive);
+      window.removeEventListener('resize', processResponsive);
+      window.removeEventListener('pageshow', processResponsive);
+      window.removeEventListener('load', addLoadedClass);
+      window.removeEventListener('scroll', addLoadedClass)
+      window.removeEventListener('click', addLoadedClass)
+      window.removeEventListener('keydown', addLoadedClass)
+      window.removeEventListener('mousemove', addLoadedClass)
+      window.removeEventListener('touchstart', addLoadedClass)
     };
   }, []);
   return {isMobileDevice, bigScreenRatioInt, bigScreenRatioDecimal, smallScreenRatioInt, smallScreenRatioDecimal}
 }
 
-function useSmallScreenRatio() {
-  const designedSmallWidth = 750; // 设计稿宽度
-  const baseSize = 100; // 基准值 (1rem = 100px)
-  const [smallScreenRatioInt, setSmallScreenRatioInt] = useState(100)
-  const [smallScreenRatioDecimal, setSmallScreenRatioDecimal] = useState(1.0)
-  
-  function resizeSmallScreen() {
-    let windowWidth = document.documentElement.clientWidth;
-
-    let smallScreenRatio = windowWidth / designedSmallWidth;
-    let smallScreenRatioDecimalRaw = parseFloat((windowWidth / designedSmallWidth).toFixed(2))
-    console.log('resizeSmallScreen', smallScreenRatio, smallScreenRatioDecimalRaw, Math.round(smallScreenRatio * 100))
-    setSmallScreenRatioInt(Math.round(smallScreenRatio * 100))
-    setSmallScreenRatioDecimal(smallScreenRatioDecimalRaw)
-  }
-
-  useEffect(() => {
-    window.addEventListener('load', () => { requestAnimationFrame(resizeSmallScreen) })
-    window.addEventListener('resize', () => { requestAnimationFrame(resizeSmallScreen) })
-
-    return () => {
-      window.removeEventListener('load', resizeSmallScreen);
-      window.removeEventListener('resize', resizeSmallScreen);
-    }
-  }, [])
-  return {smallScreenRatioInt, smallScreenRatioDecimal}
-}
-
 import Odometer from 'odometer';
 import 'odometer/themes/odometer-theme-default.css';
+// import '../assets/odometer-theme-default.css';
 
 function OdometerItem ({ value, format = '(,ddd)', duration = 2500 }) {
   const odometerRef = useRef(null);
@@ -208,4 +208,4 @@ function OdometerItem ({ value, format = '(,ddd)', duration = 2500 }) {
   return (<span ref={odometerRef} className="odometer min-w-content" />);
 }
 
-export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler, isElementInViewport, OdometerItem, useScreenRatio, useSmallScreenRatio, useHoverHandler }
+export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler, isElementInViewport, OdometerItem, useScreenRatio, useHoverHandler }

@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 import { CopyRight, CompanyEmail, SubmittedImg, ApiPath } from '../data/site-data'
 import Navbar from './Navbar'
-import { StarIcon, ArrowOnlyIcon } from './SocialIconsCollection'
+import { StarIcon, ArrowOnlyIcon, MobileArrowBtn } from './SocialIconsCollection'
 import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
 
 const SelectOptions = ['Website Design', 'App UI/UX Design', 'Full Brand VI System', 'Graphic Design', '3D Animation & Visual Effects', 'Web3 Strategy Consulting', 'NFT Artwork & Design', 'Social Media Visuals', 'Brand Partnership', 'Other']
@@ -68,9 +68,9 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 
 	const handleFormFieldChange = (field, value) => {
 		// console.log('field: ',field, 'value: ', value)
-		if (field == 'name') {setUserName(value); setNameIsValid(value.length > 0); setFormIsValid(userEmail.length > 0 && (value.length > 0) && userRole.length > 0 && teamData.length > 0)}
-		if (field == 'role') {setUserRole(value); setRoleIsValid(value.length > 0); setFormIsValid(userEmail.length > 0 && (value.length > 0) && userName.length > 0 && teamData.length > 0)}
-		if (field == 'team') {setTeamData(value); setTeamIsValid(value.length > 0); setFormIsValid(userEmail.length > 0 && (value.length > 0) && userRole.length > 0 && userName.length > 0)}
+		if (field == 'name') {setUserName(value); setNameIsValid(value.length >= 0); setFormIsValid(userEmail.length > 0 && (value.length > 0) && userRole.length > 0 && teamData.length > 0)}
+		if (field == 'role') {setUserRole(value); setRoleIsValid(value.length >= 0); setFormIsValid(userEmail.length > 0 && (value.length > 0) && userName.length > 0 && teamData.length > 0)}
+		if (field == 'team') {setTeamData(value); setTeamIsValid(value.length >= 0); setFormIsValid(userEmail.length > 0 && (value.length > 0) && userRole.length > 0 && userName.length > 0)}
 		if (field == 'email') {let emailValid = validateEmail(value); setUserEmail(value); setEmailIsValid(emailValid); setFormIsValid(emailValid && userRole.length > 0 && userName.length > 0 && teamData.length > 0)}
 
 	}
@@ -184,8 +184,9 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 
 function ButtonMobile({formIsValid, loading, handleFinalCheck}) {
 	return (
-		<button onClick={handleFinalCheck} className={`${ !formIsValid ? 'bg-black/50' : 'bg-black'} cursor-pointer text-[0.32rem] font-medium px-[0.32rem] py-[0.08rem] rounded-full text-white flex items-center justify-center`}>
+		<button onClick={handleFinalCheck} className={`${ !formIsValid ? 'bg-black/50' : 'bg-black'} cursor-pointer text-[0.32rem] font-medium pl-[0.32rem] pr-[0.08rem] py-[0.08rem] rounded-full text-white flex items-center justify-center`}>
 			{loading ? 'Submitting...' : 'Submit'}
+			<span className="size-[0.48rem] bg-white rounded-full flex items-center justify-center ml-[0.2rem]"><MobileArrowBtn/></span>
 		</button>
 	)
 }

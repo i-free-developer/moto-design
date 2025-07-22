@@ -35,7 +35,7 @@ export default function App() {
   return (
     <BrowserRouter className="mx-auto">
       <ScrollToTop/>
-      { !isMobileDevice && <CursorDot/>}
+      <CursorDot/>
       <Routes>
           <Route exact path="/" element={<Home loadingPercentage={loadingPercentage} isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />
           <Route exact path="/about" element={<About isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>} />

@@ -1,8 +1,9 @@
+import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import Navbar from './Navbar'
 import { HeaderSvgDesktop } from './HeaderSvg'
 import { ServicesItems, CompanyDomain } from '../data/site-data'
-import { useDrawerHandler, useScreenRatio, useHoverHandler } from './FunctionCollection'
+import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
 import { ArrowOnlyIcon } from './SocialIconsCollection'
 
 const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'section-drawer-out'}
@@ -10,10 +11,20 @@ const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'sectio
 // const serviceClasses = {initial: '', opened: 'horizontal-bar-out', closed: 'horizontal-bar-in'}
 
 export default function HomePageDesktop({smallScreenRatioDecimal}) {
+	const designedBigWidth = 1920; // 设计稿宽度
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
-	let {bigScreenRatioDecimal} = useScreenRatio()
-	bigScreenRatioDecimal = bigScreenRatioDecimal / 0.9
 	const headerClassName = headerClasses[drawerStatus]
+  	const [bigScreenRatioDecimal, setBigScreenRatioDecimal] = useState(1.0)
+
+  	useEffect(() => {
+    	let windowWidth = document.documentElement.clientWidth;
+		if (windowWidth <= designedBigWidth) {
+			let bigScreenRatioDecimalRaw = parseFloat((windowWidth / designedBigWidth).toFixed(2))
+			setBigScreenRatioDecimal(bigScreenRatioDecimalRaw)
+		} else {
+			setBigScreenRatioDecimal(1.0)
+		}
+  	}, [])
 
 	return (
 		<main id="home" className="min-h-screen lg:max-h-screen overflow-hidden relative">

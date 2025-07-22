@@ -92,12 +92,10 @@ function useScreenRatio() {
   const baseSize = 100; // 基准值 (1rem = 100px)
   const bigScreenFixedRatio = 0.9
   const [isMobileDevice, setIsMobileDevice] = useState(false)
-  const [bigScreenRatioInt, setBigScreenRatioInt] = useState(1)
-  const [bigScreenRatioDecimal, setBigScreenRatioDecimal] = useState(1.0)
-  const [smallScreenRatioInt, setSmallScreenRatioInt] = useState(100)
   const [smallScreenRatioDecimal, setSmallScreenRatioDecimal] = useState(1.0)
 
   function processResponsive() {
+    console.log('00000')
     resizeScreen()
     setScreenRatios()
   }
@@ -127,35 +125,26 @@ function useScreenRatio() {
     if (windowWidth <= designedSmallWidth) {
       let smallScreenRatio = windowWidth / designedSmallWidth;
       let smallScreenRatioDecimalRaw = parseFloat((windowWidth / designedSmallWidth).toFixed(2))
-      // console.log('resizeSmallScreen', smallScreenRatio, smallScreenRatioDecimalRaw, Math.round(smallScreenRatio * 100))
-      setSmallScreenRatioInt(Math.round(smallScreenRatio * 100))
       setSmallScreenRatioDecimal(smallScreenRatioDecimalRaw)
-    } else if (windowWidth <= designedBigWidth) {
-      let bigScreenRatio = windowWidth / designedBigWidth;
-      let bigScreenRatioDecimalRaw = parseFloat((windowWidth / designedBigWidth).toFixed(2)) * bigScreenFixedRatio
-      setBigScreenRatioInt(Math.round(bigScreenRatio * 100))
-      setBigScreenRatioDecimal(bigScreenRatioDecimalRaw)
-    } else {
-      setBigScreenRatioInt(100)
-      setBigScreenRatioDecimal(1.0)
     }
   }
   // requestAnimationFrame(processResponsive)
   // DOMContentLoaded
   useLayoutEffect(() => {
-    window.addEventListener("DOMContentLoaded", processResponsive);
+    processResponsive()
+    // window.addEventListener("DOMContentLoaded", processResponsive);
     window.addEventListener('load', processResponsive)
     window.addEventListener('resize', processResponsive)
     window.addEventListener('pageshow', processResponsive)
 
     return () => {
-      window.removeEventListener('DOMContentLoaded', processResponsive);
+      // window.removeEventListener('DOMContentLoaded', processResponsive);
       window.removeEventListener('load', processResponsive);
       window.removeEventListener('resize', processResponsive);
       window.removeEventListener('pageshow', processResponsive);
     }
   }, []);
-  return {isMobileDevice, bigScreenRatioInt, bigScreenRatioDecimal, smallScreenRatioInt, smallScreenRatioDecimal}
+  return {isMobileDevice, smallScreenRatioDecimal}
 }
 
 import Odometer from 'odometer';

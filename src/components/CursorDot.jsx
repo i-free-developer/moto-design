@@ -15,7 +15,7 @@ export default function CursorsDot() {
   }, []);
 
   return (
-    <div className="fixed left-0 top-0 w-100vw h-1vh cursor-none pointer-events-none z-300 will-change-transform">
+    <div className="hidden lg:block fixed left-0 top-0 w-100vw h-1vh cursor-none pointer-events-none z-300 will-change-transform">
       <div style={{transform: `translate(${position.x}px, ${position.y}px)`}}
       className="absolute -translate-1/2 border border-[1px] rounded-[50%] size-[0.32rem] lg:size-[24px] ease-out transition-transform duration-400 ease-in-out"></div>
       

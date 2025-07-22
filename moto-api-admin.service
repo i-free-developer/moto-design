@@ -1,0 +1,29 @@
+# scp moto-api-admin.service root@www.motodesign.cn:/lib/systemd/system/
+# /lib/systemd/system (Ubuntu)
+# sudo systemctl enable moto-api-admin
+# sudo systemctl start moto-api-admin
+[Unit]
+Description=Moto Backend Production
+After=network.target
+
+[Service]
+Type=simple
+
+User=deploy
+Group=deploy
+UMask=0022
+WorkingDirectory=/home/deploy/production/moto-admin/current
+#PIDFile=/home/deploy/production/moto-admin/current/tmp/pids/puma.pid
+EnvironmentFile=/home/deploy/production/moto-admin/current/config/env
+
+ExecStart=/home/deploy/.rbenv/shims/bundle exec puma -C /home/deploy/production/moto-admin/current/config/puma/puma_production.rb
+ExecStop=/home/deploy/.rbenv/shims/bundle exec puma -C /home/deploy/production/moto-admin/current/config/puma/puma_production.rb
+
+TimeoutSec=100
+Restart=always
+KillMode=process
+#RestartSec=5
+SyslogIdentifier=moto-backend
+
+[Install]
+WantedBy=multi-user.target

@@ -1,3 +1,6 @@
+scp nginx.conf root@www.motodesign.cn:/etc/nginx/
+scp www.motodesign.cn.conf root@www.motodesign.cn:/etc/nginx//conf.d
+
 ##### deploy
 scp -r dist/* deploy@moto.shanghaipadel.com:staging/dist
 

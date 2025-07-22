@@ -11,12 +11,15 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y curl git build-essential
 
 # 使用 NodeSource 安装最新 LTS 版本
-curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt install -y nodejs
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - sudo apt install -y nodejs
 
 # 验证安装
 node -v
 npm -v
+
+Domain: assets.motodesign.cn
+  Type:   dns
+  Detail: no valid A records found for assets.motodesign.cn; no valid AAAA records found for assets.motodesign.cn
 
 # 安装 Nginx
 sudo apt install -y nginx

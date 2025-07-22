@@ -185,17 +185,17 @@ function EcosystemHeader() {
 function EcosystemContainer() {
 	return (
 		<div className="m-auto w-full flex items-center overflow-hidden gap--[0.32rem] lg:gap--[8rem] py-[0.8rem] lg:py-[1.6rem] mt-[0.8rem] lg:mt-[0.64rem] relative">
-			<div className="flex items-center gap--[0.32rem] lg:gap--[8rem] grow-0 shrink-0 icons-scroll mr-[0.4rem]">
+			<div className="flex items-center gap--[0.32rem] lg:gap--[8rem] grow-0 shrink-0 icons-scroll mr-[0.3rem] lg:mr-[0.4rem]">
 				<TestimonialSlideIcons/>
 				<TestimonialSlideIcons/>
 				<TestimonialSlideIcons/>
-				<TestimonialSlideIcons/>
+				{/* <TestimonialSlideIcons/> */}
 			</div>
 			<div aria-hidden className="flex items-center gap--[0.32rem] lg:gap--[8rem] grow-0 shrink-0 icons-scroll">
 				<TestimonialSlideIcons/>
 				<TestimonialSlideIcons/>
 				<TestimonialSlideIcons/>
-				<TestimonialSlideIcons/>
+				{/* <TestimonialSlideIcons/> */}
 			</div>
 		    <span className="linear-gradient-cover absolute inset-0 left-0 bottom-0"></span>
 		    {/* <span className="absolute top-0 bottom-0 left-0  w-[0.24rem] lg:w-[3rem] bg-linear-to-r from-white to-white-10"></span> */}
@@ -206,8 +206,8 @@ function EcosystemContainer() {
 
 function TestimonialSlideIcons() {
 	return (
-		<div className="flex items-center gap-[0.4rem] mr-[0.4rem] lg:gap-[0.4rem] lg:mr-[0.4rem]">
-			{TestimonialIcons.map((e, index) => <span className="flex items-center justify-center h-[0.54rem] lg:h-[0.54rem] cursor-pointer hover:brightness-0" key={index}><img src={e} loading="lazy" alt={e.split('/')[-1]} className="h-[0.54rem] lg:h-[0.54rem] object-fit object-center"></img></span>)}
+		<div className="flex items-center gap-[0.3rem] mr-[0.3rem] lg:gap-[0.4rem] lg:mr-[0.4rem]">
+			{TestimonialIcons.map((e, index) => <span className="flex items-center justify-center h-[0.48rem] lg:h-[0.54rem] cursor-pointer hover:brightness-0" key={index}><img src={e} loading="lazy" alt={e.split('/')[-1]} className="h-[0.48rem] lg:h-[0.54rem] object-fit object-center"></img></span>)}
 		</div>
 	)
 }
@@ -216,7 +216,7 @@ function TeamMemberCard({name, subtitle, avatar, description, title}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
 	return (
 		<article className="box-border border border-[0.03rem] lg:border-[4px] rounded-[0.16rem] w-[2.2rem] lg:w-[3.66rem] h-[3.4rem] lg:h-[5.11rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-			<div className={`overflow-hidden top-0 rounded-0 flex max-h-full min-h-full min-w-full max-w-full flex-col justify-between`}>
+			<div className={`overflow-hidden top-0 rounded-0 max-h-full min-h-full min-w-full max-w-full`}>
 				<div className="mx-auto w-[2.2rem] h-[2.2rem] lg:w-[3.66rem] lg:h-[3.66rem]"><img src={avatar} loading="lazy" className="object-cover object-center scale-103"></img></div>
 				<div className="w-full mt-0 px-[0.2rem] pt-[0.16rem] pb-[0.12rem] lg:py-[0.2rem] lg:pb-[0.24rem]">
 					<header className="capitalize text-[0.28rem] leading-[0.28rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-normal tracking-[-2%] text-nowrap">{name}</header>

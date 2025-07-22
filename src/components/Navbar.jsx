@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import '../assets/animations.css';
-import { CompanyEmail } from '../data/site-data'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem } from './SocialIconsCollection'
 import { useScrollDirection, useHoverHandler } from './FunctionCollection'
+import { EmailCard } from './Footer'
 
 export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer, smallScreenRatioDecimal, bigScreenRatioDecimal, frostedGlass = false}) {
 	const scrollDirection = useScrollDirection();
@@ -85,7 +85,7 @@ function SocialIconsContainer() {
         		{SocialIconItems.map((item, index) => <SocialIconLinkItem {...item} key={index} />)}
 			</div>
 			<hr className="border border-[0.8px] mt-[0.32rem] lg:mt-[0.24rem] w-full w--[2.32rem] lg:w--[13rem]"></hr>
-			<p className="text-[0.12rem] lg:text-[0.12rem] font-medium text-[#161619]/48 mt-[0.24rem] lg:mt-[0.24rem]">{CompanyEmail}</p>
+			<p className="text-[0.12rem] lg:text-[0.12rem] font-medium text-[#161619]/48 mt-[0.24rem] lg:mt-[0.24rem]"><EmailCard/></p>
 		</div>
 	)
 }

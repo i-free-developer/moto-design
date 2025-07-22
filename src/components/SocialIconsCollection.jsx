@@ -36,7 +36,7 @@ function ArrowOnlyIcon() {
 }
 
 function MobileArrowBtn() {
-	return (<img src="/moto-icon-arrow-only.png" loading="lazy" className="w-1/2 h-1/2 object-cover object-center"></img>)
+	return (<img src="/moto-icon-arrow-only.png" loading="lazy" className="w-[40%] h-[40%] object-cover object-center"></img>)
 }
 
 function PerkIconOne() {

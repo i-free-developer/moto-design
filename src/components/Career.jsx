@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
-import { TimelineItems, PerkItemsData, OpenningRoles, CompanyEmail } from '../data/site-data'
+import { TimelineItems, PerkItemsData, OpenningRoles } from '../data/site-data'
 import Navbar from './Navbar'
-import { StarIcon, ArrowOnlyIcon, PerkIconsArray, MobileArrowBtn} from './SocialIconsCollection'
-import { SiteInfoCard,  SiteFooter } from './Footer'
+import { StarIcon, ArrowOnlyIcon, MobileArrowBtn} from './SocialIconsCollection'
+import { SiteInfoCard,  SiteFooter, EmailCard } from './Footer'
 import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
 
 export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
@@ -211,7 +211,7 @@ export function HowToApply() {
 		<div className="tracking-[-2%] w-full mx-auto">
 			<h2 className="uppercase font-bold text-[0.48rem] lg:text-[0.8rem] lg:leading-[0.8rem]">how to apply</h2>
 			<div className="mt-[0.48rem] lg:mt-[0.48rem] lg:flex">
-				<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.4rem]">Send your CV and portfolio to <span className="font-bold">({CompanyEmail})</span>,&nbsp;</p>
+				<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.4rem]">Send your CV and portfolio to <span className="font-bold"><EmailCard/></span>,&nbsp;</p>
 				<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.4rem]">with the subject "<span className="font-bold">Position + Name</span>".</p>
 			</div>
 			<p className="text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.4rem]">We’re not just hiring doers—we’re looking for partners in creation.</p>

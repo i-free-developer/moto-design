@@ -98,15 +98,12 @@ function useScreenRatio() {
   const [smallScreenRatioDecimal, setSmallScreenRatioDecimal] = useState(1.0)
 
   function processResponsive() {
-    addLoadedClass()
     resizeScreen()
     setScreenRatios()
   }
 
-  function addLoadedClass() { document.documentElement.classList.add('loaded'); document.body.classList.add('loaded') }
-
   function resizeScreen() {
-    console.log('resizeScreen', performance.now())
+    // console.log('resizeScreen', performance.now())
     let windowWidth = document.documentElement.clientWidth;
 
     if (windowWidth <= designedSmallWidth) {
@@ -150,26 +147,13 @@ function useScreenRatio() {
     window.addEventListener('load', processResponsive)
     window.addEventListener('resize', processResponsive)
     window.addEventListener('pageshow', processResponsive)
-    window.addEventListener('load', addLoadedClass)
-    window.addEventListener('scroll', addLoadedClass)
-    window.addEventListener('click', addLoadedClass)
-    window.addEventListener('keydown', addLoadedClass)
-    window.addEventListener('mousemove', addLoadedClass)
-    window.addEventListener('touchstart', addLoadedClass)
-
 
     return () => {
       window.removeEventListener('DOMContentLoaded', processResponsive);
       window.removeEventListener('load', processResponsive);
       window.removeEventListener('resize', processResponsive);
       window.removeEventListener('pageshow', processResponsive);
-      window.removeEventListener('load', addLoadedClass);
-      window.removeEventListener('scroll', addLoadedClass)
-      window.removeEventListener('click', addLoadedClass)
-      window.removeEventListener('keydown', addLoadedClass)
-      window.removeEventListener('mousemove', addLoadedClass)
-      window.removeEventListener('touchstart', addLoadedClass)
-    };
+    }
   }, []);
   return {isMobileDevice, bigScreenRatioInt, bigScreenRatioDecimal, smallScreenRatioInt, smallScreenRatioDecimal}
 }

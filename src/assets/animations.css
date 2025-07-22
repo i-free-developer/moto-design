@@ -209,17 +209,6 @@ body * {
   scrollbar-width: none !important;     /* Firefox */
 }
 
-.border-inset {
-	border-style: inset;
-}
-
-a > svg {
-	overflow: visible !important;
-	display: block;
-  width: 100%;
-  height: auto;
-}
-
 .linear-gradient-cover {
 	background: linear-gradient(90deg, #F7F7F7, transparent 10%, transparent 90%, #F7F7F7);
 }

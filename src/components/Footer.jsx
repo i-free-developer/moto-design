@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { SocialIconItems, SiteLinks, SocialIconLinkItem} from './SocialIconsCollection'
 import { CopyRight, CompanyEmail } from '../data/site-data'
 import { Link } from "react-router-dom"
@@ -81,12 +82,20 @@ function SiteFooter({isMobileDevice, smallScreenRatioDecimal}) {
       <div className="col-span-1 flex items-center"><Link to="/" ><span className="">{ isMobileDevice ? <LogoIconMobile scaleRatio={smallScreenRatioDecimal}/> : <LogoIconDesktop/> }</span></Link></div>
       <div className="mx-auto col-span-1 flex justify-center items-center mr-0 lg:mr-[0.6rem]">
         <div className="mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-center items-end font-medium">
-          <p className="text-[0.12rem] leading-[0.16rem] lg:text-[0.2rem] lg:leading-[0.2rem]">{CompanyEmail}</p>
+          <p className="text-[0.12rem] leading-[0.16rem] lg:text-[0.2rem] lg:leading-[0.2rem]"><EmailCard/></p>
           <p className="text-[0.12rem] leading-[0.16rem] lg:text-[0.16rem] lg:leading-[0.2rem] lg:ml-[1.8rem]">{CopyRight}</p>
         </div>
       </div>
     </div>
   )
+}
+
+function EmailCard() {
+  const [email, setEmail] = useState(CompanyEmail)
+  useEffect(() => {
+
+  }, [])
+  return (<span>{email}</span>)
 }
 
 function LogoIconMobile({scaleRatio}) {
@@ -109,4 +118,4 @@ function LogoIconDesktop() {
   )
 }
 
-export { SiteInfoCard,  SiteFooter }
+export { SiteInfoCard,  SiteFooter, EmailCard }

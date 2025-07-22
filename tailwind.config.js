@@ -4,7 +4,7 @@ module.exports = {
     screens: {
       'sm': {'max': '750px'},  // Phones: 0px -> 767px
       // 'md': {'min': '768px', 'max': '1023px'}, // Tablets
-      'lg': {'min': '751px', 'max': '1920px'}, // Desktops and above
+      'lg': {'min': '751px'}, // Desktops and above
     },
     extend: {
       fontFamily: {

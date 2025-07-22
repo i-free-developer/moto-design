@@ -3,7 +3,7 @@ import { PortfolioData } from '../data/site-data'
 import Navbar from './Navbar'
 import { useDrawerHandler } from './FunctionCollection'
 
-export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
+export default function RolePage({smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 	const { id } = useParams();
 	const item = PortfolioData.desktop.find(e => e.id == id)

@@ -1,8 +1,9 @@
 import { useState, useCallback } from 'react'
-import { CopyRight, CompanyEmail, SubmittedImg, ApiPath } from '../data/site-data'
+import { CopyRight, SubmittedImg, ApiPath } from '../data/site-data'
 import Navbar from './Navbar'
 import { StarIcon, ArrowOnlyIcon, MobileArrowBtn } from './SocialIconsCollection'
 import { useDrawerHandler, useHoverHandler } from './FunctionCollection'
+import { EmailCard } from './Footer'
 
 const SelectOptions = ['Website Design', 'App UI/UX Design', 'Full Brand VI System', 'Graphic Design', '3D Animation & Visual Effects', 'Web3 Strategy Consulting', 'NFT Artwork & Design', 'Social Media Visuals', 'Brand Partnership', 'Other']
 
@@ -46,7 +47,7 @@ function ContactContainer({isMobileDevice, smallScreenRatioDecimal}) {
 				<FormBody displayCard={displayCard} setDisplayCard={setDisplayCard} isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
       		</div>
       		<div className="absolute bottom-[0.32rem] lg:bottom-[0.32rem] left-[0.32rem] lg:left-[0.32rem] w-[50%] lg:w-[40%]"><ThankYouCard/></div>
-			<div className="absolute bottom-[0.32rem] lg:bottom-[0.32rem] right-[0.32rem] lg:right-[0.32rem] w-[40%] lg:w-[30%] flex items-center justify-end"><ContactEmailCard/></div>
+			<div className="absolute bottom-[0.32rem] lg:bottom-[0.32rem] right-[0.32rem] lg:right-[0.32rem] w-[40%] lg:w-[30%] flex items-center justify-end"><ContactEmailContainer/></div>
 		</div>
 	)
 }
@@ -151,7 +152,7 @@ function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  is
 				<div className="text-[0.36rem] leading-[0.36rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-medium w-full flex items-center flex-wrap lg:flex-nowrap">
 					<span className="mt-[0.2rem] lg:mt-0 ">I’m looking for a creative team to help  with</span>
 					<span className={`${ teamIsValid ? 'border-black/40 ' : 'border-[#FF0000]'} mt-[0.2rem] lg:mt-0 grow relative lg:w-[6rem] lg:ml-[0.12rem] border-b-[1.5px] flex justify-center items-center`}>
-						<input onClick={() => setDisplayCard(!displayCard)} autoComplete="off" name="team" value={teamData} onChange={e => {}} onBlur={e => handleFormFieldBlur('team', e.target.value)} onFocus={e => handleFormFieldFocus('team', e.target.value)}
+						<input onClick={() => setDisplayCard(!displayCard)} autoComplete="off" name="service" value={teamData} onChange={e => {}} onBlur={e => handleFormFieldBlur('team', e.target.value)} onFocus={e => handleFormFieldFocus('team', e.target.value)}
 							className="cursor-pointer border-none w-full text-center placeholder:text-center h-[0.32rem] text-[0.16rem] leading-[0.16rem]" placeholder="What type of service are you looking for*"></input>
 						<span className={`${ displayCard ? 'text-black' : 'text-black/40'}`}><ArrIcons/></span>
 						<SelectCard displayCard={displayCard} setTeamData={setTeamData} handleFormFieldChange={handleFormFieldChange}/>
@@ -263,11 +264,11 @@ function ThankYouCard() {
 	)
 }
 
-function ContactEmailCard() {
+function ContactEmailContainer() {
 	return (
 		<div className="w-full my-auto text-right font-medium">
       		<p className="text-[0.12rem] lg:text-[0.16rem]">Email Address</p>
-      		<p className="text-[0.14rem] lg:text-[0.28rem]">{CompanyEmail}</p>
+      		<p className="text-[0.14rem] lg:text-[0.28rem]"><EmailCard/></p>
     	</div>
 	)
 }

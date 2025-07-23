@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
-import { PortfolioData, HandImg } from '../data/site-data'
+import { PortfolioData, HandImg, ApiPath } from '../data/site-data'
 import Navbar from './Navbar'
 import { SiteInfoCard,  SiteFooter } from './Footer'
-import { useDrawerHandler, useHoverHandler, ScrollToTop } from './FunctionCollection'
+import { useDrawerHandler, useHoverHandler, ScrollToTop, useApi } from './FunctionCollection'
 
 export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 	const [isMobile, setIsMobile] = useState(false)
@@ -15,6 +15,12 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 	useEffect(() => {
 		setPortfolioItems(PortfolioData)
 		setCurrentPortfolio(PortfolioData.desktop[0])
+		async function fetchData() {
+			const data = await useApi(`${ApiPath()}/portfolios`)
+			// console.log(data.data)
+			if (data.data && data.data.desktop && data.data.mobile) {setPortfolioItems(data.data)}
+		}
+		fetchData()
 	}, [])
 
 	function closeOverlay() {setDiaplayOverlay(false); setCurrentPortfolio({})}

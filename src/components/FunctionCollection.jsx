@@ -95,7 +95,7 @@ function useScreenRatio() {
   const [smallScreenRatioDecimal, setSmallScreenRatioDecimal] = useState(1.0)
 
   function processResponsive() {
-    console.log('00000')
+    // console.log('processResponsive')
     resizeScreen()
     setScreenRatios()
   }
@@ -181,4 +181,12 @@ function OdometerItem ({ value, format = '(,ddd)', duration = 2500 }) {
   return (<span ref={odometerRef} className="odometer min-w-content" />);
 }
 
-export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler, isElementInViewport, OdometerItem, useScreenRatio, useHoverHandler }
+async function useApi (url) {
+  try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data
+  } catch (err) {}
+}
+
+export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler, isElementInViewport, OdometerItem, useScreenRatio, useHoverHandler, useApi }

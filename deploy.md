@@ -1,8 +1,20 @@
 scp nginx.conf root@www.motodesign.cn:/etc/nginx/
-scp www.motodesign.cn.conf root@www.motodesign.cn:/etc/nginx//conf.d
+scp www.motodesign.cn.conf root@www.motodesign.cn:/etc/nginx/conf.d/
+scp api.motodesign.cn.conf root@www.motodesign.cn:/etc/nginx/conf.d/
 
 ##### deploy
 scp -r dist/* deploy@moto.shanghaipadel.com:staging/dist
+scp -r dist/* deploy@www.motodesign.cn:production/dist
+
+AAAA
+
+
+sudo certbot certonly --manual --preferred-challenges dns -d "assets.motodesign.cn" -d motodesign.cn
+sudo certbot certonly --manual --preferred-challenges=dns -d assets.motodesign.cn
+sudo certbot certonly --standalone -d assets.motodesign.cn -d motodesign.cn
+
+sudo certbot renew --dry-run
+
 
 ###### Server
 2core cpu 4G RAM 20 ~ 40G SSD 

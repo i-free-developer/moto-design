@@ -53,8 +53,8 @@ function ContactContainer({isMobileDevice, smallScreenRatioDecimal}) {
 }
 
 function FormBody({displayCard, setDisplayCard, isSubmitted, setIsSubmitted,  isMobileDevice, smallScreenRatioDecimal}) {
-	const { callApi, loading } = useFakeApi(); //useFakeApi();
-	// const { callApi, loading } = usePostApi(); //useFakeApi();
+	// const { callApi, loading } = useFakeApi(); //useFakeApi();
+	const { callApi, loading } = usePostApi(); //useFakeApi();
 	const [userName, setUserName] = useState('')
 	const [userRole, setUserRole] = useState('')
 	const [teamData, setTeamData] = useState('')
@@ -323,7 +323,7 @@ const usePostApi = () => {
 	setLoading(true);
 	setError(null);
 	try {
-		const response = await fetch(ApiPath + 'customers', {
+		const response = await fetch(`${ApiPath()}/customers`, {
 			method: "POST", mode: "cors", cache: "no-cache",
 			headers: { "Content-Type": "application/json"},
 			body: JSON.stringify(data), // body data type must match "Content-Type" header

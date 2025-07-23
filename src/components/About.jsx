@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react'
 import '../assets/site-styles.css';
 import { Navbar } from './Navbar'
 import { AboutHeaderSvg } from './HeaderSvg'
-import { TeamMembers, StatusContents, TestimonialIcons } from '../data/site-data'
-import { useDrawerHandler, OdometerItem, useHoverHandler } from './FunctionCollection'
+import { TeamMembers, StatusContents, TestimonialIcons, ApiPath } from '../data/site-data'
+import { useDrawerHandler, OdometerItem, useHoverHandler, useApi } from './FunctionCollection'
 import { SiteInfoCard,  SiteFooter } from './Footer'
 
 export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
-
+	
 	return (
 		<main className="mx-auto">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true} key="about"/>
@@ -20,12 +20,7 @@ export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 				<AboutStatusContainer smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 				<EcosystemHeader/>
 				<EcosystemContainer/>
-				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
-					<div className="my-[1.2rem] lg:my-[3.52rem] grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-x-[0.2rem] lg:gap-y-[0.4rem]">
-						<OurTeamCard />
-						{TeamMembers.map((item, index) => <TeamMemberCard {...item} key={index} />)}
-					</div>
-				</div>
+				<TeamMemberContainer/>
 				<div className="mt-[-3rem] lg:mt-[-7.5rem]"><SiteInfoCard isMobileDevice={isMobileDevice}/></div>
 				<SiteFooter isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</section>
@@ -207,7 +202,27 @@ function EcosystemContainer() {
 function TestimonialSlideIcons() {
 	return (
 		<div className="flex items-center gap-[0.3rem] mr-[0.3rem] lg:gap-[0.4rem] lg:mr-[0.4rem]">
-			{TestimonialIcons.map((e, index) => <span className="flex items-center justify-center h-[0.48rem] lg:h-[0.54rem] cursor-pointer hover:brightness-0" key={index}><img src={e} loading="lazy" alt={e.split('/')[-1]} className="h-[0.48rem] lg:h-[0.54rem] object-fit object-center"></img></span>)}
+			{TestimonialIcons.map((e, index) => <span className="flex items-center justify-center h-[0.48rem] lg:h-[0.54rem] cursor-pointer hover:brightness-0" key={index}><img src={e} alt={e.split('/')[-1]} className="h-[0.48rem] lg:h-[0.54rem] object-fit object-center"></img></span>)}
+		</div>
+	)
+}
+
+function TeamMemberContainer() {
+	const [teamMemberData, setTeamMemberData] = useState(TeamMembers)
+	useEffect(() => {
+		async function fetchData() {
+			const data = await useApi(`${ApiPath()}/team_members`)
+			console.log(data.data)
+			if (data) {setTeamMemberData(data.data)}
+		}
+		fetchData()
+	}, [])
+	return (
+		<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
+			<div className="my-[1.2rem] lg:my-[3.52rem] grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-x-[0.2rem] lg:gap-y-[0.4rem]">
+				<OurTeamCard />
+				{teamMemberData.map((item, index) => <TeamMemberCard {...item} key={index} />)}
+			</div>
 		</div>
 	)
 }
@@ -220,7 +235,7 @@ function TeamMemberCard({name, subtitle, avatar, description, title}) {
 				<div className="mx-auto w-[2.2rem] h-[2.2rem] lg:w-[3.66rem] lg:h-[3.66rem]"><img src={avatar} loading="lazy" className="object-cover object-center scale-103"></img></div>
 				<div className="w-full mt-0 px-[0.2rem] pt-[0.16rem] pb-[0.12rem] lg:py-[0.2rem] lg:pb-[0.24rem]">
 					<header className="capitalize text-[0.28rem] leading-[0.28rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-normal tracking-[-2%] text-nowrap">{name}</header>
-					<p className="capitalize mt-[0.12rem] text-[0.12rem] leading-[0.12rem] lg:text-[0.14rem] lg:leading-[0.16rem]">{subtitle}</p>
+					<p className="capitalize mt-[0.12rem] text-[0.12rem] leading-[0.14rem] lg:text-[0.14rem] lg:leading-[0.16rem]">{subtitle}</p>
 				</div>
 			</div>
 

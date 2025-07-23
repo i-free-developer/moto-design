@@ -147,6 +147,33 @@ function useScreenRatio() {
   return {isMobileDevice, smallScreenRatioDecimal}
 }
 
+function useBigRatio() {
+  const designedBigWidth = 1920; // 设计稿宽度
+  const [bigScreenRatioDecimal, setBigScreenRatioDecimal] = useState(1.0)
+  function setBigRatio() {
+    const windowWidth = document.documentElement.clientWidth;
+    if (windowWidth <= designedBigWidth) {
+      let bigScreenRatioDecimalRaw = parseFloat((windowWidth / designedBigWidth).toFixed(2))
+      setBigScreenRatioDecimal(bigScreenRatioDecimalRaw)
+    } else {
+      setBigScreenRatioDecimal(1.0)
+    }
+  }
+  useEffect(() => {
+    setBigRatio()
+    window.addEventListener('load', setBigRatio)
+    window.addEventListener('resize', setBigRatio)
+    window.addEventListener('pageshow', setBigRatio)
+
+    return () => {
+      window.removeEventListener('load', setBigRatio);
+      window.removeEventListener('resize', setBigRatio);
+      window.removeEventListener('pageshow', setBigRatio);
+    }
+  }, [])
+  return { bigScreenRatioDecimal }
+}
+
 import Odometer from 'odometer';
 import 'odometer/themes/odometer-theme-default.css';
 // import '../assets/odometer-theme-default.css';
@@ -189,4 +216,4 @@ async function useApi (url) {
   } catch (err) {}
 }
 
-export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler, isElementInViewport, OdometerItem, useScreenRatio, useHoverHandler, useApi }
+export { ScrollToTop, RandomInt, UseThrottle, useScrollDirection, useScrollTo, useDrawerHandler, isElementInViewport, OdometerItem, useScreenRatio, useBigRatio, useHoverHandler, useApi }

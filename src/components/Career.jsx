@@ -12,7 +12,7 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 		<main className="mx-auto">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
 			<section id="career" className="mx-auto pt-[0.32rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem]" onClick={closeDrawer}>
-				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:min-w-screen lg:max-w-[1920px] overflow-x-hidden">
+				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<CareerHeader/>
 					<CareerContenr/>
 				</div>
@@ -27,7 +27,7 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 					<PerksContainer/>
 				</div>
 
-				<div className="px-[0.32rem] lg:px-[0.48rem] lg:mb-[2.88rem] mx-auto w-screen max-w-screen lg:min-w-screen lg:max-w-[1920px] overflow-x-hidden">
+				<div className="px-[0.32rem] lg:px-[0.48rem] lg:mb-[2.88rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<RolesContainer isMobileDevice={isMobileDevice}/>
 					<div className="mt-[2.16rem] mb-[1.66rem] lg:mb-0 lg:mt-[2.8rem]"></div>
 					<HowToApply/>

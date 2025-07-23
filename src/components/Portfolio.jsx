@@ -30,7 +30,7 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 		<main className="mx-auto relative">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
 			<section id="portfolio" className="" onClick={closeDrawer}>
-				<div className="mx-auto min-w-screen max-w-screen lg:min-w-screen lg:max-w-[1920px] px-[0.32rem] lg:px-[0.48rem] pt-[0.48rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem] overflow-x-hidden">
+				<div className="mx-auto min-w-screen max-w-screen lg:w-screen lg:max-w-[1920px] px-[0.32rem] lg:px-[0.48rem] pt-[0.48rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem] overflow-x-hidden">
 					<PortfolioHeader/>
 					<div className="pl-[0.16rem] lg:pl-[0.32rem] my-[0.48rem] lg:my-[0.96rem] flex flex-row justify-between overflow-x-hidden">
 						<MobileDeskIcons isMobile={isMobile} setIsMobile={setIsMobile} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
@@ -38,12 +38,11 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 							<p className="text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 w--[55%] lg:w--[4.16rem] tracking-[-2%] font-normal text-right">Our user-centered design</p>
 							<p className="text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 w--[55%] lg:w--[4.16rem] tracking-[-2%] font-normal text-right">encourages productivity and</p>
 							<p className="text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 w--[55%] lg:w--[4.16rem] tracking-[-2%] font-normal text-right">boosts revenue</p>
-							
 						</div>
 					</div>
 				</div>
 
-				<div className="mx-auto w-screen max-w-screen lg:min-w-screen lg:max-w-[1920px] lg:px-[0.48rem]">
+				<div className="mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] lg:px-[0.48rem]">
 	      	{isMobile ? <MobilePortfolios isMobileDevice={isMobileDevice} itemsArray={PortfolioData.mobile}/> : <DesktopPortfolios isMobileDevice={isMobileDevice} itemsArray={portfolioItems.desktop} openOverlay={openOverlay}/>}
 	      </div>
 

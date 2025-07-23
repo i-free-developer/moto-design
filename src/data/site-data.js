@@ -206,7 +206,7 @@ const HandImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-sticky-hand-img
 
 // const ApiPath = 'http://localhost:3000/api'
 
-function ApiPath() { return location.href.includes('localhost') ? 'http://localhost:3000/api' : 'https://api.motodesign.cn' }
+function ApiPath() { return location.href.includes('localhost') ? 'http://localhost:3000/api' : 'https://api.motodesign.cn/api' }
 
 export {TimelineItems, PerkItemsData, OpenningRoles, TeamMembers, PortfolioData, StatusContents, ServicesItems, CopyRight, CompanyEmail, CompanyDomain, HandImg, TestimonialIcons, SubmittedImg, ApiPath}
 

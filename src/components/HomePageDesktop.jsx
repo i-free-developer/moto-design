@@ -12,9 +12,9 @@ const headerClasses = {initial: '', opened: 'section-drawer-in', closed: 'sectio
 
 export default function HomePageDesktop({smallScreenRatioDecimal}) {
 	const designedBigWidth = 1920; // 设计稿宽度
+  	const [bigScreenRatioDecimal, setBigScreenRatioDecimal] = useState(1.0)
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 	const headerClassName = headerClasses[drawerStatus]
-  	const [bigScreenRatioDecimal, setBigScreenRatioDecimal] = useState(1.0)
 
   	useEffect(() => {
     	let windowWidth = document.documentElement.clientWidth;

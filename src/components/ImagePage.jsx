@@ -12,7 +12,7 @@ export default function RolePage({smallScreenRatioDecimal}) {
 		<main className="mx-auto">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
 			<section id="portfolio-page" className="mx-auto" onClick={closeDrawer}>
-				<div className="w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] mx-auto px-[0.32rem] py-[0.48rem] overflow-x-hidden">
+				<div className="w-screen max-w-screen lg:min-w-screen lg:max-w-[1920px] mx-auto px-[0.32rem] py-[0.48rem] overflow-x-hidden">
 					<ImgCard {...item}/>
 				</div>
 			</section>

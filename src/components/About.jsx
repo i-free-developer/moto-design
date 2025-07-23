@@ -13,7 +13,7 @@ export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 		<main className="mx-auto">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true} key="about"/>
 			<section id="about" className="mx-auto lg:pt-[0.48rem]" onClick={closeDrawer}>
-				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
+				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:min-w-screen lg:max-w-[1920px] overflow-x-hidden">
 					{isMobileDevice ? <AboutHeaderMobile smallScreenRatioDecimal={smallScreenRatioDecimal}/> : <AboutHeaderDesktop/>}
 					<AboutBrand/>
 				</div>
@@ -81,7 +81,7 @@ function AboutStatusContainer({smallScreenRatioDecimal}) {
 	}, [smallScreenRatioDecimal])
 
 	return (
-		<div className="mx-auto relative mt-[1.68rem] lg:mt-[3.6rem] lg:px-[0.48rem] w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
+		<div className="mx-auto relative mt-[1.68rem] lg:mt-[3.6rem] lg:px-[0.48rem] w-screen max-w-screen lg:min-w-screen lg:max-w-[1920px] overflow-x-hidden">
 			<div className="mx-auto overflow-x-hidden w-full flex items-center justify-between pl-[0.32rem] lg:pl-0">
 				<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} transition-translate duration-700 lg:ml-0 mx-auto min-w-full max-w-full lg:min-w-[45%] lg:w-[45%] tracking-[-2%]`}>
 					<p className="uppercase text-[0.48rem] lg:text-[0.64rem] font-bold leading-[0.48rem] lg:leading-[0.64rem]">we strive to innovate</p>
@@ -218,7 +218,7 @@ function TeamMemberContainer() {
 		fetchData()
 	}, [])
 	return (
-		<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden">
+		<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:min-w-screen lg:max-w-[1920px] overflow-x-hidden">
 			<div className="my-[1.2rem] lg:my-[3.52rem] grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-x-[0.2rem] lg:gap-y-[0.4rem]">
 				<OurTeamCard />
 				{teamMemberData.map((item, index) => <TeamMemberCard {...item} key={index} />)}

@@ -35,7 +35,7 @@ function InfoCardMobile() {
 
 function InfoCardDesktop() {
   return (
-    <div className="mx-auto grid grid-cols-2 px-[0.48rem] lg:min-w-[1920px] lg:max-w-[1920px] ">
+    <div className="mx-auto grid grid-cols-2 px-[0.48rem] lg:min-w-screen lg:max-w-[1920px] ">
       <SiteHeader/>
       <div className="mx-auto">
         <InfoSection/>
@@ -78,7 +78,7 @@ function LogoLinksCard() {
 
 function SiteFooter({isMobileDevice, smallScreenRatioDecimal}) {
   return (
-    <div className="mx-auto w-screen max-w-screen lg:min-w-[1920px] lg:max-w-[1920px] overflow-x-hidden px-[0.32rem] lg:px-[0.48rem] my-[0.48rem] grid grid-cols-2">
+    <div className="mx-auto w-screen max-w-screen lg:min-w-screen lg:max-w-[1920px] overflow-x-hidden px-[0.32rem] lg:px-[0.48rem] my-[0.48rem] grid grid-cols-2">
       <div className="col-span-1 flex items-center"><Link to="/" ><span className="">{ isMobileDevice ? <LogoIconMobile scaleRatio={smallScreenRatioDecimal}/> : <LogoIconDesktop/> }</span></Link></div>
       <div className="mx-auto col-span-1 flex justify-center items-center mr-0 lg:mr-[0.6rem]">
         <div className="mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-center items-end font-medium">

@@ -13,7 +13,7 @@ export default function About({isMobileDevice, smallScreenRatioDecimal}) {
 		<main className="mx-auto">
       		<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true} key="about"/>
 			<section id="about" className="mx-auto lg:pt-[0.48rem]" onClick={closeDrawer}>
-				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
+				<div className="px-[0.32rem] lg:px-[0.96rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 					{isMobileDevice ? <AboutHeaderMobile smallScreenRatioDecimal={smallScreenRatioDecimal}/> : <AboutHeaderDesktop/>}
 					<AboutBrand/>
 				</div>
@@ -82,7 +82,7 @@ function AboutStatusContainer({smallScreenRatioDecimal}) {
 	}, [smallScreenRatioDecimal])
 
 	return (
-		<div className="mx-auto relative mt-[1.68rem] lg:mt-[3.6rem] lg:px-[0.48rem] w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
+		<div className="mx-auto relative mt-[1.68rem] lg:mt-[3.6rem] lg:px-[0.96rem] w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 			<div className="mx-auto overflow-x-hidden w-full flex items-center justify-between pl-[0.32rem] lg:pl-0">
 				<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} transition-translate duration-700 lg:ml-0 mx-auto min-w-full max-w-full lg:min-w-[45%] lg:w-[45%] tracking-[-2%]`}>
 					<p className="uppercase text-[0.48rem] lg:text-[0.64rem] font-bold leading-[0.48rem] lg:leading-[0.64rem]">we strive to innovate</p>
@@ -171,7 +171,7 @@ function AboutCirclesCard({showSection}) {
 
 function EcosystemHeader() {
 	return (
-		<div className="mx-auto lg:text-center px-[0.32rem] lg:px-[0.48rem] mt-[2.16rem] lg:mt-[3.36rem] w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
+		<div className="mx-auto lg:text-center px-[0.32rem] lg:px-[0.96rem] mt-[2.16rem] lg:mt-[3.36rem] w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
 			<h2 className="uppercase text-[0.48rem] lg:text-[0.64rem] font-bold leading-[0.48rem] lg:leading-[0.64rem] tracking-[-2%]">ecosystem resource</h2>
 			<p className="lg:px-[1.6rem] text-[0.16rem] lg:text-[0.24rem] leading-[0.2rem] lg:leading-[0.36rem] tracking-[-2%] mt-[0.16rem] lg:mt-[0.4rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries, providing them with visual design, creative, and industry consulting services.</p>
 		</div>
@@ -219,7 +219,7 @@ function TeamMemberContainer() {
 		fetchData()
 	}, [])
 	return (
-		<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
+		<div className="px-[0.32rem] lg:px-[0.96rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 			<div className="my-[1.2rem] lg:my-[3.52rem] grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-x-[0.2rem] lg:gap-y-[0.4rem]">
 				<OurTeamCard />
 				{teamMemberData.map((item, index) => <TeamMemberCard {...item} key={index} />)}
@@ -231,12 +231,12 @@ function TeamMemberContainer() {
 function TeamMemberCard({name, subtitle, avatar, description, title}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
 	return (
-		<article className="box-border border border-[0.03rem] lg:border-[4px] rounded-[0.16rem] w-[2.2rem] lg:w-[3.66rem] h-[3.4rem] lg:h-[5.11rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+		<article className="box-border border border-[0.03rem] lg:border-[0.04rem] rounded-[0.16rem] w-[2.2rem] lg:w-[3.66rem] h-[3.4rem] lg:h-[5.11rem] overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<div className={`overflow-hidden top-0 rounded-0 max-h-full min-h-full min-w-full max-w-full`}>
 				<div className="mx-auto w-[2.2rem] h-[2.2rem] lg:w-[3.66rem] lg:h-[3.66rem]"><img src={avatar} loading="lazy" className="object-cover object-center scale-103"></img></div>
 				<div className="w-full mt-0 px-[0.2rem] pt-[0.16rem] pb-[0.12rem] lg:py-[0.2rem] lg:pb-[0.24rem]">
 					<header className="capitalize text-[0.28rem] leading-[0.28rem] lg:text-[0.4rem] lg:leading-[0.4rem] font-normal tracking-[-2%] text-nowrap">{name}</header>
-					<p className="capitalize mt-[0.12rem] text-[0.12rem] leading-[0.14rem] lg:text-[0.14rem] lg:leading-[0.16rem]">{subtitle}</p>
+					<p className="mt-[0.12rem] text-[0.12rem] leading-[0.14rem] lg:text-[0.14rem] lg:leading-[0.16rem]">{subtitle}</p>
 				</div>
 			</div>
 

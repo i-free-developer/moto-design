@@ -30,7 +30,7 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 		<main className="mx-auto relative">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
 			<section id="portfolio" className="" onClick={closeDrawer}>
-				<div className="mx-auto min-w-screen max-w-screen lg:w-screen lg:max-w-[1920px] px-[0.32rem] lg:px-[0.48rem] pt-[0.48rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem] overflow-x-hidden">
+				<div className="mx-auto min-w-screen max-w-screen w-screen lg:max-w-[1920px] px-[0.32rem] lg:px-[0.64rem] pt-[0.48rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem] overflow-x-hidden">
 					<PortfolioHeader/>
 					<div className="pl-[0.16rem] lg:pl-[0.32rem] my-[0.48rem] lg:my-[0.96rem] flex flex-row justify-between overflow-x-hidden">
 						<MobileDeskIcons isMobile={isMobile} setIsMobile={setIsMobile} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
@@ -42,7 +42,7 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 					</div>
 				</div>
 
-				<div className="mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] lg:px-[0.48rem]">
+				<div className="mx-auto min-w-screen max-w-screen w-screen lg:max-w-[1920px] lg:px-[0.64rem]">
 	      	{isMobile ? <MobilePortfolios isMobileDevice={isMobileDevice} itemsArray={PortfolioData.mobile}/> : <DesktopPortfolios isMobileDevice={isMobileDevice} itemsArray={portfolioItems.desktop} openOverlay={openOverlay}/>}
 	      </div>
 
@@ -172,7 +172,7 @@ function MobilePortfolios({isMobileDevice, itemsArray}) {
 
 function MobilePortfoliosDesktopContainer({mobileItems}) {
 	return (
-		<div className="snap-none relative mx-auto mb--[3.6rem] pt-[10.5%] lg:pt-0 pb-[10.5%] lg:pb-[6.5%]">
+		<div className="mx-auto w-full snap-none relative mb--[3.6rem] pt-[10.5%] lg:pt-0 pb-[10.5%] lg:pb-[6.5%]">
       <div className="mx-auto w-full overflow-hidden grid grid-cols-5 gap-[0.2rem] gap-y-[0.48rem]">
         	{mobileItems.map((item, index) => <MobileCardDesktopView {...item} index={index} key={index}/>)}
       </div>

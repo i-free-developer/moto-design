@@ -15,7 +15,7 @@ export default function RolePage({isMobileDevice, smallScreenRatioDecimal}) {
 		<main className="mx-auto">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
 			<section id="role-page" className="mx-auto" onClick={closeDrawer}>
-				<div className="mx-auto px-[0.32rem] lg:px-[0.48rem] w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
+				<div className="mx-auto px-[0.32rem] lg:px-[0.96rem] w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<RoleHeaderCard {...roleItem}/>
 					<div className="my-[0.96rem] lg:my-[1.6rem]"></div>
 					<ContentSection title={'Responsibilities'} items={roleItem.responsibilities}/>

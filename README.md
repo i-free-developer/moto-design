@@ -7,7 +7,7 @@ npm run build
 ```
 
 ##### deploy
-scp -r dist/* deploy@moto.shanghaipadel.com:staging/dist
+scp -r dist/* deploy@www.motodesign.cn:production/dist
 
 #### to do
 	[ ] career rols contents copy from figma

@@ -75,3 +75,45 @@ body.loaded {
   visibility: visible;
   transition: visibility 0.1s ease;
 }
+
+/*hide windows scroll bar*/
+
+::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari, Opera */
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-button {
+  display: none !important;
+}
+
+::-ms-scrollbar {
+  background: transparent !important;
+}
+
+::-ms-scrollbar-thumb {
+  background: transparent !important;
+}
+
+::-ms-scrollbar-track {
+  background: transparent !important;
+}
+
+::-ms-scrollbar-button {
+  display: none !important;
+}
+
+body {
+  /*滚动条悬浮于内容之上*/
+  overflow: overlay; 
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;     /* Firefox */
+}
+

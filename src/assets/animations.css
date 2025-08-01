@@ -200,15 +200,6 @@
 	/*border: 1px solid rgba(241, 241, 241, 0.18);*/
 }
 
-body *::-webkit-scrollbar {
-  display: none !important;             /* Chrome, Safari, Opera */
-}
-
-body * {
-  -ms-overflow-style: none !important;  /* IE and Edge */
-  scrollbar-width: none !important;     /* Firefox */
-}
-
 .linear-gradient-cover {
 	background: linear-gradient(90deg, #F7F7F7, transparent 10%, transparent 90%, #F7F7F7);
 }

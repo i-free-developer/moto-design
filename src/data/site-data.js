@@ -198,7 +198,7 @@ const ServicesItems = ['Web Design / UI & UX', '3D & Concept Animation', 'Brand 
 
 const CopyRight = '© 2025 Moto Design Ltd. All rights reserved.'
 
-const CompanyEmail = 'Hello@motodesign@.cn'
+const CompanyEmail = 'Hello@motodesign.cn'
 
 const CompanyDomain = 'motodesign.cn'
 

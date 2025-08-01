@@ -12,11 +12,11 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 		<main className="mx-auto">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
 			<section id="career" className="mx-auto pt-[0.32rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem]" onClick={closeDrawer}>
-				<div className="px-[0.32rem] lg:px-[0.48rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
+				<div className="px-[0.32rem] lg:px-[0.96rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<CareerHeader/>
 					<CareerContenr/>
 				</div>
-				<div className="mx-auto w-screen max-w-screen lg:px-[0.48rem] mt-[0.8rem] lg:mt-[1.48rem] overflow-x-hidden">
+				<div className="mx-auto w-screen max-w-screen lg:px-[0.96rem] mt-[0.8rem] lg:mt-[1.48rem] overflow-x-hidden">
 					<TimeLineCard/>
 				</div>
 				<div className="mx-auto w-screen max-w-screen mt-[2.16rem] lg:mt-[2.8rem] overflow-x-hidden">
@@ -27,7 +27,7 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 					<PerksContainer/>
 				</div>
 
-				<div className="px-[0.32rem] lg:px-[0.48rem] lg:mb-[2.88rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
+				<div className="px-[0.32rem] lg:px-[0.96rem] lg:mb-[2.88rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<RolesContainer isMobileDevice={isMobileDevice}/>
 					<div className="mt-[2.16rem] mb-[1.66rem] lg:mb-0 lg:mt-[2.8rem]"></div>
 					<HowToApply/>
@@ -41,7 +41,7 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 
 function CareerHeader() {
 	return (
-		<div className="relative my-[0.64rem] lg:mt-0 lg:px-[0.16rem]">
+		<div className="relative my-[0.64rem] lg:mt-0">
 			<h1 className="font-extrabold text-[0.48rem] lg:text-[0.8rem] uppercase">[Career]</h1>
 			<h2 className="font-extrabold text-[0.88rem] lg:text-[1.28rem] uppercase">How we hire</h2>
 			<div className="flex items-center justify-between mt-[0.32rem] lg:mt-0">
@@ -114,7 +114,7 @@ function TimeLineElement({id, title, isEven, isLastItem}) {
 function PerksContainer() {
 	return (
 		<div className="mx-auto flex items-center overflow-x-scroll">
-			<div className="mx-auto whitespace-nowrap flex flex-nowrap">
+			<div className="mx-auto whitespace-nowrap flex flex-nowrap px-[0.36rem]">
 				{PerkItemsData.map((item, index) => <PerkCard {...item} index={index} key={item.number}/>)}
 			</div>
 		</div>
@@ -164,8 +164,8 @@ function RolesContainer({isMobileDevice}) {
 
 function RoleCard({team, title, index, id, fullTime, onSite, isRemote, isMobileDevice}) {
 	return (
-		<article className="lg:w-[8.8rem] tracking-[-2%] scroll-fade-in">
-			{index === 0 &&  <hr className="border border-[0.8px] lg:border-1 border-black/20 mb-[0.48rem] lg:w-[8.8rem]"></hr> }
+		<article className="w-full tracking-[-2%] scroll-fade-in">
+			{index === 0 &&  <hr className="border border-[0.8px] lg:border-1 border-black/20 mb-[0.48rem] w-full"></hr> }
 			<header className="font-bold text-[0.16rem] lg:text-[0.2rem]">{team}</header>
 			<div className="relative">
 				<p className="text-[0.32rem] lg:text-[0.32rem] font-normal mt-[0.24rem] lg:mt-[0.24rem]">{title}&nbsp;/&nbsp;{fullTime}</p>
@@ -174,7 +174,7 @@ function RoleCard({team, title, index, id, fullTime, onSite, isRemote, isMobileD
 					<span>{onSite}</span>
 					<span>{isRemote}</span>
 				</div>
-				<hr className="border border-[0.8px] lg:border-1 border-black/20 my-[0.48rem] w-full lg:w-[8.8rem]"></hr>
+				<hr className="border border-[0.8px] lg:border-1 border-black/20 my-[0.48rem] w-full"></hr>
 				{isMobileDevice ? <ApplyButtonMobile id={id}/> : <ApplyButtonDeskstop id={id}/>}
 			</div>
 		</article>

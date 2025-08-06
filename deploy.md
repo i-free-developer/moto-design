@@ -5,6 +5,10 @@ scp api.motodesign.cn.conf root@www.motodesign.cn:/etc/nginx/conf.d/
 ##### deploy
 scp -r dist/* deploy@www.motodesign.cn:production/dist
 
+sudo systemctl status nginx
+sudo systemctl restart nginx
+
+
 AAAA
 
 

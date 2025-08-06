@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import { TimelineItems, PerkItemsData, OpenningRoles } from '../data/site-data'
 import Navbar from './Navbar'
@@ -15,7 +15,7 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 			<section id="career" className="mx-auto pt-[0.32rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem]" onClick={closeDrawer}>
 				<div className="px-[0.32rem] lg:px-[0.96rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<CareerHeader isMobileDevice={isMobileDevice}/>
-					<CareerContenr/>
+					<CareerContent/>
 				</div>
 				<div className="mx-auto w-screen max-w-screen lg:px-[0.96rem] mt-[0.8rem] lg:mt-[1.48rem] overflow-x-hidden">
 					<TimeLineCard isMobileDevice={isMobileDevice}/>
@@ -53,7 +53,7 @@ function CareerHeader({isMobileDevice}) {
 			<div className="flex items-center justify-between mt-[0.32rem] lg:mt-0">
 				<span className="lg:hidden"><ArrowGroupImg/></span>
 				<span className="lg:absolute lg:bottom-[0.48rem] lg:right-0">
-					{ isMobileDevice ? <PositionButtonMobile/> : <PositionBtn/> }
+					{ isMobileDevice ? <PositionButtonMobile/> : <PositionButtonDesktop/> }
 				</span>
 			</div>
 			<span className="absolute top-0 right-0 lg:right-[0.16rem] lg:scale-160"><StarIcon/></span>
@@ -61,7 +61,7 @@ function CareerHeader({isMobileDevice}) {
 	)
 }
 
-function PositionBtn() {
+function PositionButtonDesktop() {
 	function scrollToPositions() { document.querySelector('#positions').scrollIntoView({ behavior: 'smooth', block: 'start' }) }
 	const {isHovered, setIsHovered} = useHoverHandler();
 	return (
@@ -78,22 +78,49 @@ function PositionBtn() {
 
 function PositionButtonMobile() {
 	function scrollToPositions() { document.querySelector('#positions').scrollIntoView({ behavior: 'smooth', block: 'start' }) }
+	const designedSmallWidth = 750
+	const [iconRatio, setIconRatio] = useState(1.0)
+
+	useEffect(() => {
+		function setRatio() {
+			const windowWidth = document.documentElement.clientWidth;
+			if (windowWidth <= designedSmallWidth) {
+				let rSmall = parseFloat((windowWidth / designedSmallWidth).toFixed(2))
+				setIconRatio(rSmall)
+			}
+		}
+		setRatio()
+			window.addEventListener('load', setRatio)
+	    window.addEventListener('resize', setRatio)
+	    window.addEventListener('pageshow', setRatio)
+
+	    return () => {
+	      window.removeEventListener('load', setRatio);
+	      window.removeEventListener('resize', setRatio);
+	      window.removeEventListener('pageshow', setRatio);
+	    }
+	}, [])
+
 	return (
 		<div onClick={scrollToPositions}
 			className="pl-[0.24rem] pr-[0.08rem] py-[0.08rem] lg:py-[0.08rem] border border-1 lg:border-2 rounded-full flex gap-[0.16rem] items-center justify-between cursor-pointer">
 			<span className="font-medium text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.24rem]">Positions</span>
-			<div className={`relative size-[0.48rem] flex rounded-full border border-black bg-black items-center justify-center rounded-full transition duration-300`}>
-				<span><ArrowWhiteIcon/></span>
+			<div className={`relative size-[0.36rem] flex rounded-full border border-black bg-black items-center justify-center rounded-full`}>
+				<span style={{ transform: `scale(${iconRatio})`}}><ArrowWhiteIcon/></span>
 			</div>
 		</div>
 	)
 }
 
-function CareerContenr() {
+function CareerContent() {
 	return (
-		<div className="flex flex-col lg:flex-row lg:items-center my-[1.68rem] lg:mt-[1.28rem]">
+		<div className="flex flex-col lg:flex-row lg:items-center mt-[1.68rem] lg:mt-[1.28rem]">
 			<span className="hidden lg:block"><ArrowGroupImg/></span>
-			<p className="lg:ml-[10.06rem] text-black/64 font-normal w-[74%] lg:w-[4.8rem] text-[0.24rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.36rem] tracking-[-2%]">After the <span className="font-bold text-black">portfolio</span> meets our requirement, on average <span className="font-bold text-black">1~3 week</span> interview process with <span className="font-bold text-black">2 inteviews</span>.</p>
+			<div className="lg:ml-[10.06rem] text-black/64 font-normal text-[0.24rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.36rem] tracking-[-2%]">
+				<p>After the <span className="font-bold text-black">portfolio</span> meets our requirement,</p>
+				<p>on average <span className="font-bold text-black">1~3 week</span> interview process with</p>
+				<p><span className="font-bold text-black">2 inteviews</span>.</p>
+			</div>
 		</div>
 	)
 }
@@ -103,7 +130,7 @@ function TimeLineCard({isMobileDevice}) {
 	return (
 		<div className="w-full mx-auto flex items-center overflow-x-scroll">
 			{/* <div className="mx-auto whitespace-nowrap flex flex-nowrap"> */}
-			<div className="w-full flex items-center flex-nowrap px-[0.32rem] lg:px-[0.5rem] py-[0.32rem] lg:py-[0.16rem] overflow-x-auto">
+			<div className="w-full flex items-center flex-nowrap px-[0.32rem] lg:px-[0.5rem] py--[0.32rem] lg:py-[0.16rem] overflow-x-auto">
 				{TimelineItems.map((item, index) => <TimeLineElement {...item} clickedID={clickedID} setClickedID={setClickedID} isMobileDevice={isMobileDevice} key={item.id} isEven={index % 2 === 0} isLastItem={index === (TimelineItems.length - 1)}/>)}
 			</div>
 		</div>

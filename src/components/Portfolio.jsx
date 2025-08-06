@@ -230,8 +230,12 @@ function OverlaySection({currentPortfolio, closeOverlay}) {
 		<section className="absolute left-0 top-0 right-0 bg-[#000000]/88 min-h-[100vh] z-200">
 			<ScrollToTop/>
 			<div className="relative">
-				<span onClick={closeOverlay} className="cursor-pointer absolute size-[0.8rem] bg-[#F7F7F7] flex items-center justify-center mt-[0.56rem] ml-[0.56rem] rounded-[50%]"><CloseBtn/></span>
-				<div className="w-screen max-w-screen lg:min-w-[1600px] lg:max-w-[1600px] mx-auto overflow-x-hidden">
+				<div className="cursor-pointer absolute h-full w-[0.8rem]">
+					<div className="overflow-y-visible sticky top-[0.56rem] bottom-0">
+						<span onClick={closeOverlay} className="ml-[0.56rem] size-[0.8rem] bg-[#F7F7F7] flex items-center justify-center rounded-[50%]"><CloseBtn/></span>
+					</div>
+				</div>
+				<div className="w-screen max-w-screen lg:min-w-[16rem] lg:max-w-[16rem] mx-auto overflow-x-hidden">
 					<img loading="lazy" src={currentPortfolio.fullImage} alt={currentPortfolio.title} className="w-full h-full object-cover object-center"/>
 				</div>
 			</div>

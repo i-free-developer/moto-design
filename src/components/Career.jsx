@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from "react-router-dom"
 import { TimelineItems, PerkItemsData, OpenningRoles } from '../data/site-data'
 import Navbar from './Navbar'
@@ -13,13 +14,13 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
 			<section id="career" className="mx-auto pt-[0.32rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem]" onClick={closeDrawer}>
 				<div className="px-[0.32rem] lg:px-[0.96rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
-					<CareerHeader/>
+					<CareerHeader isMobileDevice={isMobileDevice}/>
 					<CareerContenr/>
 				</div>
 				<div className="mx-auto w-screen max-w-screen lg:px-[0.96rem] mt-[0.8rem] lg:mt-[1.48rem] overflow-x-hidden">
-					<TimeLineCard/>
+					<TimeLineCard isMobileDevice={isMobileDevice}/>
 				</div>
-				<div className="mx-auto w-screen max-w-screen mt-[2.16rem] lg:mt-[2.8rem] overflow-x-hidden">
+				<div className="scroll-fade-in mx-auto w-screen max-w-screen mt-[2.16rem] lg:mt-[2.8rem] overflow-x-hidden">
 					<LifeAtMotoCard/>
 				</div>
 
@@ -27,11 +28,16 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 					<PerksContainer/>
 				</div>
 
-				<div className="px-[0.32rem] lg:px-[0.96rem] lg:mb-[2.88rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
+				<div className="scroll-fade-in px-[0.32rem] lg:px-[0.96rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<RolesContainer isMobileDevice={isMobileDevice}/>
-					<div className="mt-[2.16rem] mb-[1.66rem] lg:mb-0 lg:mt-[2.8rem]"></div>
+				</div>
+
+				{/* <div className="mb-[1.66rem] lg:mb-0 mt-[2.16rem] lg:mt-[2.8rem]"></div> */}
+
+				<div className="scroll-fade-in px-[0.32rem] lg:px-[0.96rem] lg:mb-[2.88rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<HowToApply/>
 				</div>
+
 				<div className="mt-[-0.8rem] lg:mt-[-7rem]"><SiteInfoCard isMobileDevice={isMobileDevice}/></div>
 				<SiteFooter isMobileDevice={isMobileDevice} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 			</section>
@@ -39,14 +45,16 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 	)
 }
 
-function CareerHeader() {
+function CareerHeader({isMobileDevice}) {
 	return (
 		<div className="relative my-[0.64rem] lg:mt-0">
 			<h1 className="font-extrabold text-[0.48rem] lg:text-[0.8rem] uppercase">[Career]</h1>
 			<h2 className="font-extrabold text-[0.88rem] lg:text-[1.28rem] uppercase">How we hire</h2>
 			<div className="flex items-center justify-between mt-[0.32rem] lg:mt-0">
 				<span className="lg:hidden"><ArrowGroupImg/></span>
-				<span className="lg:absolute lg:bottom-[0.48rem] lg:right-0"><PositionBtn/></span>
+				<span className="lg:absolute lg:bottom-[0.48rem] lg:right-0">
+					{ isMobileDevice ? <PositionButtonMobile/> : <PositionBtn/> }
+				</span>
 			</div>
 			<span className="absolute top-0 right-0 lg:right-[0.16rem] lg:scale-160"><StarIcon/></span>
 		</div>
@@ -55,10 +63,28 @@ function CareerHeader() {
 
 function PositionBtn() {
 	function scrollToPositions() { document.querySelector('#positions').scrollIntoView({ behavior: 'smooth', block: 'start' }) }
+	const {isHovered, setIsHovered} = useHoverHandler();
 	return (
-		<div className="px-[0.24rem] py-[0.12rem] lg:py-[0.16rem] border border-1 lg:border-2 rounded-full flex gap-[0.16rem] items-center justify-between cursor-pointer" onClick={scrollToPositions}>
+		<div onClick={scrollToPositions} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
+			className="pl-[0.24rem] pr-[0.08rem] py-[0.08rem] lg:py-[0.08rem] border border-1 lg:border-2 rounded-full flex gap-[0.16rem] items-center justify-between cursor-pointer">
 			<span className="font-medium text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.24rem]">Positions</span>
-			<span className="size-[0.08rem] rounded-[50%] bg-black"></span>
+			<div className={`relative size-[0.48rem] flex items-center justify-center rounded-full transition duration-300`}>
+				<span className={`absolute rounded-full border border-black bg-black size-[0.1rem] transition duration-300 ${isHovered ? 'scale-460' : ''}`}></span>
+				<span className={`transition duration-300 ${isHovered ? 'scale-110' : 'scale-0'}`}><ArrowWhiteIcon/></span>
+			</div>
+		</div>
+	)
+}
+
+function PositionButtonMobile() {
+	function scrollToPositions() { document.querySelector('#positions').scrollIntoView({ behavior: 'smooth', block: 'start' }) }
+	return (
+		<div onClick={scrollToPositions}
+			className="pl-[0.24rem] pr-[0.08rem] py-[0.08rem] lg:py-[0.08rem] border border-1 lg:border-2 rounded-full flex gap-[0.16rem] items-center justify-between cursor-pointer">
+			<span className="font-medium text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.24rem]">Positions</span>
+			<div className={`relative size-[0.48rem] flex rounded-full border border-black bg-black items-center justify-center rounded-full transition duration-300`}>
+				<span><ArrowWhiteIcon/></span>
+			</div>
 		</div>
 	)
 }
@@ -72,12 +98,13 @@ function CareerContenr() {
 	)
 }
 
-function TimeLineCard() {
+function TimeLineCard({isMobileDevice}) {
+	const [clickedID, setClickedID] = useState(0)
 	return (
 		<div className="w-full mx-auto flex items-center overflow-x-scroll">
 			{/* <div className="mx-auto whitespace-nowrap flex flex-nowrap"> */}
 			<div className="w-full flex items-center flex-nowrap px-[0.32rem] lg:px-[0.5rem] py-[0.32rem] lg:py-[0.16rem] overflow-x-auto">
-				{TimelineItems.map((item, index) => <TimeLineElement {...item} key={item.id} isEven={index % 2 === 0} isLastItem={index === (TimelineItems.length - 1)}/>)}
+				{TimelineItems.map((item, index) => <TimeLineElement {...item} clickedID={clickedID} setClickedID={setClickedID} isMobileDevice={isMobileDevice} key={item.id} isEven={index % 2 === 0} isLastItem={index === (TimelineItems.length - 1)}/>)}
 			</div>
 		</div>
 	)
@@ -85,7 +112,7 @@ function TimeLineCard() {
 
 function LifeAtMotoCard() {
 	return (
-		<div className="mx-auto w-full text-center scroll-fade-in">
+		<div className="mx-auto w-full text-center">
 			<h2 className="font-bold text-[0.48rem] lg:text-[0.8rem] uppercase lg:my-[0.4rem]">Life at moto</h2>
 			<p className="text-[0.16rem] lg:text-[0.24rem] lg:leading-[0.32rem] font-normal">We believe great design is borderless, and so are the minds behind it.</p>
 			<p className="text-[0.16rem] lg:text-[0.24rem] lg:leading-[0.32rem] font-normal">We’re not everywhere — but we think like we are.</p>
@@ -93,11 +120,37 @@ function LifeAtMotoCard() {
 	)
 }
 
-function TimeLineElement({id, title, isEven, isLastItem}) {
-	const {isHovered, setIsHovered} = useHoverHandler();
+function TimeLineElement({id, title, isEven, isLastItem, isMobileDevice, clickedID, setClickedID}) {
+	const item = {id, title, isEven, isLastItem, clickedID, setClickedID}
+	return isMobileDevice ? <TimelimeIconMobile {...item}/> : <TimelimeIconDesktop {...item}/>
+}
 
+function TimelimeIconMobile({id, title, isEven, isLastItem, clickedID, setClickedID}) {
 	return (
-		<div className="flex flex-col grow box-border min-w-content text-black/40 hover:text-black hover:cursor-pointer" onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+		<div className={`flex flex-col grow box-border min-w-content hover:text-black hover:cursor-pointer ${clickedID === id ? 'text-black' : 'text-black/40'} `} onClick={() => setClickedID(id)}>
+			<span className="text-[0.24rem] leading-[0.24rem] lg:text-[0.28rem] lg:leading-[0.36rem] translate-x-[-0.06rem]">{id}</span>
+			<div className="flex items-center mt-[0.12rem] mb-[0.32rem] h-[0.4rem] relative text-black">
+				<span className={`w-full ${isEven ? 'h-[0.4rem]' : 'h-[0.2rem]'} border-l-1 lg:border-l-2 ${isLastItem ? 'border-r-1 lg:border-r-2 h-[0.4rem]' : ''}`}></span>
+				<span className="absolute w-full border-t-2 lg:border-t-2 bottom-[0.2rem] lg:bottom-[0.19rem] translate-y--[-0.69rem] lg:translate-y--[-0.77rem]"></span>
+				{ id === 3 && clickedID === 0 ? <CircleIcon isClicked={true}/> : <CircleIcon isClicked={clickedID === id}/> }
+			</div>
+			<span className="pr-[0.4rem] lg:pr-0 text-nowrap text-[0.16rem] leading-[0.16rem] lg:text-[0.24rem] lg:leading-[0.24rem] translate-x-[-0.06rem]">{title}</span>
+		</div>
+	)
+}
+
+function CircleIcon({isClicked}) {
+	return (
+		<span className={`absolute rounded-full border-[0.1rem] flex items-center justify-center left-[-0.129rem] ${isClicked ? 'block' : 'hidden'}`}>
+			<span className="size-[0.08rem] bg-white rounded-full"></span>
+		</span>
+	)
+}
+
+function TimelimeIconDesktop({id, title, isEven, isLastItem}) {
+	const {isHovered, setIsHovered} = useHoverHandler();
+	return (
+		<div className={`flex flex-col grow box-border min-w-content text-black/40 hover:text-black hover:cursor-pointer`} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<span className="text-[0.24rem] leading-[0.24rem] lg:text-[0.28rem] lg:leading-[0.36rem] translate-x-[-0.06rem]">{id}</span>
 			<div className="flex items-center mt-[0.12rem] mb-[0.32rem] h-[0.4rem] relative text-black">
 				<span className={`w-full ${isEven ? 'h-[0.4rem]' : 'h-[0.2rem]'} border-l-1 lg:border-l-2 ${isLastItem ? 'border-r-1 lg:border-r-2 h-[0.4rem]' : ''}`}></span>
@@ -145,15 +198,15 @@ function PerkIcon({ iconName }) {
 
 function RolesContainer({isMobileDevice}) {
 	return (
-		<div className="mt-[2.16rem] lg:mt-[2.8rem] lg:mb-[2.8rem] grid grid-cols-1 lg:grid-cols-2">
-			<div className="lg:w-[6.48rem] tracking-[-2%] scroll-fade-in">
+		<div className="mt-[2.16rem] lg:mt-[2.8rem] mb-[2.16rem] lg:mb-[2.8rem] grid grid-cols-1 lg:grid-cols-2">
+			<div className="lg:w-[6.48rem] tracking-[-2%]">
 				<h3 className="uppercase font-bold text-[0.2rem] leading-[0.2rem] lg:text-[0.24rem] lg:leading-[0.32rem]">join our team</h3>
 				<p className="uppercase font-bold text-[0.48rem] leading-[0.48rem] lg:text-[0.8rem] lg:leading-[0.96rem] mt-[0.48rem] lg:mt-[0.16rem]">find your perfect role</p>
 				<div className="mt-[0.12rem] lg:mt-[0.72rem] flex lg:flex-col lg:gap-[0.04rem]">
 					<p className="text-[0.16rem] leading-[0.16rem] lg:text-[0.2rem] lg:leading-[0.28rem] font-normal">Explore our open roles and find the one that</p>
 					<p className="text-[0.16rem] leading-[0.16rem] lg:text-[0.2rem] lg:leading-[0.28rem] font-normal">fits not just your resume, but your rhythm.</p>
 				</div>
-				<p className="text-[0.32rem] lg:text-[0.36rem] mt-[1.28rem] lg:mt-[2.4rem] font-bold scroll-fade-in"><span className="">{OpenningRoles.length}&nbsp;</span>Positions</p>
+				<p className="text-[0.32rem] lg:text-[0.36rem] mt-[1.28rem] lg:mt-[2.4rem] font-bold"><span className="">{OpenningRoles.length}&nbsp;</span>Positions</p>
 			</div>
 			<div id="positions" className="mt-[0.8rem] lg:mt-0 flex flex-col gap-[0.08rem]">
 				{OpenningRoles.map((item, index) => <RoleCard {...item} isMobileDevice={isMobileDevice} index={index} key={index}/>)}
@@ -164,7 +217,7 @@ function RolesContainer({isMobileDevice}) {
 
 function RoleCard({team, title, index, id, fullTime, onSite, isRemote, isMobileDevice}) {
 	return (
-		<article className="w-full tracking-[-2%] scroll-fade-in">
+		<article className="w-full tracking-[-2%]">
 			{index === 0 &&  <hr className="border border-[0.8px] lg:border-1 border-black/20 mb-[0.48rem] w-full"></hr> }
 			<header className="font-bold text-[0.16rem] lg:text-[0.2rem]">{team}</header>
 			<div className="relative">
@@ -223,4 +276,14 @@ export function HowToApply() {
 
 function ArrowGroupImg() {
 	return ( <img className="h-[0.17rem] object-cover object-center" src="/arrow-group.png" loading="lazy"></img> )
+}
+
+function ArrowWhiteIcon() {
+	return (
+			<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect x="7.9165" y="1.05725" width="8.01079" height="2" transform="rotate(45 7.9165 1.05725)" fill="#F7F7F7"/>
+				<rect x="6.4917" y="10.9825" width="8.04497" height="2" transform="rotate(-45 6.4917 10.9825)" fill="#F7F7F7"/>
+				<rect x="0.999512" y="5.88672" width="10" height="2" fill="#F7F7F7"/>
+			</svg>
+		)
 }

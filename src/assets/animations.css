@@ -65,9 +65,12 @@
 	to {transform: translateY(0);}
 }
 
-@keyframes scroll-fadeIn {
-	from { opacity: 1; scale: 0.9; translateY: 120rem;}
-	to { opacity: 1; scale: 1;translateY: 0;}
+@keyframes scroll-fadeInOut {
+	entry 0%  { opacity: 0.8; scale: 0.8; transform: translateY(100%);}
+  entry 100%  { opacity: 1; scale: 1; transform: translateY(0);}
+  
+  exit 0% { opacity: 1; scale: 1; transform: translateY(0);}
+  exit 100% { opacity: 1; scale: 1; transform: translateY(0);}
 }
 
 @keyframes slide-down {
@@ -135,8 +138,8 @@
 }
 
 .logo-masked {
-	-webkit-mask-image: url('/moto-mask-desktop.svg');
-  mask-image: url('/moto-mask-desktop.svg');
+	-webkit-mask-image: url('/moto-mask-desktop-v2.svg');
+  mask-image: url('/moto-mask-desktop-v2.svg');
 }
 
 .hover-border {
@@ -175,11 +178,13 @@
 }
 
 .scroll-fade-in {
-	transition: opacity 2s linear, transform 2s linear;
-	animation: scroll-fadeIn 2s linear both;
+	/*transition: opacity 2s linear, transform 2s linear;*/
+	animation: scroll-fadeInOut linear forwards;
 	animation-timeline: view(block);
-	animation-range: 0 30%;
-	/*animation-range: entry 50% entry 70%;*/
+	animation-delay: 0.8s;
+	/*animation-range: 0 30%;*/
+	animation-range: entry exit;
+	/*animation-range: entry 0% entry 100%;*/
 /*	animation-range: entry 0% cover 50%;*/
 	/*animation-timeline: scroll(self);*/
 	/*animation-fill-mode: both;*/
@@ -269,7 +274,7 @@
 	}
 
 	.logo-masked {
-		-webkit-mask-image: url('/moto-mask-mobile.svg');
-	  mask-image: url('/moto-mask-mobile.svg');
+		-webkit-mask-image: url('/moto-mask-mobile-v2.svg');
+	  mask-image: url('/moto-mask-mobile-v2.svg');
 	}
 }

@@ -25,7 +25,7 @@ const PerkItemsData = [
 const OpenningRoles = [
 	{
 		id: '1',
-		team: 'MOTO  >  Design Department  >  WEB', 
+		team: 'MOTO  >  Design Department  >  WEB',
 		title: 'Senior UI Designer',
 		fullTime: 'Full-time',
 		onSite: 'On-site (Shenzhen)',
@@ -46,7 +46,7 @@ const OpenningRoles = [
 	},
 	{
 		id: '2',
-		team: 'MOTO  >  Design Department  >  WEB', 
+		team: 'MOTO  >  Design Department  >  WEB',
 		title: 'Senior Front-end Expert',
 		fullTime: 'Full-time',
 		onSite: 'On-site (Shenzhen)',
@@ -71,7 +71,7 @@ const OpenningRoles = [
 	},
 	{
 		id: '3',
-		team: 'MOTO  >  Design Department  >  WEB', 
+		team: 'MOTO  >  Design Department  >  WEB',
 		title: 'Motion & VFX Designer',
 		fullTime: 'Full-time',
 		onSite: 'On-site (Shenzhen)',
@@ -94,7 +94,7 @@ const OpenningRoles = [
 	},
 	{
 		id: '4',
-		team: 'MOTO  >  Design Department  >  WEB', 
+		team: 'MOTO  >  Design Department  >  WEB',
 		title: 'Global SEO & Content Operation',
 		fullTime: 'Full-time',
 		onSite: 'On-site (Shenzhen)',
@@ -119,7 +119,7 @@ const OpenningRoles = [
 	},
 	{
 		id: '5',
-		team: 'MOTO  >  Design Department  >  WEB', 
+		team: 'MOTO  >  Design Department  >  WEB',
 		title: 'Intern (Design/Branding/Content)',
 		fullTime: 'Full-time',
 		onSite: 'On-site (Shenzhen)',
@@ -192,8 +192,6 @@ const TestimonialIcons = [
 	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-rootdata.png',
 ]
 
-const SubmittedImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-submitted-already.png'
-
 const ServicesItems = ['Web Design / UI & UX', '3D & Concept Animation', 'Brand Identity & Social Media Visual']
 
 const CopyRight = '© 2025 Moto Design Ltd. All rights reserved.'
@@ -208,5 +206,5 @@ const HandImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-sticky-hand-img
 
 function ApiPath() { return location.href.includes('localhost') ? 'http://localhost:3000/api' : 'https://api.motodesign.cn/api' }
 
-export {TimelineItems, PerkItemsData, OpenningRoles, TeamMembers, PortfolioData, StatusContents, ServicesItems, CopyRight, CompanyEmail, CompanyDomain, HandImg, TestimonialIcons, SubmittedImg, ApiPath}
+export {TimelineItems, PerkItemsData, OpenningRoles, TeamMembers, PortfolioData, StatusContents, ServicesItems, CopyRight, CompanyEmail, CompanyDomain, HandImg, TestimonialIcons, ApiPath}
 

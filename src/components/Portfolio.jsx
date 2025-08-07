@@ -35,15 +35,15 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 					<div className="pl-[0.16rem] lg:pl-[0.32rem] my-[0.48rem] lg:my-[0.96rem] flex flex-row justify-between overflow-x-hidden">
 						<MobileDeskIcons isMobile={isMobile} setIsMobile={setIsMobile} smallScreenRatioDecimal={smallScreenRatioDecimal}/>
 						<div className="self-start lg:mb-[0.48rem] ">
-							<p className="text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 w--[55%] lg:w--[4.16rem] tracking-[-2%] font-normal text-right">Our user-centered design</p>
-							<p className="text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 w--[55%] lg:w--[4.16rem] tracking-[-2%] font-normal text-right">encourages productivity and</p>
-							<p className="text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 w--[55%] lg:w--[4.16rem] tracking-[-2%] font-normal text-right">boosts revenue</p>
+							<p className="text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 tracking-[-2%] font-normal text-right">Our user-centered design</p>
+							<p className="text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 tracking-[-2%] font-normal text-right">encourages productivity and</p>
+							<p className="text-[0.28rem] leading-[0.28rem] lg:text-[0.32rem] lg:leading-[0.32rem] text-black/64 tracking-[-2%] font-normal text-right">boosts revenue</p>
 						</div>
 					</div>
 				</div>
 
 				<div className="mx-auto min-w-screen max-w-screen w-screen lg:max-w-[1920px] lg:px-[0.64rem]">
-	      	{isMobile ? <MobilePortfolios isMobileDevice={isMobileDevice} itemsArray={PortfolioData.mobile}/> : <DesktopPortfolios isMobileDevice={isMobileDevice} itemsArray={portfolioItems.desktop} openOverlay={openOverlay}/>}
+	      	{isMobile ? <MobilePortfoliosConatiner isMobileDevice={isMobileDevice} itemsArray={PortfolioData.mobile}/> : <DesktopPortfolios isMobileDevice={isMobileDevice} itemsArray={portfolioItems.desktop} openOverlay={openOverlay}/>}
 	      </div>
 
 				<div className="mt-[-5rem] lg:mt-[-3rem]"><SiteInfoCard isMobileDevice={isMobileDevice}/></div>
@@ -145,7 +145,7 @@ function DesktopBottomCard({title, description}) {
 	)
 }
 
-function MobilePortfolios({isMobileDevice, itemsArray}) {
+function MobilePortfoliosConatiner({isMobileDevice, itemsArray}) {
 	const [mobileItems, setMobileItems] = useState([])
 	function chunkArray(arr) {
     const result = [];
@@ -172,7 +172,7 @@ function MobilePortfolios({isMobileDevice, itemsArray}) {
 
 function MobilePortfoliosDesktopContainer({mobileItems}) {
 	return (
-		<div className="mx-auto w-full snap-none relative mb--[3.6rem] pt-[10.5%] lg:pt-0 pb-[10.5%] lg:pb-[6.5%]">
+		<div className="mx-auto w-full snap-none relative pt-[10.5%] lg:pt-0 pb-[10.5%] lg:pb-[5.5%]">
       <div className="mx-auto w-full overflow-hidden grid grid-cols-5 gap-[0.2rem] gap-y-[0.48rem]">
         	{mobileItems.map((item, index) => <MobileCardDesktopView {...item} index={index} key={index}/>)}
       </div>
@@ -198,8 +198,8 @@ function MobilePortfoliosMobileContainer({mobileItems}) {
 
 function MobileCardDesktopView({title, image, index}) {
   return (
-    <div className="col-span-1 lg:w-[3.7rem] lg:h-[7.8rem] lg:w--[3.42rem] lg:h--[7.22rem] rounded-[0.48rem] overflow-hidden">
-      {image ? <img loading="lazy" src={image} alt={title} className="w-full h-full object-fit object-center rounded-[inherit]" /> : <EmptyCard/> }
+    <div className="flex items-center justify-center col-span-1 lg:w--[3.7rem] lg:h--[7.8rem] lg:w--[3.42rem] lg:h--[7.22rem] rounded-[0.48rem] overflow-hidden">
+      {image ? <img loading="lazy" src={image} alt={title} className="w-[3.7rem] h-[7.8rem] object-fit object-center rounded-[inherit]" /> : <EmptyCard/> }
     </div>
   )
 }
@@ -218,7 +218,7 @@ function StickyHandCard() {
 	// style={{overflowY: 'overlay'}}
   return (
     <div className="absolute inset-0 flex items-center justify-center">
-      <div className="overflow-y-visible sticky top-0 bottom-0 translate-x-[18.8%] lg:translate-x-[17.6%]">
+      <div className="overflow-y-visible sticky top-0 bottom-0 translate-x-[18.8%] lg:translate-x-[18.8%]">
         <img loading="lazy" className="w-[5.88rem] w--[5.4rem] h-[6.28rem] h--[5.77rem] lg:w-[7.92rem] lg:h-[8.48rem] object-fit object-center rounded-[0.28rem] lg:rounded-[0.16rem]" src={HandImg} alt="Hand"/>
       </div>
     </div>

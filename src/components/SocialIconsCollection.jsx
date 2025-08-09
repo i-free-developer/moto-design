@@ -13,7 +13,7 @@ const SiteLinks = [
 ]
 
 function SocialIconLinkItem({url, imgPath}) {
-	return(<a href={url} target="_blank" className="flex items-center cursor-pointer transition duration-150 active:scale-110 hover:scale-110"><img src={imgPath} loading="lazy" className="h-[0.2rem] object-fit object-center"></img></a>)
+	return(<a href={url} target="_blank" className="flex items-center cursor-pointer transition duration-150 active:scale-110 hover:scale-110"><img src={imgPath} loading="lazy" className="h-[0.2rem] object-cover object-center"></img></a>)
 }
 
 function StarIcon() {

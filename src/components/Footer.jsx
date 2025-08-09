@@ -63,7 +63,7 @@ function InfoSection() {
 function LogoLinksCard() {
   return (
     <div className="mx-auto px-[0.32rem] lg:px-0 mt-[0.64rem] lg:mt-[0.64rem] flex items-center gap-[0.32rem] lg:gap-[0.32rem]">
-      <span className="w-[2.22rem] h-[1.12rem]"><img src="/footer-logo-v2.png" loading="lazy" className="object-center object-fit "></img></span>
+      <span className="w-[2.22rem] h-[1.12rem]"><img src="/footer-logo-v2.png" loading="lazy" className="object-center object-cover"></img></span>
 
       <div className="">
         <header className="text-[0.28rem] leading-[0.28rem] font-bold">Moto Design</header>

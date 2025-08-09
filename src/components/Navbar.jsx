@@ -53,7 +53,7 @@ export default function Navbar({drawerStatus, handleClickDrawer, closeDrawer, sm
 				<nav className="flex justify-between items-center h-[0.34rem]" onClick={closeDrawer}>
 					{/* <div onClick={handleClickDrawer} className="cursor-pointer size-[0.25rem] lg:size--[1.25rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div> */}
 					<LeftSectionIcons handleClickDrawer={handleClickDrawer} drawerStatus={drawerStatus} isPortfolioPath={isPortfolioPath}/>
-					<Link to="/" className="h-[0.34rem] max-h-[0.34rem] object-fit flex items-center justify-center"><LogoIcon scaleRatio={smallScreenRatioDecimal || bigScreenRatioDecimal}/></Link>
+					<Link to="/" className="h-[0.34rem] max-h-[0.34rem] object-cover flex items-center justify-center"><LogoIcon scaleRatio={smallScreenRatioDecimal || bigScreenRatioDecimal}/></Link>
 					<LangButtons/>
 				</nav>
 			</section>

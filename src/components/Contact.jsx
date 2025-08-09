@@ -243,7 +243,6 @@ function SumbittedGroup({setIsSubmitted, isMobileDevice}) {
 	return (
 		<div className="mx-auto w-full mt-[1.28rem] lg:mt-[1.08rem] h--[1.92rem] lg:h--[2.8rem] flex flex-col items-center justify-between lg:scale-91">
 			<div className="mx-auto flex items-center justify-center h--[2.34rem] w--[3.95rem] h-[2.8rem] w-[4.6rem]">
-				{/* <img src={SubmittedImg} alt="Submitted Already" className="object-fit object-center"></img> */}
 				<span><SubmittedIconDesktop/></span>
 			</div>
 			<div className="mx-auto mt-[2.935rem] lg:mt-[0.98rem]">

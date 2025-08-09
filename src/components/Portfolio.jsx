@@ -199,7 +199,7 @@ function MobilePortfoliosMobileContainer({mobileItems}) {
 function MobileCardDesktopView({title, image, index}) {
   return (
     <div className="flex items-center justify-center col-span-1 lg:w--[3.42rem] lg:h--[7.22rem] rounded-[0.48rem] overflow-hidden border-none outline-none">
-      {image ? <img loading="lazy" src={image} alt={title} className="w-[3.8rem] h--[7.8rem] object-fit object-center rounded-[inherit] border-none outline-none" /> : <EmptyCard/> }
+      {image ? <img loading="lazy" src={image} alt={title} className="w-[3.8rem] h--[7.8rem] object-cover object-center rounded-[inherit] border-none outline-none" /> : <EmptyCard/> }
     </div>
   )
 }
@@ -219,7 +219,7 @@ function StickyHandCard() {
   return (
     <div className="absolute inset-0 flex items-center justify-center">
       <div className="overflow-y-visible sticky top-0 bottom-0 translate-x-[18.8%] lg:translate-x-[18.8%]">
-        <img loading="lazy" className="w-[5.88rem] h--[6.28rem] lg:w-[7.94rem] lg:h--[8.48rem] object-fit object-center rounded-[0.28rem] lg:rounded-[0.16rem]" src={HandImg} alt="Hand"/>
+        <img loading="lazy" className="w-[5.88rem] h--[6.28rem] lg:w-[7.94rem] lg:h--[8.48rem] object-cover object-center rounded-[0.28rem] lg:rounded-[0.16rem]" src={HandImg} alt="Hand"/>
       </div>
     </div>
   )

@@ -203,7 +203,7 @@ function EcosystemContainer() {
 function TestimonialSlideIcons() {
 	return (
 		<div className="flex items-center gap-[0.3rem] mr-[0.3rem] lg:gap-[0.4rem] lg:mr-[0.4rem]">
-			{TestimonialIcons.map((e, index) => <span className="flex items-center justify-center h-[0.48rem] lg:h-[0.54rem] cursor-pointer hover:brightness-0" key={index}><img src={e} alt={e.split('/')[-1]} className="h-[0.48rem] lg:h-[0.54rem] object-fit object-center"></img></span>)}
+			{TestimonialIcons.map((e, index) => <span className="flex items-center justify-center h-[0.48rem] lg:h-[0.54rem] cursor-pointer hover:brightness-0" key={index}><img src={e} alt={e.split('/')[-1]} className="h-[0.48rem] lg:h-[0.54rem] object-cover object-center"></img></span>)}
 		</div>
 	)
 }

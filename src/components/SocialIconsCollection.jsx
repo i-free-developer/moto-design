@@ -1,8 +1,8 @@
 const SocialIconItems = [
-  { name: 'X',   imgPath: '/icon-x.png',           url: 'https://x.com/MotoDesign_'},
-  { name: 'In',  imgPath: '/icon-in.png',          url: 'https://www.linkedin.com/company/motodsgn'},
-	{ name: 'Be',  imgPath: '/icon-be.png',          url: '#'},
-	{ name: 'XHS', imgPath: '/icon-xiaohongshu.png', url: 'https://www.xiaohongshu.com/user/profile/63f71acf000000000f013e49'},
+	{ name: 'Dribbble',  imgPath: '/icon-dribbble.png',    url: '#'},
+  { name: 'X',         imgPath: '/icon-x.png',           url: 'https://x.com/MotoDesign_'},
+  { name: 'In',        imgPath: '/icon-in.png',          url: 'https://www.linkedin.com/company/motodsgn'},
+	{ name: 'XHS',       imgPath: '/icon-xiaohongshu.png', url: 'https://www.xiaohongshu.com/user/profile/63f71acf000000000f013e49'},
 ]
 
 const SiteLinks = [

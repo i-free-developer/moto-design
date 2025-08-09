@@ -130,9 +130,9 @@ function LeftSectionIcons({isPortfolioPath, handleClickDrawer, drawerStatus}) {
 	function handleGoBack() { navigate(-1) }
 
 	if (isPortfolioPath) {
-		return (<div onClick={handleGoBack} className="cursor-pointer size-[0.25rem] lg:size--[1.25rem] flex items-center justify-center"><BackIcon/></div>)
+		return (<div onClick={handleGoBack} className="cursor-pointer size-[0.25rem] flex items-center justify-center"><BackIcon/></div>)
 	} else {
-		return (<div onClick={handleClickDrawer} className="cursor-pointer size-[0.25rem] lg:size--[1.25rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>)
+		return (<div onClick={handleClickDrawer} className="cursor-pointer size-[0.25rem] flex items-center justify-center">{drawerStatus == 'opened' ? <CloseIcon/> : <BarsIcon/>}</div>)
 	}
 }
 

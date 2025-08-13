@@ -20,7 +20,7 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 				<div className="mx-auto w-screen max-w-screen lg:px-[0.96rem] mt-[0.8rem] lg:mt-[1.48rem] overflow-x-hidden">
 					<TimeLineCard isMobileDevice={isMobileDevice}/>
 				</div>
-				<div className="scroll-fade-in mx-auto w-screen max-w-screen mt-[2.16rem] lg:mt-[2.8rem] overflow-x-hidden">
+				<div className="mx-auto w-screen max-w-screen mt-[2.16rem] lg:mt-[2.8rem] overflow-x-hidden">
 					<LifeAtMotoCard/>
 				</div>
 
@@ -28,13 +28,13 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 					<PerksContainer/>
 				</div>
 
-				<div className="scroll-fade-in px-[0.32rem] lg:px-[0.96rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
+				<div className="px-[0.32rem] lg:px-[0.96rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<RolesContainer isMobileDevice={isMobileDevice}/>
 				</div>
 
 				{/* <div className="mb-[1.66rem] lg:mb-0 mt-[2.16rem] lg:mt-[2.8rem]"></div> */}
 
-				<div className="scroll-fade-in px-[0.32rem] lg:px-[0.96rem] lg:mb-[2.88rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
+				<div className="px-[0.32rem] lg:px-[0.96rem] lg:mb-[2.88rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<HowToApply/>
 				</div>
 
@@ -66,8 +66,8 @@ function PositionButtonDesktop() {
 	const {isHovered, setIsHovered} = useHoverHandler();
 	return (
 		<div onClick={scrollToPositions} onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
-			className="pl-[0.24rem] pr-[0.08rem] py-[0.08rem] lg:py-[0.08rem] border border-1 lg:border-2 rounded-full flex gap-[0.16rem] items-center justify-between cursor-pointer">
-			<span className="font-medium text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.24rem]">Positions</span>
+			className="pl-[0.24rem] pr-[0.04rem] py-[0.04rem] border border-2 rounded-full flex gap-[0.16rem] items-center justify-between cursor-pointer">
+			<span className="font-medium text-[0.24rem] leading-[0.24rem]">Positions</span>
 			<div className={`relative size-[0.48rem] flex items-center justify-center rounded-full transition duration-300`}>
 				<span className={`absolute rounded-full border border-black bg-black size-[0.1rem] transition duration-300 ${isHovered ? 'scale-460' : ''}`}></span>
 				<span className={`transition duration-300 ${isHovered ? 'scale-110' : 'scale-0'}`}><ArrowWhiteIcon/></span>
@@ -103,8 +103,8 @@ function PositionButtonMobile() {
 
 	return (
 		<div onClick={scrollToPositions}
-			className="pl-[0.24rem] pr-[0.08rem] py-[0.08rem] lg:py-[0.08rem] border border-1 lg:border-2 rounded-full flex gap-[0.16rem] items-center justify-between cursor-pointer">
-			<span className="font-medium text-[0.2rem] leading-[0.24rem] lg:text-[0.24rem] lg:leading-[0.24rem]">Positions</span>
+			className="pl-[0.24rem] pr-[0.04rem] py-[0.06rem] border border-1 rounded-full flex gap-[0.16rem] items-center justify-between cursor-pointer">
+			<span className="font-medium text-[0.2rem] leading-[0.24rem]">Positions</span>
 			<div className={`relative size-[0.36rem] flex rounded-full border border-black bg-black items-center justify-center rounded-full`}>
 				<span style={{ transform: `scale(${iconRatio})`}}><ArrowWhiteIcon/></span>
 			</div>
@@ -265,9 +265,9 @@ function ApplyButtonDeskstop({id}) {
 	const {isHovered, setIsHovered} = useHoverHandler();
 
 	return (
-		<Link to={`/role/${id}`} className="will-change-transform absolute bottom-[0.4rem] lg:bottom-[0.4rem] right-0 flex items-center justify-between gap-[0.24rem] lg:gap-[0.16rem] bg-black rounded-full pl-[0.24rem] py-[0.06rem] lg:py-[0.04rem] pr-[0.04rem]"
+		<Link to={`/role/${id}`} className="will-change-transform absolute bottom-[0.4rem] right-0 flex items-center justify-between gap-[0.16rem] bg-black rounded-full pl-[0.24rem] pr-[0.04rem] py-[0.04rem]"
 			onMouseEnter={() => setIsHovered(true)} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-			<span className="text-white font-medium text-[0.2rem] lg:text-[0.24rem]">Apply</span>
+			<span className="text-white font-medium text-[0.24rem]">Apply</span>
 			{/* <div className={`bg-white size-[0.24rem] lg:size-[0.4rem] flex items-center justify-center rounded-full scale-15 transition duration-300 hover:scale-100 ${isHovered ? 'scale-100' : ''}`}><ArrowIcon/></div>	 */}
 			<div className={`relative size-[0.4rem] flex items-center justify-center rounded-full transition duration-300`}>
 				<span className={`absolute rounded-full border border-white bg-white size-[0.08rem] transition duration-300 ${isHovered ? 'scale-460' : ''}`}></span>

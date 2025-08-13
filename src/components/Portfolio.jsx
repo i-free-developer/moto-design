@@ -206,9 +206,9 @@ function MobileCardDesktopView({title, image, index}) {
 
 function MobileCardMobileView({title, image, index}) {
 	return (
-    <div className="w-[2.39rem] h-[5.04rem] rounded-[0.28rem] overflow-hidden border-none outline-none">
-      {/* {image ? <img loading="lazy" src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit] border-none outline-none"/> : <EmptyCard/> } */}
-      {image ? <div style={{backgroundImage: `url(${image})`}} className="w-full h-full bg-cover object-cover object-center rounded-[inherit] border-none outline-none"></div> : <EmptyCard/> }
+    <div className="w-[2.39rem] h-[5.04rem] rounded-[0.28rem] overflow-hidden border-none outline-none bg-white px-[0.1px] m-0">
+      {image ? <img loading="lazy" src={image} alt={title} className="w-full h-full object-cover object-center rounded-[inherit] border-none outline-none"/> : <EmptyCard/> }
+      {/* {image ? <div style={{backgroundImage: `url(${image})`}} className="bg-white h-full bg-cover object-cover object-center rounded-[inherit] border-none outline-none"></div> : <EmptyCard/> } */}
     </div>
 	 )
 }

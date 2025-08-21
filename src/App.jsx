@@ -12,11 +12,16 @@ import Contact from './components/Contact'
 import RolePage from './components/RolePage'
 import ImagePage from './components/ImagePage'
 
+import 'aos/dist/aos.css'
+import AOS from 'aos'
+
 export default function App() {
   const [loadingPercentage, setLoadingPercentage] = useState(0);
   const {isMobileDevice, smallScreenRatioDecimal} = useScreenRatio()
 
   useEffect(() => {
+      AOS.init({once: true, duration : 600, easing: 'ease-in-out', delay: 300})
+
       const intervalCount = RandomInt(8, 18)
       const intervalElement = setInterval(() => {
         setLoadingPercentage((prev) => prev + 1);

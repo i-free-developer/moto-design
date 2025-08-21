@@ -20,21 +20,21 @@ export default function Career({isMobileDevice, smallScreenRatioDecimal}) {
 				<div className="mx-auto w-screen max-w-screen lg:px-[0.96rem] mt-[0.8rem] lg:mt-[1.48rem] overflow-x-hidden">
 					<TimeLineCard isMobileDevice={isMobileDevice}/>
 				</div>
-				<div className="mx-auto w-screen max-w-screen mt-[2.16rem] lg:mt-[2.8rem] overflow-x-hidden">
+				<div data-aos="fade-up" className="mx-auto w-screen max-w-screen mt-[2.16rem] lg:mt-[2.8rem] overflow-x-hidden">
 					<LifeAtMotoCard/>
 				</div>
 
-				<div className="mx-auto w-screen max-w-screen mt-[0.8rem] lg:mt-[1.6rem] overflow-x-hidden">
+				<div data-aos="fade-up" className="mx-auto w-screen max-w-screen mt-[0.8rem] lg:mt-[1.6rem] overflow-x-hidden">
 					<PerksContainer/>
 				</div>
 
-				<div className="px-[0.32rem] lg:px-[0.96rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
+				<div data-aos="fade-up" className="px-[0.32rem] lg:px-[0.96rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<RolesContainer isMobileDevice={isMobileDevice}/>
 				</div>
 
 				{/* <div className="mb-[1.66rem] lg:mb-0 mt-[2.16rem] lg:mt-[2.8rem]"></div> */}
 
-				<div className="px-[0.32rem] lg:px-[0.96rem] lg:mb-[2.88rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
+				<div data-aos="fade-up" className="px-[0.32rem] lg:px-[0.96rem] lg:mb-[2.88rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 					<HowToApply/>
 				</div>
 

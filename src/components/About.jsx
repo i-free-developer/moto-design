@@ -63,7 +63,7 @@ function AboutHeaderMobile({smallScreenRatioDecimal}) {
 
 function AboutBrand() {
 	return (
-		<div className="border border-[0.02rem] lg:border-[0.04rem] rounded-[0.16rem] lg:rounded-[0.24rem] p-[0.32rem] lg:px-[0.64rem] lg:py-[0.48rem] mt-[1.28rem] lg:mt-[3.52rem] flex justify-between">
+		<div data-aos="fade-up" className="border border-[0.02rem] lg:border-[0.04rem] rounded-[0.16rem] lg:rounded-[0.24rem] p-[0.32rem] lg:px-[0.64rem] lg:py-[0.48rem] mt-[1.28rem] lg:mt-[3.52rem] flex justify-between">
 			<p className="uppercase text-[0.24rem] lg:text-[0.32rem] font-bold w-1/4 gap-[0.16rem] lg:gap-[0.16rem] lg:w-1/3">About brand:</p>
 			<div className="w-3/4 grow-1 lg:grow-0 lg:w-1/2 flex flex-col justify-between gap-[0.32rem] lg:gap-[0.32rem] text-[0.2rem] lg:text-[0.2rem] font-medium">
 				<p className="">We're a visual design team with 8 years in the Web3 field.</p>
@@ -82,7 +82,7 @@ function AboutStatusContainer({smallScreenRatioDecimal}) {
 	}, [smallScreenRatioDecimal])
 
 	return (
-		<div className="mx-auto relative mt-[1.68rem] lg:mt-[3.6rem] lg:px-[0.96rem] w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
+		<div data-aos="fade-up" className="mx-auto relative mt-[1.68rem] lg:mt-[3.6rem] lg:px-[0.96rem] w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 			<div className="mx-auto overflow-x-hidden w-full flex items-center justify-between pl-[0.32rem] lg:pl-0">
 				<div className={`${showSection === 'left' ? '' : 'translate-x-[-100%] lg:translate-x-0'} transition-translate duration-700 lg:ml-0 mx-auto min-w-full max-w-full lg:min-w-[45%] lg:w-[45%] tracking-[-2%]`}>
 					<p className="uppercase text-[0.48rem] lg:text-[0.64rem] font-bold leading-[0.48rem] lg:leading-[0.64rem]">we strive to innovate</p>
@@ -171,7 +171,7 @@ function AboutCirclesCard({showSection}) {
 
 function EcosystemHeader() {
 	return (
-		<div className="mx-auto lg:text-center px-[0.32rem] lg:px-[0.96rem] mt-[2.16rem] lg:mt-[3.36rem] w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
+		<div data-aos="fade-up" className="mx-auto lg:text-center px-[0.32rem] lg:px-[0.96rem] mt-[2.16rem] lg:mt-[3.36rem] w-screen max-w-screen lg:max-w-[1920px] overflow-x-hidden">
 			<h2 className="uppercase text-[0.48rem] lg:text-[0.64rem] font-bold leading-[0.48rem] lg:leading-[0.64rem] tracking-[-2%]">ecosystem resource</h2>
 			<p className="lg:px-[1.6rem] text-[0.16rem] lg:text-[0.24rem] leading-[0.2rem] lg:leading-[0.36rem] tracking-[-2%] mt-[0.16rem] lg:mt-[0.4rem]">Over the years, Moto has had the privilege of supporting brands, institutions, and entrepreneurial teams from various industries, providing them with visual design, creative, and industry consulting services.</p>
 		</div>
@@ -180,7 +180,7 @@ function EcosystemHeader() {
 
 function EcosystemContainer() {
 	return (
-		<div className="m-auto w-full flex items-center overflow-hidden gap--[0.32rem] lg:gap--[8rem] py-[0.8rem] lg:py-[1.6rem] mt-[0.8rem] lg:mt-[0.64rem] relative">
+		<div data-aos="fade-up" className="m-auto w-full flex items-center overflow-hidden gap--[0.32rem] lg:gap--[8rem] py-[0.8rem] lg:py-[1.6rem] mt-[0.8rem] lg:mt-[0.64rem] relative">
 			<div className="flex items-center gap--[0.32rem] lg:gap--[8rem] grow-0 shrink-0 icons-scroll mr-[0.3rem] lg:mr-[0.4rem]">
 				<TestimonialSlideIcons/>
 				<TestimonialSlideIcons/>
@@ -218,8 +218,9 @@ function TeamMemberContainer() {
 		}
 		fetchData()
 	}, [])
+	
 	return (
-		<div className="px-[0.32rem] lg:px-[0.96rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
+		<div data-aos="fade-up" className="px-[0.32rem] lg:px-[0.96rem] mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] overflow-x-hidden">
 			<div className="my-[1.2rem] lg:my-[3.52rem] grid grid-cols-3 lg:grid-cols-5 gap-[0.16rem] lg:gap-x-[0.2rem] lg:gap-y-[0.4rem]">
 				<OurTeamCard />
 				{teamMemberData.map((item, index) => <TeamMemberCard {...item} key={index} />)}

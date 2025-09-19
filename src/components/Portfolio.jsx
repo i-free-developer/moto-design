@@ -29,7 +29,7 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 	return (
 		<main className="mx-auto relative">
 			<Navbar drawerStatus={drawerStatus} handleClickDrawer={handleClickDrawer} smallScreenRatioDecimal={smallScreenRatioDecimal} frostedGlass={true}/>
-			<section id="portfolio" className="" onClick={closeDrawer}>
+			<section id="portfolio" onClick={closeDrawer}>
 				<div className="mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] px-[0.32rem] lg:px-[0.64rem] pt-[0.48rem] lg:pt-[0.48rem] lg:mt-[1.28rem] lg:mb-[0.48rem] overflow-x-hidden">
 					<PortfolioHeader/>
 					<div className="pl-[0.16rem] lg:pl-[0.32rem] my-[0.48rem] lg:my-[0.96rem] flex flex-row justify-between overflow-x-hidden">
@@ -228,7 +228,7 @@ function StickyHandCard() {
 
 function OverlaySection({currentPortfolio, closeOverlay}) {
 	return (
-		<section className="absolute left-0 top-0 right-0 bg-[#000000]/88 min-h-[100vh] z-200">
+		<section className="absolute left-0 top-0 right-0 bg-[#000000]/88 min-h-full z-200">
 			<ScrollToTop/>
 			<div className="relative">
 				<div className="cursor-pointer absolute h-full w-[0.8rem]">

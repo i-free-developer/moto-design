@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
-import { PortfolioData } from '../data/site-data'
+import { PortfolioData, ApiPath } from '../data/site-data'
 import Navbar from './Navbar'
 import { useDrawerHandler, useApi } from './FunctionCollection'
 

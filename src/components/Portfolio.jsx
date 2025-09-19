@@ -228,7 +228,7 @@ function StickyHandCard() {
 
 function OverlaySection({currentPortfolio, closeOverlay}) {
 	return (
-		<section className="absolute left-0 top-0 right-0 bg-[#000000]/88 min-h-full z-200">
+		<section className="absolute left-0 top-0 right-0 bg-[#000000]/88 min-h-[calc(100%+0.98rem)] z-200">
 			<ScrollToTop/>
 			<div className="relative">
 				<div className="cursor-pointer absolute h-full w-[0.8rem]">

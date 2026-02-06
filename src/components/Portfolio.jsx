@@ -13,8 +13,8 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 	const {drawerStatus, handleClickDrawer, closeDrawer} = useDrawerHandler()
 
 	useEffect(() => {
-		setPortfolioItems(PortfolioData)
-		setCurrentPortfolio(PortfolioData.desktop[0])
+		// setPortfolioItems(PortfolioData)
+		// setCurrentPortfolio(PortfolioData.desktop[0])
 		async function fetchData() {
 			const data = await useApi(`${ApiPath()}/portfolios`)
 			// console.log(data.data)
@@ -43,7 +43,7 @@ export default function Portfolio({isMobileDevice, smallScreenRatioDecimal}) {
 				</div>
 
 				<div className="mx-auto w-screen max-w-screen lg:w-screen lg:max-w-[1920px] lg:px-[0.64rem]">
-	      	{isMobile ? <MobilePortfoliosConatiner isMobileDevice={isMobileDevice} itemsArray={PortfolioData.mobile}/> : <DesktopPortfolios isMobileDevice={isMobileDevice} itemsArray={portfolioItems.desktop} openOverlay={openOverlay}/>}
+	      	{isMobile ? <MobilePortfoliosConatiner isMobileDevice={isMobileDevice} itemsArray={portfolioItems.mobile}/> : <DesktopPortfolios isMobileDevice={isMobileDevice} itemsArray={portfolioItems.desktop} openOverlay={openOverlay}/>}
 	      </div>
 
 				<div className="mt-[-5rem] lg:mt-[-3rem]"><SiteInfoCard isMobileDevice={isMobileDevice}/></div>

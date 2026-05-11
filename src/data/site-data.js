@@ -142,14 +142,14 @@ const OpenningRoles = [
 ]
 
 const TeamMembers = [
-	{name: 'Ec',           avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Edison.png',       title: 'Founder',                         subtitle: 'Ec is the art director, steering visual concepts and creative direction.',                          description: "Graduated from Shenzhen University. Former head of institutional departments at top Web3 firms, with solid strategy and investment experience. Previously a visual designer at Xunlei and Tencent, bridging design and business insight."},
-	{name: 'Mia Zhan',     avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Mia-Zhan.png',     title: 'Co-Founder',                      subtitle: "MiaZhan serves as the head of vision, shaping the team's long - term visual strategies.",           description: "Graduated from Xihua University. Ex-Senior UI Specialist at Tencent with 10+ years in top tech firms like Photon Studio and Tenpay. Skilled in high-end UI and brand systems."},
-	{name: 'Shiyan',       avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Shiyan.png',       title: 'Strategic Partner, UX Expert',    subtitle: 'Shiyan is the head of UI&UX function, optimizing user interface and experience.',                   description: "Graduate from SAIC. Former Senior UX Designer at Huawei, focused on user onboarding and interaction flow. Combines user-first thinking with sharp design intuition and structured problem-solving."},
-	{name: 'Jasper',       avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Jasper.png',       title: 'Frontend Engineer',               subtitle: 'Jasper acts as the talent admin, handling recruitment and team - member management.',               description: "Specialized in responsive UI, motion, and code-level design execution. Builds seamless bridges between design and development."},
-	{name: 'Kinny Liang',  avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Kinny-Liang.png',  title: 'Social Media Strategist',         subtitle: 'Kinny Liang is in charge of media management, dealing with media relations and promotion matters.', description: "Experienced in content planning and brand messaging. Focused on multi-platform strategy, community ops, and visual storytelling."},
-	{name: 'Chan Zhong',   avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Chan-Zhong.png',   title: 'Senior UI Designer',              subtitle: 'ChanZhong is a front - end specialist, building and maintaining web front - end interfaces.',       description: "Graduated from Shenzhen University, trained at Central Saint Martins. Specializes in brand visuals and 3D, with a strong cross-media design foundation."},
-	{name: 'Lesley Chan',  avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Lesley-Chan.png',  title: 'Senior VFX Artist',               subtitle: 'Lesley Chan is a 3D animation and VFX artist, creating 3D animations and visual effects.',          description: "Graduated from Shenzhen University. Former TCL VFX artist, skilled in Houdini, AE, and C4D. Focused on particles, fluid sim, and cinematic visuals."},
-	{name: 'Vince',        avatar: 'https://assets-sh-padelx.shanghaipadel.com/moto-avatar-Vince.png',        title: 'Head of Consulting & Operations', subtitle: 'Vince is in charge of channel management, overseeing communication and outreach channels.',         description: "Graduated from Tianjin University. Former Web3 ops lead with expertise in cross-team workflows and global strategy. Deeply connected in the B2B Web3 ecosystem."},
+	{name: 'Ec',           avatar: 'https://assets.motodesign.cn/moto-avatar-Ec.png',           title: 'Founder',                         subtitle: 'Ec is the art director, steering visual concepts and creative direction.',                          description: "Graduated from Shenzhen University. Former head of institutional departments at top Web3 firms, with solid strategy and investment experience. Previously a visual designer at Xunlei and Tencent, bridging design and business insight."},
+	{name: 'Mia Zhan',     avatar: 'https://assets.motodesign.cn/moto-avatar-Mia-Zhan.png',     title: 'Co-Founder',                      subtitle: "MiaZhan serves as the head of vision, shaping the team's long - term visual strategies.",           description: "Graduated from Xihua University. Ex-Senior UI Specialist at Tencent with 10+ years in top tech firms like Photon Studio and Tenpay. Skilled in high-end UI and brand systems."},
+	{name: 'Shiyan',       avatar: 'https://assets.motodesign.cn/moto-avatar-Shiyan.png',       title: 'Strategic Partner, UX Expert',    subtitle: 'Shiyan is the head of UI&UX function, optimizing user interface and experience.',                   description: "Graduate from SAIC. Former Senior UX Designer at Huawei, focused on user onboarding and interaction flow. Combines user-first thinking with sharp design intuition and structured problem-solving."},
+	{name: 'Jasper',       avatar: 'https://assets.motodesign.cn/moto-avatar-Jasper.png',       title: 'Frontend Engineer',               subtitle: 'Jasper acts as the talent admin, handling recruitment and team - member management.',               description: "Specialized in responsive UI, motion, and code-level design execution. Builds seamless bridges between design and development."},
+	{name: 'Kinny Liang',  avatar: 'https://assets.motodesign.cn/moto-avatar-Kinny-Liang.png',  title: 'Social Media Strategist',         subtitle: 'Kinny Liang is in charge of media management, dealing with media relations and promotion matters.', description: "Experienced in content planning and brand messaging. Focused on multi-platform strategy, community ops, and visual storytelling."},
+	{name: 'Chan Zhong',   avatar: 'https://assets.motodesign.cn/moto-avatar-Chan-Zhong.png',   title: 'Senior UI Designer',              subtitle: 'ChanZhong is a front - end specialist, building and maintaining web front - end interfaces.',       description: "Graduated from Shenzhen University, trained at Central Saint Martins. Specializes in brand visuals and 3D, with a strong cross-media design foundation."},
+	{name: 'Lesley Chan',  avatar: 'https://assets.motodesign.cn/moto-avatar-Lesley-Chan.png',  title: 'Senior VFX Artist',               subtitle: 'Lesley Chan is a 3D animation and VFX artist, creating 3D animations and visual effects.',          description: "Graduated from Shenzhen University. Former TCL VFX artist, skilled in Houdini, AE, and C4D. Focused on particles, fluid sim, and cinematic visuals."},
+	{name: 'Vince',        avatar: 'https://assets.motodesign.cn/moto-avatar-Vince.png',        title: 'Head of Consulting & Operations', subtitle: 'Vince is in charge of channel management, overseeing communication and outreach channels.',         description: "Graduated from Tianjin University. Former Web3 ops lead with expertise in cross-team workflows and global strategy. Deeply connected in the B2B Web3 ecosystem."},
 ]
 
 const StatusContents = [
@@ -184,12 +184,12 @@ const PortfolioData = {
 }
 
 const TestimonialIcons = [
-	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-ventures.png',
-	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-gateio.png',
-	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-chain-catcher.png',
-	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-aws.png',
-	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-bybit.png',
-	'https://assets-sh-padelx.shanghaipadel.com/moto-icon-rootdata.png',
+	'https://assets.motodesign.cn/moto-icon-ventures.png',
+	'https://assets.motodesign.cn/moto-icon-gateio.png',
+	'https://assets.motodesign.cn/moto-icon-chain-catcher.png',
+	'https://assets.motodesign.cn/moto-icon-aws.png',
+	'https://assets.motodesign.cn/moto-icon-bybit.png',
+	'https://assets.motodesign.cn/moto-icon-rootdata.png',
 ]
 
 const ServicesItems = ['Web Design / UI & UX', '3D & Concept Animation', 'Brand Identity & Social Media Visual']
@@ -200,7 +200,7 @@ const CompanyEmail = 'Hello@motodesign.cn'
 
 const CompanyDomain = 'motodesign.cn'
 
-const HandImg = 'https://assets-sh-padelx.shanghaipadel.com/moto-sticky-hand-img.png'
+const HandImg = 'https://assets.motodesign.cn/moto-sticky-hand-img.png'
 
 const localPath = 'http://localhost:3000/api'
 const prodPath = 'https://api.motodesign.cn/api'
